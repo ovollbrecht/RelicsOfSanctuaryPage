@@ -146,22 +146,22 @@ h1 {
 }
 
 .item-card {
-  background-color: #f5f5f5;
+  background-color: var(--color-background-soft);
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--color-border-hover);
 }
 
 .item-name {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: var(--color-heading);
 }
 
 .base-item {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #666;
+  color: var(--color-text);
   font-weight: normal;
 }
 
@@ -178,9 +178,15 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: #2c3e50;
+  background-color: var(--vt-c-indigo);
   padding: 1rem;
   border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .item-image-container {
+    background-color: var(--vt-c-black-mute);
+  }
 }
 
 .item-image {
@@ -197,7 +203,8 @@ h4 {
 
 .percent-text {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--color-text);
+  opacity: 0.8;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0.75rem;
@@ -206,7 +213,7 @@ h4 {
 h5 {
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.5rem;
 }
 

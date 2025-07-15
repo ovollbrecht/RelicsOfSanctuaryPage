@@ -55,9 +55,15 @@ const toggleItems = () => {
 
 .sidebar {
   width: 250px;
-  background-color: #2c3e50;
-  color: white;
+  background-color: var(--vt-c-indigo);
+  color: var(--vt-c-white);
   padding: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: var(--vt-c-black-soft);
+  }
 }
 
 .logo-container {
@@ -94,14 +100,14 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  color: white;
+  color: var(--vt-c-white);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
 
 .nav-link:hover {
-  background-color: #34495e;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .with-submenu {
@@ -124,19 +130,21 @@ h1 {
 .submenu-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
 
 .submenu-link:hover {
-  background-color: #34495e;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .content {
   flex: 1;
   padding: 2rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 .content-container {
