@@ -4,16 +4,16 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>Welcome to Relics Of Sanctuary - your ultimate resource for game items.</p>
+    <p>Welcome to Relics Of Sanctuary</p>
     <div class="features">
       <div class="feature">
         <h3>Unique Items</h3>
         <p>Browse our extensive collection of unique items with detailed stats and properties.</p>
       </div>
-      <div class="feature">
-        <h3>Horadric Cube</h3>
-        <p>Discover powerful cube recipes to craft and transform items.</p>
-      </div>
+<!--      <div class="feature">-->
+<!--        <h3>Horadric Cube</h3>-->
+<!--        <p>Discover powerful cube recipes to craft and transform items.</p>-->
+<!--      </div>-->
     </div>
   </div>
 </template>

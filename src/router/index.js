@@ -18,10 +18,8 @@ const routes = [
   }
 ]
 
-const baseUrl = import.meta.env.MODE === 'production' ? '/RelicsOfSanctuaryPage/' : '/'
-
 const router = createRouter({
-  history: createWebHashHistory(baseUrl),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes
 })
 

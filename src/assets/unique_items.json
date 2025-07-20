@@ -27239,7 +27239,7 @@
     },
     "Index": "Hellfire Torch",
     "Rarity": "19",
-    "Percent": "19/20 (95%)",
+    "Percent": "19/19 (100%)",
     "Lvl": "110",
     "LvlReq": "75",
     "Properties": [
@@ -27300,7 +27300,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[6 - 8] to [13 - 16]",
+      "Damage": "[8 - 9] to [16 - 19]",
       "Durability": "28",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -27339,9 +27339,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "180",
-        "Description": "[120-180]% Enhanced Damage",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -27446,7 +27446,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[11 - 13] to [28 - 33]",
+      "Damage": "[12 - 15] to [32 - 39]",
       "Durability": "24",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -27493,9 +27493,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "160",
-        "Description": "[120-160]% Enhanced Damage",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -27523,7 +27523,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[16 - 19] to [26 - 30]",
+      "Damage": "[18 - 22] to [28 - 35]",
       "Durability": "26",
       "Block Chance": "0",
       "Required Dexterity": "33",
@@ -27562,9 +27562,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "180",
-        "Description": "[140-180]% Enhanced Damage",
+        "Min": "160",
+        "Max": "220",
+        "Description": "[160-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -27600,7 +27600,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[25 - 32] to [45 - 58]",
+      "Damage": "[28 - 35] to [50 - 63]",
       "Durability": "26",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -27631,9 +27631,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "150",
-        "Max": "225",
-        "Description": "[150-225]% Enhanced Damage",
+        "Min": "180",
+        "Max": "250",
+        "Description": "[180-250]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -27728,6 +27728,14 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
       }
     ],
     "ImageMapping": "axe_large_axe.webp"
@@ -27884,7 +27892,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[43 - 49] to [60 - 82]",
+      "Damage": "[46 - 53] to [72 - 96]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "19",
@@ -27931,9 +27939,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "175",
-        "Description": "[100-175]% Enhanced Damage",
+        "Min": "140",
+        "Max": "220",
+        "Description": "[140-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -28036,6 +28044,14 @@
         "Max": "25",
         "Description": "25% Faster Run/Walk",
         "Priority": "148"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
       }
     ],
     "ImageMapping": "axe_giant_axe.webp"
@@ -28370,7 +28386,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "2 to [13 - 15]",
+      "Damage": "[2 - 3] to [15 - 19]",
       "Durability": "24",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -28409,9 +28425,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "130",
-        "Max": "150",
-        "Description": "[130-150]% Enhanced Damage",
+        "Min": "160",
+        "Max": "220",
+        "Description": "[160-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -28421,6 +28437,14 @@
         "Max": "20",
         "Description": "20% Chance of Crushing Blow",
         "Priority": "87"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
       },
       {
         "Prop": "dmg-fire",
@@ -28686,7 +28710,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "13 to 20",
+      "Damage": "15 to 24",
       "Durability": "36",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -28709,9 +28733,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "160",
-        "Max": "160",
-        "Description": "160% Enhanced Damage",
+        "Min": "200",
+        "Max": "200",
+        "Description": "200% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -28741,9 +28765,9 @@
       {
         "Prop": "str",
         "Par": "",
-        "Min": "8",
-        "Max": "8",
-        "Description": "+8 to Strength",
+        "Min": "14",
+        "Max": "14",
+        "Description": "+14 to Strength",
         "Priority": "67"
       }
     ],
@@ -28755,7 +28779,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[6 - 7] to [21 - 24]",
+      "Damage": "[7 - 9] to [25 - 30]",
       "Durability": "60",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -28802,9 +28826,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "110",
-        "Max": "140",
-        "Description": "[110-140]% Enhanced Damage",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -28830,6 +28854,14 @@
         "Max": "1",
         "Description": "Ignore Target's Defense",
         "Priority": "119"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
       }
     ],
     "ImageMapping": "mace_mace.webp"
@@ -28840,7 +28872,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "18 to 43",
+      "Damage": "21 to 49",
       "Durability": "72",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -28855,9 +28887,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "170",
-        "Max": "170",
-        "Description": "170% Enhanced Damage",
+        "Min": "210",
+        "Max": "210",
+        "Description": "210% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29156,7 +29188,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[133 - 152] to [203 - 232]",
+      "Damage": "[133 - 171] to [203 - 261]",
       "Durability": "60",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -29196,8 +29228,8 @@
         "Prop": "dmg%",
         "Par": "",
         "Min": "250",
-        "Max": "300",
-        "Description": "[250-300]% Enhanced Damage",
+        "Max": "350",
+        "Description": "[250-350]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29215,6 +29247,14 @@
         "Max": "50",
         "Description": "[40-50]% Better Chance of Getting Magic Items",
         "Priority": "8"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Run/Walk",
+        "Priority": "148"
       }
     ],
     "ImageMapping": "hammer_great_maul.webp"
@@ -29225,7 +29265,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "20 to 20",
+      "Damage": "26 to 26",
       "Durability": "24",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -29240,9 +29280,9 @@
       {
         "Prop": "dmg-min",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "+15 to Minimum Damage",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to Minimum Damage",
         "Priority": "300"
       },
       {
@@ -29280,9 +29320,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "150",
-        "Max": "150",
-        "Description": "150% Enhanced Damage",
+        "Min": "200",
+        "Max": "200",
+        "Description": "200% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29302,7 +29342,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "5 to [15 - 16]",
+      "Damage": "[5 - 6] to [16 - 18]",
       "Durability": "22",
       "Block Chance": "0",
       "Required Dexterity": "21",
@@ -29325,9 +29365,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "150",
-        "Max": "180",
-        "Description": "[150-180]% Enhanced Damage",
+        "Min": "170",
+        "Max": "200",
+        "Description": "[170-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29357,9 +29397,9 @@
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "25",
-        "Max": "25",
-        "Description": "25% Increased Attack Speed",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
         "Priority": "145"
       },
       {
@@ -29525,7 +29565,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[16 - 19] to [33 - 39]",
+      "Damage": "[19 - 22] to [39 - 44]",
       "Durability": "32",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -29564,9 +29604,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "180",
-        "Description": "[140-180]% Enhanced Damage",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29687,7 +29727,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[16 - 19] to [40 - 48]",
+      "Damage": "[22 - 25] to [56 - 64]",
       "Durability": "44",
       "Block Chance": "0",
       "Required Dexterity": "31",
@@ -29742,9 +29782,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "140",
-        "Description": "[100-140]% Enhanced Damage",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29764,7 +29804,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "20 to 44",
+      "Damage": "24 to 51",
       "Durability": "44",
       "Block Chance": "0",
       "Required Dexterity": "27",
@@ -29811,9 +29851,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "160",
-        "Max": "160",
-        "Description": "160% Enhanced Damage",
+        "Min": "200",
+        "Max": "200",
+        "Description": "200% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29849,7 +29889,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[28 - 33] to [66 - 78]",
+      "Damage": "[35 - 39] to [81 - 90]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -29880,9 +29920,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "160",
-        "Description": "[120-160]% Enhanced Damage",
+        "Min": "170",
+        "Max": "200",
+        "Description": "[170-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29926,7 +29966,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[19 - 23] to [61 - 72]",
+      "Damage": "[25 - 27] to [78 - 84]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "34",
@@ -29957,9 +29997,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "160",
-        "Description": "[120-160]% Enhanced Damage",
+        "Min": "180",
+        "Max": "200",
+        "Description": "[180-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29987,7 +30027,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[36 - 44] to [50 - 61]",
+      "Damage": "[48 - 56] to [67 - 78]",
       "Durability": "40",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -30034,9 +30074,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "120",
-        "Description": "[80-120]% Enhanced Damage",
+        "Min": "140",
+        "Max": "180",
+        "Description": "[140-180]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30056,7 +30096,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[28 - 31] to [102 - 107]",
+      "Damage": "[36 - 39] to [117 - 123]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "49",
@@ -30095,9 +30135,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "140",
-        "Description": "[120-140]% Enhanced Damage",
+        "Min": "180",
+        "Max": "200",
+        "Description": "[180-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30117,7 +30157,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[60 - 70] to [100 - 117]",
+      "Damage": "[75 - 80] to [126 - 134]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "60",
@@ -30164,9 +30204,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "180",
-        "Description": "[140-180]% Enhanced Damage",
+        "Min": "200",
+        "Max": "220",
+        "Description": "[200-220]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30203,7 +30243,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "2 to 49",
-      "Durability": "16",
+      "Durability": "56",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "0"
@@ -30261,6 +30301,14 @@
         "Max": "30",
         "Description": "30% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "dur",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Improved Durability",
+        "Priority": ""
       }
     ],
     "ImageMapping": "knife_dagger.webp"
@@ -30271,8 +30319,8 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "6 to 18",
-      "Durability": "20",
+      "Damage": "7 to 22",
+      "Durability": "60",
       "Block Chance": "0",
       "Required Dexterity": "25",
       "Required Strength": "0"
@@ -30294,9 +30342,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "100",
-        "Description": "100% Enhanced Damage",
+        "Min": "150",
+        "Max": "150",
+        "Description": "150% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30354,6 +30402,14 @@
         "Max": "1",
         "Description": "Socketed (1)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "dur",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Improved Durability",
+        "Priority": ""
       }
     ],
     "ImageMapping": "knife_dirk.webp"
@@ -30365,7 +30421,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "2 to 11",
-      "Durability": "24",
+      "Durability": "64",
       "Block Chance": "0",
       "Required Dexterity": "45",
       "Required Strength": "0"
@@ -30439,6 +30495,22 @@
         "Max": "30",
         "Description": "30% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "dur",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Improved Durability",
+        "Priority": ""
+      },
+      {
+        "Prop": "oskill",
+        "Par": "73",
+        "Min": "4",
+        "Max": "6",
+        "Description": "+[4-6] to Poison Dagger",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "knife_the_jade_tan_do.webp"
@@ -30449,8 +30521,8 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "4 to 15",
-      "Durability": "24",
+      "Damage": "24 to 24",
+      "Durability": "64",
       "Block Chance": "0",
       "Required Dexterity": "51",
       "Required Strength": "35"
@@ -30500,6 +30572,22 @@
         "Max": "1",
         "Description": "+1 to Telekinesis",
         "Priority": "81"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to Minimum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dur",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Improved Durability",
+        "Priority": ""
       }
     ],
     "ImageMapping": "knife_blade.webp"
@@ -30587,7 +30675,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[16 - 18] to [27 - 31]",
+      "Damage": "[20 - 22] to [34 - 37]",
       "Durability": "35",
       "Block Chance": "0",
       "Required Dexterity": "24",
@@ -30642,9 +30730,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "110",
-        "Description": "[80-110]% Enhanced Damage",
+        "Min": "130",
+        "Max": "150",
+        "Description": "[130-150]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30680,7 +30768,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[14 - 15] to [34 - 37]",
+      "Damage": "[17 - 18] to [42 - 45]",
       "Durability": "28",
       "Block Chance": "0",
       "Required Dexterity": "50",
@@ -30727,9 +30815,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "120",
-        "Description": "[100-120]% Enhanced Damage",
+        "Min": "150",
+        "Max": "170",
+        "Description": "[150-170]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30834,7 +30922,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[33 - 36] to [151 - 163]",
+      "Damage": "[39 - 42] to [176 - 189]",
       "Durability": "25",
       "Block Chance": "0",
       "Required Dexterity": "45",
@@ -30889,9 +30977,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "160",
-        "Description": "[140-160]% Enhanced Damage",
+        "Min": "180",
+        "Max": "200",
+        "Description": "[180-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30919,7 +31007,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "2 to [70 - 75]",
+      "Damage": "3 to 81",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -30942,9 +31030,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "160",
-        "Max": "180",
-        "Description": "[160-180]% Enhanced Damage",
+        "Min": "200",
+        "Max": "200",
+        "Description": "200% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -30958,9 +31046,9 @@
       {
         "Prop": "ac",
         "Par": "",
-        "Min": "-2",
-        "Max": "-2",
-        "Description": "+-2 Defense",
+        "Min": "-1",
+        "Max": "-1",
+        "Description": "+-1 Defense",
         "Priority": "71"
       },
       {
@@ -30988,7 +31076,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[11 - 12] to [39 - 44]",
+      "Damage": "[15 - 16] to [54 - 58]",
       "Durability": "130 - 150",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -31035,9 +31123,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "90",
-        "Max": "110",
-        "Description": "[90-110]% Enhanced Damage",
+        "Min": "160",
+        "Max": "180",
+        "Description": "[160-180]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -31065,7 +31153,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[25 - 27] to [63 - 69]",
+      "Damage": "[30 - 34] to [75 - 87]",
       "Durability": "33",
       "Block Chance": "0",
       "Required Dexterity": "31",
@@ -31104,9 +31192,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "110",
-        "Max": "130",
-        "Description": "[110-130]% Enhanced Damage",
+        "Min": "150",
+        "Max": "190",
+        "Description": "[150-190]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -31150,7 +31238,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[36 - 39] to [78 - 85]",
+      "Damage": "[45 - 48] to [97 - 105]",
       "Durability": "65",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -31181,9 +31269,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "120",
-        "Description": "[100-120]% Enhanced Damage",
+        "Min": "150",
+        "Max": "170",
+        "Description": "[150-170]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -31219,7 +31307,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[21 - 24] to [81 - 90]",
+      "Damage": "[26 - 28] to [99 - 108]",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "47",
@@ -31290,9 +31378,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "100",
-        "Description": "[80-100]% Enhanced Damage",
+        "Min": "120",
+        "Max": "140",
+        "Description": "[120-140]% Enhanced Damage",
         "Priority": "1000"
       }
     ],
@@ -31304,7 +31392,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[55 - 57] to [61 - 64]",
+      "Damage": "63 to 79",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "80",
@@ -31343,9 +31431,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "70",
-        "Max": "80",
-        "Description": "[70-80]% Enhanced Damage",
+        "Min": "120",
+        "Max": "120",
+        "Description": "120% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -31389,7 +31477,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "2 to [10 - 11]",
+      "Damage": "[2 - 3] to [13 - 15]",
       "Durability": "20",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -31428,9 +31516,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "120",
-        "Description": "[100-120]% Enhanced Damage",
+        "Min": "160",
+        "Max": "200",
+        "Description": "[160-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -31862,7 +31950,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "3 to 12",
+      "Damage": "3 to 27",
       "Durability": "20",
       "Block Chance": "0",
       "Required Dexterity": "15",
@@ -31937,6 +32025,14 @@
         "Max": "3",
         "Description": "Hit Blinds Target",
         "Priority": "80"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 to Maximum Damage",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "bow_short_bow.webp"
@@ -31947,7 +32043,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[8 - 9] to [21 - 22]",
+      "Damage": "[9 - 10] to [24 - 25]",
       "Durability": "32",
       "Block Chance": "0",
       "Required Dexterity": "28",
@@ -32002,9 +32098,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "90",
-        "Max": "110",
-        "Description": "[90-110]% Enhanced Damage",
+        "Min": "140",
+        "Max": "150",
+        "Description": "[140-150]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32024,7 +32120,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[6 - 7] to [22 - 25]",
+      "Damage": "[7 - 8] to [26 - 27]",
       "Durability": "28",
       "Block Chance": "0",
       "Required Dexterity": "19",
@@ -32071,9 +32167,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "150",
-        "Description": "[120-150]% Enhanced Damage",
+        "Min": "160",
+        "Max": "170",
+        "Description": "[160-170]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32093,7 +32189,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[7 - 8] to [14 - 16]",
+      "Damage": "[9 - 10] to [19 - 20]",
       "Durability": "36",
       "Block Chance": "0",
       "Required Dexterity": "35",
@@ -32140,9 +32236,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "100",
-        "Description": "[80-100]% Enhanced Damage",
+        "Min": "140",
+        "Max": "160",
+        "Description": "[140-160]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32170,7 +32266,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[11 - 12] to [24 - 26]",
+      "Damage": "[13 - 14] to [29 - 31]",
       "Durability": "40",
       "Block Chance": "0",
       "Required Dexterity": "40",
@@ -32201,9 +32297,9 @@
       {
         "Prop": "att",
         "Par": "",
-        "Min": "66",
-        "Max": "66",
-        "Description": "+66 to Attack Rating",
+        "Min": "111",
+        "Max": "111",
+        "Description": "+111 to Attack Rating",
         "Priority": "115"
       },
       {
@@ -32225,9 +32321,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "140",
-        "Description": "[120-140]% Enhanced Damage",
+        "Min": "170",
+        "Max": "190",
+        "Description": "[170-190]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32247,7 +32343,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "6 to [37 - 41]",
+      "Damage": "8 to [48 - 50]",
       "Durability": "44",
       "Block Chance": "0",
       "Required Dexterity": "50",
@@ -32302,9 +32398,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "110",
-        "Max": "130",
-        "Description": "[110-130]% Enhanced Damage",
+        "Min": "170",
+        "Max": "180",
+        "Description": "[170-180]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32340,7 +32436,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[12 - 14] to [29 - 33]",
+      "Damage": "[16 - 17] to [37 - 40]",
       "Durability": "48",
       "Block Chance": "0",
       "Required Dexterity": "55",
@@ -32387,9 +32483,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "110",
-        "Max": "140",
-        "Description": "[110-140]% Enhanced Damage",
+        "Min": "170",
+        "Max": "190",
+        "Description": "[170-190]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32425,7 +32521,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[7 - 9] to [55 - 69]",
+      "Damage": "[8 - 9] to [62 - 75]",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "65",
@@ -32440,9 +32536,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "200",
-        "Description": "[140-200]% Enhanced Damage",
+        "Min": "170",
+        "Max": "230",
+        "Description": "[170-230]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32502,7 +32598,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[13 - 15] to [20 - 22]",
+      "Damage": "16 to 24",
       "Durability": "30",
       "Block Chance": "0",
       "Required Dexterity": "27",
@@ -32533,9 +32629,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "130",
-        "Max": "150",
-        "Description": "[130-150]% Enhanced Damage",
+        "Min": "170",
+        "Max": "170",
+        "Description": "170% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32587,7 +32683,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "18 to 32",
+      "Damage": "22 to 40",
       "Durability": "40",
       "Block Chance": "0",
       "Required Dexterity": "33",
@@ -32634,9 +32730,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "100",
-        "Description": "100% Enhanced Damage",
+        "Min": "150",
+        "Max": "150",
+        "Description": "150% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32664,7 +32760,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[32 - 36] to [59 - 67]",
+      "Damage": "[37 - 39] to [70 - 72]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "40",
@@ -32719,9 +32815,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "130",
-        "Max": "160",
-        "Description": "[130-160]% Enhanced Damage",
+        "Min": "170",
+        "Max": "180",
+        "Description": "[170-180]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32757,7 +32853,7 @@
     "Tier": "normal",
     "Stats": {
       "Defense": "0",
-      "Damage": "[13 - 15] to [26 - 31]",
+      "Damage": "[15 - 18] to [31 - 36]",
       "Durability": "40",
       "Block Chance": "0",
       "Required Dexterity": "50",
@@ -32804,9 +32900,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "160",
-        "Description": "[120-160]% Enhanced Damage",
+        "Min": "160",
+        "Max": "200",
+        "Description": "[160-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -32926,9 +33022,9 @@
       {
         "Prop": "mag%",
         "Par": "",
-        "Min": "50",
+        "Min": "75",
         "Max": "100",
-        "Description": "[50-100]% Better Chance of Getting Magic Items",
+        "Description": "[75-100]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
@@ -37584,6 +37680,22 @@
         "Max": "280",
         "Description": "[240-280]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "-[15-20]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
       }
     ],
     "ImageMapping": "axe_mindrend.webp"
@@ -59118,17 +59230,17 @@
       {
         "Prop": "all-stats",
         "Par": "",
-        "Min": "21",
+        "Min": "18",
         "Max": "25",
-        "Description": "+[21-25] to all Attributes",
+        "Description": "+[18-25] to all Attributes",
         "Priority": "63"
       },
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "21",
+        "Min": "18",
         "Max": "25",
-        "Description": "All Resistances +[21-25]",
+        "Description": "All Resistances +[18-25]",
         "Priority": "34"
       },
       {
@@ -60447,74 +60559,5 @@
       }
     ],
     "ImageMapping": "gem_perfect_diamond.webp.webp.webp.webp.webp.webp.webp.webp"
-  },
-  {
-    "Name": "Exalted Hellfire Torch",
-    "BaseItemName": "Large Charm",
-    "Tier": "",
-    "Stats": {
-      "Defense": "0",
-      "Damage": "0 to 0",
-      "Durability": "0",
-      "Block Chance": "0",
-      "Required Dexterity": "0",
-      "Required Strength": "0"
-    },
-    "Index": "Exalted Hellfire Torch",
-    "Rarity": "1",
-    "Percent": "1/20 (5%)",
-    "Lvl": "110",
-    "LvlReq": "75",
-    "Properties": [
-      {
-        "Prop": "randclassskill",
-        "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to [random Class] Skill Levels",
-        "Priority": "150"
-      },
-      {
-        "Prop": "all-stats",
-        "Par": "",
-        "Min": "18",
-        "Max": "25",
-        "Description": "+[18-25] to all Attributes",
-        "Priority": "63"
-      },
-      {
-        "Prop": "res-all",
-        "Par": "",
-        "Min": "18",
-        "Max": "25",
-        "Description": "All Resistances +[18-25]",
-        "Priority": "34"
-      },
-      {
-        "Prop": "light",
-        "Par": "",
-        "Min": "7",
-        "Max": "7",
-        "Description": "+7 to Light Radius",
-        "Priority": "6"
-      },
-      {
-        "Prop": "hit-skill",
-        "Par": "197",
-        "Min": "5",
-        "Max": "20",
-        "Description": "5% Chance to cast level 20 Firestorm on striking",
-        "Priority": "160"
-      },
-      {
-        "Prop": "charged",
-        "Par": "Hydra",
-        "Min": "20",
-        "Max": "40",
-        "Description": "Level 40 Hydra (20/20 Charges)",
-        "Priority": "1"
-      }
-    ],
-    "ImageMapping": "torch_torch.webp"
   }
 ]
