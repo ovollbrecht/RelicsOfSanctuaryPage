@@ -38,15 +38,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --d2r-bg: #1e1e1e;
+    --d2r-bg-soft: #2a2a2a;
+    --d2r-gold: #c69c6d;
+    --d2r-red: #a11f1f;
+    --d2r-border: #444;
+    --d2r-highlight: #d2b48c;
+    --d2r-text: #e0d4b7;
+    --d2r-shadow: 0 0 10px rgba(198, 156, 109, 0.5);
   }
 }
 
@@ -54,8 +53,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+  /* Removed margin: 0 to allow Bootstrap's margin utilities to work */
+  /* Removed font-weight: normal to allow Bootstrap's typography to work */
 }
 
 body {
@@ -65,21 +64,9 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
+  /* Removed line-height to use Bootstrap's default */
+  /* Removed font-family to use Bootstrap's default */
+  /* Removed font-size to use Bootstrap's default */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

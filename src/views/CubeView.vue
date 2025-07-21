@@ -2,46 +2,36 @@
 </script>
 
 <template>
-  <div class="cube">
-    <h1>Horadric Cube</h1>
-    <p>Discover powerful cube recipes to craft and transform items.</p>
-    
-    <div class="placeholder-content">
-      <p>This page will display a list of Horadric Cube recipes.</p>
-      <p>Each recipe will include:</p>
-      <ul>
-        <li>Input items required</li>
-        <li>Output item(s) produced</li>
-        <li>Success rate (if applicable)</li>
-        <li>Special conditions (if any)</li>
-      </ul>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-4 mb-3 text-warning">Horadric Cube</h1>
+        <p class="lead text-muted">Discover powerful cube recipes to craft and transform items.</p>
+      </div>
+    </div>
+
+    <div class="row mt-4 g-4">
+      <div class="col-12">
+        <div class="card card-enhanced card-hover">
+          <div class="card-header card-header-dark">
+            <h4 class="m-0">Cube Recipes</h4>
+          </div>
+          <div class="card-body p-4">
+            <p>This page will display a list of Horadric Cube recipes.</p>
+            <p>Each recipe will include:</p>
+            <ul class="list-group list-group-flush mt-3">
+              <li class="list-group-item list-item-enhanced">Input items required</li>
+              <li class="list-group-item list-item-enhanced">Output item(s) produced</li>
+              <li class="list-group-item list-item-enhanced">Success rate (if applicable)</li>
+              <li class="list-group-item list-item-enhanced">Special conditions (if any)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.cube {
-  padding: 1rem;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
-
-.placeholder-content {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-ul {
-  margin-top: 1rem;
-  padding-left: 1.5rem;
-}
-
-li {
-  margin-bottom: 0.5rem;
-}
+/* No custom styles needed - using Bootstrap classes */
 </style>

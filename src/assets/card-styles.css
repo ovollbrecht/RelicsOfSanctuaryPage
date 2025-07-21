@@ -1,0 +1,125 @@
+/* Enhanced Card Styling */
+
+/* Custom color variables */
+:root {
+  --custom-primary: #1a5fb4;
+  --custom-primary-light: #3584e4;
+  --custom-primary-dark: #0d3b6f;
+  
+  --custom-secondary: #7209b7;
+  --custom-secondary-light: #9d4edd;
+  --custom-secondary-dark: #560bad;
+  
+  --custom-success: #2ecc71;
+  --custom-warning: #f39c12;
+  --custom-danger: #c0392b;
+  
+  --custom-dark: #2c3e50;
+  --custom-light: #f8f9fa;
+  
+  --custom-gold: #f1c40f;
+  --custom-bronze: #cd7f32;
+}
+
+/* Enhanced Card Styling */
+.card {
+  background-color: var(--d2r-bg);
+  border: 1px solid var(--d2r-border);
+  color: var(--d2r-text);
+  box-shadow: none;
+}
+
+
+.card-enhanced {
+  box-shadow: none;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+}
+
+/* Card Headers */
+
+.card-header-primary {
+  background: linear-gradient(90deg, #5e3200, #1a1a1a);
+  color: var(--d2r-gold);
+  font-family: 'Uncial Antiqua', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.card-header-secondary {
+  background: linear-gradient(135deg, var(--custom-secondary), var(--custom-secondary-dark));
+  color: white;
+  border-bottom: 0;
+  padding: 0.75rem;
+}
+
+.card-header-dark {
+  background: linear-gradient(135deg, #2e2e2e, #000);
+  color: var(--d2r-gold);
+}
+
+/* Image Container */
+.item-image-container {
+  background: radial-gradient(ellipse at center, #333 0%, #111 100%);
+  border: 2px solid var(--d2r-border);
+  box-shadow: none;
+}
+
+/* List Items */
+.list-group-item {
+  background-color: #282828;
+  color: var(--d2r-text);
+  border-color: var(--d2r-border);
+}
+
+.list-item-enhanced {
+  border-left: 4px solid var(--d2r-gold);
+}
+
+
+.list-item-enhanced:hover {
+  background-color: rgba(26, 95, 180, 0.05);
+}
+
+.list-item-property {
+  border-left: 4px solid var(--custom-secondary-light);
+}
+
+.list-item-property:hover {
+  background-color: rgba(114, 9, 183, 0.05);
+}
+
+/* Section Headers */
+.section-header {
+  border-bottom: 2px solid var(--custom-primary-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--custom-dark);
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: #2c3e50;
+    border-color: #4a6583;
+  }
+
+  .list-group-item {
+    background-color: #34495e;
+    border-color: #4a6583;
+    color: #ecf0f1;
+  }
+  
+  .section-header {
+    color: #ecf0f1;
+  }
+  
+  .list-item-enhanced:hover,
+  .list-item-property:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}

@@ -1,0 +1,119 @@
+/* Diablo 2 Resurrected Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap');
+
+/* Farbvariablen */
+:root {
+    --d2r-bg: #1e1e1e;
+    --d2r-bg-soft: #2a2a2a;
+    --d2r-gold: #c69c6d;
+    --d2r-red: #a11f1f;
+    --d2r-border: #444;
+    --d2r-highlight: #d2b48c;
+    --d2r-text: #e0d4b7;
+    --d2r-shadow: 0 0 10px rgba(198, 156, 109, 0.5);
+}
+
+/* Body-Stil */
+body {
+    font-family: 'EB Garamond', serif;
+    background-color: var(--d2r-bg);
+    color: var(--d2r-text);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.sidebar,
+.sidebar-title,
+.sidebar-link,
+.sidebar-sublink {
+    font-family: 'EB Garamond', serif;
+}
+
+
+/* Allgemeine Card-Stil */
+.card {
+    background-color: var(--d2r-bg-soft);
+    border: 1px solid var(--d2r-border);
+    color: var(--d2r-text);
+    box-shadow: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* Card Hover Effekt */
+.card-hover:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Card Header */
+.card-header-primary {
+    background: linear-gradient(90deg, #5e3200, #1a1a1a);
+    color: var(--d2r-gold);
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--d2r-border);
+    padding: 1rem;
+}
+
+.card-header-dark {
+    background: linear-gradient(135deg, #2e2e2e, #000);
+    color: var(--d2r-gold);
+}
+
+/* Item-Bildbereich */
+.item-image-container {
+    background: radial-gradient(ellipse at center, #333 0%, #111 100%);
+    border: 2px solid var(--d2r-border);
+    box-shadow: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Liste & Items */
+.list-group-item {
+    background-color: #282828;
+    color: var(--d2r-text);
+    border-color: var(--d2r-border);
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #3a3a3a;
+}
+
+.list-item-enhanced {
+    border-left: 4px solid var(--d2r-gold);
+}
+
+.list-item-property {
+    border-left: 4px solid var(--d2r-red);
+}
+
+/* Abschnittsüberschrift */
+.section-header {
+    background: linear-gradient(90deg, #3a1e00, #0e0e0e);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--d2r-gold);
+    border-bottom: 2px solid var(--d2r-gold);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/* Links */
+a {
+    color: var(--d2r-highlight);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--d2r-gold);
+    text-shadow: var(--d2r-shadow);
+}
