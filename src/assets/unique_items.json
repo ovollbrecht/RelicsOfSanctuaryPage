@@ -7061,9 +7061,9 @@
       {
         "Prop": "thorns",
         "Par": "",
-        "Min": "5",
-        "Max": "5",
-        "Description": "Attacker Takes Damage of 5",
+        "Min": "10",
+        "Max": "10",
+        "Description": "Attacker Takes Damage of 10",
         "Priority": "13"
       },
       {
@@ -15888,15 +15888,31 @@
         "Par": "",
         "Min": "20",
         "Max": "20",
-        "Description": "All Resistances +20",
+        "Description": "Fire Resist 20%",
         "Priority": "36"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Lightning Resist 20%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Poison Resist 20%",
+        "Priority": "34"
       },
       {
         "Prop": "res-cold",
         "Par": "",
         "Min": "50",
         "Max": "50",
-        "Description": "All Resistances +50",
+        "Description": "Cold Resist 50%",
         "Priority": "40"
       },
       {
@@ -22258,7 +22274,7 @@
         "Par": "1",
         "Min": "10",
         "Max": "10",
-        "Description": "10%% Reanimate as: Kick",
+        "Description": "10% Reanimate as: Returned",
         "Priority": "17"
       },
       {
@@ -37910,9 +37926,9 @@
       {
         "Prop": "thorns",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "Attacker Takes Damage of 20",
+        "Min": "60",
+        "Max": "60",
+        "Description": "Attacker Takes Damage of 60",
         "Priority": "13"
       },
       {
@@ -37946,14 +37962,6 @@
         "Max": "120",
         "Description": "[100-120]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Prop": "thorns",
-        "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "Attacker Takes Damage of 40",
-        "Priority": "13"
       },
       {
         "Prop": "ac",
@@ -48449,15 +48457,31 @@
         "Par": "",
         "Min": "40",
         "Max": "40",
-        "Description": "All Resistances +40",
+        "Description": "Fire Resist 40%",
         "Priority": "36"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Lightning Resist 40%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Poison Resist 40%",
+        "Priority": "34"
       },
       {
         "Prop": "res-cold",
         "Par": "",
         "Min": "75",
         "Max": "75",
-        "Description": "All Resistances +75",
+        "Description": "Cold Resist 75%",
         "Priority": "40"
       },
       {
@@ -56083,7 +56107,7 @@
         "Par": "1",
         "Min": "10",
         "Max": "10",
-        "Description": "10%% Reanimate as: Kick",
+        "Description": "10% Reanimate as: Returned",
         "Priority": "17"
       },
       {

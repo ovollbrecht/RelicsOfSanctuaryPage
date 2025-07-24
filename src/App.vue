@@ -100,6 +100,9 @@ const checkScreenSize = () => {
                 </ul>
               </div>
             </li>
+            <li class="nav-item">
+              <router-link to="/runewords" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Runewords</router-link>
+            </li>
           </ul>
         </div>
       </div>
