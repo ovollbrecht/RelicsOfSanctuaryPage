@@ -97,12 +97,20 @@ const getAllowedItemsText = (allowedItems) => {
   }).join(', ');
 };
 
+// Generate a unique key for each runeword
+const getRunewordKey = (runeword, category) => {
+  // Combine name with runes, allowed items, and category to create a unique identifier
+  const allowedItems = runeword.AllowedItems ? runeword.AllowedItems.join('-') : '';
+  return `${runeword.Name}-${runeword.RuneNames.join('-')}-${allowedItems}-${category}`;
+};
+
 // Toggle row expansion
-const toggleRowExpansion = (runewordName) => {
-  if (expandedRows.value.has(runewordName)) {
-    expandedRows.value.delete(runewordName);
+const toggleRowExpansion = (runeword, category) => {
+  const key = getRunewordKey(runeword, category);
+  if (expandedRows.value.has(key)) {
+    expandedRows.value.delete(key);
   } else {
-    expandedRows.value.add(runewordName);
+    expandedRows.value.add(key);
   }
 };
 
@@ -144,6 +152,41 @@ const resetFilters = () => {
 // Sort properties by priority
 const sortPropertiesByPriority = (properties) => {
   return [...properties].sort((a, b) => parseInt(b.Priority) - parseInt(a.Priority));
+};
+
+// Get categories for a runeword (excluding "new")
+const getRunewordCategories = (runeword) => {
+  const categories = [];
+  if (runeword.IsWeapon) categories.push('Weapon');
+  if (runeword.IsTorso) categories.push('Armor');
+  if (runeword.IsHelmet) categories.push('Helmet');
+  if (runeword.IsShield) categories.push('Shield');
+  return categories;
+};
+
+// Check if a runeword name appears multiple times in the dataset (excluding "new" runewords)
+const hasMultipleEntries = (runewordName) => {
+  const nonNewRunewords = runewords.value.filter(rw => !rw.IsNew);
+  const matchingRunewords = nonNewRunewords.filter(rw => rw.Name === runewordName);
+  return matchingRunewords.length > 1;
+};
+
+// Get display name with category suffix if the name appears in multiple entries
+const getRunewordDisplayName = (runeword) => {
+  // Don't add category suffix for "new" runewords
+  if (runeword.IsNew) {
+    return runeword.Name;
+  }
+
+  // Check if this runeword name appears multiple times in the dataset
+  if (hasMultipleEntries(runeword.Name)) {
+    const categories = getRunewordCategories(runeword);
+    if (categories.length > 0) {
+      return `${runeword.Name} (${categories[0]})`;
+    }
+  }
+
+  return runeword.Name;
 };
 
 onMounted(() => {
@@ -233,12 +276,12 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in categorizedRunewords.new" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
+                    <tr @click="toggleRowExpansion(runeword, 'new')" style="cursor: pointer;">
                       <td>{{ runeword.Name }}</td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'new'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
@@ -280,12 +323,15 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in categorizedRunewords.weapons" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
+                    <tr @click="toggleRowExpansion(runeword, 'weapons')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'weapons'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
@@ -327,12 +373,15 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in categorizedRunewords.armors" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
+                    <tr @click="toggleRowExpansion(runeword, 'armors')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'armors'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
@@ -374,12 +423,15 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in categorizedRunewords.helmets" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
+                    <tr @click="toggleRowExpansion(runeword, 'helmets')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'helmets'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
@@ -421,12 +473,15 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in categorizedRunewords.shields" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
+                    <tr @click="toggleRowExpansion(runeword, 'shields')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'shields'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
@@ -481,12 +536,15 @@ onMounted(() => {
                 </thead>
                 <tbody>
                   <template v-for="runeword in filteredRunewords" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword.Name)" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
+                    <tr @click="toggleRowExpansion(runeword, 'search')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
                     </tr>
-                    <tr v-if="expandedRows.has(runeword.Name)" class="expanded-row">
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'search'))" class="expanded-row">
                       <td colspan="3">
                         <div class="p-3">
                           <h5 class="section-header">Properties</h5>
