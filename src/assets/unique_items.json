@@ -51539,6 +51539,14 @@
         "Max": "20",
         "Description": "+20 to Iron Golem",
         "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "79",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Golem Mastery",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "helmet_great_helm.webp"
@@ -62841,6 +62849,14 @@
         "Min": "22",
         "Max": "22",
         "Description": "+22 to Iron Golem",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "79",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Golem Mastery",
         "Priority": "81"
       },
       {

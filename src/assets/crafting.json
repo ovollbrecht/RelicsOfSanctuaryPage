@@ -1,0 +1,2567 @@
+[
+  {
+    "ItemType": "helm",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [3-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "25",
+        "Max": "50",
+        "Description": "+[25-50] Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Ith Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [3-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac-hth",
+        "Par": "",
+        "Min": "25",
+        "Max": "60",
+        "Description": "+[25-60] Defense vs. Melee",
+        "Priority": "70"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Ral Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [3-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "knock",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Knockback",
+        "Priority": "76"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [3-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "10",
+        "Description": "Attacker Takes Damage of [3-10]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "block",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Eth Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "10",
+        "Description": "Attacker Takes Damage of [3-10]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "balance1",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Nef Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "10",
+        "Description": "Attacker Takes Damage of [3-10]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "howl",
+        "Par": "",
+        "Min": "5",
+        "Max": "15",
+        "Description": "Hit Causes Monster to Flee [3 - 11]%",
+        "Priority": "79"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "6",
+        "Description": "Attacker Takes Damage of [3-6]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dex",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "+[1-5] to Dexterity",
+        "Priority": "65"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Safety",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "gethit-skill",
+        "Par": "44",
+        "Min": "5",
+        "Max": "4",
+        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Priority": "160"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "3",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [3-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "35",
+        "Max": "60",
+        "Description": "[35-60]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Tir Rune",
+      "Perfect Sapphire"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Ral Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Replenish Life +[5-10]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Eth Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "crush",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Nef Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "4",
+        "Max": "7",
+        "Description": "Attacker Takes Damage of [4-7]",
+        "Priority": "13"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Ith Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "demon-heal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "+[1-3] Life after each Demon Kill",
+        "Priority": "15"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "[1-4]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "move1",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Faster Run/Walk",
+        "Priority": "148"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "[1-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "str",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "+[1-5] to Strength",
+        "Priority": "67"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Sol Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Blood",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "[1-4]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Life",
+        "Priority": "59"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "35",
+        "Max": "60",
+        "Description": "[35-60]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Ruby"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "[1-4]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Nef Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "2",
+        "Max": "5",
+        "Description": "Increase Maximum Mana [2-5]%",
+        "Priority": "54"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "+[1-3] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "cast1",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Ith Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "block",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Eth Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "1",
+        "Max": "3",
+        "Description": "+[1-3] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "cast1",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Faster Cast Rate",
+        "Priority": "142"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Ral Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "enr",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "+[1-5] to Energy",
+        "Priority": "61"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Caster",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "4",
+        "Max": "10",
+        "Description": "Regenerate Mana [4-10]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "+[10-20] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "Increase Maximum Mana [1-5]%",
+        "Priority": "54"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Tir Rune",
+      "Perfect Amethyst"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Lightning Resist [5-10]%",
+        "Priority": "38"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Ith Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Fire Resist [5-10]%",
+        "Priority": "36"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Cold Resist [5-10]%",
+        "Priority": "40"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Ral Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Poison Resist [5-10]%",
+        "Priority": "34"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-mag",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Magic Resist [5-10]%",
+        "Priority": "41"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Nef Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "half-freeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Half Freeze Duration",
+        "Priority": "19"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "10",
+        "Max": "30",
+        "Description": "[10-30]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Eth Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "block",
+        "Par": "",
+        "Min": "1",
+        "Max": "10",
+        "Description": "[1-10]% Increased Chance of Blocking",
+        "Priority": "134"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "vit",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "+[1-5] to Vitality",
+        "Priority": "63"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Hit Power",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "1",
+        "Max": "4",
+        "Description": "Damage Reduced by [1-4]",
+        "Priority": "22"
+      },
+      {
+        "Chance": 100,
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "Magic Damage Reduced by [1-2]",
+        "Priority": "21"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Sol Rune",
+      "Perfect Emerald"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Sol Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Ith Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Ral Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "charged",
+        "Par": "54",
+        "Min": "30",
+        "Max": "1",
+        "Description": "Level 1 Teleport (30/30 Charges)",
+        "Priority": "1"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Dol Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "[5-10]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "[20-40]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "charged",
+        "Par": "43",
+        "Min": "50",
+        "Max": "1",
+        "Description": "Level 1 Telekinesis (50/50 Charges)",
+        "Priority": "1"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Shael Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Discovery",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "[20-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Chance": 100,
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "60",
+        "Max": "100",
+        "Description": "[60-100]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "35",
+        "Max": "60",
+        "Description": "[35-60]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Topaz"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "att%/lvl",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "1% Bonus to Attack Rating",
+        "Priority": "116"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Dol Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Io Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Shael Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-pois-len",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "Poison Length Reduced by 50%",
+        "Priority": "18"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Ort Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "shie",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-all-max",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% to Maximum Fire Resist",
+        "Priority": "45"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-all-max",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% to Maximum Lightning Resist",
+        "Priority": "45"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-all-max",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% to Maximum Cold Resist",
+        "Priority": "45"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-all-max",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% to Maximum Poison Resist",
+        "Priority": "45"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shie",
+      "Jewel",
+      "Sol Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "All Resistances +[5-10]",
+        "Priority": "34"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Thul Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Chance": 100,
+        "Prop": "cheap",
+        "Par": "",
+        "Min": "2",
+        "Max": "5",
+        "Description": "Reduces all Vendor Prices [2-5]%",
+        "Priority": "8"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Lum Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Chance": 100,
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "80",
+        "Description": "+[50-80] to Attack Rating",
+        "Priority": "115"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Amn Rune",
+      "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Eternity",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Replenish Life +[10-20]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "35",
+        "Max": "60",
+        "Description": "[35-60]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Tal Rune",
+      "Perfect Diamond"
+    ]
+  }
+]

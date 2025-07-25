@@ -6,6 +6,7 @@ import itemMapping from '@/assets/item_mapping.json';
 const runewords = ref([]);
 const searchQuery = ref('');
 const runesSearchQuery = ref('');
+const selectedCategory = ref('all');
 const expandedRows = ref(new Set());
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
@@ -41,9 +42,29 @@ const categorizedRunewords = computed(() => {
   return result;
 });
 
-// Filter runewords based on search queries
+// Filter runewords based on search queries and category
 const filteredRunewords = computed(() => {
   let filtered = [...runewords.value];
+
+  // Apply category filter
+  if (selectedCategory.value !== 'all') {
+    filtered = filtered.filter(runeword => {
+      switch (selectedCategory.value) {
+        case 'new':
+          return runeword.IsNew;
+        case 'weapons':
+          return runeword.IsWeapon;
+        case 'armors':
+          return runeword.IsTorso;
+        case 'helmets':
+          return runeword.IsHelmet;
+        case 'shields':
+          return runeword.IsShield;
+        default:
+          return true;
+      }
+    });
+  }
 
   // Apply name search filter if query exists
   if (searchQuery.value.trim()) {
@@ -142,10 +163,17 @@ const handleSearchKeyup = (event) => {
   }
 };
 
+// Set category filter
+const setCategoryFilter = (category) => {
+  selectedCategory.value = category;
+  scrollToItems();
+};
+
 // Reset filters
 const resetFilters = () => {
   searchQuery.value = '';
   runesSearchQuery.value = '';
+  selectedCategory.value = 'all';
   expandedRows.value.clear();
 };
 
@@ -251,6 +279,61 @@ onMounted(() => {
               </div>
               <small class="form-text text-muted">Enter exact rune names, separated by spaces or commas</small>
             </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="mb-3">
+              <label class="form-label text-warning">Filter by Category</label>
+              <div class="btn-group d-flex flex-wrap gap-2" role="group">
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'all' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('all')"
+                >
+                  All
+                </button>
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'new' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('new')"
+                >
+                  New
+                </button>
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'weapons' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('weapons')"
+                >
+                  Weapons
+                </button>
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'armors' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('armors')"
+                >
+                  Armors
+                </button>
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'helmets' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('helmets')"
+                >
+                  Helmets
+                </button>
+                <button 
+                  type="button" 
+                  class="btn flex-fill"
+                  :class="selectedCategory === 'shields' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="setCategoryFilter('shields')"
+                >
+                  Shields
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -258,8 +341,69 @@ onMounted(() => {
 
     <!-- Runewords Tables -->
     <div class="row g-4" ref="itemsSection">
+      <!-- Filtered Results Table (when search or category filter is active) -->
+      <div class="col-12" v-if="searchQuery || runesSearchQuery || selectedCategory !== 'all'">
+        <div class="card card-enhanced">
+          <div class="card-header card-header-primary">
+            <h2 class="h4 mb-0">
+              <span v-if="searchQuery || runesSearchQuery">Search Results</span>
+              <span v-else-if="selectedCategory === 'new'">New Runewords</span>
+              <span v-else-if="selectedCategory === 'weapons'">Weapon Runewords</span>
+              <span v-else-if="selectedCategory === 'armors'">Armor Runewords</span>
+              <span v-else-if="selectedCategory === 'helmets'">Helmet Runewords</span>
+              <span v-else-if="selectedCategory === 'shields'">Shield Runewords</span>
+              <span v-else>Filtered Runewords</span>
+            </h2>
+          </div>
+          <div class="card-body">
+            <div v-if="filteredRunewords.length === 0" class="text-center text-muted py-4">
+              No runewords found matching your criteria.
+            </div>
+            <div v-else class="table-responsive">
+              <table class="table table-dark table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Runes</th>
+                    <th>Allowed Items</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template v-for="runeword in filteredRunewords" :key="getRunewordKey(runeword, 'filtered')">
+                    <tr @click="toggleRowExpansion(runeword, 'filtered')" style="cursor: pointer;">
+                      <td>
+                        {{ getRunewordDisplayName(runeword) }}
+                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                      </td>
+                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                    </tr>
+                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'filtered'))" class="expanded-row">
+                      <td colspan="3">
+                        <div class="p-3">
+                          <h5 class="section-header">Properties</h5>
+                          <ul class="list-group list-group-flush">
+                            <li
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              :key="propIndex"
+                              class="list-group-item list-item-property"
+                            >
+                              {{ prop.Description }}
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- New Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.new.length > 0 && !searchQuery && !runesSearchQuery">
+      <div class="col-12" v-if="categorizedRunewords.new.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-0">New Runewords</h2>
@@ -306,7 +450,7 @@ onMounted(() => {
       </div>
 
       <!-- Weapons Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.weapons.length > 0 && !searchQuery && !runesSearchQuery">
+      <div class="col-12" v-if="categorizedRunewords.weapons.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-0">Weapon Runewords</h2>
@@ -356,7 +500,7 @@ onMounted(() => {
       </div>
 
       <!-- Armor Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.armors.length > 0 && !searchQuery && !runesSearchQuery">
+      <div class="col-12" v-if="categorizedRunewords.armors.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-0">Armor Runewords</h2>
@@ -406,7 +550,7 @@ onMounted(() => {
       </div>
 
       <!-- Helmet Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.helmets.length > 0 && !searchQuery && !runesSearchQuery">
+      <div class="col-12" v-if="categorizedRunewords.helmets.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-0">Helmet Runewords</h2>
@@ -456,7 +600,7 @@ onMounted(() => {
       </div>
 
       <!-- Shield Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.shields.length > 0 && !searchQuery && !runesSearchQuery">
+      <div class="col-12" v-if="categorizedRunewords.shields.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-0">Shield Runewords</h2>

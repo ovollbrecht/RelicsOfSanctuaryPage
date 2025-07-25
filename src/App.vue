@@ -94,6 +94,9 @@ const checkScreenSize = () => {
                   <li class="nav-item">
                     <router-link to="/items/uniques" class="nav-link sidebar-sublink" @click="!isWideScreen && (isSidebarOpen = false)">Uniques</router-link>
                   </li>
+                  <li class="nav-item">
+                    <router-link to="/items/crafting" class="nav-link sidebar-sublink" @click="!isWideScreen && (isSidebarOpen = false)">Crafting</router-link>
+                  </li>
                   <!-- <li class="nav-item">
                     <router-link to="/items/cube" class="nav-link sidebar-sublink" @click="!isWideScreen && (isSidebarOpen = false)">Cube</router-link>
                   </li> -->
