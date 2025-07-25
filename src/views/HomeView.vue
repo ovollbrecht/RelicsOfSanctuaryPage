@@ -10,7 +10,7 @@
           Relics Of Sanctuary 
           <span class="title-icon">⚔</span>
         </h1>
-        <p class="lead">A Diablo 2 Resurrected Mod with Exalted Unique Items</p>
+        <p class="lead">A Diablo 2 Resurrected Mod with Exalted Unique Items and Enhanced Gameplay Features</p>
       </div>
     </div>
 
@@ -27,8 +27,12 @@
               These items are improved versions of their original counterparts with higher stats and often additional tweaks.
             </p>
             <p class="card-text">
+              The mod also includes new runewords, enhanced crafting options, improved cube recipes, and various quality-of-life changes
+              to make your Diablo 2 experience more enjoyable and diverse.
+            </p>
+            <p class="card-text">
               The design goal is to make item farming more exciting and provide late game options to replace commonly used items, 
-              while staying true to the concept of their original counterparts.
+              while staying true to the concept of their original counterparts. All features are optional and can be toggled individually.
             </p>
             <div class="d-flex justify-content-center gap-3 mt-4">
               <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
@@ -97,8 +101,17 @@
           <div class="card-body p-4">
             <div class="section-header">Current Features</div>
             <ul class="feature-list">
+              <li>All features are optional and work in any combination (can be toggled in D2RMM)</li>
               <li>Exalted unique items (5% chance)</li>
-              <li>Light Pillars for Runes (Vex - Zod) (Standalone version only)</li>
+              <li>8 new Runewords (mid-tier for each class-specific item)</li>
+              <li>Crafting: Allow all weapons, helmets, boots, shields, belts, gloves, armors instead of specific ones</li>
+              <li>Crafting: 5% chance the result will be ethereal (same chance as dropped items)</li>
+              <li>Crafting: Add Recipes for Diamonds and Topaz</li>
+              <li>Cube: Rune upgrades without gems (higher runes require a simple key)</li>
+              <li>Duriel: Remove TP-drop mechanic, so he drops like other bosses</li>
+              <li>Wolf/Bear: Allow using Teleport</li>
+              <li>Andariel/Questdrops: Restored normal drop table with 20% chance for quest drop for any boss</li>
+              <li>Sunder charms have an equal drop chance</li>
             </ul>
 
             <div class="section-header mt-4">Installation</div>
@@ -120,6 +133,22 @@
             <h3 class="card-title m-0">Changelog</h3>
           </div>
           <div class="card-body p-4">
+            <div class="changelog-entry">
+              <div class="version">Version 1.1.0</div>
+              <ul class="changelog-list">
+                <li>All features are now optional and work in any combination (can be toggled in D2RMM)</li>
+                <li>Removed light pillars feature</li>
+                <li>Added 8 new Runewords (mid-tier for each class-specific item)</li>
+                <li>Crafting: Allow all weapons, helmets, boots, shields, belts, gloves, armors instead of specific ones</li>
+                <li>Crafting: 5% chance the result will be ethereal (same chance as dropped items)</li>
+                <li>Crafting: Add Recipes for Diamonds and Topaz</li>
+                <li>Cube: Rune upgrades without gems (higher runes require a simple key)</li>
+                <li>Duriel: Remove TP-drop mechanic, so he drops like other bosses</li>
+                <li>Wolf/Bear: Allow using Teleport</li>
+                <li>Andariel/Questdrops: Restored normal drop table with 20% chance for quest drop for any boss</li>
+                <li>Sunder charms have an equal drop chance</li>
+              </ul>
+            </div>
             <div class="changelog-entry">
               <div class="version">Version 1.0.3</div>
               <ul class="changelog-list">
