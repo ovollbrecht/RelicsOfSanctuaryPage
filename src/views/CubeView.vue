@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <div class="container py-4">
+  <div class="container py-4 page-content">
     <div class="row">
       <div class="col-12">
-        <h1 class="display-4 mb-3 text-warning">Horadric Cube</h1>
+        <h1 class="display-4 mb-3">Horadric Cube</h1>
         <p class="lead text-muted">Discover powerful cube recipes to craft and transform items.</p>
       </div>
     </div>

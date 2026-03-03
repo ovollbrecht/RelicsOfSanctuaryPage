@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <div class="container py-4">
+  <div class="container py-4 page-content">
     <div class="row">
       <div class="col-12">
-        <h1 class="display-4 mb-4 text-warning">
+        <h1 class="display-4 mb-4">
           <span class="title-icon">⚔</span> 
           Relics Of Sanctuary 
           <span class="title-icon">⚔</span>
@@ -181,77 +181,6 @@
 </template>
 
 <style scoped>
-/* Enhanced Typography */
-.display-4 {
-  font-family: 'EB Garamond', serif;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  color: var(--d2r-gold);
-  border-bottom: 2px solid var(--d2r-gold);
-  padding-bottom: 0.5rem;
-  text-align: center;
-  background: linear-gradient(to bottom, rgba(20, 10, 0, 0.7), transparent);
-}
-
-.title-icon {
-  font-size: 0.8em;
-  vertical-align: middle;
-  margin: 0 0.5rem;
-  opacity: 0.8;
-  text-shadow: 0 0 10px var(--d2r-gold);
-  display: inline-block;
-}
-
-.text-warning {
-  color: var(--d2r-gold);
-}
-
-.lead {
-  color: var(--d2r-text);
-  text-align: center;
-  font-family: 'EB Garamond', serif;
-  letter-spacing: 0.03em;
-  margin-bottom: 2rem;
-}
-
-/* Card Styles */
-.card {
-  margin-bottom: 1.5rem;
-  /* transition removed */
-}
-
-.card-hover:hover {
-  /* Animation removed */
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #5e3200, #3a2000);
-  border-color: var(--d2r-gold);
-  color: var(--d2r-text);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #7e4200, #5a3000);
-  border-color: var(--d2r-highlight);
-  color: var(--d2r-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.btn-outline-primary {
-  border-color: var(--d2r-gold);
-  color: var(--d2r-gold);
-  background: transparent;
-}
-
-.btn-outline-primary:hover {
-  background-color: rgba(198, 156, 109, 0.2);
-  color: var(--d2r-highlight);
-  border-color: var(--d2r-highlight);
-}
-
-/* Feature Lists */
 .feature-list {
   padding-left: 1.5rem;
   margin-bottom: 0;
@@ -271,11 +200,10 @@
   left: -1rem;
 }
 
-/* Changelog Styles */
 .changelog-entry {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--d2r-border);
+  border-bottom: 1px solid rgba(59, 42, 31, 0.6);
 }
 
 .changelog-entry:last-child {
@@ -307,45 +235,5 @@
   font-weight: bold;
   position: absolute;
   left: -1rem;
-}
-
-.section-header {
-  background: linear-gradient(90deg, #3a1e00, #0e0e0e);
-  color: var(--d2r-gold);
-  font-weight: 600;
-  border-bottom: 2px solid var(--d2r-gold);
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  position: relative;
-  border-radius: 0.25rem 0.25rem 0 0;
-}
-
-.card-header-primary {
-  background: linear-gradient(90deg, #3a1e00, #0e0e0e);
-  border-bottom: 2px solid var(--d2r-gold);
-  position: relative;
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 767.98px) {
-  .display-4 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .title-icon {
-    font-size: 0.7em;
-    margin: 0 0.3rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .card-body {
-    padding: 1rem !important;
-  }
 }
 </style>

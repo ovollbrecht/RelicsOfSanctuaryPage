@@ -223,10 +223,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container py-4">
+  <div class="container py-4 page-content">
     <div class="row">
       <div class="col-12">
-        <h1 class="display-4 mb-4 text-warning mobile-title">
+        <h1 class="display-4 mb-4">
           <span class="title-icon">◆</span> 
           Runewords 
           <span class="title-icon">◆</span>
@@ -237,7 +237,7 @@ onMounted(() => {
     <!-- Search and Filter Section -->
     <div class="row mb-4">
       <div class="col-12">
-        <div class="card card-enhanced">
+        <div class="card card-enhanced filters-panel">
           <div class="card-body">
             <!-- Name Search Field -->
             <div class="mb-3">
@@ -716,226 +716,36 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Enhanced Typography */
-.display-4 {
-  font-family: 'EB Garamond', serif;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  color: var(--d2r-gold);
-  border-bottom: 2px solid var(--d2r-gold);
-  padding-bottom: 0.5rem;
-  text-align: center;
-  background: linear-gradient(to bottom, rgba(20, 10, 0, 0.7), transparent);
+.filters-panel {
+  background: linear-gradient(180deg, rgba(32, 24, 18, 0.95), rgba(16, 12, 10, 0.98));
+  border: 1px solid rgba(59, 42, 31, 0.9);
 }
 
-.title-icon {
-  font-size: 0.8em;
-  vertical-align: middle;
-  margin: 0 0.5rem;
-  opacity: 0.8;
-  text-shadow: 0 0 10px var(--d2r-gold);
-  display: inline-block;
-}
-
-.text-warning {
-  color: var(--d2r-gold);
-}
-
-/* Enhanced Cards */
-.card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.card-enhanced {
-  border: 1px solid var(--d2r-border);
-  background: linear-gradient(to bottom, #2a2a2a, #1e1e1e);
-}
-
-.card-header-primary {
-  background: linear-gradient(90deg, #3a1e00, #0e0e0e);
-  border-bottom: 2px solid var(--d2r-gold);
-  position: relative;
-}
-
-/* Table Styling */
-.table {
-  margin-bottom: 0;
-  color: var(--d2r-text);
-}
-
-.table-dark {
-  background-color: transparent;
-}
-
-.table-dark thead th {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid var(--d2r-border);
-  color: var(--d2r-gold);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.table-dark tbody tr {
-  transition: all 0.2s ease;
-}
-
-.table-dark tbody tr:hover {
-  background-color: rgba(58, 30, 0, 0.3);
+.filters-panel .card-body {
+  padding: 1.5rem;
 }
 
 .expanded-row {
-  background-color: rgba(30, 30, 30, 0.8) !important;
+  background-color: rgba(14, 10, 8, 0.8) !important;
 }
 
 .expanded-row td {
   padding: 0;
 }
 
-/* Enhanced Section Headers */
-.section-header {
-  color: var(--d2r-gold);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--d2r-border);
-  padding-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.table-dark tbody tr {
+  transition: background-color 0.2s ease;
 }
 
-/* Enhanced List Items */
-.list-group-item {
-  background-color: rgba(40, 40, 40, 0.8);
-  border-color: var(--d2r-border);
-  transition: all 0.2s ease;
-}
-
-.list-group-item:hover {
-  background-color: rgba(58, 58, 58, 0.8);
-}
-
-.list-item-property {
-  border-left: 4px solid #2a2a2a;
-}
-
-/* Search Input Styling */
-.search-input-group {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-radius: 0.25rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.search-input-group::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--d2r-gold), transparent);
-  z-index: 1;
-}
-
-.search-input {
-  background-color: rgba(30, 30, 30, 0.9);
-  color: var(--d2r-text);
-  border: 1px solid var(--d2r-border);
-  padding: 0.75rem 1rem;
-  font-family: 'EB Garamond', serif;
-  letter-spacing: 0.03em;
-  transition: all 0.3s ease;
-}
-
-.search-input:focus {
-  background-color: rgba(40, 40, 40, 0.9);
-  border-color: var(--d2r-gold);
-  box-shadow: 0 0 0 0.2rem rgba(198, 156, 109, 0.25);
-  letter-spacing: 0.05em;
-}
-
-.search-input::placeholder {
-  color: rgba(224, 212, 183, 0.5);
-  font-style: italic;
-}
-
-.btn-outline-secondary {
-  border-color: var(--d2r-border);
-  color: var(--d2r-gold);
-  background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
-  font-family: 'EB Garamond', serif;
-  letter-spacing: 0.03em;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-secondary:hover {
-  background: linear-gradient(135deg, #5e3200, #3a2000);
-  color: var(--d2r-gold);
-  border-color: var(--d2r-gold);
-  box-shadow: 0 0 8px rgba(198, 156, 109, 0.4);
-}
-
-/* Form Label Styling */
-.form-label {
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.form-text {
-  color: rgba(224, 212, 183, 0.7);
-  font-style: italic;
-}
-
-/* Mobile Responsive Styles */
 @media (max-width: 767.98px) {
-  .mobile-title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .title-icon {
-    font-size: 0.7em;
-    margin: 0 0.3rem;
-  }
-
-  .card {
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .card-body {
-    padding: 0.75rem;
-  }
-
-  .card-header-primary {
-    padding: 0.75rem;
-  }
-
-  .card-header-primary h2 {
-    font-size: 1.2rem;
-  }
-
-  .section-header {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.03em;
+  .filters-panel .card-body {
+    padding: 1.1rem;
   }
 
   .table-responsive {
     margin: -0.75rem;
     width: calc(100% + 1.5rem);
   }
-
-  .search-input {
-    height: 44px;
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-  }
 }
 </style>
+

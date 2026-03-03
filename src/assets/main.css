@@ -1,38 +1,5 @@
 @import './base.css';
 
 #app {
-  font-weight: normal;
+  min-height: 100vh;
 }
-
-/* Custom link styles for non-Bootstrap links */
-.custom-link {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-.green {
-  color: hsla(160, 100%, 37%, 1);
-}
-
-@media (prefers-color-scheme: dark) {
-  .custom-link,
-  .green {
-    color: hsla(160, 100%, 50%, 1);
-  }
-}
-
-@media (hover: hover) {
-  .custom-link:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .custom-link:hover {
-      background-color: hsla(160, 100%, 50%, 0.2);
-    }
-  }
-}
-
-/* Removed conflicting media query */
