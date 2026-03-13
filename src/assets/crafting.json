@@ -10,7 +10,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -58,7 +58,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -106,7 +106,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -154,7 +154,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -192,7 +192,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Safety",
     "Properties": [
       {
@@ -202,7 +202,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -233,7 +233,7 @@
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Eth Rune",
       "Perfect Sapphire"
@@ -250,7 +250,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -298,7 +298,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -337,7 +337,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -376,7 +376,7 @@
         "Min": "5",
         "Max": "4",
         "Description": "5% Chance to cast level 4 Frost Nova when struck",
-        "Priority": "160"
+        "Priority": "158"
       },
       {
         "Chance": 100,
@@ -391,9 +391,9 @@
         "Chance": 100,
         "Prop": "dmg%",
         "Par": "",
-        "Min": "35",
-        "Max": "60",
-        "Description": "[35-60]% Enhanced Damage",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -606,7 +606,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Blood",
     "Properties": [
       {
@@ -647,7 +647,7 @@
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Ith Rune",
       "Perfect Ruby"
@@ -805,9 +805,9 @@
         "Chance": 100,
         "Prop": "dmg%",
         "Par": "",
-        "Min": "35",
-        "Max": "60",
-        "Description": "[35-60]% Enhanced Damage",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -1020,7 +1020,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Caster",
     "Properties": [
       {
@@ -1061,7 +1061,7 @@
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Eth Rune",
       "Perfect Amethyst"
@@ -1276,19 +1276,10 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1333,19 +1324,10 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1390,19 +1372,10 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1447,19 +1420,10 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1470,7 +1434,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Hit Power",
     "Properties": [
       {
@@ -1504,23 +1468,14 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Nef Rune",
       "Perfect Emerald"
@@ -1561,19 +1516,10 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "10",
-        "Max": "30",
-        "Description": "[10-30]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1687,9 +1633,9 @@
         "Chance": 100,
         "Prop": "ac%",
         "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "[5-10]% Enhanced Defense",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
       },
       {
@@ -1902,7 +1848,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Discovery",
     "Properties": [
       {
@@ -1943,7 +1889,7 @@
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Ith Rune",
       "Perfect Topaz"
@@ -2101,9 +2047,9 @@
         "Chance": 100,
         "Prop": "dmg%",
         "Par": "",
-        "Min": "35",
-        "Max": "60",
-        "Description": "[35-60]% Enhanced Damage",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -2316,7 +2262,7 @@
     ]
   },
   {
-    "ItemType": "shie",
+    "ItemType": "shld",
     "CraftedType": "Eternity",
     "Properties": [
       {
@@ -2384,7 +2330,7 @@
       }
     ],
     "InputNames": [
-      "shie",
+      "shld",
       "Jewel",
       "Sol Rune",
       "Perfect Diamond"
@@ -2533,9 +2479,9 @@
         "Chance": 100,
         "Prop": "dmg%",
         "Par": "",
-        "Min": "35",
-        "Max": "60",
-        "Description": "[35-60]% Enhanced Damage",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
       },
       {

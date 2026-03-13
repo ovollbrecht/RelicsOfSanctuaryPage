@@ -15,20 +15,23 @@ const itemsSection = ref(null);
 
 const itemPairs = computed(() => {
   const pairs = [];
-  const exaltedItems = {};
+  const exaltedQueues = new Map();
 
   uniqueItems.value.forEach(item => {
     if (item.Name.startsWith('Exalted ')) {
       const baseName = item.Name.substring(8);
-      exaltedItems[baseName] = item;
+      if (!exaltedQueues.has(baseName)) {
+        exaltedQueues.set(baseName, []);
+      }
+      exaltedQueues.get(baseName).push(item);
     }
   });
 
   uniqueItems.value.forEach(item => {
     if (!item.Name.startsWith('Exalted ')) {
-      const exaltedItem = exaltedItems[item.Name];
-      if (exaltedItem) {
-        pairs.push({ normal: item, exalted: exaltedItem });
+      const queue = exaltedQueues.get(item.Name);
+      if (queue && queue.length) {
+        pairs.push({ normal: item, exalted: queue.shift() });
       }
     }
   });
