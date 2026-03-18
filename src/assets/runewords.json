@@ -10752,6 +10752,309 @@
     "IsShield": false
   },
   {
+    "Name": "Coven",
+    "AllowedItems": [
+      "helm"
+    ],
+    "Types": [
+      "helm",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r24",
+      "r08",
+      "r16"
+    ],
+    "RuneNames": [
+      "Ist",
+      "Ral",
+      "Io"
+    ],
+    "Properties": [
+      {
+        "Prop": "gethit-skill",
+        "Par": "Sigil Lethargy",
+        "Min": "5",
+        "Max": "10",
+        "Description": "5% Chance to cast level 10 Sigil: Lethargy when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "26",
+        "Max": "40",
+        "Description": "[26-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "1",
+        "Max": "5",
+        "Description": "+[1-5] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Fire Resist 30%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Vigilance",
+    "AllowedItems": [
+      "grim",
+      "shld",
+      "head",
+      "ashd"
+    ],
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas",
+      "head",
+      "necr",
+      "ashd",
+      "pala"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r14",
+      "r25"
+    ],
+    "RuneNames": [
+      "Dol",
+      "Gul"
+    ],
+    "Properties": [
+      {
+        "Prop": "gethit-skill",
+        "Par": "Ring of Fire",
+        "Min": "5",
+        "Max": "10",
+        "Description": "5% Chance to cast level 10 Ring of Fire when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "+[20-40] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "+[20-40] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "All Resistances +[25-35]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "75",
+        "Max": "100",
+        "Description": "[75-100]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Replenish Life +7",
+        "Priority": "56"
+      },
+      {
+        "Prop": "res-pois-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Poison Resist",
+        "Priority": "45"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Ritual",
+    "AllowedItems": [
+      "knif"
+    ],
+    "Types": [
+      "knif",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r11",
+      "r13",
+      "r27"
+    ],
+    "RuneNames": [
+      "Amn",
+      "Shael",
+      "Ohm"
+    ],
+    "Properties": [
+      {
+        "Prop": "gethit-skill",
+        "Par": "Sigil Death",
+        "Min": "13",
+        "Max": "1",
+        "Description": "13% Chance to cast level 1 Sigil: Death when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "250",
+        "Max": "320",
+        "Description": "[250-320]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "150",
+        "Max": "250",
+        "Description": "[150-250]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "200",
+        "Max": "260",
+        "Description": "[200-260]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "+[3-5] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "rip",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Slain Monsters Rest in Peace",
+        "Priority": "81"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
     "Name": "Isendras Legacy",
     "AllowedItems": [
       "orb"
@@ -11025,6 +11328,14 @@
         "Max": "200",
         "Description": "+[150-200] Defense",
         "Priority": "71"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "4",
+        "Max": "6",
+        "Description": "[4-6]% Mana stolen per hit",
+        "Priority": "89"
       },
       {
         "Prop": "hp",
@@ -11879,6 +12190,14 @@
         "Priority": "71"
       },
       {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "5",
+        "Max": "6",
+        "Description": "[5-6]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
         "Prop": "aura",
         "Par": "Vigor",
         "Min": "14",
@@ -12372,309 +12691,6 @@
       }
     ],
     "IsNew": true,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
-  },
-  {
-    "Name": "Coven",
-    "AllowedItems": [
-      "helm"
-    ],
-    "Types": [
-      "helm",
-      "armo"
-    ],
-    "ETypes": [],
-    "Runes": [
-      "r24",
-      "r08",
-      "r16"
-    ],
-    "RuneNames": [
-      "Ist",
-      "Ral",
-      "Io"
-    ],
-    "Properties": [
-      {
-        "Prop": "gethit-skill",
-        "Par": "Sigil Lethargy",
-        "Min": "5",
-        "Max": "10",
-        "Description": "5% Chance to cast level 10 Sigil: Lethargy when struck",
-        "Priority": "158"
-      },
-      {
-        "Prop": "allskills",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "+1 to All Skills",
-        "Priority": "156"
-      },
-      {
-        "Prop": "cast1",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Cast Rate",
-        "Priority": "142"
-      },
-      {
-        "Prop": "ac%",
-        "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Enhanced Defense",
-        "Priority": "74"
-      },
-      {
-        "Prop": "mag%",
-        "Par": "",
-        "Min": "26",
-        "Max": "40",
-        "Description": "[26-40]% Better Chance of Getting Magic Items",
-        "Priority": "8"
-      },
-      {
-        "Prop": "heal-kill",
-        "Par": "",
-        "Min": "1",
-        "Max": "5",
-        "Description": "+[1-5] Life after each Kill",
-        "Priority": "16"
-      },
-      {
-        "Prop": "res-fire",
-        "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "Fire Resist 30%",
-        "Priority": "36"
-      },
-      {
-        "Prop": "vit",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "+10 to Vitality",
-        "Priority": "63"
-      }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": true,
-    "IsShield": false
-  },
-  {
-    "Name": "Vigilance",
-    "AllowedItems": [
-      "grim",
-      "shld",
-      "head",
-      "ashd"
-    ],
-    "Types": [
-      "grim",
-      "shld",
-      "warl",
-      "armo",
-      "seco",
-      "clas",
-      "head",
-      "necr",
-      "ashd",
-      "pala"
-    ],
-    "ETypes": [],
-    "Runes": [
-      "r14",
-      "r25"
-    ],
-    "RuneNames": [
-      "Dol",
-      "Gul"
-    ],
-    "Properties": [
-      {
-        "Prop": "gethit-skill",
-        "Par": "Ring of Fire",
-        "Min": "5",
-        "Max": "10",
-        "Description": "5% Chance to cast level 10 Ring of Fire when struck",
-        "Priority": "158"
-      },
-      {
-        "Prop": "move2",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Faster Run/Walk",
-        "Priority": "148"
-      },
-      {
-        "Prop": "block2",
-        "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Faster Block Rate",
-        "Priority": "136"
-      },
-      {
-        "Prop": "hp",
-        "Par": "",
-        "Min": "20",
-        "Max": "40",
-        "Description": "+[20-40] to Life",
-        "Priority": "59"
-      },
-      {
-        "Prop": "mana",
-        "Par": "",
-        "Min": "20",
-        "Max": "40",
-        "Description": "+[20-40] to Mana",
-        "Priority": "55"
-      },
-      {
-        "Prop": "res-all",
-        "Par": "",
-        "Min": "25",
-        "Max": "35",
-        "Description": "All Resistances +[25-35]",
-        "Priority": "34"
-      },
-      {
-        "Prop": "ac%",
-        "Par": "",
-        "Min": "75",
-        "Max": "100",
-        "Description": "[75-100]% Enhanced Defense",
-        "Priority": "74"
-      },
-      {
-        "Prop": "regen",
-        "Par": "",
-        "Min": "7",
-        "Max": "7",
-        "Description": "Replenish Life +7",
-        "Priority": "56"
-      },
-      {
-        "Prop": "res-pois-max",
-        "Par": "",
-        "Min": "5",
-        "Max": "5",
-        "Description": "5% to Maximum Poison Resist",
-        "Priority": "45"
-      }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": true
-  },
-  {
-    "Name": "Ritual",
-    "AllowedItems": [
-      "knif"
-    ],
-    "Types": [
-      "knif",
-      "blde",
-      "mele",
-      "weap"
-    ],
-    "ETypes": [],
-    "Runes": [
-      "r11",
-      "r13",
-      "r27"
-    ],
-    "RuneNames": [
-      "Amn",
-      "Shael",
-      "Ohm"
-    ],
-    "Properties": [
-      {
-        "Prop": "gethit-skill",
-        "Par": "Sigil Death",
-        "Min": "13",
-        "Max": "1",
-        "Description": "13% Chance to cast level 1 Sigil: Death when struck",
-        "Priority": "158"
-      },
-      {
-        "Prop": "swing1",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Increased Attack Speed",
-        "Priority": "145"
-      },
-      {
-        "Prop": "dmg%",
-        "Par": "",
-        "Min": "250",
-        "Max": "320",
-        "Description": "[250-320]% Enhanced Damage",
-        "Priority": "1000"
-      },
-      {
-        "Prop": "dmg-demon",
-        "Par": "",
-        "Min": "150",
-        "Max": "250",
-        "Description": "[150-250]% Damage to Demons",
-        "Priority": "112"
-      },
-      {
-        "Prop": "att%",
-        "Par": "",
-        "Min": "200",
-        "Max": "260",
-        "Description": "[200-260]% Bonus to Attack Rating",
-        "Priority": "117"
-      },
-      {
-        "Prop": "heal-kill",
-        "Par": "",
-        "Min": "3",
-        "Max": "5",
-        "Description": "+[3-5] Life after each Kill",
-        "Priority": "16"
-      },
-      {
-        "Prop": "rip",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Slain Monsters Rest in Peace",
-        "Priority": "81"
-      },
-      {
-        "Prop": "lifesteal",
-        "Par": "",
-        "Min": "7",
-        "Max": "7",
-        "Description": "7% Life stolen per hit",
-        "Priority": "88"
-      },
-      {
-        "Prop": "swing2",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Increased Attack Speed",
-        "Priority": "145"
-      }
-    ],
-    "IsNew": false,
     "IsWeapon": true,
     "IsTorso": false,
     "IsHelmet": false,

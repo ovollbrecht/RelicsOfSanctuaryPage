@@ -72,6 +72,18 @@ const runeTypes = computed(() => {
 
 // Group recipes by CraftedType
 const categorizedRecipes = computed(() => {
+  if (activeFilters.value.itemType) {
+    return {
+      [`Item Type: ${getItemTypeName(activeFilters.value.itemType)}`]: filteredRecipes.value
+    };
+  }
+
+  if (activeFilters.value.rune) {
+    return {
+      [`Rune: ${activeFilters.value.rune.replace(' Rune', '')}`]: filteredRecipes.value
+    };
+  }
+
   const result = {};
 
   filteredRecipes.value.forEach(recipe => {
@@ -369,17 +381,21 @@ onMounted(() => {
               <div class="d-flex align-items-center">
                 <span class="me-2 text-warning">Active Filters:</span>
                 <div class="d-flex flex-wrap gap-2">
-                  <span class="badge bg-secondary" v-if="searchQuery">
-                    Search: "{{ searchQuery }}"
+                  <span class="badge bg-secondary active-filter-badge" v-if="searchQuery">
+                    <span class="active-filter-label">Search</span>
+                    <span>{{ searchQuery }}</span>
                   </span>
-                  <span class="badge bg-secondary" v-if="activeFilters.craftedType">
-                    Type: {{ activeFilters.craftedType }}
+                  <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.craftedType">
+                    <span class="active-filter-label">Crafted Type</span>
+                    <span>{{ activeFilters.craftedType }}</span>
                   </span>
-                  <span class="badge bg-secondary" v-if="activeFilters.itemType">
-                    Item: {{ getItemTypeName(activeFilters.itemType) }}
+                  <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.itemType">
+                    <span class="active-filter-label">Item Type</span>
+                    <span>{{ getItemTypeName(activeFilters.itemType) }}</span>
                   </span>
-                  <span class="badge bg-secondary" v-if="activeFilters.rune">
-                    Rune: {{ activeFilters.rune.replace(' Rune', '') }}
+                  <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.rune">
+                    <span class="active-filter-label">Rune</span>
+                    <span>{{ activeFilters.rune.replace(' Rune', '') }}</span>
                   </span>
                   <button class="btn btn-sm btn-outline-warning ms-2" @click="resetFilters">
                     Clear All
@@ -430,6 +446,9 @@ onMounted(() => {
                             <span v-else>
                               {{ property.Description }}
                             </span>
+                          </div>
+                          <div class="mb-1 small mythic-affix-text">
+                            Mythic Affix (5% Chance)
                           </div>
                           <div class="text-muted small mt-2">
                             <em>+ up to 4 Rare Affixes</em>
@@ -500,6 +519,18 @@ onMounted(() => {
   background: rgba(201, 163, 106, 0.08);
   border-radius: 12px;
   padding: 0.75rem 1rem;
+}
+
+.active-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.7rem;
+}
+
+.active-filter-label {
+  color: rgba(201, 163, 106, 0.95);
+  letter-spacing: 0.03em;
 }
 
 .table th:nth-child(1) {
@@ -595,6 +626,12 @@ onMounted(() => {
   font-weight: 600;
 }
 
+.mythic-affix-text {
+  color: #b87cff;
+  text-shadow: 0 0 6px rgba(184, 124, 255, 0.35);
+  font-weight: 600;
+}
+
 @media (max-width: 767.98px) {
   .filter-card .card-body {
     padding: 1.1rem;
@@ -605,4 +642,3 @@ onMounted(() => {
   }
 }
 </style>
-

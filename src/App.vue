@@ -2,7 +2,6 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import logoUrl from '@/assets/RelicsOfSancturay-symbol.png'
 
-const isItemsExpanded = ref(false)
 const isSidebarOpen = ref(false)
 const isWideScreen = ref(false)
 const wasWideScreen = ref(false)
@@ -44,10 +43,6 @@ onUnmounted(() => {
     window.removeEventListener('keydown', handleKeydown)
   }
 })
-
-const toggleItems = () => {
-  isItemsExpanded.value = !isItemsExpanded.value
-}
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
@@ -100,26 +95,16 @@ const handleClickOutside = (event) => {
             <router-link to="/" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Home</router-link>
           </li>
           <li class="nav-item">
-            <button
-              type="button"
-              class="nav-link sidebar-link sidebar-toggle"
-              @click="toggleItems"
-              :aria-expanded="isItemsExpanded"
-              aria-controls="items-subnav"
-            >
-              <span>Items</span>
-              <span class="toggle-icon">{{ isItemsExpanded ? '▼' : '▶' }}</span>
-            </button>
-            <div v-if="isItemsExpanded" id="items-subnav" class="ms-2">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <router-link to="/items/uniques" class="nav-link sidebar-sublink" @click="!isWideScreen && (isSidebarOpen = false)">Uniques</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link to="/items/crafting" class="nav-link sidebar-sublink" @click="!isWideScreen && (isSidebarOpen = false)">Crafting</router-link>
-                </li>
-              </ul>
-            </div>
+            <router-link to="/items/uniques" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Uniques</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/items/sets" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Sets</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/items/crafting" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Crafting</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/items/mythic-affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Mythic Affixes</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/runewords" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Runewords</router-link>
@@ -234,27 +219,6 @@ const handleClickOutside = (event) => {
   background: rgba(201, 163, 106, 0.2);
   color: var(--d2r-gold);
   border-color: rgba(201, 163, 106, 0.4);
-}
-
-.sidebar-toggle {
-  background: transparent;
-  border: none;
-  width: 100%;
-  text-align: left;
-}
-
-.toggle-icon {
-  font-size: 0.85rem;
-  color: rgba(194, 176, 143, 0.7);
-}
-
-.sidebar-sublink {
-  color: rgba(239, 226, 197, 0.75) !important;
-  padding-left: 1.4rem;
-}
-
-.sidebar-sublink.router-link-active {
-  color: var(--d2r-gold) !important;
 }
 
 .sidebar-footer {

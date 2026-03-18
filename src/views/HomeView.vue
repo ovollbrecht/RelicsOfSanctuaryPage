@@ -10,7 +10,7 @@
           Relics Of Sanctuary 
           <span class="title-icon">⚔</span>
         </h1>
-        <p class="lead">A Diablo 2 Resurrected Mod with Exalted Unique Items and Enhanced Gameplay Features</p>
+        <p class="lead">A Diablo 2 Resurrected mod focused on Exalted and Mythic progression, new Runewords, and configurable endgame systems</p>
       </div>
     </div>
 
@@ -23,12 +23,12 @@
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              Relics of Sanctuary adds a 5% chance for each unique item to drop in "exalted" quality. 
-              These items are improved versions of their original counterparts with higher stats and often additional tweaks.
+              Relics of Sanctuary adds Exalted and Mythic progression to Diablo 2 Resurrected.
+              Exalted unique items are improved versions of their original counterparts with stronger stats and additional tweaks.
             </p>
             <p class="card-text">
-              The mod also includes new runewords, enhanced crafting options, improved cube recipes, and various quality-of-life changes
-              to make your Diablo 2 experience more enjoyable and diverse.
+              With v3.0.0, the mod now includes Mythic set items, Mythic crafting and affix systems, additional Runewords,
+              and new in-game reference menus for cube recipes, crafting recipes, and Runewords.
             </p>
             <p class="card-text">
               The design goal is to make item farming more exciting and provide late game options to replace commonly used items, 
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <!-- Content Section -->
+    <!-- Exalted & Mythic Sections -->
     <div class="row mt-4">
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
@@ -96,22 +96,47 @@
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
+            <h3 class="card-title m-0">Mythic Affixes</h3>
+          </div>
+          <div class="card-body p-4">
+            <p class="card-text">Here is what to expect of Mythic progression:</p>
+            <ul class="feature-list">
+              <li>Mythic set items introduce a new endgame chase tier</li>
+              <li>Mythic crafting chance and new recipes let you add a Mythic Affix to rare or magic items</li>
+              <li>Use the tables to see which mythic affixes can roll for each item type and how likely each affix is</li>
+            </ul>
+            <div class="text-center mt-3">
+              <router-link to="/items/mythic-affixes" class="btn btn-outline-primary">Browse Mythic Affixes</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features & Installation Section -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card h-100 card-enhanced card-hover">
+          <div class="card-header card-header-primary">
             <h3 class="card-title m-0">Features & Installation</h3>
           </div>
           <div class="card-body p-4">
-            <div class="section-header">Current Features</div>
+            <div class="section-header">Current Features (v3.0.0)</div>
             <ul class="feature-list">
               <li>All features are optional and work in any combination (can be toggled in D2RMM)</li>
-              <li>Exalted unique items (5% chance)</li>
-              <li>8 new Runewords (mid-tier for each class-specific item)</li>
-              <li>Crafting: Allow all weapons, helmets, boots, shields, belts, gloves, armors instead of specific ones</li>
-              <li>Crafting: 5% chance the result will be ethereal (same chance as dropped items)</li>
-              <li>Crafting: Add Recipes for Diamonds and Topaz</li>
-              <li>Cube: Rune upgrades without gems (higher runes require a simple key)</li>
-              <li>Duriel: Remove TP-drop mechanic, so he drops like other bosses</li>
-              <li>Wolf/Bear: Allow using Teleport</li>
-              <li>Andariel/Questdrops: Restored normal drop table with 20% chance for quest drop for any boss</li>
-              <li>Sunder charms have an equal drop chance</li>
+              <li>Exalted unique items</li>
+              <li>Mythic set items</li>
+              <li>Mythic crafting chance</li>
+              <li>Recipes to add a Mythic Affix to rare or magic items</li>
+              <li>7 additional Runewords (15 total)</li>
+              <li>Cube recipe for socketing (similar to Larzuk's quest reward)</li>
+              <li>In-game menus with information about cube recipes, crafting recipes, and Runewords</li>
+              <li>Configurable drop chances for Exalted items, Mythic items, and Mythic craft results (1/2/5/10%) via D2RMM</li>
+              <li>Configurable option to restrict Exalted and Mythic item drops to Terror Zones only</li>
+              <li>Configurable minimum Herald tier required for Sunder Charm drops</li>
+              <li>Enable the "Warlord's Glory" set to be droppable (official Asia promo set)</li>
+              <li>Enable perfect gem drops (balanced around previous cubing values, so lower gems drop less often)</li>
+              <li>Enable teleport while in Wolf/Bear form</li>
             </ul>
 
             <div class="section-header mt-4">Installation</div>
@@ -133,6 +158,30 @@
             <h3 class="card-title m-0">Changelog</h3>
           </div>
           <div class="card-body p-4">
+            <div class="changelog-entry">
+              <div class="version">Version 3.0.0</div>
+              <ul class="changelog-list">
+                <li>Added Mythic set items</li>
+                <li>Added Mythic crafting chance</li>
+                <li>Added recipes to add a Mythic Affix to rare or magic items</li>
+                <li>Added 7 more Runewords (15 total)</li>
+                <li>Added a cube recipe for socketing similar to Larzuk's quest reward</li>
+                <li>Added in-game menus with information about cube recipes, crafting recipes, and Runewords</li>
+                <li>Added D2RMM options for Exalted/Mythic drop chances and Mythic craft result chance (1/2/5/10%)</li>
+                <li>Added D2RMM option to restrict Exalted and Mythic drops to Terror Zones only</li>
+                <li>Added D2RMM option for the minimum Herald tier required to drop Sunder Charms</li>
+                <li>Added option to enable "Warlord's Glory" set drops (official Asia promo set)</li>
+                <li>Added option to enable perfect gem drops with adjusted lower-gem frequency for cubing balance</li>
+                <li>Added option to enable teleport while in Wolf/Bear form</li>
+              </ul>
+            </div>
+            <div class="changelog-entry">
+              <div class="version">Version 2.0.0</div>
+              <ul class="changelog-list">
+                <li>Released for compatibility with the new "Reign of the Warlock" DLC</li>
+                <li>No additional gameplay features in this release</li>
+              </ul>
+            </div>
             <div class="changelog-entry">
               <div class="version">Version 1.1.0</div>
               <ul class="changelog-list">

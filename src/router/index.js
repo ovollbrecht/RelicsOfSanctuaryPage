@@ -25,6 +25,16 @@ const routes = [
     path: '/items/crafting',
     name: 'Crafting',
     component: () => import('../views/CraftingView.vue')
+  },
+  {
+    path: '/items/sets',
+    name: 'Sets',
+    component: () => import('../views/SetsView.vue')
+  },
+  {
+    path: '/items/mythic-affixes',
+    name: 'MythicAffixes',
+    component: () => import('../views/MythicAffixesView.vue')
   }
 ]
 

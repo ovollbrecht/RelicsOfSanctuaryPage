@@ -51474,12 +51474,20 @@
         "Priority": "74"
       },
       {
-        "Prop": "hit-skill",
-        "Par": "87",
-        "Min": "5",
-        "Max": "3",
-        "Description": "5% Chance to cast level 3 Decrepify on striking",
-        "Priority": "158"
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "-30",
+        "Max": "-30",
+        "Description": "-30% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "142",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Find Item",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "glove_heavy_gloves.webp"
@@ -52766,14 +52774,6 @@
         "Max": "50",
         "Description": "50% Bonus to Attack Rating",
         "Priority": "117"
-      },
-      {
-        "Prop": "randclassskill-1",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "+1 to [random Class] Skill Levels",
-        "Priority": "150"
       }
     ],
     "ImageMapping": "helmet_cap_hat.webp"
@@ -62787,16 +62787,16 @@
         "Prop": "gold%",
         "Par": "",
         "Min": "200",
-        "Max": "260",
-        "Description": "[200-260]% Extra Gold from Monsters",
+        "Max": "250",
+        "Description": "[200-250]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Prop": "cheap",
         "Par": "",
-        "Min": "15",
+        "Min": "16",
         "Max": "20",
-        "Description": "Reduces all Vendor Prices [15-20]%",
+        "Description": "Reduces all Vendor Prices [16-20]%",
         "Priority": "8"
       },
       {
@@ -64659,9 +64659,9 @@
       {
         "Prop": "addxp",
         "Par": "",
-        "Min": "15",
+        "Min": "11",
         "Max": "15",
-        "Description": "15% to Experience Gained",
+        "Description": "[11-15]% to Experience Gained",
         "Priority": "11"
       },
       {
