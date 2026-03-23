@@ -38,8 +38,8 @@
               <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
                 🔗 NexusMods Page
               </a>
-              <a href="https://discord.gg/MJnErBPu" target="_blank" class="btn btn-primary">
-                💬 Join Discord
+              <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-primary">
+                💬 Join Discord <span class="badge bg-success ms-2">Updated</span>
               </a>
             </div>
           </div>
