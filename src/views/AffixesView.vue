@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import affixData from '@/assets/affixes.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
@@ -20,24 +20,6 @@ const searchInput = ref('');
 const expandedAffixes = ref(new Set());
 const debounceTimeout = ref(null);
 const onlyReworked = ref(false);
-
-// Sticky controls: auto-collapse to a summary row while scrolled, with a
-// manual chevron override.
-const isScrolled = ref(false);
-const forceOpen = ref(false);
-const controlsCollapsed = computed(() => isScrolled.value && !forceOpen.value);
-const onScroll = () => {
-  const scrolled = window.scrollY > 260;
-  if (scrolled !== isScrolled.value) {
-    isScrolled.value = scrolled;
-    if (!scrolled) forceOpen.value = false;
-  }
-};
-onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // the page may load pre-scrolled (scroll restoration)
-});
-onUnmounted(() => window.removeEventListener('scroll', onScroll));
 
 // ---------- static data ----------
 const typeChains = affixData.TypeChains;
@@ -228,6 +210,19 @@ const togglePin = (affix, kind) => {
 };
 
 const clearPins = () => { pinnedIds.value = new Set(); };
+
+// Whole-group pins: pinning every member means "any affix of this group".
+const isGroupPinned = (groupEntry, kind) => groupEntry.affixes.every(a => isPinned(a, kind));
+
+const toggleGroupPin = (groupEntry, kind) => {
+  const removeAll = isGroupPinned(groupEntry, kind);
+  const next = new Set(pinnedIds.value);
+  groupEntry.affixes.forEach(a => {
+    if (removeAll) next.delete(pinId(a, kind));
+    else next.add(pinId(a, kind));
+  });
+  pinnedIds.value = next;
+};
 
 const affixById = (() => {
   const map = new Map();
@@ -437,29 +432,9 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
       </div>
     </div>
 
-    <!-- Controls (sticky; collapses to a summary bar while scrolled) -->
-    <div class="card controls-card sticky-controls mb-4">
-      <div v-if="controlsCollapsed" class="card-body compact-bar d-flex align-items-center flex-wrap gap-2">
-        <span class="compact-summary">
-          {{ typeName(selectedType) }} · ilvl {{ ilvl }} · {{ quality }} ·
-          {{ dataMode === 'mod' ? 'Relics of Sanctuary' : 'Vanilla' }}
-        </span>
-        <input
-          type="text"
-          class="form-control form-control-sm compact-search"
-          placeholder="Search affixes..."
-          :value="searchInput"
-          @input="handleSearch"
-        />
-        <button class="btn btn-sm pill" @click="forceOpen = true">Edit filters</button>
-      </div>
-      <div v-else class="card-body">
-        <button
-          v-if="isScrolled"
-          class="btn btn-sm pill controls-collapse-btn"
-          title="Collapse filters"
-          @click="forceOpen = false"
-        >Collapse ▲</button>
+    <!-- Controls -->
+    <div class="card controls-card mb-4">
+      <div class="card-body">
         <!-- category + type -->
         <div class="mb-3">
           <div class="d-flex flex-wrap gap-2 mb-2">
@@ -608,7 +583,16 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
             </div>
             <div v-for="groupEntry in pool.groups" :key="groupEntry.group" class="affix-group mb-2">
               <div class="affix-group-header d-flex justify-content-between align-items-baseline">
-                <span>Group {{ groupEntry.group }}<span v-if="groupEntry.affixes.length > 1" class="group-note"> · one of these</span></span>
+                <span>
+                  <button
+                    v-if="groupEntry.affixes.length > 1"
+                    class="pin-btn"
+                    :class="{ pinned: isGroupPinned(groupEntry, kind) }"
+                    :title="isGroupPinned(groupEntry, kind) ? 'Remove group from wanted affixes' : 'Add whole group to wanted affixes (any of these)'"
+                    @click.stop="toggleGroupPin(groupEntry, kind)"
+                  >{{ isGroupPinned(groupEntry, kind) ? '★' : '☆' }}</button>
+                  Group {{ groupEntry.group }}<span v-if="groupEntry.affixes.length > 1" class="group-note"> · one of these</span>
+                </span>
                 <span class="group-note">Σ freq {{ groupEntry.groupFrequency }}</span>
               </div>
               <div
@@ -639,7 +623,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                     alvl {{ fieldOf(affix, 'Level') }}
                     · req {{ fieldOf(affix, 'LevelReq') }}
                     <template v-if="groupEntry.affixes.length > 1">
-                      · in group {{ formatChance(fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) }}%
+                      · freq {{ fieldOf(affix, 'Frequency') }} · in group {{ formatChance(fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) }}%
                     </template>
                     · roll {{ formatChance(chanceOf(affix, pool)) }}%
                   </span>
@@ -675,46 +659,6 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
 </template>
 
 <style scoped>
-.sticky-controls {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  /* fully opaque so scrolled content cannot bleed through the pinned card */
-  background: linear-gradient(180deg, rgb(26, 20, 16), rgb(16, 12, 10));
-}
-
-/* keep the compact summary clear of the floating menu button */
-@media (max-width: 1199px) {
-  .compact-bar {
-    padding-left: 3.5rem;
-  }
-}
-
-.sticky-controls .card-body {
-  position: relative;
-}
-
-.controls-collapse-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-.compact-bar {
-  padding: 0.5rem 0.75rem;
-}
-
-.compact-summary {
-  color: var(--d2-gold, #c9a36a);
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.compact-search {
-  max-width: 16rem;
-  flex: 1 1 10rem;
-}
-
 .reworked-toggle .form-check-label {
   color: var(--d2-gold, #c9a36a);
   font-size: 0.9rem;

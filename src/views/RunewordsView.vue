@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
@@ -18,24 +18,6 @@ const expandedRows = ref(new Set());
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
 const onlyReworked = ref(false);
-
-// Sticky filter panel: auto-collapse to a summary bar while scrolled, with a
-// manual override to re-open it in place.
-const isScrolled = ref(false);
-const forceOpen = ref(false);
-const filtersCollapsed = computed(() => isScrolled.value && !forceOpen.value);
-const onScroll = () => {
-  const scrolled = window.scrollY > 380;
-  if (scrolled !== isScrolled.value) {
-    isScrolled.value = scrolled;
-    if (!scrolled) forceOpen.value = false;
-  }
-};
-onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // the page may load pre-scrolled (scroll restoration)
-});
-onUnmounted(() => window.removeEventListener('scroll', onScroll));
 
 const visibleRunewords = computed(() =>
   onlyReworked.value ? runewords.value.filter(runeword => runeword.IsReworked) : runewords.value
@@ -317,32 +299,11 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Search and Filter Section (sticky; collapses to a summary bar while scrolled) -->
-    <div class="row mb-4 sticky-filters">
+    <!-- Search and Filter Section -->
+    <div class="row mb-4">
       <div class="col-12">
         <div class="card card-enhanced filters-panel">
-          <div v-if="filtersCollapsed" class="card-body compact-bar d-flex align-items-center flex-wrap gap-2">
-            <span class="compact-summary">
-              {{ selectedCategory === 'all' ? 'All categories' : selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1) }} ·
-              {{ dataMode === 'mod' ? 'Relics of Sanctuary' : 'Vanilla' }}<span v-if="onlyReworked"> · {{ dataMode === 'vanilla' ? 'only changed by mod' : 'only reworked' }}</span>
-            </span>
-            <input
-              type="text"
-              class="form-control form-control-sm compact-search"
-              placeholder="Search runewords..."
-              :value="searchQuery"
-              @input="(e) => handleSearch(e, false)"
-              @keyup="handleSearchKeyup"
-            />
-            <button class="btn btn-sm btn-outline-secondary" @click="forceOpen = true">Edit filters</button>
-          </div>
-          <div v-else class="card-body">
-            <button
-              v-if="isScrolled"
-              class="btn btn-sm btn-outline-secondary filters-collapse-btn"
-              title="Collapse filters"
-              @click="forceOpen = false"
-            >Collapse ▲</button>
+          <div class="card-body">
             <!-- Name Search Field -->
             <div class="mb-3">
               <label for="nameSearch" class="form-label text-warning">Search by Name</label>
@@ -886,48 +847,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.sticky-filters {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.sticky-filters .filters-panel {
-  /* fully opaque so scrolled content cannot bleed through the pinned card */
-  background: linear-gradient(180deg, rgb(36, 26, 18), rgb(16, 12, 10));
-}
-
-/* keep the compact summary clear of the floating menu button */
-@media (max-width: 1199px) {
-  .compact-bar {
-    padding-left: 3.5rem;
-  }
-}
-
-.filters-panel .card-body {
-  position: relative;
-}
-
-.filters-collapse-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-.compact-bar {
-  padding: 0.5rem 0.75rem;
-}
-
-.compact-summary {
-  color: rgba(201, 163, 106, 0.95);
-  font-size: 0.9rem;
-}
-
-.compact-search {
-  max-width: 16rem;
-  flex: 1 1 10rem;
-}
-
 .reworked-toggle .form-check-label {
   color: rgba(201, 163, 106, 0.95);
   font-size: 0.9rem;
