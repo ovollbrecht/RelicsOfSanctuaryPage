@@ -3,6 +3,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import affixData from '@/assets/affixes.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
+import { magicChance, rareCraftedChance } from '@/composables/useAffixSimulation.js';
 
 const route = useRoute();
 const router = useRouter();
@@ -192,6 +193,101 @@ const chanceOf = (affix, pool) =>
 
 const formatChance = (value) => value >= 10 ? value.toFixed(1) : value.toFixed(2);
 
+// ---------- wanted-affix spawn chance ----------
+const pinnedIds = ref(new Set()); // ids like "prefix-123" / "suffix-456"
+
+const pinId = (affix, kind) => `${kind}-${affix.RowIndex}`;
+const isPinned = (affix, kind) => pinnedIds.value.has(pinId(affix, kind));
+
+const togglePin = (affix, kind) => {
+  const id = pinId(affix, kind);
+  const next = new Set(pinnedIds.value);
+  if (next.has(id)) next.delete(id);
+  else next.add(id);
+  pinnedIds.value = next;
+};
+
+const clearPins = () => { pinnedIds.value = new Set(); };
+
+const affixById = (() => {
+  const map = new Map();
+  affixData.Prefixes.forEach(a => map.set(`prefix-${a.RowIndex}`, { affix: a, kind: 'prefix' }));
+  affixData.Suffixes.forEach(a => map.set(`suffix-${a.RowIndex}`, { affix: a, kind: 'suffix' }));
+  return map;
+})();
+
+const pinnedList = computed(() =>
+  [...pinnedIds.value]
+    .map(id => ({ id, ...affixById.get(id) }))
+    .filter(entry => entry.affix)
+);
+
+const wantedChance = computed(() => {
+  if (pinnedIds.value.size === 0) return null;
+
+  const toEnginePool = (pool, kind) => pool.eligible.map(a => ({
+    id: pinId(a, kind),
+    group: `${kind}-${a.Group || '0'}`,
+    frequency: fieldOf(a, 'Frequency'),
+  }));
+  const prefixes = toEnginePool(prefixPool.value, 'prefix');
+  const suffixes = toEnginePool(suffixPool.value, 'suffix');
+  const eligibleIds = new Set([...prefixes, ...suffixes].map(e => e.id));
+
+  const unavailable = pinnedList.value.filter(p => !eligibleIds.has(p.id));
+  if (unavailable.length > 0) {
+    return { chance: 0, unavailable: unavailable.map(p => p.affix.Name), approximate: false };
+  }
+
+  // pins in the same affix group = "any of these"; different groups must ALL hit
+  const selections = new Map();
+  pinnedList.value.forEach(p => {
+    const groupKey = `${p.kind}-${p.affix.Group || '0'}`;
+    if (!selections.has(groupKey)) selections.set(groupKey, { kind: p.kind, ids: new Set() });
+    selections.get(groupKey).ids.add(p.id);
+  });
+  const wantedSelections = [...selections.values()];
+
+  if (quality.value === 'magic') {
+    const prefixGroups = wantedSelections.filter(s => s.kind === 'prefix');
+    const suffixGroups = wantedSelections.filter(s => s.kind === 'suffix');
+    if (prefixGroups.length > 1 || suffixGroups.length > 1) {
+      return { chance: 0, impossible: 'Magic items can get at most one prefix and one suffix.', approximate: false };
+    }
+    const chance = magicChance({
+      prefixes,
+      suffixes,
+      wantedPrefixIds: prefixGroups[0]?.ids ?? new Set(),
+      wantedSuffixIds: suffixGroups[0]?.ids ?? new Set(),
+    });
+    return { chance, approximate: false };
+  }
+
+  const prefixSelections = wantedSelections.filter(s => s.kind === 'prefix');
+  const suffixSelections = wantedSelections.filter(s => s.kind === 'suffix');
+  if (prefixSelections.length > 3 || suffixSelections.length > 3) {
+    return { chance: 0, impossible: 'At most 3 prefixes and 3 suffixes are possible.', approximate: false };
+  }
+
+  const chance = rareCraftedChance({
+    prefixes,
+    suffixes,
+    wantedSelections: wantedSelections.map(s => s.ids),
+    quality: quality.value,
+    ilvl: Math.min(Math.max(ilvl.value || 1, 1), 99),
+    isJewel: chainOfSelected.value.has('jewl'),
+  });
+  return { chance, approximate: true };
+});
+
+const formatWantedChance = (chance) => {
+  if (chance <= 0) return '0%';
+  const pct = chance * 100;
+  const formatted = pct >= 1 ? pct.toFixed(2) : pct >= 0.01 ? pct.toFixed(3) : pct.toExponential(2);
+  const oneIn = Math.round(1 / chance);
+  return `${formatted}% (≈ 1 in ${oneIn.toLocaleString('en-US')})`;
+};
+
 // ---------- rework display ----------
 const getReworkChanges = (affix) => {
   const changes = [];
@@ -280,9 +376,12 @@ onMounted(() => {
   if (['magic', 'rare', 'crafted'].includes(q.quality)) quality.value = q.quality;
   if (['mod', 'vanilla'].includes(q.data)) dataMode.value = q.data;
   if (isCharmType.value) quality.value = 'magic';
+  if (q.pins) {
+    pinnedIds.value = new Set(String(q.pins).split('.').filter(id => affixById.has(id)));
+  }
 });
 
-watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
+watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () => {
   router.replace({
     query: {
       type: selectedType.value,
@@ -290,6 +389,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
       ...(ilvl.value !== 99 ? { ilvl: String(ilvl.value) } : {}),
       ...(quality.value !== 'rare' ? { quality: quality.value } : {}),
       ...(dataMode.value !== 'mod' ? { data: dataMode.value } : {}),
+      ...(pinnedIds.value.size > 0 ? { pins: [...pinnedIds.value].join('.') } : {}),
     },
   });
 });
@@ -398,6 +498,40 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
       </div>
     </div>
 
+    <!-- Wanted affixes / spawn chance -->
+    <div v-if="pinnedList.length > 0" class="card wanted-card mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-baseline flex-wrap gap-2 mb-2">
+          <span class="section-header mb-0">Wanted affixes</span>
+          <button class="btn btn-sm pill" @click="clearPins">Clear all</button>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span v-for="pin in pinnedList" :key="pin.id" class="badge wanted-pin">
+            {{ pin.kind === 'prefix' ? '⟨P⟩' : '⟨S⟩' }} {{ pin.affix.Name }}
+            <button class="pin-remove" @click="togglePin(pin.affix, pin.kind)" aria-label="Remove">×</button>
+          </span>
+        </div>
+        <div v-if="wantedChance" class="wanted-result">
+          <template v-if="wantedChance.impossible">
+            <span class="wanted-impossible">Impossible: {{ wantedChance.impossible }}</span>
+          </template>
+          <template v-else-if="wantedChance.unavailable">
+            <span class="wanted-impossible">
+              Not available with the current item/level settings: {{ wantedChance.unavailable.join(', ') }}
+            </span>
+          </template>
+          <template v-else>
+            Chance per {{ quality }} roll:
+            <strong>{{ wantedChance.approximate ? '≈ ' : '' }}{{ formatWantedChance(wantedChance.chance) }}</strong>
+            <span v-if="wantedChance.approximate" class="wanted-note"> · simulated (100k rolls)</span>
+          </template>
+        </div>
+        <div class="wanted-note mt-1">
+          Pins in the same affix group count as "any of these"; different groups must all appear.
+        </div>
+      </div>
+    </div>
+
     <!-- Results -->
     <div class="row g-4">
       <div v-for="[kind, pool] in [['prefix', prefixPool], ['suffix', suffixPool]]" :key="kind" class="col-lg-6">
@@ -429,6 +563,12 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
                 ></div>
                 <div class="d-flex justify-content-between align-items-baseline flex-wrap gap-2">
                   <span class="affix-name">
+                    <button
+                      class="pin-btn"
+                      :class="{ pinned: isPinned(affix, kind) }"
+                      :title="isPinned(affix, kind) ? 'Remove from wanted affixes' : 'Add to wanted affixes'"
+                      @click.stop="togglePin(affix, kind)"
+                    >{{ isPinned(affix, kind) ? '★' : '☆' }}</button>
                     {{ affix.Name }}
                     <span v-if="affix.IsReworked" class="badge rework-badge ms-1">Reworked</span>
                     <span v-if="affix.ClassSpecific" class="badge class-badge ms-1">{{ affix.ClassSpecific }}</span>
@@ -571,6 +711,69 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
 }
 
 .empty-note {
+  color: rgba(194, 176, 143, 0.6);
+}
+
+.pin-btn {
+  background: none;
+  border: none;
+  color: rgba(201, 163, 106, 0.5);
+  cursor: pointer;
+  padding: 0 0.15rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.pin-btn:hover {
+  color: var(--d2r-gold-bright);
+}
+
+.pin-btn.pinned {
+  color: var(--d2r-gold-bright);
+}
+
+.wanted-card {
+  border-color: rgba(201, 163, 106, 0.45);
+}
+
+.wanted-pin {
+  background: rgba(201, 163, 106, 0.15);
+  color: var(--d2r-text);
+  border: 1px solid rgba(201, 163, 106, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pin-remove {
+  background: none;
+  border: none;
+  color: rgba(194, 176, 143, 0.8);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.pin-remove:hover {
+  color: var(--d2r-gold-bright);
+}
+
+.wanted-result {
+  font-size: 1.05rem;
+  color: var(--d2r-text);
+}
+
+.wanted-result strong {
+  color: var(--d2r-gold-bright);
+}
+
+.wanted-impossible {
+  color: #d08770;
+}
+
+.wanted-note {
+  font-size: 0.8rem;
   color: rgba(194, 176, 143, 0.6);
 }
 </style>
