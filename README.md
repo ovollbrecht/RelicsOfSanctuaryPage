@@ -1,29 +1,36 @@
-# untitled
+# Relics of Sanctuary — Website
 
-This template should help get you started developing with Vue 3 in Vite.
+Showcase site for the Diablo II: Resurrected mod **Relics of Sanctuary**
+(relicsofsanctuary.com). Vue 3 + Vite, deployed to GitHub Pages.
 
-## Recommended IDE Setup
+## Data is generated — do not edit by hand
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+`src/assets/*.json` (unique_items, sets, runewords, crafting, propertygroups,
+meta) and `src/assets/item_images/*.webp` are produced by the `d2mod`
+toolchain in the D2ModTooling repo:
 
-## Customize configuration
+- `d2mod generate` (or `d2mod release`) writes the five data JSONs plus
+  `meta.json` (generation timestamp + mod version, shown in the sidebar).
+- `d2mod sprites` extracts the item images.
+- `src/assets/item_mapping.json` is curated by hand; `d2mod generate` warns
+  when an item type is missing from it (unmapped items disappear from the
+  Uniques sidebar).
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Development
 
-## Project Setup
-
-```sh
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Deploy
 
-```sh
-npm run build
-```
+Deployment is **manual by design** — the site goes live together with the
+Nexus Mods release:
+
+1. Regenerate the data (`d2mod release`), commit, push.
+2. GitHub → Actions → "Deploy to GitHub Pages" → Run workflow.
+
+One-time setup: repo Settings → Pages → Source: "GitHub Actions"
+(replaces the old hand-pushed `gh-pages` branch; `dist/` is no longer
+tracked in git).
