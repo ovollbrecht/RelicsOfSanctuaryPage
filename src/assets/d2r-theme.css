@@ -32,8 +32,15 @@ body {
     radial-gradient(900px 500px at 0% 0%, rgba(164, 70, 47, 0.18), transparent 55%),
     linear-gradient(180deg, #120b08, #0b0b0b 45%, #050505);
   letter-spacing: 0.01em;
+  /* Crimson Text runs small - a slightly larger base improves readability
+     without changing the overall look */
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
+/* Subtle paper texture. Deliberately WITHOUT mix-blend-mode: a fixed
+   full-viewport blend layer forces constant recompositing and caused
+   smearing/ghosting artifacts on hover in Firefox on macOS. */
 body::before {
   content: '';
   position: fixed;
@@ -42,13 +49,11 @@ body::before {
   background:
     repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.015),
+      rgba(255, 255, 255, 0.015) 2px,
       transparent 2px,
       transparent 6px
     );
-  opacity: 0.35;
-  mix-blend-mode: soft-light;
   z-index: 0;
 }
 
@@ -125,7 +130,7 @@ a:hover {
 }
 
 .text-muted {
-  color: rgba(194, 176, 143, 0.7) !important;
+  color: rgba(194, 176, 143, 0.82) !important;
 }
 
 .section-header {
@@ -147,7 +152,9 @@ a:hover {
   box-shadow: var(--d2r-shadow);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-fast);
+  /* no transform transitions: translateY hover shifts left ghost edges
+     behind on repaint (Firefox/macOS) */
+  transition: box-shadow var(--transition-slow), border-color var(--transition-fast);
 }
 
 .card-enhanced {
@@ -155,7 +162,6 @@ a:hover {
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
   border-color: rgba(201, 163, 106, 0.45);
 }
@@ -275,7 +281,7 @@ h5 {
 .btn {
   border-radius: 999px;
   letter-spacing: 0.04em;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .btn-primary {
@@ -285,8 +291,7 @@ h5 {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  border-color: rgba(201, 163, 106, 1);
   color: var(--d2r-gold-bright);
 }
 
@@ -381,6 +386,16 @@ h5 {
   background-color: rgba(58, 30, 0, 0.35);
 }
 
+/* One crisp focus indicator instead of Bootstrap's blurry box-shadow ring.
+   Firefox (macOS) also flags mouse-clicked buttons as :focus-visible, which
+   stacked ring + outline into the doubled fuzzy halo around clicked pills. */
+.btn:focus,
+.btn:focus-visible,
+.btn-check:focus-visible + .btn,
+.btn-check:focus + .btn {
+  box-shadow: none !important;
+}
+
 .btn:focus-visible,
 .form-control:focus-visible,
 .form-select:focus-visible,
@@ -388,6 +403,12 @@ h5 {
 a:focus-visible {
   outline: 2px solid rgba(201, 163, 106, 0.75);
   outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Mouse clicks should not leave a lingering ring on buttons */
+.btn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 @media (max-width: 767.98px) {
