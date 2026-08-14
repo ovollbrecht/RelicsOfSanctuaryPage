@@ -1,6 +1,7 @@
 [
   {
     "Name": "Ancients' Pledge",
+    "RowId": "Runeword1",
     "AllowedItems": [
       "shld"
     ],
@@ -21,6 +22,38 @@
       "Tal"
     ],
     "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "All Resistances +50",
+        "Priority": "34"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "res-cold",
         "Par": "",
@@ -69,15 +102,11 @@
         "Description": "Poison Resist 48%",
         "Priority": "34"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": true
+    ]
   },
   {
     "Name": "Authority",
+    "RowId": "Runeword3",
     "AllowedItems": [
       "tors"
     ],
@@ -162,6 +191,7 @@
   },
   {
     "Name": "Beast",
+    "RowId": "Runeword4",
     "AllowedItems": [
       "axe",
       "scep",
@@ -192,6 +222,110 @@
       "Lum"
     ],
     "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Fanaticism",
+        "Min": "9",
+        "Max": "9",
+        "Description": "Level 9 Fanaticism Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "240",
+        "Max": "270",
+        "Description": "[240-270]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "25",
+        "Max": "40",
+        "Description": "+[25-40] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Summon Grizzly",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Level 20 Summon Grizzly (20/20 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Wearbear",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Werebear",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Shape Shifting",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Lycanthropy",
+        "Priority": "81"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "swing2",
         "Par": "",
@@ -288,15 +422,11 @@
         "Description": "+10 to Energy",
         "Priority": "61"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Black",
+    "RowId": "Runeword6",
     "AllowedItems": [
       "club",
       "hamm",
@@ -403,6 +533,7 @@
   },
   {
     "Name": "Bone",
+    "RowId": "Runeword8",
     "AllowedItems": [
       "tors"
     ],
@@ -422,6 +553,62 @@
       "Um"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Bone Spear",
+        "Min": "25",
+        "Max": "15",
+        "Description": "25% Chance to cast level 15 Bone Spear on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Bone Armor",
+        "Min": "20",
+        "Max": "14",
+        "Description": "20% Chance to cast level 14 Bone Armor when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "nec",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Necromancer Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "+[100-150] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "All Resistances +30",
+        "Priority": "34"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Bone Spear",
@@ -470,15 +657,11 @@
         "Description": "All Resistances +30",
         "Priority": "34"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Bramble",
+    "RowId": "Runeword9",
     "AllowedItems": [
       "tors"
     ],
@@ -500,6 +683,102 @@
       "Eth"
     ],
     "Properties": [
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "+300 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Thorns",
+        "Min": "15",
+        "Max": "21",
+        "Description": "Level [15-21] Thorns Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "13",
+        "Max": "13",
+        "Description": "+13 Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "extra-pois",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "[40-50]% to Poison Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "Poison Resist 100%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Spirit of Barbs",
+        "Min": "33",
+        "Max": "20",
+        "Description": "Level 20 Spirit of Barbs (33/33 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Fire Resist 30%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "res-cold-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
+        "Priority": "44"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Increase Maximum Mana 5%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "balance2",
         "Par": "",
@@ -588,15 +867,11 @@
         "Description": "Regenerate Mana 15%",
         "Priority": "52"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Brand",
+    "RowId": "Runeword10",
     "AllowedItems": [
       "miss"
     ],
@@ -618,6 +893,94 @@
       "Gul"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "380",
+        "Description": "[300-380]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "320",
+        "Max": "370",
+        "Description": "[320-370]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Bone Spear",
+        "Min": "100",
+        "Max": "24",
+        "Description": "100% Chance to cast level 24 Bone Spear on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Amplify Damage",
+        "Min": "35",
+        "Max": "20",
+        "Description": "35% Chance to cast level 20 Amplify Damage when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "knock",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Knockback",
+        "Priority": "76"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "explosivearrow",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Fires Explosive Arrows or Bolts",
+        "Priority": "133"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -698,15 +1061,11 @@
         "Description": "20% Bonus to Attack Rating",
         "Priority": "117"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Breath of the Dying",
+    "RowId": "Runeword11",
     "AllowedItems": [
       "weap"
     ],
@@ -852,6 +1211,7 @@
   },
   {
     "Name": "Call to Arms",
+    "RowId": "Runeword13",
     "AllowedItems": [
       "weap"
     ],
@@ -874,6 +1234,102 @@
       "Ohm"
     ],
     "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "350",
+        "Max": "390",
+        "Description": "[350-390]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Battle Command",
+        "Min": "2",
+        "Max": "6",
+        "Description": "+[2-6] to Battle Command",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Battle Orders",
+        "Min": "1",
+        "Max": "6",
+        "Description": "+[1-6] to Battle Orders",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Battle Cry",
+        "Min": "1",
+        "Max": "4",
+        "Description": "+[1-4] to Battle Cry",
+        "Priority": "81"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "Replenish Life +[20-25]",
+        "Priority": "56"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "5",
+        "Max": "30",
+        "Description": "Adds [5-30] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "swing2",
         "Par": "",
@@ -962,15 +1418,11 @@
         "Description": "30% Better Chance of Getting Magic Items",
         "Priority": "8"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Chains of Honor",
+    "RowId": "Runeword14",
     "AllowedItems": [
       "tors"
     ],
@@ -1081,6 +1533,7 @@
   },
   {
     "Name": "Chaos",
+    "RowId": "Runeword16",
     "AllowedItems": [
       "h2h"
     ],
@@ -1103,6 +1556,86 @@
       "Um"
     ],
     "Properties": [
+      {
+        "Prop": "demon-heal",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Life after each Demon Kill",
+        "Priority": "15"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "350",
+        "Max": "400",
+        "Description": "[350-400]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "216",
+        "Max": "471",
+        "Description": "Adds [216-471] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Whirlwind",
+        "Min": "3",
+        "Max": "6",
+        "Description": "+[3-6] to Whirlwind",
+        "Priority": "81"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Frozen Orb",
+        "Min": "9",
+        "Max": "20",
+        "Description": "9% Chance to cast level 20 Frozen Orb on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Charged Bolt",
+        "Min": "11",
+        "Max": "20",
+        "Description": "11% Chance to cast level 20 Charged Bolt on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "demon-heal",
         "Par": "",
@@ -1175,15 +1708,11 @@
         "Description": "25% Chance of Open Wounds",
         "Priority": "83"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Crescent Moon",
+    "RowId": "Runeword17",
     "AllowedItems": [
       "axe",
       "swor",
@@ -1210,6 +1739,94 @@
       "Tir"
     ],
     "Properties": [
+      {
+        "Prop": "pierce-ltng",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "-35% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "abs-mag",
+        "Par": "",
+        "Min": "9",
+        "Max": "11",
+        "Description": "+[9-11] Magic Absorb",
+        "Priority": "33"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Summon Spirit Wolf",
+        "Min": "60",
+        "Max": "22",
+        "Description": "Level 22 Summon Spirit Wolf (60/60 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Static Field",
+        "Min": "7",
+        "Max": "16",
+        "Description": "7% Chance to cast level 16 Static Field on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Chain Lightning",
+        "Min": "10",
+        "Max": "25",
+        "Description": "10% Chance to cast level 25 Chain Lightning on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "pierce-ltng",
         "Par": "",
@@ -1290,15 +1907,11 @@
         "Description": "+2 to Mana after each Kill",
         "Priority": "16"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Death",
+    "RowId": "Runeword20",
     "AllowedItems": [
       "swor",
       "axe"
@@ -1326,6 +1939,118 @@
       "Gul"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "385",
+        "Description": "[300-385]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "deadly/lvl",
+        "Par": "4",
+        "Min": "0.50",
+        "Max": "0.50",
+        "Description": "0.50% Deadly Strike",
+        "Priority": "84"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "BloodGolem",
+        "Min": "20",
+        "Max": "25",
+        "Description": "+[20-25] to Blood Golem",
+        "Priority": "81"
+      },
+      {
+        "Prop": "att-skill",
+        "Par": "Glacial Spike",
+        "Min": "25",
+        "Max": "18",
+        "Description": "25% Chance to cast level 18 Glacial Spike on attack",
+        "Priority": "158"
+      },
+      {
+        "Prop": "death-skill",
+        "Par": "Chain Lightning",
+        "Min": "100",
+        "Max": "44",
+        "Description": "100% Chance to cast level 44 Chain Lightning when you Die",
+        "Priority": "158"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -1430,15 +2155,11 @@
         "Description": "20% Bonus to Attack Rating",
         "Priority": "117"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Delirium",
+    "RowId": "Runeword22",
     "AllowedItems": [
       "helm"
     ],
@@ -1458,6 +2179,94 @@
       "Io"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Confuse",
+        "Min": "11",
+        "Max": "18",
+        "Description": "11% Chance to cast level 18 Confuse on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Attract",
+        "Min": "60",
+        "Max": "17",
+        "Description": "Level 17 Attract (60/60 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Terror",
+        "Min": "14",
+        "Max": "13",
+        "Description": "14% Chance to cast level 13 Terror when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "261",
+        "Max": "261",
+        "Description": "+261 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Mind Blast",
+        "Min": "6",
+        "Max": "14",
+        "Description": "6% Chance to cast level 14 Mind Blast when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Delerium Change",
+        "Min": "1",
+        "Max": "50",
+        "Description": "1% Chance to cast level 50 [not found] when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Confuse",
@@ -1538,26 +2347,17 @@
         "Description": "+10 to Vitality",
         "Priority": "63"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": true,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Destruction",
+    "RowId": "Runeword25",
     "AllowedItems": [
-      "pole",
-      "swor"
+      "mele"
     ],
     "Types": [
-      "pole",
-      "sppl",
       "mele",
-      "weap",
-      "swor",
-      "blde"
+      "weap"
     ],
     "ETypes": [],
     "Runes": [
@@ -1575,6 +2375,110 @@
       "Ko"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "350",
+        "Max": "350",
+        "Description": "350% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "250",
+        "Max": "330",
+        "Description": "Adds [250-330] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Molten Boulder",
+        "Min": "5",
+        "Max": "33",
+        "Description": "5% Chance to cast level 33 Molten Boulder on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "death-skill",
+        "Par": "Meteor",
+        "Min": "100",
+        "Max": "60",
+        "Description": "100% Chance to cast level 60 Meteor when you Die",
+        "Priority": "158"
+      },
+      {
+        "Prop": "att-skill",
+        "Par": "Nova",
+        "Min": "15",
+        "Max": "33",
+        "Description": "15% Chance to cast level 33 Nova on attack",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Volcano",
+        "Min": "23",
+        "Max": "33",
+        "Description": "23% Chance to cast level 33 Volcano on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -1672,14 +2576,14 @@
         "Priority": "65"
       }
     ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    "VanillaAllowedItems": [
+      "pole",
+      "swor"
+    ]
   },
   {
     "Name": "Doom",
+    "RowId": "Runeword26",
     "AllowedItems": [
       "axe",
       "pole",
@@ -1710,6 +2614,102 @@
       "Cham"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "370",
+        "Max": "410",
+        "Description": "[370-410]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Holy Freeze",
+        "Min": "12",
+        "Max": "12",
+        "Description": "Level 12 Holy Freeze Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "45",
+        "Max": "45",
+        "Description": "45% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "pierce-cold",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "-[40-60]% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Volcano",
+        "Min": "5",
+        "Max": "32",
+        "Description": "5% Chance to cast level 32 Volcano on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Freezes target",
+        "Priority": "78"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -1798,15 +2798,11 @@
         "Description": "Freezes target",
         "Priority": "78"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Dragon",
+    "RowId": "Runeword27",
     "AllowedItems": [
       "tors",
       "shld"
@@ -1827,6 +2823,94 @@
       "Sol"
     ],
     "Properties": [
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "360",
+        "Max": "360",
+        "Description": "+360 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "230",
+        "Max": "230",
+        "Description": "+230 Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Prop": "str/lvl",
+        "Par": "3",
+        "Min": "0.38",
+        "Max": "0.38",
+        "Description": "0.38 [*level] to all Attributes",
+        "Priority": "66"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Hydra",
+        "Min": "12",
+        "Max": "25",
+        "Description": "12% Chance to cast level 25 Hydra on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Venom",
+        "Min": "20",
+        "Max": "18",
+        "Description": "20% Chance to cast level 18 Venom when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Holy Fire",
+        "Min": "14",
+        "Max": "20",
+        "Description": "Level [14-20] Holy Fire Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "+[5-10] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Increase Maximum Mana 5%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac",
         "Par": "",
@@ -1907,15 +2991,11 @@
         "Description": "Damage Reduced by 7",
         "Priority": "22"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Dragon",
+    "RowId": "Runeword27",
     "AllowedItems": [
       "tors",
       "shld"
@@ -1937,6 +3017,94 @@
       "Sol"
     ],
     "Properties": [
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "360",
+        "Max": "360",
+        "Description": "+360 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "230",
+        "Max": "230",
+        "Description": "+230 Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Prop": "str/lvl",
+        "Par": "3",
+        "Min": "0.38",
+        "Max": "0.38",
+        "Description": "0.38 [*level] to all Attributes",
+        "Priority": "66"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Hydra",
+        "Min": "12",
+        "Max": "25",
+        "Description": "12% Chance to cast level 25 Hydra on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Venom",
+        "Min": "20",
+        "Max": "18",
+        "Description": "20% Chance to cast level 18 Venom when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Holy Fire",
+        "Min": "14",
+        "Max": "20",
+        "Description": "Level [14-20] Holy Fire Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "+[5-10] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac",
         "Par": "",
@@ -2017,15 +3185,11 @@
         "Description": "Damage Reduced by 7",
         "Priority": "22"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": true
+    ]
   },
   {
     "Name": "Dream",
+    "RowId": "Runeword29",
     "AllowedItems": [
       "helm",
       "shld"
@@ -2135,6 +3299,7 @@
   },
   {
     "Name": "Dream",
+    "RowId": "Runeword29",
     "AllowedItems": [
       "helm",
       "shld"
@@ -2245,6 +3410,7 @@
   },
   {
     "Name": "Duress",
+    "RowId": "Runeword30",
     "AllowedItems": [
       "tors"
     ],
@@ -2264,6 +3430,78 @@
       "Thul"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-cold",
+        "Par": "50",
+        "Min": "137",
+        "Max": "233",
+        "Description": "Adds [137-233] cold damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "[25-35]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "-20% Slower Stamina Drain",
+        "Priority": "49"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "45",
+        "Max": "45",
+        "Description": "Cold Resist 45%",
+        "Priority": "40"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-cold",
         "Par": "50",
@@ -2328,15 +3566,11 @@
         "Description": "Cold Resist 45%",
         "Priority": "40"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Edge",
+    "RowId": "Runeword31",
     "AllowedItems": [
       "miss"
     ],
@@ -2356,6 +3590,94 @@
       "Amn"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "320",
+        "Max": "380",
+        "Description": "[320-380]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "280",
+        "Max": "280",
+        "Description": "280% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "60",
+        "Max": "60",
+        "Description": "60% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Thorns",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Thorns Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "+[5-10] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "cheap",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Reduces all Vendor Prices 15%",
+        "Priority": "8"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-pois",
+        "Par": "5",
+        "Min": "75",
+        "Max": "75",
+        "Description": "Adds 75 poison damage over 5 seconds",
+        "Priority": "300"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-demon",
         "Par": "",
@@ -2436,15 +3758,11 @@
         "Description": "7% Life stolen per hit",
         "Priority": "88"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Enigma",
+    "RowId": "Runeword33",
     "AllowedItems": [
       "tors"
     ],
@@ -2464,6 +3782,94 @@
       "Ber"
     ],
     "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "200",
+        "Max": "240",
+        "Description": "[200-240]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "10",
+        "Max": "14",
+        "Description": "+[10-14] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "45",
+        "Max": "45",
+        "Description": "45% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "str/lvl",
+        "Par": "3",
+        "Min": "0.38",
+        "Max": "0.38",
+        "Description": "0.38 [*level] to Strength",
+        "Priority": "66"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "mag%/lvl",
+        "Par": "8",
+        "Min": "1.00",
+        "Max": "1.00",
+        "Description": "1.00% Better Chance of Getting Magic Items",
+        "Priority": "7"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Teleport",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Teleport",
+        "Priority": "81"
+      },
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Increase Maximum Life 5%",
+        "Priority": "58"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "8",
+        "Max": "8",
+        "Description": "Physical Damage Received Reduced by 8%",
+        "Priority": "22"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac",
         "Par": "",
@@ -2544,15 +3950,11 @@
         "Description": "Physical Damage Received Reduced by 8%",
         "Priority": "22"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Enlightenment",
+    "RowId": "Runeword34",
     "AllowedItems": [
       "tors"
     ],
@@ -2572,6 +3974,78 @@
       "Sol"
     ],
     "Properties": [
+      {
+        "Prop": "gethit-skill",
+        "Par": "Fire Ball",
+        "Min": "20",
+        "Max": "25",
+        "Description": "20% Chance to cast level 25 Fire Ball when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Blaze",
+        "Min": "5",
+        "Max": "30",
+        "Description": "5% Chance to cast level 30 Blaze when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Warmth",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Warmth",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Fire Resist 30%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Fire Ball",
@@ -2628,15 +4102,11 @@
         "Description": "Damage Reduced by 7",
         "Priority": "22"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Eternity",
+    "RowId": "Runeword36",
     "AllowedItems": [
       "mele"
     ],
@@ -2660,6 +4130,110 @@
       "Sur"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "350",
+        "Description": "[300-350]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Slows Target by 33%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Revive",
+        "Min": "3",
+        "Max": "5",
+        "Description": "+[3-5] to Revive",
+        "Priority": "81"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Replenish Life +32",
+        "Priority": "56"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Regenerate Mana 32%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Minimum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -2756,15 +4330,11 @@
         "Description": "Hit Blinds Target",
         "Priority": "80"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Faith",
+    "RowId": "Runeword38",
     "AllowedItems": [
       "miss"
     ],
@@ -2786,6 +4356,102 @@
       "Eld"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "330",
+        "Max": "330",
+        "Description": "330% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "300% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "120",
+        "Max": "120",
+        "Description": "Adds 120 fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "All Resistances +15",
+        "Priority": "34"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Fanaticism",
+        "Min": "12",
+        "Max": "15",
+        "Description": "Level [12-15] Fanaticism Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "1",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Reanimate as: Returned",
+        "Priority": "17"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Undead",
+        "Priority": "108"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -2874,15 +4540,11 @@
         "Description": "75% Damage to Undead",
         "Priority": "108"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Famine",
+    "RowId": "Runeword39",
     "AllowedItems": [
       "axe",
       "hamm"
@@ -2908,6 +4570,134 @@
       "Jah"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "320",
+        "Max": "370",
+        "Description": "[320-370]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "12",
+        "Max": "12",
+        "Description": "12% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "Adds [150-300] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Minimum Fire Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Maximum Fire Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Minimum Lightning Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Maximum Lightning Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Minimum Cold Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "150",
+        "Max": "300",
+        "Description": "+[150-300] to Maximum Cold Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Lower Resist",
+        "Min": "5",
+        "Max": "10",
+        "Description": "5% Chance to cast level 10 Lower Resist on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -3028,15 +4818,11 @@
         "Description": "Ignore Target's Defense",
         "Priority": "119"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Flickering Flame",
+    "RowId": "Runeword40",
     "AllowedItems": [
       "helm"
     ],
@@ -3137,6 +4923,7 @@
   },
   {
     "Name": "Fortitude",
+    "RowId": "Runeword41",
     "AllowedItems": [
       "weap",
       "tors"
@@ -3263,6 +5050,7 @@
   },
   {
     "Name": "Fortitude",
+    "RowId": "Runeword41",
     "AllowedItems": [
       "weap",
       "tors"
@@ -3390,6 +5178,7 @@
   },
   {
     "Name": "Fury",
+    "RowId": "Runeword44",
     "AllowedItems": [
       "mele"
     ],
@@ -3409,6 +5198,94 @@
       "Eth"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "320",
+        "Description": "[300-320]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "10",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "66",
+        "Max": "66",
+        "Description": "66% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "33",
+        "Max": "40",
+        "Description": "[33-40]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "skill",
+        "Par": "147",
+        "Min": "5",
+        "Max": "7",
+        "Description": "+[5-7] to Frenzy (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -3489,15 +5366,11 @@
         "Description": "-25% Target Defense",
         "Priority": "118"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Gloom",
+    "RowId": "Runeword45",
     "AllowedItems": [
       "tors"
     ],
@@ -3517,6 +5390,78 @@
       "Pul"
     ],
     "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "240",
+        "Max": "300",
+        "Description": "[240-300]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "45",
+        "Max": "50",
+        "Description": "All Resistances +[45-50]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Dim Vision",
+        "Min": "15",
+        "Max": "10",
+        "Description": "15% Chance to cast level 10 Dim Vision when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "-3",
+        "Max": "-3",
+        "Description": "+-3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac%",
         "Par": "",
@@ -3581,15 +5526,11 @@
         "Description": "+10 to Strength",
         "Priority": "67"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Grief",
+    "RowId": "Runeword47",
     "AllowedItems": [
       "swor",
       "axe"
@@ -3617,6 +5558,110 @@
       "Ral"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-dem/lvl",
+        "Par": "8",
+        "Min": "1.00",
+        "Max": "1.00",
+        "Description": "1.00% Damage to Demons",
+        "Priority": "111"
+      },
+      {
+        "Prop": "dmg",
+        "Par": "",
+        "Min": "340",
+        "Max": "400",
+        "Description": "Damage +[340-400]",
+        "Priority": "122"
+      },
+      {
+        "Prop": "swing3",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Venom",
+        "Min": "4",
+        "Max": "15",
+        "Description": "4% Chance to cast level 15 Venom on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "pierce-pois",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "-[20-25]% to Enemy Poison Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "5",
+        "Max": "30",
+        "Description": "Adds [5-30] fire damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-dem/lvl",
         "Par": "15",
@@ -3713,15 +5758,11 @@
         "Description": "Adds [5-30] fire damage",
         "Priority": "300"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Hand of Justice",
+    "RowId": "Runeword48",
     "AllowedItems": [
       "weap"
     ],
@@ -3742,6 +5783,102 @@
       "Lo"
     ],
     "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "44",
+        "Max": "44",
+        "Description": "44% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "330",
+        "Max": "380",
+        "Description": "[330-380]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Holy Fire",
+        "Min": "16",
+        "Max": "16",
+        "Description": "Level 16 Holy Fire Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "levelup-skill",
+        "Par": "Blaze",
+        "Min": "100",
+        "Max": "36",
+        "Description": "100% Chance to cast level 36 Blaze when you Level-Up",
+        "Priority": "158"
+      },
+      {
+        "Prop": "death-skill",
+        "Par": "Meteor",
+        "Min": "100",
+        "Max": "48",
+        "Description": "100% Chance to cast level 48 Meteor when you Die",
+        "Priority": "158"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "-20% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Freezes target",
+        "Priority": "78"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "swing2",
         "Par": "",
@@ -3830,15 +5967,11 @@
         "Description": "20% Deadly Strike",
         "Priority": "85"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Harmony",
+    "RowId": "Runeword49",
     "AllowedItems": [
       "miss"
     ],
@@ -3997,9 +6130,11 @@
   },
   {
     "Name": "Heart of the Oak",
+    "RowId": "Runeword51",
     "AllowedItems": [
       "staf",
-      "mace"
+      "mace",
+      "hamm"
     ],
     "Types": [
       "staf",
@@ -4007,7 +6142,8 @@
       "blun",
       "mele",
       "weap",
-      "mace"
+      "mace",
+      "hamm"
     ],
     "ETypes": [],
     "Runes": [
@@ -4023,6 +6159,110 @@
       "Thul"
     ],
     "Properties": [
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Oak Sage",
+        "Min": "25",
+        "Max": "12",
+        "Description": "Level 12 Oak Sage (25/25 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Increase Maximum Mana 15%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Replenish Life +20",
+        "Priority": "56"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "All Resistances +[30-40]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Raven",
+        "Min": "80",
+        "Max": "25",
+        "Description": "Level 25 Raven (80/80 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "75",
+        "Min": "3",
+        "Max": "14",
+        "Description": "Adds [3-14] cold damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "cast2",
         "Par": "",
@@ -4120,23 +6360,26 @@
         "Priority": "300"
       }
     ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    "VanillaAllowedItems": [
+      "staf",
+      "mace"
+    ]
   },
   {
     "Name": "Holy Thunder",
+    "RowId": "Runeword54",
     "AllowedItems": [
-      "scep"
+      "scep",
+      "swor"
     ],
     "Types": [
       "scep",
       "rod",
       "blun",
       "mele",
-      "weap"
+      "weap",
+      "swor",
+      "blde"
     ],
     "ETypes": [],
     "Runes": [
@@ -4152,6 +6395,94 @@
       "Tal"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "120",
+        "Max": "120",
+        "Description": "120% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "21",
+        "Max": "110",
+        "Description": "Adds [21-110] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Maximum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "60",
+        "Max": "60",
+        "Description": "Lightning Resist 60%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Holy Shock",
+        "Min": "3",
+        "Max": "5",
+        "Description": "Level [3-5] Holy Shock Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "charged",
+        "Par": "53",
+        "Min": "80",
+        "Max": "20",
+        "Description": "Level 20 Chain Lightning (80/80 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "5",
+        "Max": "30",
+        "Description": "Adds [5-30] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-pois",
+        "Par": "5",
+        "Min": "75",
+        "Max": "75",
+        "Description": "Adds 75 poison damage over 5 seconds",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -4233,14 +6564,13 @@
         "Priority": "300"
       }
     ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    "VanillaAllowedItems": [
+      "scep"
+    ]
   },
   {
     "Name": "Honor",
+    "RowId": "Runeword55",
     "AllowedItems": [
       "mele"
     ],
@@ -4264,6 +6594,110 @@
       "Sol"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "200",
+        "Max": "240",
+        "Description": "[200-240]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "16",
+        "Max": "16",
+        "Description": "Replenish Life +16",
+        "Priority": "56"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "250",
+        "Max": "350",
+        "Description": "+[250-350] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Maximum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Minimum Damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -4352,15 +6786,11 @@
         "Description": "+9 to Minimum Damage",
         "Priority": "300"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Ice",
+    "RowId": "Runeword59",
     "AllowedItems": [
       "miss"
     ],
@@ -4479,6 +6909,7 @@
   },
   {
     "Name": "Infinity",
+    "RowId": "Runeword60",
     "AllowedItems": [
       "pole",
       "spea"
@@ -4593,10 +7024,12 @@
   },
   {
     "Name": "Insight",
+    "RowId": "Runeword62",
     "AllowedItems": [
       "pole",
       "staf",
-      "miss"
+      "miss",
+      "spea"
     ],
     "Types": [
       "pole",
@@ -4606,7 +7039,8 @@
       "staf",
       "rod",
       "blun",
-      "miss"
+      "miss",
+      "spea"
     ],
     "ETypes": [],
     "Runes": [
@@ -4715,10 +7149,17 @@
     "IsWeapon": true,
     "IsTorso": false,
     "IsHelmet": false,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaAllowedItems": [
+      "pole",
+      "staf",
+      "miss"
+    ]
   },
   {
     "Name": "King's Grace",
+    "RowId": "Runeword65",
     "AllowedItems": [
       "swor",
       "scep"
@@ -4744,6 +7185,94 @@
       "Thul"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "180",
+        "Description": "180% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "200",
+        "Max": "200",
+        "Description": "+200 to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "180",
+        "Max": "180",
+        "Description": "180% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "200",
+        "Max": "200",
+        "Description": "+200 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "5",
+        "Max": "30",
+        "Description": "Adds [5-30] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "75",
+        "Min": "3",
+        "Max": "14",
+        "Description": "Adds [3-14] cold damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -4816,15 +7345,11 @@
         "Description": "Adds [3-14] cold damage",
         "Priority": "300"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Kingslayer",
+    "RowId": "Runeword66",
     "AllowedItems": [
       "swor",
       "axe"
@@ -4850,6 +7375,94 @@
       "Fal"
     ],
     "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "280",
+        "Max": "330",
+        "Description": "[280-330]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Vengeance",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Vengeance",
+        "Priority": "81"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "80",
+        "Max": "80",
+        "Description": "80% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "swing2",
         "Par": "",
@@ -4930,15 +7543,11 @@
         "Description": "+10 to Strength",
         "Priority": "67"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Last Wish",
+    "RowId": "Runeword69",
     "AllowedItems": [
       "swor",
       "hamm",
@@ -4971,6 +7580,94 @@
       "Ber"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "400",
+        "Max": "445",
+        "Description": "[400-445]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att-skill",
+        "Par": "Charged Bolt",
+        "Min": "20",
+        "Max": "30",
+        "Description": "20% Chance to cast level 30 Charged Bolt on attack",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "10",
+        "Max": "18",
+        "Description": "10% Chance to cast level 18 Life Tap on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Fade",
+        "Min": "6",
+        "Max": "11",
+        "Description": "6% Chance to cast level 11 Fade when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "60",
+        "Max": "70",
+        "Description": "[60-70]% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "mag%/lvl",
+        "Par": "4",
+        "Min": "0.50",
+        "Max": "0.50",
+        "Description": "0.50% Better Chance of Getting Magic Items",
+        "Priority": "7"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Might",
+        "Min": "17",
+        "Max": "17",
+        "Description": "Level 17 Might Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -5051,15 +7748,11 @@
         "Description": "Hit Blinds Target",
         "Priority": "80"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Lawbringer",
+    "RowId": "Runeword71",
     "AllowedItems": [
       "swor",
       "hamm",
@@ -5176,6 +7869,7 @@
   },
   {
     "Name": "Leaf",
+    "RowId": "Runeword72",
     "AllowedItems": [
       "staf"
     ],
@@ -5269,6 +7963,7 @@
   },
   {
     "Name": "Lionheart",
+    "RowId": "Runeword74",
     "AllowedItems": [
       "tors"
     ],
@@ -5288,6 +7983,78 @@
       "Fal"
     ],
     "Properties": [
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "+25 to all Attributes",
+        "Priority": "67"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 to all Attributes",
+        "Priority": "65"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "+[50-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "30",
+        "Max": "35",
+        "Description": "All Resistances +[30-35]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-15",
+        "Max": "-15",
+        "Description": "Requirements -15%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to all Attributes",
+        "Priority": "61"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "str",
         "Par": "",
@@ -5352,15 +8119,11 @@
         "Description": "+10 to all Attributes",
         "Priority": "61"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Lore",
+    "RowId": "Runeword75",
     "AllowedItems": [
       "helm"
     ],
@@ -5411,6 +8174,14 @@
         "Priority": "16"
       },
       {
+        "Prop": "att",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 to Attack Rating",
+        "Priority": "115"
+      },
+      {
         "Prop": "res-ltng",
         "Par": "",
         "Min": "30",
@@ -5431,10 +8202,62 @@
     "IsWeapon": false,
     "IsTorso": false,
     "IsHelmet": true,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Lightning Resist 30%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      }
+    ]
   },
   {
     "Name": "Malice",
+    "RowId": "Runeword81",
     "AllowedItems": [
       "mele"
     ],
@@ -5535,6 +8358,7 @@
   },
   {
     "Name": "Melody",
+    "RowId": "Runeword82",
     "AllowedItems": [
       "miss"
     ],
@@ -5554,6 +8378,94 @@
       "Nef"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "200",
+        "Max": "200",
+        "Description": "200% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "0",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Bow and Crossbow Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "9",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Critical Strike (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "13",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Dodge (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "17",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Slow Missiles (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "300% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "knock",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Knockback",
+        "Priority": "76"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -5626,15 +8538,11 @@
         "Description": "Knockback",
         "Priority": "76"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Memory",
+    "RowId": "Runeword83",
     "AllowedItems": [
       "staf"
     ],
@@ -5659,6 +8567,102 @@
       "Eth"
     ],
     "Properties": [
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "Increase Maximum Mana 35%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "12",
+        "Max": "12",
+        "Description": "Magic Damage Reduced by 12",
+        "Priority": "21"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "60",
+        "Max": "60",
+        "Description": "60% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill",
+        "Par": "58",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Energy Shield (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "42",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Static Field (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Minimum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "mana%",
         "Par": "",
@@ -5747,15 +8751,11 @@
         "Description": "-25% Target Defense",
         "Priority": "118"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Mist",
+    "RowId": "Runeword84",
     "AllowedItems": [
       "miss"
     ],
@@ -5876,6 +8876,7 @@
   },
   {
     "Name": "Myth",
+    "RowId": "Runeword87",
     "AllowedItems": [
       "tors"
     ],
@@ -5895,6 +8896,86 @@
       "Nef"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Taunt",
+        "Min": "10",
+        "Max": "5",
+        "Description": "10% Chance to cast level 5 Taunt on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Howl",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Howl (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Barbarian Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Replenish Life +30",
+        "Priority": "56"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "+[200-250] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-15",
+        "Max": "-15",
+        "Description": "Requirements -15%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "14",
+        "Max": "14",
+        "Description": "Attacker Takes Damage of 14",
+        "Priority": "13"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 Defense vs. Missile",
+        "Priority": "69"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Taunt",
@@ -5951,15 +9032,11 @@
         "Description": "+30 Defense vs. Missile",
         "Priority": "69"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Nadir",
+    "RowId": "Runeword88",
     "AllowedItems": [
       "helm"
     ],
@@ -6026,6 +9103,14 @@
         "Priority": "67"
       },
       {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
         "Prop": "ac-miss",
         "Par": "",
         "Min": "30",
@@ -6046,10 +9131,78 @@
     "IsWeapon": false,
     "IsTorso": false,
     "IsHelmet": true,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "-3",
+        "Max": "-3",
+        "Description": "+-3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "charged",
+        "Par": "264",
+        "Min": "9",
+        "Max": "13",
+        "Description": "Level 13 Cloak of Shadows (9/9 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "-33",
+        "Max": "-33",
+        "Description": "-33% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ]
   },
   {
     "Name": "Oath",
+    "RowId": "Runeword91",
     "AllowedItems": [
       "swor",
       "axe",
@@ -6078,6 +9231,110 @@
       "Lum"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "280",
+        "Max": "340",
+        "Description": "[280-340]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Bone Spirit",
+        "Min": "30",
+        "Max": "25",
+        "Description": "30% Chance to cast level 25 Bone Spirit on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "IronGolem",
+        "Min": "14",
+        "Max": "17",
+        "Description": "+[14-17] to Iron Golem",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Heart of Wolverine",
+        "Min": "14",
+        "Max": "17",
+        "Description": "+[14-17] to Heart of Wolverine",
+        "Priority": "81"
+      },
+      {
+        "Prop": "abs-mag",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] Magic Absorb",
+        "Priority": "33"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -6174,25 +9431,24 @@
         "Description": "+10 to Energy",
         "Priority": "61"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Obedience",
+    "RowId": "Runeword92",
     "AllowedItems": [
       "pole",
-      "spea"
+      "spea",
+      "hamm"
     ],
     "Types": [
       "pole",
       "sppl",
       "mele",
       "weap",
-      "spea"
+      "spea",
+      "hamm",
+      "blun"
     ],
     "ETypes": [],
     "Runes": [
@@ -6311,10 +9567,16 @@
     "IsWeapon": true,
     "IsTorso": false,
     "IsHelmet": false,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaAllowedItems": [
+      "pole",
+      "spea"
+    ]
   },
   {
     "Name": "Obsession",
+    "RowId": "Runeword94",
     "AllowedItems": [
       "staf"
     ],
@@ -6343,6 +9605,118 @@
       "Nef"
     ],
     "Properties": [
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Weaken",
+        "Min": "24",
+        "Max": "15",
+        "Description": "24% Chance to cast level 15 Weaken when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "cast3",
+        "Par": "",
+        "Min": "80",
+        "Max": "80",
+        "Description": "80% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "balance3",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "60",
+        "Max": "70",
+        "Description": "All Resistances +[60-70]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "15",
+        "Max": "25",
+        "Description": "Increase Maximum Life [15-25]%",
+        "Priority": "58"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "Regenerate Mana [50-60]%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "knock",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Knockback",
+        "Priority": "76"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "allskills",
         "Par": "",
@@ -6447,15 +9821,11 @@
         "Description": "Knockback",
         "Priority": "76"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Passion",
+    "RowId": "Runeword95",
     "AllowedItems": [
       "weap"
     ],
@@ -6476,6 +9846,110 @@
       "Lem"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "[200-250]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Zeal",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Zeal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Berserk",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Berserk",
+        "Priority": "81"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Heart of Wolverine",
+        "Min": "12",
+        "Max": "10",
+        "Description": "Level 10 Heart of Wolverine (12/12 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
+        "Prop": "howl",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Hit Causes Monster to Flee 25%",
+        "Priority": "79"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Extra Gold from Monsters",
+        "Priority": "10"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -6572,15 +10046,11 @@
         "Description": "75% Extra Gold from Monsters",
         "Priority": "10"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Pattern",
+    "RowId": "Runeword97",
     "AllowedItems": [
       "h2h"
     ],
@@ -6603,6 +10073,94 @@
       "Thul"
     ],
     "Properties": [
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "120",
+        "Max": "140",
+        "Description": "[120-140]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "12",
+        "Max": "32",
+        "Description": "Adds [12-32] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "All Resistances +15",
+        "Priority": "34"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "dmg-pois",
+        "Par": "5",
+        "Min": "75",
+        "Max": "75",
+        "Description": "Adds 75 poison damage over 5 seconds",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "75",
+        "Min": "3",
+        "Max": "14",
+        "Description": "Adds [3-14] cold damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "att%",
         "Par": "",
@@ -6683,15 +10241,11 @@
         "Description": "Adds [3-14] cold damage",
         "Priority": "300"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Peace",
+    "RowId": "Runeword98",
     "AllowedItems": [
       "tors"
     ],
@@ -6711,6 +10265,78 @@
       "Amn"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Valkyrie",
+        "Min": "3",
+        "Max": "15",
+        "Description": "3% Chance to cast level 15 Valkyrie on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Slow Missiles",
+        "Min": "4",
+        "Max": "5",
+        "Description": "4% Chance to cast level 5 Slow Missiles when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "ama",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Amazon Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Critical Strike",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Critical Strike",
+        "Priority": "81"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Cold Resist 30%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "14",
+        "Max": "14",
+        "Description": "Attacker Takes Damage of 14",
+        "Priority": "13"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Valkyrie",
@@ -6767,15 +10393,11 @@
         "Description": "Attacker Takes Damage of 14",
         "Priority": "13"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Voice of Reason",
+    "RowId": "Runeword99",
     "AllowedItems": [
       "swor",
       "mace"
@@ -6802,6 +10424,110 @@
       "Eld"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "220",
+        "Max": "350",
+        "Description": "[220-350]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "355",
+        "Max": "375",
+        "Description": "[355-375]% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "",
+        "Min": "100",
+        "Max": "220",
+        "Description": "Adds [100-220] cold damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "pierce-cold",
+        "Par": "",
+        "Min": "24",
+        "Max": "24",
+        "Description": "-24% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Ice Blast",
+        "Min": "18",
+        "Max": "25",
+        "Description": "18% Chance to cast level 25 Ice Blast on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Frozen Orb",
+        "Min": "15",
+        "Max": "22",
+        "Description": "15% Chance to cast level 22 Frozen Orb on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-demon",
         "Par": "",
@@ -6898,15 +10624,11 @@
         "Description": "+50 to Attack Rating against Undead",
         "Priority": "106"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Phoenix",
+    "RowId": "Runeword103",
     "AllowedItems": [
       "weap",
       "shld"
@@ -7017,6 +10739,7 @@
   },
   {
     "Name": "Phoenix",
+    "RowId": "Runeword103",
     "AllowedItems": [
       "weap",
       "shld"
@@ -7129,6 +10852,7 @@
   },
   {
     "Name": "Plague",
+    "RowId": "Runeword106",
     "AllowedItems": [
       "swor",
       "knif",
@@ -7156,6 +10880,94 @@
       "Um"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "280",
+        "Max": "340",
+        "Description": "[280-340]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Lower Resist",
+        "Min": "20",
+        "Max": "12",
+        "Description": "20% Chance to cast level 12 Lower Resist when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Poison Nova",
+        "Min": "25",
+        "Max": "15",
+        "Description": "25% Chance to cast level 15 Poison Nova on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "pierce-pois",
+        "Par": "",
+        "Min": "23",
+        "Max": "23",
+        "Description": "-23% to Enemy Poison Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly/lvl",
+        "Par": "3",
+        "Min": "0.38",
+        "Max": "0.38",
+        "Description": "0.38% Deadly Strike",
+        "Priority": "84"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Cleansing",
+        "Min": "13",
+        "Max": "17",
+        "Description": "Level [13-17] Cleansing Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Freezes target",
+        "Priority": "78"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -7236,15 +11048,11 @@
         "Description": "25% Chance of Open Wounds",
         "Priority": "83"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Pride",
+    "RowId": "Runeword109",
     "AllowedItems": [
       "pole",
       "spea"
@@ -7270,6 +11078,102 @@
       "Lo"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-dem/lvl",
+        "Par": "8",
+        "Min": "1.00",
+        "Max": "1.00",
+        "Description": "1.00% Damage to Demons",
+        "Priority": "111"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "122",
+        "Max": "722",
+        "Description": "Adds [122-722] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Concentration",
+        "Min": "16",
+        "Max": "20",
+        "Description": "Level [16-20] Concentration Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Fire Wall",
+        "Min": "25",
+        "Max": "17",
+        "Description": "25% Chance to cast level 17 Fire Wall when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Replenish Life +32",
+        "Priority": "56"
+      },
+      {
+        "Prop": "gold%/lvl",
+        "Par": "15",
+        "Min": "1.88",
+        "Max": "1.88",
+        "Description": "1.88% Extra Gold from Monsters",
+        "Priority": "9"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Freezes target",
+        "Priority": "78"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Deadly Strike",
+        "Priority": "85"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-dem/lvl",
         "Par": "8",
@@ -7358,15 +11262,11 @@
         "Description": "20% Deadly Strike",
         "Priority": "85"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Principle",
+    "RowId": "Runeword110",
     "AllowedItems": [
       "tors"
     ],
@@ -7386,6 +11286,78 @@
       "Eld"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Holy Bolt",
+        "Min": "100",
+        "Max": "8",
+        "Description": "100% Chance to cast level 8 Holy Bolt on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "pal",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Paladin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "+[100-150] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Fire Resist 30%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "res-pois-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Poison Resist",
+        "Priority": "45"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Slower Stamina Drain",
+        "Priority": "49"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Holy Bolt",
@@ -7442,15 +11414,11 @@
         "Description": "15% Slower Stamina Drain",
         "Priority": "49"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Prudence",
+    "RowId": "Runeword112",
     "AllowedItems": [
       "tors"
     ],
@@ -7468,6 +11436,78 @@
       "Tir"
     ],
     "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "170",
+        "Max": "200",
+        "Description": "[170-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "17",
+        "Max": "17",
+        "Description": "Magic Damage Reduced by 17",
+        "Priority": "21"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Damage Reduced by 3",
+        "Priority": "22"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "All Resistances +[25-35]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "25",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac%",
         "Par": "",
@@ -7532,15 +11572,11 @@
         "Description": "+2 to Mana after each Kill",
         "Priority": "16"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Radiance",
+    "RowId": "Runeword116",
     "AllowedItems": [
       "helm"
     ],
@@ -7560,6 +11596,94 @@
       "Ith"
     ],
     "Properties": [
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Magic Damage Reduced by 3",
+        "Priority": "21"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "+33 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Damage Reduced by 7",
+        "Priority": "22"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Damage Taken Goes To Mana",
+        "Priority": "11"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "light",
         "Par": "",
@@ -7632,15 +11756,11 @@
         "Description": "15% Damage Taken Goes To Mana",
         "Priority": "11"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": true,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Rain",
+    "RowId": "Runeword117",
     "AllowedItems": [
       "tors"
     ],
@@ -7660,6 +11780,94 @@
       "Ith"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Twister",
+        "Min": "5",
+        "Max": "22",
+        "Description": "5% Chance to cast level 22 Twister on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Cyclone Armor",
+        "Min": "8",
+        "Max": "18",
+        "Description": "8% Chance to cast level 18 Cyclone Armor when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "+[100-150] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "+[200-250] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "10",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Lightning Resist 30%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Magic Damage Reduced by 7",
+        "Priority": "21"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Damage Taken Goes To Mana",
+        "Priority": "11"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Twister",
@@ -7716,15 +11924,11 @@
         "Description": "15% Damage Taken Goes To Mana",
         "Priority": "11"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Rhyme",
+    "RowId": "Runeword120",
     "AllowedItems": [
       "shld"
     ],
@@ -7808,6 +12012,7 @@
   },
   {
     "Name": "Rift",
+    "RowId": "Runeword121",
     "AllowedItems": [
       "pole",
       "scep"
@@ -7835,6 +12040,102 @@
       "Gul"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "Adds [200-250] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "180",
+        "Max": "300",
+        "Description": "Adds [180-300] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "38",
+        "Max": "38",
+        "Description": "38% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Tornado",
+        "Min": "20",
+        "Max": "16",
+        "Description": "20% Chance to cast level 16 Tornado on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "att-skill",
+        "Par": "Frozen Orb",
+        "Min": "16",
+        "Max": "28",
+        "Description": "16% Chance to cast level 28 Frozen Orb on attack",
+        "Priority": "158"
+      },
+      {
+        "Prop": "charged",
+        "Par": "Iron Maiden",
+        "Min": "40",
+        "Max": "15",
+        "Description": "Level 15 Iron Maiden (40/40 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "5",
+        "Max": "10",
+        "Description": "+[5-10] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to all Attributes",
+        "Priority": "65"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-mag",
         "Par": "",
@@ -7923,15 +12224,11 @@
         "Description": "20% Bonus to Attack Rating",
         "Priority": "117"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Sanctuary",
+    "RowId": "Runeword122",
     "AllowedItems": [
       "shld"
     ],
@@ -8033,6 +12330,7 @@
   },
   {
     "Name": "Silence",
+    "RowId": "Runeword126",
     "AllowedItems": [
       "weap"
     ],
@@ -8057,6 +12355,118 @@
       "Vex"
     ],
     "Properties": [
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "11",
+        "Max": "11",
+        "Description": "11% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "300% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "All Resistances +75",
+        "Priority": "34"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "howl",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Hit Causes Monster to Flee 25%",
+        "Priority": "79"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "manasteal",
         "Par": "",
@@ -8161,15 +12571,11 @@
         "Description": "+2 to Mana after each Kill",
         "Priority": "16"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Smoke",
+    "RowId": "Runeword128",
     "AllowedItems": [
       "tors"
     ],
@@ -8252,6 +12658,7 @@
   },
   {
     "Name": "Spirit",
+    "RowId": "Runeword130",
     "AllowedItems": [
       "swor",
       "shld"
@@ -8373,6 +12780,7 @@
   },
   {
     "Name": "Spirit",
+    "RowId": "Runeword130",
     "AllowedItems": [
       "swor",
       "shld"
@@ -8493,6 +12901,7 @@
   },
   {
     "Name": "Splendor",
+    "RowId": "Runeword131",
     "AllowedItems": [
       "shld"
     ],
@@ -8511,6 +12920,86 @@
       "Lum"
     ],
     "Properties": [
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "60",
+        "Max": "100",
+        "Description": "[60-100]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "light",
         "Par": "",
@@ -8583,15 +13072,11 @@
         "Description": "+10 to Energy",
         "Priority": "61"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": true
+    ]
   },
   {
     "Name": "Stealth",
+    "RowId": "Runeword133",
     "AllowedItems": [
       "tors"
     ],
@@ -8658,6 +13143,14 @@
         "Priority": "139"
       },
       {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
         "Prop": "res-pois",
         "Par": "",
         "Min": "30",
@@ -8678,10 +13171,78 @@
     "IsWeapon": false,
     "IsTorso": true,
     "IsHelmet": false,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Magic Damage Reduced by 3",
+        "Priority": "21"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "stam",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Maximum Stamina",
+        "Priority": "51"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Poison Resist 30%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      }
+    ]
   },
   {
     "Name": "Steel",
+    "RowId": "Runeword134",
     "AllowedItems": [
       "swor",
       "axe",
@@ -8706,6 +13267,78 @@
       "El"
     ],
     "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Minimum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Maximum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating",
+        "Priority": "115"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "swing2",
         "Par": "",
@@ -8770,15 +13403,11 @@
         "Description": "+50 to Attack Rating",
         "Priority": "115"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Stone",
+    "RowId": "Runeword137",
     "AllowedItems": [
       "tors"
     ],
@@ -8800,6 +13429,86 @@
       "Lum"
     ],
     "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "250",
+        "Max": "290",
+        "Description": "[250-290]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Clay Golem",
+        "Min": "16",
+        "Max": "16",
+        "Description": "+16 to Clay Golem",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "+300 Defense vs. Missile",
+        "Priority": "69"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Molten Boulder",
+        "Min": "16",
+        "Max": "20",
+        "Description": "+[16-20] to Molten Boulder",
+        "Priority": "81"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "16",
+        "Max": "16",
+        "Description": "+16 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "16",
+        "Max": "16",
+        "Description": "+16 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "60",
+        "Max": "60",
+        "Description": "60% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "All Resistances +15",
+        "Priority": "34"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "ac%",
         "Par": "",
@@ -8872,15 +13581,11 @@
         "Description": "+10 to Energy",
         "Priority": "61"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Strength",
+    "RowId": "Runeword139",
     "AllowedItems": [
       "mele"
     ],
@@ -8898,6 +13603,70 @@
       "Tir"
     ],
     "Properties": [
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "165",
+        "Max": "165",
+        "Description": "165% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "str",
         "Par": "",
@@ -8946,15 +13715,11 @@
         "Description": "+2 to Mana after each Kill",
         "Priority": "16"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Treachery",
+    "RowId": "Runeword148",
     "AllowedItems": [
       "tors"
     ],
@@ -9039,12 +13804,11 @@
   },
   {
     "Name": "Unbending Will",
+    "RowId": "Runeword151",
     "AllowedItems": [
-      "swor"
+      "mele"
     ],
     "Types": [
-      "swor",
-      "blde",
       "mele",
       "weap"
     ],
@@ -9066,6 +13830,134 @@
       "Hel"
     ],
     "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "12",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Combat Skills (Barbarian Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Taunt",
+        "Min": "18",
+        "Max": "18",
+        "Description": "18% Chance to cast level 18 Taunt on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "350",
+        "Description": "[300-350]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "red-dmg",
+        "Par": "",
+        "Min": "8",
+        "Max": "8",
+        "Description": "Damage Reduced by 8",
+        "Priority": "22"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Maximum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "skilltab",
         "Par": "12",
@@ -9187,14 +14079,13 @@
         "Priority": "0"
       }
     ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    "VanillaAllowedItems": [
+      "swor"
+    ]
   },
   {
     "Name": "Venom",
+    "RowId": "Runeword154",
     "AllowedItems": [
       "weap"
     ],
@@ -9213,6 +14104,86 @@
       "Mal"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-pois",
+        "Par": "5",
+        "Min": "545",
+        "Max": "545",
+        "Description": "Adds 545 poison damage over 5 seconds",
+        "Priority": "300"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "charged",
+        "Par": "83",
+        "Min": "27",
+        "Max": "25",
+        "Description": "Level 25 Poison Explosion (27/27 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "charged",
+        "Par": "92",
+        "Min": "25",
+        "Max": "23",
+        "Description": "Level 23 Poison Nova (25/25 Charges)",
+        "Priority": "1"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "pierce-pois",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "-[10-15]% to Enemy Poison Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "50",
+        "Max": "70",
+        "Description": "Poison Resist [50-70]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "howl",
+        "Par": "",
+        "Min": "32",
+        "Max": "32",
+        "Description": "Hit Causes Monster to Flee 25%",
+        "Priority": "79"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-pois",
         "Par": "7",
@@ -9277,15 +14248,11 @@
         "Description": "Prevent Monster Heal",
         "Priority": "81"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Void",
+    "RowId": "Runeword157",
     "AllowedItems": [
       "knif"
     ],
@@ -9388,6 +14355,7 @@
   },
   {
     "Name": "Wealth",
+    "RowId": "Runeword160",
     "AllowedItems": [
       "tors"
     ],
@@ -9424,6 +14392,22 @@
         "Priority": "8"
       },
       {
+        "Prop": "light",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "charged",
+        "Par": "142",
+        "Min": "5",
+        "Max": "10",
+        "Description": "Level 10 Find Item (5/5 Charges)",
+        "Priority": "1"
+      },
+      {
         "Prop": "dex",
         "Par": "",
         "Min": "10",
@@ -9444,10 +14428,46 @@
     "IsWeapon": false,
     "IsTorso": true,
     "IsHelmet": false,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "300",
+        "Max": "300",
+        "Description": "300% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "100% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ]
   },
   {
     "Name": "White",
+    "RowId": "Runeword162",
     "AllowedItems": [
       "wand"
     ],
@@ -9549,6 +14569,7 @@
   },
   {
     "Name": "Wind",
+    "RowId": "Runeword163",
     "AllowedItems": [
       "mele"
     ],
@@ -9566,6 +14587,94 @@
       "El"
     ],
     "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "200",
+        "Max": "240",
+        "Description": "[200-240]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "66",
+        "Max": "66",
+        "Description": "66% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "-50% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Tornado",
+        "Min": "10",
+        "Max": "28",
+        "Description": "10% Chance to cast level 28 Tornado on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "240",
+        "Min": "10",
+        "Max": "28",
+        "Description": "10% Chance to cast level 28 Twister on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "22",
+        "Max": "22",
+        "Description": "22% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating",
+        "Priority": "115"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg%",
         "Par": "",
@@ -9646,15 +14755,11 @@
         "Description": "+50 to Attack Rating",
         "Priority": "115"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Wisdom",
+    "RowId": "Runeword165",
     "AllowedItems": [
       "helm"
     ],
@@ -9755,6 +14860,7 @@
   },
   {
     "Name": "Wrath",
+    "RowId": "Runeword168",
     "AllowedItems": [
       "miss"
     ],
@@ -9776,6 +14882,102 @@
       "Mal"
     ],
     "Properties": [
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "525",
+        "Max": "525",
+        "Description": "525% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "450",
+        "Max": "450",
+        "Description": "450% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "140",
+        "Max": "480",
+        "Description": "Adds [140-480] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "185",
+        "Max": "420",
+        "Description": "Adds [185-420] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "5",
+        "Max": "10",
+        "Description": "5% Chance to cast level 10 Life Tap on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Decrepify",
+        "Min": "30",
+        "Max": "1",
+        "Description": "30% Chance to cast level 1 Decrepify on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "dmg-demon",
         "Par": "",
@@ -9864,15 +15066,11 @@
         "Description": "Prevent Monster Heal",
         "Priority": "81"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Zephyr",
+    "RowId": "Runeword170",
     "AllowedItems": [
       "miss"
     ],
@@ -9890,6 +15088,78 @@
       "Eth"
     ],
     "Properties": [
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "99",
+        "Max": "99",
+        "Description": "99% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "99",
+        "Max": "99",
+        "Description": "+99 to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "240",
+        "Min": "9",
+        "Max": "9",
+        "Description": "9% Chance to cast level 9 Twister when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "+75 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "move2",
         "Par": "",
@@ -9954,15 +15224,11 @@
         "Description": "-25% Target Defense",
         "Priority": "118"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Hysteria",
+    "RowId": "Runeword171",
     "AllowedItems": [
       "tors"
     ],
@@ -9982,6 +15248,70 @@
       "Eld"
     ],
     "Properties": [
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "65",
+        "Max": "65",
+        "Description": "65% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Slower Stamina Drain",
+        "Priority": "49"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "All Resistances +[10-20]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Evade",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Evade",
+        "Priority": "81"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "move2",
         "Par": "",
@@ -10038,15 +15368,11 @@
         "Description": "+10 to Dexterity",
         "Priority": "65"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": true,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Mania",
+    "RowId": "Runeword172",
     "AllowedItems": [
       "weap"
     ],
@@ -10065,6 +15391,70 @@
       "Eld"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Quickness",
+        "Min": "5",
+        "Max": "1",
+        "Description": "5% Chance to cast level 1 Burst of Speed on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "200",
+        "Description": "[180-200]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Fanaticism",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Level 1 Fanaticism Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "+50 to Attack Rating against Undead",
+        "Priority": "106"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "75",
+        "Max": "75",
+        "Description": "75% Damage to Undead",
+        "Priority": "108"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Quickness",
@@ -10121,15 +15511,11 @@
         "Description": "75% Damage to Undead",
         "Priority": "108"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Mosaic",
+    "RowId": "Runeword173",
     "AllowedItems": [
       "h2h"
     ],
@@ -10152,6 +15538,118 @@
       "Amn"
     ],
     "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "20",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Martial Arts (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "charge-noconsume",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% chance for finishing moves to not consume charges",
+        "Priority": "157"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Minimum Fire Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Maximum Fire Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Minimum Lightning Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Maximum Lightning Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Minimum Cold Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "dmg-elem",
+        "Par": "",
+        "Min": "100",
+        "Max": "400",
+        "Description": "+[100-400] to Maximum Cold Damage",
+        "Priority": ""
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "skilltab",
         "Par": "20",
@@ -10232,15 +15730,11 @@
         "Description": "7% Life stolen per hit",
         "Priority": "88"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": true,
-    "IsTorso": false,
-    "IsHelmet": false,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Metamorphosis",
+    "RowId": "Runeword174",
     "AllowedItems": [
       "helm"
     ],
@@ -10260,6 +15754,94 @@
       "Fal"
     ],
     "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "Mark of the Bear",
+        "Min": "100",
+        "Max": "1",
+        "Description": "100% Chance to cast level 1 Mark of the Bear on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Mark of the Wolf",
+        "Min": "100",
+        "Max": "1",
+        "Description": "100% Chance to cast level 1 Mark of the Wolf on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "16",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Shape Shifting Skills (Druid Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "+[200-250] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "All Resistances +[20-30]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
       {
         "Prop": "hit-skill",
         "Par": "Mark of the Bear",
@@ -10332,15 +15914,11 @@
         "Description": "+10 to Strength",
         "Priority": "67"
       }
-    ],
-    "IsNew": false,
-    "IsWeapon": false,
-    "IsTorso": false,
-    "IsHelmet": true,
-    "IsShield": false
+    ]
   },
   {
     "Name": "Ground",
+    "RowId": "Runeword175",
     "AllowedItems": [
       "helm"
     ],
@@ -10393,6 +15971,14 @@
         "Priority": "24"
       },
       {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "473",
+        "Description": "Adds [1-473] lightning damage",
+        "Priority": "300"
+      },
+      {
         "Prop": "balance2",
         "Par": "",
         "Min": "20",
@@ -10413,10 +15999,62 @@
     "IsWeapon": false,
     "IsTorso": false,
     "IsHelmet": true,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Increase Maximum Life 5%",
+        "Priority": "58"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "75",
+        "Max": "100",
+        "Description": "[75-100]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "Lightning Resist [40-60]%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "abs-ltng%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Lightning Absorb [10-15]%",
+        "Priority": "24"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      }
+    ]
   },
   {
     "Name": "Temper",
+    "RowId": "Runeword176",
     "AllowedItems": [
       "helm"
     ],
@@ -10469,6 +16107,14 @@
         "Priority": "23"
       },
       {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "206",
+        "Max": "266",
+        "Description": "Adds [206-266] fire damage",
+        "Priority": "300"
+      },
+      {
         "Prop": "balance2",
         "Par": "",
         "Min": "20",
@@ -10489,10 +16135,62 @@
     "IsWeapon": false,
     "IsTorso": false,
     "IsHelmet": true,
-    "IsShield": false
+    "IsShield": false,
+    "IsReworked": true,
+    "VanillaProperties": [
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Increase Maximum Life 5%",
+        "Priority": "58"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "75",
+        "Max": "100",
+        "Description": "[75-100]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "Fire Resist [40-60]%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "abs-fire%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Fire Absorb [10-15]%",
+        "Priority": "23"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      }
+    ]
   },
   {
     "Name": "Hearth",
+    "RowId": "Runeword177",
     "AllowedItems": [
       "helm"
     ],
@@ -10577,6 +16275,7 @@
   },
   {
     "Name": "Cure",
+    "RowId": "Runeword178",
     "AllowedItems": [
       "helm"
     ],
@@ -10661,6 +16360,7 @@
   },
   {
     "Name": "Bulwark",
+    "RowId": "Runeword179",
     "AllowedItems": [
       "helm"
     ],
@@ -10753,6 +16453,7 @@
   },
   {
     "Name": "Coven",
+    "RowId": "Runeword180",
     "AllowedItems": [
       "helm"
     ],
@@ -10845,6 +16546,7 @@
   },
   {
     "Name": "Vigilance",
+    "RowId": "Runeword181",
     "AllowedItems": [
       "grim",
       "shld",
@@ -10954,6 +16656,7 @@
   },
   {
     "Name": "Ritual",
+    "RowId": "Runeword182",
     "AllowedItems": [
       "knif"
     ],
@@ -11056,6 +16759,7 @@
   },
   {
     "Name": "Isendras Legacy",
+    "RowId": "Runeword2000",
     "AllowedItems": [
       "orb"
     ],
@@ -11156,6 +16860,7 @@
   },
   {
     "Name": "Wilderness",
+    "RowId": "Runeword2001",
     "AllowedItems": [
       "pelt"
     ],
@@ -11267,6 +16972,7 @@
   },
   {
     "Name": "Ferocity",
+    "RowId": "Runeword2002",
     "AllowedItems": [
       "phlm"
     ],
@@ -11378,6 +17084,7 @@
   },
   {
     "Name": "Rathmas Curse",
+    "RowId": "Runeword2003",
     "AllowedItems": [
       "head"
     ],
@@ -11480,6 +17187,7 @@
   },
   {
     "Name": "Prism",
+    "RowId": "Runeword2004",
     "AllowedItems": [
       "ashd"
     ],
@@ -11592,6 +17300,7 @@
   },
   {
     "Name": "Ambush",
+    "RowId": "Runeword2005",
     "AllowedItems": [
       "h2h"
     ],
@@ -11693,6 +17402,7 @@
   },
   {
     "Name": "Onslaught",
+    "RowId": "Runeword2006",
     "AllowedItems": [
       "aspe"
     ],
@@ -11816,6 +17526,7 @@
   },
   {
     "Name": "Onslaught",
+    "RowId": "Runeword2007",
     "AllowedItems": [
       "abow"
     ],
@@ -11946,6 +17657,7 @@
   },
   {
     "Name": "Galaxy",
+    "RowId": "Runeword2008",
     "AllowedItems": [
       "orb"
     ],
@@ -12048,6 +17760,7 @@
   },
   {
     "Name": "Origin",
+    "RowId": "Runeword2009",
     "AllowedItems": [
       "pelt"
     ],
@@ -12151,6 +17864,7 @@
   },
   {
     "Name": "Juggernaut",
+    "RowId": "Runeword2010",
     "AllowedItems": [
       "phlm"
     ],
@@ -12262,6 +17976,7 @@
   },
   {
     "Name": "Legion",
+    "RowId": "Runeword2011",
     "AllowedItems": [
       "head"
     ],
@@ -12364,6 +18079,7 @@
   },
   {
     "Name": "Swiftness",
+    "RowId": "Runeword2012",
     "AllowedItems": [
       "h2h"
     ],
@@ -12465,6 +18181,7 @@
   },
   {
     "Name": "Disrespect",
+    "RowId": "Runeword2013",
     "AllowedItems": [
       "aspe"
     ],
@@ -12590,6 +18307,7 @@
   },
   {
     "Name": "Equilibrium",
+    "RowId": "Runeword2014",
     "AllowedItems": [
       "abow"
     ],

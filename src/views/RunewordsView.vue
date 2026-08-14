@@ -118,6 +118,50 @@ const getAllowedItemsText = (allowedItems) => {
   }).join(', ');
 };
 
+// Changes of a reworked runeword vs vanilla, as display lines.
+// Properties are paired by prop code + parameter.
+const getReworkChanges = (runeword) => {
+  const changes = [];
+
+  if (runeword.VanillaProperties) {
+    const key = p => `${p.Prop}|${p.Par}`;
+    const oldMap = new Map(runeword.VanillaProperties.map(p => [key(p), p]));
+    const newMap = new Map(runeword.Properties.map(p => [key(p), p]));
+
+    for (const [k, np] of newMap) {
+      const op = oldMap.get(k);
+      if (!op) {
+        changes.push({ old: null, new: np.Description });
+      } else if (op.Description !== np.Description) {
+        changes.push({ old: op.Description, new: np.Description });
+      }
+    }
+    for (const [k, op] of oldMap) {
+      if (!newMap.has(k)) {
+        changes.push({ old: op.Description, new: null });
+      }
+    }
+  }
+
+  if (runeword.VanillaAllowedItems) {
+    changes.push({
+      label: 'Usable in',
+      old: getAllowedItemsText(runeword.VanillaAllowedItems),
+      new: getAllowedItemsText(runeword.AllowedItems)
+    });
+  }
+
+  if (runeword.VanillaRuneNames) {
+    changes.push({
+      label: 'Runes',
+      old: runeword.VanillaRuneNames.join(' - '),
+      new: runeword.RuneNames.join(' - ')
+    });
+  }
+
+  return changes;
+};
+
 // Generate a unique key for each runeword
 const getRunewordKey = (runeword, category) => {
   // Combine name with runes, allowed items, and category to create a unique identifier
@@ -374,6 +418,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -391,6 +436,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -438,6 +500,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -471,6 +550,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -488,6 +568,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -521,6 +618,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -538,6 +636,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -571,6 +686,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -588,6 +704,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -621,6 +754,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -638,6 +772,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -684,6 +835,7 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
+                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ runeword.RuneNames.join(' - ') }}</td>
                       <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
@@ -701,6 +853,23 @@ onMounted(() => {
                               {{ prop.Description }}
                             </li>
                           </ul>
+                          <div v-if="runeword.IsReworked" class="rework-changes mt-3">
+                            <h6 class="section-header">Changes vs. vanilla</h6>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                v-for="(change, changeIndex) in getReworkChanges(runeword)"
+                                :key="changeIndex"
+                                class="list-group-item list-item-property"
+                              >
+                                <span v-if="change.label" class="rework-label">{{ change.label }}: </span>
+                                <span v-if="change.old" class="rework-old">{{ change.old }}</span>
+                                <span v-if="change.old && change.new" class="rework-arrow"> → </span>
+                                <span v-if="change.new" class="rework-new">{{ change.new }}</span>
+                                <span v-if="!change.new" class="rework-removed"> (removed)</span>
+                                <span v-if="!change.old" class="rework-added"> (new)</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -746,6 +915,32 @@ onMounted(() => {
     margin: -0.75rem;
     width: calc(100% + 1.5rem);
   }
+}
+
+.rework-badge {
+  background: rgba(201, 163, 106, 0.25);
+  color: var(--d2r-gold, #c9a36a);
+  border: 1px solid rgba(201, 163, 106, 0.5);
+}
+
+.rework-changes .rework-old {
+  color: rgba(194, 176, 143, 0.55);
+  text-decoration: line-through;
+}
+
+.rework-changes .rework-new {
+  color: var(--d2r-gold, #c9a36a);
+}
+
+.rework-changes .rework-arrow {
+  color: rgba(194, 176, 143, 0.7);
+}
+
+.rework-changes .rework-added,
+.rework-changes .rework-removed,
+.rework-changes .rework-label {
+  color: rgba(194, 176, 143, 0.7);
+  font-style: italic;
 }
 </style>
 
