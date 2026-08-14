@@ -1,6 +1,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import logoUrl from '@/assets/RelicsOfSancturay-symbol.png'
+import dataMeta from '@/assets/meta.json'
+
+const dataStamp = (() => {
+  const date = dataMeta.generatedAt ? dataMeta.generatedAt.substring(0, 10) : null
+  const version = dataMeta.modVersion ? `v${dataMeta.modVersion}` : null
+  return [version, date && `data ${date}`].filter(Boolean).join(' · ')
+})()
 
 const isSidebarOpen = ref(false)
 const isWideScreen = ref(false)
@@ -114,6 +121,7 @@ const handleClickOutside = (event) => {
 
       <div class="sidebar-footer">
         Build your legend with exalted relics and rune-crafted power.
+        <div v-if="dataStamp" class="data-stamp">{{ dataStamp }}</div>
       </div>
     </aside>
 
@@ -226,6 +234,14 @@ const handleClickOutside = (event) => {
   color: rgba(194, 176, 143, 0.7);
   font-size: 0.85rem;
   line-height: 1.4;
+}
+
+.data-stamp {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(194, 176, 143, 0.5);
 }
 
 .hamburger-menu {

@@ -68,6 +68,12 @@ const categorizedItems = computed(() => {
     } else {
       // Weapons and armor are grouped by tier
       const tier = item.Tier;
+      if (!result[tier]) {
+        // Unknown/empty tier on a weapon/armor item would otherwise crash the
+        // whole view - keep the page alive and make the data problem visible.
+        console.warn(`Unique item '${item.Name}' has unknown tier '${tier}' - skipped.`);
+        return;
+      }
       if (!result[tier][category][typeName]) {
         result[tier][category][typeName] = [];
       }
@@ -174,12 +180,13 @@ const sortPropertiesByPriority = (properties) => {
 };
 
 const getImageUrl = (imagePath) => {
-  try {
-    return new URL(`../assets/item_images/${imagePath}`, import.meta.url).href;
-  } catch (error) {
-    console.error(`Error loading image: ${imagePath}`, error);
-    return '';
-  }
+  return new URL(`../assets/item_images/${imagePath}`, import.meta.url).href;
+};
+
+// Hide the <img> when the mapped file does not exist (new item whose sprite
+// has not been extracted yet) instead of showing a broken-image icon.
+const hideBrokenImage = (event) => {
+  event.target.style.display = 'none';
 };
 
 onMounted(() => {
@@ -407,6 +414,8 @@ onMounted(() => {
                   :src="getImageUrl(pair.normal.ImageMapping)"
                   :alt="pair.normal.Name"
                   class="img-fluid"
+                  loading="lazy"
+                  @error="hideBrokenImage"
               />
             </div>
 
