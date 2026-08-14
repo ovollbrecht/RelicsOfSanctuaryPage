@@ -13,6 +13,40 @@ const activeFilters = ref({
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
 
+// Rainbow Facet metadata: 8 base jewels = 4 elements x 2 triggers
+// (death-skill / levelup-skill); their Exalted counterparts swap the trigger
+// to hit-skill / gethit-skill.
+const FACET_ELEMENTS = {
+  ltng: 'Lightning',
+  cold: 'Cold',
+  fire: 'Fire',
+  pois: 'Poison',
+};
+
+const FACET_TRIGGER_LABELS = {
+  death: 'Death',
+  level: 'Level',
+  hit: 'On Hit',
+  gethit: 'Get Hit',
+};
+
+const facetInfo = (item) => {
+  if (!item || (item.Name !== 'Rainbow Facet' && item.Name !== 'Exalted Rainbow Facet')) return null;
+  const props = item.Properties || [];
+  const elemProp = props.find(p => /^(pierce|extra)-(ltng|cold|fire|pois)$/.test(p.Prop));
+  const element = elemProp ? elemProp.Prop.split('-')[1] : null;
+  const trigger =
+    props.some(p => p.Prop === 'death-skill') ? 'death' :
+    props.some(p => p.Prop === 'levelup-skill') ? 'level' :
+    props.some(p => p.Prop === 'hit-skill') ? 'hit' :
+    props.some(p => p.Prop === 'gethit-skill') ? 'gethit' : null;
+  return element && trigger ? { element, trigger } : null;
+};
+
+// Exalted facets change the trigger: death -> on hit, level -> get hit.
+const exaltedTriggerOf = (baseTrigger) =>
+  baseTrigger === 'death' ? 'hit' : baseTrigger === 'level' ? 'gethit' : baseTrigger;
+
 const itemPairs = computed(() => {
   const pairs = [];
   const exaltedQueues = new Map();
@@ -31,7 +65,21 @@ const itemPairs = computed(() => {
     if (!item.Name.startsWith('Exalted ')) {
       const queue = exaltedQueues.get(item.Name);
       if (queue && queue.length) {
-        pairs.push({ normal: item, exalted: queue.shift() });
+        // Same-name multi-entries (the 8 Rainbow Facets) are paired by
+        // element + expected trigger instead of queue order.
+        const info = facetInfo(item);
+        let exalted;
+        if (info && queue.length > 1) {
+          const expected = exaltedTriggerOf(info.trigger);
+          const idx = queue.findIndex(e => {
+            const ei = facetInfo(e);
+            return ei && ei.element === info.element && ei.trigger === expected;
+          });
+          exalted = idx >= 0 ? queue.splice(idx, 1)[0] : queue.shift();
+        } else {
+          exalted = queue.shift();
+        }
+        pairs.push({ normal: item, exalted, facet: info });
       }
     }
   });
@@ -402,10 +450,19 @@ onMounted(() => {
     <!-- Item Cards -->
     <div class="row g-4 mt-3" ref="itemsSection">
       <div v-for="(pair, index) in filteredItemPairs" :key="index" class="col-12 col-xl-6">
-        <div class="card card-enhanced card-hover h-100">
+        <div class="card card-enhanced card-hover h-100" :class="pair.facet ? 'facet-card facet-' + pair.facet.element : ''">
           <div class="card-header card-header-primary">
-            <h2 class="h4 mb-1">{{ pair.normal.Name }}</h2>
-            <h3 class="h6 mb-0 fw-normal">{{ pair.normal.BaseItemName }}</h3>
+            <h2 class="h4 mb-1">
+              {{ pair.normal.Name }}<template v-if="pair.facet"> — {{ FACET_ELEMENTS[pair.facet.element] }}</template>
+            </h2>
+            <h3 class="h6 mb-0 fw-normal">
+              {{ pair.normal.BaseItemName }}
+              <template v-if="pair.facet">
+                <span class="badge facet-chip ms-2">{{ FACET_TRIGGER_LABELS[pair.facet.trigger] }}</span>
+                <span class="facet-chip-arrow">→</span>
+                <span class="badge facet-chip">Exalted: {{ FACET_TRIGGER_LABELS[exaltedTriggerOf(pair.facet.trigger)] }}</span>
+              </template>
+            </h3>
           </div>
 
           <div class="card-body">
@@ -593,5 +650,35 @@ onMounted(() => {
   .item-variant-card .card-body {
     padding: 0.85rem;
   }
+}
+
+/* Rainbow Facet cards: subtle element accent, muted to keep the D2 theme */
+.facet-card {
+  border-left: 3px solid var(--facet-color, rgba(201, 163, 106, 0.6));
+  box-shadow: var(--d2r-shadow), inset 6px 0 18px -12px var(--facet-color, transparent);
+}
+
+.facet-card .card-header-primary {
+  background: linear-gradient(90deg, #3a1e00, #121212 70%),
+    linear-gradient(90deg, var(--facet-color, transparent), transparent);
+  background-blend-mode: normal;
+}
+
+.facet-ltng { --facet-color: rgba(240, 217, 92, 0.65); }
+.facet-cold { --facet-color: rgba(94, 158, 217, 0.65); }
+.facet-fire { --facet-color: rgba(214, 92, 66, 0.65); }
+.facet-pois { --facet-color: rgba(114, 191, 106, 0.65); }
+
+.facet-chip {
+  background: color-mix(in srgb, var(--facet-color, #c9a36a) 18%, transparent);
+  color: var(--d2r-text);
+  border: 1px solid var(--facet-color, rgba(201, 163, 106, 0.5));
+  font-size: 0.7rem;
+}
+
+.facet-chip-arrow {
+  margin: 0 0.35rem;
+  color: rgba(194, 176, 143, 0.6);
+  font-size: 0.75rem;
 }
 </style>
