@@ -6768,7 +6768,7 @@
             "Par": "8",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Summoning Skills (Necromancer Only)",
+            "Description": "+2 to Summoning Skills (Necromancer Only)",
             "Priority": "151"
           },
           {
@@ -10500,7 +10500,7 @@
         "Par": "",
         "Min": "3",
         "Max": "3",
-        "Description": "+%d to Warlock Skills",
+        "Description": "+3 to Warlock Skills",
         "Priority": "150"
       },
       {
@@ -10552,7 +10552,7 @@
             "Par": "",
             "Min": "1",
             "Max": "1",
-            "Description": "+%d to Warlock Skills",
+            "Description": "+1 to Warlock Skills",
             "Priority": "150"
           },
           {
@@ -10616,7 +10616,7 @@
             "Par": "21",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Eldritch Skills (Warlock Only)",
+            "Description": "+2 to Eldritch Skills (Warlock Only)",
             "Priority": "151"
           },
           {
@@ -10885,7 +10885,7 @@
             "Par": "22",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Chaos Skills (Warlock Only)",
+            "Description": "+2 to Chaos Skills (Warlock Only)",
             "Priority": "151"
           },
           {
@@ -18877,7 +18877,7 @@
             "Par": "8",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Summoning Skills (Necromancer Only)",
+            "Description": "+2 to Summoning Skills (Necromancer Only)",
             "Priority": "151"
           },
           {
@@ -23262,7 +23262,7 @@
         "Par": "",
         "Min": "4",
         "Max": "4",
-        "Description": "+%d to Warlock Skills",
+        "Description": "+4 to Warlock Skills",
         "Priority": "150"
       },
       {
@@ -23314,7 +23314,7 @@
             "Par": "",
             "Min": "1",
             "Max": "1",
-            "Description": "+%d to Warlock Skills",
+            "Description": "+1 to Warlock Skills",
             "Priority": "150"
           },
           {
@@ -23386,7 +23386,7 @@
             "Par": "21",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Eldritch Skills (Warlock Only)",
+            "Description": "+2 to Eldritch Skills (Warlock Only)",
             "Priority": "151"
           },
           {
@@ -23679,7 +23679,7 @@
             "Par": "22",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Chaos Skills (Warlock Only)",
+            "Description": "+2 to Chaos Skills (Warlock Only)",
             "Priority": "151"
           },
           {

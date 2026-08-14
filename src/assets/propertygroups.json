@@ -18,7 +18,7 @@
             "Par": "21",
             "Min": "1",
             "Max": "1",
-            "Description": "+%d to Eldritch Skills (Warlock Only)",
+            "Description": "+1 to Eldritch Skills (Warlock Only)",
             "Priority": "151"
           }
         ],
@@ -1949,7 +1949,7 @@
             "Par": "",
             "Min": "1",
             "Max": "1",
-            "Description": "+%d to Warlock Skills",
+            "Description": "+1 to Warlock Skills",
             "Priority": "150"
           }
         ],
@@ -2116,7 +2116,7 @@
             "Par": "",
             "Min": "2",
             "Max": "2",
-            "Description": "+%d to Warlock Skills",
+            "Description": "+2 to Warlock Skills",
             "Priority": "150"
           }
         ],
@@ -2317,7 +2317,7 @@
                   "Par": "",
                   "Min": "2",
                   "Max": "2",
-                  "Description": "+%d to Warlock Skills",
+                  "Description": "+2 to Warlock Skills",
                   "Priority": "150"
                 }
               ],
@@ -2829,7 +2829,7 @@
                         "Par": "",
                         "Min": "2",
                         "Max": "2",
-                        "Description": "+%d to Warlock Skills",
+                        "Description": "+2 to Warlock Skills",
                         "Priority": "150"
                       }
                     ],
@@ -7999,7 +7999,7 @@
                               "Par": "",
                               "Min": "2",
                               "Max": "2",
-                              "Description": "+%d to Warlock Skills",
+                              "Description": "+2 to Warlock Skills",
                               "Priority": "150"
                             }
                           ],
