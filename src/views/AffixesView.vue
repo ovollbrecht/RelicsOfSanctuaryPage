@@ -60,21 +60,51 @@ const categoryOf = (code) => {
   return null;
 };
 
+// Types directly named in any affix's allowlist - used to break display-name
+// ties like "Jewel": cjwl derives from jewl but no affix targets cjwl itself.
+const directlyReferencedTypes = (() => {
+  const referenced = new Set();
+  [...affixData.Prefixes, ...affixData.Suffixes].forEach(affix => {
+    affix.AllowedTypes.forEach(t => referenced.add(t));
+    (affix.VanillaAllowedTypes ?? []).forEach(t => referenced.add(t));
+  });
+  return referenced;
+})();
+
 // Selectable concrete types = types of actual base items, grouped by category.
+// Types sharing a display name are deduped: directly affix-referenced types win.
 const typesByCategory = computed(() => {
-  const result = { jewelry: [], charms: [], armor: [], weapons: [] };
+  const candidates = [];
   const seen = new Set();
   baseItems.forEach(item => {
     if (seen.has(item.Type)) return;
     seen.add(item.Type);
     const category = categoryOf(item.Type);
     if (category) {
-      result[category].push(item.Type);
+      candidates.push({ type: item.Type, category });
     }
+  });
+
+  const byName = new Map();
+  candidates.forEach(c => {
+    const name = typeName(c.type);
+    if (!byName.has(name)) byName.set(name, []);
+    byName.get(name).push(c);
+  });
+
+  const result = { jewelry: [], charms: [], armor: [], weapons: [] };
+  byName.forEach(group => {
+    const preferred = group.filter(c => directlyReferencedTypes.has(c.type));
+    (preferred.length > 0 ? preferred : [group[0]]).forEach(c => result[c.category].push(c.type));
   });
   Object.values(result).forEach(list => list.sort((a, b) => typeName(a).localeCompare(typeName(b))));
   return result;
 });
+
+// Jewelry and charms have no meaningful base-item choice (qlvl 1 across the
+// board), and charms can only ever spawn as magic items.
+const hasBaseItemChoice = computed(() => !['jewelry', 'charms'].includes(selectedCategory.value));
+const isCharmType = computed(() => (typeChains[selectedType.value] ?? []).includes('char'));
 
 const basesOfType = computed(() =>
   baseItems.filter(item => item.Type === selectedType.value)
@@ -208,13 +238,18 @@ const setCategory = (category) => {
   selectedCategory.value = category;
   const types = typesByCategory.value[category];
   if (!types.includes(selectedType.value)) {
-    selectedType.value = types[0] ?? '';
+    setType(types[0] ?? '');
+  } else if (isCharmType.value) {
+    quality.value = 'magic';
   }
 };
 
 const setType = (type) => {
   selectedType.value = type;
   selectedBaseCode.value = '';
+  if (isCharmType.value) {
+    quality.value = 'magic';
+  }
 };
 
 const affixKey = (affix, kind) => `${kind}-${affix.RowIndex}`;
@@ -243,6 +278,7 @@ onMounted(() => {
   if (q.ilvl && !isNaN(+q.ilvl)) ilvl.value = Math.min(Math.max(+q.ilvl, 1), 99);
   if (['magic', 'rare', 'crafted'].includes(q.quality)) quality.value = q.quality;
   if (['mod', 'vanilla'].includes(q.data)) dataMode.value = q.data;
+  if (isCharmType.value) quality.value = 'magic';
 });
 
 watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
@@ -296,8 +332,8 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
         </div>
 
         <div class="row g-3 align-items-end">
-          <!-- base item -->
-          <div class="col-md-4">
+          <!-- base item (weapons/armor only - jewelry and charms are all qlvl 1) -->
+          <div v-if="hasBaseItemChoice" class="col-md-4">
             <label class="form-label text-warning">Base item (sets qlvl)</label>
             <select v-model="selectedBaseCode" class="form-select">
               <option value="">Any {{ typeName(selectedType) }} (qlvl 0)</option>
@@ -316,12 +352,13 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
           <!-- quality -->
           <div class="col-md-3">
             <label class="form-label text-warning">Quality</label>
-            <div class="btn-group w-100">
+            <div class="btn-group w-100" :title="isCharmType ? 'Charms only spawn as magic items' : undefined">
               <button
                 v-for="option in ['magic', 'rare', 'crafted']"
                 :key="option"
                 class="btn btn-sm pill"
                 :class="{ active: quality === option }"
+                :disabled="isCharmType && option !== 'magic'"
                 @click="quality = option"
               >{{ option.charAt(0).toUpperCase() + option.slice(1) }}</button>
             </div>
