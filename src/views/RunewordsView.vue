@@ -8,6 +8,12 @@ const runewords = ref([]);
 const searchQuery = ref('');
 const runesSearchQuery = ref('');
 const selectedCategory = ref('all');
+const dataMode = ref('mod'); // mod | vanilla (mod is the default)
+
+// Mode-aware field access: vanilla mode resolves the embedded Vanilla* value
+// for reworked runewords; new (mod-added) runewords stay visible either way.
+const fieldOf = (runeword, name) =>
+  dataMode.value === 'vanilla' ? (runeword['Vanilla' + name] ?? runeword[name]) : runeword[name];
 const expandedRows = ref(new Set());
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
@@ -148,7 +154,7 @@ const getReworkChanges = (runeword) => {
     changes.push({
       label: 'Usable in',
       old: getAllowedItemsText(runeword.VanillaAllowedItems),
-      new: getAllowedItemsText(runeword.AllowedItems)
+      new: getAllowedItemsText(fieldOf(runeword, 'AllowedItems'))
     });
   }
 
@@ -156,7 +162,7 @@ const getReworkChanges = (runeword) => {
     changes.push({
       label: 'Runes',
       old: runeword.VanillaRuneNames.join(' - '),
-      new: runeword.RuneNames.join(' - ')
+      new: fieldOf(runeword, 'RuneNames').join(' - ')
     });
   }
 
@@ -369,13 +375,36 @@ onMounted(() => {
                 >
                   Helmets
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   class="btn flex-fill"
                   :class="selectedCategory === 'shields' ? 'btn-secondary' : 'btn-outline-secondary'"
                   @click="setCategoryFilter('shields')"
                 >
                   Shields
+                </button>
+              </div>
+            </div>
+
+            <!-- Data source toggle -->
+            <div class="mb-1">
+              <label class="form-label text-warning">Data</label>
+              <div class="btn-group d-flex flex-wrap gap-2" role="group">
+                <button
+                  type="button"
+                  class="btn flex-fill"
+                  :class="dataMode === 'mod' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="dataMode = 'mod'"
+                >
+                  Relics of Sanctuary
+                </button>
+                <button
+                  type="button"
+                  class="btn flex-fill"
+                  :class="dataMode === 'vanilla' ? 'btn-secondary' : 'btn-outline-secondary'"
+                  @click="dataMode = 'vanilla'"
+                >
+                  Vanilla
                 </button>
               </div>
             </div>
@@ -419,10 +448,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'filtered'))" class="expanded-row">
                       <td colspan="3">
@@ -430,14 +459,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -469,8 +498,8 @@ onMounted(() => {
                   <template v-for="runeword in categorizedRunewords.new" :key="runeword.Name">
                     <tr @click="toggleRowExpansion(runeword, 'new')" style="cursor: pointer;">
                       <td>{{ runeword.Name }}</td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'new'))" class="expanded-row">
                       <td colspan="3">
@@ -478,14 +507,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -519,10 +548,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'weapons'))" class="expanded-row">
                       <td colspan="3">
@@ -530,14 +559,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -571,10 +600,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'armors'))" class="expanded-row">
                       <td colspan="3">
@@ -582,14 +611,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -623,10 +652,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'helmets'))" class="expanded-row">
                       <td colspan="3">
@@ -634,14 +663,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -675,10 +704,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'shields'))" class="expanded-row">
                       <td colspan="3">
@@ -686,14 +715,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>
@@ -740,10 +769,10 @@ onMounted(() => {
                       <td>
                         {{ getRunewordDisplayName(runeword) }}
                         <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked" class="badge rework-badge ms-2">Reworked</span>
+                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
-                      <td>{{ runeword.RuneNames.join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(runeword.AllowedItems) }}</td>
+                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
+                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'search'))" class="expanded-row">
                       <td colspan="3">
@@ -751,14 +780,14 @@ onMounted(() => {
                           <h5 class="section-header">Properties</h5>
                           <ul class="list-group list-group-flush">
                             <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(runeword.Properties)"
+                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
                               :key="propIndex"
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
                             </li>
                           </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" />
+                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
                         </div>
                       </td>
                     </tr>

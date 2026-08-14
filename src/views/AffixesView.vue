@@ -570,7 +570,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                       @click.stop="togglePin(affix, kind)"
                     >{{ isPinned(affix, kind) ? '★' : '☆' }}</button>
                     {{ affix.Name }}
-                    <span v-if="affix.IsReworked" class="badge rework-badge ms-1">Reworked</span>
+                    <span v-if="affix.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-1">Reworked</span>
                     <span v-if="affix.ClassSpecific" class="badge class-badge ms-1">{{ affix.ClassSpecific }}</span>
                   </span>
                   <span class="affix-meta">
@@ -597,7 +597,11 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                     Types: {{ fieldOf(affix, 'AllowedTypes').map(typeName).join(', ') }}
                     <span v-if="fieldOf(affix, 'ExcludedTypes').length"> — except {{ fieldOf(affix, 'ExcludedTypes').map(typeName).join(', ') }}</span>
                   </div>
-                  <ReworkChanges v-if="affix.IsReworked" :changes="getReworkChanges(affix)" />
+                  <ReworkChanges
+                    v-if="affix.IsReworked"
+                    :changes="getReworkChanges(affix)"
+                    :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'"
+                  />
                 </div>
               </div>
             </div>
