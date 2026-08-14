@@ -3,3 +3,10 @@
 #app {
   min-height: 100vh;
 }
+
+/* Badge for entries the mod reworked vs vanilla (runewords, affixes, ...) */
+.rework-badge {
+  background: rgba(201, 163, 106, 0.25);
+  color: var(--d2r-gold, #c9a36a);
+  border: 1px solid rgba(201, 163, 106, 0.5);
+}
