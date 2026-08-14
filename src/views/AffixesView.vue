@@ -177,6 +177,7 @@ const buildPool = (list) => {
   const groupList = [...groups.entries()].map(([group, affixes]) => ({
     group,
     affixes: affixes.slice().sort((a, b) => fieldOf(a, 'Level') - fieldOf(b, 'Level')),
+    groupFrequency: affixes.reduce((sum, a) => sum + fieldOf(a, 'Frequency'), 0),
     minRow: Math.min(...affixes.map(a => a.RowIndex)),
   })).sort((a, b) => a.minRow - b.minRow);
 
@@ -410,7 +411,10 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
               No {{ kind === 'prefix' ? 'prefixes' : 'suffixes' }} match the current selection.
             </div>
             <div v-for="groupEntry in pool.groups" :key="groupEntry.group" class="affix-group mb-2">
-              <div class="affix-group-header">Group {{ groupEntry.group }}</div>
+              <div class="affix-group-header d-flex justify-content-between align-items-baseline">
+                <span>Group {{ groupEntry.group }}<span v-if="groupEntry.affixes.length > 1" class="group-note"> · one of these</span></span>
+                <span class="group-note">Σ freq {{ groupEntry.groupFrequency }}</span>
+              </div>
               <div
                 v-for="affix in groupEntry.affixes"
                 :key="affix.RowIndex"
@@ -418,6 +422,11 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
                 :class="{ expanded: expandedAffixes.has(affixKey(affix, kind)) }"
                 @click="toggleAffix(affix, kind)"
               >
+                <div
+                  v-if="groupEntry.affixes.length > 1"
+                  class="group-weight-bar"
+                  :style="{ width: (fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) + '%' }"
+                ></div>
                 <div class="d-flex justify-content-between align-items-baseline flex-wrap gap-2">
                   <span class="affix-name">
                     {{ affix.Name }}
@@ -427,7 +436,10 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
                   <span class="affix-meta">
                     alvl {{ fieldOf(affix, 'Level') }}
                     · req {{ fieldOf(affix, 'LevelReq') }}
-                    · {{ formatChance(chanceOf(affix, pool)) }}%
+                    <template v-if="groupEntry.affixes.length > 1">
+                      · in group {{ formatChance(fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) }}%
+                    </template>
+                    · roll {{ formatChance(chanceOf(affix, pool)) }}%
                   </span>
                 </div>
                 <div class="affix-props">
@@ -478,19 +490,46 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode], () => {
   color: rgba(194, 176, 143, 0.7);
 }
 
+.affix-group {
+  border: 1px solid rgba(59, 42, 31, 0.6);
+  border-radius: 10px;
+  background: rgba(24, 18, 12, 0.35);
+  padding-bottom: 0.25rem;
+  overflow: hidden;
+}
+
 .affix-group-header {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: rgba(194, 176, 143, 0.55);
-  padding: 0.35rem 0.75rem 0.1rem;
+  color: rgba(194, 176, 143, 0.65);
+  padding: 0.4rem 0.75rem 0.3rem;
+  border-bottom: 1px solid rgba(59, 42, 31, 0.5);
+  background: rgba(30, 22, 15, 0.6);
+}
+
+.group-note {
+  text-transform: none;
+  letter-spacing: 0.05em;
+  color: rgba(194, 176, 143, 0.5);
 }
 
 .affix-row {
+  position: relative;
   padding: 0.45rem 0.75rem;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.15s ease;
+}
+
+.group-weight-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(201, 163, 106, 0.09), rgba(201, 163, 106, 0.03));
+  border-left: 2px solid rgba(201, 163, 106, 0.35);
+  pointer-events: none;
 }
 
 .affix-row:hover,
