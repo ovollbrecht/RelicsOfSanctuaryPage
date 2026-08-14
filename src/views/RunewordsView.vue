@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
@@ -17,6 +17,29 @@ const fieldOf = (runeword, name) =>
 const expandedRows = ref(new Set());
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
+const onlyReworked = ref(false);
+
+// Sticky filter panel: auto-collapse to a summary bar while scrolled, with a
+// manual override to re-open it in place.
+const isScrolled = ref(false);
+const forceOpen = ref(false);
+const filtersCollapsed = computed(() => isScrolled.value && !forceOpen.value);
+const onScroll = () => {
+  const scrolled = window.scrollY > 380;
+  if (scrolled !== isScrolled.value) {
+    isScrolled.value = scrolled;
+    if (!scrolled) forceOpen.value = false;
+  }
+};
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // the page may load pre-scrolled (scroll restoration)
+});
+onUnmounted(() => window.removeEventListener('scroll', onScroll));
+
+const visibleRunewords = computed(() =>
+  onlyReworked.value ? runewords.value.filter(runeword => runeword.IsReworked) : runewords.value
+);
 
 // Group runewords by category
 const categorizedRunewords = computed(() => {
@@ -28,7 +51,7 @@ const categorizedRunewords = computed(() => {
     shields: []
   };
 
-  runewords.value.forEach(runeword => {
+  visibleRunewords.value.forEach(runeword => {
     if (runeword.IsNew) {
       result.new.push(runeword);
     }
@@ -51,7 +74,7 @@ const categorizedRunewords = computed(() => {
 
 // Filter runewords based on search queries and category
 const filteredRunewords = computed(() => {
-  let filtered = [...runewords.value];
+  let filtered = [...visibleRunewords.value];
 
   // Apply category filter
   if (selectedCategory.value !== 'all') {
@@ -176,6 +199,14 @@ const getRunewordKey = (runeword, category) => {
   return `${runeword.Name}-${runeword.RuneNames.join('-')}-${allowedItems}-${category}`;
 };
 
+const setAllRowsExpanded = (list, category, expanded) => {
+  list.forEach(runeword => {
+    const key = getRunewordKey(runeword, category);
+    if (expanded) expandedRows.value.add(key);
+    else expandedRows.value.delete(key);
+  });
+};
+
 // Toggle row expansion
 const toggleRowExpansion = (runeword, category) => {
   const key = getRunewordKey(runeword, category);
@@ -225,6 +256,7 @@ const resetFilters = () => {
   searchQuery.value = '';
   runesSearchQuery.value = '';
   selectedCategory.value = 'all';
+  onlyReworked.value = false;
   expandedRows.value.clear();
 };
 
@@ -285,11 +317,32 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Search and Filter Section -->
-    <div class="row mb-4">
+    <!-- Search and Filter Section (sticky; collapses to a summary bar while scrolled) -->
+    <div class="row mb-4 sticky-filters">
       <div class="col-12">
         <div class="card card-enhanced filters-panel">
-          <div class="card-body">
+          <div v-if="filtersCollapsed" class="card-body compact-bar d-flex align-items-center flex-wrap gap-2">
+            <span class="compact-summary">
+              {{ selectedCategory === 'all' ? 'All categories' : selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1) }} ·
+              {{ dataMode === 'mod' ? 'Relics of Sanctuary' : 'Vanilla' }}<span v-if="onlyReworked"> · {{ dataMode === 'vanilla' ? 'only changed by mod' : 'only reworked' }}</span>
+            </span>
+            <input
+              type="text"
+              class="form-control form-control-sm compact-search"
+              placeholder="Search runewords..."
+              :value="searchQuery"
+              @input="(e) => handleSearch(e, false)"
+              @keyup="handleSearchKeyup"
+            />
+            <button class="btn btn-sm btn-outline-secondary" @click="forceOpen = true">Edit filters</button>
+          </div>
+          <div v-else class="card-body">
+            <button
+              v-if="isScrolled"
+              class="btn btn-sm btn-outline-secondary filters-collapse-btn"
+              title="Collapse filters"
+              @click="forceOpen = false"
+            >Collapse ▲</button>
             <!-- Name Search Field -->
             <div class="mb-3">
               <label for="nameSearch" class="form-label text-warning">Search by Name</label>
@@ -407,6 +460,12 @@ onMounted(() => {
                   Vanilla
                 </button>
               </div>
+              <div class="form-check mt-2 reworked-toggle">
+                <input id="rw-only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="rw-only-reworked">
+                  {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -418,7 +477,7 @@ onMounted(() => {
       <!-- Filtered Results Table (when search or category filter is active) -->
       <div class="col-12" v-if="searchQuery || runesSearchQuery || selectedCategory !== 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">
               <span v-if="searchQuery || runesSearchQuery">Search Results</span>
               <span v-else-if="selectedCategory === 'new'">New Runewords</span>
@@ -428,6 +487,10 @@ onMounted(() => {
               <span v-else-if="selectedCategory === 'shields'">Shield Runewords</span>
               <span v-else>Filtered Runewords</span>
             </h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(filteredRunewords, 'filtered', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(filteredRunewords, 'filtered', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div v-if="filteredRunewords.length === 0" class="text-center text-muted py-4">
@@ -481,8 +544,12 @@ onMounted(() => {
       <!-- New Runewords Table -->
       <div class="col-12" v-if="categorizedRunewords.new.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">New Runewords</h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.new, 'new', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.new, 'new', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -529,8 +596,12 @@ onMounted(() => {
       <!-- Weapons Runewords Table -->
       <div class="col-12" v-if="categorizedRunewords.weapons.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">Weapon Runewords</h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.weapons, 'weapons', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.weapons, 'weapons', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -581,8 +652,12 @@ onMounted(() => {
       <!-- Armor Runewords Table -->
       <div class="col-12" v-if="categorizedRunewords.armors.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">Armor Runewords</h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.armors, 'armors', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.armors, 'armors', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -633,8 +708,12 @@ onMounted(() => {
       <!-- Helmet Runewords Table -->
       <div class="col-12" v-if="categorizedRunewords.helmets.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">Helmet Runewords</h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.helmets, 'helmets', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.helmets, 'helmets', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -685,8 +764,12 @@ onMounted(() => {
       <!-- Shield Runewords Table -->
       <div class="col-12" v-if="categorizedRunewords.shields.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h2 class="h4 mb-0">Shield Runewords</h2>
+            <span class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.shields, 'shields', true)">Expand all</button>
+              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.shields, 'shields', false)">Collapse all</button>
+            </span>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -803,6 +886,59 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.sticky-filters {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.sticky-filters .filters-panel {
+  /* fully opaque so scrolled content cannot bleed through the pinned card */
+  background: linear-gradient(180deg, rgb(36, 26, 18), rgb(16, 12, 10));
+}
+
+/* keep the compact summary clear of the floating menu button */
+@media (max-width: 1199px) {
+  .compact-bar {
+    padding-left: 3.5rem;
+  }
+}
+
+.filters-panel .card-body {
+  position: relative;
+}
+
+.filters-collapse-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.compact-bar {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-summary {
+  color: rgba(201, 163, 106, 0.95);
+  font-size: 0.9rem;
+}
+
+.compact-search {
+  max-width: 16rem;
+  flex: 1 1 10rem;
+}
+
+.reworked-toggle .form-check-label {
+  color: rgba(201, 163, 106, 0.95);
+  font-size: 0.9rem;
+}
+
+.expand-btn {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  white-space: nowrap;
+}
+
 .filters-panel {
   background: linear-gradient(180deg, rgba(32, 24, 18, 0.95), rgba(16, 12, 10, 0.98));
   border: 1px solid rgba(59, 42, 31, 0.9);

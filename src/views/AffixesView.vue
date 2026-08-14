@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import affixData from '@/assets/affixes.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
@@ -19,6 +19,25 @@ const searchQuery = ref('');
 const searchInput = ref('');
 const expandedAffixes = ref(new Set());
 const debounceTimeout = ref(null);
+const onlyReworked = ref(false);
+
+// Sticky controls: auto-collapse to a summary row while scrolled, with a
+// manual chevron override.
+const isScrolled = ref(false);
+const forceOpen = ref(false);
+const controlsCollapsed = computed(() => isScrolled.value && !forceOpen.value);
+const onScroll = () => {
+  const scrolled = window.scrollY > 260;
+  if (scrolled !== isScrolled.value) {
+    isScrolled.value = scrolled;
+    if (!scrolled) forceOpen.value = false;
+  }
+};
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // the page may load pre-scrolled (scroll restoration)
+});
+onUnmounted(() => window.removeEventListener('scroll', onScroll));
 
 // ---------- static data ----------
 const typeChains = affixData.TypeChains;
@@ -157,6 +176,7 @@ const isEligible = (affix) => {
 };
 
 const matchesSearch = (affix) => {
+  if (onlyReworked.value && !affix.IsReworked) return false;
   const query = searchQuery.value.trim().toLowerCase();
   if (!query) return true;
   if (affix.Name.toLowerCase().includes(query)) return true;
@@ -357,6 +377,16 @@ const toggleAffix = (affix, kind) => {
   else expandedAffixes.value.add(key);
 };
 
+const setAllExpanded = (pool, kind, expanded) => {
+  const next = new Set(expandedAffixes.value);
+  pool.visible.forEach(affix => {
+    const key = affixKey(affix, kind);
+    if (expanded) next.add(key);
+    else next.delete(key);
+  });
+  expandedAffixes.value = next;
+};
+
 const handleSearch = (event) => {
   clearTimeout(debounceTimeout.value);
   debounceTimeout.value = setTimeout(() => {
@@ -407,9 +437,29 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
       </div>
     </div>
 
-    <!-- Controls -->
-    <div class="card controls-card mb-4">
-      <div class="card-body">
+    <!-- Controls (sticky; collapses to a summary bar while scrolled) -->
+    <div class="card controls-card sticky-controls mb-4">
+      <div v-if="controlsCollapsed" class="card-body compact-bar d-flex align-items-center flex-wrap gap-2">
+        <span class="compact-summary">
+          {{ typeName(selectedType) }} · ilvl {{ ilvl }} · {{ quality }} ·
+          {{ dataMode === 'mod' ? 'Relics of Sanctuary' : 'Vanilla' }}
+        </span>
+        <input
+          type="text"
+          class="form-control form-control-sm compact-search"
+          placeholder="Search affixes..."
+          :value="searchInput"
+          @input="handleSearch"
+        />
+        <button class="btn btn-sm pill" @click="forceOpen = true">Edit filters</button>
+      </div>
+      <div v-else class="card-body">
+        <button
+          v-if="isScrolled"
+          class="btn btn-sm pill controls-collapse-btn"
+          title="Collapse filters"
+          @click="forceOpen = false"
+        >Collapse ▲</button>
         <!-- category + type -->
         <div class="mb-3">
           <div class="d-flex flex-wrap gap-2 mb-2">
@@ -480,7 +530,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
         </div>
 
         <div class="row g-3 mt-1 align-items-center">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <input
               type="text"
               class="form-control"
@@ -489,7 +539,15 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
               @input="handleSearch"
             />
           </div>
-          <div class="col-md-6 text-md-end alvl-note">
+          <div class="col-md-3">
+            <div class="form-check reworked-toggle">
+              <input id="only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="only-reworked">
+                {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
+              </label>
+            </div>
+          </div>
+          <div class="col-md-4 text-md-end alvl-note">
             Effective affix level: <strong>{{ alvl }}</strong>
             <span v-if="selectedBase && selectedBase.MagicLvl > 0"> (ilvl + {{ selectedBase.MagicLvl }} magic lvl)</span>
             <span v-else-if="selectedBase"> (ilvl {{ ilvl }}, qlvl {{ selectedBase.Qlvl }})</span>
@@ -536,9 +594,13 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
     <div class="row g-4">
       <div v-for="[kind, pool] in [['prefix', prefixPool], ['suffix', suffixPool]]" :key="kind" class="col-lg-6">
         <div class="card h-100">
-          <div class="card-header section-header d-flex justify-content-between align-items-center">
+          <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span>{{ kind === 'prefix' ? 'Prefixes' : 'Suffixes' }}</span>
-            <span class="pool-count">{{ pool.eligible.length }} possible</span>
+            <span class="d-flex align-items-center gap-2">
+              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, true)">Expand all</button>
+              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, false)">Collapse all</button>
+              <span class="pool-count">{{ pool.eligible.length }} possible</span>
+            </span>
           </div>
           <div class="card-body p-2">
             <div v-if="pool.groups.length === 0" class="empty-note p-3">
@@ -613,6 +675,56 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
 </template>
 
 <style scoped>
+.sticky-controls {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* fully opaque so scrolled content cannot bleed through the pinned card */
+  background: linear-gradient(180deg, rgb(26, 20, 16), rgb(16, 12, 10));
+}
+
+/* keep the compact summary clear of the floating menu button */
+@media (max-width: 1199px) {
+  .compact-bar {
+    padding-left: 3.5rem;
+  }
+}
+
+.sticky-controls .card-body {
+  position: relative;
+}
+
+.controls-collapse-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.compact-bar {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-summary {
+  color: var(--d2-gold, #c9a36a);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.compact-search {
+  max-width: 16rem;
+  flex: 1 1 10rem;
+}
+
+.reworked-toggle .form-check-label {
+  color: var(--d2-gold, #c9a36a);
+  font-size: 0.9rem;
+}
+
+.expand-btn {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+}
+
 .controls-card .pill {
   border: 1px solid rgba(201, 163, 106, 0.35);
   color: var(--d2r-text);
