@@ -727,13 +727,33 @@ export function noDropChance(ctx, tcIndex, bonus) {
 // formatting
 // ---------------------------------------------------------------------------
 
+// narrow no-break space after the colon for readability
+const RATIO_SEP = ':\u202f';
+
+/**
+ * Percentages round to two significant digits of the fractional part:
+ * 1.3786 -> 1.38, 0.0000346 -> 0.000035, 62.5 -> 62.5.
+ */
+function formatPercent(pct) {
+  if (pct < 0.0000001) return '< 0.0000001%';
+  const fraction = pct - Math.floor(pct);
+  let decimals = 0;
+  if (fraction > 0) {
+    let f = fraction;
+    while (f < 1 && decimals < 10) {
+      f *= 10;
+      decimals++;
+    }
+    decimals++; // two significant fractional digits
+  }
+  return `${Number(pct.toFixed(decimals))}%`;
+}
+
 export function formatChance(p, mode = 'ratio') {
   if (!p || p <= 0) return mode === 'ratio' ? '-' : '0%';
   if (mode === 'pct') {
-    const pct = p * 100;
-    if (pct < 0.0000001) return '< 0.0000001%';
-    return `${Number(pct.toFixed(7))}%`;
+    return formatPercent(p * 100);
   }
-  if (p >= 0.1) return `1:${Math.round(10 / p) / 10}`;
-  return `1:${Math.round(1 / p).toLocaleString('en-US')}`;
+  if (p >= 0.1) return `1${RATIO_SEP}${Math.round(10 / p) / 10}`;
+  return `1${RATIO_SEP}${Math.round(1 / p).toLocaleString('en-US')}`;
 }

@@ -35,8 +35,37 @@ const heraldTier = ref(5);
 // ---------- results view ----------
 const viewMode = ref('source'); // source (monster -> drops) | item (item -> sources)
 const filterKind = ref('all'); // all | uniques | sets | runes
-const sortBy = ref('chance'); // chance | name
+const sortBy = ref('chance'); // chance | name | index (runes only)
+const sortDir = ref('desc'); // clicking the active sort again flips it
 const detailBaseIndex = ref(null);
+
+const SORT_DEFAULT_DIR = { chance: 'desc', name: 'asc', index: 'asc' };
+
+const setSort = (key) => {
+  if (sortBy.value === key) {
+    sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortBy.value = key;
+    sortDir.value = SORT_DEFAULT_DIR[key];
+  }
+};
+
+const sortArrow = (key) =>
+  sortBy.value === key ? (sortDir.value === 'asc' ? ' ▲' : ' ▼') : '';
+
+// rune number from the item code (r01..r33) for the index sort
+const runeNumber = (row) => {
+  const code = row.baseIndex >= 0 ? dropData.BaseItems[row.baseIndex].Code : '';
+  const match = /^r(\d+)$/.exec(code);
+  return match ? Number(match[1]) : 999;
+};
+
+watch(filterKind, () => {
+  if (sortBy.value === 'index' && filterKind.value !== 'runes') {
+    sortBy.value = 'chance';
+    sortDir.value = 'desc';
+  }
+});
 
 // ---------- item mode ----------
 const itemKind = ref('unique'); // unique | set | base
@@ -207,11 +236,26 @@ const filteredRows = computed(() => {
   if (filterKind.value === 'uniques') rows = rows.filter(r => r.kind === 'unique');
   else if (filterKind.value === 'sets') rows = rows.filter(r => r.kind === 'set');
   else if (filterKind.value === 'runes') rows = rows.filter(r => r.kind === 'base' && r.isRune);
+
+  const direction = sortDir.value === 'asc' ? 1 : -1;
   if (sortBy.value === 'name') {
-    rows = [...rows].sort((a, b) => a.name.localeCompare(b.name));
+    rows = [...rows].sort((a, b) => direction * a.name.localeCompare(b.name));
+  } else if (sortBy.value === 'index') {
+    rows = [...rows].sort((a, b) => direction * (runeNumber(a) - runeNumber(b)));
+  } else {
+    // rows arrive chance-descending from the engine
+    rows = sortDir.value === 'desc' ? rows : [...rows].reverse();
   }
   return rows;
 });
+
+// background bars: rune frequency relative to the most common listed rune
+const maxRuneChance = computed(() => {
+  if (filterKind.value !== 'runes') return 0;
+  return filteredRows.value.reduce((max, r) => Math.max(max, r.chance), 0);
+});
+
+const runeLabel = (name) => name.replace(/ Rune$/, '');
 
 // variant column only where the listed rows can actually carry one
 const showVariantColumn = computed(() =>
@@ -345,7 +389,8 @@ onMounted(() => {
   mythicPercent.value = clampInt(q.myp, 1, 99, mythicPercent.value);
   if (q.fmt === 'pct') chanceFormat.value = 'pct';
   if (['all', 'uniques', 'sets', 'runes'].includes(q.filter)) filterKind.value = q.filter;
-  if (q.sort === 'name') sortBy.value = 'name';
+  if (['name', 'index'].includes(q.sort)) sortBy.value = q.sort;
+  sortDir.value = ['asc', 'desc'].includes(q.dir) ? q.dir : SORT_DEFAULT_DIR[sortBy.value];
   if (['monster', 'superunique', 'herald', 'chest', 'rawTc'].includes(q.src)) sourceKind.value = q.src;
   if (['normal', 'champion', 'unique', 'minion', 'quest'].includes(q.type)) sourceType.value = q.type;
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
@@ -386,7 +431,7 @@ onMounted(() => {
 watch(
   [viewMode, difficulty, players, party, mf, dataMode, terrorEnabled, charLevel,
    exaltedEnabled, exaltedPercent, mythicEnabled, mythicPercent, chanceFormat,
-   filterKind, sortBy, sourceKind, sourceType, selectedMonster, selectedSuperSource,
+   filterKind, sortBy, sortDir, sourceKind, sourceType, selectedMonster, selectedSuperSource,
    selectedAreaId, selectedTc, itemKind, selectedItem, allDifficulties, heraldTier],
   () => {
     router.replace({
@@ -406,6 +451,7 @@ watch(
         ...(chanceFormat.value !== 'ratio' ? { fmt: chanceFormat.value } : {}),
         ...(filterKind.value !== 'all' ? { filter: filterKind.value } : {}),
         ...(sortBy.value !== 'chance' ? { sort: sortBy.value } : {}),
+        ...(sortDir.value !== SORT_DEFAULT_DIR[sortBy.value] ? { dir: sortDir.value } : {}),
         ...(sourceKind.value !== 'monster' ? { src: sourceKind.value } : {}),
         ...(sourceType.value !== 'normal' ? { type: sourceType.value } : {}),
         ...(selectedMonster.value != null ? { monster: dropData.Monsters[selectedMonster.value].Id } : {}),
@@ -795,8 +841,9 @@ watch(
             @click="filterKind = f[0]"
           >{{ f[1] }}</button>
           <span class="ms-auto d-flex gap-2">
-            <button class="btn btn-sm pill" :class="{ active: sortBy === 'chance' }" @click="sortBy = 'chance'">By chance</button>
-            <button class="btn btn-sm pill" :class="{ active: sortBy === 'name' }" @click="sortBy = 'name'">By name</button>
+            <button class="btn btn-sm pill" :class="{ active: sortBy === 'chance' }" @click="setSort('chance')">By chance{{ sortArrow('chance') }}</button>
+            <button class="btn btn-sm pill" :class="{ active: sortBy === 'name' }" @click="setSort('name')">By name{{ sortArrow('name') }}</button>
+            <button v-if="filterKind === 'runes'" class="btn btn-sm pill" :class="{ active: sortBy === 'index' }" @click="setSort('index')">By index{{ sortArrow('index') }}</button>
           </span>
         </div>
         <div v-if="filteredRows.length === 0" class="empty-note p-3">
@@ -819,9 +866,17 @@ watch(
                 :title="row.baseIndex >= 0 && !row.direct ? 'Show the detailed quality table for this base item' : undefined"
                 @click="openDetail(row)"
               >
-                <td>
-                  <span :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set' }">
-                    {{ rowLabel(row) }}
+                <td class="name-cell">
+                  <div
+                    v-if="filterKind === 'runes' && maxRuneChance > 0"
+                    class="rune-weight-bar"
+                    :style="{ width: (row.chance / maxRuneChance * 100) + '%' }"
+                  ></div>
+                  <span
+                    class="name-label"
+                    :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set' }"
+                  >
+                    {{ filterKind === 'runes' ? runeLabel(row.name) : rowLabel(row) }}
                   </span>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
@@ -979,5 +1034,24 @@ watch(
 .summary-strip strong {
   color: #c9a36a;
   font-variant-numeric: tabular-nums;
+}
+
+/* rune frequency bars (same look as the affix calculator's group bars) */
+.name-cell {
+  position: relative;
+}
+
+.rune-weight-bar {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  background: linear-gradient(90deg, rgba(201, 163, 106, 0.09), rgba(201, 163, 106, 0.03));
+  border-left: 2px solid rgba(201, 163, 106, 0.35);
+  pointer-events: none;
+}
+
+.name-label {
+  position: relative;
 }
 </style>
