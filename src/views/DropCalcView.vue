@@ -341,9 +341,10 @@ const qualityRows = computed(() => {
   const q = detail.value.quality;
   const p = detail.value.baseChance;
   return [
-    ['Rare', q.rare], ['Magic', q.magic], ['Superior', q.hiq],
-    ['Normal', q.normal], ['Low Quality', q.low],
-  ].filter(([, rel]) => rel > 0).map(([label, rel]) => ({ label, relative: rel, chance: p * rel }));
+    ['Rare', q.rare, 'name-rare'], ['Magic', q.magic, 'name-magic'],
+    ['Superior', q.hiq, 'name-normal'], ['Normal', q.normal, 'name-normal'],
+    ['Low Quality', q.low, 'name-low'],
+  ].filter(([, rel]) => rel > 0).map(([label, rel, colorClass]) => ({ label, relative: rel, chance: p * rel, colorClass }));
 });
 
 // ---------- item -> sources ----------
@@ -820,7 +821,7 @@ watch(
                 </td>
               </tr>
               <tr v-for="row in qualityRows" :key="row.label">
-                <td>{{ row.label }}</td>
+                <td><span :class="row.colorClass">{{ row.label }}</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end">—</td>
                 <td class="text-end chance-cell">{{ dfmt(row.chance) }}</td>
@@ -857,14 +858,14 @@ watch(
       <div class="card-body p-2">
         <div v-if="summary" class="summary-strip d-flex flex-wrap gap-3 px-2 pt-2">
           <span v-if="summary.unique > 0">
-            Any unique: <strong>{{ fmt(summary.unique) }}</strong>
+            Any <span class="name-unique">unique</span>: <strong>{{ fmt(summary.unique) }}</strong>
             <template v-if="summary.uniqueVariant > 0"> · exalted <strong>{{ fmt(summary.uniqueVariant) }}</strong></template>
           </span>
           <span v-if="summary.set > 0">
-            Any set item: <strong>{{ fmt(summary.set) }}</strong>
+            Any <span class="name-set">set item</span>: <strong>{{ fmt(summary.set) }}</strong>
             <template v-if="summary.setVariant > 0"> · mythic <strong>{{ fmt(summary.setVariant) }}</strong></template>
           </span>
-          <span v-if="summary.rune > 0">Any rune: <strong>{{ fmt(summary.rune) }}</strong></span>
+          <span v-if="summary.rune > 0">Any <span class="name-rune">rune</span>: <strong>{{ fmt(summary.rune) }}</strong></span>
         </div>
         <div class="d-flex flex-wrap gap-2 p-2">
           <button
@@ -913,7 +914,7 @@ watch(
                   ></div>
                   <span
                     class="name-label"
-                    :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set' }"
+                    :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set', 'name-rune': row.kind === 'base' && row.isRune }"
                   >
                     {{ filterKind === 'runes' ? runeLabel(row.name) : rowLabel(row) }}
                   </span>
@@ -1014,12 +1015,33 @@ watch(
   background: transparent;
 }
 
+/* item rarity colors as in-game: gold, green, yellow, blue, orange, gray */
 .name-unique {
   color: #c7b377;
 }
 
 .name-set {
   color: #58c458;
+}
+
+.name-rare {
+  color: #e8e85e;
+}
+
+.name-magic {
+  color: #8181f5;
+}
+
+.name-rune {
+  color: #e8a33d;
+}
+
+.name-normal {
+  color: #f0ede4;
+}
+
+.name-low {
+  color: #9d9d9d;
 }
 
 .row-base td {
