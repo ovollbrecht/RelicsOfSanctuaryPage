@@ -151,16 +151,46 @@ function monsterLevelHint(monster, diff) {
 const bossQuestDiffers = (m) =>
   m.Tcs.some(row => row[3] >= 0 && row[3] !== row[2]);
 
+/**
+ * The Pandemonium bosses carry the name of the monster they are a copy of, so
+ * "Diablo" or "Izual" would appear twice with no way to tell which is which.
+ * Their ids do say it, and it is what players call them anyway.
+ */
+const bossQualifier = (monster) => {
+  const id = monster.Id.toLowerCase();
+  if (id.startsWith('uber')) return ' (Uber)';
+  if (id.endsWith('clone')) return ' (Clone)';
+  return '';
+};
+
 const superSourceOptions = computed(() => {
   const options = dropData.SuperUniques
     .map((su, index) => ({ value: `su:${index}`, label: su.Name, hint: areaName(su.Areas[0]) }));
-  dropData.Monsters.forEach((m, index) => {
-    if (!m.Boss) return;
-    options.push({ value: `boss:${index}`, label: m.Name, hint: 'Boss' });
+
+  // Griswold, Radament, the Summoner and Nihlathak are reachable twice: once
+  // from superuniques.txt and once as their own monstats boss row, with the
+  // same treasure classes and level. Keep the superunique - it also carries
+  // the desecrated tables - and drop the twin.
+  const viaSuperUnique = new Set(dropData.SuperUniques.map(su => su.Monster).filter(i => i >= 0));
+
+  const bosses = dropData.Monsters
+    .map((m, index) => ({ m, index }))
+    .filter(({ m, index }) => m.Boss && !viaSuperUnique.has(index));
+
+  // Qualifying only the copies keeps the original plain: "Diablo" next to
+  // "Diablo (Clone)". Anything still colliding after that gets its level.
+  const labelled = bosses.map(entry => ({ ...entry, label: `${entry.m.Name}${bossQualifier(entry.m)}` }));
+  const labelCounts = new Map();
+  labelled.forEach(({ label }) => labelCounts.set(label, (labelCounts.get(label) ?? 0) + 1));
+
+  labelled.forEach(({ m, index, label: base }) => {
+    const label = labelCounts.get(base) > 1 ? `${base} — mlvl ${m.Levels[difficulty.value]}` : base;
+    options.push({ value: `boss:${index}`, label, hint: 'Boss' });
     if (bossQuestDiffers(m)) {
-      options.push({ value: `bossq:${index}`, label: `${m.Name} (Quest)`, hint: 'Boss, first kill' });
+      options.push({ value: `bossq:${index}`, label: `${label} (Quest)`, hint: 'Boss, first kill' });
     }
   });
+
   return options.sort((a, b) => a.label.localeCompare(b.label));
 });
 
