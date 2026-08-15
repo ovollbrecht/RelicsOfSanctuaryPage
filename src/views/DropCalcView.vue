@@ -321,9 +321,14 @@ const detail = computed(() => {
 
 watch([selection, dataMode], () => { detailBaseIndex.value = null; });
 
+// detail view has its own format toggle, preset to the active results format
+const detailFormat = ref('ratio');
+const dfmt = (p) => formatChance(p, detailFormat.value);
+
 const openDetail = (row) => {
   if (row.baseIndex != null && row.baseIndex >= 0 && !row.direct) {
     detailBaseIndex.value = row.baseIndex;
+    detailFormat.value = chanceFormat.value;
   }
 };
 
@@ -764,9 +769,13 @@ watch(
       <div class="card-header section-header d-flex justify-content-between align-items-center">
         <span>
           {{ detail.base.Name }}
-          <span class="info-chip">drop chance {{ fmt(detail.baseChance) }} · ilvl {{ detail.source.mlvl }}</span>
+          <span class="info-chip">drop chance {{ dfmt(detail.baseChance) }} · ilvl {{ detail.source.mlvl }}</span>
         </span>
-        <button class="btn btn-sm pill" @click="detailBaseIndex = null">Close ×</button>
+        <span class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm pill" :class="{ active: detailFormat === 'ratio' }" @click="detailFormat = 'ratio'">1:N</button>
+          <button class="btn btn-sm pill" :class="{ active: detailFormat === 'pct' }" @click="detailFormat = 'pct'">%</button>
+          <button class="btn btn-sm pill" @click="detailBaseIndex = null">Close ×</button>
+        </span>
       </div>
       <div class="card-body p-2">
         <div class="table-responsive">
@@ -790,33 +799,33 @@ watch(
                 <td><span class="name-unique">{{ row.name }}</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
-                  <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
+                  <template v-if="row.variantChance != null">{{ dfmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td class="text-end chance-cell">{{ dfmt(row.chance) }}</td>
                 <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
-                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                  {{ dfmt(cumulative(row.chance, n)) }}
                 </td>
               </tr>
               <tr v-for="row in detail.setRows" :key="'s' + row.name">
                 <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
-                  <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
+                  <template v-if="row.variantChance != null">{{ dfmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td class="text-end chance-cell">{{ dfmt(row.chance) }}</td>
                 <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
-                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                  {{ dfmt(cumulative(row.chance, n)) }}
                 </td>
               </tr>
               <tr v-for="row in qualityRows" :key="row.label">
                 <td>{{ row.label }}</td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end">—</td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td class="text-end chance-cell">{{ dfmt(row.chance) }}</td>
                 <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
-                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                  {{ dfmt(cumulative(row.chance, n)) }}
                 </td>
               </tr>
             </tbody>
