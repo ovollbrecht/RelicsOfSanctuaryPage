@@ -255,6 +255,12 @@ const maxRuneChance = computed(() => {
   return filteredRows.value.reduce((max, r) => Math.max(max, r.chance), 0);
 });
 
+// "if a rune drops, which one is it" - share of the summed rune chance
+const runeChanceSum = computed(() => {
+  if (filterKind.value !== 'runes') return 0;
+  return filteredRows.value.reduce((sum, r) => sum + r.chance, 0);
+});
+
 const runeLabel = (name) => name.replace(/ Rune$/, '');
 
 // variant column only where the listed rows can actually carry one
@@ -855,6 +861,11 @@ watch(
               <tr>
                 <th>Item</th>
                 <th class="text-end">Chance</th>
+                <th
+                  v-if="filterKind === 'runes' && runeChanceSum > 0"
+                  class="text-end"
+                  title="Chance that a dropped rune is this one"
+                >Of rune drops</th>
                 <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
               </tr>
             </thead>
@@ -880,6 +891,9 @@ watch(
                   </span>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-if="filterKind === 'runes' && runeChanceSum > 0" class="text-end chance-cell">
+                  {{ fmt(row.chance / runeChanceSum) }}
+                </td>
                 <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
