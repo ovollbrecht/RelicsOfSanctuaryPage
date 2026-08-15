@@ -3,7 +3,8 @@ import { ref, computed, watch } from 'vue';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import {
-  buildContext, computeMonsterDrops, formatChance, playerBonus, DIFFICULTIES,
+  buildContext, computeMonsterDrops, computeItemDetail, computeItemSources,
+  formatChance, playerBonus, DIFFICULTIES,
 } from '@/composables/useDropSimulation.js';
 
 // ---------- settings ----------
@@ -29,8 +30,16 @@ const selectedAreaId = ref(null);
 const selectedTc = ref(null);
 
 // ---------- results view ----------
+const viewMode = ref('source'); // source (monster -> drops) | item (item -> sources)
 const filterKind = ref('all'); // all | uniques | sets | runes
 const sortBy = ref('chance'); // chance | name
+const detailBaseIndex = ref(null);
+
+// ---------- item mode ----------
+const itemKind = ref('unique'); // unique | set | base
+const selectedItem = ref(null);
+const allDifficulties = ref(false);
+const ITEM_ROW_LIMIT = 300;
 
 const ctx = computed(() => buildContext(dropData, {
   dataMode: dataMode.value,
@@ -93,6 +102,37 @@ const hasQuestTc = computed(() =>
 function areaName(id) {
   return dropData.Areas.find(a => a.Id === id)?.Name ?? `Area ${id}`;
 }
+
+// ---------- item pickers ----------
+const uniqueItemOptions = computed(() =>
+  ctx.value.uniques
+    .map((u, index) => ({ u, index }))
+    .filter(({ u }) => u.Spawnable)
+    .map(({ u, index }) => ({
+      value: index,
+      label: u.Base >= 0 ? `${u.Name} (${dropData.BaseItems[u.Base].Name})` : u.Name,
+      hint: `lvl ${u.Lvl}`,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label)));
+
+const setItemOptions = computed(() =>
+  ctx.value.sets
+    .map((s, index) => ({ s, index }))
+    .filter(({ s }) => s.Spawnable)
+    .map(({ s, index }) => ({ value: index, label: `${s.Name} (${s.SetName})`, hint: `lvl ${s.Lvl}` }))
+    .sort((a, b) => a.label.localeCompare(b.label)));
+
+const baseItemOptions = computed(() =>
+  dropData.BaseItems
+    .map((b, index) => ({ value: index, label: b.Name, hint: `qlvl ${b.Qlvl}` }))
+    .sort((a, b) => a.label.localeCompare(b.label)));
+
+const itemOptions = computed(() =>
+  itemKind.value === 'unique' ? uniqueItemOptions.value
+    : itemKind.value === 'set' ? setItemOptions.value
+    : baseItemOptions.value);
+
+watch([itemKind, dataMode], () => { selectedItem.value = null; });
 
 // ---------- computation ----------
 const selection = computed(() => {
@@ -161,6 +201,61 @@ const rowLabel = (row) => {
   if (row.kind === 'unique') return row.baseName ? `${row.name} (${row.baseName})` : row.name;
   if (row.kind === 'set') return `${row.name} (${row.setName})`;
   return row.name;
+};
+
+// ---------- detail (color table for one base item) ----------
+const detail = computed(() => {
+  if (detailBaseIndex.value == null || !selection.value) return null;
+  const d = computeItemDetail(ctx.value, selection.value, detailBaseIndex.value);
+  return d.found ? d : null;
+});
+
+watch([selection, dataMode], () => { detailBaseIndex.value = null; });
+
+const openDetail = (row) => {
+  if (row.baseIndex != null && row.baseIndex >= 0 && !row.direct) {
+    detailBaseIndex.value = row.baseIndex;
+  }
+};
+
+const qualityRows = computed(() => {
+  if (!detail.value) return [];
+  const q = detail.value.quality;
+  const p = detail.value.baseChance;
+  return [
+    ['Rare', q.rare], ['Magic', q.magic], ['Superior', q.hiq],
+    ['Normal', q.normal], ['Low Quality', q.low],
+  ].filter(([, rel]) => rel > 0).map(([label, rel]) => ({ label, relative: rel, chance: p * rel }));
+});
+
+// ---------- item -> sources ----------
+const itemRows = computed(() => {
+  if (viewMode.value !== 'item' || selectedItem.value == null) return null;
+  return computeItemSources(ctx.value, {
+    itemKind: itemKind.value,
+    itemIndex: selectedItem.value,
+    difficulty: allDifficulties.value ? null : difficulty.value,
+  });
+});
+
+const sourceTypeLabel = (row) => {
+  const label = row.sourceType === 'superunique' ? 'Superunique'
+    : row.sourceType.charAt(0).toUpperCase() + row.sourceType.slice(1);
+  return label;
+};
+
+const jumpToSource = (row) => {
+  viewMode.value = 'source';
+  difficulty.value = row.difficulty;
+  if (row.sourceType === 'superunique') {
+    sourceKind.value = 'superunique';
+    selectedSuperUnique.value = row.superUniqueIndex;
+  } else {
+    sourceKind.value = 'monster';
+    selectedMonster.value = row.monsterIndex;
+    sourceType.value = row.sourceType === 'boss' ? 'normal' : row.sourceType;
+    if (row.areaId != null) selectedAreaId.value = row.areaId;
+  }
 };
 </script>
 
@@ -258,8 +353,14 @@ const rowLabel = (row) => {
       </div>
     </div>
 
+    <!-- Mode -->
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'source' }" @click="viewMode = 'source'">Monster → Drops</button>
+      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'item' }" @click="viewMode = 'item'">Item → Sources</button>
+    </div>
+
     <!-- Source -->
-    <div class="card controls-card mb-3">
+    <div v-if="viewMode === 'source'" class="card controls-card mb-3">
       <div class="card-body">
         <div class="d-flex flex-wrap gap-2 mb-3">
           <button class="btn btn-sm pill" :class="{ active: sourceKind === 'monster' }" @click="sourceKind = 'monster'">Monster</button>
@@ -322,8 +423,136 @@ const rowLabel = (row) => {
       </div>
     </div>
 
+    <!-- Item -> Sources -->
+    <div v-if="viewMode === 'item'" class="card controls-card mb-3">
+      <div class="card-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-3">
+            <label class="form-label text-warning">Item type</label>
+            <div class="btn-group w-100">
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'unique' }" @click="itemKind = 'unique'">Unique</button>
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'set' }" @click="itemKind = 'set'">Set item</button>
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'base' }" @click="itemKind = 'base'">Base item</button>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label class="form-label text-warning">Item</label>
+            <SearchableSelect v-model="selectedItem" :options="itemOptions" placeholder="Search items..." />
+          </div>
+          <div class="col-md-4">
+            <div class="form-check option-toggle">
+              <input id="alldiff" v-model="allDifficulties" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="alldiff">All difficulties</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="viewMode === 'item' && itemRows" class="card mb-4">
+      <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span>Sources <span class="info-chip">{{ itemRows.length }} found</span></span>
+        <span class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm pill" :class="{ active: chanceFormat === 'ratio' }" @click="chanceFormat = 'ratio'">1:N</button>
+          <button class="btn btn-sm pill" :class="{ active: chanceFormat === 'pct' }" @click="chanceFormat = 'pct'">%</button>
+        </span>
+      </div>
+      <div class="card-body p-2">
+        <div v-if="itemRows.length === 0" class="empty-note p-3">No source drops this item with the current settings.</div>
+        <div v-else class="table-responsive">
+          <table class="table table-dark table-hover drop-table">
+            <thead>
+              <tr>
+                <th>Monster</th>
+                <th>Type</th>
+                <th v-if="allDifficulties">Difficulty</th>
+                <th>Area</th>
+                <th class="text-end">mlvl</th>
+                <th class="text-end">Chance</th>
+                <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(row, index) in itemRows.slice(0, ITEM_ROW_LIMIT)"
+                :key="index"
+                class="clickable-row"
+                title="Show this source's full drop table"
+                @click="jumpToSource(row)"
+              >
+                <td>{{ row.monsterName }} <span v-if="row.terrorized" class="badge terror-badge ms-1">TZ</span></td>
+                <td>{{ sourceTypeLabel(row) }}</td>
+                <td v-if="allDifficulties">{{ DIFFICULTIES[row.difficulty] }}</td>
+                <td>{{ row.areaId != null ? areaName(row.areaId) : '-' }}</td>
+                <td class="text-end chance-cell">{{ row.mlvl }}</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                  <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
+                  <template v-else>—</template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div v-if="itemRows.length > ITEM_ROW_LIMIT" class="empty-note p-2">
+            Showing the top {{ ITEM_ROW_LIMIT }} of {{ itemRows.length }} sources.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail (color table for one base item) -->
+    <div v-if="viewMode === 'source' && detail" class="card mb-3 detail-card">
+      <div class="card-header section-header d-flex justify-content-between align-items-center">
+        <span>
+          {{ detail.base.Name }}
+          <span class="info-chip">drop chance {{ fmt(detail.baseChance) }} · ilvl {{ detail.source.mlvl }}</span>
+        </span>
+        <button class="btn btn-sm pill" @click="detailBaseIndex = null">Close ×</button>
+      </div>
+      <div class="card-body p-2">
+        <div class="table-responsive">
+          <table class="table table-dark drop-table">
+            <thead>
+              <tr>
+                <th>Quality</th>
+                <th class="text-end">Relative</th>
+                <th class="text-end">Absolute</th>
+                <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in detail.uniqueRows" :key="'u' + row.name">
+                <td><span class="name-unique">{{ row.name }}</span></td>
+                <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                  <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
+                  <template v-else>—</template>
+                </td>
+              </tr>
+              <tr v-for="row in detail.setRows" :key="'s' + row.name">
+                <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
+                <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                  <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
+                  <template v-else>—</template>
+                </td>
+              </tr>
+              <tr v-for="row in qualityRows" :key="row.label">
+                <td>{{ row.label }}</td>
+                <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-if="showVariantColumn" class="text-end">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- Source info + results -->
-    <div v-if="result && sourceInfo" class="card mb-4">
+    <div v-if="viewMode === 'source' && result && sourceInfo" class="card mb-4">
       <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
         <span>
           Drops
@@ -366,7 +595,13 @@ const rowLabel = (row) => {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(row, index) in filteredRows" :key="index" :class="'row-' + row.kind">
+              <tr
+                v-for="(row, index) in filteredRows"
+                :key="index"
+                :class="['row-' + row.kind, { 'clickable-row': row.baseIndex >= 0 && !row.direct }]"
+                :title="row.baseIndex >= 0 && !row.direct ? 'Show the detailed quality table for this base item' : undefined"
+                @click="openDetail(row)"
+              >
                 <td>
                   <span :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set' }">
                     {{ rowLabel(row) }}
@@ -383,8 +618,11 @@ const rowLabel = (row) => {
         </div>
       </div>
     </div>
-    <div v-else class="empty-note p-3">
+    <div v-else-if="viewMode === 'source'" class="empty-note p-3">
       Select a monster, superunique, chest, or treasure class to see drop chances.
+    </div>
+    <div v-else-if="viewMode === 'item' && !itemRows" class="empty-note p-3">
+      Select an item to see which monsters drop it.
     </div>
   </div>
 </template>
@@ -462,5 +700,18 @@ const rowLabel = (row) => {
 
 .empty-note {
   color: rgba(232, 221, 200, 0.6);
+}
+
+.mode-pill {
+  font-size: 0.95rem;
+  padding: 0.35rem 1rem;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.detail-card {
+  border-color: rgba(201, 163, 106, 0.5);
 }
 </style>

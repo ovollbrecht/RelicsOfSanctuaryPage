@@ -540,6 +540,120 @@ export function computeItemDetail(ctx, sel, baseIndex) {
   };
 }
 
+/**
+ * Which sources drop a given item, across all monsters/superuniques.
+ * sel: { itemKind: 'unique'|'set'|'base', itemIndex, difficulty: 0-2|null
+ *        (null = all difficulties) }
+ * Returns rows [{ monsterName, sourceType, difficulty, areaId, areaName,
+ * mlvl, terrorized, chance, variantChance }] sorted by chance descending.
+ */
+export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null }) {
+  const target = itemKind === 'unique' ? ctx.uniques[itemIndex]
+    : itemKind === 'set' ? ctx.sets[itemIndex]
+    : null;
+  const baseIndex = itemKind === 'base' ? itemIndex : target?.Base ?? -1;
+  const difficulties = difficulty == null ? [0, 1, 2] : [difficulty];
+  const rows = [];
+
+  const chanceFor = (source) => {
+    if (source.tcIndex == null || source.tcIndex < 0) return null;
+    const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus);
+
+    let chance = 0;
+    let variantChance = null;
+    const p = baseIndex >= 0 ? drops.get(baseIndex) ?? 0 : 0;
+    if (p > 0) {
+      if (itemKind === 'base') {
+        chance = p;
+      } else {
+        const uniques = uniquePool(ctx, baseIndex, source.mlvl);
+        const setItems = setPool(ctx, baseIndex, source.mlvl);
+        const quality = qualityChances(ctx, ctx.baseItems[baseIndex], source.mlvl, cm, {
+          hasUniques: uniques.length > 0,
+          hasSets: setItems.length > 0,
+        });
+        if (itemKind === 'unique') {
+          const entry = uniques.find(u => u.entry === ctx.uniques[itemIndex]);
+          if (entry) {
+            chance = p * quality.unique * entry.share;
+            if (entry.exaltedShare > 0) variantChance = p * quality.unique * entry.exaltedShare;
+          }
+        } else {
+          const entry = setItems.find(s => s.entry === ctx.sets[itemIndex]);
+          if (entry) {
+            chance = p * quality.set * entry.share;
+            if (entry.mythicShare > 0) variantChance = p * quality.set * entry.mythicShare;
+          }
+        }
+      }
+    }
+
+    // direct TC references (Annihilus, sunder charms, quest TCs)
+    if (itemKind === 'unique' && uniqueDrops.has(itemIndex)) {
+      const direct = uniqueDrops.get(itemIndex);
+      chance += direct;
+      if (ctx.uniques[itemIndex].ExaltedName && ctx.options.exalted?.enabled) {
+        variantChance = (variantChance ?? 0) + direct * (ctx.options.exalted.percent ?? 5) / 100;
+      }
+    }
+    if (itemKind === 'set' && setDrops.has(itemIndex)) {
+      const direct = setDrops.get(itemIndex);
+      chance += direct;
+      if (ctx.sets[itemIndex].MythicName && ctx.options.mythic?.enabled) {
+        variantChance = (variantChance ?? 0) + direct * (ctx.options.mythic.percent ?? 5) / 100;
+      }
+    }
+
+    return chance > 0 ? { chance, variantChance } : null;
+  };
+
+  for (const diff of difficulties) {
+    ctx.monsters.forEach((monster, monsterIndex) => {
+      for (const type of ['normal', 'champion', 'unique']) {
+        const areas = monster.Areas[diff].length > 0 ? monster.Areas[diff] : [null];
+        for (const areaId of areas) {
+          const sourceType = type === 'normal' && monster.Boss ? 'boss' : type;
+          const source = resolveSource(ctx, { kind: 'monster', monsterIndex, sourceType, difficulty: diff, areaId });
+          const hit = chanceFor(source);
+          if (!hit) continue;
+          rows.push({
+            monsterName: monster.Name,
+            monsterIndex,
+            sourceType,
+            difficulty: diff,
+            areaId,
+            mlvl: source.mlvl,
+            terrorized: source.terrorized,
+            ...hit,
+          });
+          // bosses have identical TCs for all base types - one row is enough
+          if (monster.Boss) break;
+        }
+        if (monster.Boss) break;
+      }
+    });
+
+    ctx.superUniques.forEach((su, superUniqueIndex) => {
+      const source = resolveSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty: diff });
+      const hit = chanceFor(source);
+      if (!hit) return;
+      rows.push({
+        monsterName: su.Name,
+        superUniqueIndex,
+        sourceType: 'superunique',
+        difficulty: diff,
+        areaId: su.Areas[0] ?? null,
+        mlvl: source.mlvl,
+        terrorized: source.terrorized,
+        ...hit,
+      });
+    });
+  }
+
+  rows.sort((a, b) => b.chance - a.chance);
+  return rows;
+}
+
 // ---------------------------------------------------------------------------
 // formatting
 // ---------------------------------------------------------------------------
