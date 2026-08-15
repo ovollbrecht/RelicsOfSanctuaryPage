@@ -723,8 +723,8 @@ watch(
                 <th v-if="allDifficulties">Difficulty</th>
                 <th>Area</th>
                 <th class="text-end">mlvl</th>
-                <th class="text-end">Chance</th>
                 <th v-if="showItemVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th class="text-end">Chance</th>
               </tr>
             </thead>
             <tbody>
@@ -740,11 +740,11 @@ watch(
                 <td v-if="allDifficulties">{{ DIFFICULTIES[row.difficulty] }}</td>
                 <td>{{ row.areaId != null ? areaName(row.areaId) : '-' }}</td>
                 <td class="text-end chance-cell">{{ row.mlvl }}</td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
                 <td v-if="showItemVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
               </tr>
             </tbody>
           </table>
@@ -771,34 +771,34 @@ watch(
               <tr>
                 <th>Quality</th>
                 <th class="text-end">Relative</th>
-                <th class="text-end">Absolute</th>
                 <th v-if="showDetailVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th class="text-end">Absolute</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="row in detail.uniqueRows" :key="'u' + row.name">
                 <td><span class="name-unique">{{ row.name }}</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
               </tr>
               <tr v-for="row in detail.setRows" :key="'s' + row.name">
                 <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
               </tr>
               <tr v-for="row in qualityRows" :key="row.label">
                 <td>{{ row.label }}</td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end">—</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
               </tr>
             </tbody>
           </table>
@@ -860,13 +860,13 @@ watch(
             <thead>
               <tr>
                 <th>Item</th>
-                <th class="text-end">Chance</th>
                 <th
                   v-if="filterKind === 'runes' && runeChanceSum > 0"
                   class="text-end"
                   title="Chance that a dropped rune is this one"
                 >Of rune drops</th>
                 <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th class="text-end">Chance</th>
               </tr>
             </thead>
             <tbody>
@@ -890,7 +890,6 @@ watch(
                     {{ filterKind === 'runes' ? runeLabel(row.name) : rowLabel(row) }}
                   </span>
                 </td>
-                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
                 <td v-if="filterKind === 'runes' && runeChanceSum > 0" class="text-end chance-cell">
                   {{ fmt(row.chance / runeChanceSum) }}
                 </td>
@@ -898,6 +897,7 @@ watch(
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
               </tr>
             </tbody>
           </table>
