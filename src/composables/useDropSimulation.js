@@ -731,11 +731,13 @@ export function noDropChance(ctx, tcIndex, bonus) {
 const RATIO_SEP = ':\u202f';
 
 /**
- * Percentages round to two significant digits of the fractional part:
- * 1.3786 -> 1.38, 0.0000346 -> 0.000035, 62.5 -> 62.5.
+ * Percentages above 1 always get two decimals (62.5 -> 62.50, 1.3786 ->
+ * 1.38); smaller values round to two significant fractional digits
+ * (0.0000346 -> 0.000035).
  */
 function formatPercent(pct) {
   if (pct < 0.0000001) return '< 0.0000001%';
+  if (pct > 1) return `${pct.toFixed(2)}%`;
   const fraction = pct - Math.floor(pct);
   let decimals = 0;
   if (fraction > 0) {
