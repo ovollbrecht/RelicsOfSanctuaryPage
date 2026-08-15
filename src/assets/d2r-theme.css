@@ -259,6 +259,9 @@ h5 {
   background-color: rgba(26, 20, 14, 0.95);
   border-color: rgba(201, 163, 106, 0.7);
   box-shadow: 0 0 0 0.2rem rgba(201, 163, 106, 0.2);
+  /* Bootstrap's :focus resets the text color to its dark default */
+  color: #f4e7c7;
+  caret-color: #f4e7c7;
 }
 
 .search-input-group {

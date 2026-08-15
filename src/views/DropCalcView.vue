@@ -420,10 +420,10 @@ watch(
               <label class="form-check-label" for="terror">Terror Zone</label>
             </div>
             <input
-              v-if="terrorEnabled"
               v-model.number="charLevel"
               type="number" min="1" max="99"
               class="form-control form-control-sm mt-1"
+              :class="{ 'option-hidden': !terrorEnabled }"
               title="Character level of the game creator"
             />
           </div>
@@ -432,7 +432,7 @@ watch(
               <input id="exalted" v-model="exaltedEnabled" class="form-check-input" type="checkbox" />
               <label class="form-check-label" for="exalted">Exalted uniques</label>
             </div>
-            <div v-if="exaltedEnabled" class="input-group input-group-sm mt-1">
+            <div class="input-group input-group-sm mt-1" :class="{ 'option-hidden': !exaltedEnabled }">
               <input v-model.number="exaltedPercent" type="number" min="1" max="99" class="form-control" />
               <span class="input-group-text">%</span>
             </div>
@@ -442,7 +442,7 @@ watch(
               <input id="mythic" v-model="mythicEnabled" class="form-check-input" type="checkbox" />
               <label class="form-check-label" for="mythic">Mythic set items</label>
             </div>
-            <div v-if="mythicEnabled" class="input-group input-group-sm mt-1">
+            <div class="input-group input-group-sm mt-1" :class="{ 'option-hidden': !mythicEnabled }">
               <input v-model.number="mythicPercent" type="number" min="1" max="99" class="form-control" />
               <span class="input-group-text">%</span>
             </div>
@@ -741,6 +741,12 @@ watch(
 </template>
 
 <style scoped>
+/* the theme's .card clips overflow (rounded corners) - the select dropdowns
+   need to escape the card */
+.controls-card {
+  overflow: visible;
+}
+
 .controls-card .pill {
   border: 1px solid rgba(201, 163, 106, 0.35);
   color: #e8ddc8;
@@ -762,6 +768,11 @@ watch(
 
 .option-toggle .form-check-label {
   color: rgba(201, 163, 106, 0.95);
+}
+
+/* keep the row height stable when a toggle hides its input */
+.option-hidden {
+  visibility: hidden;
 }
 
 .info-note {
@@ -818,6 +829,14 @@ watch(
 .mode-pill {
   font-size: 0.95rem;
   padding: 0.35rem 1rem;
+  border: 1px solid rgba(201, 163, 106, 0.55);
+  color: #f0e3c4;
+  background: rgba(26, 20, 16, 0.85);
+}
+
+.mode-pill:hover {
+  border-color: rgba(201, 163, 106, 0.8);
+  color: #f4e5c3;
 }
 
 .clickable-row {
