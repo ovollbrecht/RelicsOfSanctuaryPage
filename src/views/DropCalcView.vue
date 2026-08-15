@@ -329,7 +329,7 @@ const openDetail = (row) => {
 
 // chance to see the item at least once in n kills
 const cumulative = (p, n) => 1 - Math.pow(1 - p, n);
-const CUMULATIVE_KILLS = [10, 50, 100];
+const CUMULATIVE_KILLS = [1, 10, 50, 100, 1000];
 
 const qualityRows = computed(() => {
   if (!detail.value) return [];
