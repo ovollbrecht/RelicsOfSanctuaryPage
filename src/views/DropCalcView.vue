@@ -5,7 +5,7 @@ import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import {
   buildContext, computeMonsterDrops, computeItemDetail, computeItemSources,
-  formatChance, playerBonus, DIFFICULTIES,
+  formatChance, playerBonus, effectiveMf, noDropChance, DIFFICULTIES,
 } from '@/composables/useDropSimulation.js';
 
 // ---------- settings ----------
@@ -23,12 +23,14 @@ const mythicPercent = ref(5);
 const chanceFormat = ref('ratio');
 
 // ---------- source ----------
-const sourceKind = ref('monster'); // monster | superunique | chest | rawTc
+const sourceKind = ref('monster'); // monster | superunique | herald | chest | rawTc
 const sourceType = ref('normal'); // normal | champion | unique | minion | quest
 const selectedMonster = ref(null);
-const selectedSuperUnique = ref(null);
+// token: 'su:<idx>' | 'boss:<monsterIdx>' | 'bossq:<monsterIdx>'
+const selectedSuperSource = ref(null);
 const selectedAreaId = ref(null);
 const selectedTc = ref(null);
+const heraldTier = ref(5);
 
 // ---------- results view ----------
 const viewMode = ref('source'); // source (monster -> drops) | item (item -> sources)
@@ -50,16 +52,21 @@ const ctx = computed(() => buildContext(dropData, {
   terror: { enabled: terrorEnabled.value, charLevel: charLevel.value },
   exalted: { enabled: exaltedEnabled.value && dataMode.value === 'mod', percent: exaltedPercent.value },
   mythic: { enabled: mythicEnabled.value && dataMode.value === 'mod', percent: mythicPercent.value },
+  heraldTier: heraldTier.value,
 }));
 
 const bonus = computed(() => playerBonus(players.value, party.value));
+const mfInfo = computed(() => effectiveMf(mf.value));
+const heraldAvailable = computed(() => (dropData.Meta?.HeraldTcIndex ?? -1) >= 0);
 
 // ---------- pickers ----------
 const monsterOptions = computed(() => {
   const nameCounts = new Map();
   dropData.Monsters.forEach(m => nameCounts.set(m.Name, (nameCounts.get(m.Name) ?? 0) + 1));
   return dropData.Monsters
-    .map((m, index) => ({
+    .map((m, index) => ({ m, index }))
+    .filter(({ m }) => !m.Boss) // bosses live in the Superunique / Boss picker
+    .map(({ m, index }) => ({
       value: index,
       label: nameCounts.get(m.Name) > 1 ? `${m.Name} (${m.Id})` : m.Name,
       hint: `mlvl ${m.Levels[difficulty.value]}`,
@@ -67,10 +74,22 @@ const monsterOptions = computed(() => {
     .sort((a, b) => a.label.localeCompare(b.label));
 });
 
-const superUniqueOptions = computed(() =>
-  dropData.SuperUniques
-    .map((su, index) => ({ value: index, label: su.Name, hint: areaName(su.Areas[0]) }))
-    .sort((a, b) => a.label.localeCompare(b.label)));
+// quest kill drops differently than a regular kill in at least one difficulty
+const bossQuestDiffers = (m) =>
+  m.Tcs.some(row => row[3] >= 0 && row[3] !== row[2]);
+
+const superSourceOptions = computed(() => {
+  const options = dropData.SuperUniques
+    .map((su, index) => ({ value: `su:${index}`, label: su.Name, hint: areaName(su.Areas[0]) }));
+  dropData.Monsters.forEach((m, index) => {
+    if (!m.Boss) return;
+    options.push({ value: `boss:${index}`, label: m.Name, hint: 'Boss' });
+    if (bossQuestDiffers(m)) {
+      options.push({ value: `bossq:${index}`, label: `${m.Name} (Quest)`, hint: 'Boss, first kill' });
+    }
+  });
+  return options.sort((a, b) => a.label.localeCompare(b.label));
+});
 
 const areaOptions = computed(() =>
   dropData.Areas
@@ -149,8 +168,21 @@ const selection = computed(() => {
       areaId: selectedAreaId.value,
     };
   }
-  if (sourceKind.value === 'superunique' && selectedSuperUnique.value != null) {
-    return { kind: 'superunique', superUniqueIndex: selectedSuperUnique.value, difficulty: difficulty.value };
+  if (sourceKind.value === 'superunique' && selectedSuperSource.value != null) {
+    const [token, idxStr] = selectedSuperSource.value.split(':');
+    const index = Number(idxStr);
+    if (token === 'su') {
+      return { kind: 'superunique', superUniqueIndex: index, difficulty: difficulty.value };
+    }
+    return {
+      kind: 'monster',
+      monsterIndex: index,
+      sourceType: token === 'bossq' ? 'quest' : 'boss',
+      difficulty: difficulty.value,
+    };
+  }
+  if (sourceKind.value === 'herald') {
+    return { kind: 'herald', difficulty: difficulty.value };
   }
   if (sourceKind.value === 'chest' && selectedAreaId.value != null) {
     return { kind: 'chest', areaId: selectedAreaId.value, difficulty: difficulty.value };
@@ -166,11 +198,8 @@ const result = computed(() => {
   return computeMonsterDrops(ctx.value, selection.value);
 });
 
-const showExaltedColumn = computed(() =>
-  dataMode.value === 'mod' && exaltedEnabled.value);
-const showMythicColumn = computed(() =>
-  dataMode.value === 'mod' && mythicEnabled.value);
-const showVariantColumn = computed(() => showExaltedColumn.value || showMythicColumn.value);
+const variantsEnabled = computed(() =>
+  dataMode.value === 'mod' && (exaltedEnabled.value || mythicEnabled.value));
 
 const filteredRows = computed(() => {
   if (!result.value) return [];
@@ -182,6 +211,35 @@ const filteredRows = computed(() => {
     rows = [...rows].sort((a, b) => a.name.localeCompare(b.name));
   }
   return rows;
+});
+
+// variant column only where the listed rows can actually carry one
+const showVariantColumn = computed(() =>
+  variantsEnabled.value && filteredRows.value.some(r => r.variantChance != null));
+const showItemVariantColumn = computed(() =>
+  variantsEnabled.value && (itemRows.value ?? []).some(r => r.variantChance != null));
+const showDetailVariantColumn = computed(() =>
+  variantsEnabled.value && detail.value != null &&
+  [...detail.value.uniqueRows, ...detail.value.setRows].some(r => r.variantChance != null));
+
+// aggregated chances over the full drop table (additive, like the row values)
+const summary = computed(() => {
+  if (!result.value) return null;
+  const sum = (predicate, key = 'chance') => result.value.rows
+    .filter(predicate)
+    .reduce((total, r) => total + (r[key] ?? 0), 0);
+  return {
+    unique: sum(r => r.kind === 'unique'),
+    uniqueVariant: sum(r => r.kind === 'unique', 'variantChance'),
+    set: sum(r => r.kind === 'set'),
+    setVariant: sum(r => r.kind === 'set', 'variantChance'),
+    rune: sum(r => r.kind === 'base' && r.isRune),
+  };
+});
+
+const noDrop = computed(() => {
+  if (!result.value) return null;
+  return noDropChance(ctx.value, result.value.source.upgradedTcIndex, bonus.value);
 });
 
 const sourceInfo = computed(() => {
@@ -250,11 +308,14 @@ const jumpToSource = (row) => {
   difficulty.value = row.difficulty;
   if (row.sourceType === 'superunique') {
     sourceKind.value = 'superunique';
-    selectedSuperUnique.value = row.superUniqueIndex;
+    selectedSuperSource.value = `su:${row.superUniqueIndex}`;
+  } else if (row.sourceType === 'boss') {
+    sourceKind.value = 'superunique';
+    selectedSuperSource.value = `boss:${row.monsterIndex}`;
   } else {
     sourceKind.value = 'monster';
     selectedMonster.value = row.monsterIndex;
-    sourceType.value = row.sourceType === 'boss' ? 'normal' : row.sourceType;
+    sourceType.value = row.sourceType;
     if (row.areaId != null) selectedAreaId.value = row.areaId;
   }
 };
@@ -285,8 +346,9 @@ onMounted(() => {
   if (q.fmt === 'pct') chanceFormat.value = 'pct';
   if (['all', 'uniques', 'sets', 'runes'].includes(q.filter)) filterKind.value = q.filter;
   if (q.sort === 'name') sortBy.value = 'name';
-  if (['monster', 'superunique', 'chest', 'rawTc'].includes(q.src)) sourceKind.value = q.src;
+  if (['monster', 'superunique', 'herald', 'chest', 'rawTc'].includes(q.src)) sourceKind.value = q.src;
   if (['normal', 'champion', 'unique', 'minion', 'quest'].includes(q.type)) sourceType.value = q.type;
+  heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
 
   if (q.monster) {
     const idx = dropData.Monsters.findIndex(m => m.Id === q.monster);
@@ -294,7 +356,11 @@ onMounted(() => {
   }
   if (q.su) {
     const idx = dropData.SuperUniques.findIndex(s => s.Id === q.su);
-    if (idx >= 0) selectedSuperUnique.value = idx;
+    if (idx >= 0) selectedSuperSource.value = `su:${idx}`;
+  }
+  if (q.boss || q.bossq) {
+    const idx = dropData.Monsters.findIndex(m => m.Id === (q.boss ?? q.bossq));
+    if (idx >= 0) selectedSuperSource.value = `${q.boss ? 'boss' : 'bossq'}:${idx}`;
   }
   if (q.area) {
     const id = parseInt(String(q.area), 10);
@@ -320,8 +386,8 @@ onMounted(() => {
 watch(
   [viewMode, difficulty, players, party, mf, dataMode, terrorEnabled, charLevel,
    exaltedEnabled, exaltedPercent, mythicEnabled, mythicPercent, chanceFormat,
-   filterKind, sortBy, sourceKind, sourceType, selectedMonster, selectedSuperUnique,
-   selectedAreaId, selectedTc, itemKind, selectedItem, allDifficulties],
+   filterKind, sortBy, sourceKind, sourceType, selectedMonster, selectedSuperSource,
+   selectedAreaId, selectedTc, itemKind, selectedItem, allDifficulties, heraldTier],
   () => {
     router.replace({
       query: {
@@ -343,7 +409,13 @@ watch(
         ...(sourceKind.value !== 'monster' ? { src: sourceKind.value } : {}),
         ...(sourceType.value !== 'normal' ? { type: sourceType.value } : {}),
         ...(selectedMonster.value != null ? { monster: dropData.Monsters[selectedMonster.value].Id } : {}),
-        ...(selectedSuperUnique.value != null ? { su: dropData.SuperUniques[selectedSuperUnique.value].Id } : {}),
+        ...(selectedSuperSource.value?.startsWith('su:')
+          ? { su: dropData.SuperUniques[Number(selectedSuperSource.value.slice(3))].Id } : {}),
+        ...(selectedSuperSource.value?.startsWith('boss:')
+          ? { boss: dropData.Monsters[Number(selectedSuperSource.value.slice(5))].Id } : {}),
+        ...(selectedSuperSource.value?.startsWith('bossq:')
+          ? { bossq: dropData.Monsters[Number(selectedSuperSource.value.slice(6))].Id } : {}),
+        ...(sourceKind.value === 'herald' && heraldTier.value !== 5 ? { ht: String(heraldTier.value) } : {}),
         ...(selectedAreaId.value != null && (sourceKind.value === 'chest' || monsterAreaOptions.value.length > 1)
           ? { area: String(selectedAreaId.value) } : {}),
         ...(selectedTc.value != null && sourceKind.value === 'rawTc' ? { tc: ctx.value.tcs[selectedTc.value].Name } : {}),
@@ -449,6 +521,13 @@ watch(
           </div>
           <div class="col-md-3 text-md-end info-note">
             Player bonus: <strong>{{ bonus }}</strong>
+            <template v-if="mf > 0">
+              <br />
+              Effective MF:
+              <span title="Unique / Set / Rare / Magic after diminishing returns">
+                {{ mfInfo.unique }} / {{ mfInfo.set }} / {{ mfInfo.rare }} / {{ mfInfo.magic }}
+              </span>
+            </template>
           </div>
         </div>
       </div>
@@ -465,7 +544,8 @@ watch(
       <div class="card-body">
         <div class="d-flex flex-wrap gap-2 mb-3">
           <button class="btn btn-sm pill" :class="{ active: sourceKind === 'monster' }" @click="sourceKind = 'monster'">Monster</button>
-          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'superunique' }" @click="sourceKind = 'superunique'">Superunique / Boss Pack</button>
+          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'superunique' }" @click="sourceKind = 'superunique'">Superunique / Boss</button>
+          <button v-if="heraldAvailable" class="btn btn-sm pill" :class="{ active: sourceKind === 'herald' }" @click="sourceKind = 'herald'">Herald</button>
           <button class="btn btn-sm pill" :class="{ active: sourceKind === 'chest' }" @click="sourceKind = 'chest'">Chest</button>
           <button class="btn btn-sm pill" :class="{ active: sourceKind === 'rawTc' }" @click="sourceKind = 'rawTc'">Treasure Class</button>
         </div>
@@ -502,8 +582,30 @@ watch(
 
           <template v-else-if="sourceKind === 'superunique'">
             <div class="col-md-5">
-              <label class="form-label text-warning">Superunique</label>
-              <SearchableSelect v-model="selectedSuperUnique" :options="superUniqueOptions" placeholder="Search superuniques..." />
+              <label class="form-label text-warning">Superunique / Boss</label>
+              <SearchableSelect v-model="selectedSuperSource" :options="superSourceOptions" placeholder="Search superuniques and bosses..." />
+            </div>
+          </template>
+
+          <template v-else-if="sourceKind === 'herald'">
+            <div class="col-md-3">
+              <label class="form-label text-warning">Herald tier</label>
+              <div class="btn-group w-100">
+                <button
+                  v-for="tier in [1, 2, 3, 4, 5]"
+                  :key="tier"
+                  class="btn btn-sm pill"
+                  :class="{ active: heraldTier === tier }"
+                  @click="heraldTier = tier"
+                >{{ tier }}</button>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-warning" title="Heralds are terror-zone elites - their level follows the game creator's character level">Character level</label>
+              <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control" />
+            </div>
+            <div class="col-md-6 info-note align-self-end">
+              Heralds are terror-zone elites. Sunder charms require herald tier 4+.
             </div>
           </template>
 
@@ -570,7 +672,7 @@ watch(
                 <th>Area</th>
                 <th class="text-end">mlvl</th>
                 <th class="text-end">Chance</th>
-                <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th v-if="showItemVariantColumn" class="text-end">Exalted / Mythic</th>
               </tr>
             </thead>
             <tbody>
@@ -587,7 +689,7 @@ watch(
                 <td>{{ row.areaId != null ? areaName(row.areaId) : '-' }}</td>
                 <td class="text-end chance-cell">{{ row.mlvl }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
-                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                <td v-if="showItemVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
@@ -618,7 +720,7 @@ watch(
                 <th>Quality</th>
                 <th class="text-end">Relative</th>
                 <th class="text-end">Absolute</th>
-                <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th v-if="showDetailVariantColumn" class="text-end">Exalted / Mythic</th>
               </tr>
             </thead>
             <tbody>
@@ -626,7 +728,7 @@ watch(
                 <td><span class="name-unique">{{ row.name }}</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
-                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
@@ -635,7 +737,7 @@ watch(
                 <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
-                <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ fmt(row.variantChance) }}</template>
                   <template v-else>—</template>
                 </td>
@@ -644,7 +746,7 @@ watch(
                 <td>{{ row.label }}</td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
-                <td v-if="showVariantColumn" class="text-end">—</td>
+                <td v-if="showDetailVariantColumn" class="text-end">—</td>
               </tr>
             </tbody>
           </table>
@@ -658,6 +760,9 @@ watch(
         <span>
           Drops
           <span class="info-chip">mlvl {{ sourceInfo.mlvl }}</span>
+          <span v-if="noDrop != null" class="info-chip" title="Chance that one pick of the treasure class drops nothing, after the player-count adjustment">
+            no drop {{ formatChance(noDrop, 'pct') }}
+          </span>
           <span v-if="sourceInfo.terrorized" class="badge terror-badge ms-1" :title="`Base mlvl ${sourceInfo.baseMlvl}`">Terrorized</span>
         </span>
         <span class="d-flex align-items-center gap-2 flex-wrap">
@@ -670,6 +775,17 @@ watch(
         </span>
       </div>
       <div class="card-body p-2">
+        <div v-if="summary" class="summary-strip d-flex flex-wrap gap-3 px-2 pt-2">
+          <span v-if="summary.unique > 0">
+            Any unique: <strong>{{ fmt(summary.unique) }}</strong>
+            <template v-if="summary.uniqueVariant > 0"> · exalted <strong>{{ fmt(summary.uniqueVariant) }}</strong></template>
+          </span>
+          <span v-if="summary.set > 0">
+            Any set item: <strong>{{ fmt(summary.set) }}</strong>
+            <template v-if="summary.setVariant > 0"> · mythic <strong>{{ fmt(summary.setVariant) }}</strong></template>
+          </span>
+          <span v-if="summary.rune > 0">Any rune: <strong>{{ fmt(summary.rune) }}</strong></span>
+        </div>
         <div class="d-flex flex-wrap gap-2 p-2">
           <button
             v-for="f in [['all', 'All'], ['uniques', 'Uniques'], ['sets', 'Set items'], ['runes', 'Runes']]"
@@ -851,5 +967,17 @@ watch(
   color: rgba(232, 221, 200, 0.55);
   font-size: 0.85rem;
   line-height: 1.5;
+}
+
+.summary-strip {
+  color: rgba(232, 221, 200, 0.8);
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(59, 42, 31, 0.8);
+  padding-bottom: 0.5rem;
+}
+
+.summary-strip strong {
+  color: #c9a36a;
+  font-variant-numeric: tabular-nums;
 }
 </style>

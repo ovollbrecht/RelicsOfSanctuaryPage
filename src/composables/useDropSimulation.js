@@ -28,7 +28,7 @@ export function playerBonus(players, partyNearby) {
  * Prepares mode-adjusted data + caches. options:
  * { dataMode: 'mod'|'vanilla', players, partyNearby, mf,
  *   terror: { enabled, charLevel }, exalted: { enabled, percent },
- *   mythic: { enabled, percent } }
+ *   mythic: { enabled, percent }, heraldTier }
  */
 export function buildContext(data, options) {
   const vanillaMode = options.dataMode === 'vanilla';
@@ -96,6 +96,8 @@ export function buildContext(data, options) {
     uniquesByBase,
     setsByBase,
     bonus: playerBonus(options.players, options.partyNearby),
+    heraldTier: options.heraldTier ?? 5,
+    heraldTcIndex: data.Meta?.HeraldTcIndex ?? -1,
     traversalCache: new Map(),
   };
 }
@@ -198,7 +200,16 @@ export function traverseTc(ctx, tcIndex, bonus) {
     cm.rare = Math.max(cm.rare, tc.Rare);
     cm.magic = Math.max(cm.magic, tc.Magic);
 
-    const itemSum = tc.Items.reduce((sum, e) => sum + e[2], 0);
+    // sub-TCs whose ConditionCalc fails are removed from the roll entirely
+    // (dataguide) - currently the only modeled condition is the herald-tier
+    // gate on the Sunder Charms TC
+    const items = tc.Items.filter(([kind, target]) => {
+      if (kind !== 0) return true;
+      const req = ctx.tcs[target].RequiresHeraldTier;
+      return req == null || ctx.heraldTier >= req;
+    });
+
+    const itemSum = items.reduce((sum, e) => sum + e[2], 0);
     if (itemSum === 0) return;
     let noDrop = tc.NoDrop;
     let picks = Math.abs(tc.Picks || 1);
@@ -207,7 +218,10 @@ export function traverseTc(ctx, tcIndex, bonus) {
     // NoDrop would otherwise overshoot on 7-pick TCs
     if (picks === 7 && bonus > 1) picks = 6;
 
-    if (bonus > 1 && noDrop > 0) {
+    // the herald-tier-gated special TC (sunder charms) rolls independently of
+    // the player count (confirmed for patch 3.2 herald drops)
+    const playerScaled = tc.RequiresHeraldTier == null;
+    if (playerScaled && bonus > 1 && noDrop > 0) {
       const sum = itemSum + noDrop;
       const fraction = Math.pow(noDrop / sum, bonus);
       noDrop = Math.floor((sum - noDrop) * fraction / (1 - fraction));
@@ -216,14 +230,14 @@ export function traverseTc(ctx, tcIndex, bonus) {
 
     if (!sorted) {
       const picksHere = totalPicks * picks;
-      for (const [kind, target, prob] of tc.Items) {
+      for (const [kind, target, prob] of items) {
         const p = (prob / total) * chance;
         if (kind === 0) rec(target, p, picksHere);
         else add(targets[kind], target, 1 - Math.pow(1 - p, picksHere));
       }
     } else {
       let remaining = picks;
-      for (const [kind, target, prob] of tc.Items) {
+      for (const [kind, target, prob] of items) {
         if (remaining <= 0) break;
         const picked = Math.min(prob, remaining);
         remaining -= picked;
@@ -381,12 +395,28 @@ export function resolveSource(ctx, sel) {
     return { tcIndex, upgradedTcIndex: tcIndex, mlvl, baseMlvl: mlvl, terrorized: false, monster: null };
   }
 
+  if (sel.kind === 'herald') {
+    // Heralds are terror-zone elites; their top TCs form one group ladder
+    // whose level walk selects the act/difficulty-appropriate table.
+    if (ctx.heraldTcIndex < 0) {
+      return { tcIndex: -1, upgradedTcIndex: -1, mlvl: 0, baseMlvl: 0, terrorized: false, monster: null };
+    }
+    const charLevel = ctx.options.terror?.charLevel ?? 99;
+    const cap = TZ_CAPS[difficulty][TZ_CAP_SLOT.unique];
+    const mlvl = Math.min(cap, (charLevel | 0) + TZ_BONUS.unique);
+    const tcIndex = ctx.heraldTcIndex;
+    const upgradedTcIndex = upgradeTc(ctx, tcIndex, mlvl);
+    return { tcIndex, upgradedTcIndex, mlvl, baseMlvl: mlvl, terrorized: true, monster: null };
+  }
+
   if (sel.kind === 'superunique') {
     const su = ctx.superUniques[sel.superUniqueIndex];
     const monster = su.Monster >= 0 ? ctx.monsters[su.Monster] : { Levels: [0, 0, 0], Boss: false, NoRatio: false };
     const areaId = su.Areas[0];
     const level = effectiveMlvl(ctx, { monster, sourceType: 'superunique', difficulty, areaId });
-    const tcIndex = su.Tcs[difficulty];
+    // terrorized superuniques use their desecrated TC when the data has one
+    const desecrated = ctx.options.terror?.enabled ? (su.DesecratedTcs?.[difficulty] ?? -1) : -1;
+    const tcIndex = desecrated >= 0 ? desecrated : su.Tcs[difficulty];
     return { tcIndex, upgradedTcIndex: tcIndex, ...level, monster, superUnique: su };
   }
 
@@ -394,7 +424,14 @@ export function resolveSource(ctx, sel) {
   const sourceType = sel.sourceType ?? 'normal';
   const level = effectiveMlvl(ctx, { monster, sourceType, difficulty, areaId: sel.areaId });
   const tcColumn = { normal: 0, minion: 0, champion: 1, unique: 2, boss: 2, quest: 3 }[sourceType] ?? 0;
-  const tcIndex = monster.Tcs[difficulty][tcColumn];
+  // Tcs rows: [normal, champion, unique, quest, desecrated, desecratedChampion,
+  // desecratedUnique, herald] (older data files stop after quest)
+  const desecratedColumn = { normal: 4, minion: 4, champion: 5, unique: 6, boss: 6 }[sourceType];
+  const row = monster.Tcs[difficulty];
+  let tcIndex = row[tcColumn];
+  if (ctx.options.terror?.enabled && desecratedColumn != null && (row[desecratedColumn] ?? -1) >= 0) {
+    tcIndex = row[desecratedColumn];
+  }
   // bosses and quest drops use their fixed TC; everything else walks the
   // group ladder with the effective mlvl (a no-op without TZ in Normal)
   const walk = !monster.Boss && sourceType !== 'quest';
@@ -652,6 +689,38 @@ export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null
 
   rows.sort((a, b) => b.chance - a.chance);
   return rows;
+}
+
+/**
+ * Effective magic find per quality after diminishing returns - the values the
+ * classic calculators display next to the MF input.
+ */
+export function effectiveMf(mf) {
+  const value = Math.max(0, mf | 0);
+  return {
+    unique: diminishedMf(value, 250),
+    set: diminishedMf(value, 500),
+    rare: diminishedMf(value, 600),
+    magic: value,
+  };
+}
+
+/**
+ * Chance that a single pick of the TC drops nothing, after the player-count
+ * recomputation (the "NoDrop" percentage the classic calculators display).
+ */
+export function noDropChance(ctx, tcIndex, bonus) {
+  if (tcIndex == null || tcIndex < 0) return null;
+  const tc = ctx.tcs[tcIndex];
+  const itemSum = tc.Items.reduce((sum, e) => sum + e[2], 0);
+  let noDrop = tc.NoDrop;
+  if (itemSum === 0 || noDrop <= 0) return 0;
+  if (bonus > 1) {
+    const sum = itemSum + noDrop;
+    const fraction = Math.pow(noDrop / sum, bonus);
+    noDrop = Math.floor((sum - noDrop) * fraction / (1 - fraction));
+  }
+  return noDrop / (itemSum + noDrop);
 }
 
 // ---------------------------------------------------------------------------
