@@ -89,19 +89,63 @@ const mfInfo = computed(() => effectiveMf(mf.value));
 const heraldAvailable = computed(() => (dropData.Meta?.HeraldTcIndex ?? -1) >= 0);
 
 // ---------- pickers ----------
+/**
+ * The monstats file has one row per spawn variant, not per monster: the same
+ * name comes back per act (Afflicted is bighead1 in the Catacombs and bighead6
+ * in the Ancients' Way) with its own level and treasure class, and dozens of
+ * rows are leftovers that spawn nowhere at all. So: hide what cannot spawn in
+ * this difficulty, and disambiguate the rest by where you meet it rather than
+ * by its internal id.
+ */
 const monsterOptions = computed(() => {
-  const nameCounts = new Map();
-  dropData.Monsters.forEach(m => nameCounts.set(m.Name, (nameCounts.get(m.Name) ?? 0) + 1));
-  return dropData.Monsters
+  const diff = difficulty.value;
+  const live = dropData.Monsters
     .map((m, index) => ({ m, index }))
-    .filter(({ m }) => !m.Boss) // bosses live in the Superunique / Boss picker
-    .map(({ m, index }) => ({
-      value: index,
-      label: nameCounts.get(m.Name) > 1 ? `${m.Name} (${m.Id})` : m.Name,
-      hint: `mlvl ${m.Levels[difficulty.value]}`,
-    }))
+    // bosses live in the Superunique / Boss picker
+    .filter(({ m }) => !m.Boss && m.Areas[diff].length > 0);
+
+  const nameCounts = new Map();
+  live.forEach(({ m }) => nameCounts.set(m.Name, (nameCounts.get(m.Name) ?? 0) + 1));
+
+  // the act separates most same-named variants; the rest need their area
+  const actOf = (m) => ctx.value.areasById.get(m.Areas[diff][0])?.Act ?? 0;
+  const actCounts = new Map();
+  live.forEach(({ m }) => {
+    if (nameCounts.get(m.Name) > 1) {
+      const key = `${m.Name}|${actOf(m)}`;
+      actCounts.set(key, (actCounts.get(key) ?? 0) + 1);
+    }
+  });
+
+  return live
+    .map(({ m, index }) => {
+      let label = m.Name;
+      if (nameCounts.get(m.Name) > 1) {
+        const act = actOf(m);
+        label = actCounts.get(`${m.Name}|${act}`) > 1
+          ? `${m.Name} — ${areaName(m.Areas[diff][0])}`
+          : `${m.Name} — Act ${act}`;
+      }
+      return { value: index, label, hint: monsterLevelHint(m, diff) };
+    })
     .sort((a, b) => a.label.localeCompare(b.label));
 });
+
+/**
+ * In Nightmare and Hell the area level replaces the monstats level for normal
+ * monsters, so showing the file's value there would be plainly wrong - and it
+ * is what the picker did before.
+ */
+function monsterLevelHint(monster, diff) {
+  if (diff === 0 || monster.Boss || monster.NoRatio) return `mlvl ${monster.Levels[diff]}`;
+  const levels = monster.Areas[diff]
+    .map(id => ctx.value.areasById.get(id)?.Levels[diff])
+    .filter(level => level > 0);
+  if (levels.length === 0) return `mlvl ${monster.Levels[diff]}`;
+  const min = Math.min(...levels);
+  const max = Math.max(...levels);
+  return min === max ? `mlvl ${min}` : `mlvl ${min}-${max}`;
+}
 
 // quest kill drops differently than a regular kill in at least one difficulty
 const bossQuestDiffers = (m) =>
