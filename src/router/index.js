@@ -40,6 +40,11 @@ const routes = [
     path: '/items/mythic-affixes',
     name: 'MythicAffixes',
     component: () => import('../views/MythicAffixesView.vue')
+  },
+  {
+    path: '/drop-calc',
+    name: 'DropCalc',
+    component: () => import('../views/DropCalcView.vue')
   }
 ]
 
