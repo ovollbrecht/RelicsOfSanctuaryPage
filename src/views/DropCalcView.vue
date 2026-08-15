@@ -327,6 +327,10 @@ const openDetail = (row) => {
   }
 };
 
+// chance to see the item at least once in n kills
+const cumulative = (p, n) => 1 - Math.pow(1 - p, n);
+const CUMULATIVE_KILLS = [10, 50, 100];
+
 const qualityRows = computed(() => {
   if (!detail.value) return [];
   const q = detail.value.quality;
@@ -773,6 +777,12 @@ watch(
                 <th class="text-end">Relative</th>
                 <th v-if="showDetailVariantColumn" class="text-end">Exalted / Mythic</th>
                 <th class="text-end">Absolute</th>
+                <th
+                  v-for="n in CUMULATIVE_KILLS"
+                  :key="n"
+                  class="text-end cumulative-col"
+                  :title="`Chance to see it at least once in ${n} drops`"
+                >{{ n }}×</th>
               </tr>
             </thead>
             <tbody>
@@ -784,6 +794,9 @@ watch(
                   <template v-else>—</template>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
+                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                </td>
               </tr>
               <tr v-for="row in detail.setRows" :key="'s' + row.name">
                 <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
@@ -793,12 +806,18 @@ watch(
                   <template v-else>—</template>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
+                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                </td>
               </tr>
               <tr v-for="row in qualityRows" :key="row.label">
                 <td>{{ row.label }}</td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end">—</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
+                  {{ formatChance(cumulative(row.chance, n), 'pct') }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -1067,5 +1086,10 @@ watch(
 
 .name-label {
   position: relative;
+}
+
+.cumulative-col {
+  color: rgba(232, 221, 200, 0.7);
+  font-size: 0.88rem;
 }
 </style>
