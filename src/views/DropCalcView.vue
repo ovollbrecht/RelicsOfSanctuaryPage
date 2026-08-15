@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted, nextTick } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import {
@@ -257,6 +258,106 @@ const jumpToSource = (row) => {
     if (row.areaId != null) selectedAreaId.value = row.areaId;
   }
 };
+
+// ---------- URL query sync (stable string ids, defaults omitted) ----------
+const route = useRoute();
+const router = useRouter();
+
+const clampInt = (value, min, max, fallback) => {
+  const n = parseInt(String(value), 10);
+  return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+};
+
+onMounted(() => {
+  const q = route.query;
+  if (q.mode === 'item') viewMode.value = 'item';
+  difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
+  players.value = clampInt(q.players, 1, 8, players.value);
+  party.value = clampInt(q.party, 1, players.value, party.value);
+  mf.value = clampInt(q.mf, 0, 9999, mf.value);
+  if (q.data === 'vanilla') dataMode.value = 'vanilla';
+  if (q.tz === '1') terrorEnabled.value = true;
+  charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
+  if (q.ex === '0') exaltedEnabled.value = false;
+  exaltedPercent.value = clampInt(q.exp, 1, 99, exaltedPercent.value);
+  if (q.my === '0') mythicEnabled.value = false;
+  mythicPercent.value = clampInt(q.myp, 1, 99, mythicPercent.value);
+  if (q.fmt === 'pct') chanceFormat.value = 'pct';
+  if (['all', 'uniques', 'sets', 'runes'].includes(q.filter)) filterKind.value = q.filter;
+  if (q.sort === 'name') sortBy.value = 'name';
+  if (['monster', 'superunique', 'chest', 'rawTc'].includes(q.src)) sourceKind.value = q.src;
+  if (['normal', 'champion', 'unique', 'minion', 'quest'].includes(q.type)) sourceType.value = q.type;
+
+  if (q.monster) {
+    const idx = dropData.Monsters.findIndex(m => m.Id === q.monster);
+    if (idx >= 0) selectedMonster.value = idx;
+  }
+  if (q.su) {
+    const idx = dropData.SuperUniques.findIndex(s => s.Id === q.su);
+    if (idx >= 0) selectedSuperUnique.value = idx;
+  }
+  if (q.area) {
+    const id = parseInt(String(q.area), 10);
+    if (dropData.Areas.some(a => a.Id === id)) {
+      // after the monster-change watcher has reset the area to its default
+      nextTick(() => { selectedAreaId.value = id; });
+    }
+  }
+  if (q.tc) {
+    const idx = ctx.value.tcs.findIndex(t => t.Name === q.tc);
+    if (idx >= 0) selectedTc.value = idx;
+  }
+  if (['unique', 'set', 'base'].includes(q.itemkind)) itemKind.value = q.itemkind;
+  if (q.alldiff === '1') allDifficulties.value = true;
+  if (q.item) {
+    const idx = itemKind.value === 'unique' ? dropData.Uniques.findIndex(u => u.Index === q.item)
+      : itemKind.value === 'set' ? dropData.Sets.findIndex(s => s.Index === q.item)
+      : dropData.BaseItems.findIndex(b => b.Code === q.item);
+    if (idx >= 0) selectedItem.value = idx;
+  }
+});
+
+watch(
+  [viewMode, difficulty, players, party, mf, dataMode, terrorEnabled, charLevel,
+   exaltedEnabled, exaltedPercent, mythicEnabled, mythicPercent, chanceFormat,
+   filterKind, sortBy, sourceKind, sourceType, selectedMonster, selectedSuperUnique,
+   selectedAreaId, selectedTc, itemKind, selectedItem, allDifficulties],
+  () => {
+    router.replace({
+      query: {
+        ...(viewMode.value !== 'source' ? { mode: viewMode.value } : {}),
+        ...(difficulty.value !== 2 ? { diff: String(difficulty.value) } : {}),
+        ...(players.value !== 1 ? { players: String(players.value) } : {}),
+        ...(party.value !== 1 ? { party: String(party.value) } : {}),
+        ...(mf.value !== 0 ? { mf: String(mf.value) } : {}),
+        ...(dataMode.value !== 'mod' ? { data: dataMode.value } : {}),
+        ...(terrorEnabled.value ? { tz: '1' } : {}),
+        ...(terrorEnabled.value && charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}),
+        ...(!exaltedEnabled.value ? { ex: '0' } : {}),
+        ...(exaltedPercent.value !== 5 ? { exp: String(exaltedPercent.value) } : {}),
+        ...(!mythicEnabled.value ? { my: '0' } : {}),
+        ...(mythicPercent.value !== 5 ? { myp: String(mythicPercent.value) } : {}),
+        ...(chanceFormat.value !== 'ratio' ? { fmt: chanceFormat.value } : {}),
+        ...(filterKind.value !== 'all' ? { filter: filterKind.value } : {}),
+        ...(sortBy.value !== 'chance' ? { sort: sortBy.value } : {}),
+        ...(sourceKind.value !== 'monster' ? { src: sourceKind.value } : {}),
+        ...(sourceType.value !== 'normal' ? { type: sourceType.value } : {}),
+        ...(selectedMonster.value != null ? { monster: dropData.Monsters[selectedMonster.value].Id } : {}),
+        ...(selectedSuperUnique.value != null ? { su: dropData.SuperUniques[selectedSuperUnique.value].Id } : {}),
+        ...(selectedAreaId.value != null && (sourceKind.value === 'chest' || monsterAreaOptions.value.length > 1)
+          ? { area: String(selectedAreaId.value) } : {}),
+        ...(selectedTc.value != null && sourceKind.value === 'rawTc' ? { tc: ctx.value.tcs[selectedTc.value].Name } : {}),
+        ...(itemKind.value !== 'unique' ? { itemkind: itemKind.value } : {}),
+        ...(selectedItem.value != null
+          ? { item: itemKind.value === 'unique' ? dropData.Uniques[selectedItem.value].Index
+              : itemKind.value === 'set' ? dropData.Sets[selectedItem.value].Index
+              : dropData.BaseItems[selectedItem.value].Code }
+          : {}),
+        ...(allDifficulties.value ? { alldiff: '1' } : {}),
+      },
+    });
+  },
+);
 </script>
 
 <template>
@@ -624,6 +725,18 @@ const jumpToSource = (row) => {
     <div v-else-if="viewMode === 'item' && !itemRows" class="empty-note p-3">
       Select an item to see which monsters drop it.
     </div>
+
+    <div class="limitations-note mt-4">
+      <strong>Notes:</strong>
+      Chances follow the game formulas (treasure classes, NoDrop scaling with the player count,
+      itemratio quality ladder, magic-find diminishing returns, rarity-weighted unique/set picks);
+      multiple paths to the same item are added together, matching classic drop calculators.
+      Terror Zones raise the monster level to character level +2/+4/+5 (capped per difficulty)
+      and upgrade the treasure class accordingly.
+      The mod ships a monstats.txt without desecrated treasure-class columns, so both data modes
+      use the same monster data and the vanilla desecrated drop paths do not apply.
+      Chests use each act's standard chest treasure class.
+    </div>
   </div>
 </template>
 
@@ -713,5 +826,11 @@ const jumpToSource = (row) => {
 
 .detail-card {
   border-color: rgba(201, 163, 106, 0.5);
+}
+
+.limitations-note {
+  color: rgba(232, 221, 200, 0.55);
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 </style>
