@@ -255,6 +255,31 @@ const maxRuneChance = computed(() => {
   return filteredRows.value.reduce((max, r) => Math.max(max, r.chance), 0);
 });
 
+// ---------- "rune X or better" view ----------
+const runesView = ref('single'); // single | better
+const runesOrBetter = computed(() => filterKind.value === 'runes' && runesView.value === 'better');
+
+const orBetterRows = computed(() => {
+  if (!runesOrBetter.value || !result.value) return [];
+  const runes = result.value.rows
+    .filter(r => r.kind === 'base' && r.isRune)
+    .map(r => ({ name: runeLabel(r.name), number: runeNumber(r), single: r.chance }))
+    .sort((a, b) => a.number - b.number);
+  // suffix sum: chance that the dropped rune is this one or higher-numbered
+  let running = 0;
+  for (let i = runes.length - 1; i >= 0; i--) {
+    running += runes[i].single;
+    runes[i].chance = running;
+  }
+  const direction = sortDir.value === 'asc' ? 1 : -1;
+  if (sortBy.value === 'name') {
+    return [...runes].sort((a, b) => direction * a.name.localeCompare(b.name));
+  }
+  // chance descends as the rune number ascends - both sorts share an axis
+  const ascending = sortBy.value === 'index' ? sortDir.value === 'asc' : sortDir.value === 'desc';
+  return ascending ? runes : [...runes].reverse();
+});
+
 // "if a rune drops, which one is it" - share of the summed rune chance
 const runeChanceSum = computed(() => {
   if (filterKind.value !== 'runes') return 0;
@@ -332,8 +357,9 @@ const openDetail = (row) => {
   }
 };
 
-// chance to see the item at least once in n kills
-const cumulative = (p, n) => 1 - Math.pow(1 - p, n);
+// chance to see the item at least once in n kills; additive per-kill values
+// can exceed 1 (expected count > 1) - treat those as guaranteed
+const cumulative = (p, n) => 1 - Math.pow(1 - Math.min(p, 1), n);
 const CUMULATIVE_KILLS = [1, 10, 50, 100, 1000];
 
 const qualityRows = computed(() => {
@@ -407,6 +433,7 @@ onMounted(() => {
   if (['all', 'uniques', 'sets', 'runes'].includes(q.filter)) filterKind.value = q.filter;
   if (['name', 'index'].includes(q.sort)) sortBy.value = q.sort;
   sortDir.value = ['asc', 'desc'].includes(q.dir) ? q.dir : SORT_DEFAULT_DIR[sortBy.value];
+  if (q.rv === 'better') runesView.value = 'better';
   if (['monster', 'superunique', 'herald', 'chest', 'rawTc'].includes(q.src)) sourceKind.value = q.src;
   if (['normal', 'champion', 'unique', 'minion', 'quest'].includes(q.type)) sourceType.value = q.type;
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
@@ -447,7 +474,7 @@ onMounted(() => {
 watch(
   [viewMode, difficulty, players, party, mf, dataMode, terrorEnabled, charLevel,
    exaltedEnabled, exaltedPercent, mythicEnabled, mythicPercent, chanceFormat,
-   filterKind, sortBy, sortDir, sourceKind, sourceType, selectedMonster, selectedSuperSource,
+   filterKind, sortBy, sortDir, runesView, sourceKind, sourceType, selectedMonster, selectedSuperSource,
    selectedAreaId, selectedTc, itemKind, selectedItem, allDifficulties, heraldTier],
   () => {
     router.replace({
@@ -468,6 +495,7 @@ watch(
         ...(filterKind.value !== 'all' ? { filter: filterKind.value } : {}),
         ...(sortBy.value !== 'chance' ? { sort: sortBy.value } : {}),
         ...(sortDir.value !== SORT_DEFAULT_DIR[sortBy.value] ? { dir: sortDir.value } : {}),
+        ...(runesView.value !== 'single' && filterKind.value === 'runes' ? { rv: runesView.value } : {}),
         ...(sourceKind.value !== 'monster' ? { src: sourceKind.value } : {}),
         ...(sourceType.value !== 'normal' ? { type: sourceType.value } : {}),
         ...(selectedMonster.value != null ? { monster: dropData.Monsters[selectedMonster.value].Id } : {}),
@@ -875,6 +903,10 @@ watch(
             :class="{ active: filterKind === f[0] }"
             @click="filterKind = f[0]"
           >{{ f[1] }}</button>
+          <span v-if="filterKind === 'runes'" class="d-flex gap-2 runes-view-toggle">
+            <button class="btn btn-sm pill" :class="{ active: runesView === 'single' }" @click="runesView = 'single'">Single</button>
+            <button class="btn btn-sm pill" :class="{ active: runesView === 'better' }" @click="runesView = 'better'" title="Chance for this rune or any higher one">Or better</button>
+          </span>
           <span class="ms-auto d-flex gap-2">
             <button class="btn btn-sm pill" :class="{ active: sortBy === 'chance' }" @click="setSort('chance')">By chance{{ sortArrow('chance') }}</button>
             <button class="btn btn-sm pill" :class="{ active: sortBy === 'name' }" @click="setSort('name')">By name{{ sortArrow('name') }}</button>
@@ -883,6 +915,41 @@ watch(
         </div>
         <div v-if="filteredRows.length === 0" class="empty-note p-3">
           No drops for this selection.
+        </div>
+        <div v-else-if="runesOrBetter" class="table-responsive">
+          <table class="table table-dark table-hover drop-table">
+            <thead>
+              <tr>
+                <th>Rune</th>
+                <th class="text-end" title="Chance that a dropped rune is this one or a higher one">Of rune drops</th>
+                <th class="text-end" title="Chance per kill for this rune or a higher one">Chance</th>
+                <th
+                  v-for="n in CUMULATIVE_KILLS"
+                  :key="n"
+                  class="text-end cumulative-col"
+                  :title="`Chance to see this rune or better at least once in ${n} drops`"
+                >{{ n }}×</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in orBetterRows" :key="row.number">
+                <td class="name-cell">
+                  <div
+                    v-if="runeChanceSum > 0"
+                    class="rune-weight-bar"
+                    :style="{ width: (row.chance / runeChanceSum * 100) + '%' }"
+                  ></div>
+                  <span class="name-label name-rune">{{ row.name }}</span>
+                  <span class="info-note"> or better</span>
+                </td>
+                <td class="text-end chance-cell">{{ fmt(row.chance / runeChanceSum) }}</td>
+                <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
+                <td v-for="n in CUMULATIVE_KILLS" :key="n" class="text-end chance-cell cumulative-col">
+                  {{ fmt(cumulative(row.chance, n)) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div v-else class="table-responsive">
           <table class="table table-dark table-hover drop-table">
