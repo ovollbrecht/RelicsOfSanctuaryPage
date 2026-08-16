@@ -92,41 +92,82 @@ const heraldAvailable = computed(() => (dropData.Meta?.HeraldTcIndex ?? -1) >= 0
 /**
  * The monstats file has one row per spawn variant, not per monster: the same
  * name comes back per act (Afflicted is bighead1 in the Catacombs and bighead6
- * in the Ancients' Way) with its own level and treasure class, and dozens of
- * rows are leftovers that spawn nowhere at all. So: hide what cannot spawn in
- * this difficulty, and disambiguate the rest by where you meet it rather than
- * by its internal id.
+ * in the Ancients' Way) with its own level and treasure class, and some names
+ * repeat over rows that are drop-identical (the three Council Member rows).
+ *
+ * Rows are therefore merged when name, treasure classes and levels all match —
+ * which cannot change any result — and never dropped: monsters placed by a
+ * level preset rather than by the spawn lists (the Council, Baal's throne) have
+ * no areas in levels.txt at all, and hiding those loses real farming targets.
  */
+const monsterGroups = computed(() => {
+  const diff = difficulty.value;
+  const dropIdentity = (m) => JSON.stringify([m.Tcs, m.Levels, m.NoRatio]);
+  const groups = new Map();
+
+  dropData.Monsters.forEach((m, index) => {
+    // bosses live in the Superunique / Boss picker
+    if (m.Boss) return;
+    const key = `${m.Name}${dropIdentity(m)}`;
+    let group = groups.get(key);
+    if (!group) groups.set(key, group = { monster: m, index, areas: [] });
+    for (const areaId of m.Areas[diff]) {
+      if (!group.areas.includes(areaId)) group.areas.push(areaId);
+    }
+  });
+
+  return [...groups.values()];
+});
+
+/// Merged spawn areas of the row group a monster index represents.
+const areasOfGroup = (index) =>
+  monsterGroups.value.find(g => g.index === index)?.areas ?? [];
+
 const monsterOptions = computed(() => {
   const diff = difficulty.value;
-  const live = dropData.Monsters
-    .map((m, index) => ({ m, index }))
-    // bosses live in the Superunique / Boss picker
-    .filter(({ m }) => !m.Boss && m.Areas[diff].length > 0);
+  const groups = monsterGroups.value;
 
   const nameCounts = new Map();
-  live.forEach(({ m }) => nameCounts.set(m.Name, (nameCounts.get(m.Name) ?? 0) + 1));
+  groups.forEach(({ monster }) => nameCounts.set(monster.Name, (nameCounts.get(monster.Name) ?? 0) + 1));
 
-  // the act separates most same-named variants; the rest need their area
-  const actOf = (m) => ctx.value.areasById.get(m.Areas[diff][0])?.Act ?? 0;
+  // the act separates most same-named variants; the rest need their area, and
+  // preset-placed rows have neither - those fall back to their level
+  const actOf = (areas) => (areas.length ? ctx.value.areasById.get(areas[0])?.Act ?? 0 : 0);
   const actCounts = new Map();
-  live.forEach(({ m }) => {
-    if (nameCounts.get(m.Name) > 1) {
-      const key = `${m.Name}|${actOf(m)}`;
+  groups.forEach(({ monster, areas }) => {
+    if (nameCounts.get(monster.Name) > 1) {
+      const key = `${monster.Name}|${actOf(areas)}`;
       actCounts.set(key, (actCounts.get(key) ?? 0) + 1);
     }
   });
 
-  return live
-    .map(({ m, index }) => {
-      let label = m.Name;
-      if (nameCounts.get(m.Name) > 1) {
-        const act = actOf(m);
-        label = actCounts.get(`${m.Name}|${act}`) > 1
-          ? `${m.Name} — ${areaName(m.Areas[diff][0])}`
-          : `${m.Name} — Act ${act}`;
+  const labelled = groups.map(({ monster, index, areas }) => {
+    let label = monster.Name;
+    if (nameCounts.get(monster.Name) > 1) {
+      const act = actOf(areas);
+      if (areas.length === 0) {
+        label = `${monster.Name} — mlvl ${monster.Levels[diff]}`;
+      } else if (actCounts.get(`${monster.Name}|${act}`) > 1) {
+        label = `${monster.Name} — ${areaName(areas[0])}`;
+      } else {
+        label = `${monster.Name} — Act ${act}`;
       }
-      return { value: index, label, hint: monsterLevelHint(m, diff) };
+    }
+    return { monster, index, areas, label };
+  });
+
+  // Spawner-style rows can share name and level while dropping differently.
+  // Nothing meaningful is left to tell them apart, so the id has to do it.
+  const labelCounts = new Map();
+  labelled.forEach(({ label }) => labelCounts.set(label, (labelCounts.get(label) ?? 0) + 1));
+
+  return labelled
+    .map(({ monster, index, areas, label: base }) => {
+      const label = labelCounts.get(base) > 1 ? `${base} (${monster.Id})` : base;
+      // a preset-placed monster is told apart by its level, which the hint
+      // would then repeat
+      const hint = monsterLevelHint(monster, areas, diff);
+      return { value: index, label, hint: label.endsWith(hint) ? '' : hint };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
 });
@@ -136,9 +177,9 @@ const monsterOptions = computed(() => {
  * monsters, so showing the file's value there would be plainly wrong - and it
  * is what the picker did before.
  */
-function monsterLevelHint(monster, diff) {
+function monsterLevelHint(monster, areas, diff) {
   if (diff === 0 || monster.Boss || monster.NoRatio) return `mlvl ${monster.Levels[diff]}`;
-  const levels = monster.Areas[diff]
+  const levels = areas
     .map(id => ctx.value.areasById.get(id)?.Levels[diff])
     .filter(level => level > 0);
   if (levels.length === 0) return `mlvl ${monster.Levels[diff]}`;
@@ -210,8 +251,8 @@ const currentMonster = computed(() =>
 
 // areas the selected monster spawns in (drives NM/Hell area level)
 const monsterAreaOptions = computed(() => {
-  if (!currentMonster.value) return [];
-  return currentMonster.value.Areas[difficulty.value]
+  if (selectedMonster.value == null) return [];
+  return areasOfGroup(selectedMonster.value)
     .map(id => ({ value: id, label: areaName(id), hint: `alvl ${ctx.value.areasById.get(id)?.Levels[difficulty.value] ?? '?'}` }));
 });
 
