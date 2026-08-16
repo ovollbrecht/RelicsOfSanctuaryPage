@@ -646,6 +646,9 @@ export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null
 
   for (const diff of difficulties) {
     ctx.monsters.forEach((monster, monsterIndex) => {
+      // No spawn list places this row in this difficulty, so it is not a source
+      // you can farm. Bosses have no spawn list to begin with.
+      if (!monster.Boss && monster.Areas[diff].length === 0) return;
       for (const type of ['normal', 'champion', 'unique']) {
         const areas = monster.Areas[diff].length > 0 ? monster.Areas[diff] : [null];
         for (const areaId of areas) {

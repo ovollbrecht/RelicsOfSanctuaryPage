@@ -96,9 +96,7 @@ const heraldAvailable = computed(() => (dropData.Meta?.HeraldTcIndex ?? -1) >= 0
  * repeat over rows that are drop-identical (the three Council Member rows).
  *
  * Rows are therefore merged when name, treasure classes and levels all match —
- * which cannot change any result — and never dropped: monsters placed by a
- * level preset rather than by the spawn lists (the Council, Baal's throne) have
- * no areas in levels.txt at all, and hiding those loses real farming targets.
+ * which cannot change any result — and rows without a spawn area are dropped.
  */
 const monsterGroups = computed(() => {
   const diff = difficulty.value;
@@ -110,18 +108,29 @@ const monsterGroups = computed(() => {
     if (m.Boss) return;
     const key = `${m.Name}${dropIdentity(m)}`;
     let group = groups.get(key);
-    if (!group) groups.set(key, group = { monster: m, index, areas: [] });
+    if (!group) groups.set(key, group = { monster: m, index, areas: [], indices: [] });
+    group.indices.push(index);
     for (const areaId of m.Areas[diff]) {
       if (!group.areas.includes(areaId)) group.areas.push(areaId);
     }
   });
 
-  return [...groups.values()];
+  // A row left without an area is one no spawn list places in this difficulty:
+  // an unused variant slot, cut content like the Flying Scimitar, or a monster
+  // that only spawns in one difficulty (Unholy Corpse is Normal-only). None can
+  // be met where the picker would suggest, so they stay out. Monsters the game
+  // places from a fixed map instead of a spawn list - the Council, Baal's
+  // throne, The Smith - carry areas from the exporter's curated map and remain.
+  return [...groups.values()].filter(g => g.areas.length > 0);
 });
 
+/// The group a monster row belongs to - any of its rows, not just the first,
+/// since a URL or a result click can name one that was merged away.
+const groupOfMonster = (index) =>
+  monsterGroups.value.find(g => g.indices.includes(index)) ?? null;
+
 /// Merged spawn areas of the row group a monster index represents.
-const areasOfGroup = (index) =>
-  monsterGroups.value.find(g => g.index === index)?.areas ?? [];
+const areasOfGroup = (index) => groupOfMonster(index)?.areas ?? [];
 
 const monsterOptions = computed(() => {
   const diff = difficulty.value;
@@ -130,9 +139,8 @@ const monsterOptions = computed(() => {
   const nameCounts = new Map();
   groups.forEach(({ monster }) => nameCounts.set(monster.Name, (nameCounts.get(monster.Name) ?? 0) + 1));
 
-  // the act separates most same-named variants; the rest need their area, and
-  // preset-placed rows have neither - those fall back to their level
-  const actOf = (areas) => (areas.length ? ctx.value.areasById.get(areas[0])?.Act ?? 0 : 0);
+  // the act separates most same-named variants; the rest need their area
+  const actOf = (areas) => ctx.value.areasById.get(areas[0])?.Act ?? 0;
   const actCounts = new Map();
   groups.forEach(({ monster, areas }) => {
     if (nameCounts.get(monster.Name) > 1) {
@@ -149,11 +157,7 @@ const monsterOptions = computed(() => {
     let label = monster.Name;
     if (nameCounts.get(monster.Name) > 1) {
       const act = actOf(areas);
-      if (areas.length === 0) {
-        // neither the spawn lists nor the curated preset map place this row -
-        // saying so beats a bare number the reader cannot act on
-        label = `${monster.Name} — area unknown`;
-      } else if (areas.length <= AREAS_STILL_NAMEABLE || actCounts.get(`${monster.Name}|${act}`) > 1) {
+      if (areas.length <= AREAS_STILL_NAMEABLE || actCounts.get(`${monster.Name}|${act}`) > 1) {
         label = `${monster.Name} — ${areaName(areas[0])}`;
       } else {
         label = `${monster.Name} — Act ${act}`;
@@ -162,24 +166,12 @@ const monsterOptions = computed(() => {
     return { monster, index, areas, label };
   });
 
-  // Spawner-style rows can share name and level while dropping differently.
+  // Spawner-style rows can share name and place while dropping differently.
   // Nothing meaningful is left to tell them apart, so the id has to do it.
-  const labelCounts = new Map();
-  labelled.forEach(({ label }) => labelCounts.set(label, (labelCounts.get(label) ?? 0) + 1));
-
-  // two unplaced rows of the same name are still told apart by their level
-  const levelled = labelled.map(entry => ({
-    ...entry,
-    label: labelCounts.get(entry.label) > 1 && entry.areas.length === 0
-      ? `${entry.label} (mlvl ${entry.monster.Levels[diff]})`
-      : entry.label,
-  }));
-
-  // and only when name, place and level all coincide does the id have to do it
   const finalCounts = new Map();
-  levelled.forEach(({ label }) => finalCounts.set(label, (finalCounts.get(label) ?? 0) + 1));
+  labelled.forEach(({ label }) => finalCounts.set(label, (finalCounts.get(label) ?? 0) + 1));
 
-  return levelled
+  return labelled
     .map(({ monster, index, areas, label: base }) => {
       const label = finalCounts.get(base) > 1 ? `${monster.Name} (${monster.Id})` : base;
       // the level may already be part of the label; do not print it twice
@@ -222,12 +214,14 @@ const bossQualifier = (monster) => {
 };
 
 const superSourceOptions = computed(() => {
-  // roaming superuniques (Act 4/5) have no fixed area in the data
+  // No table links a superunique to its area, so ten of them are missing from
+  // the exporter's curated map. Their base monsters all spawn, so they are real
+  // - the gap is ours. Say nothing rather than claim the area is unknown.
   const options = dropData.SuperUniques
     .map((su, index) => ({
       value: `su:${index}`,
       label: su.Name,
-      hint: su.Areas.length > 0 ? areaName(su.Areas[0]) : 'area unknown',
+      hint: su.Areas.length > 0 ? areaName(su.Areas[0]) : '',
     }));
 
   // Griswold, Radament, the Summoner and Nihlathak are reachable twice: once
@@ -279,6 +273,14 @@ const monsterAreaOptions = computed(() => {
 });
 
 watch([selectedMonster, difficulty], () => {
+  if (selectedMonster.value != null) {
+    const group = groupOfMonster(selectedMonster.value);
+    // a monster that spawns only in Normal leaves the picker in Nightmare and
+    // Hell; keeping it selected would show results the list cannot explain
+    if (!group) selectedMonster.value = null;
+    // a merged-away row drops identically to the one the picker lists
+    else if (group.index !== selectedMonster.value) selectedMonster.value = group.index;
+  }
   selectedAreaId.value = monsterAreaOptions.value[0]?.value ?? null;
 });
 
