@@ -88245,6 +88245,22 @@
       ]
     },
     {
+      "Id": "Flamespike the Crawler",
+      "Name": "Flamespike the Crawler",
+      "Monster": 62,
+      "Tcs": [
+        618,
+        632,
+        646
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1106
+      ],
+      "Areas": []
+    },
+    {
       "Id": "Boneash",
       "Name": "Bone Ash",
       "Monster": 187,
@@ -88659,6 +88675,70 @@
       ]
     },
     {
+      "Id": "Winged Death",
+      "Name": "Darkwing",
+      "Monster": 225,
+      "Tcs": [
+        931,
+        946,
+        961
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1127
+      ],
+      "Areas": []
+    },
+    {
+      "Id": "The Tormentor",
+      "Name": "The Tormentor",
+      "Monster": 112,
+      "Tcs": [
+        931,
+        946,
+        961
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1127
+      ],
+      "Areas": []
+    },
+    {
+      "Id": "Taintbreeder",
+      "Name": "Taintbreeder",
+      "Monster": 201,
+      "Tcs": [
+        931,
+        946,
+        961
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1127
+      ],
+      "Areas": []
+    },
+    {
+      "Id": "Riftwraith the Cannibal",
+      "Name": "Riftwraith the Cannibal",
+      "Monster": 210,
+      "Tcs": [
+        931,
+        946,
+        961
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1127
+      ],
+      "Areas": []
+    },
+    {
       "Id": "Infector of Souls",
       "Name": "Infector of Souls",
       "Monster": 225,
@@ -88783,6 +88863,22 @@
       "Areas": [
         110
       ]
+    },
+    {
+      "Id": "Axe Dweller",
+      "Name": "Axe Dweller",
+      "Monster": 318,
+      "Tcs": [
+        936,
+        951,
+        966
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1132
+      ],
+      "Areas": []
     },
     {
       "Id": "Bonesaw Breaker",
@@ -88911,6 +89007,38 @@
       ]
     },
     {
+      "Id": "Anodized Elite",
+      "Name": "Hell's Belle",
+      "Monster": 282,
+      "Tcs": [
+        936,
+        951,
+        966
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1132
+      ],
+      "Areas": []
+    },
+    {
+      "Id": "Vinvear Molech",
+      "Name": "Vinvear Molech",
+      "Monster": 285,
+      "Tcs": [
+        934,
+        949,
+        964
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1130
+      ],
+      "Areas": []
+    },
+    {
       "Id": "Sharp Tooth Sayer",
       "Name": "Sharptooth Slayer",
       "Monster": 291,
@@ -88927,6 +89055,38 @@
       "Areas": [
         111
       ]
+    },
+    {
+      "Id": "Magma Torquer",
+      "Name": "Magma Torquer",
+      "Monster": 306,
+      "Tcs": [
+        936,
+        951,
+        966
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1132
+      ],
+      "Areas": []
+    },
+    {
+      "Id": "Blaze Ripper",
+      "Name": "Blaze Ripper",
+      "Monster": 326,
+      "Tcs": [
+        936,
+        951,
+        966
+      ],
+      "DesecratedTcs": [
+        -1,
+        -1,
+        1132
+      ],
+      "Areas": []
     },
     {
       "Id": "Frozenstein",

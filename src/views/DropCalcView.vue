@@ -222,8 +222,13 @@ const bossQualifier = (monster) => {
 };
 
 const superSourceOptions = computed(() => {
+  // roaming superuniques (Act 4/5) have no fixed area in the data
   const options = dropData.SuperUniques
-    .map((su, index) => ({ value: `su:${index}`, label: su.Name, hint: areaName(su.Areas[0]) }));
+    .map((su, index) => ({
+      value: `su:${index}`,
+      label: su.Name,
+      hint: su.Areas.length > 0 ? areaName(su.Areas[0]) : 'area unknown',
+    }));
 
   // Griswold, Radament, the Summoner and Nihlathak are reachable twice: once
   // from superuniques.txt and once as their own monstats boss row, with the
