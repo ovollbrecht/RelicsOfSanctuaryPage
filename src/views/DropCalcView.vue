@@ -150,7 +150,9 @@ const monsterOptions = computed(() => {
     if (nameCounts.get(monster.Name) > 1) {
       const act = actOf(areas);
       if (areas.length === 0) {
-        label = `${monster.Name} — mlvl ${monster.Levels[diff]}`;
+        // neither the spawn lists nor the curated preset map place this row -
+        // saying so beats a bare number the reader cannot act on
+        label = `${monster.Name} — area unknown`;
       } else if (areas.length <= AREAS_STILL_NAMEABLE || actCounts.get(`${monster.Name}|${act}`) > 1) {
         label = `${monster.Name} — ${areaName(areas[0])}`;
       } else {
@@ -165,11 +167,21 @@ const monsterOptions = computed(() => {
   const labelCounts = new Map();
   labelled.forEach(({ label }) => labelCounts.set(label, (labelCounts.get(label) ?? 0) + 1));
 
-  return labelled
+  // two unplaced rows of the same name are still told apart by their level
+  const levelled = labelled.map(entry => ({
+    ...entry,
+    label: labelCounts.get(entry.label) > 1 && entry.areas.length === 0
+      ? `${entry.label} (mlvl ${entry.monster.Levels[diff]})`
+      : entry.label,
+  }));
+
+  // and only when name, place and level all coincide does the id have to do it
+  const finalCounts = new Map();
+  levelled.forEach(({ label }) => finalCounts.set(label, (finalCounts.get(label) ?? 0) + 1));
+
+  return levelled
     .map(({ monster, index, areas, label: base }) => {
-      // out of anything meaningful, the id at least identifies the row - and
-      // then it replaces the level rather than piling on top of it
-      const label = labelCounts.get(base) > 1 ? `${monster.Name} (${monster.Id})` : base;
+      const label = finalCounts.get(base) > 1 ? `${monster.Name} (${monster.Id})` : base;
       // the level may already be part of the label; do not print it twice
       const hint = monsterLevelHint(monster, areas, diff);
       return { value: index, label, hint: label.includes(hint) ? '' : hint };
