@@ -141,13 +141,17 @@ const monsterOptions = computed(() => {
     }
   });
 
+  // Where you meet it beats which act it belongs to, so name the area — until
+  // the monster roams so many that naming one of them would mislead.
+  const AREAS_STILL_NAMEABLE = 3;
+
   const labelled = groups.map(({ monster, index, areas }) => {
     let label = monster.Name;
     if (nameCounts.get(monster.Name) > 1) {
       const act = actOf(areas);
       if (areas.length === 0) {
         label = `${monster.Name} — mlvl ${monster.Levels[diff]}`;
-      } else if (actCounts.get(`${monster.Name}|${act}`) > 1) {
+      } else if (areas.length <= AREAS_STILL_NAMEABLE || actCounts.get(`${monster.Name}|${act}`) > 1) {
         label = `${monster.Name} — ${areaName(areas[0])}`;
       } else {
         label = `${monster.Name} — Act ${act}`;
@@ -163,11 +167,12 @@ const monsterOptions = computed(() => {
 
   return labelled
     .map(({ monster, index, areas, label: base }) => {
-      const label = labelCounts.get(base) > 1 ? `${base} (${monster.Id})` : base;
-      // a preset-placed monster is told apart by its level, which the hint
-      // would then repeat
+      // out of anything meaningful, the id at least identifies the row - and
+      // then it replaces the level rather than piling on top of it
+      const label = labelCounts.get(base) > 1 ? `${monster.Name} (${monster.Id})` : base;
+      // the level may already be part of the label; do not print it twice
       const hint = monsterLevelHint(monster, areas, diff);
-      return { value: index, label, hint: label.endsWith(hint) ? '' : hint };
+      return { value: index, label, hint: label.includes(hint) ? '' : hint };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
 });
