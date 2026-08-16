@@ -392,6 +392,63 @@ const maxRuneChance = computed(() => {
   return filteredRows.value.reduce((max, r) => Math.max(max, r.chance), 0);
 });
 
+/**
+ * "All" reads better grouped than as one flat list of 1100 rows: each base
+ * item carries the quality split it rolls, and the uniques and set items it
+ * can turn into sit underneath it. Items referenced by a treasure class
+ * directly (Annihilus, the sunder charms) have no base to sit under and stay
+ * top-level.
+ */
+const groupedRows = computed(() => {
+  if (!result.value || filterKind.value !== 'all') return [];
+
+  const groups = new Map();
+  const loose = [];
+
+  for (const row of result.value.rows) {
+    if (row.kind === 'base') {
+      const group = groups.get(row.baseIndex) ?? { base: null, children: [] };
+      group.base = row;
+      groups.set(row.baseIndex, group);
+    } else if (row.direct || row.baseIndex == null || row.baseIndex < 0) {
+      loose.push(row);
+    } else {
+      const group = groups.get(row.baseIndex) ?? { base: null, children: [] };
+      group.children.push(row);
+      groups.set(row.baseIndex, group);
+    }
+  }
+
+  // a group without its base row cannot happen from the engine, but a loose
+  // child is still better shown than swallowed
+  const entries = [];
+  for (const group of groups.values()) {
+    if (group.base) entries.push(group);
+    else loose.push(...group.children);
+  }
+  loose.forEach(row => entries.push({ base: row, children: [], looseChild: true }));
+
+  const dir = sortDir.value === 'asc' ? 1 : -1;
+  entries.sort((a, b) => sortBy.value === 'name'
+    ? dir * a.base.name.localeCompare(b.base.name)
+    : -dir * (b.base.chance - a.base.chance));
+
+  entries.forEach(group => group.children.sort((a, b) => b.chance - a.chance));
+  return entries;
+});
+
+/// Quality split of a base row, as the four columns worth showing.
+const qualitySplit = (row) => {
+  const q = row.quality;
+  if (!q) return null;
+  return [
+    { key: 'magic', value: q.magic, cls: 'name-magic' },
+    { key: 'rare', value: q.rare, cls: 'name-rare' },
+    { key: 'set', value: q.set, cls: 'name-set' },
+    { key: 'unique', value: q.unique, cls: 'name-unique' },
+  ];
+};
+
 // ---------- "rune X or better" view ----------
 const runesView = ref('single'); // single | better
 const runesOrBetter = computed(() => filterKind.value === 'runes' && runesView.value === 'better');
@@ -1088,6 +1145,65 @@ watch(
             </tbody>
           </table>
         </div>
+        <!-- All: base items with the quality they roll, their uniques and set items beneath -->
+        <div v-else-if="filterKind === 'all'" class="table-responsive">
+          <table class="table table-dark table-hover drop-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="text-end quality-col name-magic" title="Chance this drop is magic">Magic</th>
+                <th class="text-end quality-col name-rare" title="Chance this drop is rare">Rare</th>
+                <th class="text-end quality-col name-set" title="Chance this drop is a set item">Set</th>
+                <th class="text-end quality-col name-unique" title="Chance this drop is unique">Unique</th>
+                <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
+                <th class="text-end">Chance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-for="(group, gi) in groupedRows" :key="gi">
+                <tr
+                  :class="['row-' + group.base.kind, { 'clickable-row': group.base.baseIndex >= 0 && !group.base.direct }]"
+                  :title="group.base.baseIndex >= 0 && !group.base.direct ? 'Show the detailed quality table for this base item' : undefined"
+                  @click="openDetail(group.base)"
+                >
+                  <td>
+                    <span
+                      :class="{ 'name-unique': group.base.kind === 'unique', 'name-set': group.base.kind === 'set', 'name-rune': group.base.isRune }"
+                    >{{ rowLabel(group.base) }}</span>
+                  </td>
+                  <template v-if="qualitySplit(group.base)">
+                    <td
+                      v-for="q in qualitySplit(group.base)"
+                      :key="q.key"
+                      class="text-end chance-cell quality-col"
+                      :class="q.cls"
+                    >{{ q.value > 0 ? formatChance(q.value, 'pct') : '—' }}</td>
+                  </template>
+                  <td v-else class="text-end quality-col" colspan="4">—</td>
+                  <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                    <template v-if="group.base.variantChance != null">{{ fmt(group.base.variantChance) }}</template>
+                    <template v-else>—</template>
+                  </td>
+                  <td class="text-end chance-cell">{{ fmt(group.base.chance) }}</td>
+                </tr>
+                <tr v-for="(child, ci) in group.children" :key="`${gi}-${ci}`" class="child-row">
+                  <td>
+                    <span class="child-mark">└</span>
+                    <span :class="child.kind === 'unique' ? 'name-unique' : 'name-set'">{{ child.name }}</span>
+                    <span v-if="child.kind === 'set'" class="info-note"> ({{ child.setName }})</span>
+                  </td>
+                  <td class="quality-col" colspan="4"></td>
+                  <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
+                    <template v-if="child.variantChance != null">{{ fmt(child.variantChance) }}</template>
+                    <template v-else>—</template>
+                  </td>
+                  <td class="text-end chance-cell">{{ fmt(child.chance) }}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
         <div v-else class="table-responsive">
           <table class="table table-dark table-hover drop-table">
             <thead>
@@ -1326,5 +1442,23 @@ watch(
 .cumulative-col {
   color: rgba(232, 221, 200, 0.7);
   font-size: 0.88rem;
+}
+
+.quality-col {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* uniques and set items sit under the base item they roll from */
+.child-row td {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  font-size: 0.92rem;
+}
+
+.child-mark {
+  color: rgba(201, 163, 106, 0.35);
+  margin-right: 0.4rem;
+  margin-left: 0.5rem;
 }
 </style>
