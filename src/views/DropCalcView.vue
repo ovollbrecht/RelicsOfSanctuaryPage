@@ -1269,8 +1269,8 @@ watch(
       multiple paths to the same item are added together, matching classic drop calculators.
       Terror Zones raise the monster level to character level +2/+4/+5 (capped per difficulty)
       and upgrade the treasure class accordingly.
-      The mod ships a monstats.txt without desecrated treasure-class columns, so both data modes
-      use the same monster data and the vanilla desecrated drop paths do not apply.
+      The mod does not change monstats.txt, so monster levels, spawn areas and the herald and
+      desecrated treasure classes are vanilla's in both data modes.
       Chests use each act's standard chest treasure class.
     </div>
   </div>
