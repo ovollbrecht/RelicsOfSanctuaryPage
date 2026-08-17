@@ -32367,41 +32367,40 @@
       "Set": 0,
       "Rare": 0,
       "Magic": 0,
-      "NoDrop": 1425,
+      "NoDrop": 0,
       "Items": [
         [
           2,
           412,
-          1
+          30
         ],
         [
           2,
           414,
-          1
+          30
         ],
         [
           2,
           415,
-          1
+          20
         ],
         [
           2,
           416,
-          1
+          12
         ],
         [
           2,
           417,
-          1
+          6
         ],
         [
           2,
           418,
-          1
+          3
         ]
       ],
-      "Condition": "\"cond('MonsterTestElite', herald)*(stat('heraldtier'.accr) >3) \"",
-      "RequiresHeraldTier": 4
+      "Condition": "\"cond('MonsterTestElite', herald)\""
     },
     {
       "Name": "Andariel",
@@ -91596,50 +91595,6 @@
   ],
   "Vanilla": {
     "TreasureClasses": {
-      "Sunder Charms": {
-        "Name": "Sunder Charms",
-        "Group": 0,
-        "Level": 0,
-        "Picks": 1,
-        "Unique": 0,
-        "Set": 0,
-        "Rare": 0,
-        "Magic": 0,
-        "NoDrop": 0,
-        "Items": [
-          [
-            2,
-            412,
-            30
-          ],
-          [
-            2,
-            414,
-            30
-          ],
-          [
-            2,
-            415,
-            20
-          ],
-          [
-            2,
-            416,
-            12
-          ],
-          [
-            2,
-            417,
-            6
-          ],
-          [
-            2,
-            418,
-            3
-          ]
-        ],
-        "Condition": "\"cond('MonsterTestElite', herald)\""
-      },
       "Act 1 (H) Good": {
         "Name": "Act 1 (H) Good",
         "Group": 5,
