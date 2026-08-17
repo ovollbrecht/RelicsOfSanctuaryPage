@@ -170,6 +170,7 @@
                 <li>Removed the option for the minimum Herald tier for Sunder Charms — patch 3.2 handles Herald tiers itself</li>
                 <li>Fixed Mythic Infernal Cranium dropping at 85.7% instead of the intended 5%</li>
                 <li>Fixed mana steal doing nothing on the Ferocity and Juggernaut Runewords</li>
+                <li>Fixed the cube recipes for helmets not adding a Mythic Affix at all</li>
                 <li>Fixed the Mythic property being lost when a crafting recipe had no free slot for it</li>
                 <li>Fixed crafted items rolling ethereal twice in some cases</li>
                 <li>Improved compatibility with other mods (reworked features and localization ids no longer clash)</li>
