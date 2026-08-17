@@ -121,7 +121,7 @@
             <h3 class="card-title m-0">Features & Installation</h3>
           </div>
           <div class="card-body p-4">
-            <div class="section-header">Current Features (v3.0.0)</div>
+            <div class="section-header">Current Features (v3.2.0)</div>
             <ul class="feature-list">
               <li>All features are optional and work in any combination (can be toggled in D2RMM)</li>
               <li>Exalted unique items</li>
@@ -129,11 +129,13 @@
               <li>Mythic crafting chance</li>
               <li>Recipes to add a Mythic Affix to rare or magic items</li>
               <li>7 additional Runewords (15 total)</li>
+              <li>Reworked vanilla Runewords — 69 Runewords rebalanced</li>
+              <li>Reworked magic affixes for Large and Grand Charms</li>
               <li>Cube recipe for socketing (similar to Larzuk's quest reward)</li>
               <li>In-game menus with information about cube recipes, crafting recipes, and Runewords</li>
               <li>Configurable drop chances for Exalted items, Mythic items, and Mythic craft results (1/2/5/10%) via D2RMM</li>
               <li>Configurable option to restrict Exalted and Mythic item drops to Terror Zones only</li>
-              <li>Configurable minimum Herald tier required for Sunder Charm drops</li>
+              <li>Optional equal drop rate for Sunder Charms (off by default, so Blizzard's weighting applies)</li>
               <li>Enable the "Warlord's Glory" set to be droppable (official Asia promo set)</li>
               <li>Enable perfect gem drops (balanced around previous cubing values, so lower gems drop less often)</li>
               <li>Enable teleport while in Wolf/Bear form</li>
@@ -163,7 +165,7 @@
               <ul class="changelog-list">
                 <li>Updated for Diablo II: Resurrected patch 3.2</li>
                 <li>Added option to rework the vanilla Runewords — 69 Runewords rebalanced (on by default)</li>
-                <li>Added option to rework the vanilla magic Affixes (on by default)</li>
+                <li>Added option to rework the magic affixes for Large and Grand Charms — 171 affixes rebalanced (on by default)</li>
                 <li>Sunder Charms drop with Blizzard's original weighting again; the equal drop rate is now optional and off by default</li>
                 <li>Removed the option for the minimum Herald tier for Sunder Charms — patch 3.2 handles Herald tiers itself</li>
                 <li>Fixed Mythic Infernal Cranium dropping at 85.7% instead of the intended 5%</li>
