@@ -909,6 +909,14 @@
         "Priority": "55"
       },
       {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
         "Prop": "dmg-cold",
         "Par": "75",
         "Min": "4",
@@ -3583,8 +3591,8 @@
     "Index": "The Battlebranch",
     "Rarity": "19",
     "Percent": "19/20 (95%)",
-    "Lvl": "34",
-    "LvlReq": "25",
+    "Lvl": "30",
+    "LvlReq": "17",
     "Properties": [
       {
         "Prop": "swing3",
@@ -3800,7 +3808,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "1 to [7 - 8]",
+      "Damage": "1 to 5",
       "Durability": "20",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -3829,20 +3837,12 @@
         "Priority": "55"
       },
       {
-        "Prop": "swing2",
+        "Prop": "cast2",
         "Par": "",
         "Min": "20",
         "Max": "20",
-        "Description": "20% Increased Attack Speed",
-        "Priority": "145"
-      },
-      {
-        "Prop": "dmg%",
-        "Par": "",
-        "Min": "50",
-        "Max": "60",
-        "Description": "[50-60]% Enhanced Damage",
-        "Priority": "1000"
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
       },
       {
         "Prop": "skill",
@@ -4293,6 +4293,14 @@
         "Max": "2",
         "Description": "+2 to Mana after each Kill",
         "Priority": "16"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Increased Attack Speed",
+        "Priority": "145"
       }
     ],
     "ImageMapping": "bow_short_bow.webp"
@@ -5769,9 +5777,9 @@
       {
         "Prop": "move2",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Faster Run/Walk",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
         "Priority": "148"
       },
       {
@@ -5789,6 +5797,14 @@
         "Max": "40",
         "Description": "40% Faster Hit Recovery",
         "Priority": "139"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Mana after each Kill",
+        "Priority": "16"
       },
       {
         "Prop": "dmg-fire",
@@ -7362,6 +7378,14 @@
         "Max": "50",
         "Description": "All Resistances +[30-50]",
         "Priority": "34"
+      },
+      {
+        "Prop": "sock",
+        "Par": "1",
+        "Min": "",
+        "Max": "",
+        "Description": "Socketed (1)",
+        "Priority": "-2"
       }
     ],
     "ImageMapping": "shield_the_ward.webp"
@@ -8766,6 +8790,14 @@
         "Max": "20",
         "Description": "Regenerate Mana 20%",
         "Priority": "52"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
       }
     ],
     "ImageMapping": "ring_ring.webp"
@@ -11058,6 +11090,14 @@
         "Max": "30",
         "Description": "Improved Durability",
         "Priority": ""
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Run/Walk",
+        "Priority": "148"
       }
     ],
     "ImageMapping": "sword_short_sword.webp"
@@ -26517,8 +26557,8 @@
       "Required Strength": "0"
     },
     "Index": "Gheed's Fortune",
-    "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
+    "Rarity": "285",
+    "Percent": "285/400 (71.25%)",
     "Lvl": "70",
     "LvlReq": "62",
     "Properties": [
@@ -30427,8 +30467,8 @@
     },
     "Index": "PreCrafted Cold Rupture",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -30469,8 +30509,8 @@
     },
     "Index": "PreCrafted Flame Rift",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -30511,8 +30551,8 @@
     },
     "Index": "PreCrafted Crack of the Heavens",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -30553,8 +30593,8 @@
     },
     "Index": "PreCrafted Rotting Fissure",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -30595,8 +30635,8 @@
     },
     "Index": "PreCrafted Bone Break",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -30637,8 +30677,8 @@
     },
     "Index": "PreCrafted Black Cleft",
     "Rarity": "19",
-    "Percent": "19/134 (14.179%)",
-    "Lvl": "69",
+    "Percent": "19/400 (4.75%)",
+    "Lvl": "75",
     "LvlReq": "75",
     "Properties": [
       {
@@ -62771,7 +62811,7 @@
     },
     "Index": "E Gheed's Fortune",
     "Rarity": "1",
-    "Percent": "1/134 (0.746%)",
+    "Percent": "1/400 (0.25%)",
     "Lvl": "70",
     "LvlReq": "62",
     "Properties": [
