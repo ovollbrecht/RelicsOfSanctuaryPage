@@ -175,13 +175,36 @@ export function upgradeTc(ctx, tcIndex, mlvl) {
 // ---------------------------------------------------------------------------
 
 /**
+ * Does the entry's ConditionCalc hold for this source? env is the resolved
+ * source (difficulty, terrorized), ctx supplies the configured herald tier.
+ *
+ * The gates come pre-parsed from the exporter (TcGate). Skipping them is not
+ * cosmetic: the Worldstone Shard parents list the "outside a terror zone" and
+ * "inside one" shard entries back to back and then the normal drop, so a
+ * traversal that keeps both spends the table's picks on shards and never
+ * reaches the item patch 3.3 added there.
+ */
+function gateAllows(ctx, tc, env) {
+  if (tc.HeraldTierMin != null && ctx.heraldTier < tc.HeraldTierMin) return false;
+  if (tc.HeraldTierMax != null && ctx.heraldTier > tc.HeraldTierMax) return false;
+  if (tc.RequiresDifficulty != null && tc.RequiresDifficulty !== env.difficulty) return false;
+  // the files say "Desecrated" where the rest of this module says "terrorized"
+  if (tc.RequiresDesecrated != null && tc.RequiresDesecrated !== env.terrorized) return false;
+  // RequiresHerald needs no check: those TCs are only reachable from a herald's
+  // own tables, so the condition is redundant wherever we can arrive at it.
+  return true;
+}
+
+/**
  * Walks the TC tree. Returns { drops, uniqueDrops, setDrops, cm } where
  * drops: Map<baseItemIndex, P(at least one)>, uniqueDrops/setDrops are for
  * TC entries referencing a specific unique/set item directly, and cm is the
- * max quality modifier seen. Cached per (tcIndex, playerBonus).
+ * max quality modifier seen. env is the resolved source ({ difficulty,
+ * terrorized }) - conditions depend on it, so it belongs in the cache key
+ * alongside the player bonus.
  */
-export function traverseTc(ctx, tcIndex, bonus) {
-  const cacheKey = `${tcIndex}|${bonus}`;
+export function traverseTc(ctx, tcIndex, bonus, env = { difficulty: 2, terrorized: false }) {
+  const cacheKey = `${tcIndex}|${bonus}|${env.difficulty}|${env.terrorized ? 1 : 0}`;
   const cached = ctx.traversalCache.get(cacheKey);
   if (cached) return cached;
 
@@ -201,13 +224,9 @@ export function traverseTc(ctx, tcIndex, bonus) {
     cm.magic = Math.max(cm.magic, tc.Magic);
 
     // sub-TCs whose ConditionCalc fails are removed from the roll entirely
-    // (dataguide) - currently the only modeled condition is the herald-tier
-    // gate on the Sunder Charms TC
-    const items = tc.Items.filter(([kind, target]) => {
-      if (kind !== 0) return true;
-      const req = ctx.tcs[target].RequiresHeraldTier;
-      return req == null || ctx.heraldTier >= req;
-    });
+    // (dataguide) - they do not just roll to nothing, they never take a pick
+    const items = tc.Items.filter(([kind, target]) =>
+      kind !== 0 || gateAllows(ctx, ctx.tcs[target], env));
 
     const itemSum = items.reduce((sum, e) => sum + e[2], 0);
     if (itemSum === 0) return;
@@ -220,7 +239,7 @@ export function traverseTc(ctx, tcIndex, bonus) {
 
     // the herald-tier-gated special TC (sunder charms) rolls independently of
     // the player count (confirmed for patch 3.2 herald drops)
-    const playerScaled = tc.RequiresHeraldTier == null;
+    const playerScaled = tc.HeraldTierMin == null;
     if (playerScaled && bonus > 1 && noDrop > 0) {
       const sum = itemSum + noDrop;
       const fraction = Math.pow(noDrop / sum, bonus);
@@ -379,9 +398,15 @@ export function setPool(ctx, baseIndex, ilvl) {
  * Resolves the TC for a source selection.
  * sel: { kind: 'monster'|'superunique'|'chest'|'rawTc', monsterIndex,
  *        superUniqueIndex, sourceType, difficulty, areaId, tcIndex }
- * Returns { tcIndex, upgradedTcIndex, mlvl, baseMlvl, terrorized, monster }.
+ * Returns { difficulty, tcIndex, upgradedTcIndex, mlvl, baseMlvl, terrorized,
+ * monster }. difficulty and terrorized together are what the ConditionCalc
+ * gates are evaluated against, so the source doubles as traverseTc's env.
  */
 export function resolveSource(ctx, sel) {
+  return { difficulty: sel.difficulty ?? 0, ...resolveSourceTc(ctx, sel) };
+}
+
+function resolveSourceTc(ctx, sel) {
   const difficulty = sel.difficulty ?? 0;
 
   if (sel.kind === 'rawTc') {
@@ -451,7 +476,7 @@ export function computeMonsterDrops(ctx, sel) {
     return { source, rows: [] };
   }
 
-  const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus);
+  const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus, source);
   const rows = [];
 
   for (const [baseIndex, p] of drops) {
@@ -541,7 +566,7 @@ export function computeMonsterDrops(ctx, sel) {
 export function computeItemDetail(ctx, sel, baseIndex) {
   const source = resolveSource(ctx, sel);
   if (source.tcIndex == null || source.tcIndex < 0) return { source, found: false };
-  const { drops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus);
+  const { drops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus, source);
   const p = drops.get(baseIndex) ?? 0;
   if (p === 0) return { source, found: false };
 
@@ -594,7 +619,7 @@ export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null
 
   const chanceFor = (source) => {
     if (source.tcIndex == null || source.tcIndex < 0) return null;
-    const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus);
+    const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus, source);
 
     let chance = 0;
     let variantChance = null;

@@ -10054,7 +10054,9 @@
           1
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\""
+      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 2 Terrorize Act Consumable",
@@ -10093,7 +10095,9 @@
           2
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\""
+      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 3 Terrorize Act Consumable",
@@ -10132,7 +10136,9 @@
           2
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\""
+      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 4 Terrorize Act Consumable",
@@ -10171,7 +10177,9 @@
           3
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\""
+      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 5 Terrorize Act Consumable",
@@ -10210,7 +10218,9 @@
           5
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\""
+      "Condition": "\"cond('Difficulty', hell)*(cond('Desecrated')==0)\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": false
     },
     {
       "Name": "All Acts Terrorize Consumable",
@@ -10249,7 +10259,9 @@
           1
         ]
       ],
-      "Condition": "\"cond('Difficulty', hell)*cond('Desecrated')\""
+      "Condition": "\"cond('Difficulty', hell)*cond('Desecrated')\"",
+      "RequiresDifficulty": 2,
+      "RequiresDesecrated": true
     },
     {
       "Name": "Ancient Statue 1",
@@ -10923,7 +10935,8 @@
           3
         ]
       ],
-      "Condition": "\"cond('MonsterTestElite', herald)\""
+      "Condition": "\"cond('MonsterTestElite', herald)\"",
+      "RequiresHerald": true
     },
     {
       "Name": "Herald Charm 1",
@@ -11525,7 +11538,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')==0"
+      "Condition": "cond('Desecrated')==0",
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 2 Worldstone Shards 1",
@@ -11857,7 +11871,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')==0"
+      "Condition": "cond('Desecrated')==0",
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 3 Worldstone Shards 1",
@@ -12189,7 +12204,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')==0"
+      "Condition": "cond('Desecrated')==0",
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 4 Worldstone Shards 1",
@@ -12521,7 +12537,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')==0"
+      "Condition": "cond('Desecrated')==0",
+      "RequiresDesecrated": false
     },
     {
       "Name": "Act 5 Worldstone Shards 1",
@@ -12853,7 +12870,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')==0"
+      "Condition": "cond('Desecrated')==0",
+      "RequiresDesecrated": false
     },
     {
       "Name": "Worldstone Shards 1",
@@ -13185,7 +13203,8 @@
           1066
         ]
       ],
-      "Condition": "cond('Desecrated')"
+      "Condition": "cond('Desecrated')",
+      "RequiresDesecrated": true
     },
     {
       "Name": "Act 1 Worldstone Shard Parent",
@@ -50523,7 +50542,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 1 (H) Herald Item B - 1 Extra",
@@ -50543,7 +50563,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 1 (H) Herald Item C - 1 Extra",
@@ -50563,7 +50584,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 2 (H) Herald Item D - 1 Extra",
@@ -50583,7 +50605,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 2 (H) Herald Item E - 1 Extra",
@@ -50603,7 +50626,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 2 (H) Herald Item F - 1 Extra",
@@ -50623,7 +50647,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 3 (H) Herald Item G - 1 Extra",
@@ -50643,7 +50668,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 3 (H) Herald Item H - 1 Extra",
@@ -50663,7 +50689,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 3 (H) Herald Item I - 1 Extra",
@@ -50683,7 +50710,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 4 (H) Herald Item J - 1 Extra",
@@ -50703,7 +50731,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 4 (H) Herald Item K - 1 Extra",
@@ -50723,7 +50752,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 5 (H) Herald Item L - 1 Extra",
@@ -50743,7 +50773,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 5 (H) Herald Item M - 1 Extra",
@@ -50763,7 +50794,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 5 (H) Herald Item N - 1 Extra",
@@ -50783,7 +50815,8 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr)>2)*(stat('heraldtier'.accr) <5)",
-      "RequiresHeraldTier": 3
+      "HeraldTierMin": 3,
+      "HeraldTierMax": 4
     },
     {
       "Name": "Act 1 (H) Herald Item A - 2 Extra",
@@ -50803,7 +50836,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 1 (H) Herald Item B - 2 Extra",
@@ -50823,7 +50856,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 1 (H) Herald Item C - 2 Extra",
@@ -50843,7 +50876,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 2 (H) Herald Item D - 2 Extra",
@@ -50863,7 +50896,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 2 (H) Herald Item E - 2 Extra",
@@ -50883,7 +50916,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 2 (H) Herald Item F - 2 Extra",
@@ -50903,7 +50936,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 3 (H) Herald Item G - 2 Extra",
@@ -50923,7 +50956,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 3 (H) Herald Item H - 2 Extra",
@@ -50943,7 +50976,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 3 (H) Herald Item I - 2 Extra",
@@ -50963,7 +50996,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 4 (H) Herald Item J - 2 Extra",
@@ -50983,7 +51016,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 4 (H) Herald Item K - 2 Extra",
@@ -51003,7 +51036,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 5 (H) Herald Item L - 2 Extra",
@@ -51023,7 +51056,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 5 (H) Herald Item M - 2 Extra",
@@ -51043,7 +51076,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 5 (H) Herald Item N - 2 Extra",
@@ -51063,7 +51096,7 @@
         ]
       ],
       "Condition": "(stat('heraldtier'.accr) >4)",
-      "RequiresHeraldTier": 5
+      "HeraldTierMin": 5
     },
     {
       "Name": "Act 1 (H) Herald A",
