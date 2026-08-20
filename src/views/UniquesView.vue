@@ -21,6 +21,8 @@ const FACET_ELEMENTS = {
   cold: 'Cold',
   fire: 'Fire',
   pois: 'Poison',
+  mag: 'Magic',
+  phys: 'Physical',
 };
 
 const FACET_TRIGGER_LABELS = {
@@ -321,6 +323,23 @@ const sortPropertiesByPriority = (properties) => {
   return [...properties].sort((a, b) => parseInt(b.Priority) - parseInt(a.Priority));
 };
 
+// The two panels a card shows side by side, with their lists worked out once
+// instead of twice per render. A panel with nothing in a section leaves the
+// heading off: a charm has no defense, durability or damage, and six of its
+// eight lines were an empty "Stats" box.
+const variantsOf = (pair) => {
+  const panel = (item, label) => ({
+    item,
+    label,
+    stats: getNonZeroStats(item.Stats ?? {}),
+    properties: sortPropertiesByPriority(item.Properties ?? []),
+  });
+
+  const panels = [panel(pair.normal, pair.normalLabel ?? 'Normal')];
+  if (pair.exalted) panels.push(panel(pair.exalted, pair.exaltedLabel ?? 'Exalted'));
+  return panels;
+};
+
 const getImageUrl = (imagePath) => {
   return new URL(`../assets/item_images/${imagePath}`, import.meta.url).href;
 };
@@ -572,81 +591,56 @@ onMounted(() => {
             </div>
 
             <div class="row item-comparison-row">
-              <!-- Normal Item -->
-              <div :class="pair.exalted ? 'col-md-6 mb-3 mb-md-0' : 'col-12'">
+              <div
+                  v-for="(variant, variantIndex) in variantsOf(pair)"
+                  :key="variant.label"
+                  :class="pair.exalted ? (variantIndex === 0 ? 'col-md-6 mb-3 mb-md-0' : 'col-md-6') : 'col-12'"
+              >
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h4 class="h5 mb-0">{{ pair.normalLabel ?? 'Normal' }}</h4>
-                    <small v-if="pair.normal.Drops !== false" class="text-light opacity-75">{{ pair.normal.Percent }}</small>
+                    <h4 class="h5 mb-0">{{ variant.label }}</h4>
+                    <!-- What you do to get one: the odds, or the cube recipe
+                         for the items you assemble rather than find. -->
+                    <small v-if="variant.item.Recipe" class="text-light opacity-75 recipe-line">
+                      {{ variant.item.Recipe.join(' + ') }}
+                    </small>
+                    <small v-else-if="variant.item.Drops !== false" class="text-light opacity-75">
+                      {{ variant.item.Percent }}
+                    </small>
                     <small v-else class="text-light opacity-75">does not drop</small>
                   </div>
                   <div class="card-body">
-                    <h5 class="section-header">Stats</h5>
-                    <ul class="list-group list-group-flush mb-3">
-                      <li
-                          v-for="(stat, index) in getNonZeroStats(pair.normal.Stats)"
-                          :key="index"
-                          class="list-group-item list-item-enhanced"
-                      >
-                        {{ stat[0] }}: {{ stat[1] }}
-                      </li>
-                    </ul>
+                    <template v-if="variant.stats.length">
+                      <h5 class="section-header">Stats</h5>
+                      <ul class="list-group list-group-flush mb-3">
+                        <li
+                            v-for="(stat, index) in variant.stats"
+                            :key="index"
+                            class="list-group-item list-item-enhanced"
+                        >
+                          {{ stat[0] }}: {{ stat[1] }}
+                        </li>
+                      </ul>
+                    </template>
 
-                    <h5 class="section-header">Properties</h5>
-                    <ul class="list-group list-group-flush">
-                      <li
-                          v-for="(prop, propIndex) in sortPropertiesByPriority(pair.normal.Properties)"
-                          :key="propIndex"
-                          class="list-group-item list-item-property"
-                      >
-                        {{ prop.Description }}
-                        <ul v-if="prop.Rolls" class="property-rolls">
-                          <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                            <span>{{ roll.Description }}</span>
-                            <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Exalted Item -->
-              <div class="col-md-6" v-if="pair.exalted">
-                <div class="card h-100 item-variant-card">
-                  <div class="card-header card-header-dark text-center">
-                    <h4 class="h5 mb-0">{{ pair.exaltedLabel ?? 'Exalted' }}</h4>
-                    <small class="text-light opacity-75">{{ pair.exalted.Percent }}</small>
-                  </div>
-                  <div class="card-body">
-                    <h5 class="section-header">Stats</h5>
-                    <ul class="list-group list-group-flush mb-3">
-                      <li
-                          v-for="(stat, index) in getNonZeroStats(pair.exalted.Stats)"
-                          :key="index"
-                          class="list-group-item list-item-enhanced"
-                      >
-                        {{ stat[0] }}: {{ stat[1] }}
-                      </li>
-                    </ul>
-
-                    <h5 class="section-header">Properties</h5>
-                    <ul class="list-group list-group-flush">
-                      <li
-                          v-for="(prop, propIndex) in sortPropertiesByPriority(pair.exalted.Properties)"
-                          :key="propIndex"
-                          class="list-group-item list-item-property"
-                      >
-                        {{ prop.Description }}
-                        <ul v-if="prop.Rolls" class="property-rolls">
-                          <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                            <span>{{ roll.Description }}</span>
-                            <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
+                    <template v-if="variant.properties.length">
+                      <h5 class="section-header">Properties</h5>
+                      <ul class="list-group list-group-flush">
+                        <li
+                            v-for="(prop, propIndex) in variant.properties"
+                            :key="propIndex"
+                            class="list-group-item list-item-property"
+                        >
+                          {{ prop.Description }}
+                          <ul v-if="prop.Rolls" class="property-rolls">
+                            <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                              <span>{{ roll.Description }}</span>
+                              <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </template>
                   </div>
                 </div>
               </div>
@@ -676,6 +670,14 @@ onMounted(() => {
   font-size: 0.9em;
   opacity: 0.85;
   padding: 1px 0;
+}
+
+/* Four to six ingredients, so it wraps rather than widening the header. */
+.recipe-line {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  margin-top: 2px;
 }
 
 .roll-chance {
