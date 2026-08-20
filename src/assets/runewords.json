@@ -5435,7 +5435,7 @@
         "Par": "",
         "Min": "-3",
         "Max": "-3",
-        "Description": "+-3 to Light Radius",
+        "Description": "-3 to Light Radius",
         "Priority": "6"
       },
       {
@@ -5507,7 +5507,7 @@
         "Par": "",
         "Min": "-3",
         "Max": "-3",
-        "Description": "+-3 to Light Radius",
+        "Description": "-3 to Light Radius",
         "Priority": "6"
       },
       {
@@ -8322,7 +8322,7 @@
         "Par": "",
         "Min": "-5",
         "Max": "-5",
-        "Description": "Replenish Life +-5",
+        "Description": "Replenish Life -5",
         "Priority": "56"
       },
       {
@@ -9075,7 +9075,7 @@
         "Par": "",
         "Min": "-3",
         "Max": "-3",
-        "Description": "+-3 to Light Radius",
+        "Description": "-3 to Light Radius",
         "Priority": "6"
       },
       {
@@ -9155,7 +9155,7 @@
         "Par": "",
         "Min": "-3",
         "Max": "-3",
-        "Description": "+-3 to Light Radius",
+        "Description": "-3 to Light Radius",
         "Priority": "6"
       },
       {
@@ -12630,7 +12630,7 @@
         "Par": "",
         "Min": "-1",
         "Max": "-1",
-        "Description": "+-1 to Light Radius",
+        "Description": "-1 to Light Radius",
         "Priority": "6"
       },
       {

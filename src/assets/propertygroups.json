@@ -4406,7 +4406,7 @@
             "Par": "",
             "Min": "-50",
             "Max": "-30",
-            "Description": "Requirements [-50--30]%",
+            "Description": "Requirements -[30-50]%",
             "Priority": "0"
           }
         ],
@@ -9208,7 +9208,7 @@
                   "Par": "",
                   "Min": "-50",
                   "Max": "-30",
-                  "Description": "Requirements [-50--30]%",
+                  "Description": "Requirements -[30-50]%",
                   "Priority": "0"
                 }
               ],
