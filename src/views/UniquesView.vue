@@ -30,6 +30,44 @@ const FACET_TRIGGER_LABELS = {
   gethit: 'Get Hit',
 };
 
+// Three families carry an element: the Rainbow Facets, the unique jewels, and
+// the Sunder Charms. Restricted to those on purpose - plenty of ordinary
+// uniques add fire damage without being "a fire item".
+const ELEMENT_BY_SUFFIX = {
+  ltng: 'ltng', light: 'ltng',
+  cold: 'cold',
+  fire: 'fire',
+  pois: 'pois', poison: 'pois',
+  mag: 'mag', magic: 'mag',
+  dmg: 'phys', damage: 'phys',
+};
+
+const isFacet = (item) => /Rainbow Facet$/.test(item?.Name ?? '');
+const isUniqueJewel = (item) => (item?.Types ?? []).includes('cjwl');
+const isSunderCharm = (item) =>
+  (item?.Properties ?? []).some(p => (p.Prop ?? '').startsWith('pierce-immunity-'));
+
+const elementOf = (item) => {
+  if (!item || !(isFacet(item) || isUniqueJewel(item) || isSunderCharm(item))) return null;
+  for (const p of item.Properties ?? []) {
+    const match = /^(?:pierce|extra|dmg)-(?:immunity-)?(ltng|light|cold|fire|pois|poison|mag|magic|dmg|damage)$/
+      .exec(p.Prop ?? '');
+    if (match) return ELEMENT_BY_SUFFIX[match[1]];
+  }
+  return null;
+};
+
+// The jewels ship an image path the game never extracted, and the charms none
+// at all. Both are recognisable enough by their element colour, so they borrow
+// a shape: the facets' gem, and the grand charm every other charm uses.
+const FACET_IMAGE = 'gem_perfect_diamond.webp';
+const GRAND_CHARM_IMAGE = 'charm_charm_large.webp';
+
+const imageFor = (item) =>
+  isUniqueJewel(item) ? FACET_IMAGE
+    : isSunderCharm(item) ? GRAND_CHARM_IMAGE
+    : item?.ImageMapping;
+
 const facetInfo = (item) => {
   if (!item || (item.Name !== 'Rainbow Facet' && item.Name !== 'Exalted Rainbow Facet')) return null;
   const props = item.Properties || [];
@@ -47,9 +85,28 @@ const facetInfo = (item) => {
 const exaltedTriggerOf = (baseTrigger) =>
   baseTrigger === 'death' ? 'hit' : baseTrigger === 'level' ? 'gethit' : baseTrigger;
 
+// A Sunder Charm comes in two states: the Latent one that drops, and the
+// Renewed one the cube makes from it. They belong in one window the way a
+// normal and an exalted item do. The plain vanilla charms the mod replaced -
+// the ones a Latent version exists for - are not shown at all.
+const CHARM_PREFIX = 'Latent ';
+const RENEWED_PREFIX = 'Renewed ';
+
 const itemPairs = computed(() => {
   const pairs = [];
   const exaltedQueues = new Map();
+
+  const supersededNames = new Set(
+    uniqueItems.value
+      .filter(item => item.Name.startsWith(CHARM_PREFIX))
+      .map(item => item.Name.slice(CHARM_PREFIX.length)),
+  );
+
+  const renewedByName = new Map(
+    uniqueItems.value
+      .filter(item => item.Name.startsWith(RENEWED_PREFIX))
+      .map(item => [item.Name.slice(RENEWED_PREFIX.length), item]),
+  );
 
   uniqueItems.value.forEach(item => {
     if (item.Name.startsWith('Exalted ')) {
@@ -62,7 +119,26 @@ const itemPairs = computed(() => {
   });
 
   uniqueItems.value.forEach(item => {
-    if (!item.Name.startsWith('Exalted ')) {
+    if (item.Name.startsWith('Exalted ') || item.Name.startsWith(RENEWED_PREFIX)) return;
+
+    // Superseded by a Latent version, so it is a row the mod no longer uses.
+    if (supersededNames.has(item.Name)) return;
+
+    if (item.Name.startsWith(CHARM_PREFIX)) {
+      const bare = item.Name.slice(CHARM_PREFIX.length);
+      pairs.push({
+        normal: item,
+        exalted: renewedByName.get(bare) ?? null,
+        facet: null,
+        element: elementOf(item),
+        title: bare,
+        normalLabel: 'Latent',
+        exaltedLabel: 'Renewed',
+      });
+      return;
+    }
+
+    {
       const queue = exaltedQueues.get(item.Name);
       if (queue && queue.length) {
         // Same-name multi-entries (the 8 Rainbow Facets) are paired by
@@ -79,13 +155,13 @@ const itemPairs = computed(() => {
         } else {
           exalted = queue.shift();
         }
-        pairs.push({ normal: item, exalted, facet: info });
+        pairs.push({ normal: item, exalted, facet: info, element: elementOf(item) });
       } else {
         // No exalted counterpart. These used to fall out of the page entirely,
         // which is why the crafted sunder charms and the unique jewels were
         // nowhere to be found - they are obtained rather than dropped, and the
         // mod never made an exalted version of them.
-        pairs.push({ normal: item, exalted: null, facet: facetInfo(item) });
+        pairs.push({ normal: item, exalted: null, facet: facetInfo(item), element: elementOf(item) });
       }
     }
   });
@@ -468,10 +544,10 @@ onMounted(() => {
     <!-- Item Cards -->
     <div class="row g-4 mt-3" ref="itemsSection">
       <div v-for="(pair, index) in filteredItemPairs" :key="index" class="col-12 col-xl-6">
-        <div class="card card-enhanced card-hover h-100" :class="pair.facet ? 'facet-card facet-' + pair.facet.element : ''">
+        <div class="card card-enhanced card-hover h-100" :class="pair.element ? 'facet-card facet-' + pair.element : ''">
           <div class="card-header card-header-primary">
             <h2 class="h4 mb-1">
-              {{ pair.normal.Name }}<template v-if="pair.facet"> — {{ FACET_ELEMENTS[pair.facet.element] }}</template>
+              {{ pair.title ?? pair.normal.Name }}<template v-if="pair.element"> — {{ FACET_ELEMENTS[pair.element] }}</template>
             </h2>
             <h3 class="h6 mb-0 fw-normal">
               {{ pair.normal.BaseItemName }}
@@ -486,9 +562,10 @@ onMounted(() => {
           <div class="card-body">
             <div class="item-image-container">
               <img
-                  :src="getImageUrl(pair.normal.ImageMapping)"
+                  :src="getImageUrl(imageFor(pair.normal))"
                   :alt="pair.normal.Name"
                   class="img-fluid"
+                  :class="pair.element ? 'element-tinted' : ''"
                   loading="lazy"
                   @error="hideBrokenImage"
               />
@@ -499,7 +576,7 @@ onMounted(() => {
               <div :class="pair.exalted ? 'col-md-6 mb-3 mb-md-0' : 'col-12'">
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h4 class="h5 mb-0">Normal</h4>
+                    <h4 class="h5 mb-0">{{ pair.normalLabel ?? 'Normal' }}</h4>
                     <small v-if="pair.normal.Drops !== false" class="text-light opacity-75">{{ pair.normal.Percent }}</small>
                     <small v-else class="text-light opacity-75">does not drop</small>
                   </div>
@@ -539,7 +616,7 @@ onMounted(() => {
               <div class="col-md-6" v-if="pair.exalted">
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h4 class="h5 mb-0">Exalted</h4>
+                    <h4 class="h5 mb-0">{{ pair.exaltedLabel ?? 'Exalted' }}</h4>
                     <small class="text-light opacity-75">{{ pair.exalted.Percent }}</small>
                   </div>
                   <div class="card-body">
@@ -724,6 +801,23 @@ onMounted(() => {
 .facet-cold { --facet-color: rgba(94, 158, 217, 0.65); }
 .facet-fire { --facet-color: rgba(214, 92, 66, 0.65); }
 .facet-pois { --facet-color: rgba(114, 191, 106, 0.65); }
+.facet-mag  { --facet-color: rgba(178, 132, 214, 0.65); }
+.facet-phys { --facet-color: rgba(178, 168, 152, 0.65); }
+
+/* The sprite in its element's colour. The jewels and the charms borrow a
+   shape - a gem and a grand charm - so the colour is what tells six otherwise
+   identical pictures apart. */
+.element-tinted {
+  filter: grayscale(1) sepia(1) hue-rotate(var(--element-rotate, 0deg))
+          saturate(var(--element-saturate, 3)) brightness(var(--element-bright, 1));
+}
+
+.facet-ltng { --element-rotate: 15deg;  --element-saturate: 3.5; --element-bright: 1.15; }
+.facet-cold { --element-rotate: 170deg; --element-saturate: 3.2; }
+.facet-fire { --element-rotate: -35deg; --element-saturate: 4; }
+.facet-pois { --element-rotate: 75deg;  --element-saturate: 3.2; }
+.facet-mag  { --element-rotate: 245deg; --element-saturate: 3.5; }
+.facet-phys { --element-rotate: 0deg;   --element-saturate: 0.4; --element-bright: 1.05; }
 
 .facet-chip {
   background: color-mix(in srgb, var(--facet-color, #c9a36a) 18%, transparent);
