@@ -14990,6 +14990,14 @@
         "Max": "40",
         "Description": "Regenerate Mana 40%",
         "Priority": "52"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
       }
     ],
     "Items": [
@@ -15052,6 +15060,14 @@
                 "Max": "30",
                 "Description": "30% Increased Attack Speed",
                 "Priority": "145"
+              },
+              {
+                "Prop": "dmg",
+                "Par": "",
+                "Min": "6",
+                "Max": "6",
+                "Description": "Damage +6",
+                "Priority": "122"
               }
             ]
           }
@@ -15116,6 +15132,14 @@
                 "Max": "50",
                 "Description": "Fire Resist 50%",
                 "Priority": "36"
+              },
+              {
+                "Prop": "dmg-undead",
+                "Par": "",
+                "Min": "100",
+                "Max": "100",
+                "Description": "100% Damage to Undead",
+                "Priority": "108"
               }
             ]
           }
