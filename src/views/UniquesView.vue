@@ -49,6 +49,14 @@ const isUniqueJewel = (item) => (item?.Types ?? []).includes('cjwl');
 const isSunderCharm = (item) =>
   (item?.Properties ?? []).some(p => (p.Prop ?? '').startsWith('pierce-immunity-'));
 
+// The mod's own item types for the things you obtain on purpose. Everything
+// else that cannot drop is a row the game does not hand out at all - vanilla
+// leftovers like Constricting Ring and the unused second Azurewrath - and
+// listing them promised items nobody can find.
+const OBTAINED_TYPES = ['cjwl', 'csch'];
+const isObtainable = (item) =>
+  !!item && (item.Drops !== false || (item.Types ?? []).some(t => OBTAINED_TYPES.includes(t)));
+
 const elementOf = (item) => {
   if (!item || !(isFacet(item) || isUniqueJewel(item) || isSunderCharm(item))) return null;
   for (const p of item.Properties ?? []) {
@@ -168,7 +176,7 @@ const itemPairs = computed(() => {
     }
   });
 
-  return pairs;
+  return pairs.filter(pair => isObtainable(pair.normal) || isObtainable(pair.exalted));
 });
 
 // Group items by tier and category
