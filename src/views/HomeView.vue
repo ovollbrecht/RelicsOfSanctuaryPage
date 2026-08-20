@@ -121,7 +121,7 @@
             <h3 class="card-title m-0">Features & Installation</h3>
           </div>
           <div class="card-body p-4">
-            <div class="section-header">Current Features (v3.2.0)</div>
+            <div class="section-header">Current Features (v3.3.0)</div>
             <ul class="feature-list">
               <li>All features are optional and work in any combination (can be toggled in D2RMM)</li>
               <li>Exalted unique items</li>
@@ -160,6 +160,20 @@
             <h3 class="card-title m-0">Changelog</h3>
           </div>
           <div class="card-body p-4">
+            <div class="changelog-entry">
+              <div class="version">Version 3.3.0</div>
+              <ul class="changelog-list">
+                <li>Updated for Diablo II: Resurrected patch 3.3</li>
+                <li>Adjusted the exalted versions of the nine uniques patch 3.3 reworked — Bane Ash, Blinkbats Form, Bloodletter, Gravenspine, Manald Heal, Piercerib, Pluckeye, The Ward and The Battlebranch</li>
+                <li>Adjusted the mythic Angelic set items and the Angelical Raiment set bonus for the same reason</li>
+                <li>Removed the ladder-season restriction patch 3.3 put on those items, so they drop for everyone including offline play</li>
+                <li>Fixed the exalted Gheed's Fortune dropping about 14 times more rarely than the intended 5% — patch 3.3 changed how often the ordinary one drops</li>
+                <li>The standalone archive now unpacks straight into mods; it carries the RelicsOfSanctuary folder itself. Delete the old folder rather than merging into it</li>
+                <li>Website: the crafted Sunder Charms and the unique jewels are listed now — they are obtained rather than dropped and were missing entirely</li>
+                <li>Website: properties that roll one of several options show that list, with each option's chance</li>
+                <li>Website: the drop calculator follows patch 3.3 — a Worldstone Shard no longer replaces the drop it comes with, and Herald tiers 3-4 and 5+ no longer both count at once</li>
+              </ul>
+            </div>
             <div class="changelog-entry">
               <div class="version">Version 3.2.0</div>
               <ul class="changelog-list">
