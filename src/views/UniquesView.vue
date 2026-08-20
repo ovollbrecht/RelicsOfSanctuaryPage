@@ -80,6 +80,12 @@ const itemPairs = computed(() => {
           exalted = queue.shift();
         }
         pairs.push({ normal: item, exalted, facet: info });
+      } else {
+        // No exalted counterpart. These used to fall out of the page entirely,
+        // which is why the crafted sunder charms and the unique jewels were
+        // nowhere to be found - they are obtained rather than dropped, and the
+        // mod never made an exalted version of them.
+        pairs.push({ normal: item, exalted: null, facet: facetInfo(item) });
       }
     }
   });
@@ -99,10 +105,15 @@ const categorizedItems = computed(() => {
   // Process all item pairs
   itemPairs.value.forEach(pair => {
     const item = pair.normal;
-    const itemType = item.Types[0]; // First entry in Types array defines the item type
-    const mapping = itemMapping[itemType];
+    // Types runs from the most specific to the most general - a crafted sunder
+    // charm is csch, then char, then misc - so walk it rather than insisting on
+    // the first. An unmapped leading type used to drop the item from the page
+    // without a word, which is how the crafted charms and the unique jewels
+    // stayed invisible even once the data carried them.
+    const itemType = (item.Types || []).find(t => itemMapping[t]);
+    const mapping = itemType ? itemMapping[itemType] : null;
 
-    if (!mapping) return; // Skip if no mapping found
+    if (!mapping) return;
 
     const category = mapping.type;
     const typeName = mapping.name;
@@ -221,6 +232,13 @@ const setFilter = (tier, category = null, type = null) => {
 
 const getNonZeroStats = (stats) => {
   return Object.entries(stats).filter(([_, value]) => value !== '0' && value !== '0 to 0');
+};
+
+// A group's odds, at the precision the numbers actually carry: 60% stays 60%,
+// and Gheed-style 9.9% keeps its digit instead of rounding to a lie.
+const formatChance = (chance) => {
+  const percent = chance * 100;
+  return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
 };
 
 const sortPropertiesByPriority = (properties) => {
@@ -478,11 +496,12 @@ onMounted(() => {
 
             <div class="row item-comparison-row">
               <!-- Normal Item -->
-              <div class="col-md-6 mb-3 mb-md-0">
+              <div :class="pair.exalted ? 'col-md-6 mb-3 mb-md-0' : 'col-12'">
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
                     <h4 class="h5 mb-0">Normal</h4>
-                    <small class="text-light opacity-75">{{ pair.normal.Percent }}</small>
+                    <small v-if="pair.normal.Drops !== false" class="text-light opacity-75">{{ pair.normal.Percent }}</small>
+                    <small v-else class="text-light opacity-75">does not drop</small>
                   </div>
                   <div class="card-body">
                     <h5 class="section-header">Stats</h5>
@@ -504,6 +523,12 @@ onMounted(() => {
                           class="list-group-item list-item-property"
                       >
                         {{ prop.Description }}
+                        <ul v-if="prop.Rolls" class="property-rolls">
+                          <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                            <span>{{ roll.Description }}</span>
+                            <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </div>
@@ -511,7 +536,7 @@ onMounted(() => {
               </div>
 
               <!-- Exalted Item -->
-              <div class="col-md-6">
+              <div class="col-md-6" v-if="pair.exalted">
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
                     <h4 class="h5 mb-0">Exalted</h4>
@@ -537,6 +562,12 @@ onMounted(() => {
                           class="list-group-item list-item-property"
                       >
                         {{ prop.Description }}
+                        <ul v-if="prop.Rolls" class="property-rolls">
+                          <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                            <span>{{ roll.Description }}</span>
+                            <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </div>
@@ -551,6 +582,31 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* A property group's possible rolls, indented under the line that introduces
+   them. A crafted sunder charm carries five of these; as one sentence per
+   group it was a wall, as a list it is a table you can scan. */
+.property-rolls {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+}
+
+.property-rolls li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9em;
+  opacity: 0.85;
+  padding: 1px 0;
+}
+
+.roll-chance {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
 .filters-panel {
   background: linear-gradient(180deg, rgba(32, 24, 18, 0.95), rgba(16, 12, 10, 0.98));
   border: 1px solid rgba(59, 42, 31, 0.9);
