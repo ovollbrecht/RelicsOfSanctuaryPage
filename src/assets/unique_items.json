@@ -4515,6 +4515,14 @@
         "Max": "50",
         "Description": "50% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "roguesbow-affix1",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Random: +[1-3] to Fire Arrow (Amazon Only) · +[1-3] to Cold Arrow (Amazon Only)",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "bow_piercerib.webp"
@@ -29980,6 +29988,14 @@
         "Max": "15",
         "Description": "+[10-15] to Energy",
         "Priority": "61"
+      },
+      {
+        "Prop": "skilltab-war",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Eldritch Skills (Warlock Only)",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "boot_light_plate_boots.webp"
@@ -30209,6 +30225,14 @@
         "Max": "3",
         "Description": "+[1-3] to Mana after each Kill",
         "Priority": "16"
+      },
+      {
+        "Prop": "magdam-rand",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Random: [3-5]% to Magic Skill Damage · [20-40]% Enhanced Damage · [3-5]% to Fire Skill Damage · [3-5]% to Cold Skill Damage · [3-5]% to Lightning Skill Damage · [3-5]% to Poison Skill Damage",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "ring_ring.webp"
@@ -36056,6 +36080,14 @@
         "Max": "3",
         "Description": "Socketed (3)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "roguesbow-affix1",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Random: +[1-3] to Fire Arrow (Amazon Only) · +[1-3] to Cold Arrow (Amazon Only)",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "bow_piercerib.webp"
@@ -52854,6 +52886,14 @@
         "Max": "50",
         "Description": "50% Bonus to Attack Rating",
         "Priority": "117"
+      },
+      {
+        "Prop": "class-skill-rand-1",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Random: +1 to Amazon Skill Levels · +1 to Barbarian Skill Levels · +1 to Paladin Skill Levels · +1 to Necromancer Skill Levels · +1 to Sorceress Skill Levels · +1 to Druid Skill Levels · +1 to Assassin Skill Levels · +1 to Warlock Skills",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "helmet_cap_hat.webp"
@@ -66791,6 +66831,14 @@
         "Max": "10",
         "Description": "10% Deadly Strike",
         "Priority": "85"
+      },
+      {
+        "Prop": "skilltab-war",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Eldritch Skills (Warlock Only)",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "boot_light_plate_boots.webp"
@@ -67068,6 +67116,14 @@
         "Max": "30",
         "Description": "+[20-30] to Life",
         "Priority": "59"
+      },
+      {
+        "Prop": "magdam-rand",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Random: [3-5]% to Magic Skill Damage · [20-40]% Enhanced Damage · [3-5]% to Fire Skill Damage · [3-5]% to Cold Skill Damage · [3-5]% to Lightning Skill Damage · [3-5]% to Poison Skill Damage",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "ring_ring.webp"
