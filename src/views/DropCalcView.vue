@@ -588,7 +588,9 @@ const sourceTypeLabel = (row) => {
 const jumpToSource = (row) => {
   viewMode.value = 'source';
   difficulty.value = row.difficulty;
-  if (row.sourceType === 'superunique') {
+  if (row.sourceType === 'herald') {
+    sourceKind.value = 'herald';
+  } else if (row.sourceType === 'superunique') {
     sourceKind.value = 'superunique';
     selectedSuperSource.value = `su:${row.superUniqueIndex}`;
   } else if (row.sourceType === 'boss') {

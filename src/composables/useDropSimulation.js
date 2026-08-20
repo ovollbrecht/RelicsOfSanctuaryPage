@@ -698,6 +698,25 @@ export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null
       }
     });
 
+    // Heralds are not in the monster list - they are a terror-zone elite with
+    // their own treasure class - and for a sunder charm they are the source
+    // that matters: two orders of magnitude above anything a monster drops.
+    if (ctx.heraldTcIndex >= 0) {
+      const source = resolveSource(ctx, { kind: 'herald', difficulty: diff });
+      const hit = chanceFor(source);
+      if (hit) {
+        rows.push({
+          monsterName: 'Herald',
+          sourceType: 'herald',
+          difficulty: diff,
+          areaId: null,
+          mlvl: source.mlvl,
+          terrorized: true,
+          ...hit,
+        });
+      }
+    }
+
     ctx.superUniques.forEach((su, superUniqueIndex) => {
       const source = resolveSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty: diff });
       const hit = chanceFor(source);
