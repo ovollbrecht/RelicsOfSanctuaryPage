@@ -442,12 +442,13 @@ function resolveSourceTc(ctx, sel) {
     // terrorized superuniques use their desecrated TC when the data has one
     const desecrated = ctx.options.terror?.enabled ? (su.DesecratedTcs?.[difficulty] ?? -1) : -1;
     const tcIndex = desecrated >= 0 ? desecrated : su.Tcs[difficulty];
-    // Not walked, though its class is grouped: group 18 is one ladder across
-    // every act and difficulty, so the walk moves an act-1 superunique onto an
-    // act-2 rung. Whether that is the game's own behaviour is a question about
-    // the engine, not about this code, and is open — see the toolchain's
-    // docs/research-notes.md for the evidence either way.
-    return { tcIndex, upgradedTcIndex: tcIndex, ...level, monster, superUnique: su };
+    // Walked like everything else. Its ladder crosses acts - group 18 runs from
+    // "Act 1 Super A" to "Act 5 (H) Super C" in one line of rising levels - and
+    // that is the design rather than an accident: Mephisto is an act 3 boss and
+    // his own desecrated rungs hand him "Act 4 (H) Equip B" at level 87 and
+    // "Act 5 (H) Equip C" at 96. The act in a class name is what it used to
+    // imply before terror zones, not a gate.
+    return { tcIndex, upgradedTcIndex: upgradeTc(ctx, tcIndex, level.mlvl), ...level, monster, superUnique: su };
   }
 
   const monster = ctx.monsters[sel.monsterIndex];
