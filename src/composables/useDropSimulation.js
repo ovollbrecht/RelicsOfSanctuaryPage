@@ -13,8 +13,9 @@
 //
 // Deliberately kept quirks of the classic calculators (for comparability):
 // per-path drop chances are accumulated additively, and the TC quality
-// modifiers use the maximum over the whole traversal. The picks==7 -> 6
-// approximation applies with more than one player (drop cap of 6 items).
+// modifiers use the maximum over the whole traversal. The game's six-item
+// drop cap is modelled by scaling every path down when a traversal expects
+// more than six generated items - Duriel's vanilla chain expects 23.
 
 export const DIFFICULTIES = ['Normal', 'Nightmare', 'Hell'];
 
@@ -204,17 +205,14 @@ function gateAllows(ctx, tc, env) {
  * alongside the player bonus.
  */
 export function traverseTc(ctx, tcIndex, bonus, env = { difficulty: 2, terrorized: false }) {
-  const cacheKey = `${tcIndex}|${bonus}|${env.difficulty}|${env.terrorized ? 1 : 0}`;
+  const cacheKey = `${tcIndex}|${bonus}|${env.difficulty}|${env.terrorized ? 1 : 0}|${env.herald ? 1 : 0}`;
   const cached = ctx.traversalCache.get(cacheKey);
   if (cached) return cached;
 
-  const drops = new Map();
-  const uniqueDrops = new Map();
-  const setDrops = new Map();
   const cm = { unique: 0, set: 0, rare: 0, magic: 0 };
-  const targets = [drops, drops, uniqueDrops, setDrops]; // by entry kind (kind 1..3; 0 recurses)
-
-  const add = (map, key, p) => map.set(key, (map.get(key) ?? 0) + p);
+  // Leaves are collected rather than added as they are found, because the cap
+  // can only be applied once the whole traversal's expectation is known.
+  const leaves = [];
 
   const rec = (idx, chance, totalPicks) => {
     const tc = ctx.tcs[idx];
@@ -231,11 +229,8 @@ export function traverseTc(ctx, tcIndex, bonus, env = { difficulty: 2, terrorize
     const itemSum = items.reduce((sum, e) => sum + e[2], 0);
     if (itemSum === 0) return;
     let noDrop = tc.NoDrop;
-    let picks = Math.abs(tc.Picks || 1);
+    const picks = Math.abs(tc.Picks || 1);
     const sorted = tc.Picks < 0;
-    // the game caps a single drop event at 6 items; with a party the reduced
-    // NoDrop would otherwise overshoot on 7-pick TCs
-    if (picks === 7 && bonus > 1) picks = 6;
 
     // the herald-tier-gated special TC (sunder charms) rolls independently of
     // the player count (confirmed for patch 3.2 herald drops)
@@ -252,7 +247,7 @@ export function traverseTc(ctx, tcIndex, bonus, env = { difficulty: 2, terrorize
       for (const [kind, target, prob] of items) {
         const p = (prob / total) * chance;
         if (kind === 0) rec(target, p, picksHere);
-        else add(targets[kind], target, 1 - Math.pow(1 - p, picksHere));
+        else leaves.push({ kind, target, p, n: picksHere });
       }
     } else {
       let remaining = picks;
@@ -261,12 +256,34 @@ export function traverseTc(ctx, tcIndex, bonus, env = { difficulty: 2, terrorize
         const picked = Math.min(prob, remaining);
         remaining -= picked;
         if (kind === 0) rec(target, chance, picked * totalPicks);
-        else add(targets[kind], target, 1 - Math.pow(1 - chance, picked * totalPicks));
+        else leaves.push({ kind, target, p: chance, n: picked * totalPicks });
       }
     }
   };
 
   rec(tcIndex, 1, 1);
+
+  // The engine drops at most six items per kill, gold and scrolls included.
+  // Most treasure classes expect fewer and are untouched; a boss's seven picks
+  // land a few percent over, and vanilla Duriel's scroll wrapper multiplies
+  // out to 23 expected items, of which only six can fall. Scaling every path
+  // by 6/E models the cap the way the classic calculators do - without it,
+  // Duriel showed as the best unique source in the game.
+  // Heralds are the exception: a herald kill demonstrably showers more than
+  // six items, and the sunder-charm rate this calculator was verified against
+  // only comes out if their chain is left uncapped.
+  const expected = leaves.reduce((sum, leaf) => sum + leaf.p * leaf.n, 0);
+  const scale = expected > 6 && !env.herald ? 6 / expected : 1;
+
+  const drops = new Map();
+  const uniqueDrops = new Map();
+  const setDrops = new Map();
+  const targets = [drops, drops, uniqueDrops, setDrops]; // by entry kind (kind 1..3; 0 recurses)
+  const add = (map, key, p) => map.set(key, (map.get(key) ?? 0) + p);
+  for (const leaf of leaves) {
+    add(targets[leaf.kind], leaf.target, 1 - Math.pow(1 - leaf.p, leaf.n * scale));
+  }
+
   const result = { drops, uniqueDrops, setDrops, cm };
   ctx.traversalCache.set(cacheKey, result);
   return result;
@@ -431,7 +448,7 @@ function resolveSourceTc(ctx, sel) {
     const mlvl = Math.min(cap, (charLevel | 0) + TZ_BONUS.unique);
     const tcIndex = ctx.heraldTcIndex;
     const upgradedTcIndex = upgradeTc(ctx, tcIndex, mlvl);
-    return { tcIndex, upgradedTcIndex, mlvl, baseMlvl: mlvl, terrorized: true, monster: null };
+    return { tcIndex, upgradedTcIndex, mlvl, baseMlvl: mlvl, terrorized: true, herald: true, monster: null };
   }
 
   if (sel.kind === 'superunique') {
