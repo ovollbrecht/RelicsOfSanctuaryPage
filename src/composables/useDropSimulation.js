@@ -442,6 +442,11 @@ function resolveSourceTc(ctx, sel) {
     // terrorized superuniques use their desecrated TC when the data has one
     const desecrated = ctx.options.terror?.enabled ? (su.DesecratedTcs?.[difficulty] ?? -1) : -1;
     const tcIndex = desecrated >= 0 ? desecrated : su.Tcs[difficulty];
+    // Not walked, though its class is grouped: group 18 is one ladder across
+    // every act and difficulty, so the walk moves an act-1 superunique onto an
+    // act-2 rung. Whether that is the game's own behaviour is a question about
+    // the engine, not about this code, and is open — see the toolchain's
+    // docs/research-notes.md for the evidence either way.
     return { tcIndex, upgradedTcIndex: tcIndex, ...level, monster, superUnique: su };
   }
 
@@ -457,10 +462,13 @@ function resolveSourceTc(ctx, sel) {
   if (ctx.options.terror?.enabled && desecratedColumn != null && (row[desecratedColumn] ?? -1) >= 0) {
     tcIndex = row[desecratedColumn];
   }
-  // bosses and quest drops use their fixed TC; everything else walks the
-  // group ladder with the effective mlvl (a no-op without TZ in Normal)
-  const walk = !monster.Boss && sourceType !== 'quest';
-  const upgradedTcIndex = walk ? upgradeTc(ctx, tcIndex, level.mlvl) : tcIndex;
+  // Whether a treasure class walks its group ladder is a property of the class,
+  // not of the monster holding it, and upgradeTc already returns an ungrouped
+  // one untouched. Excluding bosses here looked equivalent — their ordinary and
+  // quest classes are all group 0 — but their *desecrated* ones are laddered
+  // four rungs deep, so a terrorized Mephisto stayed on the level-87 rung and
+  // could not drop anything the level-96 one reaches.
+  const upgradedTcIndex = upgradeTc(ctx, tcIndex, level.mlvl);
   return { tcIndex, upgradedTcIndex, ...level, monster };
 }
 
