@@ -17734,6 +17734,66 @@
         "Max": "7",
         "Description": "7% Mana stolen per hit",
         "Priority": "89"
+      },
+      {
+        "Prop": "galaxy-stars",
+        "Par": "Teleport",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 5:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "+[8-12] to Warmth (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Teleport (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Static Field (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+7 to Light Radius",
+            "Chance": null
+          }
+        ]
+      },
+      {
+        "Prop": "galaxy-stars",
+        "Par": "40",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 5:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "+[8-12] to Warmth (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Teleport (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+[8-12] to Static Field (Sorceress Only)",
+            "Chance": null
+          },
+          {
+            "Description": "+7 to Light Radius",
+            "Chance": null
+          }
+        ]
       }
     ],
     "IsNew": true,
@@ -18472,6 +18532,24 @@
         "Max": "15",
         "Description": "+[10-15] to all Attributes",
         "Priority": "63"
+      },
+      {
+        "Prop": "liberty-coin",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 2:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "Slain Monsters Rest in Peace",
+            "Chance": null
+          },
+          {
+            "Description": "curse-res",
+            "Chance": null
+          }
+        ]
       }
     ],
     "IsNew": true,
@@ -18555,6 +18633,24 @@
         "Max": "15",
         "Description": "+[10-15] to all Attributes",
         "Priority": "63"
+      },
+      {
+        "Prop": "liberty-coin",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 2:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "Slain Monsters Rest in Peace",
+            "Chance": null
+          },
+          {
+            "Description": "curse-res",
+            "Chance": null
+          }
+        ]
       }
     ],
     "IsNew": true,
@@ -20518,6 +20614,14 @@
         "Max": "30",
         "Description": "+30 Defense vs. Missile",
         "Priority": "69"
+      },
+      {
+        "Prop": "war-skill-rand-low",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Random Skill Level (Warlock Only)",
+        "Priority": "0"
       }
     ],
     "IsNew": true,
