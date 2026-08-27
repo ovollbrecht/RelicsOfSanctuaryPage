@@ -8911,7 +8911,7 @@
     },
     "Index": "Nagelring",
     "Rarity": "285",
-    "Percent": "285/1220 (23.361%)",
+    "Percent": "285/1221 (23.342%)",
     "Lvl": "10",
     "LvlReq": "7",
     "Properties": [
@@ -8969,7 +8969,7 @@
     },
     "Index": "Manald Heal",
     "Rarity": "285",
-    "Percent": "285/1220 (23.361%)",
+    "Percent": "285/1221 (23.342%)",
     "Lvl": "20",
     "LvlReq": "15",
     "Properties": [
@@ -9035,7 +9035,7 @@
     },
     "Index": "The Stone of Jordan",
     "Rarity": "19",
-    "Percent": "19/1220 (1.557%)",
+    "Percent": "19/1221 (1.556%)",
     "Lvl": "39",
     "LvlReq": "29",
     "Properties": [
@@ -19751,7 +19751,7 @@
     },
     "Index": "Lightsabre",
     "Rarity": "95",
-    "Percent": "95/120 (79.167%)",
+    "Percent": "95/121 (78.512%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -20441,7 +20441,7 @@
     },
     "Index": "Bul Katho's Wedding Band",
     "Rarity": "19",
-    "Percent": "19/1220 (1.557%)",
+    "Percent": "19/1221 (1.556%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -20837,7 +20837,7 @@
     },
     "Index": "Dwarf Star",
     "Rarity": "190",
-    "Percent": "190/1220 (15.574%)",
+    "Percent": "190/1221 (15.561%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -20911,7 +20911,7 @@
     },
     "Index": "Raven Frost",
     "Rarity": "190",
-    "Percent": "190/1220 (15.574%)",
+    "Percent": "190/1221 (15.561%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -22885,7 +22885,7 @@
     },
     "Index": "Nature's Peace",
     "Rarity": "57",
-    "Percent": "57/1220 (4.672%)",
+    "Percent": "57/1221 (4.668%)",
     "Lvl": "77",
     "LvlReq": "69",
     "Properties": [
@@ -22953,7 +22953,7 @@
     },
     "Index": "Azurewrath",
     "Rarity": "19",
-    "Percent": "19/120 (15.833%)",
+    "Percent": "19/121 (15.702%)",
     "Lvl": "87",
     "LvlReq": "85",
     "Properties": [
@@ -24076,7 +24076,7 @@
     },
     "Index": "Wisp",
     "Rarity": "19",
-    "Percent": "19/1220 (1.557%)",
+    "Percent": "19/1221 (1.556%)",
     "Lvl": "84",
     "LvlReq": "76",
     "Properties": [
@@ -28356,7 +28356,7 @@
     },
     "Index": "Carrion Wind",
     "Rarity": "57",
-    "Percent": "57/1220 (4.672%)",
+    "Percent": "57/1221 (4.668%)",
     "Lvl": "68",
     "LvlReq": "60",
     "Properties": [
@@ -30921,7 +30921,7 @@
     },
     "Index": "Sling",
     "Rarity": "19",
-    "Percent": "19/1220 (1.557%)",
+    "Percent": "19/1221 (1.556%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -30995,7 +30995,7 @@
     },
     "Index": "Opalvein",
     "Rarity": "19",
-    "Percent": "19/1220 (1.557%)",
+    "Percent": "19/1221 (1.556%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -35364,8 +35364,8 @@
   },
   {
     "Name": "Exalted Azurewrath",
-    "BaseItemName": "Crystal Sword",
-    "Tier": "normal",
+    "BaseItemName": "Phase Blade",
+    "Tier": "elite",
     "Types": [
       "swor",
       "blde",
@@ -35374,69 +35374,101 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "10 to 30",
-      "Durability": "45",
+      "Damage": "[133 - 145] to [150 - 164]",
+      "Durability": "0",
       "Block Chance": "0",
-      "Required Dexterity": "0",
-      "Required Strength": "43"
+      "Required Dexterity": "136",
+      "Required Strength": "25"
     },
     "Index": "E Azurewrath",
     "Rarity": "1",
-    "Percent": "",
-    "Lvl": "18",
-    "LvlReq": "13",
+    "Percent": "1/121 (0.826%)",
+    "Lvl": "87",
+    "LvlReq": "85",
     "Properties": [
       {
-        "Prop": "deadly",
+        "Prop": "dmg-mag",
         "Par": "",
-        "Min": "50",
-        "Max": "50",
-        "Description": "50% Deadly Strike",
-        "Priority": "85"
-      },
-      {
-        "Prop": "mag%",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Better Chance of Getting Magic Items",
-        "Priority": "8"
-      },
-      {
-        "Prop": "dmg-cold",
-        "Par": "100",
-        "Min": "3",
-        "Max": "6",
-        "Description": "Adds [3-6] cold damage",
+        "Min": "250",
+        "Max": "500",
+        "Description": "Adds [250-500] magic damage",
         "Priority": "300"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "100",
-        "Max": "100",
-        "Description": "100% Enhanced Damage",
+        "Min": "330",
+        "Max": "370",
+        "Description": "[330-370]% Enhanced Damage",
         "Priority": "1000"
       },
       {
-        "Prop": "dur",
-        "Par": "",
-        "Min": "25",
-        "Max": "25",
-        "Description": "Improved Durability",
-        "Priority": ""
+        "Prop": "aura",
+        "Par": "Sanctuary",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Level 20 Sanctuary Aura When Equipped",
+        "Priority": "157"
       },
       {
-        "Prop": "dmg-mag",
-        "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "Adds [5-10] magic damage",
+        "Prop": "dmg-cold",
+        "Par": "250",
+        "Min": "250",
+        "Max": "500",
+        "Description": "Adds [250-500] cold damage",
         "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "+[20-25] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "80",
+        "Max": "80",
+        "Description": "80% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "112",
+        "Min": "10",
+        "Max": "15",
+        "Description": "10% Chance to cast level 15 Blessed Hammer on striking",
+        "Priority": "158"
       }
     ],
     "ImageMapping": "sword_crystal_sword.webp",
-    "Drops": false
+    "Drops": true
   },
   {
     "Name": "Exalted Griswold's Edge",
@@ -43625,7 +43657,7 @@
     },
     "Index": "E Nagelring",
     "Rarity": "15",
-    "Percent": "15/1220 (1.23%)",
+    "Percent": "15/1221 (1.229%)",
     "Lvl": "10",
     "LvlReq": "7",
     "Properties": [
@@ -43691,7 +43723,7 @@
     },
     "Index": "E Manald Heal",
     "Rarity": "15",
-    "Percent": "15/1220 (1.23%)",
+    "Percent": "15/1221 (1.229%)",
     "Lvl": "20",
     "LvlReq": "15",
     "Properties": [
@@ -43781,7 +43813,7 @@
     },
     "Index": "E The Stone of Jordan",
     "Rarity": "1",
-    "Percent": "1/1220 (0.082%)",
+    "Percent": "1/1221 (0.082%)",
     "Lvl": "39",
     "LvlReq": "29",
     "Properties": [
@@ -56515,7 +56547,7 @@
     },
     "Index": "E Lightsabre",
     "Rarity": "5",
-    "Percent": "5/120 (4.167%)",
+    "Percent": "5/121 (4.132%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -57333,7 +57365,7 @@
     },
     "Index": "E Bul Kathos Wedding Band",
     "Rarity": "1",
-    "Percent": "1/1220 (0.082%)",
+    "Percent": "1/1221 (0.082%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -57833,7 +57865,7 @@
     },
     "Index": "E Dwarf Star",
     "Rarity": "10",
-    "Percent": "10/1220 (0.82%)",
+    "Percent": "10/1221 (0.819%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -57915,7 +57947,7 @@
     },
     "Index": "E Raven Frost",
     "Rarity": "10",
-    "Percent": "10/1220 (0.82%)",
+    "Percent": "10/1221 (0.819%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -60369,7 +60401,7 @@
     },
     "Index": "E Nature's Peace",
     "Rarity": "3",
-    "Percent": "3/1220 (0.246%)",
+    "Percent": "3/1221 (0.246%)",
     "Lvl": "77",
     "LvlReq": "69",
     "Properties": [
@@ -60453,7 +60485,7 @@
     },
     "Index": "E Azurewrath",
     "Rarity": "1",
-    "Percent": "1/120 (0.833%)",
+    "Percent": "1/121 (0.826%)",
     "Lvl": "87",
     "LvlReq": "85",
     "Properties": [
@@ -61848,7 +61880,7 @@
     },
     "Index": "E Wisp",
     "Rarity": "1",
-    "Percent": "1/1220 (0.082%)",
+    "Percent": "1/1221 (0.082%)",
     "Lvl": "84",
     "LvlReq": "76",
     "Properties": [
@@ -67176,7 +67208,7 @@
     },
     "Index": "E Carrion Wind",
     "Rarity": "3",
-    "Percent": "3/1220 (0.246%)",
+    "Percent": "3/1221 (0.246%)",
     "Lvl": "68",
     "LvlReq": "60",
     "Properties": [
@@ -68492,35 +68524,35 @@
     "LvlReq": "49",
     "Properties": [
       {
-        "Prop": "dmg-ltng",
-        "Par": "",
-        "Min": "1",
-        "Max": "225",
-        "Description": "Adds [1-225] lightning damage",
+        "Prop": "dmg-pois",
+        "Par": "1",
+        "Min": "60",
+        "Max": "60",
+        "Description": "Adds 60 poison damage over 1 seconds",
         "Priority": "300"
       },
       {
-        "Prop": "pierce-ltng",
+        "Prop": "pierce-pois",
         "Par": "",
         "Min": "6",
         "Max": "8",
-        "Description": "-[6-8]% to Enemy Lightning Resistance",
+        "Description": "-[6-8]% to Enemy Poison Resistance",
         "Priority": "88"
       },
       {
-        "Prop": "extra-ltng",
+        "Prop": "extra-pois",
         "Par": "",
         "Min": "6",
         "Max": "8",
-        "Description": "[6-8]% to Lightning Skill Damage",
+        "Description": "[6-8]% to Poison Skill Damage",
         "Priority": "88"
       },
       {
-        "Prop": "hit-skill",
-        "Par": "Chain Lightning",
-        "Min": "3",
-        "Max": "47",
-        "Description": "3% Chance to cast level 47 Chain Lightning on striking",
+        "Prop": "gethit-skill",
+        "Par": "Venom",
+        "Min": "5",
+        "Max": "23",
+        "Description": "5% Chance to cast level 23 Venom when struck",
         "Priority": "158"
       }
     ],
@@ -69720,7 +69752,7 @@
     },
     "Index": "E Sling",
     "Rarity": "1",
-    "Percent": "1/1220 (0.082%)",
+    "Percent": "1/1221 (0.082%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -69810,7 +69842,7 @@
     },
     "Index": "E Opalvein",
     "Rarity": "1",
-    "Percent": "1/1220 (0.082%)",
+    "Percent": "1/1221 (0.082%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -70184,6 +70216,72 @@
       }
     ],
     "ImageMapping": "helmet_unique_warlock_helm.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Bul-Kathos' Wedding Band",
+    "BaseItemName": "Ring",
+    "Tier": "",
+    "Types": [
+      "ring",
+      "misc"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "0 to 0",
+      "Durability": "0",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "0"
+    },
+    "Index": "E Bul Katho's Wedding Band",
+    "Rarity": "1",
+    "Percent": "1/1221 (0.082%)",
+    "Lvl": "66",
+    "LvlReq": "58",
+    "Properties": [
+      {
+        "Prop": "hp/lvl",
+        "Par": "6",
+        "Min": "0.75",
+        "Max": "0.75",
+        "Description": "0.75 [*level] to Life",
+        "Priority": "57"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "stam",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "+100 Maximum Stamina",
+        "Priority": "51"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Deadly Strike",
+        "Priority": "85"
+      }
+    ],
+    "ImageMapping": "ring_ring.webp",
     "Drops": true
   }
 ]

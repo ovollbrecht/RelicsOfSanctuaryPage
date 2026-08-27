@@ -14198,5 +14198,297 @@
         }
       }
     ]
+  },
+  {
+    "Code": "galaxy-stars",
+    "Id": "247",
+    "PickMode": "1",
+    "Entries": [
+      {
+        "Prop": "skill",
+        "ParMin": "37",
+        "ParMax": "37",
+        "ModMin": "8",
+        "ModMax": "12",
+        "Chance": "1",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill",
+            "Par": "37",
+            "Min": "8",
+            "Max": "12",
+            "Description": "+[8-12] to Warmth (Sorceress Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill",
+        "ParMin": "54",
+        "ParMax": "54",
+        "ModMin": "8",
+        "ModMax": "12",
+        "Chance": "1",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill",
+            "Par": "54",
+            "Min": "8",
+            "Max": "12",
+            "Description": "+[8-12] to Teleport (Sorceress Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill",
+        "ParMin": "40",
+        "ParMax": "40",
+        "ModMin": "8",
+        "ModMax": "12",
+        "Chance": "1",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill",
+            "Par": "40",
+            "Min": "8",
+            "Max": "12",
+            "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill",
+        "ParMin": "42",
+        "ParMax": "42",
+        "ModMin": "8",
+        "ModMax": "12",
+        "Chance": "1",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill",
+            "Par": "42",
+            "Min": "8",
+            "Max": "12",
+            "Description": "+[8-12] to Static Field (Sorceress Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "light",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "7",
+        "ModMax": "7",
+        "Chance": "1",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "light",
+            "Par": "",
+            "Min": "7",
+            "Max": "7",
+            "Description": "+7 to Light Radius",
+            "Priority": "6"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
+  },
+  {
+    "Code": "liberty-coin",
+    "Id": "248",
+    "PickMode": "2",
+    "Entries": [
+      {
+        "Prop": "rip",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "1",
+        "ModMax": "1",
+        "Chance": "1",
+        "Probability": 0.5,
+        "ResolvedProperties": [
+          {
+            "Prop": "rip",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Slain Monsters Rest in Peace",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "curse-res",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "40",
+        "ModMax": "40",
+        "Chance": "1",
+        "Probability": 0.5,
+        "ResolvedProperties": [],
+        "NestedGroup": null
+      }
+    ]
+  },
+  {
+    "Code": "war-skill-rand-low",
+    "Id": "249",
+    "PickMode": "2",
+    "Entries": [
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "373",
+        "ModMax": "378",
+        "Chance": "6",
+        "Probability": 0.3,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "373",
+            "Max": "378",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "380",
+        "ModMax": "380",
+        "Chance": "1",
+        "Probability": 0.05,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "380",
+            "Max": "380",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "383",
+        "ModMax": "383",
+        "Chance": "1",
+        "Probability": 0.05,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "383",
+            "Max": "383",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "385",
+        "ModMax": "385",
+        "Chance": "1",
+        "Probability": 0.05,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "385",
+            "Max": "385",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "387",
+        "ModMax": "391",
+        "Chance": "5",
+        "Probability": 0.25,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "387",
+            "Max": "391",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "393",
+        "ModMax": "396",
+        "Chance": "4",
+        "Probability": 0.2,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "393",
+            "Max": "396",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "skill-rand",
+        "ParMin": "1",
+        "ParMax": "1",
+        "ModMin": "398",
+        "ModMax": "399",
+        "Chance": "2",
+        "Probability": 0.1,
+        "ResolvedProperties": [
+          {
+            "Prop": "skill-rand",
+            "Par": "1",
+            "Min": "398",
+            "Max": "399",
+            "Description": "+1 to Random Skill Level (Warlock Only)",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
   }
 ]

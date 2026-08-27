@@ -16812,12 +16812,12 @@
         "Priority": "142"
       },
       {
-        "Prop": "mana",
+        "Prop": "mana%",
         "Par": "",
-        "Min": "40",
-        "Max": "60",
-        "Description": "+[40-60] to Mana",
-        "Priority": "55"
+        "Min": "15",
+        "Max": "20",
+        "Description": "Increase Maximum Mana [15-20]%",
+        "Priority": "54"
       },
       {
         "Prop": "res-pois",
@@ -17109,9 +17109,9 @@
       {
         "Prop": "oskill",
         "Par": "246",
-        "Min": "8",
-        "Max": "10",
-        "Description": "+[8-10] to Spirit of Barbs",
+        "Min": "10",
+        "Max": "12",
+        "Description": "+[10-12] to Spirit of Barbs",
         "Priority": "81"
       },
       {
@@ -17147,12 +17147,12 @@
         "Priority": "71"
       },
       {
-        "Prop": "block2",
+        "Prop": "red-mag",
         "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Faster Block Rate",
-        "Priority": "136"
+        "Min": "10",
+        "Max": "15",
+        "Description": "Magic Damage Reduced by [10-15]",
+        "Priority": "21"
       },
       {
         "Prop": "mana-kill",
@@ -17324,9 +17324,9 @@
       {
         "Prop": "oskill",
         "Par": "9",
-        "Min": "5",
-        "Max": "8",
-        "Description": "+[5-8] to Critical Strike",
+        "Min": "3",
+        "Max": "5",
+        "Description": "+[3-5] to Critical Strike",
         "Priority": "81"
       },
       {
@@ -17464,9 +17464,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "280",
-        "Max": "350",
-        "Description": "[280-350]% Enhanced Damage",
+        "Min": "230",
+        "Max": "300",
+        "Description": "[230-300]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -17690,9 +17690,9 @@
       {
         "Prop": "cast2",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Cast Rate",
+        "Min": "25",
+        "Max": "30",
+        "Description": "[25-30]% Faster Cast Rate",
         "Priority": "142"
       },
       {
@@ -17718,22 +17718,6 @@
         "Max": "20",
         "Description": "[15-20]% to Cold Skill Damage",
         "Priority": "88"
-      },
-      {
-        "Prop": "skill",
-        "Par": "Teleport",
-        "Min": "8",
-        "Max": "12",
-        "Description": "+[8-12] to Teleport (Sorceress Only)",
-        "Priority": "81"
-      },
-      {
-        "Prop": "skill",
-        "Par": "40",
-        "Min": "8",
-        "Max": "12",
-        "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
-        "Priority": "81"
       },
       {
         "Prop": "ignore-ac",
@@ -17826,9 +17810,9 @@
       {
         "Prop": "dmg",
         "Par": "",
-        "Min": "80",
-        "Max": "100",
-        "Description": "Damage +[80-100]",
+        "Min": "60",
+        "Max": "80",
+        "Description": "Damage +[60-80]",
         "Priority": "122"
       },
       {
@@ -18135,9 +18119,9 @@
       {
         "Prop": "dmg-mag",
         "Par": "",
-        "Min": "500",
-        "Max": "500",
-        "Description": "Adds 500 magic damage",
+        "Min": "250",
+        "Max": "400",
+        "Description": "Adds [250-400] magic damage",
         "Priority": "300"
       },
       {
@@ -18228,10 +18212,10 @@
       },
       {
         "Prop": "kill-skill",
-        "Par": "91",
+        "Par": "66",
         "Min": "33",
         "Max": "10",
-        "Description": "33% Chance to cast level 10 Lower Resist when you Kill an Enemy",
+        "Description": "33% Chance to cast level 10 Amplify Damage when you Kill an Enemy",
         "Priority": "158"
       },
       {
@@ -18413,5 +18397,2696 @@
     "IsTorso": false,
     "IsHelmet": false,
     "IsShield": false
+  },
+  {
+    "Name": "Deliverance",
+    "RowId": "Runeword2015",
+    "AllowedItems": [
+      "tors",
+      "shld"
+    ],
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "ETypes": [
+      "ashd"
+    ],
+    "Runes": [
+      "r15",
+      "r22",
+      "r24",
+      "r15"
+    ],
+    "RuneNames": [
+      "Hel",
+      "Um",
+      "Ist",
+      "Hel"
+    ],
+    "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "All Resistances +[20-30]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "[40-50]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-60",
+        "Max": "-60",
+        "Description": "Requirements -60%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] to all Attributes",
+        "Priority": "63"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Deliverance",
+    "RowId": "Runeword2015",
+    "AllowedItems": [
+      "tors",
+      "shld"
+    ],
+    "Types": [
+      "shld",
+      "armo",
+      "seco"
+    ],
+    "ETypes": [
+      "ashd"
+    ],
+    "Runes": [
+      "r15",
+      "r22",
+      "r24",
+      "r15"
+    ],
+    "RuneNames": [
+      "Hel",
+      "Um",
+      "Ist",
+      "Hel"
+    ],
+    "Properties": [
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "27",
+        "Max": "37",
+        "Description": "All Resistances +[27-37]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "[40-50]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-60",
+        "Max": "-60",
+        "Description": "Requirements -60%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] to all Attributes",
+        "Priority": "63"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Arcana",
+    "RowId": "Runeword2016",
+    "AllowedItems": [
+      "orb"
+    ],
+    "Types": [
+      "orb",
+      "weap",
+      "sorc",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r03",
+      "r09"
+    ],
+    "RuneNames": [
+      "Tir",
+      "Ort"
+    ],
+    "Properties": [
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill-rand",
+        "Par": "1",
+        "Min": "36",
+        "Max": "55",
+        "Description": "+1 to Random Skill Level (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "+[25-35] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Grove",
+    "RowId": "Runeword2017",
+    "AllowedItems": [
+      "pelt"
+    ],
+    "Types": [
+      "pelt",
+      "helm",
+      "drui",
+      "armo",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r07",
+      "r08",
+      "r10"
+    ],
+    "RuneNames": [
+      "Tal",
+      "Ral",
+      "Thul"
+    ],
+    "Properties": [
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill-rand",
+        "Par": "1",
+        "Min": "221",
+        "Max": "240",
+        "Description": "+1 to Random Skill Level (Druid Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Regenerate Mana [10-15]%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Poison Resist 30%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Fire Resist 30%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Cold Resist 30%",
+        "Priority": "40"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Ossuary",
+    "RowId": "Runeword2018",
+    "AllowedItems": [
+      "head"
+    ],
+    "Types": [
+      "head",
+      "shld",
+      "necr",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r10",
+      "r05"
+    ],
+    "RuneNames": [
+      "Thul",
+      "Eth"
+    ],
+    "Properties": [
+      {
+        "Prop": "nec",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Necromancer Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill-rand",
+        "Par": "1",
+        "Min": "66",
+        "Max": "85",
+        "Description": "+1 to Random Skill Level (Necromancer Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "+[30-50] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "Cold Resist 35%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Devotion",
+    "RowId": "Runeword2019",
+    "AllowedItems": [
+      "ashd"
+    ],
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r11",
+      "r08",
+      "r02"
+    ],
+    "RuneNames": [
+      "Amn",
+      "Ral",
+      "Eld"
+    ],
+    "Properties": [
+      {
+        "Prop": "pal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Paladin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill-rand",
+        "Par": "1",
+        "Min": "96",
+        "Max": "115",
+        "Description": "+1 to Random Skill Level (Paladin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "50",
+        "Max": "70",
+        "Description": "[50-70]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "60",
+        "Max": "90",
+        "Description": "+[60-90] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "15",
+        "Max": "25",
+        "Description": "Lightning Resist [15-25]%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "14",
+        "Max": "14",
+        "Description": "Attacker Takes Damage of 14",
+        "Priority": "13"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "Fire Resist 35%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Increased Chance of Blocking",
+        "Priority": "134"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Clockwork",
+    "RowId": "Runeword2020",
+    "AllowedItems": [
+      "h2h"
+    ],
+    "Types": [
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r13",
+      "r03",
+      "r09"
+    ],
+    "RuneNames": [
+      "Shael",
+      "Tir",
+      "Ort"
+    ],
+    "Properties": [
+      {
+        "Prop": "ass",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Assassin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "18",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Traps (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "38",
+        "Min": "10",
+        "Max": "5",
+        "Description": "10% Chance to cast level 5 Charged Bolt on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "Lightning Resist [20-30]%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Skald",
+    "RowId": "Runeword2021",
+    "AllowedItems": [
+      "phlm"
+    ],
+    "Types": [
+      "phlm",
+      "helm",
+      "barb",
+      "armo",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r19",
+      "r16"
+    ],
+    "RuneNames": [
+      "Fal",
+      "Io"
+    ],
+    "Properties": [
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Barbarian Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "14",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Warcries (Barbarian Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "+[50-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Skirmish",
+    "RowId": "Runeword2022",
+    "AllowedItems": [
+      "aspe"
+    ],
+    "Types": [
+      "aspe",
+      "spea",
+      "amaz",
+      "sppl",
+      "clas",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r13",
+      "r05",
+      "r11"
+    ],
+    "RuneNames": [
+      "Shael",
+      "Eth",
+      "Amn"
+    ],
+    "Properties": [
+      {
+        "Prop": "ama",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Amazon Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "2",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Javelin and Spear Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "70",
+        "Max": "90",
+        "Description": "[70-90]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "80",
+        "Max": "120",
+        "Description": "+[80-120] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Skirmish",
+    "RowId": "Runeword2023",
+    "AllowedItems": [
+      "abow"
+    ],
+    "Types": [
+      "abow",
+      "bow",
+      "amaz",
+      "miss",
+      "clas",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r13",
+      "r05",
+      "r11"
+    ],
+    "RuneNames": [
+      "Shael",
+      "Eth",
+      "Amn"
+    ],
+    "Properties": [
+      {
+        "Prop": "ama",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Amazon Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "0",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Bow and Crossbow Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "70",
+        "Max": "90",
+        "Description": "[70-90]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "80",
+        "Max": "120",
+        "Description": "+[80-120] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "-25% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Life stolen per hit",
+        "Priority": "88"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Fortune",
+    "RowId": "Runeword2024",
+    "AllowedItems": [
+      "tors"
+    ],
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r02",
+      "r01"
+    ],
+    "RuneNames": [
+      "Eld",
+      "El"
+    ],
+    "Properties": [
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "stam",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Maximum Stamina",
+        "Priority": "51"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Slower Stamina Drain",
+        "Priority": "49"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Defense",
+        "Priority": "71"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Whisper",
+    "RowId": "Runeword2025",
+    "AllowedItems": [
+      "knif"
+    ],
+    "Types": [
+      "knif",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r03",
+      "r06"
+    ],
+    "RuneNames": [
+      "Tir",
+      "Ith"
+    ],
+    "Properties": [
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "+[30-40] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Magic Damage Reduced by 3",
+        "Priority": "21"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "9",
+        "Max": "9",
+        "Description": "+9 to Maximum Damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Fang",
+    "RowId": "Runeword2026",
+    "AllowedItems": [
+      "weap"
+    ],
+    "Types": [
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r07",
+      "r07"
+    ],
+    "RuneNames": [
+      "Tal",
+      "Tal"
+    ],
+    "Properties": [
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "Poison Resist [20-30]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "res-pois-len",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "Poison Length Reduced by 50%",
+        "Priority": "18"
+      },
+      {
+        "Prop": "dmg-pois",
+        "Par": "5",
+        "Min": "150",
+        "Max": "150",
+        "Description": "Adds 150 poison damage over 5 seconds",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-pois",
+        "Par": "4",
+        "Min": "24",
+        "Max": "48",
+        "Description": "Adds [24-48] poison damage over 4 seconds",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Spark",
+    "RowId": "Runeword2027",
+    "AllowedItems": [
+      "staf"
+    ],
+    "Types": [
+      "staf",
+      "rod",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r09",
+      "r09"
+    ],
+    "RuneNames": [
+      "Ort",
+      "Ort"
+    ],
+    "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "4",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Lightning Skills (Sorceress Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "38",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Charged Bolt (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "42",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Static Field (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac/lvl",
+        "Par": "16",
+        "Min": "2.00",
+        "Max": "2.00",
+        "Description": "2.00 [*level] Defense",
+        "Priority": "72"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Cold Resist 33%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "+[25-35] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "2",
+        "Max": "100",
+        "Description": "Adds [2-100] lightning damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Rime",
+    "RowId": "Runeword2028",
+    "AllowedItems": [
+      "staf"
+    ],
+    "Types": [
+      "staf",
+      "rod",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r03",
+      "r10"
+    ],
+    "RuneNames": [
+      "Tir",
+      "Thul"
+    ],
+    "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "5",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Cold Skills (Sorceress Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "39",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Ice Bolt (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "40",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Frozen Armor (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac/lvl",
+        "Par": "16",
+        "Min": "2.00",
+        "Max": "2.00",
+        "Description": "2.00 [*level] Defense",
+        "Priority": "72"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Fire Resist 33%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "75",
+        "Min": "3",
+        "Max": "14",
+        "Description": "Adds [3-14] cold damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Vanguard",
+    "RowId": "Runeword2029",
+    "AllowedItems": [
+      "helm"
+    ],
+    "Types": [
+      "helm",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r11",
+      "r04"
+    ],
+    "RuneNames": [
+      "Amn",
+      "Nef"
+    ],
+    "Properties": [
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "3",
+        "Max": "4",
+        "Description": "[3-4]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "14",
+        "Max": "14",
+        "Description": "Attacker Takes Damage of 14",
+        "Priority": "13"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 Defense vs. Missile",
+        "Priority": "69"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Volley",
+    "RowId": "Runeword2030",
+    "AllowedItems": [
+      "miss"
+    ],
+    "Types": [
+      "miss",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r13",
+      "r22",
+      "r18"
+    ],
+    "RuneNames": [
+      "Shael",
+      "Um",
+      "Ko"
+    ],
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "230",
+        "Max": "270",
+        "Description": "[230-270]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "120",
+        "Max": "160",
+        "Description": "[120-160]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "pierce",
+        "Par": "",
+        "Min": "25",
+        "Max": "33",
+        "Description": "[25-33]% Piercing Attack",
+        "Priority": "132"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "4",
+        "Max": "6",
+        "Description": "[4-6]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Phalanx",
+    "RowId": "Runeword2031",
+    "AllowedItems": [
+      "tors"
+    ],
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r15",
+      "r16",
+      "r22"
+    ],
+    "RuneNames": [
+      "Hel",
+      "Io",
+      "Um"
+    ],
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Defiance",
+        "Min": "3",
+        "Max": "4",
+        "Description": "Level [3-4] Defiance Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "140",
+        "Description": "[100-140]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-15",
+        "Max": "-15",
+        "Description": "Requirements -15%",
+        "Priority": "0"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "All Resistances +15",
+        "Priority": "34"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Conflux",
+    "RowId": "Runeword2032",
+    "AllowedItems": [
+      "staf"
+    ],
+    "Types": [
+      "staf",
+      "rod",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r22",
+      "r17",
+      "r09"
+    ],
+    "RuneNames": [
+      "Um",
+      "Lum",
+      "Ort"
+    ],
+    "Properties": [
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast3",
+        "Par": "",
+        "Min": "30",
+        "Max": "35",
+        "Description": "[30-35]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "extra-fire",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "[8-12]% to Fire Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-ltng",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "[8-12]% to Lightning Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-cold",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "[8-12]% to Cold Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Increase Maximum Mana [10-15]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "50",
+        "Description": "Adds [1-50] lightning damage",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Riposte",
+    "RowId": "Runeword2033",
+    "AllowedItems": [
+      "shld"
+    ],
+    "Types": [
+      "shld",
+      "armo",
+      "seco"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r13",
+      "r14",
+      "r22"
+    ],
+    "RuneNames": [
+      "Shael",
+      "Dol",
+      "Um"
+    ],
+    "Properties": [
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "80",
+        "Max": "120",
+        "Description": "[80-120]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "Attacker Takes Damage of [30-50]",
+        "Priority": "13"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "+[30-40] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Replenish Life +7",
+        "Priority": "56"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "22",
+        "Max": "22",
+        "Description": "All Resistances +22",
+        "Priority": "34"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Carnage",
+    "RowId": "Runeword2034",
+    "AllowedItems": [
+      "weap"
+    ],
+    "Types": [
+      "weap"
+    ],
+    "ETypes": [
+      "miss"
+    ],
+    "Runes": [
+      "r22",
+      "r23",
+      "r13"
+    ],
+    "RuneNames": [
+      "Um",
+      "Mal",
+      "Shael"
+    ],
+    "Properties": [
+      {
+        "Prop": "hit-skill",
+        "Par": "66",
+        "Min": "10",
+        "Max": "5",
+        "Description": "10% Chance to cast level 5 Amplify Damage on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "100",
+        "Max": "140",
+        "Description": "[100-140]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "noheal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Prevent Monster Heal",
+        "Priority": "81"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Hex",
+    "RowId": "Runeword2035",
+    "AllowedItems": [
+      "knif"
+    ],
+    "Types": [
+      "knif",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r03",
+      "r17",
+      "r25"
+    ],
+    "RuneNames": [
+      "Tir",
+      "Lum",
+      "Gul"
+    ],
+    "Properties": [
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast3",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "-[8-12]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "-[8-12]% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "-[8-12]% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "enr",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Energy",
+        "Priority": "61"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
+        "Priority": "117"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Familiar",
+    "RowId": "Runeword2036",
+    "AllowedItems": [
+      "grim"
+    ],
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r05",
+      "r04"
+    ],
+    "RuneNames": [
+      "Eth",
+      "Nef"
+    ],
+    "Properties": [
+      {
+        "Prop": "war",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Warlock Skills",
+        "Priority": "150"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "+[30-50] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "ac-miss",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 Defense vs. Missile",
+        "Priority": "69"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Blood Pact",
+    "RowId": "Runeword2037",
+    "AllowedItems": [
+      "grim"
+    ],
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r14",
+      "r24"
+    ],
+    "RuneNames": [
+      "Dol",
+      "Ist"
+    ],
+    "Properties": [
+      {
+        "Prop": "war",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Warlock Skills",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill-rand",
+        "Par": "2",
+        "Min": "373",
+        "Max": "402",
+        "Description": "+2 to Random Skill Level (Warlock Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Life Tap",
+        "Min": "5",
+        "Max": "8",
+        "Description": "+[5-8] to Life Tap",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "+[150-200] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "22",
+        "Max": "22",
+        "Description": "Replenish Life +22",
+        "Priority": "56"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Dominion",
+    "RowId": "Runeword2038",
+    "AllowedItems": [
+      "grim"
+    ],
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r30",
+      "r32"
+    ],
+    "RuneNames": [
+      "Ber",
+      "Cham"
+    ],
+    "Properties": [
+      {
+        "Prop": "war",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Warlock Skills",
+        "Priority": "150"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Might",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Level [10-12] Might Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "250",
+        "Max": "300",
+        "Description": "+[250-300] Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "+[60-80] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "All Resistances +[20-25]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "8",
+        "Max": "8",
+        "Description": "Physical Damage Received Reduced by 8%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Relic",
+    "RowId": "Runeword2039",
+    "AllowedItems": [
+      "tors"
+    ],
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r01",
+      "r02",
+      "r32",
+      "r33"
+    ],
+    "RuneNames": [
+      "El",
+      "Eld",
+      "Cham",
+      "Zod"
+    ],
+    "Properties": [
+      {
+        "Prop": "gethit-skill",
+        "Par": "137",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance to cast level 15 Taunt when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "Slows Target by [20-25]%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "[200-250]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "Physical Damage Received Reduced by [20-25]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "All Resistances +[25-30]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "ac",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Defense",
+        "Priority": "71"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Slower Stamina Drain",
+        "Priority": "49"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Rampage",
+    "RowId": "Runeword2040",
+    "AllowedItems": [
+      "helm"
+    ],
+    "Types": [
+      "helm",
+      "armo"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r30",
+      "r28",
+      "r18"
+    ],
+    "RuneNames": [
+      "Ber",
+      "Lo",
+      "Ko"
+    ],
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Berserk",
+        "Min": "5",
+        "Max": "8",
+        "Description": "+[5-8] to Berserk",
+        "Priority": "81"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "4",
+        "Max": "6",
+        "Description": "[4-6]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "80",
+        "Max": "120",
+        "Description": "[80-120]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "8",
+        "Max": "8",
+        "Description": "Physical Damage Received Reduced by 8%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Dexterity",
+        "Priority": "65"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Retribution",
+    "RowId": "Runeword2041",
+    "AllowedItems": [
+      "ashd"
+    ],
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r26",
+      "r27",
+      "r28"
+    ],
+    "RuneNames": [
+      "Vex",
+      "Ohm",
+      "Lo"
+    ],
+    "Properties": [
+      {
+        "Prop": "pal",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Paladin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "15",
+        "Max": "18",
+        "Description": "-[15-18]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "15",
+        "Max": "18",
+        "Description": "-[15-18]% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "pierce-elem",
+        "Par": "",
+        "Min": "15",
+        "Max": "18",
+        "Description": "-[15-18]% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "All Resistances +[20-30]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "res-fire-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
+        "Priority": "42"
+      },
+      {
+        "Prop": "res-cold-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
+        "Priority": "44"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
   }
 ]

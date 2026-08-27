@@ -56445,8 +56445,7 @@
       "Name": "Azurewrath",
       "Base": 247,
       "Lvl": 18,
-      "Rarity": 1,
-      "ExaltedName": "Exalted Azurewrath",
+      "Rarity": 19,
       "Spawnable": false
     },
     {
@@ -91984,6 +91983,9 @@
       }
     },
     "UniqueOverrides": {
+      "29": {
+        "Rarity": 1
+      },
       "388": {
         "Rarity": 1
       },
