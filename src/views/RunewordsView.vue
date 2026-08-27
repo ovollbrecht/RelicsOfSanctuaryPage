@@ -130,6 +130,24 @@ const getAllowedItemsText = (allowedItems) => {
   }).join(', ');
 };
 
+/**
+ * What this entry can be made in.
+ *
+ * A runeword allowed in two item types is exported once per type, and both
+ * carried the full AllowedItems list - so Deliverance read "Armor, Shield"
+ * twice and nothing said that Paladin shields are excluded. Types[0] is the
+ * one this entry is actually for; ETypes are the exclusions.
+ */
+const getEntryItemsText = (runeword) => {
+  const own = fieldOf(runeword, 'Types')?.[0];
+  const base = own
+    ? getAllowedItemsText([own])
+    : getAllowedItemsText(fieldOf(runeword, 'AllowedItems'));
+
+  const excluded = fieldOf(runeword, 'ETypes') ?? [];
+  return excluded.length ? `${base} (not ${getAllowedItemsText(excluded)})` : base;
+};
+
 // Changes of a reworked runeword vs vanilla, as display lines.
 // Properties are paired by prop code + parameter.
 const getReworkChanges = (runeword) => {
@@ -177,8 +195,10 @@ const getReworkChanges = (runeword) => {
 // Generate a unique key for each runeword
 const getRunewordKey = (runeword, category) => {
   // Combine name with runes, allowed items, and category to create a unique identifier
-  const allowedItems = runeword.AllowedItems ? runeword.AllowedItems.join('-') : '';
-  return `${runeword.Name}-${runeword.RuneNames.join('-')}-${allowedItems}-${category}`;
+  // Types[0], not AllowedItems: both entries of a two-type runeword carry the
+  // same AllowedItems, so they shared a key and expanding one opened both.
+  const own = runeword.Types?.[0] ?? (runeword.AllowedItems ?? []).join('-');
+  return `${runeword.Name}-${runeword.RuneNames.join('-')}-${own}-${category}`;
 };
 
 const setAllRowsExpanded = (list, category, expanded) => {
@@ -243,6 +263,13 @@ const resetFilters = () => {
 };
 
 // Sort properties by priority
+// A group's odds at the precision the numbers carry: 60% stays 60%, and a
+// 9.9% draw keeps its digit instead of rounding to a lie.
+const formatChance = (chance) => {
+  const percent = chance * 100;
+  return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
+};
+
 const sortPropertiesByPriority = (properties) => {
   return [...properties].sort((a, b) => parseInt(b.Priority) - parseInt(a.Priority));
 };
@@ -475,7 +502,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'filtered'))" class="expanded-row">
                       <td colspan="3">
@@ -488,6 +515,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -527,7 +560,7 @@ onMounted(() => {
                     <tr @click="toggleRowExpansion(runeword, 'new')" style="cursor: pointer;">
                       <td>{{ runeword.Name }}</td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'new'))" class="expanded-row">
                       <td colspan="3">
@@ -540,6 +573,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -583,7 +622,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'weapons'))" class="expanded-row">
                       <td colspan="3">
@@ -596,6 +635,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -639,7 +684,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'armors'))" class="expanded-row">
                       <td colspan="3">
@@ -652,6 +697,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -695,7 +746,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'helmets'))" class="expanded-row">
                       <td colspan="3">
@@ -708,6 +759,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -751,7 +808,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'shields'))" class="expanded-row">
                       <td colspan="3">
@@ -764,6 +821,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -816,7 +879,7 @@ onMounted(() => {
                         <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
                       </td>
                       <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getAllowedItemsText(fieldOf(runeword, 'AllowedItems')) }}</td>
+                      <td>{{ getEntryItemsText(runeword) }}</td>
                     </tr>
                     <tr v-if="expandedRows.has(getRunewordKey(runeword, 'search'))" class="expanded-row">
                       <td colspan="3">
@@ -829,6 +892,12 @@ onMounted(() => {
                               class="list-group-item list-item-property"
                             >
                               {{ prop.Description }}
+                              <ul v-if="prop.Rolls" class="property-rolls">
+                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
+                                  <span>{{ roll.Description }}</span>
+                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
                           <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
@@ -847,6 +916,30 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* The rolls a property group draws from, indented under the line that
+   introduces them - the same treatment the item pages give them. */
+.property-rolls {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+}
+
+.property-rolls li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9em;
+  opacity: 0.85;
+  padding: 1px 0;
+}
+
+.roll-chance {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
 .reworked-toggle .form-check-label {
   color: rgba(201, 163, 106, 0.95);
   font-size: 0.9rem;

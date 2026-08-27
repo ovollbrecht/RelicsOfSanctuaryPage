@@ -17720,6 +17720,14 @@
         "Priority": "88"
       },
       {
+        "Prop": "light",
+        "Par": "40",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Light Radius",
+        "Priority": "6"
+      },
+      {
         "Prop": "ignore-ac",
         "Par": "",
         "Min": "2",
@@ -17738,9 +17746,9 @@
       {
         "Prop": "galaxy-stars",
         "Par": "Teleport",
-        "Min": "1",
-        "Max": "1",
-        "Description": "One of 5:",
+        "Min": "2",
+        "Max": "2",
+        "Description": "2 picks of 4:",
         "Priority": "0",
         "Rolls": [
           {
@@ -17757,40 +17765,6 @@
           },
           {
             "Description": "+[8-12] to Static Field (Sorceress Only)",
-            "Chance": null
-          },
-          {
-            "Description": "+7 to Light Radius",
-            "Chance": null
-          }
-        ]
-      },
-      {
-        "Prop": "galaxy-stars",
-        "Par": "40",
-        "Min": "1",
-        "Max": "1",
-        "Description": "One of 5:",
-        "Priority": "0",
-        "Rolls": [
-          {
-            "Description": "+[8-12] to Warmth (Sorceress Only)",
-            "Chance": null
-          },
-          {
-            "Description": "+[8-12] to Teleport (Sorceress Only)",
-            "Chance": null
-          },
-          {
-            "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
-            "Chance": null
-          },
-          {
-            "Description": "+[8-12] to Static Field (Sorceress Only)",
-            "Chance": null
-          },
-          {
-            "Description": "+7 to Light Radius",
             "Chance": null
           }
         ]
@@ -18469,9 +18443,7 @@
       "tors",
       "armo"
     ],
-    "ETypes": [
-      "ashd"
-    ],
+    "ETypes": [],
     "Runes": [
       "r15",
       "r22",
@@ -20176,25 +20148,25 @@
       {
         "Prop": "cast3",
         "Par": "",
-        "Min": "30",
-        "Max": "35",
-        "Description": "[30-35]% Faster Cast Rate",
+        "Min": "45",
+        "Max": "45",
+        "Description": "45% Faster Cast Rate",
         "Priority": "142"
       },
       {
-        "Prop": "extra-fire",
+        "Prop": "pierce-fire",
         "Par": "",
         "Min": "8",
         "Max": "12",
-        "Description": "[8-12]% to Fire Skill Damage",
+        "Description": "-[8-12]% to Enemy Fire Resistance",
         "Priority": "88"
       },
       {
-        "Prop": "extra-ltng",
+        "Prop": "pierce-ltng",
         "Par": "",
         "Min": "8",
         "Max": "12",
-        "Description": "[8-12]% to Lightning Skill Damage",
+        "Description": "-[8-12]% to Enemy Lightning Resistance",
         "Priority": "88"
       },
       {
