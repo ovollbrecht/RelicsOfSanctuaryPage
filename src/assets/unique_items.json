@@ -70499,7 +70499,7 @@
         "Priority": "67"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "belt_girdle_h.webp",
     "Drops": true
   },
   {
@@ -70597,7 +70597,7 @@
         "Priority": "58"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "belt_girdle_h.webp",
     "Drops": true
   },
   {
@@ -70706,7 +70706,7 @@
         "Priority": "8"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "pelt_spirit_mask.webp",
     "Drops": true
   },
   {
@@ -70831,7 +70831,7 @@
         "Priority": "17"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "pelt_spirit_mask.webp",
     "Drops": true
   },
   {
@@ -70932,7 +70932,7 @@
         "Priority": "59"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "helmet_avenger_guard.webp",
     "Drops": true
   },
   {
@@ -71049,7 +71049,7 @@
         "Priority": "157"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "helmet_avenger_guard.webp",
     "Drops": true
   },
   {
@@ -71159,7 +71159,7 @@
         "Priority": "158"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "shield_crown_shield.webp",
     "Drops": true
   },
   {
@@ -71277,7 +71277,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "shield_crown_shield.webp",
     "Drops": true
   },
   {
@@ -71387,7 +71387,7 @@
         "Priority": "83"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "h2h_scissors_katar.webp",
     "Drops": true
   },
   {
@@ -71513,7 +71513,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "h2h_scissors_katar.webp",
     "Drops": true
   },
   {
@@ -71635,7 +71635,7 @@
         ]
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "sword_war_sword.webp",
     "Drops": true
   },
   {
@@ -71781,7 +71781,7 @@
         ]
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "sword_war_sword.webp",
     "Drops": true
   },
   {
@@ -71873,7 +71873,7 @@
         "Priority": "139"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "polearm_halberd.webp",
     "Drops": true
   },
   {
@@ -71997,7 +71997,7 @@
         "Priority": "22"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "polearm_halberd.webp",
     "Drops": true
   },
   {
@@ -72105,7 +72105,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "spear_spetum.webp",
     "Drops": true
   },
   {
@@ -72229,7 +72229,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "spear_spetum.webp",
     "Drops": true
   },
   {
@@ -72338,7 +72338,7 @@
         "Priority": "108"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "staff_battle_staff.webp",
     "Drops": true
   },
   {
@@ -72463,7 +72463,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "staff_battle_staff.webp",
     "Drops": true
   },
   {
@@ -72563,7 +72563,7 @@
         "Priority": "6"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "orb_clasped_orb.webp",
     "Drops": true
   },
   {
@@ -72671,7 +72671,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "orb_clasped_orb.webp",
     "Drops": true
   },
   {
@@ -72779,7 +72779,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "sword_flamberge.webp",
     "Drops": true
   },
   {
@@ -72903,7 +72903,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "sword_flamberge.webp",
     "Drops": true
   },
   {
@@ -73006,7 +73006,7 @@
         "Priority": "81"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "spear_maiden_pike.webp",
     "Drops": true
   },
   {
@@ -73117,7 +73117,7 @@
         "Priority": "-2"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "spear_maiden_pike.webp",
     "Drops": true
   },
   {
@@ -73235,7 +73235,7 @@
         "Priority": "110"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "h2h_claws.webp",
     "Drops": true
   },
   {
@@ -73361,7 +73361,7 @@
         "Priority": "83"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "h2h_claws.webp",
     "Drops": true
   },
   {
@@ -73459,7 +73459,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -73565,7 +73565,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -73663,7 +73663,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -73769,7 +73769,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -73867,7 +73867,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -73973,7 +73973,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -74071,7 +74071,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   },
   {
@@ -74177,7 +74177,7 @@
         "Priority": "1"
       }
     ],
-    "ImageMapping": null,
+    "ImageMapping": "armor_light_plate.webp",
     "Drops": true
   }
 ]
