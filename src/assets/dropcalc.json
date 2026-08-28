@@ -60010,6 +60010,159 @@
       "Lvl": 0,
       "Rarity": 1,
       "Spawnable": false
+    },
+    {
+      "Index": "Titan's Yoke",
+      "Name": "Titan's Yoke",
+      "Base": 514,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Titan's Yoke",
+      "Spawnable": true
+    },
+    {
+      "Index": "Dreamcatcher",
+      "Name": "Dreamcatcher",
+      "Base": 267,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Dreamcatcher",
+      "Spawnable": true
+    },
+    {
+      "Index": "Gravesong",
+      "Name": "Gravesong",
+      "Base": 210,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Gravesong",
+      "Spawnable": true
+    },
+    {
+      "Index": "Eye of the Storm",
+      "Name": "Eye of the Storm",
+      "Base": 419,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Eye of the Storm",
+      "Spawnable": true
+    },
+    {
+      "Index": "Atropos' Shears",
+      "Name": "Atropos' Shears",
+      "Base": 63,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Atropos' Shears",
+      "Spawnable": true
+    },
+    {
+      "Index": "Fable",
+      "Name": "Fable",
+      "Base": 83,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Fable",
+      "Spawnable": true
+    },
+    {
+      "Index": "Nightwatch",
+      "Name": "Nightwatch",
+      "Base": 48,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Nightwatch",
+      "Spawnable": true
+    },
+    {
+      "Index": "Soulpiercer",
+      "Name": "Soulpiercer",
+      "Base": 73,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Soulpiercer",
+      "Spawnable": true
+    },
+    {
+      "Index": "Oakfather",
+      "Name": "Oakfather",
+      "Base": 2,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Oakfather",
+      "Spawnable": true
+    },
+    {
+      "Index": "Cataclysm",
+      "Name": "Cataclysm",
+      "Base": 400,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Cataclysm",
+      "Spawnable": true
+    },
+    {
+      "Index": "Windshear",
+      "Name": "Windshear",
+      "Base": 38,
+      "Lvl": 81,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Windshear",
+      "Spawnable": true
+    },
+    {
+      "Index": "Askari Covenant",
+      "Name": "Askari Covenant",
+      "Base": 190,
+      "Lvl": 85,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Askari Covenant",
+      "Spawnable": true
+    },
+    {
+      "Index": "Shadowscript",
+      "Name": "Shadowscript",
+      "Base": 78,
+      "Lvl": 85,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Shadowscript",
+      "Spawnable": true
+    },
+    {
+      "Index": "Elemental Attunement",
+      "Name": "Elemental Attunement",
+      "Base": 545,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Elemental Attunement",
+      "Spawnable": true
+    },
+    {
+      "Index": "Elemental Attunement",
+      "Name": "Elemental Attunement",
+      "Base": 545,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Elemental Attunement",
+      "Spawnable": true
+    },
+    {
+      "Index": "Elemental Attunement",
+      "Name": "Elemental Attunement",
+      "Base": 545,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Elemental Attunement",
+      "Spawnable": true
+    },
+    {
+      "Index": "Elemental Attunement",
+      "Name": "Elemental Attunement",
+      "Base": 545,
+      "Lvl": 84,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Elemental Attunement",
+      "Spawnable": true
     }
   ],
   "Sets": [
@@ -92047,7 +92200,24 @@
       426,
       427,
       428,
-      429
+      429,
+      430,
+      431,
+      432,
+      433,
+      434,
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      443,
+      444,
+      445,
+      446
     ],
     "SetOverrides": {
       "127": {

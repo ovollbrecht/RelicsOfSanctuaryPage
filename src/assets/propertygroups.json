@@ -14470,5 +14470,152 @@
         "NestedGroup": null
       }
     ]
+  },
+  {
+    "Code": "mythic-echo",
+    "Id": "250",
+    "PickMode": "1",
+    "Entries": [
+      {
+        "Prop": "oskill",
+        "ParMin": "Whirlwind",
+        "ParMax": "Whirlwind",
+        "ModMin": "10",
+        "ModMax": "10",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Whirlwind",
+            "Min": "10",
+            "Max": "10",
+            "Description": "+10 to Whirlwind",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Fist of the Heavens",
+        "ParMax": "Fist of the Heavens",
+        "ModMin": "10",
+        "ModMax": "10",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Fist of the Heavens",
+            "Min": "10",
+            "Max": "10",
+            "Description": "+10 to Fist of the Heavens",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Chain Lightning",
+        "ParMax": "Chain Lightning",
+        "ModMin": "18",
+        "ModMax": "18",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Chain Lightning",
+            "Min": "18",
+            "Max": "18",
+            "Description": "+18 to Chain Lightning",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Blessed Hammer",
+        "ParMax": "Blessed Hammer",
+        "ModMin": "20",
+        "ModMax": "20",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Blessed Hammer",
+            "Min": "20",
+            "Max": "20",
+            "Description": "+20 to Blessed Hammer",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Bone Spirit",
+        "ParMax": "Bone Spirit",
+        "ModMin": "20",
+        "ModMax": "20",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Bone Spirit",
+            "Min": "20",
+            "Max": "20",
+            "Description": "+20 to Bone Spirit",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Mythic Armageddon",
+        "ParMax": "Mythic Armageddon",
+        "ModMin": "17",
+        "ModMax": "17",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Mythic Armageddon",
+            "Min": "17",
+            "Max": "17",
+            "Description": "+17 to [not found]",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "oskill",
+        "ParMin": "Mythic Hurricane",
+        "ParMax": "Mythic Hurricane",
+        "ModMin": "17",
+        "ModMax": "17",
+        "Chance": "1",
+        "Probability": 0.1428571428571428571428571429,
+        "ResolvedProperties": [
+          {
+            "Prop": "oskill",
+            "Par": "Mythic Hurricane",
+            "Min": "17",
+            "Max": "17",
+            "Description": "+17 to [not found]",
+            "Priority": "81"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
   }
 ]

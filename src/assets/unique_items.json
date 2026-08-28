@@ -70339,5 +70339,3653 @@
     ],
     "ImageMapping": "ring_ring.webp",
     "Drops": true
+  },
+  {
+    "Name": "Titan's Yoke",
+    "BaseItemName": "Colossus Girdle",
+    "Tier": "elite",
+    "Types": [
+      "belt",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "213 - 227",
+      "Damage": "0 to 0",
+      "Durability": "24",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "185"
+    },
+    "Index": "Titan's Yoke",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "20",
+        "Max": "22",
+        "Description": "Physical Damage Received Reduced by [20-22]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Decrepify",
+        "Min": "10",
+        "Max": "1",
+        "Description": "10% Chance to cast level 1 Decrepify when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "-10",
+        "Max": "-10",
+        "Description": "-10% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "200",
+        "Max": "220",
+        "Description": "[200-220]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "+[200-250] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "+[20-25] to Strength",
+        "Priority": "67"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Titan's Yoke",
+    "BaseItemName": "Colossus Girdle",
+    "Tier": "elite",
+    "Types": [
+      "belt",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "255 - 284",
+      "Damage": "0 to 0",
+      "Durability": "24",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "185"
+    },
+    "Index": "E Titan's Yoke",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Physical Damage Received Reduced by 25%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Decrepify",
+        "Min": "15",
+        "Max": "3",
+        "Description": "15% Chance to cast level 3 Decrepify when struck",
+        "Priority": "158"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "-20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "400",
+        "Max": "500",
+        "Description": "+[400-500] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "30",
+        "Max": "35",
+        "Description": "+[30-35] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "Increase Maximum Life 10%",
+        "Priority": "58"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Dreamcatcher",
+    "BaseItemName": "Dream Spirit",
+    "Tier": "elite",
+    "Types": [
+      "pelt",
+      "helm",
+      "drui",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "397 - 477",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "118"
+    },
+    "Index": "Dreamcatcher",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Amplify Damage",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Amplify Damage",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "17",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Elemental Skills (Druid Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "15",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Summoning Skills (Druid Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "Cold Resist [30-40]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Dreamcatcher",
+    "BaseItemName": "Dream Spirit",
+    "Tier": "elite",
+    "Types": [
+      "pelt",
+      "helm",
+      "drui",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "508 - 604",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "118"
+    },
+    "Index": "E Dreamcatcher",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Amplify Damage",
+        "Min": "6",
+        "Max": "8",
+        "Description": "+[6-8] to Amplify Damage",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "17",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Elemental Skills (Druid Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "15",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Summoning Skills (Druid Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "220",
+        "Max": "280",
+        "Description": "[220-280]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "Cold Resist [50-60]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "[40-50]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "39",
+        "Min": "8",
+        "Max": "8",
+        "Description": "8% Reanimate as: Wraith",
+        "Priority": "17"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Gravesong",
+    "BaseItemName": "Guardian Crown",
+    "Tier": "elite",
+    "Types": [
+      "phlm",
+      "helm",
+      "barb",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "117 - 168",
+      "Damage": "0 to 0",
+      "Durability": "55",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "196"
+    },
+    "Index": "Gravesong",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "77",
+    "Properties": [
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Barbarian Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "14",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Warcries (Barbarian Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "War Cry",
+        "Min": "3",
+        "Max": "4",
+        "Description": "+[3-4] to War Cry (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "5",
+        "Max": "8",
+        "Description": "+[5-8] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Increase Maximum Mana 20%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Gravesong",
+    "BaseItemName": "Guardian Crown",
+    "Tier": "elite",
+    "Types": [
+      "phlm",
+      "helm",
+      "barb",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "117 - 168",
+      "Damage": "0 to 0",
+      "Durability": "55",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "196"
+    },
+    "Index": "E Gravesong",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "77",
+    "Properties": [
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Barbarian Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "14",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Warcries (Barbarian Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "War Cry",
+        "Min": "5",
+        "Max": "6",
+        "Description": "+[5-6] to War Cry (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "+[8-10] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Increase Maximum Mana 25%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "[200-250]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Salvation",
+        "Min": "8",
+        "Max": "10",
+        "Description": "Level [8-10] Salvation Aura When Equipped",
+        "Priority": "157"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Eye of the Storm",
+    "BaseItemName": "Vortex Shield",
+    "Tier": "elite",
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "182 - 225",
+      "Damage": "0 to 0",
+      "Durability": "90",
+      "Block Chance": "34 - 39",
+      "Required Dexterity": "0",
+      "Required Strength": "148"
+    },
+    "Index": "Eye of the Storm",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "120",
+        "Max": "160",
+        "Description": "[120-160]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "9",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Combat Skills (Paladin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "+[20-25] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "All Resistances +[15-20]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Tornado",
+        "Min": "10",
+        "Max": "22",
+        "Description": "10% Chance to cast level 22 Tornado on striking",
+        "Priority": "158"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Eye of the Storm",
+    "BaseItemName": "Vortex Shield",
+    "Tier": "elite",
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "182 - 225",
+      "Damage": "0 to 0",
+      "Durability": "90",
+      "Block Chance": "39 - 44",
+      "Required Dexterity": "0",
+      "Required Strength": "148"
+    },
+    "Index": "E Eye of the Storm",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "9",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Combat Skills (Paladin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "30",
+        "Max": "35",
+        "Description": "+[30-35] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "30",
+        "Max": "35",
+        "Description": "All Resistances +[30-35]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Tornado",
+        "Min": "20",
+        "Max": "30",
+        "Description": "20% Chance to cast level 30 Tornado on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Atropos' Shears",
+    "BaseItemName": "Scissors Suwayyah",
+    "Tier": "elite",
+    "Types": [
+      "h2h2",
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "40 to 51",
+      "Durability": "68",
+      "Block Chance": "0",
+      "Required Dexterity": "118",
+      "Required Strength": "118"
+    },
+    "Index": "Atropos' Shears",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "77",
+    "Properties": [
+      {
+        "Prop": "ass",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Assassin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "18",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Traps (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "pierce-ltng",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "-[10-15]% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Blade Fury",
+        "Min": "3",
+        "Max": "4",
+        "Description": "+[3-4] to Blade Fury (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Blade Shield",
+        "Min": "3",
+        "Max": "4",
+        "Description": "+[3-4] to Blade Shield (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg",
+        "Par": "",
+        "Min": "100",
+        "Max": "140",
+        "Description": "Damage +[100-140]",
+        "Priority": "122"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "+[60-80] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Atropos' Shears",
+    "BaseItemName": "Scissors Suwayyah",
+    "Tier": "elite",
+    "Types": [
+      "h2h2",
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "40 to 51",
+      "Durability": "68",
+      "Block Chance": "0",
+      "Required Dexterity": "118",
+      "Required Strength": "118"
+    },
+    "Index": "E Atropos' Shears",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "77",
+    "Properties": [
+      {
+        "Prop": "ass",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Assassin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "18",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Traps (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "pierce-ltng",
+        "Par": "",
+        "Min": "18",
+        "Max": "20",
+        "Description": "-[18-20]% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Blade Fury",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Blade Fury (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Blade Shield",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Blade Shield (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg",
+        "Par": "",
+        "Min": "170",
+        "Max": "210",
+        "Description": "Damage +[170-210]",
+        "Priority": "122"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "dmg-ac",
+        "Par": "",
+        "Min": "-50",
+        "Max": "-50",
+        "Description": "-50 to Monster Defense Per Hit",
+        "Priority": "75"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Fable",
+    "BaseItemName": "Mythical Sword",
+    "Tier": "elite",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[144 - 160] to [180 - 200]",
+      "Durability": "44",
+      "Block Chance": "0",
+      "Required Dexterity": "124",
+      "Required Strength": "147"
+    },
+    "Index": "Fable",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "mythic-echo",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 7:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "+10 to Whirlwind",
+            "Chance": null
+          },
+          {
+            "Description": "+10 to Fist of the Heavens",
+            "Chance": null
+          },
+          {
+            "Description": "+18 to Chain Lightning",
+            "Chance": null
+          },
+          {
+            "Description": "+20 to Blessed Hammer",
+            "Chance": null
+          },
+          {
+            "Description": "+20 to Bone Spirit",
+            "Chance": null
+          },
+          {
+            "Description": "+17 to [not found]",
+            "Chance": null
+          },
+          {
+            "Description": "+17 to [not found]",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Fable",
+    "BaseItemName": "Mythical Sword",
+    "Tier": "elite",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[160 - 168] to [200 - 210]",
+      "Durability": "44",
+      "Block Chance": "0",
+      "Required Dexterity": "124",
+      "Required Strength": "147"
+    },
+    "Index": "E Fable",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "80",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "320",
+        "Description": "[300-320]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "150",
+        "Max": "200",
+        "Description": "[150-200]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "all-stats",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "+[20-25] to all Attributes",
+        "Priority": "63"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "mythic-echo",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "2 picks of 7:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "+10 to Whirlwind",
+            "Chance": null
+          },
+          {
+            "Description": "+10 to Fist of the Heavens",
+            "Chance": null
+          },
+          {
+            "Description": "+18 to Chain Lightning",
+            "Chance": null
+          },
+          {
+            "Description": "+20 to Blessed Hammer",
+            "Chance": null
+          },
+          {
+            "Description": "+20 to Bone Spirit",
+            "Chance": null
+          },
+          {
+            "Description": "+17 to [not found]",
+            "Chance": null
+          },
+          {
+            "Description": "+17 to [not found]",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Nightwatch",
+    "BaseItemName": "Great Poleaxe",
+    "Tier": "elite",
+    "Types": [
+      "pole",
+      "sppl",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[156 - 184] to [431 - 508]",
+      "Durability": "55",
+      "Block Chance": "0",
+      "Required Dexterity": "99",
+      "Required Strength": "179"
+    },
+    "Index": "Nightwatch",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "84",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "240",
+        "Max": "300",
+        "Description": "[240-300]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "12",
+        "Max": "15",
+        "Description": "[12-15]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Slows Target by 20%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "120",
+        "Max": "160",
+        "Description": "[120-160]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Nightwatch",
+    "BaseItemName": "Great Poleaxe",
+    "Tier": "elite",
+    "Types": [
+      "pole",
+      "sppl",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[193 - 211] to [533 - 584]",
+      "Durability": "55",
+      "Block Chance": "0",
+      "Required Dexterity": "99",
+      "Required Strength": "179"
+    },
+    "Index": "E Nightwatch",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "84",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "320",
+        "Max": "360",
+        "Description": "[320-360]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "16",
+        "Max": "20",
+        "Description": "[16-20]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Slows Target by 30%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "180",
+        "Max": "240",
+        "Description": "[180-240]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Freezes target",
+        "Priority": "78"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "Physical Damage Received Reduced by [8-10]%",
+        "Priority": "22"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Soulpiercer",
+    "BaseItemName": "Ghost Spear",
+    "Tier": "elite",
+    "Types": [
+      "spea",
+      "sppl",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[57 - 63] to [496 - 542]",
+      "Durability": "28",
+      "Block Chance": "0",
+      "Required Dexterity": "163",
+      "Required Strength": "122"
+    },
+    "Index": "Soulpiercer",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "84",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "220",
+        "Max": "250",
+        "Description": "[220-250]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "100",
+        "Max": "200",
+        "Description": "Adds [100-200] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "+[8-12] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "Slows Target by [15-20]%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "-3",
+        "Max": "-3",
+        "Description": "-3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Soulpiercer",
+    "BaseItemName": "Ghost Spear",
+    "Tier": "elite",
+    "Types": [
+      "spea",
+      "sppl",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[64 - 72] to [558 - 620]",
+      "Durability": "28",
+      "Block Chance": "0",
+      "Required Dexterity": "163",
+      "Required Strength": "122"
+    },
+    "Index": "E Soulpiercer",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "84",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "250",
+        "Max": "400",
+        "Description": "Adds [250-400] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "ignore-ac",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ignore Target's Defense",
+        "Priority": "119"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Slows Target by 30%",
+        "Priority": "77"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "-4",
+        "Max": "-4",
+        "Description": "-4 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "pierce-mag",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "-[8-12]% to Enemy Magic Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Oakfather",
+    "BaseItemName": "Shillelagh",
+    "Tier": "elite",
+    "Types": [
+      "staf",
+      "rod",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[202 - 248] to [322 - 385]",
+      "Durability": "40",
+      "Block Chance": "0",
+      "Required Dexterity": "27",
+      "Required Strength": "52"
+    },
+    "Index": "Oakfather",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "84",
+    "LvlReq": "70",
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Oak Sage",
+        "Min": "12",
+        "Max": "14",
+        "Description": "+[12-14] to Oak Sage",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-norm",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "Adds [20-40] damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Shock Wave",
+        "Min": "10",
+        "Max": "8",
+        "Description": "10% Chance to cast level 8 Shock Wave on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "+[60-80] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "100",
+        "Max": "100",
+        "Description": "100% Damage to Undead",
+        "Priority": "108"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Oakfather",
+    "BaseItemName": "Shillelagh",
+    "Tier": "elite",
+    "Types": [
+      "staf",
+      "rod",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[310 - 376] to [482 - 565]",
+      "Durability": "40",
+      "Block Chance": "0",
+      "Required Dexterity": "27",
+      "Required Strength": "52"
+    },
+    "Index": "E Oakfather",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "84",
+    "LvlReq": "70",
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Oak Sage",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to Oak Sage",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "340",
+        "Description": "[300-340]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "dmg-norm",
+        "Par": "",
+        "Min": "50",
+        "Max": "90",
+        "Description": "Adds [50-90] damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Shock Wave",
+        "Min": "15",
+        "Max": "12",
+        "Description": "15% Chance to cast level 12 Shock Wave on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "100",
+        "Max": "120",
+        "Description": "+[100-120] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg-undead",
+        "Par": "",
+        "Min": "150",
+        "Max": "150",
+        "Description": "150% Damage to Undead",
+        "Priority": "108"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Replenish Life +[10-15]",
+        "Priority": "56"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Cataclysm",
+    "BaseItemName": "Vortex Orb",
+    "Tier": "elite",
+    "Types": [
+      "orb",
+      "weap",
+      "sorc",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "12 to 66",
+      "Durability": "40",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "0"
+    },
+    "Index": "Cataclysm",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "87",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "kill-skill",
+        "Par": "Apocalypse",
+        "Min": "20",
+        "Max": "12",
+        "Description": "20% Chance to cast level 12 Apocalypse when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "3",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Fire Skills (Sorceress Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "-[6-8]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "Fire Resist [30-40]%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Increase Maximum Mana 15%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Regenerate Mana 15%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Light Radius",
+        "Priority": "6"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Cataclysm",
+    "BaseItemName": "Vortex Orb",
+    "Tier": "elite",
+    "Types": [
+      "orb",
+      "weap",
+      "sorc",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "12 to 66",
+      "Durability": "40",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "0"
+    },
+    "Index": "E Cataclysm",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "87",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "kill-skill",
+        "Par": "Apocalypse",
+        "Min": "25",
+        "Max": "15",
+        "Description": "25% Chance to cast level 15 Apocalypse when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "3",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Fire Skills (Sorceress Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "10",
+        "Max": "12",
+        "Description": "-[10-12]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "Fire Resist [40-50]%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "Increase Maximum Mana [20-25]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Regenerate Mana 25%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Windshear",
+    "BaseItemName": "Colossus Sword",
+    "Tier": "elite",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[195 - 225] to [387 - 447]",
+      "Durability": "50",
+      "Block Chance": "0",
+      "Required Dexterity": "95",
+      "Required Strength": "182"
+    },
+    "Index": "Windshear",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "81",
+    "LvlReq": "72",
+    "Properties": [
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "220",
+        "Max": "270",
+        "Description": "[220-270]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Frenzy",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Frenzy (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "att/lvl",
+        "Par": "10",
+        "Min": "5.00",
+        "Max": "5.00",
+        "Description": "5.00 [*level] to Attack Rating",
+        "Priority": "114"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Windshear",
+    "BaseItemName": "Colossus Sword",
+    "Tier": "elite",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[244 - 268] to [484 - 532]",
+      "Durability": "50",
+      "Block Chance": "0",
+      "Required Dexterity": "95",
+      "Required Strength": "182"
+    },
+    "Index": "E Windshear",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "81",
+    "LvlReq": "72",
+    "Properties": [
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "340",
+        "Description": "[300-340]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Frenzy",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Frenzy (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "10",
+        "Max": "12",
+        "Description": "[10-12]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "att/lvl",
+        "Par": "14",
+        "Min": "7.00",
+        "Max": "7.00",
+        "Description": "7.00 [*level] to Attack Rating",
+        "Priority": "114"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Askari Covenant",
+    "BaseItemName": "Matriarchal Pike",
+    "Tier": "elite",
+    "Types": [
+      "aspe",
+      "spea",
+      "amaz",
+      "sppl",
+      "clas",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[118 - 140] to [489 - 581]",
+      "Durability": "25",
+      "Block Chance": "0",
+      "Required Dexterity": "149",
+      "Required Strength": "132"
+    },
+    "Index": "Askari Covenant",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "85",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "ama",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Amazon Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "220",
+        "Max": "280",
+        "Description": "[220-280]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Valkyrie",
+        "Min": "3",
+        "Max": "4",
+        "Description": "+[3-4] to Valkyrie (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Dopplezon",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Decoy (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "[20-25]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Battle Orders",
+        "Min": "4",
+        "Max": "5",
+        "Description": "+[4-5] to Battle Orders",
+        "Priority": "81"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Askari Covenant",
+    "BaseItemName": "Matriarchal Pike",
+    "Tier": "elite",
+    "Types": [
+      "aspe",
+      "spea",
+      "amaz",
+      "sppl",
+      "clas",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[148 - 166] to [612 - 688]",
+      "Durability": "25",
+      "Block Chance": "0",
+      "Required Dexterity": "149",
+      "Required Strength": "132"
+    },
+    "Index": "E Askari Covenant",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "85",
+    "LvlReq": "75",
+    "Properties": [
+      {
+        "Prop": "ama",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Amazon Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "300",
+        "Max": "350",
+        "Description": "[300-350]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Valkyrie",
+        "Min": "5",
+        "Max": "6",
+        "Description": "+[5-6] to Valkyrie (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Dopplezon",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Decoy (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "180",
+        "Max": "240",
+        "Description": "[180-240]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Battle Orders",
+        "Min": "8",
+        "Max": "8",
+        "Description": "+8 to Battle Orders",
+        "Priority": "81"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Shadowscript",
+    "BaseItemName": "Runic Talons",
+    "Tier": "elite",
+    "Types": [
+      "h2h2",
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "24 to 44",
+      "Durability": "69",
+      "Block Chance": "0",
+      "Required Dexterity": "115",
+      "Required Strength": "115"
+    },
+    "Index": "Shadowscript",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "85",
+    "LvlReq": "72",
+    "Properties": [
+      {
+        "Prop": "ass",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Assassin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "19",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Shadow Disciplines (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "All Resistances +[20-30]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "8",
+        "Max": "3",
+        "Description": "8% Chance to cast level 3 Life Tap on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "250",
+        "Max": "350",
+        "Description": "+[250-350] to Attack Rating against Demons",
+        "Priority": "110"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Shadowscript",
+    "BaseItemName": "Runic Talons",
+    "Tier": "elite",
+    "Types": [
+      "h2h2",
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "24 to 44",
+      "Durability": "69",
+      "Block Chance": "0",
+      "Required Dexterity": "115",
+      "Required Strength": "115"
+    },
+    "Index": "E Shadowscript",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "85",
+    "LvlReq": "72",
+    "Properties": [
+      {
+        "Prop": "ass",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Assassin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "19",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Shadow Disciplines (Assassin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Socketed (3)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "35",
+        "Max": "40",
+        "Description": "All Resistances +[35-40]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "+[60-80] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "10",
+        "Max": "5",
+        "Description": "10% Chance to cast level 5 Life Tap on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "650",
+        "Max": "800",
+        "Description": "+[650-800] to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1048 - 1152",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "Elemental Attunement",
+    "Rarity": "19",
+    "Percent": "19/80 (23.75%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Level [10-12] Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Increase Maximum Mana [10-15]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "120",
+        "Description": "[100-120]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "-[6-8]% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-fire",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% to Fire Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "Fire Resist [40-50]%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1205 - 1310",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "E Elemental Attunement",
+    "Rarity": "1",
+    "Percent": "1/80 (1.25%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "22",
+        "Description": "Increase Maximum Mana [20-22]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "130",
+        "Max": "150",
+        "Description": "[130-150]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "-10% to Enemy Fire Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-fire",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Fire Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-fire",
+        "Par": "",
+        "Min": "60",
+        "Max": "75",
+        "Description": "Fire Resist [60-75]%",
+        "Priority": "36"
+      },
+      {
+        "Prop": "res-fire-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
+        "Priority": "42"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Socketed (3)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1048 - 1152",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "Elemental Attunement",
+    "Rarity": "19",
+    "Percent": "19/80 (23.75%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Level [10-12] Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Increase Maximum Mana [10-15]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "120",
+        "Description": "[100-120]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-ltng",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "-[6-8]% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-ltng",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% to Lightning Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "Lightning Resist [40-50]%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1205 - 1310",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "E Elemental Attunement",
+    "Rarity": "1",
+    "Percent": "1/80 (1.25%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "22",
+        "Description": "Increase Maximum Mana [20-22]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "130",
+        "Max": "150",
+        "Description": "[130-150]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-ltng",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "-10% to Enemy Lightning Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-ltng",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Lightning Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-ltng",
+        "Par": "",
+        "Min": "60",
+        "Max": "75",
+        "Description": "Lightning Resist [60-75]%",
+        "Priority": "38"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Socketed (3)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1048 - 1152",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "Elemental Attunement",
+    "Rarity": "19",
+    "Percent": "19/80 (23.75%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Level [10-12] Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Increase Maximum Mana [10-15]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "120",
+        "Description": "[100-120]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-cold",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "-[6-8]% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-cold",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% to Cold Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "Cold Resist [40-50]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1205 - 1310",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "E Elemental Attunement",
+    "Rarity": "1",
+    "Percent": "1/80 (1.25%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "22",
+        "Description": "Increase Maximum Mana [20-22]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "130",
+        "Max": "150",
+        "Description": "[130-150]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-cold",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "-10% to Enemy Cold Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-cold",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Cold Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "60",
+        "Max": "75",
+        "Description": "Cold Resist [60-75]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "res-cold-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
+        "Priority": "44"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Socketed (3)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1048 - 1152",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "Elemental Attunement",
+    "Rarity": "19",
+    "Percent": "19/80 (23.75%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Level [10-12] Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Increase Maximum Mana [10-15]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "120",
+        "Description": "[100-120]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-pois",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "-[6-8]% to Enemy Poison Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-pois",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% to Poison Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "Poison Resist [40-50]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Elemental Attunement",
+    "BaseItemName": "Archon Plate",
+    "Tier": "elite",
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "1205 - 1310",
+      "Damage": "0 to 0",
+      "Durability": "60",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "103"
+    },
+    "Index": "E Elemental Attunement",
+    "Rarity": "1",
+    "Percent": "1/80 (1.25%)",
+    "Lvl": "84",
+    "LvlReq": "76",
+    "Properties": [
+      {
+        "Prop": "aura",
+        "Par": "Meditation",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Meditation Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "20",
+        "Max": "22",
+        "Description": "Increase Maximum Mana [20-22]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "130",
+        "Max": "150",
+        "Description": "[130-150]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "pierce-pois",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "-10% to Enemy Poison Resistance",
+        "Priority": "88"
+      },
+      {
+        "Prop": "extra-pois",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Poison Skill Damage",
+        "Priority": "88"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "60",
+        "Max": "75",
+        "Description": "Poison Resist [60-75]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "res-pois-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Poison Resist",
+        "Priority": "45"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "Socketed (3)",
+        "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "20",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      }
+    ],
+    "ImageMapping": null,
+    "Drops": true
   }
 ]
