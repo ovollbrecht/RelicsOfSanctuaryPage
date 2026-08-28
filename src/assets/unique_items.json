@@ -33202,6 +33202,14 @@
         "Priority": "85"
       },
       {
+        "Prop": "hit-skill",
+        "Par": "Mind Blast",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Mind Blast on striking",
+        "Priority": "158"
+      },
+      {
         "Prop": "dmg-ltng",
         "Par": "",
         "Min": "1",
@@ -33279,9 +33287,9 @@
       {
         "Prop": "dmg-pois",
         "Par": "1",
-        "Min": "12",
-        "Max": "12",
-        "Description": "Adds 12 poison damage over 1 seconds",
+        "Min": "38",
+        "Max": "38",
+        "Description": "Adds 38 poison damage over 1 seconds",
         "Priority": "300"
       }
     ],
@@ -33635,7 +33643,7 @@
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "94"
+      "Required Strength": "84"
     },
     "Index": "E The Humongous",
     "Rarity": "1",
@@ -33670,17 +33678,17 @@
       {
         "Prop": "crush",
         "Par": "",
-        "Min": "45",
-        "Max": "50",
-        "Description": "[45-50]% Chance of Crushing Blow",
+        "Min": "30",
+        "Max": "35",
+        "Description": "[30-35]% Chance of Crushing Blow",
         "Priority": "87"
       },
       {
         "Prop": "ease",
         "Par": "",
-        "Min": "35",
-        "Max": "35",
-        "Description": "Requirements 35%",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Requirements 20%",
         "Priority": "0"
       },
       {
@@ -34587,19 +34595,11 @@
         "Priority": "-2"
       },
       {
-        "Prop": "ignore-ac",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ignore Target's Defense",
-        "Priority": "119"
-      },
-      {
         "Prop": "swing2",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Increased Attack Speed",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
         "Priority": "145"
       }
     ],
@@ -34855,6 +34855,14 @@
         "Priority": "-2"
       },
       {
+        "Prop": "charged",
+        "Par": "IronGolem",
+        "Min": "3",
+        "Max": "8",
+        "Description": "Level 8 Iron Golem (3/3 Charges)",
+        "Priority": "1"
+      },
+      {
         "Prop": "dmg-ltng",
         "Par": "",
         "Min": "1",
@@ -34901,9 +34909,9 @@
       {
         "Prop": "crush",
         "Par": "",
-        "Min": "50",
-        "Max": "50",
-        "Description": "50% Chance of Crushing Blow",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Chance of Crushing Blow",
         "Priority": "87"
       },
       {
@@ -35085,9 +35093,9 @@
       {
         "Prop": "crush",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "40% Chance of Crushing Blow",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Chance of Crushing Blow",
         "Priority": "87"
       },
       {
@@ -35199,12 +35207,12 @@
         "Priority": "88"
       },
       {
-        "Prop": "cast2",
-        "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Faster Cast Rate",
-        "Priority": "142"
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "5",
+        "Max": "3",
+        "Description": "5% Chance to cast level 3 Life Tap on striking",
+        "Priority": "158"
       }
     ],
     "ImageMapping": "sword_blood_crescent.webp",
@@ -35460,7 +35468,7 @@
       },
       {
         "Prop": "hit-skill",
-        "Par": "112",
+        "Par": "Blessed Hammer",
         "Min": "10",
         "Max": "15",
         "Description": "10% Chance to cast level 15 Blessed Hammer on striking",
@@ -37149,9 +37157,9 @@
       {
         "Prop": "deadly",
         "Par": "",
-        "Min": "66",
-        "Max": "66",
-        "Description": "66% Deadly Strike",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Deadly Strike",
         "Priority": "85"
       },
       {
@@ -38487,9 +38495,9 @@
       {
         "Prop": "pierce",
         "Par": "",
-        "Min": "100",
-        "Max": "100",
-        "Description": "100% Piercing Attack",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Piercing Attack",
         "Priority": "132"
       },
       {
@@ -38879,6 +38887,14 @@
         "Max": "30",
         "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Raven",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Raven",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "bow_leadcrow.webp",
@@ -39265,17 +39281,25 @@
         "Prop": "allskills",
         "Par": "",
         "Min": "1",
-        "Max": "2",
-        "Description": "+[1-2] to All Skills",
+        "Max": "1",
+        "Description": "+1 to All Skills",
         "Priority": "156"
       },
       {
         "Prop": "sock",
         "Par": "",
-        "Min": "1",
+        "Min": "2",
         "Max": "2",
-        "Description": "Socketed ([1-2])",
+        "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Cloak of Shadows",
+        "Min": "3",
+        "Max": "1",
+        "Description": "3% Chance to cast level 1 Cloak of Shadows when struck",
+        "Priority": "158"
       }
     ],
     "ImageMapping": "helmet_skull_cap.webp",
@@ -39784,6 +39808,14 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Terror",
+        "Min": "10",
+        "Max": "8",
+        "Description": "10% Chance to cast level 8 Terror when struck",
+        "Priority": "158"
       }
     ],
     "ImageMapping": "helmet_mask.webp",
@@ -39878,33 +39910,33 @@
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Fire Resist",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Lightning Resist",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Cold Resist",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Poison Resist",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Poison Resist",
         "Priority": "45"
       },
       {
@@ -40238,33 +40270,33 @@
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Fire Resist",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Maximum Fire Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Lightning Resist",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Maximum Lightning Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Cold Resist",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Maximum Cold Resist",
         "Priority": "45"
       },
       {
         "Prop": "res-all-max",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "15% to Maximum Poison Resist",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% to Maximum Poison Resist",
         "Priority": "45"
       },
       {
@@ -41694,9 +41726,9 @@
       {
         "Prop": "thorns",
         "Par": "",
-        "Min": "60",
+        "Min": "50",
         "Max": "60",
-        "Description": "Attacker Takes Damage of 60",
+        "Description": "Attacker Takes Damage of [50-60]",
         "Priority": "13"
       },
       {
@@ -41742,9 +41774,9 @@
       {
         "Prop": "aura",
         "Par": "Thorns",
-        "Min": "5",
-        "Max": "5",
-        "Description": "Level 5 Thorns Aura When Equipped",
+        "Min": "10",
+        "Max": "10",
+        "Description": "Level 10 Thorns Aura When Equipped",
         "Priority": "157"
       }
     ],
@@ -42043,8 +42075,8 @@
         "Prop": "res-all",
         "Par": "",
         "Min": "60",
-        "Max": "70",
-        "Description": "All Resistances +[60-70]",
+        "Max": "65",
+        "Description": "All Resistances +[60-65]",
         "Priority": "34"
       },
       {
@@ -42058,9 +42090,9 @@
       {
         "Prop": "sock",
         "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "Socketed (3)",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
         "Priority": "-2"
       }
     ],
@@ -43116,7 +43148,7 @@
       "armo"
     ],
     "Stats": {
-      "Defense": "21 - 22",
+      "Defense": "25 - 26",
       "Damage": "0 to 0",
       "Durability": "16",
       "Block Chance": "0",
@@ -43132,9 +43164,9 @@
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "All Resistances +10",
+        "Min": "20",
+        "Max": "20",
+        "Description": "All Resistances +20",
         "Priority": "34"
       },
       {
@@ -43148,17 +43180,17 @@
       {
         "Prop": "mana",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "+20 to Mana",
+        "Min": "35",
+        "Max": "35",
+        "Description": "+35 to Mana",
         "Priority": "55"
       },
       {
         "Prop": "red-dmg",
         "Par": "",
-        "Min": "2",
-        "Max": "2",
-        "Description": "Damage Reduced by 2",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Damage Reduced by 5",
         "Priority": "22"
       },
       {
@@ -43172,10 +43204,18 @@
       {
         "Prop": "ac%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Enhanced Defense",
+        "Min": "100",
+        "Max": "120",
+        "Description": "[100-120]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Prop": "gethit-skill",
+        "Par": "Dim Vision",
+        "Min": "5",
+        "Max": "3",
+        "Description": "5% Chance to cast level 3 Dim Vision when struck",
+        "Priority": "158"
       }
     ],
     "ImageMapping": "belt_belt_m.webp",
@@ -43548,92 +43588,100 @@
     "LvlReq": "25",
     "Properties": [
       {
-        "Prop": "dex",
+        "Prop": "all-stats",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "+10 to all Attributes",
-        "Priority": "65"
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to all Attributes",
+        "Priority": "63"
       },
       {
         "Prop": "ac",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "+10 Defense",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 Defense",
         "Priority": "71"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Enhanced Defense",
+        "Priority": "74"
       },
       {
         "Prop": "att%",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Bonus to Attack Rating",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Bonus to Attack Rating",
         "Priority": "117"
       },
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "All Resistances +10",
+        "Min": "20",
+        "Max": "20",
+        "Description": "All Resistances +20",
         "Priority": "34"
-      },
-      {
-        "Prop": "ac%",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Enhanced Defense",
-        "Priority": "74"
       },
       {
         "Prop": "cast2",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Faster Cast Rate",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
         "Priority": "142"
-      },
-      {
-        "Prop": "res-all-max",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% to Maximum Fire Resist",
-        "Priority": "45"
-      },
-      {
-        "Prop": "res-all-max",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% to Maximum Lightning Resist",
-        "Priority": "45"
-      },
-      {
-        "Prop": "res-all-max",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% to Maximum Cold Resist",
-        "Priority": "45"
-      },
-      {
-        "Prop": "res-all-max",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% to Maximum Poison Resist",
-        "Priority": "45"
       },
       {
         "Prop": "move2",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Faster Run/Walk",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Run/Walk",
         "Priority": "148"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "stam",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 Maximum Stamina",
+        "Priority": "51"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "stamdrain",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Slower Stamina Drain",
+        "Priority": "49"
       }
     ],
     "ImageMapping": "amulet_amulet.webp",
@@ -43842,12 +43890,12 @@
         "Priority": "156"
       },
       {
-        "Prop": "swing2",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Increased Attack Speed",
-        "Priority": "145"
+        "Prop": "hit-skill",
+        "Par": "Lightning",
+        "Min": "5",
+        "Max": "18",
+        "Description": "5% Chance to cast level 18 Lightning on striking",
+        "Priority": "158"
       },
       {
         "Prop": "dmg-ltng",
@@ -44935,9 +44983,9 @@
       {
         "Prop": "allskills",
         "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to All Skills",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
         "Priority": "156"
       },
       {
@@ -45872,10 +45920,10 @@
       },
       {
         "Prop": "oskill",
-        "Par": "64",
-        "Min": "17",
-        "Max": "17",
-        "Description": "+17 to Frozen Orb",
+        "Par": "Frozen Orb",
+        "Min": "12",
+        "Max": "14",
+        "Description": "+[12-14] to Frozen Orb",
         "Priority": "81"
       },
       {
@@ -49480,9 +49528,9 @@
       {
         "Prop": "cast1",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "40% Faster Cast Rate",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Faster Cast Rate",
         "Priority": "142"
       },
       {
@@ -49502,31 +49550,31 @@
         "Priority": "58"
       },
       {
-        "Prop": "oskill",
-        "Par": "61",
+        "Prop": "skill",
+        "Par": "Fire Mastery",
         "Min": "3",
         "Max": "3",
-        "Description": "+3 to Fire Mastery",
+        "Description": "+3 to Fire Mastery (Sorceress Only)",
         "Priority": "81"
       },
       {
-        "Prop": "oskill",
-        "Par": "63",
+        "Prop": "skill",
+        "Par": "Lightning Mastery",
         "Min": "3",
         "Max": "3",
-        "Description": "+3 to Lightning Mastery",
+        "Description": "+3 to Lightning Mastery (Sorceress Only)",
         "Priority": "81"
       },
       {
-        "Prop": "oskill",
-        "Par": "65",
+        "Prop": "skill",
+        "Par": "Cold Mastery",
         "Min": "3",
         "Max": "3",
-        "Description": "+3 to Cold Mastery",
+        "Description": "+3 to Cold Mastery (Sorceress Only)",
         "Priority": "81"
       },
       {
-        "Prop": "pierce-elem",
+        "Prop": "pierce-fire",
         "Par": "",
         "Min": "5",
         "Max": "5",
@@ -49534,7 +49582,7 @@
         "Priority": "88"
       },
       {
-        "Prop": "pierce-elem",
+        "Prop": "pierce-ltng",
         "Par": "",
         "Min": "5",
         "Max": "5",
@@ -49542,11 +49590,11 @@
         "Priority": "88"
       },
       {
-        "Prop": "pierce-elem",
+        "Prop": "extra-cold",
         "Par": "",
         "Min": "5",
         "Max": "5",
-        "Description": "-5% to Enemy Cold Resistance",
+        "Description": "5% to Cold Skill Damage",
         "Priority": "88"
       }
     ],
@@ -49750,8 +49798,8 @@
         "Prop": "dmg-ltng",
         "Par": "",
         "Min": "1",
-        "Max": "670",
-        "Description": "Adds [1-670] lightning damage",
+        "Max": "430",
+        "Description": "Adds [1-430] lightning damage",
         "Priority": "300"
       },
       {
@@ -50129,9 +50177,9 @@
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "60",
-        "Max": "60",
-        "Description": "All Resistances +60",
+        "Min": "50",
+        "Max": "50",
+        "Description": "All Resistances +50",
         "Priority": "34"
       },
       {
@@ -50557,9 +50605,9 @@
       {
         "Prop": "mag%",
         "Par": "",
-        "Min": "100",
-        "Max": "130",
-        "Description": "[100-130]% Better Chance of Getting Magic Items",
+        "Min": "80",
+        "Max": "100",
+        "Description": "[80-100]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
@@ -52193,10 +52241,10 @@
       },
       {
         "Prop": "oskill",
-        "Par": "222",
+        "Par": "Raven",
         "Min": "8",
         "Max": "8",
-        "Description": "+8 to Poison Creeper",
+        "Description": "+8 to Raven",
         "Priority": "81"
       },
       {
@@ -53001,19 +53049,19 @@
       },
       {
         "Prop": "oskill",
-        "Par": "74",
-        "Min": "10",
-        "Max": "10",
-        "Description": "+10 to Corpse Explosion",
+        "Par": "Corpse Explosion",
+        "Min": "7",
+        "Max": "8",
+        "Description": "+[7-8] to Corpse Explosion",
         "Priority": "81"
       },
       {
-        "Prop": "oskill",
-        "Par": "246",
-        "Min": "14",
-        "Max": "14",
-        "Description": "+14 to Spirit of Barbs",
-        "Priority": "81"
+        "Prop": "reanimate",
+        "Par": "363",
+        "Min": "8",
+        "Max": "8",
+        "Description": "8% Reanimate as: Skeleton",
+        "Priority": "17"
       }
     ],
     "ImageMapping": "armor_corpsemourn.webp",
@@ -54094,20 +54142,20 @@
         "Priority": "74"
       },
       {
-        "Prop": "cast2",
+        "Prop": "rip",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "-30% Faster Cast Rate",
-        "Priority": "142"
-      },
-      {
-        "Prop": "oskill",
-        "Par": "142",
         "Min": "1",
         "Max": "1",
-        "Description": "+1 to Find Item",
+        "Description": "Slain Monsters Rest in Peace",
         "Priority": "81"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "142",
+        "Min": "8",
+        "Max": "10",
+        "Description": "+[8-10] Life after each Kill",
+        "Priority": "16"
       }
     ],
     "ImageMapping": "glove_heavy_gloves.webp",
@@ -59619,7 +59667,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[25 - 30] to [55 - 67]",
+      "Damage": "[36 - 41] to [79 - 91]",
       "Durability": "6",
       "Block Chance": "0",
       "Required Dexterity": "52",
@@ -59634,50 +59682,58 @@
       {
         "Prop": "deadly",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "40% Deadly Strike",
+        "Min": "60",
+        "Max": "60",
+        "Description": "60% Deadly Strike",
         "Priority": "85"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "130",
-        "Max": "180",
-        "Description": "[130-180]% Enhanced Damage",
+        "Min": "230",
+        "Max": "280",
+        "Description": "[230-280]% Enhanced Damage",
         "Priority": "1000"
       },
       {
         "Prop": "att",
         "Par": "",
-        "Min": "200",
-        "Max": "450",
-        "Description": "+[200-450] to Attack Rating",
+        "Min": "450",
+        "Max": "600",
+        "Description": "+[450-600] to Attack Rating",
         "Priority": "115"
       },
       {
         "Prop": "lifesteal",
         "Par": "",
-        "Min": "7",
-        "Max": "9",
-        "Description": "[7-9]% Life stolen per hit",
+        "Min": "10",
+        "Max": "12",
+        "Description": "[10-12]% Life stolen per hit",
         "Priority": "88"
       },
       {
         "Prop": "manasteal",
         "Par": "",
-        "Min": "4",
-        "Max": "6",
-        "Description": "[4-6]% Mana stolen per hit",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% Mana stolen per hit",
         "Priority": "89"
       },
       {
         "Prop": "rep-quant",
-        "Par": "25",
+        "Par": "10",
         "Min": "",
         "Max": "",
         "Description": "Replenishes quantity",
         "Priority": "2"
+      },
+      {
+        "Prop": "pierce",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Piercing Attack",
+        "Priority": "132"
       }
     ],
     "ImageMapping": "knife_throwing_knife.webp",
@@ -64476,12 +64532,12 @@
         "Priority": "158"
       },
       {
-        "Prop": "charged",
-        "Par": "278",
-        "Min": "20",
+        "Prop": "hit-skill",
+        "Par": "Venom",
+        "Min": "4",
         "Max": "15",
-        "Description": "Level 15 Venom (20/20 Charges)",
-        "Priority": "1"
+        "Description": "4% Chance to cast level 15 Venom on striking",
+        "Priority": "158"
       },
       {
         "Prop": "lifesteal",
@@ -64500,20 +64556,20 @@
         "Priority": "88"
       },
       {
-        "Prop": "move2",
+        "Prop": "res-fire",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Run/Walk",
-        "Priority": "148"
+        "Min": "-40",
+        "Max": "-40",
+        "Description": "Fire Resist -40%",
+        "Priority": "36"
       },
       {
-        "Prop": "mag%",
+        "Prop": "sock",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Better Chance of Getting Magic Items",
-        "Priority": "8"
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
       }
     ],
     "ImageMapping": "helmet_mask.webp",
@@ -65503,10 +65559,10 @@
       },
       {
         "Prop": "aura",
-        "Par": "Conviction",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Level 1 Conviction Aura When Equipped",
+        "Par": "Cleansing",
+        "Min": "15",
+        "Max": "15",
+        "Description": "Level 15 Cleansing Aura When Equipped",
         "Priority": "157"
       }
     ],
@@ -70137,7 +70193,7 @@
       "armo"
     ],
     "Stats": {
-      "Defense": "215 - 270",
+      "Defense": "270 - 292",
       "Damage": "0 to 0",
       "Durability": "20",
       "Block Chance": "0",
@@ -70153,33 +70209,33 @@
       {
         "Prop": "allskills",
         "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "+1 to All Skills",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
         "Priority": "156"
       },
       {
         "Prop": "pierce-fire",
         "Par": "",
-        "Min": "5",
-        "Max": "8",
-        "Description": "-[5-8]% to Enemy Fire Resistance",
+        "Min": "9",
+        "Max": "10",
+        "Description": "-[9-10]% to Enemy Fire Resistance",
         "Priority": "88"
       },
       {
         "Prop": "pierce-mag",
         "Par": "",
-        "Min": "5",
-        "Max": "8",
-        "Description": "-[5-8]% to Enemy Magic Resistance",
+        "Min": "9",
+        "Max": "10",
+        "Description": "-[9-10]% to Enemy Magic Resistance",
         "Priority": "88"
       },
       {
         "Prop": "cast1",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Cast Rate",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Cast Rate",
         "Priority": "142"
       },
       {
@@ -70193,9 +70249,9 @@
       {
         "Prop": "ac%",
         "Par": "",
-        "Min": "150",
-        "Max": "215",
-        "Description": "[150-215]% Enhanced Defense",
+        "Min": "215",
+        "Max": "240",
+        "Description": "[215-240]% Enhanced Defense",
         "Priority": "74"
       },
       {
