@@ -123,7 +123,9 @@
           <div class="card-body p-4">
             <div class="section-header">Current Features (v3.3.0)</div>
             <ul class="feature-list">
-              <li>All features are optional and work in any combination (can be toggled in D2RMM)</li>
+              <li>All features are optional and work in any combination —
+                <router-link to="/options">the full list of options</router-link>, with what the
+                standalone archive brings</li>
               <li>Exalted unique items</li>
               <li>Mythic set items</li>
               <li>Mythic crafting chance</li>
@@ -142,6 +144,12 @@
             </ul>
 
             <div class="section-header mt-4">Installation</div>
+            <p class="card-text">
+              Two downloads, one mod: the D2RMM version builds the game files at install time and lets
+              you set every option, the standalone version is that same install with the defaults
+              already baked in. The steps below are for the standalone —
+              <router-link to="/options">see what each one contains</router-link>.
+            </p>
             <ul class="feature-list">
               <li>Extract the mod to [GamePath]/mods (so you should have mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/...)</li>
               <li>Create a shortcut of D2R.exe</li>

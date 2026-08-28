@@ -1,0 +1,353 @@
+{
+  "modVersion": "3.3.0",
+  "groups": [
+    {
+      "id": null,
+      "name": null,
+      "description": null,
+      "options": [
+        {
+          "id": "enableModInfoPauseMenu",
+          "type": "checkbox",
+          "name": "Add Menu Buttons for Mod Info",
+          "description": "Add Menu Buttons to display Cube Recipes, Crafting Recipes and Runewords in the pause menu.",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "uniqueItems",
+      "name": "Unique Items",
+      "description": "Configure Exalted Uniques and Chronicle behavior.",
+      "options": [
+        {
+          "id": "enableExaltedUniques",
+          "type": "checkbox",
+          "name": "Exalted Uniques",
+          "description": "Unique item drops have a chance (5%) to be \u0027exalted\u0027 with pre defined better and additional stats.",
+          "defaultValue": true
+        },
+        {
+          "id": "exaltedDesecratedOnly",
+          "type": "checkbox",
+          "name": "Exalted Uniques only in Terror Zones",
+          "description": "Exalted Uniques items can only drop in Terror Zones. These items can drop in all difficulties.",
+          "defaultValue": false
+        },
+        {
+          "id": "exalted_chance_select",
+          "type": "select",
+          "name": "Exalted drop chance",
+          "description": "Changes the chance of an item dropping exalted. 5% is default and highly recommended.",
+          "defaultValue": "19",
+          "options": [
+            {
+              "label": "1%",
+              "value": "99"
+            },
+            {
+              "label": "2%",
+              "value": "49"
+            },
+            {
+              "label": "5%",
+              "value": "19"
+            },
+            {
+              "label": "10%",
+              "value": "9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setItems",
+      "name": "Set Items",
+      "description": "Configure Mythic Sets and Chronicle behavior.",
+      "options": [
+        {
+          "id": "enableMythicSets",
+          "type": "checkbox",
+          "name": "Mythic Sets",
+          "description": "Set item drops have a chance (5%) to be \u0027mythic\u0027 with additional stats. Elite sets and some exceptional set pieces get 1 additional stat, all other get 2. Stats are picked from 8 common, 8 uncommon, 8 rare and 8 ultra rare stats. Ratio 600/300/99/1. Set bonuses of Mythic Sets are also improved.",
+          "defaultValue": true
+        },
+        {
+          "id": "mythicDesecratedOnly",
+          "type": "checkbox",
+          "name": "Mythic Sets only in Terror Zones",
+          "description": "Mythic Set items can only drop in Terror Zones. These items can drop in all difficulties.",
+          "defaultValue": false
+        },
+        {
+          "id": "mythic_chance_select",
+          "type": "select",
+          "name": "Mythic drop chance",
+          "description": "Changes the chance of an item dropping mythic. 5% is default and highly recommended.",
+          "defaultValue": "19",
+          "options": [
+            {
+              "label": "1%",
+              "value": "99"
+            },
+            {
+              "label": "2%",
+              "value": "49"
+            },
+            {
+              "label": "5%",
+              "value": "19"
+            },
+            {
+              "label": "10%",
+              "value": "9"
+            }
+          ]
+        },
+        {
+          "id": "enableMythicUltraRare",
+          "type": "checkbox",
+          "name": "Ultra rare Mythic stats",
+          "description": "The rarest tier a Mythic stat can roll, at 1 in 1000: \u002B1 to Teleport, Frozen Armor, Amplify Damage or Lower Resist as an oskill, or a level 5 Might, Blessed Aim, Holy Freeze or Conviction aura. Every Mythic stat draws from it - on Mythic Sets, on Mythic crafts and on cube upgraded rares and magics. Turn it off to cap Mythic stats at the rare tier.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableWarlordsGlory",
+          "type": "checkbox",
+          "name": "Warlord\u0027s Glory set can drop",
+          "description": "Enables Warlord\u0027s Glory set to drop. This set is normally only available through the chinese promo version of D2R.",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "Crafting",
+      "name": "Crafting Recipes",
+      "description": "Crafting Settings",
+      "options": [
+        {
+          "id": "enableMythicCrafting",
+          "type": "checkbox",
+          "name": "Mythic Crafting",
+          "description": "Crafted items have a chance (5%) to get an additional mythic stat depending on the item type. Same mechanic as for mythic set items.",
+          "defaultValue": true
+        },
+        {
+          "id": "craft_chance_select",
+          "type": "select",
+          "name": "Craft Mythic property chance",
+          "description": "Changes the chance of crafting an item with an additional mythic property.",
+          "defaultValue": "5",
+          "options": [
+            {
+              "label": "1%",
+              "value": "1"
+            },
+            {
+              "label": "2%",
+              "value": "2"
+            },
+            {
+              "label": "5%",
+              "value": "5"
+            },
+            {
+              "label": "10%",
+              "value": "10"
+            }
+          ]
+        },
+        {
+          "id": "enableRemoveCraftingRestrictions",
+          "type": "checkbox",
+          "name": "Remove item restriction",
+          "description": "Crafting recipes accept all items of their category (weapons, gloves, boots, etc.)",
+          "defaultValue": true
+        },
+        {
+          "id": "enableCraftAdditionalRecipes",
+          "type": "checkbox",
+          "name": "Recipes for Topaz and Diamond",
+          "description": "Add new crafting recipes for Topaz and Diamond",
+          "defaultValue": true
+        },
+        {
+          "id": "enableCraftEthereal",
+          "type": "checkbox",
+          "name": "Crafts can roll ethereal",
+          "description": "Allows crafting results to randomly be ethereal. 5% Chance - same as any item drop",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "Cubing",
+      "name": "Cube Recipes",
+      "description": "Cube Recipe Settings",
+      "options": [
+        {
+          "id": "enableSocketCubing",
+          "type": "checkbox",
+          "name": "Cube Socket Quest",
+          "description": "Cube all 4 essences with an item to apply the same effect as lazurks quest reward.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableMythicRareUpgrades",
+          "type": "checkbox",
+          "name": "Add mythic stat to rare items",
+          "description": "Add cube recipes to add a mythic property to a rare item for Standard of Heroes plus a Rune (up to Ist) depending on the item.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableMythicMagicUpgrades",
+          "type": "checkbox",
+          "name": "Add mythic stat to magic items",
+          "description": "Add cube recipes to add a mythic property to a magic item for Standard of Heroes plus a Rune (up to Fal) depending on the item.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableStandardOfHeroesRecipe",
+          "type": "checkbox",
+          "name": "Craft Standard of Heroes",
+          "description": "Add cube recipes for crafting Standard of Heroes. Cube any Act Statue together with all 5 Worldstone Shards. Standard of Heroes is used in mythic recipes.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableSimplifiedRuneUpgrades",
+          "type": "checkbox",
+          "name": "Simplified Rune upgrades",
+          "description": "Low runes don\u0027t need gems anymore for an upgrade. \u00273x Thul -\u003E Amn\u0027 and upwards can be cubed directly",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "runewords",
+      "name": "Runewords",
+      "description": "Runeword settings.",
+      "options": [
+        {
+          "id": "enableNewRunewords",
+          "type": "checkbox",
+          "name": "Additional Runewords by this mod",
+          "description": "Adds new Runewords by this mod.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableReworkedRunewords",
+          "type": "checkbox",
+          "name": "Reworked vanilla Runewords",
+          "description": "Rebalances the stats of many vanilla Runewords (values tuned by this mod). Turning this off keeps all vanilla Runewords unchanged.",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "chronicle",
+      "name": "Chronicle Tracking",
+      "description": "Chronicle tracking settings.",
+      "options": [
+        {
+          "id": "enableUniquesVanillaChronicle",
+          "type": "checkbox",
+          "name": "Vanilla Uniques",
+          "description": "Turning this off removes all vanilla (non-exalted) Uniques from the chronicle.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableUniquesExaltedChronicle",
+          "type": "checkbox",
+          "name": "Exalted Uniques",
+          "description": "Attention!!! Currently a bug can crash the game when a modded unique gets saved to the chronicle. Turn this off until Blizzard fixes it! Turning this off removes all exalted Uniques from the chronicle. If shift RotW uniques is enabled, these uniques will also be excluded from the chronicle (bug related).",
+          "defaultValue": false
+        },
+        {
+          "id": "enableSetsVanillaChronicle",
+          "type": "checkbox",
+          "name": "Vanilla Sets",
+          "description": "Turning this off removes all vanilla (non-mythic) Set items from the chronicle.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableSetsMythicChronicle",
+          "type": "checkbox",
+          "name": "Mythic Sets",
+          "description": "Turning this off removes all mythic Set items from the chronicle.",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "sunderTweaks",
+      "name": "Sunder Charms",
+      "description": "Configure the Sunder Charm drop ratio.",
+      "options": [
+        {
+          "id": "enableSunderEqualDropsRate",
+          "type": "checkbox",
+          "name": "Sunder Charms equal drop rate",
+          "description": "Each Sunder Charm has the same drop chance. Usually/vanilla some sunders drop more often with the following weight: Cold 30, Fire 30, Light 20, Poison 12, Physical 6, Magic 3",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "balance",
+      "name": "Balance Tweaks",
+      "description": "Other settings.",
+      "options": [
+        {
+          "id": "enableDurielNormalDrops",
+          "type": "checkbox",
+          "name": "Duriel drops like the other act bosses",
+          "description": "Stops the town portal scroll spam and cuts his gold and junk down to what Andariel and Mephisto drop, so what falls is mostly equipment. Applies in every difficulty and in terror zones.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableWearTeleport",
+          "type": "checkbox",
+          "name": "Wolf/Bear teleport",
+          "description": "Allows you to use Teleport skill while transformed.",
+          "defaultValue": true
+        },
+        {
+          "id": "enablePerfectGemDrops",
+          "type": "checkbox",
+          "name": "Perfect Gem drops",
+          "description": "Perfect gems can drop from monster in Hell. Other gems drop less often. The overall gem values are still the same. (You will not have more Perfect Gems, than before, if you cube all gems you find)",
+          "defaultValue": true
+        },
+        {
+          "id": "enableReworkedAffixes",
+          "type": "checkbox",
+          "name": "Reworked magic Affixes",
+          "description": "Rebalances the value ranges of many magic prefixes and suffixes (magic/rare item rolls). Turning this off keeps all vanilla affix values.",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "misc",
+      "name": "Miscellaneous",
+      "description": "Other settings.",
+      "options": [
+        {
+          "id": "shiftRotwItems",
+          "type": "checkbox",
+          "name": "Moves RotW uniques to the end - read info",
+          "description": "Only relevant for save files with exalted items found before this mod got updated to RotW. Without this option, existing exalted items can have wrong names und sometimes wrong level requirements. New found items will not be affected. Also disables chronicle entries for RotW added uniques if exalted uniques chronicle is disabled (important for chronicle crash bug).",
+          "defaultValue": false
+        },
+        {
+          "id": "enableMultiNormalUniques",
+          "type": "checkbox",
+          "name": "Allow multi normal Unique drops",
+          "description": "Normal uniques can drop more than once per game. This is to not break exalted chance. Without this option a second unique item drop in the same game would be guaranteed to be exalted.",
+          "defaultValue": true
+        }
+      ]
+    }
+  ]
+}

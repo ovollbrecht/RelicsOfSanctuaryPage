@@ -42,6 +42,11 @@ const routes = [
     component: () => import('../views/MythicAffixesView.vue')
   },
   {
+    path: '/options',
+    name: 'Options',
+    component: () => import('../views/OptionsView.vue')
+  },
+  {
     path: '/drop-calc',
     name: 'DropCalc',
     component: () => import('../views/DropCalcView.vue')

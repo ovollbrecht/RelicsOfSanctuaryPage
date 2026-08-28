@@ -372,6 +372,10 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
             <h2 class="h4 mb-0">Ultra Rare Affixes (Shared for All Item Types)</h2>
           </div>
           <div class="card-body p-0">
+            <p class="ultra-note px-3 pt-3 mb-0">
+              One roll in a thousand, and the only tier that can be switched off —
+              <router-link to="/options">the D2RMM options</router-link> have it on by default.
+            </p>
             <table class="table table-dark table-striped mb-0 mythic-table compact-table">
               <thead>
                 <tr>
@@ -629,6 +633,11 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
   background: rgba(126, 28, 28, 0.55);
   border: 1px solid rgba(206, 96, 96, 0.55);
   color: #ffd7d7;
+}
+
+.ultra-note {
+  color: var(--d2r-muted);
+  font-size: 0.9rem;
 }
 
 @media (min-width: 1500px) {
