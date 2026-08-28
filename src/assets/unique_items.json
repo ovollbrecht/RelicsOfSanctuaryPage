@@ -37386,11 +37386,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[26 - 28] to [99 - 108]",
-      "Durability": "55",
+      "Damage": "[39 - 43] to [148 - 161]",
+      "Durability": "28",
       "Block Chance": "0",
-      "Required Dexterity": "47",
-      "Required Strength": "75"
+      "Required Dexterity": "37",
+      "Required Strength": "65"
     },
     "Index": "E Woestave",
     "Rarity": "1",
@@ -37461,6 +37461,22 @@
         "Max": "140",
         "Description": "[120-140]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "polearm_halberd.webp",
@@ -49404,11 +49420,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[92 - 135] to [164 - 225]",
-      "Durability": "30",
+      "Damage": "[108 - 155] to [216 - 290]",
+      "Durability": "16",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "25"
+      "Required Strength": "15"
     },
     "Index": "E Ribcracker",
     "Rarity": "1",
@@ -49479,6 +49495,22 @@
         "Max": "55",
         "Description": "55% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "staff_long_staff.webp",
@@ -60367,11 +60399,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "22 to 28",
-      "Durability": "18",
+      "Damage": "33 to 42",
+      "Durability": "10",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "25"
+      "Required Strength": "15"
     },
     "Index": "E Deaths's Web",
     "Rarity": "1",
@@ -60426,6 +60458,22 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "mag%",
@@ -62210,11 +62258,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[332 - 415] to [396 - 495]",
-      "Durability": "26",
+      "Damage": "[498 - 622] to [594 - 742]",
+      "Durability": "14",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "34"
+      "Required Strength": "24"
     },
     "Index": "E Mang Song's Lesson",
     "Rarity": "1",
@@ -62293,6 +62341,22 @@
         "Max": "30",
         "Description": "30% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "staff_skullcollector.webp",
@@ -66895,12 +66959,12 @@
       "armo"
     ],
     "Stats": {
-      "Defense": "155 - 173",
+      "Defense": "232 - 260",
       "Damage": "0 to 0",
-      "Durability": "12",
+      "Durability": "7",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "50"
+      "Required Strength": "40"
     },
     "Index": "E Arachnid Mesh",
     "Rarity": "1",
@@ -66963,6 +67027,22 @@
         "Max": "50",
         "Description": "Poison Resist 50%",
         "Priority": "34"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "att-demon",
@@ -70532,12 +70612,12 @@
       "clas"
     ],
     "Stats": {
-      "Defense": "397 - 477",
+      "Defense": "596 - 715",
       "Damage": "0 to 0",
-      "Durability": "20",
+      "Durability": "11",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "118"
+      "Required Strength": "108"
     },
     "Index": "Dreamcatcher",
     "Rarity": "19",
@@ -70594,6 +70674,22 @@
         "Priority": "74"
       },
       {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
         "Prop": "res-cold",
         "Par": "",
         "Min": "30",
@@ -70625,12 +70721,12 @@
       "clas"
     ],
     "Stats": {
-      "Defense": "508 - 604",
+      "Defense": "763 - 906",
       "Damage": "0 to 0",
-      "Durability": "20",
+      "Durability": "11",
       "Block Chance": "0",
       "Required Dexterity": "0",
-      "Required Strength": "118"
+      "Required Strength": "108"
     },
     "Index": "E Dreamcatcher",
     "Rarity": "1",
@@ -70685,6 +70781,22 @@
         "Max": "280",
         "Description": "[220-280]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "res-cold",
@@ -71538,11 +71650,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[160 - 168] to [200 - 210]",
-      "Durability": "44",
+      "Damage": "[240 - 252] to [300 - 315]",
+      "Durability": "23",
       "Block Chance": "0",
-      "Required Dexterity": "124",
-      "Required Strength": "147"
+      "Required Dexterity": "114",
+      "Required Strength": "137"
     },
     "Index": "E Fable",
     "Rarity": "1",
@@ -71589,6 +71701,22 @@
         "Max": "30",
         "Description": "30% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "hp",
@@ -71760,11 +71888,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[193 - 211] to [533 - 584]",
-      "Durability": "55",
+      "Damage": "[289 - 317] to [800 - 876]",
+      "Durability": "28",
       "Block Chance": "0",
-      "Required Dexterity": "99",
-      "Required Strength": "179"
+      "Required Dexterity": "89",
+      "Required Strength": "169"
     },
     "Index": "E Nightwatch",
     "Rarity": "1",
@@ -71803,6 +71931,22 @@
         "Max": "1",
         "Description": "Cannot Be Frozen",
         "Priority": "20"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "swing2",
@@ -71868,11 +72012,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[57 - 63] to [496 - 542]",
-      "Durability": "28",
+      "Damage": "[86 - 94] to [744 - 813]",
+      "Durability": "15",
       "Block Chance": "0",
-      "Required Dexterity": "163",
-      "Required Strength": "122"
+      "Required Dexterity": "153",
+      "Required Strength": "112"
     },
     "Index": "Soulpiercer",
     "Rarity": "19",
@@ -71880,6 +72024,22 @@
     "Lvl": "84",
     "LvlReq": "75",
     "Properties": [
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
       {
         "Prop": "dmg%",
         "Par": "",
@@ -71960,11 +72120,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[64 - 72] to [558 - 620]",
-      "Durability": "28",
+      "Damage": "[97 - 108] to [837 - 930]",
+      "Durability": "15",
       "Block Chance": "0",
-      "Required Dexterity": "163",
-      "Required Strength": "122"
+      "Required Dexterity": "153",
+      "Required Strength": "112"
     },
     "Index": "E Soulpiercer",
     "Rarity": "1",
@@ -71972,6 +72132,22 @@
     "Lvl": "84",
     "LvlReq": "75",
     "Properties": [
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
+      },
       {
         "Prop": "dmg%",
         "Par": "",
@@ -72618,11 +72794,11 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[244 - 268] to [484 - 532]",
-      "Durability": "50",
+      "Damage": "[366 - 402] to [726 - 798]",
+      "Durability": "26",
       "Block Chance": "0",
-      "Required Dexterity": "95",
-      "Required Strength": "182"
+      "Required Dexterity": "85",
+      "Required Strength": "172"
     },
     "Index": "E Windshear",
     "Rarity": "1",
@@ -72701,6 +72877,22 @@
         "Max": "25",
         "Description": "25% Chance of Crushing Blow",
         "Priority": "87"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      },
+      {
+        "Prop": "eth-indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Prop": "sock",

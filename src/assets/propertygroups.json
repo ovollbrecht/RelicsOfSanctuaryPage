@@ -3878,7 +3878,24 @@
         "ModMax": "1",
         "Chance": "1",
         "Probability": 0.125,
-        "ResolvedProperties": [],
+        "ResolvedProperties": [
+          {
+            "Prop": "eth-indestruct",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Ethereal (Cannot be Repaired)",
+            "Priority": "300"
+          },
+          {
+            "Prop": "eth-indestruct",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Indestructible",
+            "Priority": "300"
+          }
+        ],
         "NestedGroup": null
       },
       {
@@ -5048,7 +5065,24 @@
         "ModMax": "1",
         "Chance": "1",
         "Probability": 0.125,
-        "ResolvedProperties": [],
+        "ResolvedProperties": [
+          {
+            "Prop": "eth-indestruct",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Ethereal (Cannot be Repaired)",
+            "Priority": "300"
+          },
+          {
+            "Prop": "eth-indestruct",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Indestructible",
+            "Priority": "300"
+          }
+        ],
         "NestedGroup": null
       },
       {
@@ -9476,7 +9510,24 @@
               "ModMax": "1",
               "Chance": "1",
               "Probability": 0.125,
-              "ResolvedProperties": [],
+              "ResolvedProperties": [
+                {
+                  "Prop": "eth-indestruct",
+                  "Par": "",
+                  "Min": "1",
+                  "Max": "1",
+                  "Description": "Ethereal (Cannot be Repaired)",
+                  "Priority": "300"
+                },
+                {
+                  "Prop": "eth-indestruct",
+                  "Par": "",
+                  "Min": "1",
+                  "Max": "1",
+                  "Description": "Indestructible",
+                  "Priority": "300"
+                }
+              ],
               "NestedGroup": null
             },
             {
@@ -11074,7 +11125,24 @@
               "ModMax": "1",
               "Chance": "1",
               "Probability": 0.125,
-              "ResolvedProperties": [],
+              "ResolvedProperties": [
+                {
+                  "Prop": "eth-indestruct",
+                  "Par": "",
+                  "Min": "1",
+                  "Max": "1",
+                  "Description": "Ethereal (Cannot be Repaired)",
+                  "Priority": "300"
+                },
+                {
+                  "Prop": "eth-indestruct",
+                  "Par": "",
+                  "Min": "1",
+                  "Max": "1",
+                  "Description": "Indestructible",
+                  "Priority": "300"
+                }
+              ],
               "NestedGroup": null
             },
             {
@@ -14319,7 +14387,16 @@
         "ModMax": "40",
         "Chance": "1",
         "Probability": 0.5,
-        "ResolvedProperties": [],
+        "ResolvedProperties": [
+          {
+            "Prop": "curse-res",
+            "Par": "",
+            "Min": "40",
+            "Max": "40",
+            "Description": "Curse Resistance 40%",
+            "Priority": "35"
+          }
+        ],
         "NestedGroup": null
       }
     ]

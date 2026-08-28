@@ -259,8 +259,8 @@
         {
           "id": "enableUniquesExaltedChronicle",
           "type": "checkbox",
-          "name": "Exalted Uniques",
-          "description": "Attention!!! Currently a bug can crash the game when a modded unique gets saved to the chronicle. Turn this off until Blizzard fixes it! Turning this off removes all exalted Uniques from the chronicle. If shift RotW uniques is enabled, these uniques will also be excluded from the chronicle (bug related).",
+          "name": "Uniques added by this mod",
+          "description": "Attention!!! Currently a bug can crash the game when a modded unique gets saved to the chronicle. Turn this off until Blizzard fixes it! Turning this off removes every Unique this mod adds from the chronicle - the exalted ones and the mod\u0027s own new Uniques alike, since the chronicle identifies an item by its place in the table. If shift RotW uniques is enabled, those uniques are excluded as well (bug related).",
           "defaultValue": false
         },
         {
