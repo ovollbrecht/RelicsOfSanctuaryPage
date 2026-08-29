@@ -105,7 +105,15 @@ const setAll = (open) => {
                     {{ className }}
                   </span>
                 </td>
-                <td class="runes-cell">{{ group.runes.join(' - ') }}</td>
+                <td class="runes-cell">
+                  <!-- In the "one rune away" list the one you lack is the
+                       whole point, so it is the one thing marked. -->
+                  <template v-for="(rune, runeIndex) in group.runes" :key="runeIndex">
+                    <span v-if="runeIndex > 0"> - </span><span
+                      :class="{ 'rune-missing': (group.missingNames ?? []).includes(rune) }"
+                    >{{ rune }}</span>
+                  </template>
+                </td>
                 <td class="text-center tnum">{{ group.sockets }}</td>
                 <td class="text-center tnum">{{ group.levelReq || '—' }}</td>
                 <td>
@@ -194,6 +202,13 @@ const setAll = (open) => {
 
 .runes-cell {
   white-space: nowrap;
+}
+
+/* The rune you do not have yet. */
+.rune-missing {
+  color: var(--d2r-gold-bright);
+  font-weight: 600;
+  border-bottom: 1px dashed rgba(201, 163, 106, 0.6);
 }
 
 .tnum {

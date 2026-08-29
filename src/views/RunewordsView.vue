@@ -160,6 +160,15 @@ const selectedGroup = ref(null);
    the picker answers "do you have this rune at all". */
 const RUNES_KEY = 'rw-owned-runes';
 const RUNE_FILTER_KEY = 'rw-rune-filter';
+const REACH_KEY = 'rw-rune-reach';
+
+/* How far a missing rune may sit above the best one you own and still count as
+   "one away". Runes up to Gul are farmable, so those always count; above that
+   the question is whether you are in that league at all. Two tiers by default:
+   with a Lo in the stash, "you are one Sur short" is worth hearing; with an El
+   it is a joke. */
+const FARMABLE_UP_TO = 25; // Gul
+const DEFAULT_REACH = 2;
 
 const readSession = (key, fallback) => {
   try {
@@ -181,6 +190,7 @@ const writeSession = (key, value) => {
 const pickerOpen = ref(false);
 const ownedRunes = ref(new Set(readSession(RUNES_KEY, [])));
 const useRuneFilter = ref(readSession(RUNE_FILTER_KEY, false) === true);
+const runeReach = ref(Number(readSession(REACH_KEY, DEFAULT_REACH)) || DEFAULT_REACH);
 
 // Every rune any runeword asks for, in rune order - which is all 33 of them,
 // and by construction never one the picker would have no use for.
@@ -269,6 +279,7 @@ watch(ownedRunes, (runes) => {
   }
 }, { deep: true });
 watch(useRuneFilter, (on) => writeSession(RUNE_FILTER_KEY, on));
+watch(runeReach, (reach) => writeSession(REACH_KEY, reach));
 
 const selectGroup = (group) => {
   selectedGroup.value = selectedGroup.value?.key === group.key ? null : group;
@@ -326,15 +337,10 @@ const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
   return true;
 }));
 
-// Filter runewords based on search queries and category
-const filteredRunewords = computed(() => {
+/* Everything except the runes you own, because two lists come out of this
+   one: what you can build, and what you are one rune short of. */
+const filteredIgnoringRunes = computed(() => {
   let filtered = [...visibleRunewords.value];
-
-  // What the picked runes can actually make
-  if (runeFilterActive.value) {
-    filtered = filtered.filter((runeword) =>
-      (runeword.Runes ?? []).every((code) => ownedRunes.value.has(code)));
-  }
 
   // Apply the item-kind filter
   if (selectedCategory.value !== 'all') {
@@ -383,6 +389,51 @@ const filteredRunewords = computed(() => {
   }
 
   return filtered;
+});
+
+const filteredRunewords = computed(() => (runeFilterActive.value
+  ? filteredIgnoringRunes.value.filter((runeword) =>
+    (runeword.Runes ?? []).every((code) => ownedRunes.value.has(code)))
+  : filteredIgnoringRunes.value));
+
+const runeNumber = (code) => Number.parseInt(String(code).slice(1), 10) || 0;
+
+/* The best rune in the stash, which is what makes a near miss worth saying:
+   "one Sur short" means something to somebody who already found a Lo. */
+const bestOwnedRune = computed(() =>
+  Math.max(0, ...[...ownedRunes.value].map(runeNumber)));
+
+/* One rune short - and only when that rune is within reach. Duplicates are not
+   counted, here as everywhere on this page: the picker cannot say "two Hels",
+   so a runeword asking twice for a rune you have counts as having it. */
+const nearMisses = computed(() => {
+  if (!runeFilterActive.value) return [];
+
+  const rows = filteredIgnoringRunes.value
+    .map((runeword) => {
+      const missing = [...new Set(runeword.Runes ?? [])]
+        .filter((code) => !ownedRunes.value.has(code));
+      if (missing.length !== 1) return null;
+
+      const number = runeNumber(missing[0]);
+      const inReach = number <= FARMABLE_UP_TO || bestOwnedRune.value >= number - runeReach.value;
+      return inReach ? { runeword, missing: missing[0], number } : null;
+    })
+    .filter(Boolean);
+
+  const nameByCode = new Map(allRunes.value.map((rune) => [rune.code, rune.name]));
+  const missingByRow = new Map(rows.map((row) => [row.runeword.RowId, row]));
+  return toGroups(rows.map((row) => row.runeword))
+    .map((group) => {
+      const row = missingByRow.get(group.key);
+      return {
+        ...group,
+        missingNames: [nameByCode.get(row.missing) ?? row.missing],
+        missingNumber: row.number,
+      };
+    })
+    // Closest first: the rune you are most likely to see next.
+    .sort((a, b) => a.missingNumber - b.missingNumber || a.name.localeCompare(b.name));
 });
 
 // Get human-readable allowed items
@@ -525,6 +576,7 @@ const resetFilters = () => {
   useRuneFilter.value = false;
   sortBy.value = 'level';
   sortDir.value = 'asc';
+  runeReach.value = DEFAULT_REACH;
 };
 
 // Sort properties by priority
@@ -640,6 +692,10 @@ const readQuery = () => {
   socketFilter.value = Number(one(query.sock)) || 'any';
   sortBy.value = oneOf(query.sort, SORT_OPTIONS.map((option) => option.value), 'level');
   sortDir.value = oneOf(query.dir, ['asc', 'desc'], 'asc');
+  const reach = Number(one(query.reach));
+  runeReach.value = one(query.reach) !== undefined && Number.isFinite(reach) && reach >= 0
+    ? reach
+    : DEFAULT_REACH;
 
   // Somebody's runes are their own setting, so a link without them leaves the
   // picker alone - it only switches the filter off, so the link shows what the
@@ -651,7 +707,7 @@ const readQuery = () => {
 
 watch(
   [searchQuery, runesSearchQuery, selectedCategory, dataMode, statusFilter, classFilter,
-   classPick, itemFilter, socketFilter, sortBy, sortDir, useRuneFilter, ownedRunes],
+   classPick, itemFilter, socketFilter, sortBy, sortDir, useRuneFilter, ownedRunes, runeReach],
   () => {
     router.replace({
       query: {
@@ -666,6 +722,8 @@ watch(
         ...(socketFilter.value !== 'any' ? { sock: String(socketFilter.value) } : {}),
         ...(sortBy.value !== 'level' ? { sort: sortBy.value } : {}),
         ...(sortDir.value !== 'asc' ? { dir: sortDir.value } : {}),
+        ...(runeReach.value !== DEFAULT_REACH && useRuneFilter.value
+          ? { reach: String(runeReach.value) } : {}),
         // The runes only travel when they are doing something: 33 codes in a
         // link that filters nothing would be noise.
         ...(useRuneFilter.value && ownedRunes.value.size > 0
@@ -764,6 +822,20 @@ onUnmounted(() => {
                   <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
                   <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
                 </div>
+                <!-- How far a missing high rune may sit above your best one and
+                     still count as "one away". Gul and below always do. -->
+                <div class="rw-inline-field reach-field" title="A missing rune above Gul only counts when it is this close to the best rune you own.">
+                  <label class="form-label mb-0" for="rw-rune-reach">One rune away: within</label>
+                  <input
+                    id="rw-rune-reach"
+                    v-model.number="runeReach"
+                    class="form-control form-control-sm reach-input"
+                    type="number"
+                    min="0"
+                    max="10"
+                  />
+                  <span class="text-muted">runes of my best</span>
+                </div>
                 <small v-if="useRuneFilter && ownedRunes.size === 0" class="text-muted">
                   pick a rune first
                 </small>
@@ -773,6 +845,9 @@ onUnmounted(() => {
                 <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable
                 <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">
                   {{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}
+                </span>
+                <span v-if="nearMisses.length" class="craftable-tier">
+                  {{ nearMisses.length }} one rune away
                 </span>
               </div>
 
@@ -1012,6 +1087,22 @@ onUnmounted(() => {
             @select="selectGroup"
           />
         </div>
+
+        <!-- What one more rune would buy you. Below the three tiers and only
+             while the picker is filtering, since without it there is nothing
+             to be short of. -->
+        <div class="col-12" v-if="nearMisses.length" >
+          <RunewordTable
+            class="near-miss-table"
+            title="One rune away"
+            subtitle="with the runes you have"
+            :groups="nearMisses"
+            :rework-title="reworkTitle"
+            :panel-mode="isWide"
+            :selected-key="selectedGroup?.key ?? null"
+            @select="selectGroup"
+          />
+        </div>
       </div>
 
       <aside v-if="isWide" class="rw-panel">
@@ -1034,6 +1125,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* The near-miss reach sits with the picker it belongs to, and stays quiet. */
+.reach-field {
+  font-size: 0.85rem;
+  color: var(--d2r-muted);
+}
+
+.reach-field .form-label {
+  color: inherit;
+}
+
+.reach-input {
+  width: 3.6rem;
+}
+
 /* A label and its control on one line, for the two that are not radio rows. */
 .rw-inline-field {
   display: flex;
