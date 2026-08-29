@@ -32,6 +32,11 @@ const setAll = (open) => {
 
 // A group's odds at the precision the numbers carry: 60% stays 60%, and a
 // 9.9% draw keeps its digit instead of rounding to a lie.
+// The class tone, on the row as a stripe and on the badge as its colour - one
+// definition, two places. Rows without a class get nothing and stay plain.
+const classRow = (group) =>
+  group.classNames.length ? `class-row class-${group.classNames[0].toLowerCase()}` : '';
+
 const formatChance = (chance) => {
   const percent = chance * 100;
   return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
@@ -76,7 +81,7 @@ const formatChance = (chance) => {
           </thead>
           <tbody>
             <template v-for="group in groups" :key="group.key">
-              <tr @click="toggle(group.key)" style="cursor: pointer;">
+              <tr :class="classRow(group)" @click="toggle(group.key)" style="cursor: pointer;">
                 <td>
                   {{ group.name }}
                   <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
@@ -99,7 +104,7 @@ const formatChance = (chance) => {
                   </span>
                 </td>
               </tr>
-              <tr v-if="expanded.has(group.key)" class="expanded-row">
+              <tr v-if="expanded.has(group.key)" class="expanded-row" :class="classRow(group)">
                 <td colspan="5">
                   <div class="p-3">
                     <div v-for="variant in group.variants" :key="variant.label" class="variant-block">
@@ -150,21 +155,29 @@ const formatChance = (chance) => {
    a harder limit than where a runeword came from. Each class keeps a muted tone
    of its own so the eye can sort them without reading - but the name stays on
    the badge, because a colour nobody was taught means nothing. */
+.class-amazon      { --class-tone: 122, 158, 92;  --class-ink: #9dc47c; }
+.class-sorceress   { --class-tone: 111, 168, 220; --class-ink: #9dc6ea; }
+.class-necromancer { --class-tone: 150, 150, 165; --class-ink: #b9b9c8; }
+.class-paladin     { --class-tone: 214, 178, 92;  --class-ink: #e0c383; }
+.class-barbarian   { --class-tone: 184, 106, 70;  --class-ink: #d79372; }
+.class-druid       { --class-tone: 126, 148, 74;  --class-ink: #b2c078; }
+.class-assassin    { --class-tone: 94, 160, 154;  --class-ink: #86c4bd; }
+.class-warlock     { --class-tone: 154, 110, 178; --class-ink: #bf9ad3; }
+
 .class-badge {
   font-weight: 600;
-  background: rgba(201, 163, 106, 0.1);
-  color: var(--d2r-muted);
-  border: 1px solid rgba(201, 163, 106, 0.3);
+  background: rgba(var(--class-tone, 201, 163, 106), 0.16);
+  color: var(--class-ink, var(--d2r-muted));
+  border: 1px solid rgba(var(--class-tone, 201, 163, 106), 0.45);
 }
 
-.class-badge.class-amazon    { background: rgba(122, 158, 92, 0.16);  color: #9dc47c; border-color: rgba(122, 158, 92, 0.45); }
-.class-badge.class-sorceress { background: rgba(111, 168, 220, 0.16); color: #9dc6ea; border-color: rgba(111, 168, 220, 0.45); }
-.class-badge.class-necromancer { background: rgba(150, 150, 165, 0.16); color: #b9b9c8; border-color: rgba(150, 150, 165, 0.45); }
-.class-badge.class-paladin   { background: rgba(214, 178, 92, 0.16);  color: #e0c383; border-color: rgba(214, 178, 92, 0.45); }
-.class-badge.class-barbarian { background: rgba(184, 106, 70, 0.16);  color: #d79372; border-color: rgba(184, 106, 70, 0.45); }
-.class-badge.class-druid     { background: rgba(126, 148, 74, 0.16);  color: #b2c078; border-color: rgba(126, 148, 74, 0.45); }
-.class-badge.class-assassin  { background: rgba(94, 160, 154, 0.16);  color: #86c4bd; border-color: rgba(94, 160, 154, 0.45); }
-.class-badge.class-warlock   { background: rgba(154, 110, 178, 0.16); color: #bf9ad3; border-color: rgba(154, 110, 178, 0.45); }
+/* A stripe rather than a tinted row: the row's background already carries the
+   zebra, the hover and the expanded state, and a fourth meaning on the same
+   surface would have to win an argument with all three. */
+.class-row > td:first-child,
+.class-row > th:first-child {
+  box-shadow: inset 3px 0 0 rgba(var(--class-tone), 0.7);
+}
 
 .tier-hint {
   margin-left: 0.5rem;
