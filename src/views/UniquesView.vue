@@ -150,21 +150,29 @@ const itemPairs = computed(() => {
 
     {
       const queue = exaltedQueues.get(item.Name);
-      if (queue && queue.length) {
+      // An exalted row belongs to the base item it sits on. Two uniques can
+      // share a name across two bases - Azurewrath is a Crystal Sword in
+      // classic and a Phase Blade in the expansion - and pairing on the name
+      // alone handed the dead Crystal Sword row the elite one's twin, which
+      // carried it past the "can you actually get this" filter and onto the
+      // normal swords page.
+      const onSameBase = (queue ?? []).filter(e => e.BaseItemName === item.BaseItemName);
+      if (onSameBase.length) {
         // Same-name multi-entries (the 8 Rainbow Facets) are paired by
         // element + expected trigger instead of queue order.
         const info = facetInfo(item);
         let exalted;
-        if (info && queue.length > 1) {
+        if (info && onSameBase.length > 1) {
           const expected = exaltedTriggerOf(info.trigger);
-          const idx = queue.findIndex(e => {
+          const idx = onSameBase.findIndex(e => {
             const ei = facetInfo(e);
             return ei && ei.element === info.element && ei.trigger === expected;
           });
-          exalted = idx >= 0 ? queue.splice(idx, 1)[0] : queue.shift();
+          exalted = idx >= 0 ? onSameBase[idx] : onSameBase[0];
         } else {
-          exalted = queue.shift();
+          exalted = onSameBase[0];
         }
+        queue.splice(queue.indexOf(exalted), 1);
         pairs.push({ normal: item, exalted, facet: info, element: elementOf(item) });
       } else {
         // No exalted counterpart. These used to fall out of the page entirely,

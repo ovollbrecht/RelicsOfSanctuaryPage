@@ -19751,7 +19751,7 @@
     },
     "Index": "Lightsabre",
     "Rarity": "95",
-    "Percent": "95/121 (78.512%)",
+    "Percent": "95/120 (79.167%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -22953,7 +22953,7 @@
     },
     "Index": "Azurewrath",
     "Rarity": "19",
-    "Percent": "19/121 (15.702%)",
+    "Percent": "19/120 (15.833%)",
     "Lvl": "87",
     "LvlReq": "85",
     "Properties": [
@@ -35372,8 +35372,8 @@
   },
   {
     "Name": "Exalted Azurewrath",
-    "BaseItemName": "Phase Blade",
-    "Tier": "elite",
+    "BaseItemName": "Crystal Sword",
+    "Tier": "normal",
     "Types": [
       "swor",
       "blde",
@@ -35382,101 +35382,69 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[133 - 145] to [150 - 164]",
-      "Durability": "0",
+      "Damage": "10 to 30",
+      "Durability": "45",
       "Block Chance": "0",
-      "Required Dexterity": "136",
-      "Required Strength": "25"
+      "Required Dexterity": "0",
+      "Required Strength": "43"
     },
     "Index": "E Azurewrath",
     "Rarity": "1",
-    "Percent": "1/121 (0.826%)",
-    "Lvl": "87",
-    "LvlReq": "85",
+    "Percent": "",
+    "Lvl": "18",
+    "LvlReq": "13",
     "Properties": [
       {
-        "Prop": "dmg-mag",
+        "Prop": "deadly",
         "Par": "",
-        "Min": "250",
-        "Max": "500",
-        "Description": "Adds [250-500] magic damage",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "100",
+        "Min": "3",
+        "Max": "6",
+        "Description": "Adds [3-6] cold damage",
         "Priority": "300"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "330",
-        "Max": "370",
-        "Description": "[330-370]% Enhanced Damage",
+        "Min": "100",
+        "Max": "100",
+        "Description": "100% Enhanced Damage",
         "Priority": "1000"
       },
       {
-        "Prop": "aura",
-        "Par": "Sanctuary",
-        "Min": "20",
-        "Max": "20",
-        "Description": "Level 20 Sanctuary Aura When Equipped",
-        "Priority": "157"
-      },
-      {
-        "Prop": "dmg-cold",
-        "Par": "250",
-        "Min": "250",
-        "Max": "500",
-        "Description": "Adds [250-500] cold damage",
-        "Priority": "300"
-      },
-      {
-        "Prop": "swing2",
+        "Prop": "dur",
         "Par": "",
-        "Min": "50",
-        "Max": "50",
-        "Description": "50% Increased Attack Speed",
-        "Priority": "145"
-      },
-      {
-        "Prop": "all-stats",
-        "Par": "",
-        "Min": "20",
+        "Min": "25",
         "Max": "25",
-        "Description": "+[20-25] to all Attributes",
-        "Priority": "63"
+        "Description": "Improved Durability",
+        "Priority": ""
       },
       {
-        "Prop": "light",
+        "Prop": "dmg-mag",
         "Par": "",
-        "Min": "6",
-        "Max": "6",
-        "Description": "+6 to Light Radius",
-        "Priority": "6"
-      },
-      {
-        "Prop": "allskills",
-        "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to All Skills",
-        "Priority": "156"
-      },
-      {
-        "Prop": "mag%",
-        "Par": "",
-        "Min": "80",
-        "Max": "80",
-        "Description": "80% Better Chance of Getting Magic Items",
-        "Priority": "8"
-      },
-      {
-        "Prop": "hit-skill",
-        "Par": "Blessed Hammer",
-        "Min": "10",
-        "Max": "15",
-        "Description": "10% Chance to cast level 15 Blessed Hammer on striking",
-        "Priority": "158"
+        "Min": "5",
+        "Max": "10",
+        "Description": "Adds [5-10] magic damage",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "sword_crystal_sword.webp",
-    "Drops": true
+    "Drops": false
   },
   {
     "Name": "Exalted Griswold's Edge",
@@ -56531,7 +56499,7 @@
     },
     "Index": "E Lightsabre",
     "Rarity": "5",
-    "Percent": "5/121 (4.132%)",
+    "Percent": "5/120 (4.167%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -60493,7 +60461,7 @@
     },
     "Index": "E Azurewrath",
     "Rarity": "1",
-    "Percent": "1/121 (0.826%)",
+    "Percent": "1/120 (0.833%)",
     "Lvl": "87",
     "LvlReq": "85",
     "Properties": [
@@ -60571,7 +60539,7 @@
       },
       {
         "Prop": "hit-skill",
-        "Par": "112",
+        "Par": "Blessed Hammer",
         "Min": "10",
         "Max": "15",
         "Description": "10% Chance to cast level 15 Blessed Hammer on striking",
@@ -68564,35 +68532,35 @@
     "LvlReq": "49",
     "Properties": [
       {
-        "Prop": "dmg-pois",
-        "Par": "1",
-        "Min": "60",
-        "Max": "60",
-        "Description": "Adds 60 poison damage over 1 seconds",
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "225",
+        "Description": "Adds [1-225] lightning damage",
         "Priority": "300"
       },
       {
-        "Prop": "pierce-pois",
+        "Prop": "pierce-ltng",
         "Par": "",
         "Min": "6",
         "Max": "8",
-        "Description": "-[6-8]% to Enemy Poison Resistance",
+        "Description": "-[6-8]% to Enemy Lightning Resistance",
         "Priority": "88"
       },
       {
-        "Prop": "extra-pois",
+        "Prop": "extra-ltng",
         "Par": "",
         "Min": "6",
         "Max": "8",
-        "Description": "[6-8]% to Poison Skill Damage",
+        "Description": "[6-8]% to Lightning Skill Damage",
         "Priority": "88"
       },
       {
-        "Prop": "gethit-skill",
-        "Par": "Venom",
-        "Min": "5",
-        "Max": "23",
-        "Description": "5% Chance to cast level 23 Venom when struck",
+        "Prop": "hit-skill",
+        "Par": "Chain Lightning",
+        "Min": "3",
+        "Max": "47",
+        "Description": "3% Chance to cast level 47 Chain Lightning on striking",
         "Priority": "158"
       }
     ],
