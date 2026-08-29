@@ -89,6 +89,32 @@ const toggleRune = (code) => {
   ownedRunes.value = next;
 };
 
+/* Low runes come in order - you have everything up to some point, and then a
+   few high ones you got lucky with. The slider is that point: it reads as the
+   longest run from El that is ticked, and setting it only ever touches the
+   runes inside that run, so the lucky Jah above it survives being dragged. */
+const runeUpTo = computed(() => {
+  let reached = 0;
+  for (const rune of allRunes.value) {
+    if (!ownedRunes.value.has(rune.code)) break;
+    reached = rune.number;
+  }
+  return reached;
+});
+
+const runeUpToName = computed(() =>
+  allRunes.value.find((rune) => rune.number === runeUpTo.value)?.name ?? '');
+
+const setRuneUpTo = (target) => {
+  const previous = runeUpTo.value;
+  const next = new Set(ownedRunes.value);
+  allRunes.value.forEach((rune) => {
+    if (rune.number <= target) next.add(rune.code);
+    else if (rune.number <= previous) next.delete(rune.code);
+  });
+  ownedRunes.value = next;
+};
+
 const selectAllRunes = () => { ownedRunes.value = new Set(allRunes.value.map((rune) => rune.code)); };
 const clearRunes = () => { ownedRunes.value = new Set(); };
 
@@ -472,6 +498,22 @@ onUnmounted(() => {
                     {{ rune.name }}
                   </button>
                 </div>
+                <div class="rune-slider">
+                  <label for="rw-rune-upto" class="rune-slider-label">
+                    Up to
+                    <strong>{{ runeUpToName || '—' }}</strong>
+                  </label>
+                  <input
+                    id="rw-rune-upto"
+                    type="range"
+                    class="form-range"
+                    min="0"
+                    :max="allRunes.length"
+                    :value="runeUpTo"
+                    @input="setRuneUpTo(Number($event.target.value))"
+                  />
+                </div>
+
                 <div class="d-flex gap-2 mt-2">
                   <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
@@ -683,6 +725,64 @@ onUnmounted(() => {
 .rune-chip:hover {
   border-color: rgba(201, 163, 106, 0.5);
   color: var(--d2r-text);
+}
+
+.rune-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.rune-slider-label {
+  flex: none;
+  font-size: 0.85rem;
+  color: var(--d2r-muted);
+  margin: 0;
+}
+
+.rune-slider-label strong {
+  color: var(--d2r-gold-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Bootstrap's range is white track and a blue thumb, which belongs to another
+   site. Same control, this palette. */
+.rune-slider .form-range {
+  flex: 1 1 auto;
+  width: auto;
+  height: 1.1rem;
+  background: transparent;
+}
+
+.rune-slider .form-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(201, 163, 106, 0.25);
+}
+
+.rune-slider .form-range::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(201, 163, 106, 0.25);
+}
+
+.rune-slider .form-range::-webkit-slider-thumb {
+  margin-top: -5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--d2r-gold);
+  border: 1px solid rgba(20, 14, 10, 0.8);
+  box-shadow: 0 0 6px rgba(201, 163, 106, 0.4);
+}
+
+.rune-slider .form-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--d2r-gold);
+  border: 1px solid rgba(20, 14, 10, 0.8);
 }
 
 /* A rune you own reads as filled - the picker is a shelf, not a form. */
