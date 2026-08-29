@@ -555,14 +555,14 @@ onUnmounted(() => {
                 <div class="form-check reworked-toggle">
                   <input id="rw-status-new" v-model="statusFilter" value="new" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-new">
-                    Only new <span class="mark mark-new">*</span>
+                    Only new <span class="flag flag-new">*</span>
                   </label>
                 </div>
                 <div class="form-check reworked-toggle">
                   <input id="rw-status-reworked" v-model="statusFilter" value="reworked" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-reworked">
                     {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
-                    <span class="mark mark-reworked">*</span>
+                    <span class="flag flag-reworked">*</span>
                   </label>
                 </div>
               </div>
@@ -631,20 +631,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* The same two marks the table uses, so the filter labels double as its
+/* The same two flags the table uses, so the filter labels double as its
    legend - a red star is new, an amber one reworked. */
-.mark {
+.flag {
   font-weight: 700;
   font-size: 1.05em;
   line-height: 0;
   vertical-align: super;
 }
 
-.mark-new {
+.flag-new {
   color: #d3644f;
 }
 
-.mark-reworked {
+.flag-reworked {
   color: #d6b25c;
 }
 

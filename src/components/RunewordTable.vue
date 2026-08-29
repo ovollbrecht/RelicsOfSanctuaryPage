@@ -90,11 +90,11 @@ const setAll = (open) => {
                 <td>
                   {{ group.name }}<span
                     v-if="group.isNew"
-                    class="mark mark-new"
+                    class="flag flag-new"
                     title="New in Relics of Sanctuary"
                   >*</span><span
                     v-if="group.isReworked"
-                    class="mark mark-reworked"
+                    class="flag flag-reworked"
                     title="Reworked by Relics of Sanctuary"
                   >*</span>
                   <span
@@ -134,10 +134,10 @@ const setAll = (open) => {
   min-width: 46rem;
 }
 
-/* New and reworked are one character each: a mark beside the name, where a
-   badge cost half the column. Colour and symbol both, and the filter labels
-   carry the same pair so the legend is where the words are. */
-.mark {
+/* New and reworked are one character each, where a badge cost half the
+   column. Not called "mark": Bootstrap owns that class name and paints it
+   like a highlighter pen. */
+.flag {
   margin-left: 0.15rem;
   font-weight: 700;
   font-size: 1.05em;
@@ -146,11 +146,11 @@ const setAll = (open) => {
   cursor: help;
 }
 
-.mark-new {
+.flag-new {
   color: #d3644f;
 }
 
-.mark-reworked {
+.flag-reworked {
   color: #d6b25c;
 }
 
