@@ -15792,7 +15792,7 @@
           "Par": "23",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Demon Skills (Warlock Only)",
+          "Description": "+1 to Chaos Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15819,7 +15819,7 @@
           "Par": "22",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Chaos Skills (Warlock Only)",
+          "Description": "+1 to Eldritch Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15846,7 +15846,7 @@
           "Par": "21",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Eldritch Skills (Warlock Only)",
+          "Description": "+1 to Demon Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15876,7 +15876,7 @@
           "Par": "23",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Demon Skills (Warlock Only)",
+          "Description": "+1 to Chaos Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15906,7 +15906,7 @@
           "Par": "23",
           "Min": "2",
           "Max": "2",
-          "Description": "+2 to Demon Skills (Warlock Only)",
+          "Description": "+2 to Chaos Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15936,7 +15936,7 @@
           "Par": "23",
           "Min": "3",
           "Max": "3",
-          "Description": "+3 to Demon Skills (Warlock Only)",
+          "Description": "+3 to Chaos Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -15969,7 +15969,7 @@
           "Par": "22",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Chaos Skills (Warlock Only)",
+          "Description": "+1 to Eldritch Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -16002,7 +16002,7 @@
           "Par": "22",
           "Min": "2",
           "Max": "2",
-          "Description": "+2 to Chaos Skills (Warlock Only)",
+          "Description": "+2 to Eldritch Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -16035,7 +16035,7 @@
           "Par": "22",
           "Min": "3",
           "Max": "3",
-          "Description": "+3 to Chaos Skills (Warlock Only)",
+          "Description": "+3 to Eldritch Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -16065,7 +16065,7 @@
           "Par": "21",
           "Min": "1",
           "Max": "1",
-          "Description": "+1 to Eldritch Skills (Warlock Only)",
+          "Description": "+1 to Demon Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -16095,7 +16095,7 @@
           "Par": "21",
           "Min": "2",
           "Max": "2",
-          "Description": "+2 to Eldritch Skills (Warlock Only)",
+          "Description": "+2 to Demon Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
@@ -16125,7 +16125,7 @@
           "Par": "21",
           "Min": "3",
           "Max": "3",
-          "Description": "+3 to Eldritch Skills (Warlock Only)",
+          "Description": "+3 to Demon Skills (Warlock Only)",
           "Priority": "151"
         }
       ]
