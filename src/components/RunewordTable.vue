@@ -32,11 +32,6 @@ const setAll = (open) => {
 
 // A group's odds at the precision the numbers carry: 60% stays 60%, and a
 // 9.9% draw keeps its digit instead of rounding to a lie.
-// The class tone, on the row as a stripe and on the badge as its colour - one
-// definition, two places. Rows without a class get nothing and stay plain.
-const classRow = (group) =>
-  group.classNames.length ? `class-row class-${group.classNames[0].toLowerCase()}` : '';
-
 const formatChance = (chance) => {
   const percent = chance * 100;
   return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
@@ -81,7 +76,7 @@ const formatChance = (chance) => {
           </thead>
           <tbody>
             <template v-for="group in groups" :key="group.key">
-              <tr :class="classRow(group)" @click="toggle(group.key)" style="cursor: pointer;">
+              <tr @click="toggle(group.key)" style="cursor: pointer;">
                 <td>
                   {{ group.name }}
                   <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
@@ -104,7 +99,7 @@ const formatChance = (chance) => {
                   </span>
                 </td>
               </tr>
-              <tr v-if="expanded.has(group.key)" class="expanded-row" :class="classRow(group)">
+              <tr v-if="expanded.has(group.key)" class="expanded-row">
                 <td colspan="5">
                   <div class="p-3">
                     <div v-for="variant in group.variants" :key="variant.label" class="variant-block">
@@ -154,7 +149,8 @@ const formatChance = (chance) => {
 /* The one badge worth a colour of its own: which class can wear this at all is
    a harder limit than where a runeword came from. Each class keeps a muted tone
    of its own so the eye can sort them without reading - but the name stays on
-   the badge, because a colour nobody was taught means nothing. */
+   the badge, because a colour nobody was taught means nothing. The tone lives
+   in a pair of custom properties so fill, border and ink come from one line. */
 .class-amazon      { --class-tone: 122, 158, 92;  --class-ink: #9dc47c; }
 .class-sorceress   { --class-tone: 111, 168, 220; --class-ink: #9dc6ea; }
 .class-necromancer { --class-tone: 150, 150, 165; --class-ink: #b9b9c8; }
@@ -169,14 +165,6 @@ const formatChance = (chance) => {
   background: rgba(var(--class-tone, 201, 163, 106), 0.16);
   color: var(--class-ink, var(--d2r-muted));
   border: 1px solid rgba(var(--class-tone, 201, 163, 106), 0.45);
-}
-
-/* A stripe rather than a tinted row: the row's background already carries the
-   zebra, the hover and the expanded state, and a fourth meaning on the same
-   surface would have to win an argument with all three. */
-.class-row > td:first-child,
-.class-row > th:first-child {
-  box-shadow: inset 3px 0 0 rgba(var(--class-tone), 0.7);
 }
 
 .tier-hint {
