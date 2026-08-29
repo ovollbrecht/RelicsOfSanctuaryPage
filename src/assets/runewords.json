@@ -10,6 +10,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r08",
@@ -118,6 +121,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r15",
@@ -212,6 +218,11 @@
       "scep",
       "rod",
       "blun",
+      "hamm"
+    ],
+    "ItemTypes": [
+      "axe",
+      "scep",
       "hamm"
     ],
     "ETypes": [],
@@ -452,6 +463,11 @@
       "hamm",
       "mace"
     ],
+    "ItemTypes": [
+      "club",
+      "hamm",
+      "mace"
+    ],
     "ETypes": [],
     "Runes": [
       "r10",
@@ -556,6 +572,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -688,6 +707,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -903,6 +925,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r31",
@@ -1100,6 +1125,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r26",
@@ -1248,6 +1276,9 @@
       "weap"
     ],
     "Types": [
+      "weap"
+    ],
+    "ItemTypes": [
       "weap"
     ],
     "ETypes": [],
@@ -1466,6 +1497,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r14",
@@ -1583,6 +1617,9 @@
       "assn",
       "weap",
       "clas"
+    ],
+    "ItemTypes": [
+      "h2h"
     ],
     "ETypes": [],
     "Runes": [
@@ -1774,6 +1811,11 @@
       "blde",
       "pole",
       "sppl"
+    ],
+    "ItemTypes": [
+      "axe",
+      "swor",
+      "pole"
     ],
     "ETypes": [],
     "Runes": [
@@ -1973,6 +2015,10 @@
       "blde",
       "mele",
       "weap",
+      "axe"
+    ],
+    "ItemTypes": [
+      "swor",
       "axe"
     ],
     "ETypes": [],
@@ -2223,6 +2269,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r20",
@@ -2418,6 +2467,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -2662,6 +2714,11 @@
       "hamm",
       "blun"
     ],
+    "ItemTypes": [
+      "axe",
+      "pole",
+      "hamm"
+    ],
     "ETypes": [],
     "Runes": [
       "r15",
@@ -2879,6 +2936,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r29",
@@ -3077,6 +3137,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r29",
@@ -3274,6 +3337,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r16",
@@ -3389,6 +3455,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r16",
@@ -3501,6 +3570,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -3665,6 +3737,9 @@
     "Types": [
       "miss",
       "weap"
+    ],
+    "ItemTypes": [
+      "miss"
     ],
     "ETypes": [],
     "Runes": [
@@ -3862,6 +3937,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r31",
@@ -4058,6 +4136,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r21",
@@ -4213,6 +4294,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -4446,6 +4530,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r27",
@@ -4663,6 +4750,10 @@
       "weap",
       "hamm",
       "blun"
+    ],
+    "ItemTypes": [
+      "axe",
+      "hamm"
     ],
     "ETypes": [],
     "Runes": [
@@ -4942,6 +5033,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r04",
@@ -5045,6 +5139,9 @@
       "tors"
     ],
     "Types": [
+      "weap"
+    ],
+    "ItemTypes": [
       "weap"
     ],
     "ETypes": [],
@@ -5179,6 +5276,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r01",
@@ -5309,6 +5409,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -5506,6 +5609,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r19",
@@ -5672,6 +5778,10 @@
       "blde",
       "mele",
       "weap",
+      "axe"
+    ],
+    "ItemTypes": [
+      "swor",
       "axe"
     ],
     "ETypes": [],
@@ -5905,6 +6015,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r29",
@@ -6119,6 +6232,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r03",
@@ -6286,6 +6402,11 @@
       "blun",
       "mele",
       "weap",
+      "mace",
+      "hamm"
+    ],
+    "ItemTypes": [
+      "staf",
       "mace",
       "hamm"
     ],
@@ -6529,6 +6650,10 @@
       "swor",
       "blde"
     ],
+    "ItemTypes": [
+      "scep",
+      "swor"
+    ],
     "ETypes": [],
     "Runes": [
       "r05",
@@ -6729,6 +6854,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -6954,6 +7082,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r11",
@@ -7081,6 +7212,10 @@
       "weap",
       "spea"
     ],
+    "ItemTypes": [
+      "pole",
+      "spea"
+    ],
     "ETypes": [],
     "Runes": [
       "r30",
@@ -7203,6 +7338,12 @@
       "staf",
       "rod",
       "blun",
+      "miss",
+      "spea"
+    ],
+    "ItemTypes": [
+      "pole",
+      "staf",
       "miss",
       "spea"
     ],
@@ -7340,6 +7481,10 @@
       "scep",
       "rod",
       "blun"
+    ],
+    "ItemTypes": [
+      "swor",
+      "scep"
     ],
     "ETypes": [],
     "Runes": [
@@ -7531,6 +7676,10 @@
       "blde",
       "mele",
       "weap",
+      "axe"
+    ],
+    "ItemTypes": [
+      "swor",
       "axe"
     ],
     "ETypes": [],
@@ -7736,6 +7885,11 @@
       "weap",
       "hamm",
       "blun",
+      "axe"
+    ],
+    "ItemTypes": [
+      "swor",
+      "hamm",
       "axe"
     ],
     "ETypes": [],
@@ -7948,6 +8102,11 @@
       "scep",
       "rod"
     ],
+    "ItemTypes": [
+      "swor",
+      "hamm",
+      "scep"
+    ],
     "ETypes": [],
     "Runes": [
       "r11",
@@ -8064,6 +8223,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "staf"
+    ],
     "ETypes": [],
     "Runes": [
       "r03",
@@ -8158,6 +8320,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -8323,6 +8488,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r09",
@@ -8461,6 +8629,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "mele"
+    ],
     "ETypes": [],
     "Runes": [
       "r06",
@@ -8565,6 +8736,9 @@
     "Types": [
       "miss",
       "weap"
+    ],
+    "ItemTypes": [
+      "miss"
     ],
     "ETypes": [],
     "Runes": [
@@ -8756,6 +8930,9 @@
       "blun",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "staf"
     ],
     "ETypes": [],
     "Runes": [
@@ -8971,6 +9148,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r32",
@@ -9095,6 +9275,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -9259,6 +9442,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -9436,6 +9622,11 @@
       "axe",
       "mace",
       "blun"
+    ],
+    "ItemTypes": [
+      "swor",
+      "axe",
+      "mace"
     ],
     "ETypes": [],
     "Runes": [
@@ -9674,6 +9865,11 @@
       "hamm",
       "blun"
     ],
+    "ItemTypes": [
+      "pole",
+      "spea",
+      "hamm"
+    ],
     "ETypes": [],
     "Runes": [
       "r15",
@@ -9814,6 +10010,9 @@
       "blun",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "staf"
     ],
     "ETypes": [],
     "Runes": [
@@ -10064,6 +10263,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r14",
@@ -10297,6 +10499,9 @@
       "weap",
       "clas"
     ],
+    "ItemTypes": [
+      "h2h"
+    ],
     "ETypes": [],
     "Runes": [
       "r07",
@@ -10497,6 +10702,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -10657,6 +10865,10 @@
       "weap",
       "mace",
       "blun"
+    ],
+    "ItemTypes": [
+      "swor",
+      "mace"
     ],
     "ETypes": [],
     "Runes": [
@@ -10888,6 +11100,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r26",
@@ -11004,6 +11219,9 @@
       "shld",
       "armo",
       "seco"
+    ],
+    "ItemTypes": [
+      "shld"
     ],
     "ETypes": [],
     "Runes": [
@@ -11127,6 +11345,11 @@
       "h2h",
       "assn",
       "clas"
+    ],
+    "ItemTypes": [
+      "swor",
+      "knif",
+      "h2h"
     ],
     "ETypes": [],
     "Runes": [
@@ -11326,6 +11549,10 @@
       "sppl",
       "mele",
       "weap",
+      "spea"
+    ],
+    "ItemTypes": [
+      "pole",
       "spea"
     ],
     "ETypes": [],
@@ -11542,6 +11769,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r08",
@@ -11697,6 +11927,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -11859,6 +12092,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -12048,6 +12284,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r09",
@@ -12221,6 +12460,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -12313,6 +12555,10 @@
       "scep",
       "rod",
       "blun"
+    ],
+    "ItemTypes": [
+      "pole",
+      "scep"
     ],
     "ETypes": [],
     "Runes": [
@@ -12529,6 +12775,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r18",
@@ -12631,6 +12880,9 @@
       "weap"
     ],
     "Types": [
+      "weap"
+    ],
+    "ItemTypes": [
       "weap"
     ],
     "ETypes": [],
@@ -12883,6 +13135,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r04",
@@ -12972,6 +13227,9 @@
       "blde",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "swor"
     ],
     "ETypes": [],
     "Runes": [
@@ -13098,6 +13356,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r07",
@@ -13221,6 +13482,9 @@
       "shld",
       "armo",
       "seco"
+    ],
+    "ItemTypes": [
+      "shld"
     ],
     "ETypes": [],
     "Runes": [
@@ -13400,6 +13664,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r07",
@@ -13577,6 +13844,11 @@
       "mace",
       "blun"
     ],
+    "ItemTypes": [
+      "swor",
+      "axe",
+      "mace"
+    ],
     "ETypes": [],
     "Runes": [
       "r03",
@@ -13738,6 +14010,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -13921,6 +14196,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "mele"
+    ],
     "ETypes": [],
     "Runes": [
       "r11",
@@ -14059,6 +14337,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -14147,6 +14428,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -14432,6 +14716,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r07",
@@ -14606,6 +14893,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "knif"
+    ],
     "ETypes": [],
     "Runes": [
       "r10",
@@ -14710,6 +15000,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -14830,6 +15123,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "wand"
+    ],
     "ETypes": [],
     "Runes": [
       "r14",
@@ -14932,6 +15228,9 @@
     "Types": [
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "mele"
     ],
     "ETypes": [],
     "Runes": [
@@ -15127,6 +15426,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r21",
@@ -15231,6 +15533,9 @@
     "Types": [
       "miss",
       "weap"
+    ],
+    "ItemTypes": [
+      "miss"
     ],
     "ETypes": [],
     "Runes": [
@@ -15446,6 +15751,9 @@
       "miss",
       "weap"
     ],
+    "ItemTypes": [
+      "miss"
+    ],
     "ETypes": [],
     "Runes": [
       "r09",
@@ -15608,6 +15916,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -15753,6 +16064,9 @@
       "weap"
     ],
     "Types": [
+      "weap"
+    ],
+    "ItemTypes": [
       "weap"
     ],
     "ETypes": [],
@@ -15905,6 +16219,9 @@
       "assn",
       "weap",
       "clas"
+    ],
+    "ItemTypes": [
+      "h2h"
     ],
     "ETypes": [],
     "Runes": [
@@ -16130,6 +16447,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r16",
@@ -16318,6 +16638,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -16457,6 +16780,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -16598,6 +16924,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -16687,6 +17016,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -16775,6 +17107,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -16872,6 +17207,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -16981,6 +17319,12 @@
       "ashd",
       "pala"
     ],
+    "ItemTypes": [
+      "grim",
+      "shld",
+      "head",
+      "ashd"
+    ],
     "ETypes": [],
     "Runes": [
       "r14",
@@ -17085,6 +17429,9 @@
       "blde",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "knif"
     ],
     "ETypes": [],
     "Runes": [
@@ -17192,6 +17539,9 @@
       "weap",
       "sorc",
       "clas"
+    ],
+    "ItemTypes": [
+      "orb"
     ],
     "ETypes": [],
     "Runes": [
@@ -17302,6 +17652,9 @@
       "drui",
       "armo",
       "clas"
+    ],
+    "ItemTypes": [
+      "pelt"
     ],
     "ETypes": [],
     "Runes": [
@@ -17422,6 +17775,9 @@
       "barb",
       "armo",
       "clas"
+    ],
+    "ItemTypes": [
+      "phlm"
     ],
     "ETypes": [],
     "Runes": [
@@ -17544,6 +17900,9 @@
       "seco",
       "clas"
     ],
+    "ItemTypes": [
+      "head"
+    ],
     "ETypes": [],
     "Runes": [
       "r22",
@@ -17654,6 +18013,9 @@
       "armo",
       "seco",
       "clas"
+    ],
+    "ItemTypes": [
+      "ashd"
     ],
     "ETypes": [],
     "Runes": [
@@ -17775,6 +18137,9 @@
       "weap",
       "clas"
     ],
+    "ItemTypes": [
+      "h2h"
+    ],
     "ETypes": [],
     "Runes": [
       "r12",
@@ -17886,6 +18251,9 @@
       "clas",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "aspe"
     ],
     "ETypes": [],
     "Runes": [
@@ -18017,6 +18385,9 @@
       "miss",
       "clas",
       "weap"
+    ],
+    "ItemTypes": [
+      "abow"
     ],
     "ETypes": [],
     "Runes": [
@@ -18155,6 +18526,9 @@
       "sorc",
       "clas"
     ],
+    "ItemTypes": [
+      "orb"
+    ],
     "ETypes": [],
     "Runes": [
       "r31",
@@ -18285,6 +18659,9 @@
       "armo",
       "clas"
     ],
+    "ItemTypes": [
+      "pelt"
+    ],
     "ETypes": [],
     "Runes": [
       "r31",
@@ -18396,6 +18773,9 @@
       "barb",
       "armo",
       "clas"
+    ],
+    "ItemTypes": [
+      "phlm"
     ],
     "ETypes": [],
     "Runes": [
@@ -18518,6 +18898,9 @@
       "seco",
       "clas"
     ],
+    "ItemTypes": [
+      "head"
+    ],
     "ETypes": [],
     "Runes": [
       "r33",
@@ -18627,6 +19010,9 @@
       "assn",
       "weap",
       "clas"
+    ],
+    "ItemTypes": [
+      "h2h"
     ],
     "ETypes": [],
     "Runes": [
@@ -18739,6 +19125,9 @@
       "clas",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "aspe"
     ],
     "ETypes": [],
     "Runes": [
@@ -18873,6 +19262,9 @@
       "clas",
       "weap"
     ],
+    "ItemTypes": [
+      "abow"
+    ],
     "ETypes": [],
     "Runes": [
       "r27",
@@ -18987,6 +19379,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r15",
@@ -19089,6 +19484,9 @@
       "shld",
       "armo",
       "seco"
+    ],
+    "ItemTypes": [
+      "shld"
     ],
     "ETypes": [
       "ashd"
@@ -19195,6 +19593,9 @@
       "sorc",
       "clas"
     ],
+    "ItemTypes": [
+      "orb"
+    ],
     "ETypes": [],
     "Runes": [
       "r03",
@@ -19296,6 +19697,9 @@
       "drui",
       "armo",
       "clas"
+    ],
+    "ItemTypes": [
+      "pelt"
     ],
     "ETypes": [],
     "Runes": [
@@ -19402,6 +19806,9 @@
       "seco",
       "clas"
     ],
+    "ItemTypes": [
+      "head"
+    ],
     "ETypes": [],
     "Runes": [
       "r10",
@@ -19504,6 +19911,9 @@
       "armo",
       "seco",
       "clas"
+    ],
+    "ItemTypes": [
+      "ashd"
     ],
     "ETypes": [],
     "Runes": [
@@ -19617,6 +20027,9 @@
       "weap",
       "clas"
     ],
+    "ItemTypes": [
+      "h2h"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -19729,6 +20142,9 @@
       "armo",
       "clas"
     ],
+    "ItemTypes": [
+      "phlm"
+    ],
     "ETypes": [],
     "Runes": [
       "r19",
@@ -19824,6 +20240,9 @@
       "clas",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "aspe"
     ],
     "ETypes": [],
     "Runes": [
@@ -19930,6 +20349,9 @@
       "clas",
       "weap"
     ],
+    "ItemTypes": [
+      "abow"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -20031,6 +20453,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r02",
@@ -20119,6 +20544,9 @@
       "blde",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "knif"
     ],
     "ETypes": [],
     "Runes": [
@@ -20214,6 +20642,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [],
     "Runes": [
       "r07",
@@ -20295,6 +20726,9 @@
       "blun",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "staf"
     ],
     "ETypes": [],
     "Runes": [
@@ -20386,6 +20820,9 @@
       "mele",
       "weap"
     ],
+    "ItemTypes": [
+      "staf"
+    ],
     "ETypes": [],
     "Runes": [
       "r03",
@@ -20472,6 +20909,9 @@
     "Types": [
       "helm",
       "armo"
+    ],
+    "ItemTypes": [
+      "helm"
     ],
     "ETypes": [],
     "Runes": [
@@ -20567,6 +21007,9 @@
     "Types": [
       "miss",
       "weap"
+    ],
+    "ItemTypes": [
+      "miss"
     ],
     "ETypes": [],
     "Runes": [
@@ -20673,6 +21116,9 @@
       "tors",
       "armo"
     ],
+    "ItemTypes": [
+      "tors"
+    ],
     "ETypes": [],
     "Runes": [
       "r15",
@@ -20772,6 +21218,9 @@
       "blun",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "staf"
     ],
     "ETypes": [],
     "Runes": [
@@ -20879,6 +21328,9 @@
       "armo",
       "seco"
     ],
+    "ItemTypes": [
+      "shld"
+    ],
     "ETypes": [],
     "Runes": [
       "r13",
@@ -20975,6 +21427,9 @@
     "Types": [
       "weap"
     ],
+    "ItemTypes": [
+      "weap"
+    ],
     "ETypes": [
       "miss"
     ],
@@ -21067,6 +21522,9 @@
       "blde",
       "mele",
       "weap"
+    ],
+    "ItemTypes": [
+      "knif"
     ],
     "ETypes": [],
     "Runes": [
@@ -21185,6 +21643,9 @@
       "seco",
       "clas"
     ],
+    "ItemTypes": [
+      "grim"
+    ],
     "ETypes": [],
     "Runes": [
       "r05",
@@ -21288,6 +21749,9 @@
       "seco",
       "clas"
     ],
+    "ItemTypes": [
+      "grim"
+    ],
     "ETypes": [],
     "Runes": [
       "r14",
@@ -21390,6 +21854,9 @@
       "armo",
       "seco",
       "clas"
+    ],
+    "ItemTypes": [
+      "grim"
     ],
     "ETypes": [],
     "Runes": [
@@ -21497,6 +21964,9 @@
     "Types": [
       "tors",
       "armo"
+    ],
+    "ItemTypes": [
+      "tors"
     ],
     "ETypes": [],
     "Runes": [
@@ -21629,6 +22099,9 @@
       "helm",
       "armo"
     ],
+    "ItemTypes": [
+      "helm"
+    ],
     "ETypes": [],
     "Runes": [
       "r30",
@@ -21745,6 +22218,9 @@
       "armo",
       "seco",
       "clas"
+    ],
+    "ItemTypes": [
+      "ashd"
     ],
     "ETypes": [],
     "Runes": [

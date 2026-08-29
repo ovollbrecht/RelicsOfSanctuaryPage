@@ -2,8 +2,10 @@
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
+import itemBaseData from '@/assets/item_bases.json';
 import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
+import SearchableSelect from '@/components/SearchableSelect.vue';
 
 const runewords = ref([]);
 const searchQuery = ref('');
@@ -25,6 +27,102 @@ const statusFilter = ref('all');
 // *and* plain swords is not a class runeword, and hiding it would take a
 // generally useful option off the page.
 const classFilter = ref('all');
+
+/* ---- what fits the item in your hand ------------------------------------
+   The question this answers is "I found a long staff with three sockets, what
+   can I put in it": one filter for the item, one for the socket count.
+
+   The item is pickable at every level of the family tree, because that is how
+   the game writes it down - Steel says sword, axe, mace, and a crystal sword
+   is a sword is a blade is a melee weapon. So the same runeword has to be
+   findable under all four, and the match has to look both ways: the runeword
+   for melee weapons belongs under "sword" just as much as the sword runeword
+   belongs under "melee weapon". */
+const ITEM_FILTER_ANY = 'any';
+const itemFilter = ref(ITEM_FILTER_ANY);
+const socketFilter = ref('any');
+
+const typeByCode = new Map(itemBaseData.Types.map((type) => [type.Code, type]));
+const baseByCode = new Map(itemBaseData.Bases.map((base) => [base.Code, base]));
+
+// A type and everything it belongs to, worked out once per type.
+const chainCache = new Map();
+const chainOf = (code) => {
+  const cached = chainCache.get(code);
+  if (cached) return cached;
+
+  const chain = new Set();
+  const walk = (current) => {
+    if (!current || chain.has(current)) return;
+    chain.add(current);
+    (typeByCode.get(current)?.Parents ?? []).forEach(walk);
+  };
+  walk(code);
+  chainCache.set(code, chain);
+  return chain;
+};
+
+const byLabel = (a, b) => a.label.localeCompare(b.label);
+
+const itemFilterOptions = computed(() => [
+  { value: ITEM_FILTER_ANY, label: 'Any item' },
+  ...itemBaseData.Types
+    .map((type) => ({ value: `type:${type.Code}`, label: type.Name, hint: 'kind' }))
+    .sort(byLabel),
+  ...itemBaseData.Bases
+    .map((base) => ({
+      value: `base:${base.Code}`,
+      label: base.Name,
+      hint: `${base.Sockets} sockets max`,
+    }))
+    .sort(byLabel),
+]);
+
+const selectedBase = computed(() => {
+  const [kind, code] = itemFilter.value.split(':');
+  return kind === 'base' ? baseByCode.get(code) ?? null : null;
+});
+
+/* Socket counts worth offering: what runewords actually ask for, and never
+   more than the picked base can hold - a katar takes two, so offering five
+   would only ever return nothing. */
+const socketOptions = computed(() => {
+  const counts = [...new Set(runewords.value.map((runeword) => runeword.Sockets))]
+    .filter((count) => count > 0)
+    .sort((a, b) => a - b);
+  const ceiling = selectedBase.value?.Sockets ?? Infinity;
+  return counts.filter((count) => count <= ceiling);
+});
+
+const fitsSelectedItem = (runeword) => {
+  if (itemFilter.value === ITEM_FILTER_ANY) return true;
+
+  const [kind, code] = itemFilter.value.split(':');
+  const own = runeword.ItemTypes ?? [];
+  const excluded = runeword.ETypes ?? [];
+
+  if (kind === 'base') {
+    const base = baseByCode.get(code);
+    if (!base) return true;
+    if (base.Sockets < runeword.Sockets) return false;
+
+    const chain = chainOf(base.Type);
+    if (excluded.some((type) => chain.has(type))) return false;
+    return own.some((type) => chain.has(type));
+  }
+
+  const chain = chainOf(code);
+  if (excluded.some((type) => chain.has(type))) return false;
+  return own.some((type) => chain.has(type) || chainOf(type).has(code));
+};
+
+// Picking a base narrows what it can hold; a socket count it cannot reach
+// would silently empty the page, so it goes back to "any".
+watch(selectedBase, (base) => {
+  if (base && socketFilter.value !== 'any' && Number(socketFilter.value) > base.Sockets) {
+    socketFilter.value = 'any';
+  }
+});
 
 // Wide screens keep the open runeword in a sticky panel beside the list, so
 // browsing is click - read - click without the table jumping. The breakpoint
@@ -212,6 +310,16 @@ const filteredRunewords = computed(() => {
     if (matches) filtered = filtered.filter(matches);
   }
 
+  // What fits the item you are holding, and how many sockets it has
+  if (itemFilter.value !== ITEM_FILTER_ANY) {
+    filtered = filtered.filter(fitsSelectedItem);
+  }
+
+  if (socketFilter.value !== 'any') {
+    const sockets = Number(socketFilter.value);
+    filtered = filtered.filter((runeword) => runeword.Sockets === sockets);
+  }
+
   // Apply name search filter if query exists
   if (searchQuery.value.trim()) {
     const query = searchQuery.value.toLowerCase();
@@ -358,6 +466,8 @@ const resetFilters = () => {
   selectedCategory.value = 'all';
   statusFilter.value = 'all';
   classFilter.value = 'all';
+  itemFilter.value = ITEM_FILTER_ANY;
+  socketFilter.value = 'any';
   useRuneFilter.value = false;
 };
 
@@ -553,6 +663,47 @@ onUnmounted(() => {
                   <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
                 </div>
+              </div>
+            </div>
+
+            <!-- What fits the item in your hand: the base, and its sockets -->
+            <div class="row g-3 mb-3">
+              <div class="col-lg-7">
+                <label class="form-label text-warning">Item base</label>
+                <SearchableSelect
+                  v-model="itemFilter"
+                  :options="itemFilterOptions"
+                  placeholder="Any item - type a base or a kind..."
+                />
+                <small class="text-muted">
+                  Pick the base you found, or a whole kind: Crystal Sword, Sword, Melee Weapon.
+                </small>
+              </div>
+              <div class="col-lg-5">
+                <label class="form-label text-warning">Sockets</label>
+                <div class="btn-group d-flex flex-wrap gap-2" role="group">
+                  <button
+                    type="button"
+                    class="btn flex-fill"
+                    :class="socketFilter === 'any' ? 'btn-secondary' : 'btn-outline-secondary'"
+                    @click="socketFilter = 'any'"
+                  >
+                    Any
+                  </button>
+                  <button
+                    v-for="count in socketOptions"
+                    :key="count"
+                    type="button"
+                    class="btn flex-fill"
+                    :class="socketFilter === count ? 'btn-secondary' : 'btn-outline-secondary'"
+                    @click="socketFilter = count"
+                  >
+                    {{ count }}
+                  </button>
+                </div>
+                <small v-if="selectedBase" class="text-muted">
+                  A {{ selectedBase.Name }} holds up to {{ selectedBase.Sockets }}.
+                </small>
               </div>
             </div>
 

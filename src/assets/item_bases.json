@@ -1,0 +1,2886 @@
+{
+  "Types": [
+    {
+      "Code": "abow",
+      "Name": "Amazon Bow",
+      "Parents": [
+        "bow",
+        "amaz"
+      ]
+    },
+    {
+      "Code": "amaz",
+      "Name": "Amazon Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "armo",
+      "Name": "Any Armor",
+      "Parents": []
+    },
+    {
+      "Code": "ashd",
+      "Name": "Auric Shields",
+      "Parents": [
+        "shld",
+        "pala"
+      ]
+    },
+    {
+      "Code": "aspe",
+      "Name": "Amazon Spear",
+      "Parents": [
+        "spea",
+        "amaz"
+      ]
+    },
+    {
+      "Code": "assn",
+      "Name": "Assassin Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "axe",
+      "Name": "Axe",
+      "Parents": [
+        "mele"
+      ]
+    },
+    {
+      "Code": "barb",
+      "Name": "Barbarian Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "blde",
+      "Name": "Swords and Knives",
+      "Parents": [
+        "mele"
+      ]
+    },
+    {
+      "Code": "blun",
+      "Name": "Blunt",
+      "Parents": [
+        "mele"
+      ]
+    },
+    {
+      "Code": "bow",
+      "Name": "Bow",
+      "Parents": [
+        "miss"
+      ]
+    },
+    {
+      "Code": "circ",
+      "Name": "Circlet",
+      "Parents": [
+        "helm"
+      ]
+    },
+    {
+      "Code": "clas",
+      "Name": "Class Specific",
+      "Parents": []
+    },
+    {
+      "Code": "club",
+      "Name": "Club",
+      "Parents": [
+        "blun"
+      ]
+    },
+    {
+      "Code": "drui",
+      "Name": "Druid Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "grim",
+      "Name": "Grimoire",
+      "Parents": [
+        "shld",
+        "warl"
+      ]
+    },
+    {
+      "Code": "h2h",
+      "Name": "Hand to Hand",
+      "Parents": [
+        "mele",
+        "assn"
+      ]
+    },
+    {
+      "Code": "h2h2",
+      "Name": "Hand to Hand 2",
+      "Parents": [
+        "h2h"
+      ]
+    },
+    {
+      "Code": "hamm",
+      "Name": "Hammer",
+      "Parents": [
+        "blun"
+      ]
+    },
+    {
+      "Code": "head",
+      "Name": "Voodoo Heads",
+      "Parents": [
+        "shld",
+        "necr"
+      ]
+    },
+    {
+      "Code": "helm",
+      "Name": "Helm",
+      "Parents": [
+        "armo"
+      ]
+    },
+    {
+      "Code": "knif",
+      "Name": "Knife",
+      "Parents": [
+        "blde"
+      ]
+    },
+    {
+      "Code": "mace",
+      "Name": "Mace",
+      "Parents": [
+        "blun"
+      ]
+    },
+    {
+      "Code": "mele",
+      "Name": "Melee Weapon",
+      "Parents": [
+        "weap"
+      ]
+    },
+    {
+      "Code": "miss",
+      "Name": "Missile Weapon",
+      "Parents": [
+        "weap"
+      ]
+    },
+    {
+      "Code": "necr",
+      "Name": "Necromancer Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "orb",
+      "Name": "Orb",
+      "Parents": [
+        "weap",
+        "sorc"
+      ]
+    },
+    {
+      "Code": "pala",
+      "Name": "Paladin Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "pelt",
+      "Name": "Pelt",
+      "Parents": [
+        "helm",
+        "drui"
+      ]
+    },
+    {
+      "Code": "phlm",
+      "Name": "Primal Helm",
+      "Parents": [
+        "helm",
+        "barb"
+      ]
+    },
+    {
+      "Code": "pole",
+      "Name": "Polearm",
+      "Parents": [
+        "sppl"
+      ]
+    },
+    {
+      "Code": "rod",
+      "Name": "Staves And Rods",
+      "Parents": [
+        "blun"
+      ]
+    },
+    {
+      "Code": "scep",
+      "Name": "Scepter",
+      "Parents": [
+        "rod"
+      ]
+    },
+    {
+      "Code": "seco",
+      "Name": "Second Hand",
+      "Parents": []
+    },
+    {
+      "Code": "shie",
+      "Name": "Shield",
+      "Parents": [
+        "shld"
+      ]
+    },
+    {
+      "Code": "shld",
+      "Name": "Any Shield",
+      "Parents": [
+        "armo",
+        "seco"
+      ]
+    },
+    {
+      "Code": "sorc",
+      "Name": "Sorceress Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "spea",
+      "Name": "Spear",
+      "Parents": [
+        "sppl"
+      ]
+    },
+    {
+      "Code": "sppl",
+      "Name": "Spears and Polearms",
+      "Parents": [
+        "mele"
+      ]
+    },
+    {
+      "Code": "staf",
+      "Name": "Staff",
+      "Parents": [
+        "rod"
+      ]
+    },
+    {
+      "Code": "swor",
+      "Name": "Sword",
+      "Parents": [
+        "blde"
+      ]
+    },
+    {
+      "Code": "tors",
+      "Name": "Armor",
+      "Parents": [
+        "armo"
+      ]
+    },
+    {
+      "Code": "wand",
+      "Name": "Wand",
+      "Parents": [
+        "rod"
+      ]
+    },
+    {
+      "Code": "warl",
+      "Name": "Warlock Item",
+      "Parents": [
+        "clas"
+      ]
+    },
+    {
+      "Code": "weap",
+      "Name": "Weapon",
+      "Parents": []
+    },
+    {
+      "Code": "xbow",
+      "Name": "Crossbow",
+      "Parents": [
+        "miss"
+      ]
+    }
+  ],
+  "Bases": [
+    {
+      "Code": "hax",
+      "Name": "Hand Axe",
+      "Type": "axe",
+      "Sockets": 2
+    },
+    {
+      "Code": "axe",
+      "Name": "Axe",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "2ax",
+      "Name": "Double Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "mpi",
+      "Name": "Military Pick",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "wax",
+      "Name": "War Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "lax",
+      "Name": "Large Axe",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "bax",
+      "Name": "Broad Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "btx",
+      "Name": "Battle Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "gax",
+      "Name": "Great Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "gix",
+      "Name": "Giant Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "bwn",
+      "Name": "Bone Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "gwn",
+      "Name": "Grim Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "clb",
+      "Name": "Club",
+      "Type": "club",
+      "Sockets": 2
+    },
+    {
+      "Code": "scp",
+      "Name": "Scepter",
+      "Type": "scep",
+      "Sockets": 2
+    },
+    {
+      "Code": "gsc",
+      "Name": "Grand Scepter",
+      "Type": "scep",
+      "Sockets": 3
+    },
+    {
+      "Code": "wsp",
+      "Name": "War Scepter",
+      "Type": "scep",
+      "Sockets": 5
+    },
+    {
+      "Code": "spc",
+      "Name": "Spiked Club",
+      "Type": "club",
+      "Sockets": 2
+    },
+    {
+      "Code": "mac",
+      "Name": "Mace",
+      "Type": "mace",
+      "Sockets": 2
+    },
+    {
+      "Code": "mst",
+      "Name": "Morning Star",
+      "Type": "mace",
+      "Sockets": 3
+    },
+    {
+      "Code": "fla",
+      "Name": "Flail",
+      "Type": "mace",
+      "Sockets": 5
+    },
+    {
+      "Code": "whm",
+      "Name": "War Hammer",
+      "Type": "hamm",
+      "Sockets": 4
+    },
+    {
+      "Code": "mau",
+      "Name": "Maul",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "gma",
+      "Name": "Great Maul",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "ssd",
+      "Name": "Short Sword",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "scm",
+      "Name": "Scimitar",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "sbr",
+      "Name": "Sabre",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "flc",
+      "Name": "Falchion",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "crs",
+      "Name": "Crystal Sword",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "bsd",
+      "Name": "Broad Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "lsd",
+      "Name": "Long Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "wsd",
+      "Name": "War Sword",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "2hs",
+      "Name": "Two-Handed Sword",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "clm",
+      "Name": "Claymore",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "gis",
+      "Name": "Giant Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "bsw",
+      "Name": "Bastard Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "flb",
+      "Name": "Flamberge",
+      "Type": "swor",
+      "Sockets": 5
+    },
+    {
+      "Code": "gsd",
+      "Name": "Great Sword",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "kri",
+      "Name": "Kris",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "bld",
+      "Name": "Blade",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "spr",
+      "Name": "Spear",
+      "Type": "spea",
+      "Sockets": 3
+    },
+    {
+      "Code": "tri",
+      "Name": "Trident",
+      "Type": "spea",
+      "Sockets": 4
+    },
+    {
+      "Code": "brn",
+      "Name": "Brandistock",
+      "Type": "spea",
+      "Sockets": 5
+    },
+    {
+      "Code": "spt",
+      "Name": "Spetum",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "pik",
+      "Name": "Pike",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "bar",
+      "Name": "Bardiche",
+      "Type": "pole",
+      "Sockets": 3
+    },
+    {
+      "Code": "vou",
+      "Name": "Voulge",
+      "Type": "pole",
+      "Sockets": 4
+    },
+    {
+      "Code": "scy",
+      "Name": "Scythe",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "pax",
+      "Name": "Poleaxe",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "hal",
+      "Name": "Halberd",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "wsc",
+      "Name": "War Scythe",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "sst",
+      "Name": "Short Staff",
+      "Type": "staf",
+      "Sockets": 2
+    },
+    {
+      "Code": "lst",
+      "Name": "Long Staff",
+      "Type": "staf",
+      "Sockets": 3
+    },
+    {
+      "Code": "cst",
+      "Name": "Gnarled Staff",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "bst",
+      "Name": "Battle Staff",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "wst",
+      "Name": "War Staff",
+      "Type": "staf",
+      "Sockets": 6
+    },
+    {
+      "Code": "sbw",
+      "Name": "Short Bow",
+      "Type": "bow",
+      "Sockets": 3
+    },
+    {
+      "Code": "hbw",
+      "Name": "Hunter's Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "lbw",
+      "Name": "Long Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "cbw",
+      "Name": "Composite Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "sbb",
+      "Name": "Short Battle Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "lbb",
+      "Name": "Long Battle Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "swb",
+      "Name": "Short War Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "lwb",
+      "Name": "Long War Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "lxb",
+      "Name": "Light Crossbow",
+      "Type": "xbow",
+      "Sockets": 3
+    },
+    {
+      "Code": "mxb",
+      "Name": "Crossbow",
+      "Type": "xbow",
+      "Sockets": 4
+    },
+    {
+      "Code": "hxb",
+      "Name": "Heavy Crossbow",
+      "Type": "xbow",
+      "Sockets": 6
+    },
+    {
+      "Code": "rxb",
+      "Name": "Repeating Crossbow",
+      "Type": "xbow",
+      "Sockets": 5
+    },
+    {
+      "Code": "leg",
+      "Name": "Wirt's Leg",
+      "Type": "club",
+      "Sockets": 3
+    },
+    {
+      "Code": "hfh",
+      "Name": "Hell Forge Hammer",
+      "Type": "hamm",
+      "Sockets": 5
+    },
+    {
+      "Code": "9ha",
+      "Name": "Hatchet",
+      "Type": "axe",
+      "Sockets": 2
+    },
+    {
+      "Code": "9ax",
+      "Name": "Cleaver",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "92a",
+      "Name": "Twin Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "9mp",
+      "Name": "Crowbill",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "9wa",
+      "Name": "Naga",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "9la",
+      "Name": "Military Axe",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "9ba",
+      "Name": "Bearded Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "9bt",
+      "Name": "Tabar",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "9ga",
+      "Name": "Gothic Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "9gi",
+      "Name": "Ancient Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "9yw",
+      "Name": "Petrified Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "9bw",
+      "Name": "Tomb Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "9gw",
+      "Name": "Grave Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "9cl",
+      "Name": "Cudgel",
+      "Type": "club",
+      "Sockets": 2
+    },
+    {
+      "Code": "9sc",
+      "Name": "Rune Scepter",
+      "Type": "scep",
+      "Sockets": 2
+    },
+    {
+      "Code": "9qs",
+      "Name": "Holy Water Sprinkler",
+      "Type": "scep",
+      "Sockets": 3
+    },
+    {
+      "Code": "9ws",
+      "Name": "Divine Scepter",
+      "Type": "scep",
+      "Sockets": 5
+    },
+    {
+      "Code": "9sp",
+      "Name": "Barbed Club",
+      "Type": "club",
+      "Sockets": 3
+    },
+    {
+      "Code": "9ma",
+      "Name": "Flanged Mace",
+      "Type": "mace",
+      "Sockets": 2
+    },
+    {
+      "Code": "9mt",
+      "Name": "Jagged Star",
+      "Type": "mace",
+      "Sockets": 3
+    },
+    {
+      "Code": "9fl",
+      "Name": "Knout",
+      "Type": "mace",
+      "Sockets": 5
+    },
+    {
+      "Code": "9wh",
+      "Name": "Battle Hammer",
+      "Type": "hamm",
+      "Sockets": 4
+    },
+    {
+      "Code": "9m9",
+      "Name": "War Club",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "9gm",
+      "Name": "Martel de Fer",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "9ss",
+      "Name": "Gladius",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "9sm",
+      "Name": "Cutlass",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "9sb",
+      "Name": "Shamshir",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "9fc",
+      "Name": "Tulwar",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "9cr",
+      "Name": "Dimensional Blade",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "9bs",
+      "Name": "Battle Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "9ls",
+      "Name": "Rune Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "9wd",
+      "Name": "Ancient Sword",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "92h",
+      "Name": "Espandon",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "9cm",
+      "Name": "Dacian Falx",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "9gs",
+      "Name": "Tusk Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "9b9",
+      "Name": "Gothic Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "9fb",
+      "Name": "Zweihander",
+      "Type": "swor",
+      "Sockets": 5
+    },
+    {
+      "Code": "9gd",
+      "Name": "Executioner Sword",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "9kr",
+      "Name": "Cinquedeas",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "9bl",
+      "Name": "Stiletto",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "9sr",
+      "Name": "War Spear",
+      "Type": "spea",
+      "Sockets": 3
+    },
+    {
+      "Code": "9tr",
+      "Name": "Fuscina",
+      "Type": "spea",
+      "Sockets": 4
+    },
+    {
+      "Code": "9br",
+      "Name": "War Fork",
+      "Type": "spea",
+      "Sockets": 5
+    },
+    {
+      "Code": "9st",
+      "Name": "Yari",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "9p9",
+      "Name": "Lance",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "9b7",
+      "Name": "Lochaber Axe",
+      "Type": "pole",
+      "Sockets": 3
+    },
+    {
+      "Code": "9vo",
+      "Name": "Bill",
+      "Type": "pole",
+      "Sockets": 4
+    },
+    {
+      "Code": "9s8",
+      "Name": "Battle Scythe",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "9pa",
+      "Name": "Partizan",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "9h9",
+      "Name": "Bec-de-Corbin",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "9wc",
+      "Name": "Grim Scythe",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "8ss",
+      "Name": "Jo Staff",
+      "Type": "staf",
+      "Sockets": 2
+    },
+    {
+      "Code": "8ls",
+      "Name": "Quarterstaff",
+      "Type": "staf",
+      "Sockets": 3
+    },
+    {
+      "Code": "8cs",
+      "Name": "Cedar Staff",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "8bs",
+      "Name": "Gothic Staff",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "8ws",
+      "Name": "Rune Staff",
+      "Type": "staf",
+      "Sockets": 6
+    },
+    {
+      "Code": "8sb",
+      "Name": "Edge Bow",
+      "Type": "bow",
+      "Sockets": 3
+    },
+    {
+      "Code": "8hb",
+      "Name": "Razor Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "8lb",
+      "Name": "Cedar Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "8cb",
+      "Name": "Double Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "8s8",
+      "Name": "Short Siege Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "8l8",
+      "Name": "Large Siege Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "8sw",
+      "Name": "Rune Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "8lw",
+      "Name": "Gothic Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "8lx",
+      "Name": "Arbalest",
+      "Type": "xbow",
+      "Sockets": 3
+    },
+    {
+      "Code": "8mx",
+      "Name": "Siege Crossbow",
+      "Type": "xbow",
+      "Sockets": 4
+    },
+    {
+      "Code": "8hx",
+      "Name": "Ballista",
+      "Type": "xbow",
+      "Sockets": 6
+    },
+    {
+      "Code": "8rx",
+      "Name": "Chu-Ko-Nu",
+      "Type": "xbow",
+      "Sockets": 5
+    },
+    {
+      "Code": "qf1",
+      "Name": "Khalim's Flail",
+      "Type": "mace",
+      "Sockets": 3
+    },
+    {
+      "Code": "qf2",
+      "Name": "Khalim's Will",
+      "Type": "mace",
+      "Sockets": 3
+    },
+    {
+      "Code": "ktr",
+      "Name": "Katar",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "wrb",
+      "Name": "Wrist Blade",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "axf",
+      "Name": "Hatchet Hands",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "ces",
+      "Name": "Cestus",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "clw",
+      "Name": "Claws",
+      "Type": "h2h",
+      "Sockets": 3
+    },
+    {
+      "Code": "btl",
+      "Name": "Blade Talons",
+      "Type": "h2h",
+      "Sockets": 3
+    },
+    {
+      "Code": "skr",
+      "Name": "Scissors Katar",
+      "Type": "h2h",
+      "Sockets": 3
+    },
+    {
+      "Code": "9ar",
+      "Name": "Quhab",
+      "Type": "h2h",
+      "Sockets": 3
+    },
+    {
+      "Code": "9wb",
+      "Name": "Wrist Spike",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "9xf",
+      "Name": "Fascia",
+      "Type": "h2h",
+      "Sockets": 2
+    },
+    {
+      "Code": "9cs",
+      "Name": "Hand Scythe",
+      "Type": "h2h2",
+      "Sockets": 2
+    },
+    {
+      "Code": "9lw",
+      "Name": "Greater Claws",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "9tw",
+      "Name": "Greater Talons",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "9qr",
+      "Name": "Scissors Quhab",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7ar",
+      "Name": "Suwayyah",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7wb",
+      "Name": "Wrist Sword",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7xf",
+      "Name": "War Fist",
+      "Type": "h2h2",
+      "Sockets": 2
+    },
+    {
+      "Code": "7cs",
+      "Name": "Battle Cestus",
+      "Type": "h2h2",
+      "Sockets": 2
+    },
+    {
+      "Code": "7lw",
+      "Name": "Feral Claws",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7tw",
+      "Name": "Runic Talons",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7qr",
+      "Name": "Scissors Suwayyah",
+      "Type": "h2h2",
+      "Sockets": 3
+    },
+    {
+      "Code": "7ha",
+      "Name": "Tomahawk",
+      "Type": "axe",
+      "Sockets": 2
+    },
+    {
+      "Code": "7ax",
+      "Name": "Small Crescent",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "72a",
+      "Name": "Ettin Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "7mp",
+      "Name": "War Spike",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "7wa",
+      "Name": "Berserker Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "7la",
+      "Name": "Feral Axe",
+      "Type": "axe",
+      "Sockets": 4
+    },
+    {
+      "Code": "7ba",
+      "Name": "Silver-edged Axe",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "7bt",
+      "Name": "Decapitator",
+      "Type": "axe",
+      "Sockets": 5
+    },
+    {
+      "Code": "7ga",
+      "Name": "Champion Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "7gi",
+      "Name": "Glorious Axe",
+      "Type": "axe",
+      "Sockets": 6
+    },
+    {
+      "Code": "7wn",
+      "Name": "Polished Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "7yw",
+      "Name": "Ghost Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "7bw",
+      "Name": "Lich Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "7gw",
+      "Name": "Unearthed Wand",
+      "Type": "wand",
+      "Sockets": 2
+    },
+    {
+      "Code": "7cl",
+      "Name": "Truncheon",
+      "Type": "club",
+      "Sockets": 2
+    },
+    {
+      "Code": "7sc",
+      "Name": "Mighty Scepter",
+      "Type": "scep",
+      "Sockets": 2
+    },
+    {
+      "Code": "7qs",
+      "Name": "Seraph Rod",
+      "Type": "scep",
+      "Sockets": 3
+    },
+    {
+      "Code": "7ws",
+      "Name": "Caduceus",
+      "Type": "scep",
+      "Sockets": 5
+    },
+    {
+      "Code": "7sp",
+      "Name": "Tyrant Club",
+      "Type": "club",
+      "Sockets": 3
+    },
+    {
+      "Code": "7ma",
+      "Name": "Reinforced Mace",
+      "Type": "mace",
+      "Sockets": 2
+    },
+    {
+      "Code": "7mt",
+      "Name": "Devil Star",
+      "Type": "mace",
+      "Sockets": 3
+    },
+    {
+      "Code": "7fl",
+      "Name": "Scourge",
+      "Type": "mace",
+      "Sockets": 5
+    },
+    {
+      "Code": "7wh",
+      "Name": "Legendary Mallet",
+      "Type": "hamm",
+      "Sockets": 4
+    },
+    {
+      "Code": "7m7",
+      "Name": "Ogre Maul",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "7gm",
+      "Name": "Thunder Maul",
+      "Type": "hamm",
+      "Sockets": 6
+    },
+    {
+      "Code": "7ss",
+      "Name": "Falcata",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "7sm",
+      "Name": "Ataghan",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "7sb",
+      "Name": "Elegant Blade",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "7fc",
+      "Name": "Hydra Edge",
+      "Type": "swor",
+      "Sockets": 2
+    },
+    {
+      "Code": "7cr",
+      "Name": "Phase Blade",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "7bs",
+      "Name": "Conquest Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "7ls",
+      "Name": "Cryptic Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "7wd",
+      "Name": "Mythical Sword",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "72h",
+      "Name": "Legend Sword",
+      "Type": "swor",
+      "Sockets": 3
+    },
+    {
+      "Code": "7cm",
+      "Name": "Highland Blade",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "7gs",
+      "Name": "Balrog Blade",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "7b7",
+      "Name": "Champion Sword",
+      "Type": "swor",
+      "Sockets": 4
+    },
+    {
+      "Code": "7fb",
+      "Name": "Colossus Sword",
+      "Type": "swor",
+      "Sockets": 5
+    },
+    {
+      "Code": "7gd",
+      "Name": "Colossus Blade",
+      "Type": "swor",
+      "Sockets": 6
+    },
+    {
+      "Code": "7kr",
+      "Name": "Fanged Knife",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "7bl",
+      "Name": "Legend Spike",
+      "Type": "knif",
+      "Sockets": 3
+    },
+    {
+      "Code": "7sr",
+      "Name": "Hyperion Spear",
+      "Type": "spea",
+      "Sockets": 3
+    },
+    {
+      "Code": "7tr",
+      "Name": "Stygian Pike",
+      "Type": "spea",
+      "Sockets": 4
+    },
+    {
+      "Code": "7br",
+      "Name": "Mancatcher",
+      "Type": "spea",
+      "Sockets": 5
+    },
+    {
+      "Code": "7st",
+      "Name": "Ghost Spear",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "7p7",
+      "Name": "War Pike",
+      "Type": "spea",
+      "Sockets": 6
+    },
+    {
+      "Code": "7o7",
+      "Name": "Ogre Axe",
+      "Type": "pole",
+      "Sockets": 3
+    },
+    {
+      "Code": "7vo",
+      "Name": "Colossus Voulge",
+      "Type": "pole",
+      "Sockets": 4
+    },
+    {
+      "Code": "7s8",
+      "Name": "Thresher",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "7pa",
+      "Name": "Cryptic Axe",
+      "Type": "pole",
+      "Sockets": 5
+    },
+    {
+      "Code": "7h7",
+      "Name": "Great Poleaxe",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "7wc",
+      "Name": "Giant Thresher",
+      "Type": "pole",
+      "Sockets": 6
+    },
+    {
+      "Code": "6ss",
+      "Name": "Walking Stick",
+      "Type": "staf",
+      "Sockets": 2
+    },
+    {
+      "Code": "6ls",
+      "Name": "Stalagmite",
+      "Type": "staf",
+      "Sockets": 3
+    },
+    {
+      "Code": "6cs",
+      "Name": "Elder Staff",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "6bs",
+      "Name": "Shillelagh",
+      "Type": "staf",
+      "Sockets": 4
+    },
+    {
+      "Code": "6ws",
+      "Name": "Archon Staff",
+      "Type": "staf",
+      "Sockets": 6
+    },
+    {
+      "Code": "6sb",
+      "Name": "Spider Bow",
+      "Type": "bow",
+      "Sockets": 3
+    },
+    {
+      "Code": "6hb",
+      "Name": "Blade Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "6lb",
+      "Name": "Shadow Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "6cb",
+      "Name": "Great Bow",
+      "Type": "bow",
+      "Sockets": 4
+    },
+    {
+      "Code": "6s7",
+      "Name": "Diamond Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "6l7",
+      "Name": "Crusader Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "6sw",
+      "Name": "Ward Bow",
+      "Type": "bow",
+      "Sockets": 5
+    },
+    {
+      "Code": "6lw",
+      "Name": "Hydra Bow",
+      "Type": "bow",
+      "Sockets": 6
+    },
+    {
+      "Code": "6lx",
+      "Name": "Pellet Bow",
+      "Type": "xbow",
+      "Sockets": 3
+    },
+    {
+      "Code": "6mx",
+      "Name": "Gorgon Crossbow",
+      "Type": "xbow",
+      "Sockets": 4
+    },
+    {
+      "Code": "6hx",
+      "Name": "Colossus Crossbow",
+      "Type": "xbow",
+      "Sockets": 6
+    },
+    {
+      "Code": "6rx",
+      "Name": "Demon Crossbow",
+      "Type": "xbow",
+      "Sockets": 5
+    },
+    {
+      "Code": "ob1",
+      "Name": "Eagle Orb",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob2",
+      "Name": "Sacred Globe",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob3",
+      "Name": "Smoked Sphere",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob4",
+      "Name": "Clasped Orb",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob5",
+      "Name": "Jared's Stone",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "am1",
+      "Name": "Stag Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "am2",
+      "Name": "Reflex Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "am3",
+      "Name": "Maiden Spear",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "am4",
+      "Name": "Maiden Pike",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "ob6",
+      "Name": "Glowing Orb",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob7",
+      "Name": "Crystalline Globe",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob8",
+      "Name": "Cloudy Sphere",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "ob9",
+      "Name": "Sparkling Ball",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "oba",
+      "Name": "Swirling Crystal",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "am6",
+      "Name": "Ashwood Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "am7",
+      "Name": "Ceremonial Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "am8",
+      "Name": "Ceremonial Spear",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "am9",
+      "Name": "Ceremonial Pike",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "obb",
+      "Name": "Heavenly Stone",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "obc",
+      "Name": "Eldritch Orb",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "obd",
+      "Name": "Demon Heart",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "obe",
+      "Name": "Vortex Orb",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "obf",
+      "Name": "Dimensional Shard",
+      "Type": "orb",
+      "Sockets": 4
+    },
+    {
+      "Code": "amb",
+      "Name": "Matriarchal Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "amc",
+      "Name": "Grand Matron Bow",
+      "Type": "abow",
+      "Sockets": 5
+    },
+    {
+      "Code": "amd",
+      "Name": "Matriarchal Spear",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "ame",
+      "Name": "Matriarchal Pike",
+      "Type": "aspe",
+      "Sockets": 6
+    },
+    {
+      "Code": "cap",
+      "Name": "Cap",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "skp",
+      "Name": "Skull Cap",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "hlm",
+      "Name": "Helm",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "fhl",
+      "Name": "Full Helm",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "ghm",
+      "Name": "Great Helm",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "crn",
+      "Name": "Crown",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "msk",
+      "Name": "Mask",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "qui",
+      "Name": "Quilted Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "lea",
+      "Name": "Leather Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "hla",
+      "Name": "Hard Leather Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "stu",
+      "Name": "Studded Leather",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "rng",
+      "Name": "Ring Mail",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "scl",
+      "Name": "Scale Mail",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "chn",
+      "Name": "Chain Mail",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "brs",
+      "Name": "Breast Plate",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "spl",
+      "Name": "Splint Mail",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "plt",
+      "Name": "Plate Mail",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "fld",
+      "Name": "Field Plate",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "gth",
+      "Name": "Gothic Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ful",
+      "Name": "Full Plate Mail",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "aar",
+      "Name": "Ancient Armor",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ltp",
+      "Name": "Light Plate",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "sml",
+      "Name": "Small Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "lrg",
+      "Name": "Large Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "kit",
+      "Name": "Kite Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "tow",
+      "Name": "Tower Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "gts",
+      "Name": "Gothic Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "bhm",
+      "Name": "Bone Helm",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "bsh",
+      "Name": "Bone Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "spk",
+      "Name": "Spiked Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "xap",
+      "Name": "War Hat",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "xkp",
+      "Name": "Sallet",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "xlm",
+      "Name": "Casque",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "xhl",
+      "Name": "Basinet",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "xhm",
+      "Name": "Winged Helm",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "xrn",
+      "Name": "Grand Crown",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "xsk",
+      "Name": "Death Mask",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "xui",
+      "Name": "Ghost Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "xea",
+      "Name": "Serpentskin Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "xla",
+      "Name": "Demonhide Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "xtu",
+      "Name": "Trellised Armor",
+      "Type": "tors",
+      "Sockets": 2
+    },
+    {
+      "Code": "xng",
+      "Name": "Linked Mail",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xcl",
+      "Name": "Tigulated Mail",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xhn",
+      "Name": "Mesh Armor",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xrs",
+      "Name": "Cuirass",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xpl",
+      "Name": "Russet Armor",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xlt",
+      "Name": "Templar Coat",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xld",
+      "Name": "Sharktooth Armor",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xth",
+      "Name": "Embossed Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "xul",
+      "Name": "Chaos Armor",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "xar",
+      "Name": "Ornate Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "xtp",
+      "Name": "Mage Plate",
+      "Type": "tors",
+      "Sockets": 3
+    },
+    {
+      "Code": "xml",
+      "Name": "Round Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "xrg",
+      "Name": "Scutum",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "xit",
+      "Name": "Dragon Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "xow",
+      "Name": "Pavise",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "xts",
+      "Name": "Ancient Shield",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "xh9",
+      "Name": "Grim Helm",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "xsh",
+      "Name": "Grim Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "xpk",
+      "Name": "Barbed Shield",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "dr1",
+      "Name": "Wolf Head",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr2",
+      "Name": "Hawk Helm",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr3",
+      "Name": "Antlers",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr4",
+      "Name": "Falcon Mask",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr5",
+      "Name": "Spirit Mask",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba1",
+      "Name": "Jawbone Cap",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba2",
+      "Name": "Fanged Helm",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba3",
+      "Name": "Horned Helm",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba4",
+      "Name": "Assault Helmet",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba5",
+      "Name": "Avenger Guard",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "pa1",
+      "Name": "Targe",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa2",
+      "Name": "Rondache",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa3",
+      "Name": "Heraldic Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa4",
+      "Name": "Aerin Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa5",
+      "Name": "Crown Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "ne1",
+      "Name": "Preserved Head",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne2",
+      "Name": "Zombie Head",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne3",
+      "Name": "Unraveller Head",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne4",
+      "Name": "Gargoyle Head",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne5",
+      "Name": "Demon Head",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ci0",
+      "Name": "Circlet",
+      "Type": "circ",
+      "Sockets": 2
+    },
+    {
+      "Code": "ci1",
+      "Name": "Coronet",
+      "Type": "circ",
+      "Sockets": 2
+    },
+    {
+      "Code": "ci2",
+      "Name": "Tiara",
+      "Type": "circ",
+      "Sockets": 3
+    },
+    {
+      "Code": "ci3",
+      "Name": "Diadem",
+      "Type": "circ",
+      "Sockets": 3
+    },
+    {
+      "Code": "uap",
+      "Name": "Shako",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "ukp",
+      "Name": "Hydraskull",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "ulm",
+      "Name": "Armet",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "uhl",
+      "Name": "Giant Conch",
+      "Type": "helm",
+      "Sockets": 2
+    },
+    {
+      "Code": "uhm",
+      "Name": "Spired Helm",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "urn",
+      "Name": "Corona",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "usk",
+      "Name": "Demonhead",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "uui",
+      "Name": "Dusk Shroud",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uea",
+      "Name": "Wyrmhide",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ula",
+      "Name": "Scarab Husk",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "utu",
+      "Name": "Wire Fleece",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ung",
+      "Name": "Diamond Mail",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ucl",
+      "Name": "Loricated Mail",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uhn",
+      "Name": "Boneweave",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "urs",
+      "Name": "Great Hauberk",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "upl",
+      "Name": "Balrog Skin",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "ult",
+      "Name": "Hellforge Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uld",
+      "Name": "Kraken Shell",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uth",
+      "Name": "Lacquered Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uul",
+      "Name": "Shadow Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uar",
+      "Name": "Sacred Armor",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "utp",
+      "Name": "Archon Plate",
+      "Type": "tors",
+      "Sockets": 4
+    },
+    {
+      "Code": "uuc",
+      "Name": "Heater",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "uml",
+      "Name": "Luna",
+      "Type": "shie",
+      "Sockets": 2
+    },
+    {
+      "Code": "urg",
+      "Name": "Hyperion",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "uit",
+      "Name": "Monarch",
+      "Type": "shie",
+      "Sockets": 4
+    },
+    {
+      "Code": "uow",
+      "Name": "Aegis",
+      "Type": "shie",
+      "Sockets": 4
+    },
+    {
+      "Code": "uts",
+      "Name": "Ward",
+      "Type": "shie",
+      "Sockets": 4
+    },
+    {
+      "Code": "uh9",
+      "Name": "Bone Visage",
+      "Type": "helm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ush",
+      "Name": "Troll Nest",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "upk",
+      "Name": "Blade Barrier",
+      "Type": "shie",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr6",
+      "Name": "Alpha Helm",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr7",
+      "Name": "Griffon Headdress",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr8",
+      "Name": "Hunter's Guise",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dr9",
+      "Name": "Sacred Feathers",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dra",
+      "Name": "Totemic Mask",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba6",
+      "Name": "Jawbone Visor",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba7",
+      "Name": "Lion Helm",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba8",
+      "Name": "Rage Mask",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "ba9",
+      "Name": "Savage Helmet",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "baa",
+      "Name": "Slayer Guard",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "pa6",
+      "Name": "Akaran Targe",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa7",
+      "Name": "Akaran Rondache",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa8",
+      "Name": "Protector Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pa9",
+      "Name": "Gilded Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "paa",
+      "Name": "Royal Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "ne6",
+      "Name": "Mummified Trophy",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne7",
+      "Name": "Fetish Trophy",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne8",
+      "Name": "Sexton Trophy",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ne9",
+      "Name": "Cantor Trophy",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "nea",
+      "Name": "Hierophant Trophy",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "drb",
+      "Name": "Blood Spirit",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "drc",
+      "Name": "Sun Spirit",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "drd",
+      "Name": "Earth Spirit",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "dre",
+      "Name": "Sky Spirit",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "drf",
+      "Name": "Dream Spirit",
+      "Type": "pelt",
+      "Sockets": 3
+    },
+    {
+      "Code": "bab",
+      "Name": "Carnage Helm",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "bac",
+      "Name": "Fury Visor",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "bad",
+      "Name": "Destroyer Helm",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "bae",
+      "Name": "Conqueror Crown",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "baf",
+      "Name": "Guardian Crown",
+      "Type": "phlm",
+      "Sockets": 3
+    },
+    {
+      "Code": "pab",
+      "Name": "Sacred Targe",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pac",
+      "Name": "Sacred Rondache",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pad",
+      "Name": "Kurast Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "pae",
+      "Name": "Zakarum Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "paf",
+      "Name": "Vortex Shield",
+      "Type": "ashd",
+      "Sockets": 4
+    },
+    {
+      "Code": "neb",
+      "Name": "Minion Skull",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "neg",
+      "Name": "Hellspawn Skull",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "ned",
+      "Name": "Overseer Skull",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "nee",
+      "Name": "Succubus Skull",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "nef",
+      "Name": "Bloodlord Skull",
+      "Type": "head",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa1",
+      "Name": "Old Book",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa2",
+      "Name": "Tome",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa3",
+      "Name": "Codex",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa4",
+      "Name": "Compendium",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa5",
+      "Name": "Grimoire",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa6",
+      "Name": "Burnt Text",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa7",
+      "Name": "Dark Tome",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa8",
+      "Name": "Dark Codex",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wa9",
+      "Name": "Possessed Compendium",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "waa",
+      "Name": "Possessed Grimoire",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wab",
+      "Name": "Forgotten Volume",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wac",
+      "Name": "Occult Tome",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wad",
+      "Name": "Occult Codex",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "wae",
+      "Name": "Blasphemous Compendium",
+      "Type": "grim",
+      "Sockets": 2
+    },
+    {
+      "Code": "waf",
+      "Name": "Blasphemous Grimoire",
+      "Type": "grim",
+      "Sockets": 2
+    }
+  ]
+}
