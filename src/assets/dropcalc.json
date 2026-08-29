@@ -60163,6 +60163,105 @@
       "Rarity": 1,
       "ExaltedName": "Exalted Elemental Attunement",
       "Spawnable": true
+    },
+    {
+      "Index": "White Hart",
+      "Name": "White Hart",
+      "Base": 177,
+      "Lvl": 20,
+      "Rarity": 1,
+      "ExaltedName": "Exalted White Hart",
+      "Spawnable": true
+    },
+    {
+      "Index": "Skylark",
+      "Name": "Skylark",
+      "Base": 181,
+      "Lvl": 24,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Skylark",
+      "Spawnable": true
+    },
+    {
+      "Index": "First Cut",
+      "Name": "First Cut",
+      "Base": 342,
+      "Lvl": 12,
+      "Rarity": 1,
+      "ExaltedName": "Exalted First Cut",
+      "Spawnable": true
+    },
+    {
+      "Index": "Youngblood",
+      "Name": "Youngblood",
+      "Base": 198,
+      "Lvl": 19,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Youngblood",
+      "Spawnable": true
+    },
+    {
+      "Index": "Velvethorn",
+      "Name": "Velvethorn",
+      "Base": 255,
+      "Lvl": 20,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Velvethorn",
+      "Spawnable": true
+    },
+    {
+      "Index": "Graverisen",
+      "Name": "Graverisen",
+      "Base": 373,
+      "Lvl": 16,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Graverisen",
+      "Spawnable": true
+    },
+    {
+      "Index": "Squire's Crest",
+      "Name": "Squire's Crest",
+      "Base": 407,
+      "Lvl": 16,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Squire's Crest",
+      "Spawnable": true
+    },
+    {
+      "Index": "Cinderwisp",
+      "Name": "Cinderwisp",
+      "Base": 389,
+      "Lvl": 18,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Cinderwisp",
+      "Spawnable": true
+    },
+    {
+      "Index": "Primer",
+      "Name": "Primer",
+      "Base": 561,
+      "Lvl": 15,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Primer",
+      "Spawnable": true
+    },
+    {
+      "Index": "hidden-bkf-13",
+      "Name": "???",
+      "Base": 217,
+      "Lvl": 13,
+      "Rarity": 1,
+      "ExaltedName": "Exalted ???",
+      "Spawnable": true
+    },
+    {
+      "Index": "hidden-crs-18",
+      "Name": "???",
+      "Base": 247,
+      "Lvl": 18,
+      "Rarity": 1,
+      "ExaltedName": "Exalted ???",
+      "Spawnable": true
     }
   ],
   "Sets": [
@@ -92217,7 +92316,18 @@
       443,
       444,
       445,
-      446
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      455,
+      456,
+      457
     ],
     "SetOverrides": {
       "127": {

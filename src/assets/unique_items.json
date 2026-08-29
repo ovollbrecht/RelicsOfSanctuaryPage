@@ -43602,106 +43602,10 @@
     "Percent": "10/1520 (0.658%)",
     "Lvl": "34",
     "LvlReq": "25",
-    "Properties": [
-      {
-        "Prop": "all-stats",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "+20 to all Attributes",
-        "Priority": "63"
-      },
-      {
-        "Prop": "ac",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "+20 Defense",
-        "Priority": "71"
-      },
-      {
-        "Prop": "ac%",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Enhanced Defense",
-        "Priority": "74"
-      },
-      {
-        "Prop": "att%",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Bonus to Attack Rating",
-        "Priority": "117"
-      },
-      {
-        "Prop": "res-all",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "All Resistances +20",
-        "Priority": "34"
-      },
-      {
-        "Prop": "cast2",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Cast Rate",
-        "Priority": "142"
-      },
-      {
-        "Prop": "move2",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Run/Walk",
-        "Priority": "148"
-      },
-      {
-        "Prop": "mag%",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Better Chance of Getting Magic Items",
-        "Priority": "8"
-      },
-      {
-        "Prop": "gold%",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Extra Gold from Monsters",
-        "Priority": "10"
-      },
-      {
-        "Prop": "stam",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "+20 Maximum Stamina",
-        "Priority": "51"
-      },
-      {
-        "Prop": "dmg-to-mana",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Damage Taken Goes To Mana",
-        "Priority": "11"
-      },
-      {
-        "Prop": "stamdrain",
-        "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Slower Stamina Drain",
-        "Priority": "49"
-      }
-    ],
+    "Properties": [],
     "ImageMapping": "amulet_amulet.webp",
-    "Drops": true
+    "Drops": true,
+    "Spoiler": "stats"
   },
   {
     "Name": "Exalted Nagelring",
@@ -74179,5 +74083,1845 @@
     ],
     "ImageMapping": "armor_light_plate.webp",
     "Drops": true
+  },
+  {
+    "Name": "White Hart",
+    "BaseItemName": "Stag Bow",
+    "Tier": "normal",
+    "Types": [
+      "abow",
+      "bow",
+      "amaz",
+      "miss",
+      "clas",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[11 - 12] to [19 - 21]",
+      "Durability": "48",
+      "Block Chance": "0",
+      "Required Dexterity": "45",
+      "Required Strength": "30"
+    },
+    "Index": "White Hart",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "20",
+    "LvlReq": "15",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "[60-80]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "50",
+        "Max": "80",
+        "Description": "[50-80]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "0",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Bow and Crossbow Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "pierce",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Piercing Attack",
+        "Priority": "132"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "50",
+        "Min": "5",
+        "Max": "15",
+        "Description": "Adds [5-15] cold damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "4",
+        "Max": "6",
+        "Description": "[4-6]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Run/Walk",
+        "Priority": "148"
+      }
+    ],
+    "ImageMapping": "bow_stag_bow.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted White Hart",
+    "BaseItemName": "Stag Bow",
+    "Tier": "normal",
+    "Types": [
+      "abow",
+      "bow",
+      "amaz",
+      "miss",
+      "clas",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[19 - 22] to [33 - 38]",
+      "Durability": "48",
+      "Block Chance": "0",
+      "Required Dexterity": "45",
+      "Required Strength": "30"
+    },
+    "Index": "E White Hart",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "20",
+    "LvlReq": "15",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "100",
+        "Max": "130",
+        "Description": "[100-130]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "0",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Bow and Crossbow Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "pierce",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Piercing Attack",
+        "Priority": "132"
+      },
+      {
+        "Prop": "dmg-cold",
+        "Par": "100",
+        "Min": "30",
+        "Max": "60",
+        "Description": "Adds [30-60] cold damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "knock",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Knockback",
+        "Priority": "76"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "bow_stag_bow.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Skylark",
+    "BaseItemName": "Maiden Javelin",
+    "Tier": "normal",
+    "Types": [
+      "ajav",
+      "jave",
+      "amaz",
+      "comb",
+      "spea",
+      "clas",
+      "mele",
+      "thro",
+      "sppl",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[9 - 11] to [35 - 41]",
+      "Durability": "6",
+      "Block Chance": "0",
+      "Required Dexterity": "47",
+      "Required Strength": "33"
+    },
+    "Index": "Skylark",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "24",
+    "LvlReq": "18",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "60",
+        "Max": "90",
+        "Description": "[60-90]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "2",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Javelin and Spear Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Charged Strike",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Charged Strike (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "rep-quant",
+        "Par": "10",
+        "Min": "",
+        "Max": "",
+        "Description": "Replenishes quantity",
+        "Priority": "2"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "40",
+        "Description": "Adds [1-40] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "60",
+        "Max": "90",
+        "Description": "[60-90]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "+[15-20] to Mana",
+        "Priority": "55"
+      }
+    ],
+    "ImageMapping": "javelin_maiden_javelin.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Skylark",
+    "BaseItemName": "Maiden Javelin",
+    "Tier": "normal",
+    "Types": [
+      "ajav",
+      "jave",
+      "amaz",
+      "comb",
+      "spea",
+      "clas",
+      "mele",
+      "thro",
+      "sppl",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[16 - 19] to [61 - 70]",
+      "Durability": "6",
+      "Block Chance": "0",
+      "Required Dexterity": "47",
+      "Required Strength": "33"
+    },
+    "Index": "E Skylark",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "24",
+    "LvlReq": "18",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "2",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Javelin and Spear Skills (Amazon Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Charged Strike",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Charged Strike (Amazon Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "rep-quant",
+        "Par": "10",
+        "Min": "",
+        "Max": "",
+        "Description": "Replenishes quantity",
+        "Priority": "2"
+      },
+      {
+        "Prop": "dmg-ltng",
+        "Par": "",
+        "Min": "1",
+        "Max": "150",
+        "Description": "Adds [1-150] lightning damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "120",
+        "Max": "150",
+        "Description": "[120-150]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "+[25-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "7",
+        "Max": "9",
+        "Description": "[7-9]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Prop": "pierce",
+        "Par": "",
+        "Min": "33",
+        "Max": "33",
+        "Description": "33% Piercing Attack",
+        "Priority": "132"
+      }
+    ],
+    "ImageMapping": "javelin_maiden_javelin.webp",
+    "Drops": true
+  },
+  {
+    "Name": "First Cut",
+    "BaseItemName": "Katar",
+    "Tier": "normal",
+    "Types": [
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[5 - 6] to [9 - 11]",
+      "Durability": "48",
+      "Block Chance": "0",
+      "Required Dexterity": "20",
+      "Required Strength": "20"
+    },
+    "Index": "First Cut",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "12",
+    "LvlReq": "8",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Quickness",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Burst of Speed (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "+[8-10] to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "[15-20]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      }
+    ],
+    "ImageMapping": "h2h_katar.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted First Cut",
+    "BaseItemName": "Katar",
+    "Tier": "normal",
+    "Types": [
+      "h2h",
+      "mele",
+      "assn",
+      "weap",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[10 - 11] to [17 - 19]",
+      "Durability": "48",
+      "Block Chance": "0",
+      "Required Dexterity": "20",
+      "Required Strength": "20"
+    },
+    "Index": "E First Cut",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "12",
+    "LvlReq": "8",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "150",
+        "Max": "180",
+        "Description": "[150-180]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Quickness",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Burst of Speed (Assassin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dex",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "+[15-20] to Dexterity",
+        "Priority": "65"
+      },
+      {
+        "Prop": "openwounds",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Chance of Open Wounds",
+        "Priority": "83"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "+30 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "h2h_katar.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Youngblood",
+    "BaseItemName": "Horned Helm",
+    "Tier": "normal",
+    "Types": [
+      "phlm",
+      "helm",
+      "barb",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "25 - 30",
+      "Damage": "0 to 0",
+      "Durability": "45",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "45"
+    },
+    "Index": "Youngblood",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "19",
+    "LvlReq": "14",
+    "Properties": [
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "+[10-15] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Bash",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Bash (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "+[30-40] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Attacker Takes Damage of [8-12]",
+        "Priority": "13"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "ImageMapping": "helmet_horned_helm.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Youngblood",
+    "BaseItemName": "Horned Helm",
+    "Tier": "normal",
+    "Types": [
+      "phlm",
+      "helm",
+      "barb",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "25 - 30",
+      "Damage": "0 to 0",
+      "Durability": "45",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "45"
+    },
+    "Index": "E Youngblood",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "19",
+    "LvlReq": "14",
+    "Properties": [
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "+[15-20] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "[60-80]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "att%",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "[80-100]% Bonus to Attack Rating",
+        "Priority": "117"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Bash",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Bash (Barbarian Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "+[50-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "Attacker Takes Damage of [15-20]",
+        "Priority": "13"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "crush",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Chance of Crushing Blow",
+        "Priority": "87"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "helmet_horned_helm.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Velvethorn",
+    "BaseItemName": "Antlers",
+    "Tier": "normal",
+    "Types": [
+      "pelt",
+      "helm",
+      "drui",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "31 - 36",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "24"
+    },
+    "Index": "Velvethorn",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "20",
+    "LvlReq": "15",
+    "Properties": [
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Summon Spirit Wolf",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Summon Spirit Wolf (Druid Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Regenerate Mana [10-15]%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "25",
+        "Max": "35",
+        "Description": "+[25-35] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "Cold Resist [15-20]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "half-freeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Half Freeze Duration",
+        "Priority": "19"
+      }
+    ],
+    "ImageMapping": "pelt_antlers.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Velvethorn",
+    "BaseItemName": "Antlers",
+    "Tier": "normal",
+    "Types": [
+      "pelt",
+      "helm",
+      "drui",
+      "armo",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "38 - 43",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "24"
+    },
+    "Index": "E Velvethorn",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "20",
+    "LvlReq": "15",
+    "Properties": [
+      {
+        "Prop": "dru",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Druid Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Summon Spirit Wolf",
+        "Min": "4",
+        "Max": "5",
+        "Description": "+[4-5] to Summon Spirit Wolf (Druid Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "[60-80]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Regenerate Mana 25%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "45",
+        "Max": "60",
+        "Description": "+[45-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "Cold Resist [25-30]%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "pelt_antlers.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Graverisen",
+    "BaseItemName": "Zombie Head",
+    "Tier": "normal",
+    "Types": [
+      "head",
+      "shld",
+      "necr",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "4 - 8",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "5",
+      "Required Dexterity": "0",
+      "Required Strength": "14"
+    },
+    "Index": "Graverisen",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "16",
+    "LvlReq": "12",
+    "Properties": [
+      {
+        "Prop": "nec",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Necromancer Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "8",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Summoning Skills (Necromancer Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "5",
+        "Min": "6",
+        "Max": "6",
+        "Description": "6% Reanimate as: Zombie",
+        "Priority": "17"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "Poison Resist [15-20]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Life",
+        "Priority": "59"
+      }
+    ],
+    "ImageMapping": "voodoo_head_zombie_head.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Graverisen",
+    "BaseItemName": "Zombie Head",
+    "Tier": "normal",
+    "Types": [
+      "head",
+      "shld",
+      "necr",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "4 - 8",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "5",
+      "Required Dexterity": "0",
+      "Required Strength": "14"
+    },
+    "Index": "E Graverisen",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "16",
+    "LvlReq": "12",
+    "Properties": [
+      {
+        "Prop": "nec",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Necromancer Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "8",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Summoning Skills (Necromancer Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "5",
+        "Min": "8",
+        "Max": "8",
+        "Description": "8% Reanimate as: Zombie",
+        "Priority": "17"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "+40 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "res-pois",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "Poison Resist [25-30]%",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "+40 to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Corpse Explosion",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Corpse Explosion (Necromancer Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "voodoo_head_zombie_head.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Squire's Crest",
+    "BaseItemName": "Heraldic Shield",
+    "Tier": "normal",
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "36 - 41",
+      "Damage": "0 to 0",
+      "Durability": "40",
+      "Block Chance": "30 - 35",
+      "Required Dexterity": "0",
+      "Required Strength": "40"
+    },
+    "Index": "Squire's Crest",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "16",
+    "LvlReq": "12",
+    "Properties": [
+      {
+        "Prop": "pal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Paladin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Prayer",
+        "Min": "3",
+        "Max": "4",
+        "Description": "Level [3-4] Prayer Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "All Resistances +[10-15]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
+      }
+    ],
+    "ImageMapping": "shield_heraldic_shield.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Squire's Crest",
+    "BaseItemName": "Heraldic Shield",
+    "Tier": "normal",
+    "Types": [
+      "ashd",
+      "shld",
+      "pala",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "46 - 52",
+      "Damage": "0 to 0",
+      "Durability": "40",
+      "Block Chance": "40",
+      "Required Dexterity": "0",
+      "Required Strength": "40"
+    },
+    "Index": "E Squire's Crest",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "16",
+    "LvlReq": "12",
+    "Properties": [
+      {
+        "Prop": "pal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Paladin Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Prayer",
+        "Min": "6",
+        "Max": "8",
+        "Description": "Level [6-8] Prayer Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "18",
+        "Max": "22",
+        "Description": "All Resistances +[18-22]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "[80-100]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Holy Shield",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Holy Shield (Paladin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "sock",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
+      }
+    ],
+    "ImageMapping": "shield_heraldic_shield.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Cinderwisp",
+    "BaseItemName": "Smoked Sphere",
+    "Tier": "normal",
+    "Types": [
+      "orb",
+      "weap",
+      "sorc",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "4 to 10",
+      "Durability": "35",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "0"
+    },
+    "Index": "Cinderwisp",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "18",
+    "LvlReq": "13",
+    "Properties": [
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Static Field",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Static Field (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Telekinesis",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Telekinesis (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Warmth",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Warmth (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "Regenerate Mana 10%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Light Radius",
+        "Priority": "6"
+      }
+    ],
+    "ImageMapping": "orb_smoked_sphere.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Cinderwisp",
+    "BaseItemName": "Smoked Sphere",
+    "Tier": "normal",
+    "Types": [
+      "orb",
+      "weap",
+      "sorc",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "4 to 10",
+      "Durability": "35",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "0"
+    },
+    "Index": "E Cinderwisp",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "18",
+    "LvlReq": "13",
+    "Properties": [
+      {
+        "Prop": "sor",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Sorceress Skill Levels",
+        "Priority": "150"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Static Field",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Static Field (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Telekinesis",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Telekinesis (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Warmth",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Warmth (Sorceress Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "50",
+        "Description": "+[40-50] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Regenerate Mana 20%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "pierce-fire",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "-[8-10]% to Enemy Fire Resistance",
+        "Priority": "88"
+      }
+    ],
+    "ImageMapping": "orb_smoked_sphere.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Primer",
+    "BaseItemName": "Tome",
+    "Tier": "normal",
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "4 - 8",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "5",
+      "Required Dexterity": "0",
+      "Required Strength": "14"
+    },
+    "Index": "Primer",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "15",
+    "LvlReq": "11",
+    "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "23",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Demon Skills (Warlock Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Summon Goatman",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Summon Goatman ",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "20",
+        "Max": "30",
+        "Description": "+[20-30] to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "addxp",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "3% to Experience Gained",
+        "Priority": "11"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Light Radius",
+        "Priority": "6"
+      }
+    ],
+    "ImageMapping": "grimoires_tome_book.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Primer",
+    "BaseItemName": "Tome",
+    "Tier": "normal",
+    "Types": [
+      "grim",
+      "shld",
+      "warl",
+      "armo",
+      "seco",
+      "clas"
+    ],
+    "Stats": {
+      "Defense": "4 - 8",
+      "Damage": "0 to 0",
+      "Durability": "20",
+      "Block Chance": "5",
+      "Required Dexterity": "0",
+      "Required Strength": "14"
+    },
+    "Index": "E Primer",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "15",
+    "LvlReq": "11",
+    "Properties": [
+      {
+        "Prop": "skilltab",
+        "Par": "23",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Demon Skills (Warlock Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Summon Goatman",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Summon Goatman ",
+        "Priority": "81"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "+40 to Mana",
+        "Priority": "55"
+      },
+      {
+        "Prop": "addxp",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Experience Gained",
+        "Priority": "11"
+      },
+      {
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Regenerate Mana [10-15]%",
+        "Priority": "52"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "All Resistances +10",
+        "Priority": "34"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Light Radius",
+        "Priority": "6"
+      }
+    ],
+    "ImageMapping": "grimoires_tome_book.webp",
+    "Drops": true
+  },
+  {
+    "Name": "???",
+    "BaseItemName": "Balanced Knife",
+    "Tier": "normal",
+    "Types": [
+      "tkni",
+      "comb",
+      "knif",
+      "mele",
+      "thro",
+      "blde",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "6 to 11",
+      "Durability": "8",
+      "Block Chance": "0",
+      "Required Dexterity": "51",
+      "Required Strength": "0"
+    },
+    "Index": "hidden-bkf-13",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "13",
+    "LvlReq": "13",
+    "Properties": [],
+    "ImageMapping": "knife_balanced_knife.webp",
+    "Drops": true,
+    "Spoiler": "all"
+  },
+  {
+    "Name": "Exalted ???",
+    "BaseItemName": "Balanced Knife",
+    "Tier": "normal",
+    "Types": [
+      "tkni",
+      "comb",
+      "knif",
+      "mele",
+      "thro",
+      "blde",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "6 to 11",
+      "Durability": "8",
+      "Block Chance": "0",
+      "Required Dexterity": "51",
+      "Required Strength": "0"
+    },
+    "Index": "E hidden-bkf-13",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "13",
+    "LvlReq": "13",
+    "Properties": [],
+    "ImageMapping": "knife_balanced_knife.webp",
+    "Drops": true,
+    "Spoiler": "all"
+  },
+  {
+    "Name": "???",
+    "BaseItemName": "Crystal Sword",
+    "Tier": "normal",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "5 to 15",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "43"
+    },
+    "Index": "hidden-crs-18",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "18",
+    "LvlReq": "15",
+    "Properties": [],
+    "ImageMapping": "sword_crystal_sword.webp",
+    "Drops": true,
+    "Spoiler": "all"
+  },
+  {
+    "Name": "Exalted ???",
+    "BaseItemName": "Crystal Sword",
+    "Tier": "normal",
+    "Types": [
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "5 to 15",
+      "Durability": "20",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "43"
+    },
+    "Index": "E hidden-crs-18",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "18",
+    "LvlReq": "15",
+    "Properties": [],
+    "ImageMapping": "sword_crystal_sword.webp",
+    "Drops": true,
+    "Spoiler": "all"
   }
 ]

@@ -649,6 +649,15 @@ onMounted(() => {
                         </li>
                       </ul>
                     </template>
+
+                    <!-- A joke that only lands once should land in the game.
+                         The row stays on the page so the odds on its base item
+                         are the odds players see; what it rolls does not. -->
+                    <p v-if="variant.item.Spoiler" class="spoiler-note">
+                      {{ variant.item.Spoiler === 'all'
+                        ? 'Unnamed here on purpose — find it in game.'
+                        : 'Stats hidden on purpose — find them in game.' }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -661,6 +670,17 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* The line an item gets instead of its stats. Quiet: it is a note about the
+   page, not a property of the item. */
+.spoiler-note {
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--d2r-muted);
+}
+
 /* A property group's possible rolls, indented under the line that introduces
    them. A crafted sunder charm carries five of these; as one sentence per
    group it was a wall, as a list it is a table you can scan. */
