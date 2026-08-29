@@ -17,64 +17,41 @@ const fieldOf = (runeword, name) =>
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
 const onlyReworked = ref(false);
+const onlyNew = ref(false);
 
-const visibleRunewords = computed(() =>
-  onlyReworked.value ? runewords.value.filter(runeword => runeword.IsReworked) : runewords.value
-);
+/**
+ * The three tiers the in-game menu already uses, by the highest rune a
+ * runeword needs. High has no ceiling: the bound used to stop at Cham, and the
+ * six runewords that ask for a Zod belonged to no tier at all.
+ */
+const RUNE_TIERS = [
+  { key: 'low', title: 'Low Runewords', hint: 'El – Lum', max: 17 },
+  { key: 'mid', title: 'Mid Runewords', hint: 'Ko – Gul', max: 25 },
+  { key: 'high', title: 'High Runewords', hint: 'Vex – Zod', max: Infinity },
+];
 
-// Group runewords by category
-const categorizedRunewords = computed(() => {
-  const result = {
-    new: [],
-    weapons: [],
-    armors: [],
-    helmets: [],
-    shields: []
-  };
+const highestRune = (runeword) =>
+  Math.max(0, ...(runeword.Runes ?? []).map((code) => Number.parseInt(code.slice(1), 10) || 0));
 
-  visibleRunewords.value.forEach(runeword => {
-    if (runeword.IsNew) {
-      result.new.push(runeword);
-    }
-    if (runeword.IsWeapon) {
-      result.weapons.push(runeword);
-    }
-    if (runeword.IsTorso) {
-      result.armors.push(runeword);
-    }
-    if (runeword.IsHelmet) {
-      result.helmets.push(runeword);
-    }
-    if (runeword.IsShield) {
-      result.shields.push(runeword);
-    }
-  });
+const tierOf = (runeword) =>
+  RUNE_TIERS.find((tier) => highestRune(runeword) <= tier.max) ?? RUNE_TIERS[RUNE_TIERS.length - 1];
 
-  return result;
-});
+const visibleRunewords = computed(() => runewords.value.filter(runeword =>
+  (!onlyReworked.value || runeword.IsReworked) && (!onlyNew.value || runeword.IsNew)));
 
 // Filter runewords based on search queries and category
 const filteredRunewords = computed(() => {
   let filtered = [...visibleRunewords.value];
 
-  // Apply category filter
+  // Apply the item-kind filter
   if (selectedCategory.value !== 'all') {
-    filtered = filtered.filter(runeword => {
-      switch (selectedCategory.value) {
-        case 'new':
-          return runeword.IsNew;
-        case 'weapons':
-          return runeword.IsWeapon;
-        case 'armors':
-          return runeword.IsTorso;
-        case 'helmets':
-          return runeword.IsHelmet;
-        case 'shields':
-          return runeword.IsShield;
-        default:
-          return true;
-      }
-    });
+    const matches = {
+      weapons: (runeword) => runeword.IsWeapon,
+      armors: (runeword) => runeword.IsTorso,
+      helmets: (runeword) => runeword.IsHelmet,
+      shields: (runeword) => runeword.IsShield,
+    }[selectedCategory.value];
+    if (matches) filtered = filtered.filter(matches);
   }
 
   // Apply name search filter if query exists
@@ -231,6 +208,7 @@ const resetFilters = () => {
   runesSearchQuery.value = '';
   selectedCategory.value = 'all';
   onlyReworked.value = false;
+  onlyNew.value = false;
 };
 
 // Sort properties by priority
@@ -276,24 +254,21 @@ const toGroups = (list) => {
   return [...groups.values()];
 };
 
-const isFiltering = computed(() =>
-  Boolean(searchQuery.value || runesSearchQuery.value || selectedCategory.value !== 'all'));
+/**
+ * One list, cut into the three tiers. Sections used to double as filters -
+ * "New" was a button and a table of its own - so the same runeword appeared
+ * three times on one screen and no state said which view you were in.
+ */
+const tiers = computed(() => RUNE_TIERS
+  .map((tier) => ({
+    ...tier,
+    groups: toGroups(filteredRunewords.value
+      .filter((runeword) => tierOf(runeword).key === tier.key)
+      .sort((a, b) => (a.LevelReq ?? 0) - (b.LevelReq ?? 0) || a.Name.localeCompare(b.Name))),
+  }))
+  .filter((tier) => tier.groups.length > 0));
 
-const resultTitle = computed(() => {
-  if (searchQuery.value && runesSearchQuery.value) {
-    return `Search Results for "${searchQuery.value}" with runes "${runesSearchQuery.value}"`;
-  }
-  if (searchQuery.value) return `Search Results for "${searchQuery.value}"`;
-  if (runesSearchQuery.value) return `Search Results for runes "${runesSearchQuery.value}"`;
-
-  return {
-    new: 'New Runewords',
-    weapons: 'Weapon Runewords',
-    armors: 'Armor Runewords',
-    helmets: 'Helmet Runewords',
-    shields: 'Shield Runewords',
-  }[selectedCategory.value] ?? 'Filtered Runewords';
-});
+const resultCount = computed(() => tiers.value.reduce((total, tier) => total + tier.groups.length, 0));
 
 const reworkTitle = computed(() =>
   dataMode.value === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla');
@@ -363,7 +338,7 @@ onMounted(() => {
 
             <!-- Category Filter Buttons -->
             <div class="mb-3">
-              <label class="form-label text-warning">Filter by Category</label>
+              <label class="form-label text-warning">Filter by Item</label>
               <div class="btn-group d-flex flex-wrap gap-2" role="group">
                 <button 
                   type="button" 
@@ -372,14 +347,6 @@ onMounted(() => {
                   @click="setCategoryFilter('all')"
                 >
                   All
-                </button>
-                <button 
-                  type="button" 
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'new' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('new')"
-                >
-                  New
                 </button>
                 <button 
                   type="button" 
@@ -437,11 +404,17 @@ onMounted(() => {
                   Vanilla
                 </button>
               </div>
-              <div class="form-check mt-2 reworked-toggle">
-                <input id="rw-only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="rw-only-reworked">
-                  {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
-                </label>
+              <div class="d-flex flex-wrap gap-4 mt-2">
+                <div class="form-check reworked-toggle">
+                  <input id="rw-only-new" v-model="onlyNew" class="form-check-input" type="checkbox" />
+                  <label class="form-check-label" for="rw-only-new">Only new</label>
+                </div>
+                <div class="form-check reworked-toggle">
+                  <input id="rw-only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
+                  <label class="form-check-label" for="rw-only-reworked">
+                    {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -449,29 +422,24 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Runewords Tables -->
+    <!-- Runewords, one list cut into rune tiers -->
     <div class="row g-4" ref="itemsSection">
-      <div class="col-12" v-if="isFiltering">
-        <RunewordTable :title="resultTitle" :groups="toGroups(filteredRunewords)" :rework-title="reworkTitle" />
+      <div class="col-12" v-if="resultCount === 0">
+        <div class="card card-enhanced">
+          <div class="card-body text-center text-muted py-4">
+            No runewords match the current filters.
+          </div>
+        </div>
       </div>
 
-      <template v-else>
-        <div class="col-12" v-if="categorizedRunewords.new.length > 0">
-          <RunewordTable title="New Runewords" :groups="toGroups(categorizedRunewords.new)" :rework-title="reworkTitle" />
-        </div>
-        <div class="col-12" v-if="categorizedRunewords.weapons.length > 0">
-          <RunewordTable title="Weapon Runewords" :groups="toGroups(categorizedRunewords.weapons)" :rework-title="reworkTitle" />
-        </div>
-        <div class="col-12" v-if="categorizedRunewords.armors.length > 0">
-          <RunewordTable title="Armor Runewords" :groups="toGroups(categorizedRunewords.armors)" :rework-title="reworkTitle" />
-        </div>
-        <div class="col-12" v-if="categorizedRunewords.helmets.length > 0">
-          <RunewordTable title="Helmet Runewords" :groups="toGroups(categorizedRunewords.helmets)" :rework-title="reworkTitle" />
-        </div>
-        <div class="col-12" v-if="categorizedRunewords.shields.length > 0">
-          <RunewordTable title="Shield Runewords" :groups="toGroups(categorizedRunewords.shields)" :rework-title="reworkTitle" />
-        </div>
-      </template>
+      <div class="col-12" v-for="tier in tiers" :key="tier.key">
+        <RunewordTable
+          :title="tier.title"
+          :subtitle="tier.hint"
+          :groups="tier.groups"
+          :rework-title="reworkTitle"
+        />
+      </div>
     </div>
   </div>
 </template>

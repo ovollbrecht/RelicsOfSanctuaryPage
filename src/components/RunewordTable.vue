@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import ReworkChanges from '@/components/ReworkChanges.vue';
 
 /**
@@ -14,6 +14,7 @@ import ReworkChanges from '@/components/ReworkChanges.vue';
 const props = defineProps({
   title: { type: String, required: true },
   groups: { type: Array, required: true },
+  subtitle: { type: String, default: '' },
   reworkTitle: { type: String, default: 'Changes vs. vanilla' },
 });
 
@@ -29,14 +30,21 @@ const setAll = (open) => {
   expanded.value = open ? new Set(props.groups.map((group) => group.key)) : new Set();
 };
 
-const formatChance = (chance) => `${Math.round(chance * 100)}%`;
-const hasVariants = computed(() => props.groups.some((group) => group.variants.length > 1));
+// A group's odds at the precision the numbers carry: 60% stays 60%, and a
+// 9.9% draw keeps its digit instead of rounding to a lie.
+const formatChance = (chance) => {
+  const percent = chance * 100;
+  return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
+};
 </script>
 
 <template>
   <div class="card card-enhanced">
     <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <h2 class="h4 mb-0">{{ title }}</h2>
+      <h2 class="h4 mb-0">
+        {{ title }}
+        <span class="tier-hint">{{ subtitle ? subtitle + ' · ' : '' }}{{ groups.length }}</span>
+      </h2>
       <span class="d-flex gap-2">
         <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">Expand all</button>
         <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">Collapse all</button>
@@ -116,6 +124,13 @@ const hasVariants = computed(() => props.groups.some((group) => group.variants.l
 </template>
 
 <style scoped>
+.tier-hint {
+  margin-left: 0.5rem;
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  color: var(--d2r-muted);
+}
+
 .runes-cell {
   white-space: nowrap;
 }
