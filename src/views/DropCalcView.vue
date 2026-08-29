@@ -299,7 +299,9 @@ const uniqueItemOptions = computed(() =>
     .map(({ u, index }) => ({
       value: index,
       label: u.Base >= 0 ? `${u.Name} (${dropData.BaseItems[u.Base].Name})` : u.Name,
-      hint: `lvl ${u.Lvl}`,
+      // Same mark as the result rows, in the one place you look for an item by
+      // name: the hint column, where it does not disturb the search.
+      hint: `lvl ${u.Lvl}${u.Mod ? ' •' : ''}`,
     }))
     .sort((a, b) => a.label.localeCompare(b.label)));
 
@@ -307,7 +309,11 @@ const setItemOptions = computed(() =>
   ctx.value.sets
     .map((s, index) => ({ s, index }))
     .filter(({ s }) => s.Spawnable)
-    .map(({ s, index }) => ({ value: index, label: `${s.Name} (${s.SetName})`, hint: `lvl ${s.Lvl}` }))
+    .map(({ s, index }) => ({
+      value: index,
+      label: `${s.Name} (${s.SetName})`,
+      hint: `lvl ${s.Lvl}${s.Mod ? ' •' : ''}`,
+    }))
     .sort((a, b) => a.label.localeCompare(b.label)));
 
 const baseItemOptions = computed(() =>
@@ -1023,7 +1029,13 @@ watch(
             </thead>
             <tbody>
               <tr v-for="row in detail.uniqueRows" :key="'u' + row.name">
-                <td><span class="name-unique">{{ row.name }}</span></td>
+                <td>
+                  <span class="name-unique">{{ row.name }}</span><span
+                    v-if="row.mod"
+                    class="mod-flag"
+                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                  >•</span>
+                </td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ dfmt(row.variantChance) }}</template>
@@ -1035,7 +1047,14 @@ watch(
                 </td>
               </tr>
               <tr v-for="row in detail.setRows" :key="'s' + row.name">
-                <td><span class="name-set">{{ row.name }}</span> <span class="info-note">({{ row.setName }})</span></td>
+                <td>
+                  <span class="name-set">{{ row.name }}</span><span
+                    v-if="row.mod"
+                    class="mod-flag"
+                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                  >•</span>
+                  <span class="info-note">({{ row.setName }})</span>
+                </td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
                 <td v-if="showDetailVariantColumn" class="text-end chance-cell variant-cell">
                   <template v-if="row.variantChance != null">{{ dfmt(row.variantChance) }}</template>
@@ -1193,7 +1212,11 @@ watch(
                 <tr v-for="(child, ci) in group.children" :key="`${gi}-${ci}`" class="child-row">
                   <td>
                     <span class="child-mark">└</span>
-                    <span :class="child.kind === 'unique' ? 'name-unique' : 'name-set'">{{ child.name }}</span>
+                    <span :class="child.kind === 'unique' ? 'name-unique' : 'name-set'">{{ child.name }}</span><span
+                      v-if="child.mod"
+                      class="mod-flag"
+                      :title="child.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                    >•</span>
                     <span v-if="child.kind === 'set'" class="info-note"> ({{ child.setName }})</span>
                   </td>
                   <td class="quality-col" colspan="4"></td>
@@ -1241,7 +1264,12 @@ watch(
                     :class="{ 'name-unique': row.kind === 'unique', 'name-set': row.kind === 'set', 'name-rune': row.kind === 'base' && row.isRune }"
                   >
                     {{ filterKind === 'runes' ? runeLabel(row.name) : rowLabel(row) }}
-                  </span>
+                  </span><!-- the mod's own mark, same dot the runeword list uses
+                  --><span
+                    v-if="row.mod"
+                    class="mod-flag"
+                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                  >•</span>
                 </td>
                 <td v-if="filterKind === 'runes' && runeChanceSum > 0" class="text-end chance-cell">
                   {{ fmt(row.chance / runeChanceSum) }}
@@ -1340,6 +1368,16 @@ watch(
 }
 
 /* item rarity colors as in-game: gold, green, yellow, blue, orange, gray */
+/* The mod's mark, the same quiet dot the runeword list uses: this item is here
+   because of Relics of Sanctuary, or drops differently because of it. */
+.mod-flag {
+  margin-left: 0.3rem;
+  font-size: 0.7em;
+  vertical-align: 0.35em;
+  color: rgba(201, 163, 106, 0.75);
+  cursor: help;
+}
+
 .name-unique {
   color: #c7b377;
 }

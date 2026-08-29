@@ -43,9 +43,24 @@ export function buildContext(data, options) {
 
   // Uniques/sets: vanilla mode applies overrides and drops mod-only entries
   // and variant names.
+  /* What the mod put here. The same two lists vanilla mode uses to take these
+     entries away are what marks them in mod mode - added, or changed in a way
+     that moves its drop odds. Non-spawnable rows are left unmarked: the file
+     carries a second copy of six quest items, and a dot on the Horadric Staff
+     would say something untrue. */
+  const modAdded = new Set(vanilla.ModOnlyUniques ?? []);
+  const modChanged = new Set(Object.keys(vanilla.UniqueOverrides ?? {}).map(Number));
+  const modAddedSets = new Set(vanilla.ModOnlySets ?? []);
+  const modChangedSets = new Set(Object.keys(vanilla.SetOverrides ?? {}).map(Number));
+  const modMark = (added, changed, index, spawnable) => {
+    if (vanillaMode || !spawnable) return null;
+    return added.has(index) ? 'added' : changed.has(index) ? 'changed' : null;
+  };
+
   const modOnlyUniques = new Set(vanillaMode ? vanilla.ModOnlyUniques ?? [] : []);
   const uniques = data.Uniques.map((u, i) => {
-    if (!vanillaMode) return u;
+    const mod = modMark(modAdded, modChanged, i, u.Spawnable);
+    if (!vanillaMode) return mod ? { ...u, Mod: mod } : u;
     const over = vanilla.UniqueOverrides?.[i];
     return {
       ...u,
@@ -57,7 +72,8 @@ export function buildContext(data, options) {
   });
   const modOnlySets = new Set(vanillaMode ? vanilla.ModOnlySets ?? [] : []);
   const sets = data.Sets.map((s, i) => {
-    if (!vanillaMode) return s;
+    const mod = modMark(modAddedSets, modChangedSets, i, s.Spawnable);
+    if (!vanillaMode) return mod ? { ...s, Mod: mod } : s;
     const over = vanilla.SetOverrides?.[i];
     return {
       ...s,
@@ -528,6 +544,7 @@ export function computeMonsterDrops(ctx, sel) {
       rows.push({
         kind: 'unique',
         name: u.entry.Name,
+        mod: u.entry.Mod ?? null,
         variantName: u.entry.ExaltedName,
         baseName: base.Name,
         baseIndex,
@@ -539,6 +556,7 @@ export function computeMonsterDrops(ctx, sel) {
       rows.push({
         kind: 'set',
         name: s.entry.Name,
+        mod: s.entry.Mod ?? null,
         variantName: s.entry.MythicName,
         setName: s.entry.SetName,
         baseName: base.Name,
@@ -556,6 +574,7 @@ export function computeMonsterDrops(ctx, sel) {
     rows.push({
       kind: 'unique',
       name: u.Name,
+      mod: u.Mod ?? null,
       variantName: u.ExaltedName,
       baseName: u.Base >= 0 ? ctx.baseItems[u.Base].Name : '',
       baseIndex: u.Base,
@@ -570,6 +589,7 @@ export function computeMonsterDrops(ctx, sel) {
     rows.push({
       kind: 'set',
       name: s.Name,
+      mod: s.Mod ?? null,
       variantName: s.MythicName,
       setName: s.SetName,
       baseName: s.Base >= 0 ? ctx.baseItems[s.Base].Name : '',
@@ -612,6 +632,7 @@ export function computeItemDetail(ctx, sel, baseIndex) {
     quality,
     uniqueRows: uniques.map(u => ({
       name: u.entry.Name,
+      mod: u.entry.Mod ?? null,
       variantName: u.entry.ExaltedName,
       relative: quality.unique * u.share,
       chance: p * quality.unique * u.share,
@@ -619,6 +640,7 @@ export function computeItemDetail(ctx, sel, baseIndex) {
     })),
     setRows: setItems.map(s => ({
       name: s.entry.Name,
+      mod: s.entry.Mod ?? null,
       variantName: s.entry.MythicName,
       setName: s.entry.SetName,
       relative: quality.set * s.share,
