@@ -2695,6 +2695,10 @@
     "VanillaAllowedItems": [
       "pole",
       "swor"
+    ],
+    "VanillaItemTypes": [
+      "pole",
+      "swor"
     ]
   },
   {
@@ -6632,6 +6636,10 @@
     "VanillaAllowedItems": [
       "staf",
       "mace"
+    ],
+    "VanillaItemTypes": [
+      "staf",
+      "mace"
     ]
   },
   {
@@ -6842,6 +6850,9 @@
       }
     ],
     "VanillaAllowedItems": [
+      "scep"
+    ],
+    "VanillaItemTypes": [
       "scep"
     ]
   },
@@ -7461,6 +7472,11 @@
     "IsShield": false,
     "IsReworked": true,
     "VanillaAllowedItems": [
+      "pole",
+      "staf",
+      "miss"
+    ],
+    "VanillaItemTypes": [
       "pole",
       "staf",
       "miss"
@@ -9994,6 +10010,10 @@
     "IsShield": false,
     "IsReworked": true,
     "VanillaAllowedItems": [
+      "pole",
+      "spea"
+    ],
+    "VanillaItemTypes": [
       "pole",
       "spea"
     ]
@@ -14704,6 +14724,9 @@
       }
     ],
     "VanillaAllowedItems": [
+      "swor"
+    ],
+    "VanillaItemTypes": [
       "swor"
     ]
   },

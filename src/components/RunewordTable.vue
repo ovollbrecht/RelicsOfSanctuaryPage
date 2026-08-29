@@ -110,8 +110,15 @@ const setAll = (open) => {
                 <td class="text-center tnum">{{ group.sockets }}</td>
                 <td class="text-center tnum">{{ group.levelReq || '—' }}</td>
                 <td>
-                  <span v-for="variant in group.variants" :key="variant.label" class="item-chip">
-                    {{ variant.label }}
+                  <!-- One chip per kind of item the runeword names, across all
+                       its variants: Insight lists four, and one chip saying
+                       "Polearm" was three answers short. -->
+                  <span
+                    v-for="label in group.variants.flatMap(variant => variant.labels)"
+                    :key="label"
+                    class="item-chip"
+                  >
+                    {{ label }}
                   </span>
                 </td>
               </tr>

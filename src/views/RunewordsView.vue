@@ -380,15 +380,31 @@ const getAllowedItemsText = (allowedItems) => {
  * twice and nothing said that Paladin shields are excluded. Types[0] is the
  * one this entry is actually for; ETypes are the exclusions.
  */
-const getEntryItemsText = (runeword) => {
-  const own = fieldOf(runeword, 'Types')?.[0];
-  const base = own
-    ? getAllowedItemsText([own])
-    : getAllowedItemsText(fieldOf(runeword, 'AllowedItems'));
+/* Every kind the entry names, not just the first one: Insight goes in
+   polearms, staves, missile weapons and spears, and the page used to say
+   "Polearm" and stop there. The row's own types, never the expanded ancestry -
+   that would call every melee runeword a weapon runeword. */
+const entryItemLabels = (runeword) => {
+  const own = fieldOf(runeword, 'ItemTypes');
+  const types = own?.length ? own : (fieldOf(runeword, 'AllowedItems') ?? []);
 
+  const labels = [];
+  types.forEach((code) => {
+    const label = getAllowedItemsText([code]);
+    if (!labels.includes(label)) labels.push(label);
+  });
+
+  // The exclusion belongs to the kind it narrows, which is the last one named:
+  // "Shield (not Paladin Shield)".
   const excluded = fieldOf(runeword, 'ETypes') ?? [];
-  return excluded.length ? `${base} (not ${getAllowedItemsText(excluded)})` : base;
+  if (excluded.length && labels.length) {
+    labels[labels.length - 1] += ` (not ${getAllowedItemsText(excluded)})`;
+  }
+
+  return labels.length ? labels : ['None'];
 };
+
+const getEntryItemsText = (runeword) => entryItemLabels(runeword).join(', ');
 
 // Changes of a reworked runeword vs vanilla, as display lines.
 // Properties are paired by prop code + parameter.
@@ -509,6 +525,7 @@ const toGroups = (list) => {
     const changes = runeword.IsReworked ? getReworkChanges(runeword) : [];
     groups.get(key).variants.push({
       label: getEntryItemsText(runeword),
+      labels: entryItemLabels(runeword),
       properties: sortPropertiesByPriority(fieldOf(runeword, 'Properties') ?? []),
       reworkChanges: changes.length ? changes : null,
     });
