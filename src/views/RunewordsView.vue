@@ -477,30 +477,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* The rolls a property group draws from, indented under the line that
-   introduces them - the same treatment the item pages give them. */
-.property-rolls {
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0 0 0 14px;
-  border-left: 2px solid rgba(255, 255, 255, 0.14);
-}
-
-.property-rolls li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 0.9em;
-  opacity: 0.85;
-  padding: 1px 0;
-}
-
-.roll-chance {
-  flex: none;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.7;
-}
-
 .reworked-toggle .form-check-label {
   color: rgba(201, 163, 106, 0.95);
   font-size: 0.9rem;

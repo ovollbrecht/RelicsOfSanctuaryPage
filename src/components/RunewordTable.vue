@@ -101,19 +101,18 @@ const formatChance = (chance) => {
               </tr>
               <tr v-if="expanded.has(group.key)" class="expanded-row">
                 <td colspan="5">
-                  <div class="p-3">
+                  <!-- An item tooltip is lines of text, not a stack of boxes -
+                       so the properties read as one, and two variants sit side
+                       by side where the width allows, which is what makes
+                       "In Armor" vs "In Shield" comparable at a glance. -->
+                  <div class="variant-row">
                     <div v-for="variant in group.variants" :key="variant.label" class="variant-block">
                       <!-- The heading only earns its place where there is more
                            than one kind: on a weapon-only runeword it would
                            just repeat the column above. -->
-                      <h5 v-if="group.variants.length > 1" class="section-header">In {{ variant.label }}</h5>
-                      <h5 v-else class="section-header">Properties</h5>
-                      <ul class="list-group list-group-flush">
-                        <li
-                          v-for="(prop, propIndex) in variant.properties"
-                          :key="propIndex"
-                          class="list-group-item list-item-property"
-                        >
+                      <div v-if="group.variants.length > 1" class="variant-label">In {{ variant.label }}</div>
+                      <ul class="prop-lines">
+                        <li v-for="(prop, propIndex) in variant.properties" :key="propIndex">
                           {{ prop.Description }}
                           <ul v-if="prop.Rolls" class="property-rolls">
                             <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
@@ -194,9 +193,66 @@ const formatChance = (chance) => {
   color: var(--d2r-muted);
 }
 
-.variant-block + .variant-block {
-  margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(59, 42, 31, 0.8);
+/* ---- expanded detail ---------------------------------------------------- */
+
+.variant-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.variant-block {
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+.variant-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--d2r-gold);
+  border-bottom: 1px solid rgba(201, 163, 106, 0.25);
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.prop-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prop-lines > li {
+  padding: 0.14rem 0;
+  color: var(--d2r-text);
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+/* The rolls a property group draws from, indented under the line that
+   introduces them - the same treatment the item pages give them. */
+.property-rolls {
+  list-style: none;
+  margin: 2px 0 4px;
+  padding: 0 0 0 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+  max-width: 26rem;
+}
+
+.property-rolls li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9em;
+  opacity: 0.85;
+  padding: 1px 0;
+}
+
+.roll-chance {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
 }
 </style>
