@@ -88,15 +88,14 @@ const setAll = (open) => {
                 style="cursor: pointer;"
               >
                 <td>
+                  <!-- One mark for both, since it answers one question: did
+                       the mod touch this. Which of the two it was is in the
+                       tooltip, and the filter above splits them. -->
                   {{ group.name }}<span
-                    v-if="group.isNew"
-                    class="flag flag-new"
-                    title="New in Relics of Sanctuary"
-                  >*</span><span
-                    v-if="group.isReworked"
-                    class="flag flag-reworked"
-                    title="Reworked by Relics of Sanctuary"
-                  >*</span>
+                    v-if="group.isNew || group.isReworked"
+                    class="flag"
+                    :title="group.isNew ? 'New in Relics of Sanctuary' : 'Reworked by Relics of Sanctuary'"
+                  >•</span>
                   <span
                     v-for="className in group.classNames"
                     :key="className"
@@ -152,24 +151,17 @@ const setAll = (open) => {
   contain: inline-size;
 }
 
-/* New and reworked are one character each, where a badge cost half the
-   column. Not called "mark": Bootstrap owns that class name and paints it
-   like a highlighter pen. */
+/* The mod's own mark, quiet on purpose: a dot in the page's gold, small
+   enough to read as punctuation until you look for it. Two colours competing
+   for attention in a name column was more than the distinction is worth.
+   Not called "mark": Bootstrap owns that class name and paints it like a
+   highlighter pen. */
 .flag {
-  margin-left: 0.15rem;
-  font-weight: 700;
-  font-size: 1.05em;
-  line-height: 0;
-  vertical-align: super;
+  margin-left: 0.3rem;
+  font-size: 0.7em;
+  vertical-align: 0.35em;
+  color: rgba(201, 163, 106, 0.75);
   cursor: help;
-}
-
-.flag-new {
-  color: #d3644f;
-}
-
-.flag-reworked {
-  color: #d6b25c;
 }
 
 /* The one badge worth a colour of its own: which class can wear this at all is

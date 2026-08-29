@@ -800,14 +800,14 @@ onUnmounted(() => {
                 <div class="form-check reworked-toggle">
                   <input id="rw-status-new" v-model="statusFilter" value="new" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-new">
-                    Only new <span class="flag flag-new">*</span>
+                    Only new <span class="flag">•</span>
                   </label>
                 </div>
                 <div class="form-check reworked-toggle">
                   <input id="rw-status-reworked" v-model="statusFilter" value="reworked" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-reworked">
                     {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
-                    <span class="flag flag-reworked">*</span>
+                    <span class="flag">•</span>
                   </label>
                 </div>
               </div>
@@ -876,21 +876,12 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* The same two flags the table uses, so the filter labels double as its
-   legend - a red star is new, an amber one reworked. */
+/* The same mark the table uses, so the filter labels double as its legend:
+   the dot means the mod touched this runeword, and these two say which way. */
 .flag {
-  font-weight: 700;
-  font-size: 1.05em;
-  line-height: 0;
-  vertical-align: super;
-}
-
-.flag-new {
-  color: #d3644f;
-}
-
-.flag-reworked {
-  color: #d6b25c;
+  font-size: 0.7em;
+  vertical-align: 0.35em;
+  color: rgba(201, 163, 106, 0.75);
 }
 
 /* ---- rune picker ------------------------------------------------------- */
