@@ -115,6 +115,26 @@ const setRuneUpTo = (target) => {
   ownedRunes.value = next;
 };
 
+/* What the picked runes can make, counted against every runeword rather than
+   against the current filters: "23 craftable" should not move because somebody
+   is looking at shields. Grouped by row, so a runeword that goes in two kinds
+   of item counts once. */
+const craftable = computed(() => {
+  const perTier = Object.fromEntries(RUNE_TIERS.map((tier) => [tier.key, 0]));
+  const counted = new Set();
+  let total = 0;
+
+  runewords.value.forEach((runeword) => {
+    if (counted.has(runeword.RowId)) return;
+    counted.add(runeword.RowId);
+    if (!(runeword.Runes ?? []).every((code) => ownedRunes.value.has(code))) return;
+    total += 1;
+    perTier[tierOf(runeword).key] += 1;
+  });
+
+  return { total, perTier, of: counted.size };
+});
+
 const selectAllRunes = () => { ownedRunes.value = new Set(allRunes.value.map((rune) => rune.code)); };
 const clearRunes = () => { ownedRunes.value = new Set(); };
 
@@ -493,6 +513,13 @@ onUnmounted(() => {
                 </small>
               </div>
 
+              <div v-if="ownedRunes.size > 0" class="craftable-line">
+                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable
+                <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">
+                  {{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}
+                </span>
+              </div>
+
               <div v-show="pickerOpen" class="rune-picker">
                 <div class="rune-grid">
                   <button
@@ -699,6 +726,28 @@ onUnmounted(() => {
 }
 
 /* ---- rune picker ------------------------------------------------------- */
+.craftable-line {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--d2r-muted);
+}
+
+.craftable-line strong {
+  color: var(--d2r-gold-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.craftable-tier {
+  margin-left: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.craftable-tier::before {
+  content: '·';
+  margin-right: 0.9rem;
+  opacity: 0.5;
+}
+
 .picker-count {
   margin-left: 0.4rem;
   font-variant-numeric: tabular-nums;
