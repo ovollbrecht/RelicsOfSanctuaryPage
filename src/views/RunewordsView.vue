@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import RunewordTable from '@/components/RunewordTable.vue';
@@ -35,6 +35,69 @@ const isWide = ref(wideQuery.matches);
 const syncWide = () => { isWide.value = wideQuery.matches; };
 
 const selectedGroup = ref(null);
+
+/* ---- rune picker --------------------------------------------------------
+   Which runes you have, kept for the session so the answer survives a click
+   into an item page and back. A ticked rune counts however often a runeword
+   asks for it: Deliverance wants two Hels and a checkbox cannot say "two", so
+   the picker answers "do you have this rune at all". */
+const RUNES_KEY = 'rw-owned-runes';
+const RUNE_FILTER_KEY = 'rw-rune-filter';
+
+const readSession = (key, fallback) => {
+  try {
+    const raw = sessionStorage.getItem(key);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch {
+    return fallback;
+  }
+};
+
+const writeSession = (key, value) => {
+  try {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // A private window or blocked storage is not a reason to break the page.
+  }
+};
+
+const pickerOpen = ref(false);
+const ownedRunes = ref(new Set(readSession(RUNES_KEY, [])));
+const useRuneFilter = ref(readSession(RUNE_FILTER_KEY, false) === true);
+
+// Every rune any runeword asks for, in rune order - which is all 33 of them,
+// and by construction never one the picker would have no use for.
+const allRunes = computed(() => {
+  const runes = new Map();
+  runewords.value.forEach((runeword) => {
+    (runeword.Runes ?? []).forEach((code, index) => {
+      if (!runes.has(code)) {
+        runes.set(code, {
+          code,
+          name: (runeword.RuneNames ?? [])[index] ?? code,
+          number: Number.parseInt(code.slice(1), 10) || 0,
+        });
+      }
+    });
+  });
+  return [...runes.values()].sort((a, b) => a.number - b.number);
+});
+
+const toggleRune = (code) => {
+  const next = new Set(ownedRunes.value);
+  next.has(code) ? next.delete(code) : next.add(code);
+  ownedRunes.value = next;
+};
+
+const selectAllRunes = () => { ownedRunes.value = new Set(allRunes.value.map((rune) => rune.code)); };
+const clearRunes = () => { ownedRunes.value = new Set(); };
+
+// Off while nothing is ticked: "only what I can make" out of no runes is an
+// empty page, and an empty page is not an answer anyone asked for.
+const runeFilterActive = computed(() => useRuneFilter.value && ownedRunes.value.size > 0);
+
+watch(ownedRunes, (runes) => writeSession(RUNES_KEY, [...runes]), { deep: true });
+watch(useRuneFilter, (on) => writeSession(RUNE_FILTER_KEY, on));
 
 const selectGroup = (group) => {
   selectedGroup.value = selectedGroup.value?.key === group.key ? null : group;
@@ -77,6 +140,12 @@ const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
 // Filter runewords based on search queries and category
 const filteredRunewords = computed(() => {
   let filtered = [...visibleRunewords.value];
+
+  // What the picked runes can actually make
+  if (runeFilterActive.value) {
+    filtered = filtered.filter((runeword) =>
+      (runeword.Runes ?? []).every((code) => ownedRunes.value.has(code)));
+  }
 
   // Apply the item-kind filter
   if (selectedCategory.value !== 'all') {
@@ -235,6 +304,7 @@ const resetFilters = () => {
   selectedCategory.value = 'all';
   statusFilter.value = 'all';
   classFilter.value = 'all';
+  useRuneFilter.value = false;
 };
 
 // Sort properties by priority
@@ -371,6 +441,42 @@ onUnmounted(() => {
                 </button>
               </div>
               <small class="form-text text-muted">Enter exact rune names, separated by spaces or commas</small>
+            </div>
+
+            <!-- Rune picker: which runes you have, and whether that filters -->
+            <div class="mb-3">
+              <div class="d-flex align-items-center flex-wrap gap-3">
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
+                  {{ pickerOpen ? '▾' : '▸' }} My runes
+                  <span class="picker-count">{{ ownedRunes.size }}/{{ allRunes.length }}</span>
+                </button>
+                <div class="form-check reworked-toggle mb-0">
+                  <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
+                  <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
+                </div>
+                <small v-if="useRuneFilter && ownedRunes.size === 0" class="text-muted">
+                  pick a rune first
+                </small>
+              </div>
+
+              <div v-show="pickerOpen" class="rune-picker">
+                <div class="rune-grid">
+                  <button
+                    v-for="rune in allRunes"
+                    :key="rune.code"
+                    type="button"
+                    class="rune-chip"
+                    :class="{ 'is-owned': ownedRunes.has(rune.code) }"
+                    @click="toggleRune(rune.code)"
+                  >
+                    {{ rune.name }}
+                  </button>
+                </div>
+                <div class="d-flex gap-2 mt-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
+                </div>
+              </div>
             </div>
 
             <!-- Category Filter Buttons -->
@@ -522,6 +628,51 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* ---- rune picker ------------------------------------------------------- */
+.picker-count {
+  margin-left: 0.4rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+.rune-picker {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(59, 42, 31, 0.8);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.rune-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.rune-chip {
+  min-width: 3.6rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+  color: var(--d2r-muted);
+  background: transparent;
+  border: 1px solid rgba(59, 42, 31, 0.9);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.rune-chip:hover {
+  border-color: rgba(201, 163, 106, 0.5);
+  color: var(--d2r-text);
+}
+
+/* A rune you own reads as filled - the picker is a shelf, not a form. */
+.rune-chip.is-owned {
+  background: rgba(201, 163, 106, 0.18);
+  border-color: rgba(201, 163, 106, 0.6);
+  color: var(--d2r-gold-bright);
+  font-weight: 600;
+}
+
 /* List and detail panel side by side. The panel sticks, so the stats stay put
    while the list scrolls under the cursor - which is the whole point. */
 .rw-layout {
