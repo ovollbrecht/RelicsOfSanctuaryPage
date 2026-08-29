@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import ReworkChanges from '@/components/ReworkChanges.vue';
+import RunewordDetail from '@/components/RunewordDetail.vue';
 
 /**
  * One row per runeword.
@@ -16,7 +16,14 @@ const props = defineProps({
   groups: { type: Array, required: true },
   subtitle: { type: String, default: '' },
   reworkTitle: { type: String, default: 'Changes vs. vanilla' },
+  // Wide screens show the open runeword in a panel beside the list instead of
+  // inline under its row: the row click selects, and selection lives with the
+  // parent because it spans the three tier tables.
+  panelMode: { type: Boolean, default: false },
+  selectedKey: { type: String, default: null },
 });
+
+const emit = defineEmits(['select']);
 
 const expanded = ref(new Set());
 
@@ -26,16 +33,15 @@ const toggle = (key) => {
   expanded.value = next;
 };
 
+const rowClick = (group) => {
+  if (props.panelMode) emit('select', group);
+  else toggle(group.key);
+};
+
 const setAll = (open) => {
   expanded.value = open ? new Set(props.groups.map((group) => group.key)) : new Set();
 };
 
-// A group's odds at the precision the numbers carry: 60% stays 60%, and a
-// 9.9% draw keeps its digit instead of rounding to a lie.
-const formatChance = (chance) => {
-  const percent = chance * 100;
-  return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
-};
 </script>
 
 <template>
@@ -45,7 +51,7 @@ const formatChance = (chance) => {
         {{ title }}
         <span class="tier-hint">{{ subtitle ? subtitle + ' · ' : '' }}{{ groups.length }}</span>
       </h2>
-      <span class="d-flex gap-2">
+      <span v-if="!panelMode" class="d-flex gap-2">
         <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">Expand all</button>
         <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">Collapse all</button>
       </span>
@@ -76,7 +82,11 @@ const formatChance = (chance) => {
           </thead>
           <tbody>
             <template v-for="group in groups" :key="group.key">
-              <tr @click="toggle(group.key)" style="cursor: pointer;">
+              <tr
+                :class="{ 'is-selected': panelMode && group.key === selectedKey }"
+                @click="rowClick(group)"
+                style="cursor: pointer;"
+              >
                 <td>
                   {{ group.name }}
                   <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
@@ -99,36 +109,9 @@ const formatChance = (chance) => {
                   </span>
                 </td>
               </tr>
-              <tr v-if="expanded.has(group.key)" class="expanded-row">
+              <tr v-if="!panelMode && expanded.has(group.key)" class="expanded-row">
                 <td colspan="5">
-                  <!-- An item tooltip is lines of text, not a stack of boxes -
-                       so the properties read as one, and two variants sit side
-                       by side where the width allows, which is what makes
-                       "In Armor" vs "In Shield" comparable at a glance. -->
-                  <div class="variant-row">
-                    <div v-for="variant in group.variants" :key="variant.label" class="variant-block">
-                      <!-- The heading only earns its place where there is more
-                           than one kind: on a weapon-only runeword it would
-                           just repeat the column above. -->
-                      <div v-if="group.variants.length > 1" class="variant-label">In {{ variant.label }}</div>
-                      <ul class="prop-lines">
-                        <li v-for="(prop, propIndex) in variant.properties" :key="propIndex">
-                          {{ prop.Description }}
-                          <ul v-if="prop.Rolls" class="property-rolls">
-                            <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                              <span>{{ roll.Description }}</span>
-                              <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                      <ReworkChanges
-                        v-if="variant.reworkChanges"
-                        :changes="variant.reworkChanges"
-                        :title="reworkTitle"
-                      />
-                    </div>
-                  </div>
+                  <RunewordDetail :group="group" :rework-title="reworkTitle" />
                 </td>
               </tr>
             </template>
@@ -193,66 +176,9 @@ const formatChance = (chance) => {
   color: var(--d2r-muted);
 }
 
-/* ---- expanded detail ---------------------------------------------------- */
-
-.variant-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem 2.5rem;
-  padding: 0.75rem 1rem 1rem;
-}
-
-.variant-block {
-  flex: 1 1 20rem;
-  min-width: 0;
-}
-
-.variant-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--d2r-gold);
-  border-bottom: 1px solid rgba(201, 163, 106, 0.25);
-  padding-bottom: 0.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.prop-lines {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.prop-lines > li {
-  padding: 0.14rem 0;
-  color: var(--d2r-text);
-  font-size: 0.95em;
-  line-height: 1.4;
-}
-
-/* The rolls a property group draws from, indented under the line that
-   introduces them - the same treatment the item pages give them. */
-.property-rolls {
-  list-style: none;
-  margin: 2px 0 4px;
-  padding: 0 0 0 14px;
-  border-left: 2px solid rgba(255, 255, 255, 0.14);
-  max-width: 26rem;
-}
-
-.property-rolls li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 0.9em;
-  opacity: 0.85;
-  padding: 1px 0;
-}
-
-.roll-chance {
-  flex: none;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.7;
+/* The row whose stats the panel is showing. */
+.is-selected > td {
+  background: rgba(201, 163, 106, 0.1);
+  box-shadow: inset 0 1px 0 rgba(201, 163, 106, 0.35), inset 0 -1px 0 rgba(201, 163, 106, 0.35);
 }
 </style>

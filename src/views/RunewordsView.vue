@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import RunewordTable from '@/components/RunewordTable.vue';
+import RunewordDetail from '@/components/RunewordDetail.vue';
 
 const runewords = ref([]);
 const searchQuery = ref('');
@@ -24,6 +25,20 @@ const statusFilter = ref('all');
 // *and* plain swords is not a class runeword, and hiding it would take a
 // generally useful option off the page.
 const classFilter = ref('all');
+
+// Wide screens keep the open runeword in a sticky panel beside the list, so
+// browsing is click - read - click without the table jumping. The breakpoint
+// is where the 1200px content shell is fully unfolded next to the sidebar;
+// below it, rows expand inline as before.
+const wideQuery = window.matchMedia('(min-width: 1500px)');
+const isWide = ref(wideQuery.matches);
+const syncWide = () => { isWide.value = wideQuery.matches; };
+
+const selectedGroup = ref(null);
+
+const selectGroup = (group) => {
+  selectedGroup.value = selectedGroup.value?.key === group.key ? null : group;
+};
 
 /**
  * The three tiers the in-game menu already uses, by the highest rune a
@@ -289,6 +304,14 @@ const reworkTitle = computed(() =>
 
 onMounted(() => {
   runewords.value = runewordsData;
+  wideQuery.addEventListener('change', syncWide);
+  // Belt and braces: some environments resize without firing the media query.
+  window.addEventListener('resize', syncWide);
+});
+
+onUnmounted(() => {
+  wideQuery.removeEventListener('change', syncWide);
+  window.removeEventListener('resize', syncWide);
 });
 </script>
 
@@ -454,29 +477,81 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Runewords, one list cut into rune tiers -->
-    <div class="row g-4">
-      <div class="col-12" v-if="resultCount === 0">
-        <div class="card card-enhanced">
-          <div class="card-body text-center text-muted py-4">
-            No runewords match the current filters.
+    <!-- Runewords, one list cut into rune tiers - with the open runeword's
+         stats in a sticky panel beside it where the width allows. -->
+    <div class="rw-layout">
+      <div class="rw-list row g-4">
+        <div class="col-12" v-if="resultCount === 0">
+          <div class="card card-enhanced">
+            <div class="card-body text-center text-muted py-4">
+              No runewords match the current filters.
+            </div>
           </div>
+        </div>
+
+        <div class="col-12" v-for="tier in tiers" :key="tier.key">
+          <RunewordTable
+            :title="tier.title"
+            :subtitle="tier.hint"
+            :groups="tier.groups"
+            :rework-title="reworkTitle"
+            :panel-mode="isWide"
+            :selected-key="selectedGroup?.key ?? null"
+            @select="selectGroup"
+          />
         </div>
       </div>
 
-      <div class="col-12" v-for="tier in tiers" :key="tier.key">
-        <RunewordTable
-          :title="tier.title"
-          :subtitle="tier.hint"
-          :groups="tier.groups"
-          :rework-title="reworkTitle"
-        />
-      </div>
+      <aside v-if="isWide" class="rw-panel">
+        <div class="card card-enhanced rw-panel-card">
+          <div class="card-body">
+            <RunewordDetail
+              v-if="selectedGroup"
+              :group="selectedGroup"
+              :rework-title="reworkTitle"
+              show-header
+            />
+            <div v-else class="text-muted rw-panel-hint">
+              Click a runeword to see its stats here.
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* List and detail panel side by side. The panel sticks, so the stats stay put
+   while the list scrolls under the cursor - which is the whole point. */
+.rw-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.rw-list {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.rw-panel {
+  flex: 0 0 23rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.rw-panel-card {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.rw-panel-hint {
+  padding: 1.5rem 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 .reworked-toggle .form-check-label {
   color: rgba(201, 163, 106, 0.95);
   font-size: 0.9rem;
