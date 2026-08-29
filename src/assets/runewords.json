@@ -21,6 +21,8 @@
       "Ort",
       "Tal"
     ],
+    "Sockets": 3,
+    "LevelReq": 21,
     "Properties": [
       {
         "Prop": "ac%",
@@ -125,6 +127,8 @@
       "Shael",
       "Ral"
     ],
+    "Sockets": 3,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -221,6 +225,8 @@
       "Mal",
       "Lum"
     ],
+    "Sockets": 5,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "swing2",
@@ -451,6 +457,8 @@
       "Io",
       "Nef"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "crush",
@@ -552,6 +560,8 @@
       "Um",
       "Um"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -682,6 +692,8 @@
       "Sur",
       "Eth"
     ],
+    "Sockets": 4,
+    "LevelReq": 61,
     "Properties": [
       {
         "Prop": "balance2",
@@ -892,6 +904,8 @@
       "Mal",
       "Gul"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -1089,6 +1103,8 @@
       "Zod",
       "Eth"
     ],
+    "Sockets": 6,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "swing2",
@@ -1233,6 +1249,8 @@
       "Ist",
       "Ohm"
     ],
+    "Sockets": 5,
+    "LevelReq": 57,
     "Properties": [
       {
         "Prop": "swing2",
@@ -1443,6 +1461,8 @@
       "Ber",
       "Ist"
     ],
+    "Sockets": 4,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "res-all",
@@ -1555,6 +1575,8 @@
       "Ohm",
       "Um"
     ],
+    "Sockets": 3,
+    "LevelReq": 57,
     "Properties": [
       {
         "Prop": "demon-heal",
@@ -1738,6 +1760,8 @@
       "Um",
       "Tir"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "pierce-ltng",
@@ -1938,6 +1962,8 @@
       "Ort",
       "Gul"
     ],
+    "Sockets": 5,
+    "LevelReq": 55,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -2178,6 +2204,8 @@
       "Ist",
       "Io"
     ],
+    "Sockets": 3,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -2374,6 +2402,8 @@
       "Jah",
       "Ko"
     ],
+    "Sockets": 5,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -2613,6 +2643,8 @@
       "Lo",
       "Cham"
     ],
+    "Sockets": 5,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -2822,6 +2854,8 @@
       "Lo",
       "Sol"
     ],
+    "Sockets": 3,
+    "LevelReq": 61,
     "Properties": [
       {
         "Prop": "ac",
@@ -3016,6 +3050,8 @@
       "Lo",
       "Sol"
     ],
+    "Sockets": 3,
+    "LevelReq": 61,
     "Properties": [
       {
         "Prop": "ac",
@@ -3209,6 +3245,8 @@
       "Jah",
       "Pul"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "ac",
@@ -3320,6 +3358,8 @@
       "Jah",
       "Pul"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "ac",
@@ -3429,6 +3469,8 @@
       "Um",
       "Thul"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "dmg-cold",
@@ -3589,6 +3631,8 @@
       "Tal",
       "Amn"
     ],
+    "Sockets": 3,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "dmg-demon",
@@ -3781,6 +3825,8 @@
       "Ith",
       "Ber"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "ac%",
@@ -3973,6 +4019,8 @@
       "Ral",
       "Sol"
     ],
+    "Sockets": 3,
+    "LevelReq": 45,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -4129,6 +4177,8 @@
       "Sol",
       "Sur"
     ],
+    "Sockets": 5,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -4355,6 +4405,8 @@
       "Lem",
       "Eld"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -4569,6 +4621,8 @@
       "Ort",
       "Jah"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -4841,6 +4895,8 @@
       "Pul",
       "Vex"
     ],
+    "Sockets": 3,
+    "LevelReq": 55,
     "Properties": [
       {
         "Prop": "fireskill",
@@ -4944,6 +5000,8 @@
       "Dol",
       "Lo"
     ],
+    "Sockets": 4,
+    "LevelReq": 59,
     "Properties": [
       {
         "Prop": "ac%",
@@ -5072,6 +5130,8 @@
       "Dol",
       "Lo"
     ],
+    "Sockets": 4,
+    "LevelReq": 59,
     "Properties": [
       {
         "Prop": "ac%",
@@ -5197,6 +5257,8 @@
       "Gul",
       "Eth"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -5389,6 +5451,8 @@
       "Um",
       "Pul"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "ac%",
@@ -5557,6 +5621,8 @@
       "Mal",
       "Ral"
     ],
+    "Sockets": 5,
+    "LevelReq": 59,
     "Properties": [
       {
         "Prop": "dmg-dem/lvl",
@@ -5782,6 +5848,8 @@
       "Amn",
       "Lo"
     ],
+    "Sockets": 4,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "swing2",
@@ -5992,6 +6060,8 @@
       "Sol",
       "Ko"
     ],
+    "Sockets": 4,
+    "LevelReq": 39,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -6158,6 +6228,8 @@
       "Pul",
       "Thul"
     ],
+    "Sockets": 4,
+    "LevelReq": 55,
     "Properties": [
       {
         "Prop": "cast2",
@@ -6394,6 +6466,8 @@
       "Ort",
       "Tal"
     ],
+    "Sockets": 4,
+    "LevelReq": 21,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -6593,6 +6667,8 @@
       "Tir",
       "Sol"
     ],
+    "Sockets": 5,
+    "LevelReq": 27,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -6811,6 +6887,8 @@
       "Jah",
       "Lo"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -6934,6 +7012,8 @@
       "Ber",
       "Ist"
     ],
+    "Sockets": 4,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -7055,6 +7135,8 @@
       "Tal",
       "Sol"
     ],
+    "Sockets": 4,
+    "LevelReq": 27,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -7184,6 +7266,8 @@
       "Ral",
       "Thul"
     ],
+    "Sockets": 3,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -7374,6 +7458,8 @@
       "Gul",
       "Fal"
     ],
+    "Sockets": 4,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "swing2",
@@ -7579,6 +7665,8 @@
       "Jah",
       "Ber"
     ],
+    "Sockets": 6,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -7779,6 +7867,8 @@
       "Lem",
       "Ko"
     ],
+    "Sockets": 3,
+    "LevelReq": 43,
     "Properties": [
       {
         "Prop": "dmg-cold",
@@ -7889,6 +7979,8 @@
       "Tir",
       "Ral"
     ],
+    "Sockets": 2,
+    "LevelReq": 19,
     "Properties": [
       {
         "Prop": "fireskill",
@@ -7982,6 +8074,8 @@
       "Lum",
       "Fal"
     ],
+    "Sockets": 3,
+    "LevelReq": 41,
     "Properties": [
       {
         "Prop": "str",
@@ -8140,6 +8234,8 @@
       "Ort",
       "Sol"
     ],
+    "Sockets": 2,
+    "LevelReq": 27,
     "Properties": [
       {
         "Prop": "enr",
@@ -8276,6 +8372,8 @@
       "El",
       "Eth"
     ],
+    "Sockets": 3,
+    "LevelReq": 15,
     "Properties": [
       {
         "Prop": "openwounds",
@@ -8377,6 +8475,8 @@
       "Ko",
       "Nef"
     ],
+    "Sockets": 3,
+    "LevelReq": 39,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -8566,6 +8666,8 @@
       "Sol",
       "Eth"
     ],
+    "Sockets": 4,
+    "LevelReq": 37,
     "Properties": [
       {
         "Prop": "mana%",
@@ -8778,6 +8880,8 @@
       "Thul",
       "Ith"
     ],
+    "Sockets": 5,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "allskills",
@@ -8895,6 +8999,8 @@
       "Amn",
       "Nef"
     ],
+    "Sockets": 3,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -9053,6 +9159,8 @@
       "Nef",
       "Tir"
     ],
+    "Sockets": 2,
+    "LevelReq": 13,
     "Properties": [
       {
         "Prop": "ac%",
@@ -9230,6 +9338,8 @@
       "Mal",
       "Lum"
     ],
+    "Sockets": 4,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -9465,6 +9575,8 @@
       "Eth",
       "Fal"
     ],
+    "Sockets": 5,
+    "LevelReq": 41,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -9604,6 +9716,8 @@
       "Io",
       "Nef"
     ],
+    "Sockets": 6,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "allskills",
@@ -9845,6 +9959,8 @@
       "Eld",
       "Lem"
     ],
+    "Sockets": 4,
+    "LevelReq": 43,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -10072,6 +10188,8 @@
       "Ort",
       "Thul"
     ],
+    "Sockets": 3,
+    "LevelReq": 23,
     "Properties": [
       {
         "Prop": "att%",
@@ -10264,6 +10382,8 @@
       "Thul",
       "Amn"
     ],
+    "Sockets": 3,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -10423,6 +10543,8 @@
       "El",
       "Eld"
     ],
+    "Sockets": 4,
+    "LevelReq": 43,
     "Properties": [
       {
         "Prop": "dmg-demon",
@@ -10649,6 +10771,8 @@
       "Lo",
       "Jah"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -10762,6 +10886,8 @@
       "Lo",
       "Jah"
     ],
+    "Sockets": 4,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -10879,6 +11005,8 @@
       "Shael",
       "Um"
     ],
+    "Sockets": 3,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -11077,6 +11205,8 @@
       "Io",
       "Lo"
     ],
+    "Sockets": 4,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "dmg-dem/lvl",
@@ -11285,6 +11415,8 @@
       "Gul",
       "Eld"
     ],
+    "Sockets": 3,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -11435,6 +11567,8 @@
       "Mal",
       "Tir"
     ],
+    "Sockets": 2,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "ac%",
@@ -11595,6 +11729,8 @@
       "Sol",
       "Ith"
     ],
+    "Sockets": 3,
+    "LevelReq": 27,
     "Properties": [
       {
         "Prop": "light",
@@ -11779,6 +11915,8 @@
       "Mal",
       "Ith"
     ],
+    "Sockets": 3,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -11946,6 +12084,8 @@
       "Shael",
       "Eth"
     ],
+    "Sockets": 2,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "block2",
@@ -12039,6 +12179,8 @@
       "Lem",
       "Gul"
     ],
+    "Sockets": 4,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "dmg-mag",
@@ -12248,6 +12390,8 @@
       "Ko",
       "Mal"
     ],
+    "Sockets": 3,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "block",
@@ -12354,6 +12498,8 @@
       "Tir",
       "Vex"
     ],
+    "Sockets": 6,
+    "LevelReq": 55,
     "Properties": [
       {
         "Prop": "manasteal",
@@ -12592,6 +12738,8 @@
       "Nef",
       "Lum"
     ],
+    "Sockets": 2,
+    "LevelReq": 37,
     "Properties": [
       {
         "Prop": "ac-miss",
@@ -12682,6 +12830,8 @@
       "Ort",
       "Amn"
     ],
+    "Sockets": 4,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "balance3",
@@ -12803,6 +12953,8 @@
       "Ort",
       "Amn"
     ],
+    "Sockets": 4,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "balance3",
@@ -12919,6 +13071,8 @@
       "Eth",
       "Lum"
     ],
+    "Sockets": 2,
+    "LevelReq": 37,
     "Properties": [
       {
         "Prop": "light",
@@ -13093,6 +13247,8 @@
       "Tal",
       "Eth"
     ],
+    "Sockets": 2,
+    "LevelReq": 17,
     "Properties": [
       {
         "Prop": "red-mag",
@@ -13266,6 +13422,8 @@
       "Tir",
       "El"
     ],
+    "Sockets": 2,
+    "LevelReq": 13,
     "Properties": [
       {
         "Prop": "swing2",
@@ -13428,6 +13586,8 @@
       "Pul",
       "Lum"
     ],
+    "Sockets": 4,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "ac%",
@@ -13602,6 +13762,8 @@
       "Amn",
       "Tir"
     ],
+    "Sockets": 2,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "str",
@@ -13738,6 +13900,8 @@
       "Thul",
       "Lem"
     ],
+    "Sockets": 3,
+    "LevelReq": 43,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -13829,6 +13993,8 @@
       "El",
       "Hel"
     ],
+    "Sockets": 6,
+    "LevelReq": 41,
     "Properties": [
       {
         "Prop": "skilltab",
@@ -14103,6 +14269,8 @@
       "Dol",
       "Mal"
     ],
+    "Sockets": 3,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "dmg-pois",
@@ -14273,6 +14441,8 @@
       "Zod",
       "Ist"
     ],
+    "Sockets": 3,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "allskills",
@@ -14374,6 +14544,8 @@
       "Ko",
       "Tir"
     ],
+    "Sockets": 3,
+    "LevelReq": 43,
     "Properties": [
       {
         "Prop": "gold%",
@@ -14487,6 +14659,8 @@
       "Dol",
       "Io"
     ],
+    "Sockets": 2,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "skilltab",
@@ -14586,6 +14760,8 @@
       "Sur",
       "El"
     ],
+    "Sockets": 2,
+    "LevelReq": 61,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -14778,6 +14954,8 @@
       "Ith",
       "Eld"
     ],
+    "Sockets": 3,
+    "LevelReq": 45,
     "Properties": [
       {
         "Prop": "pierce",
@@ -14881,6 +15059,8 @@
       "Ber",
       "Mal"
     ],
+    "Sockets": 4,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "dmg-demon",
@@ -15087,6 +15267,8 @@
       "Ort",
       "Eth"
     ],
+    "Sockets": 2,
+    "LevelReq": 21,
     "Properties": [
       {
         "Prop": "move2",
@@ -15247,6 +15429,8 @@
       "Ko",
       "Eld"
     ],
+    "Sockets": 3,
+    "LevelReq": 39,
     "Properties": [
       {
         "Prop": "move2",
@@ -15390,6 +15574,8 @@
       "Ko",
       "Eld"
     ],
+    "Sockets": 3,
+    "LevelReq": 39,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -15537,6 +15723,8 @@
       "Gul",
       "Amn"
     ],
+    "Sockets": 3,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "skilltab",
@@ -15753,6 +15941,8 @@
       "Cham",
       "Fal"
     ],
+    "Sockets": 3,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -15937,6 +16127,8 @@
       "Io",
       "Ort"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "hp%",
@@ -16073,6 +16265,8 @@
       "Io",
       "Ral"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "hp%",
@@ -16209,6 +16403,8 @@
       "Io",
       "Thul"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "hp%",
@@ -16294,6 +16490,8 @@
       "Io",
       "Tal"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "hp%",
@@ -16379,6 +16577,8 @@
       "Io",
       "Sol"
     ],
+    "Sockets": 3,
+    "LevelReq": 35,
     "Properties": [
       {
         "Prop": "hp%",
@@ -16472,6 +16672,8 @@
       "Ral",
       "Io"
     ],
+    "Sockets": 3,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -16574,6 +16776,8 @@
       "Dol",
       "Gul"
     ],
+    "Sockets": 2,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -16677,6 +16881,8 @@
       "Shael",
       "Ohm"
     ],
+    "Sockets": 3,
+    "LevelReq": 57,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -16778,6 +16984,8 @@
       "Mal",
       "Ist"
     ],
+    "Sockets": 2,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -16882,6 +17090,8 @@
       "Ist",
       "Tir"
     ],
+    "Sockets": 3,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -16994,6 +17204,8 @@
       "Ist",
       "Sol"
     ],
+    "Sockets": 3,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17105,6 +17317,8 @@
       "Um",
       "Ist"
     ],
+    "Sockets": 2,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17210,6 +17424,8 @@
       "Ist",
       "Ko"
     ],
+    "Sockets": 3,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17320,6 +17536,8 @@
       "Sol",
       "Ist"
     ],
+    "Sockets": 2,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17428,6 +17646,8 @@
       "Shael",
       "Amn"
     ],
+    "Sockets": 4,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17551,6 +17771,8 @@
       "Shael",
       "Amn"
     ],
+    "Sockets": 4,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "oskill",
@@ -17678,6 +17900,8 @@
       "Vex",
       "Jah"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "sor",
@@ -17800,6 +18024,8 @@
       "Jah",
       "Dol"
     ],
+    "Sockets": 3,
+    "LevelReq": 65,
     "Properties": [
       {
         "Prop": "dru",
@@ -17904,6 +18130,8 @@
       "El",
       "Cham"
     ],
+    "Sockets": 3,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "bar",
@@ -18015,6 +18243,8 @@
       "Zod",
       "Sur"
     ],
+    "Sockets": 2,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "nec",
@@ -18117,6 +18347,8 @@
       "Sur",
       "Ber"
     ],
+    "Sockets": 2,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "ass",
@@ -18227,6 +18459,8 @@
       "Zod",
       "Pul"
     ],
+    "Sockets": 5,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "ama",
@@ -18352,6 +18586,8 @@
       "Shael",
       "Ohm"
     ],
+    "Sockets": 5,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "ama",
@@ -18456,6 +18692,8 @@
       "Ist",
       "Hel"
     ],
+    "Sockets": 4,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "ac%",
@@ -18557,6 +18795,8 @@
       "Ist",
       "Hel"
     ],
+    "Sockets": 4,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "ac%",
@@ -18652,6 +18892,8 @@
       "Tir",
       "Ort"
     ],
+    "Sockets": 2,
+    "LevelReq": 21,
     "Properties": [
       {
         "Prop": "sor",
@@ -18748,6 +18990,8 @@
       "Ral",
       "Thul"
     ],
+    "Sockets": 3,
+    "LevelReq": 23,
     "Properties": [
       {
         "Prop": "dru",
@@ -18843,6 +19087,8 @@
       "Thul",
       "Eth"
     ],
+    "Sockets": 2,
+    "LevelReq": 23,
     "Properties": [
       {
         "Prop": "nec",
@@ -18940,6 +19186,8 @@
       "Ral",
       "Eld"
     ],
+    "Sockets": 3,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "pal",
@@ -19044,6 +19292,8 @@
       "Tir",
       "Ort"
     ],
+    "Sockets": 3,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "ass",
@@ -19146,6 +19396,8 @@
       "Fal",
       "Io"
     ],
+    "Sockets": 2,
+    "LevelReq": 41,
     "Properties": [
       {
         "Prop": "bar",
@@ -19236,6 +19488,8 @@
       "Eth",
       "Amn"
     ],
+    "Sockets": 3,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "ama",
@@ -19333,6 +19587,8 @@
       "Eth",
       "Amn"
     ],
+    "Sockets": 3,
+    "LevelReq": 29,
     "Properties": [
       {
         "Prop": "ama",
@@ -19424,6 +19680,8 @@
       "Eld",
       "El"
     ],
+    "Sockets": 2,
+    "LevelReq": 11,
     "Properties": [
       {
         "Prop": "mag%",
@@ -19509,6 +19767,8 @@
       "Tir",
       "Ith"
     ],
+    "Sockets": 2,
+    "LevelReq": 15,
     "Properties": [
       {
         "Prop": "allskills",
@@ -19599,6 +19859,8 @@
       "Tal",
       "Tal"
     ],
+    "Sockets": 2,
+    "LevelReq": 17,
     "Properties": [
       {
         "Prop": "att%",
@@ -19677,6 +19939,8 @@
       "Ort",
       "Ort"
     ],
+    "Sockets": 2,
+    "LevelReq": 21,
     "Properties": [
       {
         "Prop": "skilltab",
@@ -19763,6 +20027,8 @@
       "Tir",
       "Thul"
     ],
+    "Sockets": 2,
+    "LevelReq": 23,
     "Properties": [
       {
         "Prop": "skilltab",
@@ -19846,6 +20112,8 @@
       "Amn",
       "Nef"
     ],
+    "Sockets": 2,
+    "LevelReq": 25,
     "Properties": [
       {
         "Prop": "swing2",
@@ -19939,6 +20207,8 @@
       "Um",
       "Ko"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "dmg%",
@@ -20040,6 +20310,8 @@
       "Io",
       "Um"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "aura",
@@ -20136,6 +20408,8 @@
       "Lum",
       "Ort"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "allskills",
@@ -20238,6 +20512,8 @@
       "Dol",
       "Um"
     ],
+    "Sockets": 3,
+    "LevelReq": 47,
     "Properties": [
       {
         "Prop": "block",
@@ -20332,6 +20608,8 @@
       "Mal",
       "Shael"
     ],
+    "Sockets": 3,
+    "LevelReq": 49,
     "Properties": [
       {
         "Prop": "hit-skill",
@@ -20419,6 +20697,8 @@
       "Lum",
       "Gul"
     ],
+    "Sockets": 3,
+    "LevelReq": 53,
     "Properties": [
       {
         "Prop": "allskills",
@@ -20530,6 +20810,8 @@
       "Eth",
       "Nef"
     ],
+    "Sockets": 2,
+    "LevelReq": 15,
     "Properties": [
       {
         "Prop": "war",
@@ -20625,6 +20907,8 @@
       "Dol",
       "Ist"
     ],
+    "Sockets": 2,
+    "LevelReq": 51,
     "Properties": [
       {
         "Prop": "war",
@@ -20720,6 +21004,8 @@
       "Ber",
       "Cham"
     ],
+    "Sockets": 2,
+    "LevelReq": 67,
     "Properties": [
       {
         "Prop": "war",
@@ -20823,6 +21109,8 @@
       "Cham",
       "Zod"
     ],
+    "Sockets": 4,
+    "LevelReq": 69,
     "Properties": [
       {
         "Prop": "gethit-skill",
@@ -20948,6 +21236,8 @@
       "Lo",
       "Ko"
     ],
+    "Sockets": 3,
+    "LevelReq": 63,
     "Properties": [
       {
         "Prop": "oskill",
@@ -21061,6 +21351,8 @@
       "Ohm",
       "Lo"
     ],
+    "Sockets": 3,
+    "LevelReq": 59,
     "Properties": [
       {
         "Prop": "pal",

@@ -2,7 +2,7 @@
 import { ref, onMounted, computed, nextTick } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
-import ReworkChanges from '@/components/ReworkChanges.vue';
+import RunewordTable from '@/components/RunewordTable.vue';
 
 const runewords = ref([]);
 const searchQuery = ref('');
@@ -14,7 +14,6 @@ const dataMode = ref('mod'); // mod | vanilla (mod is the default)
 // for reworked runewords; new (mod-added) runewords stay visible either way.
 const fieldOf = (runeword, name) =>
   dataMode.value === 'vanilla' ? (runeword['Vanilla' + name] ?? runeword[name]) : runeword[name];
-const expandedRows = ref(new Set());
 const debounceTimeout = ref(null);
 const itemsSection = ref(null);
 const onlyReworked = ref(false);
@@ -192,33 +191,6 @@ const getReworkChanges = (runeword) => {
   return changes;
 };
 
-// Generate a unique key for each runeword
-const getRunewordKey = (runeword, category) => {
-  // Combine name with runes, allowed items, and category to create a unique identifier
-  // Types[0], not AllowedItems: both entries of a two-type runeword carry the
-  // same AllowedItems, so they shared a key and expanding one opened both.
-  const own = runeword.Types?.[0] ?? (runeword.AllowedItems ?? []).join('-');
-  return `${runeword.Name}-${runeword.RuneNames.join('-')}-${own}-${category}`;
-};
-
-const setAllRowsExpanded = (list, category, expanded) => {
-  list.forEach(runeword => {
-    const key = getRunewordKey(runeword, category);
-    if (expanded) expandedRows.value.add(key);
-    else expandedRows.value.delete(key);
-  });
-};
-
-// Toggle row expansion
-const toggleRowExpansion = (runeword, category) => {
-  const key = getRunewordKey(runeword, category);
-  if (expandedRows.value.has(key)) {
-    expandedRows.value.delete(key);
-  } else {
-    expandedRows.value.add(key);
-  }
-};
-
 // Scroll to items section
 const scrollToItems = async () => {
   // Wait for the DOM to update
@@ -259,55 +231,72 @@ const resetFilters = () => {
   runesSearchQuery.value = '';
   selectedCategory.value = 'all';
   onlyReworked.value = false;
-  expandedRows.value.clear();
 };
 
 // Sort properties by priority
-// A group's odds at the precision the numbers carry: 60% stays 60%, and a
-// 9.9% draw keeps its digit instead of rounding to a lie.
-const formatChance = (chance) => {
-  const percent = chance * 100;
-  return `${percent < 10 ? percent.toFixed(1).replace(/\.0$/, '') : Math.round(percent)}%`;
-};
-
 const sortPropertiesByPriority = (properties) => {
   return [...properties].sort((a, b) => parseInt(b.Priority) - parseInt(a.Priority));
 };
 
-// Get categories for a runeword (excluding "new")
-const getRunewordCategories = (runeword) => {
-  const categories = [];
-  if (runeword.IsWeapon) categories.push('Weapon');
-  if (runeword.IsTorso) categories.push('Armor');
-  if (runeword.IsHelmet) categories.push('Helmet');
-  if (runeword.IsShield) categories.push('Shield');
-  return categories;
-};
+/**
+ * One group per runeword, its per-item-kind entries underneath.
+ *
+ * The export writes a runeword once per kind of item it goes in, because the
+ * runes give different bonuses in a shield than in body armour and the
+ * exclusions differ. Two rows with the same name said none of that; the group
+ * says it once and keeps the difference where it belongs.
+ */
+const toGroups = (list) => {
+  const groups = new Map();
 
-// Check if a runeword name appears multiple times in the dataset (excluding "new" runewords)
-const hasMultipleEntries = (runewordName) => {
-  const nonNewRunewords = runewords.value.filter(rw => !rw.IsNew);
-  const matchingRunewords = nonNewRunewords.filter(rw => rw.Name === runewordName);
-  return matchingRunewords.length > 1;
-};
-
-// Get display name with category suffix if the name appears in multiple entries
-const getRunewordDisplayName = (runeword) => {
-  // Don't add category suffix for "new" runewords
-  if (runeword.IsNew) {
-    return runeword.Name;
-  }
-
-  // Check if this runeword name appears multiple times in the dataset
-  if (hasMultipleEntries(runeword.Name)) {
-    const categories = getRunewordCategories(runeword);
-    if (categories.length > 0) {
-      return `${runeword.Name} (${categories[0]})`;
+  list.forEach((runeword) => {
+    const key = runeword.RowId || runeword.Name;
+    if (!groups.has(key)) {
+      const runes = fieldOf(runeword, 'RuneNames') ?? [];
+      groups.set(key, {
+        key,
+        name: runeword.Name,
+        runes,
+        sockets: runeword.Sockets ?? runes.length,
+        levelReq: runeword.LevelReq ?? 0,
+        isNew: runeword.IsNew,
+        isReworked: runeword.IsReworked && dataMode.value === 'mod',
+        variants: [],
+      });
     }
-  }
 
-  return runeword.Name;
+    const changes = runeword.IsReworked ? getReworkChanges(runeword) : [];
+    groups.get(key).variants.push({
+      label: getEntryItemsText(runeword),
+      properties: sortPropertiesByPriority(fieldOf(runeword, 'Properties') ?? []),
+      reworkChanges: changes.length ? changes : null,
+    });
+  });
+
+  return [...groups.values()];
 };
+
+const isFiltering = computed(() =>
+  Boolean(searchQuery.value || runesSearchQuery.value || selectedCategory.value !== 'all'));
+
+const resultTitle = computed(() => {
+  if (searchQuery.value && runesSearchQuery.value) {
+    return `Search Results for "${searchQuery.value}" with runes "${runesSearchQuery.value}"`;
+  }
+  if (searchQuery.value) return `Search Results for "${searchQuery.value}"`;
+  if (runesSearchQuery.value) return `Search Results for runes "${runesSearchQuery.value}"`;
+
+  return {
+    new: 'New Runewords',
+    weapons: 'Weapon Runewords',
+    armors: 'Armor Runewords',
+    helmets: 'Helmet Runewords',
+    shields: 'Shield Runewords',
+  }[selectedCategory.value] ?? 'Filtered Runewords';
+});
+
+const reworkTitle = computed(() =>
+  dataMode.value === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla');
 
 onMounted(() => {
   runewords.value = runewordsData;
@@ -462,455 +451,27 @@ onMounted(() => {
 
     <!-- Runewords Tables -->
     <div class="row g-4" ref="itemsSection">
-      <!-- Filtered Results Table (when search or category filter is active) -->
-      <div class="col-12" v-if="searchQuery || runesSearchQuery || selectedCategory !== 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">
-              <span v-if="searchQuery || runesSearchQuery">Search Results</span>
-              <span v-else-if="selectedCategory === 'new'">New Runewords</span>
-              <span v-else-if="selectedCategory === 'weapons'">Weapon Runewords</span>
-              <span v-else-if="selectedCategory === 'armors'">Armor Runewords</span>
-              <span v-else-if="selectedCategory === 'helmets'">Helmet Runewords</span>
-              <span v-else-if="selectedCategory === 'shields'">Shield Runewords</span>
-              <span v-else>Filtered Runewords</span>
-            </h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(filteredRunewords, 'filtered', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(filteredRunewords, 'filtered', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div v-if="filteredRunewords.length === 0" class="text-center text-muted py-4">
-              No runewords found matching your criteria.
-            </div>
-            <div v-else class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in filteredRunewords" :key="getRunewordKey(runeword, 'filtered')">
-                    <tr @click="toggleRowExpansion(runeword, 'filtered')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'filtered'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+      <div class="col-12" v-if="isFiltering">
+        <RunewordTable :title="resultTitle" :groups="toGroups(filteredRunewords)" :rework-title="reworkTitle" />
       </div>
 
-      <!-- New Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.new.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">New Runewords</h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.new, 'new', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.new, 'new', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in categorizedRunewords.new" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'new')" style="cursor: pointer;">
-                      <td>{{ runeword.Name }}</td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'new'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <template v-else>
+        <div class="col-12" v-if="categorizedRunewords.new.length > 0">
+          <RunewordTable title="New Runewords" :groups="toGroups(categorizedRunewords.new)" :rework-title="reworkTitle" />
         </div>
-      </div>
-
-      <!-- Weapons Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.weapons.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">Weapon Runewords</h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.weapons, 'weapons', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.weapons, 'weapons', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in categorizedRunewords.weapons" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'weapons')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'weapons'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="col-12" v-if="categorizedRunewords.weapons.length > 0">
+          <RunewordTable title="Weapon Runewords" :groups="toGroups(categorizedRunewords.weapons)" :rework-title="reworkTitle" />
         </div>
-      </div>
-
-      <!-- Armor Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.armors.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">Armor Runewords</h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.armors, 'armors', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.armors, 'armors', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in categorizedRunewords.armors" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'armors')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'armors'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="col-12" v-if="categorizedRunewords.armors.length > 0">
+          <RunewordTable title="Armor Runewords" :groups="toGroups(categorizedRunewords.armors)" :rework-title="reworkTitle" />
         </div>
-      </div>
-
-      <!-- Helmet Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.helmets.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">Helmet Runewords</h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.helmets, 'helmets', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.helmets, 'helmets', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in categorizedRunewords.helmets" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'helmets')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'helmets'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="col-12" v-if="categorizedRunewords.helmets.length > 0">
+          <RunewordTable title="Helmet Runewords" :groups="toGroups(categorizedRunewords.helmets)" :rework-title="reworkTitle" />
         </div>
-      </div>
-
-      <!-- Shield Runewords Table -->
-      <div class="col-12" v-if="categorizedRunewords.shields.length > 0 && !searchQuery && !runesSearchQuery && selectedCategory === 'all'">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <h2 class="h4 mb-0">Shield Runewords</h2>
-            <span class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.shields, 'shields', true)">Expand all</button>
-              <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAllRowsExpanded(categorizedRunewords.shields, 'shields', false)">Collapse all</button>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in categorizedRunewords.shields" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'shields')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'shields'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="col-12" v-if="categorizedRunewords.shields.length > 0">
+          <RunewordTable title="Shield Runewords" :groups="toGroups(categorizedRunewords.shields)" :rework-title="reworkTitle" />
         </div>
-      </div>
-
-      <!-- Search Results Table -->
-      <div class="col-12" v-if="searchQuery || runesSearchQuery">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
-            <h2 class="h4 mb-0">
-              <span v-if="searchQuery && runesSearchQuery">
-                Search Results for "{{ searchQuery }}" with runes "{{ runesSearchQuery }}"
-              </span>
-              <span v-else-if="searchQuery">
-                Search Results for "{{ searchQuery }}"
-              </span>
-              <span v-else>
-                Search Results for runes "{{ runesSearchQuery }}"
-              </span>
-            </h2>
-            <button class="btn btn-sm btn-outline-secondary mt-2" @click="resetFilters">
-              Clear Search
-            </button>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Runes</th>
-                    <th>Allowed Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-for="runeword in filteredRunewords" :key="runeword.Name">
-                    <tr @click="toggleRowExpansion(runeword, 'search')" style="cursor: pointer;">
-                      <td>
-                        {{ getRunewordDisplayName(runeword) }}
-                        <span v-if="runeword.IsNew" class="badge bg-secondary ms-2">New</span>
-                        <span v-if="runeword.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-2">Reworked</span>
-                      </td>
-                      <td>{{ fieldOf(runeword, 'RuneNames').join(' - ') }}</td>
-                      <td>{{ getEntryItemsText(runeword) }}</td>
-                    </tr>
-                    <tr v-if="expandedRows.has(getRunewordKey(runeword, 'search'))" class="expanded-row">
-                      <td colspan="3">
-                        <div class="p-3">
-                          <h5 class="section-header">Properties</h5>
-                          <ul class="list-group list-group-flush">
-                            <li
-                              v-for="(prop, propIndex) in sortPropertiesByPriority(fieldOf(runeword, 'Properties'))"
-                              :key="propIndex"
-                              class="list-group-item list-item-property"
-                            >
-                              {{ prop.Description }}
-                              <ul v-if="prop.Rolls" class="property-rolls">
-                                <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">
-                                  <span>{{ roll.Description }}</span>
-                                  <span v-if="roll.Chance != null" class="roll-chance">{{ formatChance(roll.Chance) }}</span>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ReworkChanges v-if="runeword.IsReworked" :changes="getReworkChanges(runeword)" :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'" />
-                        </div>
-                      </td>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
