@@ -21,6 +21,7 @@
       "Ort",
       "Tal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 21,
     "Properties": [
@@ -127,6 +128,7 @@
       "Shael",
       "Ral"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 29,
     "Properties": [
@@ -225,6 +227,7 @@
       "Mal",
       "Lum"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 63,
     "Properties": [
@@ -457,6 +460,7 @@
       "Io",
       "Nef"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -560,6 +564,7 @@
       "Um",
       "Um"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -692,6 +697,7 @@
       "Sur",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 61,
     "Properties": [
@@ -904,6 +910,7 @@
       "Mal",
       "Gul"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -1103,6 +1110,7 @@
       "Zod",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 6,
     "LevelReq": 69,
     "Properties": [
@@ -1249,6 +1257,7 @@
       "Ist",
       "Ohm"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 57,
     "Properties": [
@@ -1461,6 +1470,7 @@
       "Ber",
       "Ist"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 63,
     "Properties": [
@@ -1574,6 +1584,9 @@
       "Fal",
       "Ohm",
       "Um"
+    ],
+    "ClassOnly": [
+      "ass"
     ],
     "Sockets": 3,
     "LevelReq": 57,
@@ -1760,6 +1773,7 @@
       "Um",
       "Tir"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -1962,6 +1976,7 @@
       "Ort",
       "Gul"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 55,
     "Properties": [
@@ -2204,6 +2219,7 @@
       "Ist",
       "Io"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 51,
     "Properties": [
@@ -2402,6 +2418,7 @@
       "Jah",
       "Ko"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 65,
     "Properties": [
@@ -2643,6 +2660,7 @@
       "Lo",
       "Cham"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 67,
     "Properties": [
@@ -2854,6 +2872,7 @@
       "Lo",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 61,
     "Properties": [
@@ -3050,6 +3069,7 @@
       "Lo",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 61,
     "Properties": [
@@ -3245,6 +3265,7 @@
       "Jah",
       "Pul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -3358,6 +3379,7 @@
       "Jah",
       "Pul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -3469,6 +3491,7 @@
       "Um",
       "Thul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -3631,6 +3654,7 @@
       "Tal",
       "Amn"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 25,
     "Properties": [
@@ -3825,6 +3849,7 @@
       "Ith",
       "Ber"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -4019,6 +4044,7 @@
       "Ral",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 45,
     "Properties": [
@@ -4177,6 +4203,7 @@
       "Sol",
       "Sur"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 63,
     "Properties": [
@@ -4405,6 +4432,7 @@
       "Lem",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -4621,6 +4649,7 @@
       "Ort",
       "Jah"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -4895,6 +4924,7 @@
       "Pul",
       "Vex"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 55,
     "Properties": [
@@ -5000,6 +5030,7 @@
       "Dol",
       "Lo"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 59,
     "Properties": [
@@ -5130,6 +5161,7 @@
       "Dol",
       "Lo"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 59,
     "Properties": [
@@ -5257,6 +5289,7 @@
       "Gul",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -5451,6 +5484,7 @@
       "Um",
       "Pul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -5621,6 +5655,7 @@
       "Mal",
       "Ral"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 59,
     "Properties": [
@@ -5848,6 +5883,7 @@
       "Amn",
       "Lo"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 67,
     "Properties": [
@@ -6060,6 +6096,7 @@
       "Sol",
       "Ko"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 39,
     "Properties": [
@@ -6228,6 +6265,7 @@
       "Pul",
       "Thul"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 55,
     "Properties": [
@@ -6466,6 +6504,7 @@
       "Ort",
       "Tal"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 21,
     "Properties": [
@@ -6667,6 +6706,7 @@
       "Tir",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 27,
     "Properties": [
@@ -6887,6 +6927,7 @@
       "Jah",
       "Lo"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -7012,6 +7053,7 @@
       "Ber",
       "Ist"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 63,
     "Properties": [
@@ -7135,6 +7177,7 @@
       "Tal",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 27,
     "Properties": [
@@ -7266,6 +7309,7 @@
       "Ral",
       "Thul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 25,
     "Properties": [
@@ -7458,6 +7502,7 @@
       "Gul",
       "Fal"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 53,
     "Properties": [
@@ -7665,6 +7710,7 @@
       "Jah",
       "Ber"
     ],
+    "ClassOnly": [],
     "Sockets": 6,
     "LevelReq": 65,
     "Properties": [
@@ -7867,6 +7913,7 @@
       "Lem",
       "Ko"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 43,
     "Properties": [
@@ -7979,6 +8026,7 @@
       "Tir",
       "Ral"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 19,
     "Properties": [
@@ -8074,6 +8122,7 @@
       "Lum",
       "Fal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 41,
     "Properties": [
@@ -8234,6 +8283,7 @@
       "Ort",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 27,
     "Properties": [
@@ -8372,6 +8422,7 @@
       "El",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 15,
     "Properties": [
@@ -8475,6 +8526,7 @@
       "Ko",
       "Nef"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 39,
     "Properties": [
@@ -8666,6 +8718,7 @@
       "Sol",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 37,
     "Properties": [
@@ -8880,6 +8933,7 @@
       "Thul",
       "Ith"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 67,
     "Properties": [
@@ -8999,6 +9053,7 @@
       "Amn",
       "Nef"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 25,
     "Properties": [
@@ -9159,6 +9214,7 @@
       "Nef",
       "Tir"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 13,
     "Properties": [
@@ -9338,6 +9394,7 @@
       "Mal",
       "Lum"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 49,
     "Properties": [
@@ -9575,6 +9632,7 @@
       "Eth",
       "Fal"
     ],
+    "ClassOnly": [],
     "Sockets": 5,
     "LevelReq": 41,
     "Properties": [
@@ -9716,6 +9774,7 @@
       "Io",
       "Nef"
     ],
+    "ClassOnly": [],
     "Sockets": 6,
     "LevelReq": 69,
     "Properties": [
@@ -9959,6 +10018,7 @@
       "Eld",
       "Lem"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 43,
     "Properties": [
@@ -10188,6 +10248,9 @@
       "Ort",
       "Thul"
     ],
+    "ClassOnly": [
+      "ass"
+    ],
     "Sockets": 3,
     "LevelReq": 23,
     "Properties": [
@@ -10382,6 +10445,7 @@
       "Thul",
       "Amn"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 29,
     "Properties": [
@@ -10543,6 +10607,7 @@
       "El",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 43,
     "Properties": [
@@ -10771,6 +10836,7 @@
       "Lo",
       "Jah"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -10886,6 +10952,7 @@
       "Lo",
       "Jah"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 65,
     "Properties": [
@@ -11005,6 +11072,7 @@
       "Shael",
       "Um"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 67,
     "Properties": [
@@ -11205,6 +11273,7 @@
       "Io",
       "Lo"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 67,
     "Properties": [
@@ -11415,6 +11484,7 @@
       "Gul",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 53,
     "Properties": [
@@ -11567,6 +11637,7 @@
       "Mal",
       "Tir"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 49,
     "Properties": [
@@ -11729,6 +11800,7 @@
       "Sol",
       "Ith"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 27,
     "Properties": [
@@ -11915,6 +11987,7 @@
       "Mal",
       "Ith"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 49,
     "Properties": [
@@ -12084,6 +12157,7 @@
       "Shael",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 29,
     "Properties": [
@@ -12179,6 +12253,7 @@
       "Lem",
       "Gul"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 53,
     "Properties": [
@@ -12390,6 +12465,7 @@
       "Ko",
       "Mal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 49,
     "Properties": [
@@ -12498,6 +12574,7 @@
       "Tir",
       "Vex"
     ],
+    "ClassOnly": [],
     "Sockets": 6,
     "LevelReq": 55,
     "Properties": [
@@ -12738,6 +12815,7 @@
       "Nef",
       "Lum"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 37,
     "Properties": [
@@ -12830,6 +12908,7 @@
       "Ort",
       "Amn"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 25,
     "Properties": [
@@ -12953,6 +13032,7 @@
       "Ort",
       "Amn"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 25,
     "Properties": [
@@ -13071,6 +13151,7 @@
       "Eth",
       "Lum"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 37,
     "Properties": [
@@ -13247,6 +13328,7 @@
       "Tal",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 17,
     "Properties": [
@@ -13422,6 +13504,7 @@
       "Tir",
       "El"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 13,
     "Properties": [
@@ -13586,6 +13669,7 @@
       "Pul",
       "Lum"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 47,
     "Properties": [
@@ -13762,6 +13846,7 @@
       "Amn",
       "Tir"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 25,
     "Properties": [
@@ -13900,6 +13985,7 @@
       "Thul",
       "Lem"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 43,
     "Properties": [
@@ -13993,6 +14079,7 @@
       "El",
       "Hel"
     ],
+    "ClassOnly": [],
     "Sockets": 6,
     "LevelReq": 41,
     "Properties": [
@@ -14269,6 +14356,7 @@
       "Dol",
       "Mal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 49,
     "Properties": [
@@ -14441,6 +14529,7 @@
       "Zod",
       "Ist"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 69,
     "Properties": [
@@ -14544,6 +14633,7 @@
       "Ko",
       "Tir"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 43,
     "Properties": [
@@ -14659,6 +14749,7 @@
       "Dol",
       "Io"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 35,
     "Properties": [
@@ -14760,6 +14851,7 @@
       "Sur",
       "El"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 61,
     "Properties": [
@@ -14954,6 +15046,7 @@
       "Ith",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 45,
     "Properties": [
@@ -15059,6 +15152,7 @@
       "Ber",
       "Mal"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 63,
     "Properties": [
@@ -15267,6 +15361,7 @@
       "Ort",
       "Eth"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 21,
     "Properties": [
@@ -15429,6 +15524,7 @@
       "Ko",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 39,
     "Properties": [
@@ -15574,6 +15670,7 @@
       "Ko",
       "Eld"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 39,
     "Properties": [
@@ -15722,6 +15819,9 @@
       "Mal",
       "Gul",
       "Amn"
+    ],
+    "ClassOnly": [
+      "ass"
     ],
     "Sockets": 3,
     "LevelReq": 53,
@@ -15941,6 +16041,7 @@
       "Cham",
       "Fal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 67,
     "Properties": [
@@ -16127,6 +16228,7 @@
       "Io",
       "Ort"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -16265,6 +16367,7 @@
       "Io",
       "Ral"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -16403,6 +16506,7 @@
       "Io",
       "Thul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -16490,6 +16594,7 @@
       "Io",
       "Tal"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -16577,6 +16682,7 @@
       "Io",
       "Sol"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 35,
     "Properties": [
@@ -16672,6 +16778,7 @@
       "Ral",
       "Io"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 51,
     "Properties": [
@@ -16776,6 +16883,7 @@
       "Dol",
       "Gul"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 53,
     "Properties": [
@@ -16881,6 +16989,7 @@
       "Shael",
       "Ohm"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 57,
     "Properties": [
@@ -16983,6 +17092,9 @@
     "RuneNames": [
       "Mal",
       "Ist"
+    ],
+    "ClassOnly": [
+      "sor"
     ],
     "Sockets": 2,
     "LevelReq": 51,
@@ -17089,6 +17201,9 @@
       "Shael",
       "Ist",
       "Tir"
+    ],
+    "ClassOnly": [
+      "dru"
     ],
     "Sockets": 3,
     "LevelReq": 51,
@@ -17204,6 +17319,9 @@
       "Ist",
       "Sol"
     ],
+    "ClassOnly": [
+      "bar"
+    ],
     "Sockets": 3,
     "LevelReq": 51,
     "Properties": [
@@ -17317,6 +17435,9 @@
       "Um",
       "Ist"
     ],
+    "ClassOnly": [
+      "nec"
+    ],
     "Sockets": 2,
     "LevelReq": 51,
     "Properties": [
@@ -17423,6 +17544,9 @@
       "Fal",
       "Ist",
       "Ko"
+    ],
+    "ClassOnly": [
+      "pal"
     ],
     "Sockets": 3,
     "LevelReq": 51,
@@ -17536,6 +17660,9 @@
       "Sol",
       "Ist"
     ],
+    "ClassOnly": [
+      "ass"
+    ],
     "Sockets": 2,
     "LevelReq": 51,
     "Properties": [
@@ -17645,6 +17772,9 @@
       "Ist",
       "Shael",
       "Amn"
+    ],
+    "ClassOnly": [
+      "ama"
     ],
     "Sockets": 4,
     "LevelReq": 51,
@@ -17770,6 +17900,9 @@
       "Ist",
       "Shael",
       "Amn"
+    ],
+    "ClassOnly": [
+      "ama"
     ],
     "Sockets": 4,
     "LevelReq": 51,
@@ -17900,6 +18033,9 @@
       "Vex",
       "Jah"
     ],
+    "ClassOnly": [
+      "sor"
+    ],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -18024,6 +18160,9 @@
       "Jah",
       "Dol"
     ],
+    "ClassOnly": [
+      "dru"
+    ],
     "Sockets": 3,
     "LevelReq": 65,
     "Properties": [
@@ -18129,6 +18268,9 @@
       "Ber",
       "El",
       "Cham"
+    ],
+    "ClassOnly": [
+      "bar"
     ],
     "Sockets": 3,
     "LevelReq": 67,
@@ -18243,6 +18385,9 @@
       "Zod",
       "Sur"
     ],
+    "ClassOnly": [
+      "nec"
+    ],
     "Sockets": 2,
     "LevelReq": 69,
     "Properties": [
@@ -18346,6 +18491,9 @@
     "RuneNames": [
       "Sur",
       "Ber"
+    ],
+    "ClassOnly": [
+      "ass"
     ],
     "Sockets": 2,
     "LevelReq": 63,
@@ -18458,6 +18606,9 @@
       "Ohm",
       "Zod",
       "Pul"
+    ],
+    "ClassOnly": [
+      "ama"
     ],
     "Sockets": 5,
     "LevelReq": 69,
@@ -18586,6 +18737,9 @@
       "Shael",
       "Ohm"
     ],
+    "ClassOnly": [
+      "ama"
+    ],
     "Sockets": 5,
     "LevelReq": 67,
     "Properties": [
@@ -18692,6 +18846,7 @@
       "Ist",
       "Hel"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 51,
     "Properties": [
@@ -18795,6 +18950,7 @@
       "Ist",
       "Hel"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 51,
     "Properties": [
@@ -18891,6 +19047,9 @@
     "RuneNames": [
       "Tir",
       "Ort"
+    ],
+    "ClassOnly": [
+      "sor"
     ],
     "Sockets": 2,
     "LevelReq": 21,
@@ -18990,6 +19149,9 @@
       "Ral",
       "Thul"
     ],
+    "ClassOnly": [
+      "dru"
+    ],
     "Sockets": 3,
     "LevelReq": 23,
     "Properties": [
@@ -19086,6 +19248,9 @@
     "RuneNames": [
       "Thul",
       "Eth"
+    ],
+    "ClassOnly": [
+      "nec"
     ],
     "Sockets": 2,
     "LevelReq": 23,
@@ -19185,6 +19350,9 @@
       "Amn",
       "Ral",
       "Eld"
+    ],
+    "ClassOnly": [
+      "pal"
     ],
     "Sockets": 3,
     "LevelReq": 25,
@@ -19292,6 +19460,9 @@
       "Tir",
       "Ort"
     ],
+    "ClassOnly": [
+      "ass"
+    ],
     "Sockets": 3,
     "LevelReq": 29,
     "Properties": [
@@ -19396,6 +19567,9 @@
       "Fal",
       "Io"
     ],
+    "ClassOnly": [
+      "bar"
+    ],
     "Sockets": 2,
     "LevelReq": 41,
     "Properties": [
@@ -19487,6 +19661,9 @@
       "Shael",
       "Eth",
       "Amn"
+    ],
+    "ClassOnly": [
+      "ama"
     ],
     "Sockets": 3,
     "LevelReq": 29,
@@ -19587,6 +19764,9 @@
       "Eth",
       "Amn"
     ],
+    "ClassOnly": [
+      "ama"
+    ],
     "Sockets": 3,
     "LevelReq": 29,
     "Properties": [
@@ -19680,6 +19860,7 @@
       "Eld",
       "El"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 11,
     "Properties": [
@@ -19767,6 +19948,7 @@
       "Tir",
       "Ith"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 15,
     "Properties": [
@@ -19859,6 +20041,7 @@
       "Tal",
       "Tal"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 17,
     "Properties": [
@@ -19939,6 +20122,7 @@
       "Ort",
       "Ort"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 21,
     "Properties": [
@@ -20027,6 +20211,7 @@
       "Tir",
       "Thul"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 23,
     "Properties": [
@@ -20112,6 +20297,7 @@
       "Amn",
       "Nef"
     ],
+    "ClassOnly": [],
     "Sockets": 2,
     "LevelReq": 25,
     "Properties": [
@@ -20207,6 +20393,7 @@
       "Um",
       "Ko"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -20310,6 +20497,7 @@
       "Io",
       "Um"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -20408,6 +20596,7 @@
       "Lum",
       "Ort"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -20512,6 +20701,7 @@
       "Dol",
       "Um"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 47,
     "Properties": [
@@ -20608,6 +20798,7 @@
       "Mal",
       "Shael"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 49,
     "Properties": [
@@ -20697,6 +20888,7 @@
       "Lum",
       "Gul"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 53,
     "Properties": [
@@ -20810,6 +21002,9 @@
       "Eth",
       "Nef"
     ],
+    "ClassOnly": [
+      "war"
+    ],
     "Sockets": 2,
     "LevelReq": 15,
     "Properties": [
@@ -20907,6 +21102,9 @@
       "Dol",
       "Ist"
     ],
+    "ClassOnly": [
+      "war"
+    ],
     "Sockets": 2,
     "LevelReq": 51,
     "Properties": [
@@ -21003,6 +21201,9 @@
     "RuneNames": [
       "Ber",
       "Cham"
+    ],
+    "ClassOnly": [
+      "war"
     ],
     "Sockets": 2,
     "LevelReq": 67,
@@ -21109,6 +21310,7 @@
       "Cham",
       "Zod"
     ],
+    "ClassOnly": [],
     "Sockets": 4,
     "LevelReq": 69,
     "Properties": [
@@ -21236,6 +21438,7 @@
       "Lo",
       "Ko"
     ],
+    "ClassOnly": [],
     "Sockets": 3,
     "LevelReq": 63,
     "Properties": [
@@ -21350,6 +21553,9 @@
       "Vex",
       "Ohm",
       "Lo"
+    ],
+    "ClassOnly": [
+      "pal"
     ],
     "Sockets": 3,
     "LevelReq": 59,

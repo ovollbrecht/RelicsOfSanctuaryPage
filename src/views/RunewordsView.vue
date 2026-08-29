@@ -20,6 +20,11 @@ const debounceTimeout = ref(null);
 // together to get nothing back. One choice, "all" first.
 const statusFilter = ref('all');
 
+// all | hide | only. Judged per runeword, not per entry: one that fits orbs
+// *and* plain swords is not a class runeword, and hiding it would take a
+// generally useful option off the page.
+const classFilter = ref('all');
+
 /**
  * The three tiers the in-game menu already uses, by the highest rune a
  * runeword needs. High has no ceiling: the bound used to stop at Cham, and the
@@ -37,7 +42,18 @@ const highestRune = (runeword) =>
 const tierOf = (runeword) =>
   RUNE_TIERS.find((tier) => highestRune(runeword) <= tier.max) ?? RUNE_TIERS[RUNE_TIERS.length - 1];
 
+const classBoundRows = computed(() => {
+  const bound = new Map();
+  runewords.value.forEach((runeword) => {
+    const isBound = (runeword.ClassOnly ?? []).length > 0;
+    bound.set(runeword.RowId, (bound.get(runeword.RowId) ?? true) && isBound);
+  });
+  return new Set([...bound].filter(([, isBound]) => isBound).map(([row]) => row));
+});
+
 const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
+  if (classFilter.value === 'hide' && classBoundRows.value.has(runeword.RowId)) return false;
+  if (classFilter.value === 'only' && !classBoundRows.value.has(runeword.RowId)) return false;
   if (statusFilter.value === 'new') return runeword.IsNew;
   if (statusFilter.value === 'reworked') return runeword.IsReworked;
   return true;
@@ -203,6 +219,7 @@ const resetFilters = () => {
   runesSearchQuery.value = '';
   selectedCategory.value = 'all';
   statusFilter.value = 'all';
+  classFilter.value = 'all';
 };
 
 // Sort properties by priority
@@ -412,6 +429,20 @@ onMounted(() => {
                   <label class="form-check-label" for="rw-status-reworked">
                     {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
                   </label>
+                </div>
+              </div>
+              <div class="d-flex flex-wrap gap-4 mt-2">
+                <div class="form-check reworked-toggle">
+                  <input id="rw-class-all" v-model="classFilter" value="all" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-class-all">All</label>
+                </div>
+                <div class="form-check reworked-toggle">
+                  <input id="rw-class-hide" v-model="classFilter" value="hide" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-class-hide">Hide class specific</label>
+                </div>
+                <div class="form-check reworked-toggle">
+                  <input id="rw-class-only" v-model="classFilter" value="only" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-class-only">Only class specific</label>
                 </div>
               </div>
             </div>
