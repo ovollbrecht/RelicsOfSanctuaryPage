@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import itemBaseData from '@/assets/item_bases.json';
@@ -27,6 +28,18 @@ const statusFilter = ref('all');
 // *and* plain swords is not a class runeword, and hiding it would take a
 // generally useful option off the page.
 const classFilter = ref('all');
+
+// ...and which class, for when the question is "what can my necromancer wear".
+const classPick = ref('any');
+
+const SORT_OPTIONS = [
+  { value: 'level', label: 'Level' },
+  { value: 'name', label: 'Name' },
+  { value: 'sockets', label: 'Sockets' },
+  { value: 'rune', label: 'Highest rune' },
+];
+const sortBy = ref('level');
+const sortDir = ref('asc');
 
 /* ---- what fits the item in your hand ------------------------------------
    The question this answers is "I found a long staff with three sockets, what
@@ -115,6 +128,12 @@ const fitsSelectedItem = (runeword) => {
   if (excluded.some((type) => chain.has(type))) return false;
   return own.some((type) => chain.has(type) || chainOf(type).has(code));
 };
+
+// Picking a class already says "only class specific"; leaving "hide" on would
+// ask for both at once and return nothing.
+watch(classPick, (name) => {
+  if (name !== 'any' && classFilter.value !== 'all') classFilter.value = 'all';
+});
 
 // Picking a base narrows what it can hold; a socket count it cannot reach
 // would silently empty the page, so it goes back to "any".
@@ -281,7 +300,25 @@ const classBoundRows = computed(() => {
   return new Set([...bound].filter(([, isBound]) => isBound).map(([row]) => row));
 });
 
+// Every class a runeword is bound to, in the order charstats lists them.
+const classOptions = computed(() => {
+  const seen = [];
+  runewords.value.forEach((runeword) => {
+    (runeword.ClassNames ?? []).forEach((name) => {
+      if (!seen.includes(name)) seen.push(name);
+    });
+  });
+  return seen;
+});
+
 const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
+  if (classPick.value !== 'any') {
+    // Bound to that class, and bound at all: an entry that also fits a plain
+    // sword names no class, and would otherwise slip through on a sibling
+    // entry's class list.
+    if (!classBoundRows.value.has(runeword.RowId)) return false;
+    if (!(runeword.ClassNames ?? []).includes(classPick.value)) return false;
+  }
   if (classFilter.value === 'hide' && classBoundRows.value.has(runeword.RowId)) return false;
   if (classFilter.value === 'only' && !classBoundRows.value.has(runeword.RowId)) return false;
   if (statusFilter.value === 'new') return runeword.IsNew;
@@ -482,9 +519,12 @@ const resetFilters = () => {
   selectedCategory.value = 'all';
   statusFilter.value = 'all';
   classFilter.value = 'all';
+  classPick.value = 'any';
   itemFilter.value = ITEM_FILTER_ANY;
   socketFilter.value = 'any';
   useRuneFilter.value = false;
+  sortBy.value = 'level';
+  sortDir.value = 'asc';
 };
 
 // Sort properties by priority
@@ -513,6 +553,7 @@ const toGroups = (list) => {
         runes,
         sockets: runeword.Sockets ?? runes.length,
         levelReq: runeword.LevelReq ?? 0,
+        highestRune: highestRune(runeword),
         isNew: runeword.IsNew,
         isReworked: runeword.IsReworked && dataMode.value === 'mod',
         // Only where every variant is bound: a runeword that also fits a plain
@@ -539,12 +580,30 @@ const toGroups = (list) => {
  * "New" was a button and a table of its own - so the same runeword appeared
  * three times on one screen and no state said which view you were in.
  */
+/* Sorting happens after grouping, so a runeword counts once however many
+   kinds of item it fits - and inside its tier, because the tiers are the
+   page's shape rather than a sort order. Name breaks every tie, so the list
+   never shuffles between two runewords that compare equal. */
+const compareGroups = (a, b) => {
+  const by = {
+    level: (group) => group.levelReq ?? 0,
+    name: (group) => group.name.toLowerCase(),
+    sockets: (group) => group.sockets ?? 0,
+    rune: (group) => group.highestRune ?? 0,
+  }[sortBy.value] ?? (() => 0);
+
+  const left = by(a);
+  const right = by(b);
+  const order = left < right ? -1 : left > right ? 1 : 0;
+  return (sortDir.value === 'desc' ? -order : order) || a.name.localeCompare(b.name);
+};
+
 const tiers = computed(() => RUNE_TIERS
   .map((tier) => ({
     ...tier,
     groups: toGroups(filteredRunewords.value
-      .filter((runeword) => tierOf(runeword).key === tier.key)
-      .sort((a, b) => (a.LevelReq ?? 0) - (b.LevelReq ?? 0) || a.Name.localeCompare(b.Name))),
+      .filter((runeword) => tierOf(runeword).key === tier.key))
+      .sort(compareGroups),
   }))
   .filter((tier) => tier.groups.length > 0));
 
@@ -553,8 +612,78 @@ const resultCount = computed(() => tiers.value.reduce((total, tier) => total + t
 const reworkTitle = computed(() =>
   dataMode.value === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla');
 
+/* ---- the link ------------------------------------------------------------
+   Everything the page is showing, in the address bar: "a long staff with three
+   sockets" is worth sending to somebody. Defaults stay out of the query, so a
+   plain visit keeps a plain URL, and the query wins over the session when both
+   have something to say - a link somebody sent should show what they saw. */
+const route = useRoute();
+const router = useRouter();
+
+/* The query is read as the whole state, not as a set of overrides: going back
+   to a link without "sort" has to mean the default sort, not whatever was set
+   a moment ago. Which also makes reading idempotent, so writing the query back
+   out cannot start a loop. */
+const readQuery = () => {
+  const query = route.query;
+  const one = (value) => (Array.isArray(value) ? value[0] : value);
+  const oneOf = (value, allowed, fallback) => (allowed.includes(one(value)) ? one(value) : fallback);
+
+  searchQuery.value = one(query.q) ?? '';
+  runesSearchQuery.value = one(query.runes) ?? '';
+  selectedCategory.value = oneOf(query.cat, ['weapons', 'armors', 'helmets', 'shields'], 'all');
+  dataMode.value = oneOf(query.data, ['vanilla'], 'mod');
+  statusFilter.value = oneOf(query.status, ['new', 'reworked'], 'all');
+  classFilter.value = oneOf(query.classes, ['hide', 'only'], 'all');
+  classPick.value = oneOf(query.cls, classOptions.value, 'any');
+  itemFilter.value = one(query.base) ?? ITEM_FILTER_ANY;
+  socketFilter.value = Number(one(query.sock)) || 'any';
+  sortBy.value = oneOf(query.sort, SORT_OPTIONS.map((option) => option.value), 'level');
+  sortDir.value = oneOf(query.dir, ['asc', 'desc'], 'asc');
+
+  // Somebody's runes are their own setting, so a link without them leaves the
+  // picker alone - it only switches the filter off, so the link shows what the
+  // person who sent it was looking at.
+  const owned = one(query.own);
+  if (owned) ownedRunes.value = new Set(owned.split(',').filter(Boolean));
+  useRuneFilter.value = Boolean(owned);
+};
+
+watch(
+  [searchQuery, runesSearchQuery, selectedCategory, dataMode, statusFilter, classFilter,
+   classPick, itemFilter, socketFilter, sortBy, sortDir, useRuneFilter, ownedRunes],
+  () => {
+    router.replace({
+      query: {
+        ...(searchQuery.value ? { q: searchQuery.value } : {}),
+        ...(runesSearchQuery.value ? { runes: runesSearchQuery.value } : {}),
+        ...(selectedCategory.value !== 'all' ? { cat: selectedCategory.value } : {}),
+        ...(dataMode.value !== 'mod' ? { data: dataMode.value } : {}),
+        ...(statusFilter.value !== 'all' ? { status: statusFilter.value } : {}),
+        ...(classFilter.value !== 'all' ? { classes: classFilter.value } : {}),
+        ...(classPick.value !== 'any' ? { cls: classPick.value } : {}),
+        ...(itemFilter.value !== ITEM_FILTER_ANY ? { base: itemFilter.value } : {}),
+        ...(socketFilter.value !== 'any' ? { sock: String(socketFilter.value) } : {}),
+        ...(sortBy.value !== 'level' ? { sort: sortBy.value } : {}),
+        ...(sortDir.value !== 'asc' ? { dir: sortDir.value } : {}),
+        // The runes only travel when they are doing something: 33 codes in a
+        // link that filters nothing would be noise.
+        ...(useRuneFilter.value && ownedRunes.value.size > 0
+          ? { own: [...ownedRunes.value].join(',') }
+          : {}),
+      },
+    });
+  },
+  { deep: true },
+);
+
+// Back and forward move the query without remounting anything, so the page
+// follows it.
+watch(() => route.query, readQuery);
+
 onMounted(() => {
   runewords.value = runewordsData;
+  readQuery();
   wideQuery.addEventListener('change', syncWide);
   // Belt and braces: some environments resize without firing the media query.
   window.addEventListener('resize', syncWide);
@@ -824,7 +953,36 @@ onUnmounted(() => {
                   <input id="rw-class-only" v-model="classFilter" value="only" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-class-only">Only class specific</label>
                 </div>
+                <!-- One class, when the question is what this character can
+                     wear. It answers the three above, so it clears them. -->
+                <div class="rw-inline-field">
+                  <label class="form-label mb-0" for="rw-class-pick">Class</label>
+                  <select id="rw-class-pick" v-model="classPick" class="form-select form-select-sm">
+                    <option value="any">Any</option>
+                    <option v-for="name in classOptions" :key="name" :value="name">{{ name }}</option>
+                  </select>
+                </div>
               </div>
+            </div>
+
+            <!-- Sort order, inside each tier -->
+            <div class="d-flex flex-wrap align-items-end gap-3 mt-3">
+              <div class="rw-inline-field">
+                <label class="form-label mb-0" for="rw-sort">Sort by</label>
+                <select id="rw-sort" v-model="sortBy" class="form-select form-select-sm">
+                  <option v-for="option in SORT_OPTIONS" :key="option.value" :value="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                :title="sortDir === 'asc' ? 'Ascending - click for descending' : 'Descending - click for ascending'"
+                @click="sortDir = sortDir === 'asc' ? 'desc' : 'asc'"
+              >
+                {{ sortDir === 'asc' ? '↑ Ascending' : '↓ Descending' }}
+              </button>
             </div>
           </div>
         </div>
@@ -876,6 +1034,18 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* A label and its control on one line, for the two that are not radio rows. */
+.rw-inline-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rw-inline-field .form-select {
+  width: auto;
+  min-width: 9rem;
+}
+
 /* The same mark the table uses, so the filter labels double as its legend:
    the dot means the mod touched this runeword, and these two say which way. */
 .flag {
