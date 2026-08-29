@@ -65,11 +65,11 @@ const setAll = (open) => {
           <!-- Fixed widths, so the three tier tables line up as one grid
                instead of each measuring its own longest name. -->
           <colgroup>
-            <col style="width: 30%" />
+            <col style="width: 26%" />
             <col style="width: 21%" />
             <col style="width: 9%" />
             <col style="width: 9%" />
-            <col style="width: 31%" />
+            <col style="width: 35%" />
           </colgroup>
           <thead>
             <tr>
@@ -88,9 +88,15 @@ const setAll = (open) => {
                 style="cursor: pointer;"
               >
                 <td>
-                  {{ group.name }}
-                  <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
-                  <span v-if="group.isReworked" class="badge rework-badge ms-2">Reworked</span>
+                  {{ group.name }}<span
+                    v-if="group.isNew"
+                    class="mark mark-new"
+                    title="New in Relics of Sanctuary"
+                  >*</span><span
+                    v-if="group.isReworked"
+                    class="mark mark-reworked"
+                    title="Reworked by Relics of Sanctuary"
+                  >*</span>
                   <span
                     v-for="className in group.classNames"
                     :key="className"
@@ -126,6 +132,26 @@ const setAll = (open) => {
 .runeword-table {
   table-layout: fixed;
   min-width: 46rem;
+}
+
+/* New and reworked are one character each: a mark beside the name, where a
+   badge cost half the column. Colour and symbol both, and the filter labels
+   carry the same pair so the legend is where the words are. */
+.mark {
+  margin-left: 0.15rem;
+  font-weight: 700;
+  font-size: 1.05em;
+  line-height: 0;
+  vertical-align: super;
+  cursor: help;
+}
+
+.mark-new {
+  color: #d3644f;
+}
+
+.mark-reworked {
+  color: #d6b25c;
 }
 
 /* The one badge worth a colour of its own: which class can wear this at all is
