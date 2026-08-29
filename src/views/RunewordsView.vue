@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, nextTick } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import RunewordTable from '@/components/RunewordTable.vue';
@@ -15,9 +15,10 @@ const dataMode = ref('mod'); // mod | vanilla (mod is the default)
 const fieldOf = (runeword, name) =>
   dataMode.value === 'vanilla' ? (runeword['Vanilla' + name] ?? runeword[name]) : runeword[name];
 const debounceTimeout = ref(null);
-const itemsSection = ref(null);
-const onlyReworked = ref(false);
-const onlyNew = ref(false);
+// New and reworked are exclusive by construction - a runeword the mod added is
+// not a vanilla one it changed - so two checkboxes could only ever be ticked
+// together to get nothing back. One choice, "all" first.
+const statusFilter = ref('all');
 
 /**
  * The three tiers the in-game menu already uses, by the highest rune a
@@ -36,8 +37,11 @@ const highestRune = (runeword) =>
 const tierOf = (runeword) =>
   RUNE_TIERS.find((tier) => highestRune(runeword) <= tier.max) ?? RUNE_TIERS[RUNE_TIERS.length - 1];
 
-const visibleRunewords = computed(() => runewords.value.filter(runeword =>
-  (!onlyReworked.value || runeword.IsReworked) && (!onlyNew.value || runeword.IsNew)));
+const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
+  if (statusFilter.value === 'new') return runeword.IsNew;
+  if (statusFilter.value === 'reworked') return runeword.IsReworked;
+  return true;
+}));
 
 // Filter runewords based on search queries and category
 const filteredRunewords = computed(() => {
@@ -168,15 +172,6 @@ const getReworkChanges = (runeword) => {
   return changes;
 };
 
-// Scroll to items section
-const scrollToItems = async () => {
-  // Wait for the DOM to update
-  await nextTick();
-  if (itemsSection.value) {
-    itemsSection.value.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
 // Handle search with debounce
 const handleSearch = (event, isRunesSearch = false) => {
   clearTimeout(debounceTimeout.value);
@@ -189,17 +184,17 @@ const handleSearch = (event, isRunesSearch = false) => {
   }, 300); // 300ms debounce
 };
 
-// Handle Enter key press in search field
+// Enter closes the keyboard on a phone; the list is already filtered as you
+// type. It used to scroll the page down to the results, which moved the ground
+// under a reader who was still adjusting filters.
 const handleSearchKeyup = (event) => {
-  if (event.key === 'Enter' && (searchQuery.value.trim() || runesSearchQuery.value.trim())) {
-    scrollToItems();
+  if (event.key === 'Enter') {
+    event.target.blur();
   }
 };
 
-// Set category filter
 const setCategoryFilter = (category) => {
   selectedCategory.value = category;
-  scrollToItems();
 };
 
 // Reset filters
@@ -207,8 +202,7 @@ const resetFilters = () => {
   searchQuery.value = '';
   runesSearchQuery.value = '';
   selectedCategory.value = 'all';
-  onlyReworked.value = false;
-  onlyNew.value = false;
+  statusFilter.value = 'all';
 };
 
 // Sort properties by priority
@@ -406,12 +400,16 @@ onMounted(() => {
               </div>
               <div class="d-flex flex-wrap gap-4 mt-2">
                 <div class="form-check reworked-toggle">
-                  <input id="rw-only-new" v-model="onlyNew" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label" for="rw-only-new">Only new</label>
+                  <input id="rw-status-all" v-model="statusFilter" value="all" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-status-all">All</label>
                 </div>
                 <div class="form-check reworked-toggle">
-                  <input id="rw-only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label" for="rw-only-reworked">
+                  <input id="rw-status-new" v-model="statusFilter" value="new" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-status-new">Only new</label>
+                </div>
+                <div class="form-check reworked-toggle">
+                  <input id="rw-status-reworked" v-model="statusFilter" value="reworked" class="form-check-input" type="radio" />
+                  <label class="form-check-label" for="rw-status-reworked">
                     {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
                   </label>
                 </div>
@@ -423,7 +421,7 @@ onMounted(() => {
     </div>
 
     <!-- Runewords, one list cut into rune tiers -->
-    <div class="row g-4" ref="itemsSection">
+    <div class="row g-4">
       <div class="col-12" v-if="resultCount === 0">
         <div class="card card-enhanced">
           <div class="card-body text-center text-muted py-4">

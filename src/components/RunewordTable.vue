@@ -55,7 +55,16 @@ const formatChance = (chance) => {
         No runewords found matching your criteria.
       </div>
       <div v-else class="table-responsive">
-        <table class="table table-dark table-hover">
+        <table class="table table-dark table-hover runeword-table">
+          <!-- Fixed widths, so the three tier tables line up as one grid
+               instead of each measuring its own longest name. -->
+          <colgroup>
+            <col style="width: 26%" />
+            <col style="width: 24%" />
+            <col style="width: 9%" />
+            <col style="width: 9%" />
+            <col style="width: 32%" />
+          </colgroup>
           <thead>
             <tr>
               <th>Name</th>
@@ -124,6 +133,11 @@ const formatChance = (chance) => {
 </template>
 
 <style scoped>
+.runeword-table {
+  table-layout: fixed;
+  min-width: 46rem;
+}
+
 .tier-hint {
   margin-left: 0.5rem;
   font-size: 0.72em;
