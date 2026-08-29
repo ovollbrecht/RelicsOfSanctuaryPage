@@ -59,11 +59,11 @@ const formatChance = (chance) => {
           <!-- Fixed widths, so the three tier tables line up as one grid
                instead of each measuring its own longest name. -->
           <colgroup>
-            <col style="width: 26%" />
-            <col style="width: 24%" />
+            <col style="width: 30%" />
+            <col style="width: 21%" />
             <col style="width: 9%" />
             <col style="width: 9%" />
-            <col style="width: 32%" />
+            <col style="width: 31%" />
           </colgroup>
           <thead>
             <tr>
@@ -81,6 +81,9 @@ const formatChance = (chance) => {
                   {{ group.name }}
                   <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
                   <span v-if="group.isReworked" class="badge rework-badge ms-2">Reworked</span>
+                  <span v-for="className in group.classNames" :key="className" class="badge class-badge ms-2">
+                    {{ className }}
+                  </span>
                 </td>
                 <td class="runes-cell">{{ group.runes.join(' - ') }}</td>
                 <td class="text-center tnum">{{ group.sockets }}</td>
@@ -136,6 +139,15 @@ const formatChance = (chance) => {
 .runeword-table {
   table-layout: fixed;
   min-width: 46rem;
+}
+
+/* The one badge worth a colour of its own: which class can wear this at all
+   is a harder limit than where a runeword came from. */
+.class-badge {
+  background: rgba(111, 168, 220, 0.16);
+  color: #9dc6ea;
+  border: 1px solid rgba(111, 168, 220, 0.4);
+  font-weight: 600;
 }
 
 .tier-hint {

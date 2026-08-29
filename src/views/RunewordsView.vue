@@ -250,6 +250,9 @@ const toGroups = (list) => {
         levelReq: runeword.LevelReq ?? 0,
         isNew: runeword.IsNew,
         isReworked: runeword.IsReworked && dataMode.value === 'mod',
+        // Only where every variant is bound: a runeword that also fits a plain
+        // sword is not "Sorceress Only", however many orbs it lists.
+        classNames: classBoundRows.value.has(runeword.RowId) ? (runeword.ClassNames ?? []) : [],
         variants: [],
       });
     }
