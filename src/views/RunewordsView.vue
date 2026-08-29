@@ -122,7 +122,15 @@ const clearRunes = () => { ownedRunes.value = new Set(); };
 // empty page, and an empty page is not an answer anyone asked for.
 const runeFilterActive = computed(() => useRuneFilter.value && ownedRunes.value.size > 0);
 
-watch(ownedRunes, (runes) => writeSession(RUNES_KEY, [...runes]), { deep: true });
+watch(ownedRunes, (runes) => {
+  writeSession(RUNES_KEY, [...runes]);
+  // Touching the picker is the question being asked: arm the filter rather
+  // than wait for a second click on the checkbox beside it. Emptying the
+  // picker is not an answer, so that leaves the switch alone.
+  if (runes.size > 0) {
+    useRuneFilter.value = true;
+  }
+}, { deep: true });
 watch(useRuneFilter, (on) => writeSession(RUNE_FILTER_KEY, on));
 
 const selectGroup = (group) => {
