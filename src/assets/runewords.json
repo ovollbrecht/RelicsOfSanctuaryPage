@@ -1599,7 +1599,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 3,
     "LevelReq": 57,
@@ -10312,7 +10312,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 3,
     "LevelReq": 23,
@@ -15921,7 +15921,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 3,
     "LevelReq": 53,
@@ -17206,7 +17206,7 @@
       "sor"
     ],
     "ClassNames": [
-      "Sorceress Only"
+      "Sorceress"
     ],
     "Sockets": 2,
     "LevelReq": 51,
@@ -17318,7 +17318,7 @@
       "dru"
     ],
     "ClassNames": [
-      "Druid Only"
+      "Druid"
     ],
     "Sockets": 3,
     "LevelReq": 51,
@@ -17438,7 +17438,7 @@
       "bar"
     ],
     "ClassNames": [
-      "Barbarian Only"
+      "Barbarian"
     ],
     "Sockets": 3,
     "LevelReq": 51,
@@ -17557,7 +17557,7 @@
       "nec"
     ],
     "ClassNames": [
-      "Necromancer Only"
+      "Necromancer"
     ],
     "Sockets": 2,
     "LevelReq": 51,
@@ -17670,7 +17670,7 @@
       "pal"
     ],
     "ClassNames": [
-      "Paladin Only"
+      "Paladin"
     ],
     "Sockets": 3,
     "LevelReq": 51,
@@ -17788,7 +17788,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 2,
     "LevelReq": 51,
@@ -17904,7 +17904,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 4,
     "LevelReq": 51,
@@ -18035,7 +18035,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 4,
     "LevelReq": 51,
@@ -18170,7 +18170,7 @@
       "sor"
     ],
     "ClassNames": [
-      "Sorceress Only"
+      "Sorceress"
     ],
     "Sockets": 3,
     "LevelReq": 65,
@@ -18300,7 +18300,7 @@
       "dru"
     ],
     "ClassNames": [
-      "Druid Only"
+      "Druid"
     ],
     "Sockets": 3,
     "LevelReq": 65,
@@ -18412,7 +18412,7 @@
       "bar"
     ],
     "ClassNames": [
-      "Barbarian Only"
+      "Barbarian"
     ],
     "Sockets": 3,
     "LevelReq": 67,
@@ -18531,7 +18531,7 @@
       "nec"
     ],
     "ClassNames": [
-      "Necromancer Only"
+      "Necromancer"
     ],
     "Sockets": 2,
     "LevelReq": 69,
@@ -18641,7 +18641,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 2,
     "LevelReq": 63,
@@ -18759,7 +18759,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 5,
     "LevelReq": 69,
@@ -18892,7 +18892,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 5,
     "LevelReq": 67,
@@ -19208,7 +19208,7 @@
       "sor"
     ],
     "ClassNames": [
-      "Sorceress Only"
+      "Sorceress"
     ],
     "Sockets": 2,
     "LevelReq": 21,
@@ -19312,7 +19312,7 @@
       "dru"
     ],
     "ClassNames": [
-      "Druid Only"
+      "Druid"
     ],
     "Sockets": 3,
     "LevelReq": 23,
@@ -19415,7 +19415,7 @@
       "nec"
     ],
     "ClassNames": [
-      "Necromancer Only"
+      "Necromancer"
     ],
     "Sockets": 2,
     "LevelReq": 23,
@@ -19520,7 +19520,7 @@
       "pal"
     ],
     "ClassNames": [
-      "Paladin Only"
+      "Paladin"
     ],
     "Sockets": 3,
     "LevelReq": 25,
@@ -19632,7 +19632,7 @@
       "ass"
     ],
     "ClassNames": [
-      "Assassin Only"
+      "Assassin"
     ],
     "Sockets": 3,
     "LevelReq": 29,
@@ -19742,7 +19742,7 @@
       "bar"
     ],
     "ClassNames": [
-      "Barbarian Only"
+      "Barbarian"
     ],
     "Sockets": 2,
     "LevelReq": 41,
@@ -19840,7 +19840,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 3,
     "LevelReq": 29,
@@ -19945,7 +19945,7 @@
       "ama"
     ],
     "ClassNames": [
-      "Amazon Only"
+      "Amazon"
     ],
     "Sockets": 3,
     "LevelReq": 29,
@@ -21198,7 +21198,7 @@
       "war"
     ],
     "ClassNames": [
-      "Warlock Only"
+      "Warlock"
     ],
     "Sockets": 2,
     "LevelReq": 15,
@@ -21301,7 +21301,7 @@
       "war"
     ],
     "ClassNames": [
-      "Warlock Only"
+      "Warlock"
     ],
     "Sockets": 2,
     "LevelReq": 51,
@@ -21404,7 +21404,7 @@
       "war"
     ],
     "ClassNames": [
-      "Warlock Only"
+      "Warlock"
     ],
     "Sockets": 2,
     "LevelReq": 67,
@@ -21761,7 +21761,7 @@
       "pal"
     ],
     "ClassNames": [
-      "Paladin Only"
+      "Paladin"
     ],
     "Sockets": 3,
     "LevelReq": 59,

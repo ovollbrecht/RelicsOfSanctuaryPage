@@ -81,7 +81,12 @@ const formatChance = (chance) => {
                   {{ group.name }}
                   <span v-if="group.isNew" class="badge bg-secondary ms-2">New</span>
                   <span v-if="group.isReworked" class="badge rework-badge ms-2">Reworked</span>
-                  <span v-for="className in group.classNames" :key="className" class="badge class-badge ms-2">
+                  <span
+                    v-for="className in group.classNames"
+                    :key="className"
+                    class="badge class-badge ms-2"
+                    :class="'class-' + className.toLowerCase()"
+                  >
                     {{ className }}
                   </span>
                 </td>
@@ -141,14 +146,25 @@ const formatChance = (chance) => {
   min-width: 46rem;
 }
 
-/* The one badge worth a colour of its own: which class can wear this at all
-   is a harder limit than where a runeword came from. */
+/* The one badge worth a colour of its own: which class can wear this at all is
+   a harder limit than where a runeword came from. Each class keeps a muted tone
+   of its own so the eye can sort them without reading - but the name stays on
+   the badge, because a colour nobody was taught means nothing. */
 .class-badge {
-  background: rgba(111, 168, 220, 0.16);
-  color: #9dc6ea;
-  border: 1px solid rgba(111, 168, 220, 0.4);
   font-weight: 600;
+  background: rgba(201, 163, 106, 0.1);
+  color: var(--d2r-muted);
+  border: 1px solid rgba(201, 163, 106, 0.3);
 }
+
+.class-badge.class-amazon    { background: rgba(122, 158, 92, 0.16);  color: #9dc47c; border-color: rgba(122, 158, 92, 0.45); }
+.class-badge.class-sorceress { background: rgba(111, 168, 220, 0.16); color: #9dc6ea; border-color: rgba(111, 168, 220, 0.45); }
+.class-badge.class-necromancer { background: rgba(150, 150, 165, 0.16); color: #b9b9c8; border-color: rgba(150, 150, 165, 0.45); }
+.class-badge.class-paladin   { background: rgba(214, 178, 92, 0.16);  color: #e0c383; border-color: rgba(214, 178, 92, 0.45); }
+.class-badge.class-barbarian { background: rgba(184, 106, 70, 0.16);  color: #d79372; border-color: rgba(184, 106, 70, 0.45); }
+.class-badge.class-druid     { background: rgba(126, 148, 74, 0.16);  color: #b2c078; border-color: rgba(126, 148, 74, 0.45); }
+.class-badge.class-assassin  { background: rgba(94, 160, 154, 0.16);  color: #86c4bd; border-color: rgba(94, 160, 154, 0.45); }
+.class-badge.class-warlock   { background: rgba(154, 110, 178, 0.16); color: #bf9ad3; border-color: rgba(154, 110, 178, 0.45); }
 
 .tier-hint {
   margin-left: 0.5rem;
