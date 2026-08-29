@@ -18460,9 +18460,9 @@
       {
         "Prop": "ac%",
         "Par": "",
-        "Min": "150",
-        "Max": "200",
-        "Description": "[150-200]% Enhanced Defense",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Enhanced Defense",
         "Priority": "74"
       },
       {
@@ -18476,17 +18476,17 @@
       {
         "Prop": "mag%",
         "Par": "",
-        "Min": "40",
+        "Min": "30",
         "Max": "50",
-        "Description": "[40-50]% Better Chance of Getting Magic Items",
+        "Description": "[30-50]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Prop": "ease",
         "Par": "",
-        "Min": "-60",
-        "Max": "-60",
-        "Description": "Requirements -60%",
+        "Min": "-50",
+        "Max": "-50",
+        "Description": "Requirements -50%",
         "Priority": "0"
       },
       {
@@ -18518,7 +18518,7 @@
             "Chance": null
           },
           {
-            "Description": "Curse Resistance 40%",
+            "Description": "Curse Resistance 30%",
             "Chance": null
           }
         ]
@@ -18561,9 +18561,9 @@
       {
         "Prop": "ac%",
         "Par": "",
-        "Min": "150",
-        "Max": "200",
-        "Description": "[150-200]% Enhanced Defense",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Enhanced Defense",
         "Priority": "74"
       },
       {
@@ -18577,17 +18577,17 @@
       {
         "Prop": "mag%",
         "Par": "",
-        "Min": "40",
+        "Min": "30",
         "Max": "50",
-        "Description": "[40-50]% Better Chance of Getting Magic Items",
+        "Description": "[30-50]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Prop": "ease",
         "Par": "",
-        "Min": "-60",
-        "Max": "-60",
-        "Description": "Requirements -60%",
+        "Min": "-50",
+        "Max": "-50",
+        "Description": "Requirements -50%",
         "Priority": "0"
       },
       {
@@ -18619,7 +18619,7 @@
             "Chance": null
           },
           {
-            "Description": "Curse Resistance 40%",
+            "Description": "Curse Resistance 30%",
             "Chance": null
           }
         ]

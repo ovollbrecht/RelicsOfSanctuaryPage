@@ -72290,12 +72290,12 @@
         "Priority": "87"
       },
       {
-        "Prop": "hit-skill",
-        "Par": "Shock Wave",
-        "Min": "10",
-        "Max": "8",
-        "Description": "10% Chance to cast level 8 Shock Wave on striking",
-        "Priority": "158"
+        "Prop": "slow",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Slows Target by 20%",
+        "Priority": "77"
       },
       {
         "Prop": "hp",
@@ -72399,12 +72399,12 @@
         "Priority": "87"
       },
       {
-        "Prop": "hit-skill",
-        "Par": "Shock Wave",
-        "Min": "15",
-        "Max": "12",
-        "Description": "15% Chance to cast level 12 Shock Wave on striking",
-        "Priority": "158"
+        "Prop": "slow",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Slows Target by 30%",
+        "Priority": "77"
       },
       {
         "Prop": "hp",
@@ -72491,12 +72491,12 @@
     "LvlReq": "76",
     "Properties": [
       {
-        "Prop": "kill-skill",
+        "Prop": "oskill",
         "Par": "Apocalypse",
-        "Min": "20",
-        "Max": "12",
-        "Description": "20% Chance to cast level 12 Apocalypse when you Kill an Enemy",
-        "Priority": "158"
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Apocalypse",
+        "Priority": "81"
       },
       {
         "Prop": "sor",
@@ -72591,12 +72591,12 @@
     "LvlReq": "76",
     "Properties": [
       {
-        "Prop": "kill-skill",
+        "Prop": "oskill",
         "Par": "Apocalypse",
-        "Min": "25",
-        "Max": "15",
-        "Description": "25% Chance to cast level 15 Apocalypse when you Kill an Enemy",
-        "Priority": "158"
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Apocalypse",
+        "Priority": "81"
       },
       {
         "Prop": "sor",

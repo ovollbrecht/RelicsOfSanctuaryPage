@@ -14383,17 +14383,17 @@
         "Prop": "curse-res",
         "ParMin": "",
         "ParMax": "",
-        "ModMin": "40",
-        "ModMax": "40",
+        "ModMin": "30",
+        "ModMax": "30",
         "Chance": "1",
         "Probability": 0.5,
         "ResolvedProperties": [
           {
             "Prop": "curse-res",
             "Par": "",
-            "Min": "40",
-            "Max": "40",
-            "Description": "Curse Resistance 40%",
+            "Min": "30",
+            "Max": "30",
+            "Description": "Curse Resistance 30%",
             "Priority": "35"
           }
         ],
