@@ -665,7 +665,7 @@ onUnmounted(() => {
 
     <!-- Runewords, one list cut into rune tiers - with the open runeword's
          stats in a sticky panel beside it where the width allows. -->
-    <div class="rw-layout">
+    <div class="rw-layout" :class="{ 'has-panel': isWide }">
       <div class="rw-list row g-4">
         <div class="col-12" v-if="resultCount === 0">
           <div class="card card-enhanced">
@@ -851,20 +851,30 @@ onUnmounted(() => {
 }
 
 /* List and detail panel side by side. The panel sticks, so the stats stay put
-   while the list scrolls under the cursor - which is the whole point. */
+   while the list scrolls under the cursor - which is the whole point.
+
+   A grid rather than flex, and the list track is minmax(0, 1fr) on purpose: a
+   track sized that way never asks its content how wide it would like to be.
+   The tables inside report an absurd width when asked (a percentage-width
+   table inside a scroll container answers with five hundred thousand pixels),
+   and any layout that listens to that answer stretches the page off-screen. */
 .rw-layout {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
   gap: 1.5rem;
 }
 
+.rw-layout.has-panel {
+  grid-template-columns: minmax(0, 1fr) 23rem;
+}
+
 .rw-list {
-  flex: 1 1 auto;
   min-width: 0;
 }
 
 .rw-panel {
-  flex: 0 0 23rem;
+  min-width: 0;
   position: sticky;
   top: 1rem;
 }

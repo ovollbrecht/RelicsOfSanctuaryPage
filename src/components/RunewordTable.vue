@@ -134,6 +134,17 @@ const setAll = (open) => {
   min-width: 46rem;
 }
 
+/* Bootstrap gives the table width: 100%, and a percentage-width table inside a
+   scrolling wrapper has no sane intrinsic width: asked how wide it would like
+   to be, the wrapper answered 500000px. A layout that believes that answer -
+   and a second tier section was enough to make one believe it - drags the page
+   sideways for as long as the tables exist. Containment settles the question
+   before it is asked: this box takes the width it is given. The percentages
+   still resolve against it, so the columns stay aligned across the sections. */
+.table-responsive {
+  contain: inline-size;
+}
+
 /* New and reworked are one character each, where a badge cost half the
    column. Not called "mark": Bootstrap owns that class name and paints it
    like a highlighter pen. */
