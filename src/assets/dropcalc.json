@@ -72597,7 +72597,7 @@
       ],
       "Minions": [
         133,
-        247
+        246
       ]
     },
     {
@@ -72655,7 +72655,7 @@
       ],
       "Minions": [
         134,
-        248
+        247
       ]
     },
     {
@@ -72722,7 +72722,7 @@
       ],
       "Minions": [
         135,
-        249
+        248
       ]
     },
     {
@@ -72789,7 +72789,7 @@
       ],
       "Minions": [
         136,
-        250
+        249
       ]
     },
     {
@@ -72841,7 +72841,7 @@
       ],
       "Minions": [
         137,
-        251
+        250
       ]
     },
     {
@@ -73947,54 +73947,6 @@
       ],
       "Minions": [
         212
-      ]
-    },
-    {
-      "Id": "diabloclone",
-      "Name": "Diablo",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          1148,
-          1148,
-          1148,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1149,
-          1149,
-          1149,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1150,
-          1150,
-          1150,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
       ]
     },
     {
@@ -75734,7 +75686,7 @@
         []
       ],
       "Minions": [
-        247
+        246
       ]
     },
     {
@@ -75791,7 +75743,7 @@
         ]
       ],
       "Minions": [
-        248
+        247
       ]
     },
     {
@@ -75857,7 +75809,7 @@
         ]
       ],
       "Minions": [
-        249
+        248
       ]
     },
     {
@@ -75908,7 +75860,7 @@
         []
       ],
       "Minions": [
-        250
+        249
       ]
     },
     {
@@ -75959,7 +75911,7 @@
         []
       ],
       "Minions": [
-        251
+        250
       ]
     },
     {
@@ -76173,7 +76125,7 @@
       ],
       "Minions": [
         135,
-        249
+        248
       ]
     },
     {
@@ -76555,7 +76507,7 @@
         ]
       ],
       "Minions": [
-        302
+        301
       ]
     },
     {
@@ -76613,7 +76565,7 @@
         ]
       ],
       "Minions": [
-        303
+        302
       ]
     },
     {
@@ -76668,7 +76620,7 @@
         ]
       ],
       "Minions": [
-        304
+        303
       ]
     },
     {
@@ -76719,7 +76671,7 @@
         []
       ],
       "Minions": [
-        305
+        304
       ]
     },
     {
@@ -76770,7 +76722,7 @@
         []
       ],
       "Minions": [
-        306
+        305
       ]
     },
     {
@@ -78003,7 +77955,7 @@
         ]
       ],
       "Minions": [
-        271
+        270
       ]
     },
     {
@@ -78065,7 +78017,7 @@
         ]
       ],
       "Minions": [
-        272
+        271
       ]
     },
     {
@@ -78122,7 +78074,7 @@
         ]
       ],
       "Minions": [
-        273
+        272
       ]
     },
     {
@@ -78181,7 +78133,7 @@
         ]
       ],
       "Minions": [
-        274
+        273
       ]
     },
     {
@@ -78236,7 +78188,7 @@
         ]
       ],
       "Minions": [
-        275
+        274
       ]
     },
     {
@@ -84119,7 +84071,7 @@
         []
       ],
       "Minions": [
-        405
+        404
       ]
     },
     {
@@ -84170,7 +84122,7 @@
         []
       ],
       "Minions": [
-        406
+        405
       ]
     },
     {
@@ -84221,7 +84173,7 @@
         []
       ],
       "Minions": [
-        407
+        406
       ]
     },
     {
@@ -84278,7 +84230,7 @@
         ]
       ],
       "Minions": [
-        405
+        404
       ]
     },
     {
@@ -84333,7 +84285,7 @@
         ]
       ],
       "Minions": [
-        406
+        405
       ]
     },
     {
@@ -84388,7 +84340,7 @@
         ]
       ],
       "Minions": [
-        407
+        406
       ]
     },
     {
@@ -84763,7 +84715,7 @@
         ]
       ],
       "Minions": [
-        417
+        416
       ]
     },
     {
@@ -84818,7 +84770,7 @@
         ]
       ],
       "Minions": [
-        418
+        417
       ]
     },
     {
@@ -84873,7 +84825,7 @@
         ]
       ],
       "Minions": [
-        419
+        418
       ]
     },
     {
@@ -84924,7 +84876,7 @@
         []
       ],
       "Minions": [
-        420
+        419
       ]
     },
     {
@@ -84979,7 +84931,7 @@
         ]
       ],
       "Minions": [
-        421
+        420
       ]
     },
     {
@@ -85034,7 +84986,7 @@
         ]
       ],
       "Minions": [
-        422
+        421
       ]
     },
     {
@@ -85089,7 +85041,7 @@
         ]
       ],
       "Minions": [
-        423
+        422
       ]
     },
     {
@@ -85144,7 +85096,7 @@
         ]
       ],
       "Minions": [
-        424
+        423
       ]
     },
     {
@@ -85199,8 +85151,8 @@
         ]
       ],
       "Minions": [
-        419,
-        422
+        418,
+        421
       ]
     },
     {
@@ -85251,8 +85203,8 @@
         []
       ],
       "Minions": [
-        420,
-        423
+        419,
+        422
       ]
     },
     {
@@ -85307,8 +85259,8 @@
         ]
       ],
       "Minions": [
-        421,
-        424
+        420,
+        423
       ]
     },
     {
@@ -85795,7 +85747,7 @@
         ]
       ],
       "Minions": [
-        434
+        433
       ]
     },
     {
@@ -85850,7 +85802,7 @@
         ]
       ],
       "Minions": [
-        435
+        434
       ]
     },
     {
@@ -87145,7 +87097,7 @@
         ]
       ],
       "Minions": [
-        460
+        459
       ]
     },
     {
@@ -87202,7 +87154,7 @@
         ]
       ],
       "Minions": [
-        461
+        460
       ]
     },
     {
@@ -87255,150 +87207,6 @@
         [
           129
         ]
-      ]
-    },
-    {
-      "Id": "uberizual",
-      "Name": "Izual",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1186,
-          1186,
-          1186,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "Id": "uberandariel",
-      "Name": "Lilith",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1184,
-          1184,
-          1184,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "Id": "uberduriel",
-      "Name": "Duriel",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1185,
-          1185,
-          1185,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
       ]
     },
     {
@@ -87509,7 +87317,7 @@
         ]
       ],
       "Minions": [
-        461
+        460
       ]
     },
     {
@@ -87782,7 +87590,7 @@
         ]
       ],
       "Minions": [
-        418
+        417
       ]
     },
     {
@@ -88103,7 +87911,7 @@
         ]
       ],
       "Minions": [
-        275
+        274
       ]
     },
     {
@@ -88312,150 +88120,6 @@
           65
         ]
       ]
-    },
-    {
-      "Id": "colossal1",
-      "Name": "Talic",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1248,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "Id": "colossal2",
-      "Name": "Madawc",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1249,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "Id": "colossal3",
-      "Name": "Korlic",
-      "Levels": [
-        110,
-        110,
-        110
-      ],
-      "Boss": true,
-      "NoRatio": false,
-      "Tcs": [
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ],
-        [
-          1250,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1,
-          -1
-        ]
-      ],
-      "Areas": [
-        [],
-        [],
-        []
-      ]
     }
   ],
   "SuperUniques": [
@@ -88552,7 +88216,7 @@
     {
       "Id": "Griswold",
       "Name": "Griswold",
-      "Monster": 226,
+      "Monster": 225,
       "Tcs": [
         919,
         923,
@@ -88766,7 +88430,7 @@
     {
       "Id": "Dark Elder",
       "Name": "Dark Elder",
-      "Monster": 484,
+      "Monster": 480,
       "Tcs": [
         1026,
         1041,
@@ -88820,7 +88484,7 @@
     {
       "Id": "The Smith",
       "Name": "The Smith",
-      "Monster": 252,
+      "Monster": 251,
       "Tcs": [
         987,
         991,
@@ -88928,7 +88592,7 @@
     {
       "Id": "Ismail Vilehand",
       "Name": "Ismail Vilehand",
-      "Monster": 220,
+      "Monster": 219,
       "Tcs": [
         900,
         904,
@@ -88946,7 +88610,7 @@
     {
       "Id": "Geleb Flamefinger",
       "Name": "Geleb Flamefinger",
-      "Monster": 221,
+      "Monster": 220,
       "Tcs": [
         900,
         904,
@@ -88964,7 +88628,7 @@
     {
       "Id": "Bremm Sparkfist",
       "Name": "Bremm Sparkfist",
-      "Monster": 222,
+      "Monster": 221,
       "Tcs": [
         900,
         904,
@@ -88982,7 +88646,7 @@
     {
       "Id": "Toorc Icefist",
       "Name": "Toorc Icefist",
-      "Monster": 220,
+      "Monster": 219,
       "Tcs": [
         900,
         904,
@@ -89000,7 +88664,7 @@
     {
       "Id": "Wyand Voidfinger",
       "Name": "Wyand Voidbringer",
-      "Monster": 221,
+      "Monster": 220,
       "Tcs": [
         900,
         904,
@@ -89018,7 +88682,7 @@
     {
       "Id": "Maffer Dragonhand",
       "Name": "Maffer Dragonhand",
-      "Monster": 222,
+      "Monster": 221,
       "Tcs": [
         900,
         904,
@@ -89036,7 +88700,7 @@
     {
       "Id": "Winged Death",
       "Name": "Darkwing",
-      "Monster": 225,
+      "Monster": 224,
       "Tcs": [
         1031,
         1046,
@@ -89100,7 +88764,7 @@
     {
       "Id": "Infector of Souls",
       "Name": "Infector of Souls",
-      "Monster": 225,
+      "Monster": 224,
       "Tcs": [
         1032,
         1047,
@@ -89154,7 +88818,7 @@
     {
       "Id": "The Cow King",
       "Name": "The Cow King",
-      "Monster": 483,
+      "Monster": 479,
       "Tcs": [
         1112,
         1116,
@@ -89190,7 +88854,7 @@
     {
       "Id": "The Feature Creep",
       "Name": "Hephasto The Armorer",
-      "Monster": 256,
+      "Monster": 255,
       "Tcs": [
         938,
         942,
@@ -89208,7 +88872,7 @@
     {
       "Id": "Siege Boss",
       "Name": "Shenk the Overseer",
-      "Monster": 289,
+      "Monster": 288,
       "Tcs": [
         1034,
         1049,
@@ -89226,7 +88890,7 @@
     {
       "Id": "Axe Dweller",
       "Name": "Axe Dweller",
-      "Monster": 318,
+      "Monster": 317,
       "Tcs": [
         1036,
         1051,
@@ -89242,7 +88906,7 @@
     {
       "Id": "Bonesaw Breaker",
       "Name": "Bonesaw Breaker",
-      "Monster": 258,
+      "Monster": 257,
       "Tcs": [
         1034,
         1049,
@@ -89260,7 +88924,7 @@
     {
       "Id": "Dac Farren",
       "Name": "Dac Farren",
-      "Monster": 304,
+      "Monster": 303,
       "Tcs": [
         1035,
         1050,
@@ -89278,7 +88942,7 @@
     {
       "Id": "Megaflow Rectifier",
       "Name": "Eldritch the Rectifier",
-      "Monster": 271,
+      "Monster": 270,
       "Tcs": [
         1034,
         1049,
@@ -89296,7 +88960,7 @@
     {
       "Id": "Eyeback Unleashed",
       "Name": "Eyeback the Unleashed",
-      "Monster": 322,
+      "Monster": 321,
       "Tcs": [
         1034,
         1049,
@@ -89314,7 +88978,7 @@
     {
       "Id": "Threash Socket",
       "Name": "Thresh Socket",
-      "Monster": 264,
+      "Monster": 263,
       "Tcs": [
         1081,
         1096,
@@ -89332,7 +88996,7 @@
     {
       "Id": "Pindleskin",
       "Name": "Pindleskin",
-      "Monster": 261,
+      "Monster": 260,
       "Tcs": [
         1081,
         1096,
@@ -89350,7 +89014,7 @@
     {
       "Id": "Snapchip Shatter",
       "Name": "Snapchip Shatter",
-      "Monster": 311,
+      "Monster": 310,
       "Tcs": [
         1036,
         1051,
@@ -89368,7 +89032,7 @@
     {
       "Id": "Anodized Elite",
       "Name": "Hell's Belle",
-      "Monster": 282,
+      "Monster": 281,
       "Tcs": [
         1036,
         1051,
@@ -89384,7 +89048,7 @@
     {
       "Id": "Vinvear Molech",
       "Name": "Vinvear Molech",
-      "Monster": 285,
+      "Monster": 284,
       "Tcs": [
         1034,
         1049,
@@ -89400,7 +89064,7 @@
     {
       "Id": "Sharp Tooth Sayer",
       "Name": "Sharptooth Slayer",
-      "Monster": 291,
+      "Monster": 290,
       "Tcs": [
         1035,
         1050,
@@ -89418,7 +89082,7 @@
     {
       "Id": "Magma Torquer",
       "Name": "Magma Torquer",
-      "Monster": 306,
+      "Monster": 305,
       "Tcs": [
         1036,
         1051,
@@ -89434,7 +89098,7 @@
     {
       "Id": "Blaze Ripper",
       "Name": "Blaze Ripper",
-      "Monster": 326,
+      "Monster": 325,
       "Tcs": [
         1036,
         1051,
@@ -89450,7 +89114,7 @@
     {
       "Id": "Frozenstein",
       "Name": "Frozenstein",
-      "Monster": 270,
+      "Monster": 269,
       "Tcs": [
         1036,
         1051,
@@ -89468,7 +89132,7 @@
     {
       "Id": "Nihlathak Boss",
       "Name": "Nihlathak",
-      "Monster": 321,
+      "Monster": 320,
       "Tcs": [
         953,
         955,
@@ -89522,7 +89186,7 @@
     {
       "Id": "Baal Subject 3",
       "Name": "Bartuc the Bloody",
-      "Monster": 333,
+      "Monster": 332,
       "Tcs": [
         639,
         654,
@@ -89540,7 +89204,7 @@
     {
       "Id": "Baal Subject 4",
       "Name": "Ventar the Unholy",
-      "Monster": 334,
+      "Monster": 333,
       "Tcs": [
         639,
         654,
@@ -89558,7 +89222,7 @@
     {
       "Id": "Baal Subject 5",
       "Name": "Lister the Tormentor",
-      "Monster": 335,
+      "Monster": 334,
       "Tcs": [
         639,
         654,
