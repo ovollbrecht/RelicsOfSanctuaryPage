@@ -1,5 +1,15 @@
 {
-  "generatedAt": "2026-08-30T15:41:32Z",
+  "generatedAt": "2026-08-30T17:08:20Z",
   "modVersion": "3.4.0",
-  "source": "install-3.3-preview"
+  "source": "install-3.3-preview",
+  "counts": {
+    "runewords": 142,
+    "runewordsNew": 43,
+    "runewordsReworked": 69,
+    "uniquesNew": 25,
+    "exalted": 421,
+    "mythicSets": 35,
+    "mythicSetItems": 140,
+    "affixesReworked": 157
+  }
 }

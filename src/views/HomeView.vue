@@ -1,91 +1,189 @@
 <script setup>
+import meta from '@/assets/meta.json';
+
+/**
+ * The front page, which had grown into an archive: five versions of changelog
+ * under three paragraphs of prose, and no word about the runewords, the drop
+ * calculator or the affix tables - the things the site is actually good at.
+ *
+ * Every number here comes out of the generated data rather than out of a
+ * sentence somebody typed. The old feature list still promised "7 additional
+ * Runewords (15 total)" while the mod shipped forty-odd.
+ */
+const counts = meta.counts ?? {};
+
+// The page is written in English, so the date is too - the visitor's locale
+// would put a German month in the middle of an English sentence.
+const generatedOn = meta.generatedAt
+  ? new Date(meta.generatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+
+// What the mod puts in the game, in the order somebody meets it.
+const highlights = [
+  {
+    value: counts.exalted,
+    label: 'Exalted uniques',
+    hint: 'every unique item has one',
+    to: '/items/uniques',
+  },
+  {
+    value: counts.uniquesNew,
+    label: 'New uniques',
+    hint: 'bases nobody had claimed',
+    to: '/items/uniques',
+  },
+  {
+    value: counts.runewordsNew,
+    label: 'New runewords',
+    hint: `of ${counts.runewords ?? ''} on the page`,
+    to: '/runewords',
+  },
+  {
+    value: counts.runewordsReworked,
+    label: 'Reworked runewords',
+    hint: 'vanilla words worth making',
+    to: '/runewords',
+  },
+  {
+    value: counts.mythicSetItems,
+    label: 'Mythic set items',
+    hint: `across ${counts.mythicSets ?? ''} sets`,
+    to: '/items/sets',
+  },
+  {
+    value: counts.affixesReworked,
+    label: 'Reworked affixes',
+    hint: 'large and grand charms',
+    to: '/items/affixes',
+  },
+].filter((entry) => entry.value);
+
+// The pages that answer a question rather than list a table.
+const tools = [
+  {
+    title: 'Drop Calculator',
+    question: 'What can this monster drop, and how often?',
+    to: '/drop-calc',
+  },
+  {
+    title: 'Runewords',
+    question: 'I found a long staff with three sockets - what fits in it?',
+    to: '/runewords',
+  },
+  {
+    title: 'Unique Items',
+    question: 'What does the exalted version of this item roll?',
+    to: '/items/uniques',
+  },
+  {
+    title: 'Affix Calculator',
+    question: 'Which affixes can this base still roll at my level?',
+    to: '/items/affixes',
+  },
+];
 </script>
 
 <template>
   <div class="container py-4 page-content">
+    <!-- What this is, in one breath -->
     <div class="row">
-      <div class="col-12">
-        <h1 class="display-4 mb-4">
-          <span class="title-icon">⚔</span> 
-          Relics Of Sanctuary 
+      <div class="col-12 text-center">
+        <h1 class="display-4 mb-3">
+          <span class="title-icon">⚔</span>
+          Relics Of Sanctuary
           <span class="title-icon">⚔</span>
         </h1>
-        <p class="lead">A Diablo 2 Resurrected mod focused on Exalted and Mythic progression, new Runewords, and configurable endgame systems</p>
+        <p class="lead mb-3">
+          A Diablo II: Resurrected mod that keeps the item hunt going: an exalted version of
+          every unique, mythic sets and affixes, and a runeword list worth reading again.
+        </p>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+          <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
+            🔗 Download on NexusMods
+          </a>
+          <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-outline-primary">
+            💬 Join the Discord
+          </a>
+        </div>
+        <p v-if="meta.modVersion" class="stamp mt-3 mb-0">
+          Version {{ meta.modVersion }}<template v-if="generatedOn"> · data from {{ generatedOn }}</template>
+        </p>
       </div>
     </div>
 
-    <!-- About Section -->
+    <!-- The numbers, straight out of the data -->
+    <div class="row g-3 mt-3">
+      <div v-for="item in highlights" :key="item.label" class="col-6 col-lg-4">
+        <router-link :to="item.to" class="highlight card card-enhanced card-hover h-100">
+          <div class="card-body text-center p-3">
+            <div class="highlight-value">{{ item.value }}</div>
+            <div class="highlight-label">{{ item.label }}</div>
+            <div class="highlight-hint">{{ item.hint }}</div>
+          </div>
+        </router-link>
+      </div>
+    </div>
+
+    <!-- Why it is worth playing -->
     <div class="row mt-4">
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">About This Mod</h3>
+            <h2 class="h4 card-title m-0">Why Play It?</h2>
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              Relics of Sanctuary adds Exalted and Mythic progression to Diablo 2 Resurrected.
-              Exalted unique items are improved versions of their original counterparts with stronger stats and additional tweaks.
+              Exalted uniques are improved versions of the items you already know - stronger, and
+              often with a twist that changes what the item is for. They drop at the same rate as
+              an ethereal item does, which means you cannot target farm them: you will not get the
+              one you are waiting for, but you <em>will</em> keep finding ones you did not expect.
+              Find a strong one and there is a good chance you build a character around it.
             </p>
             <p class="card-text">
-              With v3.0.0, the mod now includes Mythic set items, Mythic crafting and affix systems, additional Runewords,
-              and new in-game reference menus for cube recipes, crafting recipes, and Runewords.
+              Around that sit the parts that make the rest of the game worth searching again:
+              mythic set items and mythic affixes as an endgame tier, new uniques on bases nobody
+              had claimed, and runewords - both new ones and the vanilla words that nobody built
+              because the numbers never justified the runes.
             </p>
-            <p class="card-text">
-              The design goal is to make item farming more exciting and provide late game options to replace commonly used items, 
-              while staying true to the concept of their original counterparts. All features are optional and can be toggled individually.
+            <p class="card-text mb-0">
+              Everything is optional and every part works on its own -
+              <router-link to="/options">the full list of options</router-link> says what each one
+              does, and what the standalone archive already contains.
             </p>
-            <div class="d-flex justify-content-center gap-3 mt-4">
-              <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
-                🔗 NexusMods Page
-              </a>
-              <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-primary">
-                💬 Join Discord <span class="badge bg-success ms-2">Updated</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Why Play Section -->
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Why Should I Play It?</h3>
+    <!-- The pages that answer a question -->
+    <div class="row g-3 mt-1">
+      <div v-for="tool in tools" :key="tool.title" class="col-md-6">
+        <router-link :to="tool.to" class="tool card card-enhanced card-hover h-100">
+          <div class="card-body p-3">
+            <div class="tool-title">{{ tool.title }}</div>
+            <div class="tool-question">{{ tool.question }}</div>
           </div>
-          <div class="card-body p-4">
-            <p class="card-text">
-              You may think "Just some better uniques? It's just a different tier of items I'm looking for."
-              The thrill is, that you cannot target farm these items to complete a whole character. This would be as insane as trying to farm all the uniques you need in their ethereal version - literally the same drop chances!
-            </p>
-            <p class="card-text">
-              Every item by itself is rare enough that I can almost guarantee no one can "grail" all exalted items and usually you will not find the exalted item you are waiting for. 
-              Anyway you <em>will</em> find these items - because there are many and <em>every</em> unique item can drop as exalted.
-            </p>
-            <p class="card-text">
-              If you find a really strong one, there is a good chance you want to build a character around it.
-            </p>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
 
-    <!-- Exalted & Mythic Sections -->
-    <div class="row mt-4">
+    <!-- The two progression tiers, each with its own page -->
+    <div class="row mt-4 g-4">
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Exalted Items</h3>
+            <h2 class="h4 card-title m-0">Exalted Items</h2>
           </div>
           <div class="card-body p-4">
-            <p class="card-text">Here is what to expect of exalted items:</p>
+            <p class="card-text">
+              <strong>{{ counts.exalted }}</strong> exalted uniques - one for every unique item in
+              the game, each rolling at a 5% chance in place of the ordinary one.
+            </p>
             <ul class="feature-list">
-              <li>5% chance a unique drops in its exalted version (same chance as for ethereal items)</li>
-              <li>"Normal" exalted items are strong options to play through normal and possibly nightmare if upgraded</li>
-              <li>"Exceptional" exalted items are very good choices for nightmare and possibly hell</li>
-              <li>"Elite" exalted items should all be at least very useful for lategame/endgame content, often best in slot for specific builds</li>
-              <li>Among all tiers there are items which open up many new build considerations and even entirely new builds</li>
+              <li>Normal-tier exalted items carry you through normal and, upgraded, into nightmare</li>
+              <li>Exceptional ones are strong choices for nightmare and often hell</li>
+              <li>Elite ones are endgame gear, frequently best in slot for a particular build</li>
+              <li>Across every tier there are items that open builds the original never supported</li>
             </ul>
             <div class="text-center mt-3">
               <router-link to="/items/uniques" class="btn btn-outline-primary">Browse Unique Items</router-link>
@@ -96,14 +194,18 @@
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Mythic Affixes</h3>
+            <h2 class="h4 card-title m-0">Mythic Progression</h2>
           </div>
           <div class="card-body p-4">
-            <p class="card-text">Here is what to expect of Mythic progression:</p>
+            <p class="card-text">
+              <strong>{{ counts.mythicSetItems }}</strong> mythic set items across
+              {{ counts.mythicSets }} sets, plus a mythic affix you can craft onto rare and magic
+              items.
+            </p>
             <ul class="feature-list">
-              <li>Mythic set items introduce a new endgame chase tier</li>
-              <li>Mythic crafting chance and new recipes let you add a Mythic Affix to rare or magic items</li>
-              <li>Use the tables to see which mythic affixes can roll for each item type and how likely each affix is</li>
+              <li>Mythic set items are a chase tier of their own, next to the exalted uniques</li>
+              <li>Recipes add a mythic affix to an item you already have</li>
+              <li>The tables show which affixes each item type can roll, and how likely each is</li>
             </ul>
             <div class="text-center mt-3">
               <router-link to="/items/mythic-affixes" class="btn btn-outline-primary">Browse Mythic Affixes</router-link>
@@ -113,156 +215,46 @@
       </div>
     </div>
 
-    <!-- Features & Installation Section -->
+    <!-- How to get it running -->
     <div class="row mt-4">
       <div class="col-12">
-        <div class="card h-100 card-enhanced card-hover">
+        <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Features & Installation</h3>
+            <h2 class="h4 card-title m-0">Getting Started</h2>
           </div>
           <div class="card-body p-4">
-            <div class="section-header">Current Features (v3.3.0)</div>
-            <ul class="feature-list">
-              <li>All features are optional and work in any combination —
-                <router-link to="/options">the full list of options</router-link>, with what the
-                standalone archive brings</li>
-              <li>Exalted unique items</li>
-              <li>Mythic set items</li>
-              <li>Mythic crafting chance</li>
-              <li>Recipes to add a Mythic Affix to rare or magic items</li>
-              <li>7 additional Runewords (15 total)</li>
-              <li>Reworked vanilla Runewords — 69 Runewords rebalanced</li>
-              <li>Reworked magic affixes for Large and Grand Charms</li>
-              <li>Cube recipe for socketing (similar to Larzuk's quest reward)</li>
-              <li>In-game menus with information about cube recipes, crafting recipes, and Runewords</li>
-              <li>Configurable drop chances for Exalted items, Mythic items, and Mythic craft results (1/2/5/10%) via D2RMM</li>
-              <li>Configurable option to restrict Exalted and Mythic item drops to Terror Zones only</li>
-              <li>Optional equal drop rate for Sunder Charms (off by default, so Blizzard's weighting applies)</li>
-              <li>Enable the "Warlord's Glory" set to be droppable (official Asia promo set)</li>
-              <li>Enable perfect gem drops (balanced around previous cubing values, so lower gems drop less often)</li>
-              <li>Enable teleport while in Wolf/Bear form</li>
-            </ul>
-
-            <div class="section-header mt-4">Installation</div>
             <p class="card-text">
-              Two downloads, one mod: the D2RMM version builds the game files at install time and lets
-              you set every option, the standalone version is that same install with the defaults
-              already baked in. The steps below are for the standalone —
-              <router-link to="/options">see what each one contains</router-link>.
+              Two downloads, one mod. The <strong>D2RMM version</strong> builds the game files when
+              you install it and lets you set every option; the <strong>standalone version</strong>
+              is that same install with the defaults already baked in.
             </p>
-            <ul class="feature-list">
-              <li>Extract the mod to [GamePath]/mods (so you should have mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/...)</li>
-              <li>Create a shortcut of D2R.exe</li>
-              <li>Edit the target path by adding -mod RelicsOfSanctuary -txt at the end</li>
-            </ul>
+            <div class="section-header">Standalone, in three steps</div>
+            <ol class="step-list">
+              <li>Extract the archive into <code>[GamePath]/mods</code>, so you have
+                <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code></li>
+              <li>Make a shortcut of <code>D2R.exe</code></li>
+              <li>Add <code>-mod RelicsOfSanctuary -txt</code> to the shortcut's target</li>
+            </ol>
+            <p class="card-text mb-0">
+              With D2RMM, install the mod from the manager instead and pick your options there -
+              <router-link to="/options">what each option changes</router-link> is listed page by
+              page.
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Changelog Section -->
+    <!-- The history lives on its own page now -->
     <div class="row mt-4">
       <div class="col-12">
         <div class="card card-enhanced">
-          <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Changelog</h3>
-          </div>
-          <div class="card-body p-4">
-            <div class="changelog-entry">
-              <div class="version">Version 3.3.0</div>
-              <ul class="changelog-list">
-                <li>Updated for Diablo II: Resurrected patch 3.3</li>
-                <li>Adjusted the exalted versions of the nine uniques patch 3.3 reworked — Bane Ash, Blinkbats Form, Bloodletter, Gravenspine, Manald Heal, Piercerib, Pluckeye, The Ward and The Battlebranch</li>
-                <li>Adjusted the mythic Angelic set items and the Angelical Raiment set bonus for the same reason</li>
-                <li>Removed the ladder-season restriction patch 3.3 put on those items, so they drop for everyone including offline play</li>
-                <li>Fixed the exalted Gheed's Fortune dropping about 14 times more rarely than the intended 5% — patch 3.3 changed how often the ordinary one drops</li>
-                <li>The standalone archive now unpacks straight into mods; it carries the RelicsOfSanctuary folder itself. Delete the old folder rather than merging into it</li>
-                <li>Website: the crafted Sunder Charms and the unique jewels are listed now — they are obtained rather than dropped and were missing entirely</li>
-                <li>Website: properties that roll one of several options show that list, with each option's chance</li>
-                <li>Website: the drop calculator follows patch 3.3 — a Worldstone Shard no longer replaces the drop it comes with, and Herald tiers 3-4 and 5+ no longer both count at once</li>
-              </ul>
+          <div class="card-body p-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <div class="section-header mb-1">Changelog</div>
+              <p class="card-text mb-0">What changed in this version and every one before it.</p>
             </div>
-            <div class="changelog-entry">
-              <div class="version">Version 3.2.0</div>
-              <ul class="changelog-list">
-                <li>Updated for Diablo II: Resurrected patch 3.2</li>
-                <li>Added option to rework the vanilla Runewords — 69 Runewords rebalanced (on by default)</li>
-                <li>Added option to rework the magic affixes for Large and Grand Charms — 171 affixes rebalanced (on by default)</li>
-                <li>Sunder Charms drop with Blizzard's original weighting again; the equal drop rate is now optional and off by default</li>
-                <li>Removed the option for the minimum Herald tier for Sunder Charms — patch 3.2 handles Herald tiers itself</li>
-                <li>Fixed Mythic Infernal Cranium dropping at 85.7% instead of the intended 5%</li>
-                <li>Fixed mana steal doing nothing on the Ferocity and Juggernaut Runewords</li>
-                <li>Fixed the cube recipes for helmets not adding a Mythic Affix at all</li>
-                <li>Fixed the Mythic property being lost when a crafting recipe had no free slot for it</li>
-                <li>Fixed crafted items rolling ethereal twice in some cases</li>
-                <li>Improved compatibility with other mods (reworked features and localization ids no longer clash)</li>
-                <li>D2RMM installation no longer leaves cached payload files in the game folder</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 3.0.0</div>
-              <ul class="changelog-list">
-                <li>Added Mythic set items</li>
-                <li>Added Mythic crafting chance</li>
-                <li>Added recipes to add a Mythic Affix to rare or magic items</li>
-                <li>Added 7 more Runewords (15 total)</li>
-                <li>Added a cube recipe for socketing similar to Larzuk's quest reward</li>
-                <li>Added in-game menus with information about cube recipes, crafting recipes, and Runewords</li>
-                <li>Added D2RMM options for Exalted/Mythic drop chances and Mythic craft result chance (1/2/5/10%)</li>
-                <li>Added D2RMM option to restrict Exalted and Mythic drops to Terror Zones only</li>
-                <li>Added D2RMM option for the minimum Herald tier required to drop Sunder Charms</li>
-                <li>Added option to enable "Warlord's Glory" set drops (official Asia promo set)</li>
-                <li>Added option to enable perfect gem drops with adjusted lower-gem frequency for cubing balance</li>
-                <li>Added option to enable teleport while in Wolf/Bear form</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 2.0.0</div>
-              <ul class="changelog-list">
-                <li>Released for compatibility with the new "Reign of the Warlock" DLC</li>
-                <li>No additional gameplay features in this release</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 1.1.0</div>
-              <ul class="changelog-list">
-                <li>All features are now optional and work in any combination (can be toggled in D2RMM)</li>
-                <li>Removed light pillars feature</li>
-                <li>Added 8 new Runewords (mid-tier for each class-specific item)</li>
-                <li>Crafting: Allow all weapons, helmets, boots, shields, belts, gloves, armors instead of specific ones</li>
-                <li>Crafting: 5% chance the result will be ethereal (same chance as dropped items)</li>
-                <li>Crafting: Add Recipes for Diamonds and Topaz</li>
-                <li>Cube: Rune upgrades without gems (higher runes require a simple key)</li>
-                <li>Duriel: Remove TP-drop mechanic, so he drops like other bosses</li>
-                <li>Wolf/Bear: Allow using Teleport</li>
-                <li>Andariel/Questdrops: Restored normal drop table with 20% chance for quest drop for any boss</li>
-                <li>Sunder charms have an equal drop chance</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 1.0.3</div>
-              <ul class="changelog-list">
-                <li>Set nolimit = 1 for original items while using D2RMM (as intended)</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 1.0.2</div>
-              <ul class="changelog-list">
-                <li>Replaced wrong file version for D2RMM</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 1.0.1</div>
-              <ul class="changelog-list">
-                <li>Added support for D2RMM</li>
-              </ul>
-            </div>
-            <div class="changelog-entry">
-              <div class="version">Version 1.0.0</div>
-              <ul class="changelog-list">
-                <li>Initial Release</li>
-              </ul>
-            </div>
+            <router-link to="/changelog" class="btn btn-outline-primary">Read the changelog</router-link>
           </div>
         </div>
       </div>
@@ -271,6 +263,47 @@
 </template>
 
 <style scoped>
+.stamp {
+  font-size: 0.85rem;
+  color: var(--d2r-muted);
+}
+
+/* The counters: the number is the message, the rest is the caption. */
+.highlight,
+.tool {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.highlight-value {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--d2r-gold-bright);
+}
+
+.highlight-label {
+  font-weight: 600;
+  color: var(--d2r-text);
+}
+
+.highlight-hint {
+  font-size: 0.82rem;
+  color: var(--d2r-muted);
+}
+
+.tool-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--d2r-gold-bright);
+}
+
+.tool-question {
+  font-size: 0.9rem;
+  color: var(--d2r-muted);
+}
+
 .feature-list {
   padding-left: 1.5rem;
   margin-bottom: 0;
@@ -290,40 +323,16 @@
   left: -1rem;
 }
 
-.changelog-entry {
+.step-list {
+  padding-left: 1.25rem;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(59, 42, 31, 0.6);
 }
 
-.changelog-entry:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.step-list li {
+  margin-bottom: 0.4rem;
 }
 
-.version {
-  font-weight: 600;
+.step-list code {
   color: var(--d2r-gold);
-  margin-bottom: 0.5rem;
-}
-
-.changelog-list {
-  margin-bottom: 0;
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.changelog-list li {
-  margin-bottom: 0.5rem;
-  position: relative;
-}
-
-.changelog-list li::before {
-  content: '•';
-  color: var(--d2r-gold);
-  font-weight: bold;
-  position: absolute;
-  left: -1rem;
 }
 </style>

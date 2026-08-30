@@ -125,6 +125,9 @@ const handleClickOutside = (event) => {
           <li class="nav-item">
             <router-link to="/options" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Options</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/changelog" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Changelog</router-link>
+          </li>
         </ul>
       </nav>
 
