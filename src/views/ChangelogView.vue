@@ -23,12 +23,12 @@
             <div class="changelog-entry">
               <div class="version">Version 3.4.0</div>
               <ul class="changelog-list">
-                <li>Added 30 new Runewords, among them the first shield trio built against the Stormshield/Phoenix duopoly — Mercy, Anathema and Motley — and Alea, a gambling word that only forms in a Cryptic Sword</li>
-                <li>Added 25 new unique items, each with an exalted version: 14 on elite bases nobody had claimed, 9 low-level class items for the levels where their class struggles, and 2 that are jokes with a working statline</li>
+                <li>Added 30 new Runewords. A pass over all 118 active words showed where the holes were, by slot and by level: the mod's class-specific words started at mid level and the Warlock had none at all, and outside the Paladin's world the endgame shield was a choice between Stormshield and Phoenix. Among the new ones are the shield trio Mercy, Anathema and Motley, and Alea, a gambling word that only forms in a Cryptic Sword</li>
+                <li>Added 25 new unique items, each with an exalted version. Every one sits on a base that had no unique at all — the bases where the game's unique roll simply fails and hands you a rare instead. 14 close the elite gaps in the three highest treasure classes, 9 are class items for the levels where their class is documented to struggle, and 2 are jokes with a working statline</li>
                 <li>Reviewed every exalted unique and changed 34 of them — the number inflation on normal-tier weapons comes down, the maximum-resistance budget is enforced, and a dozen items got the mechanic their name always promised</li>
                 <li>Added an option for the ultra rare Mythic tier, the 1-in-1000 stat that grants a skill or an aura. On by default; turn it off to cap Mythic stats at the rare tier</li>
                 <li>Duriel drops like an act boss now: the town portal spam is gone and his gold and junk are cut to what Andariel and Mephisto drop, so what falls is mostly equipment — about 3.1 pieces a kill instead of 1.9</li>
-                <li>Reworked ten of the mod's existing Runewords: Galaxy draws two different stars from one slot, and Conflux pierces resistances instead of adding damage, with +3 all skills, 60-70% faster cast, damage reduction and vitality</li>
+                <li>Reworked ten of the mod's existing Runewords, Galaxy among them: it draws two different stars from one slot now, instead of granting the same two skills every time</li>
                 <li>The in-game Runeword menu lists every Runeword the mod adds, and the High tier no longer stops before the Zod words</li>
                 <li>The chronicle option now covers every unique this mod adds, not only the exalted ones — the chronicle identifies an item by its place in the table, so the new uniques carry the same risk</li>
                 <li>Website: filter Runewords by the item you are holding and by its socket count — pick a base or a whole kind, at every level of the family tree</li>
