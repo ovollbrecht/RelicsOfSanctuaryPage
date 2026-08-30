@@ -8911,7 +8911,7 @@
     },
     "Index": "Nagelring",
     "Rarity": "285",
-    "Percent": "285/1221 (23.342%)",
+    "Percent": "285/1220 (23.361%)",
     "Lvl": "10",
     "LvlReq": "7",
     "Properties": [
@@ -8969,7 +8969,7 @@
     },
     "Index": "Manald Heal",
     "Rarity": "285",
-    "Percent": "285/1221 (23.342%)",
+    "Percent": "285/1220 (23.361%)",
     "Lvl": "20",
     "LvlReq": "15",
     "Properties": [
@@ -9035,7 +9035,7 @@
     },
     "Index": "The Stone of Jordan",
     "Rarity": "19",
-    "Percent": "19/1221 (1.556%)",
+    "Percent": "19/1220 (1.557%)",
     "Lvl": "39",
     "LvlReq": "29",
     "Properties": [
@@ -20441,7 +20441,7 @@
     },
     "Index": "Bul Katho's Wedding Band",
     "Rarity": "19",
-    "Percent": "19/1221 (1.556%)",
+    "Percent": "19/1220 (1.557%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -20837,7 +20837,7 @@
     },
     "Index": "Dwarf Star",
     "Rarity": "190",
-    "Percent": "190/1221 (15.561%)",
+    "Percent": "190/1220 (15.574%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -20911,7 +20911,7 @@
     },
     "Index": "Raven Frost",
     "Rarity": "190",
-    "Percent": "190/1221 (15.561%)",
+    "Percent": "190/1220 (15.574%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -22885,7 +22885,7 @@
     },
     "Index": "Nature's Peace",
     "Rarity": "57",
-    "Percent": "57/1221 (4.668%)",
+    "Percent": "57/1220 (4.672%)",
     "Lvl": "77",
     "LvlReq": "69",
     "Properties": [
@@ -24076,7 +24076,7 @@
     },
     "Index": "Wisp",
     "Rarity": "19",
-    "Percent": "19/1221 (1.556%)",
+    "Percent": "19/1220 (1.557%)",
     "Lvl": "84",
     "LvlReq": "76",
     "Properties": [
@@ -27438,6 +27438,7 @@
     "BaseItemName": "Cryptic Sword",
     "Tier": "elite",
     "Types": [
+      "aleb",
       "swor",
       "blde",
       "mele",
@@ -28356,7 +28357,7 @@
     },
     "Index": "Carrion Wind",
     "Rarity": "57",
-    "Percent": "57/1221 (4.668%)",
+    "Percent": "57/1220 (4.672%)",
     "Lvl": "68",
     "LvlReq": "60",
     "Properties": [
@@ -30921,7 +30922,7 @@
     },
     "Index": "Sling",
     "Rarity": "19",
-    "Percent": "19/1221 (1.556%)",
+    "Percent": "19/1220 (1.557%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -30995,7 +30996,7 @@
     },
     "Index": "Opalvein",
     "Rarity": "19",
-    "Percent": "19/1221 (1.556%)",
+    "Percent": "19/1220 (1.557%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -34597,9 +34598,9 @@
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "40% Increased Attack Speed",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
         "Priority": "145"
       }
     ],
@@ -41758,9 +41759,9 @@
       {
         "Prop": "aura",
         "Par": "Thorns",
-        "Min": "10",
-        "Max": "10",
-        "Description": "Level 10 Thorns Aura When Equipped",
+        "Min": "5",
+        "Max": "5",
+        "Description": "Level 5 Thorns Aura When Equipped",
         "Priority": "157"
       }
     ],
@@ -43593,7 +43594,7 @@
     },
     "Index": "E Nagelring",
     "Rarity": "15",
-    "Percent": "15/1221 (1.229%)",
+    "Percent": "15/1220 (1.23%)",
     "Lvl": "10",
     "LvlReq": "7",
     "Properties": [
@@ -43659,7 +43660,7 @@
     },
     "Index": "E Manald Heal",
     "Rarity": "15",
-    "Percent": "15/1221 (1.229%)",
+    "Percent": "15/1220 (1.23%)",
     "Lvl": "20",
     "LvlReq": "15",
     "Properties": [
@@ -43749,7 +43750,7 @@
     },
     "Index": "E The Stone of Jordan",
     "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
+    "Percent": "1/1220 (0.082%)",
     "Lvl": "39",
     "LvlReq": "29",
     "Properties": [
@@ -54055,7 +54056,7 @@
       },
       {
         "Prop": "heal-kill",
-        "Par": "142",
+        "Par": "",
         "Min": "8",
         "Max": "10",
         "Description": "+[8-10] Life after each Kill",
@@ -57315,9 +57316,9 @@
       "Required Dexterity": "0",
       "Required Strength": "0"
     },
-    "Index": "E Bul Kathos Wedding Band",
+    "Index": "E Bul Katho's Wedding Band",
     "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
+    "Percent": "1/1220 (0.082%)",
     "Lvl": "66",
     "LvlReq": "58",
     "Properties": [
@@ -57817,7 +57818,7 @@
     },
     "Index": "E Dwarf Star",
     "Rarity": "10",
-    "Percent": "10/1221 (0.819%)",
+    "Percent": "10/1220 (0.82%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -57899,7 +57900,7 @@
     },
     "Index": "E Raven Frost",
     "Rarity": "10",
-    "Percent": "10/1221 (0.819%)",
+    "Percent": "10/1220 (0.82%)",
     "Lvl": "53",
     "LvlReq": "45",
     "Properties": [
@@ -60377,7 +60378,7 @@
     },
     "Index": "E Nature's Peace",
     "Rarity": "3",
-    "Percent": "3/1221 (0.246%)",
+    "Percent": "3/1220 (0.246%)",
     "Lvl": "77",
     "LvlReq": "69",
     "Properties": [
@@ -61856,7 +61857,7 @@
     },
     "Index": "E Wisp",
     "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
+    "Percent": "1/1220 (0.082%)",
     "Lvl": "84",
     "LvlReq": "76",
     "Properties": [
@@ -66074,6 +66075,7 @@
     "BaseItemName": "Cryptic Sword",
     "Tier": "elite",
     "Types": [
+      "aleb",
       "swor",
       "blde",
       "mele",
@@ -67216,7 +67218,7 @@
     },
     "Index": "E Carrion Wind",
     "Rarity": "3",
-    "Percent": "3/1221 (0.246%)",
+    "Percent": "3/1220 (0.246%)",
     "Lvl": "68",
     "LvlReq": "60",
     "Properties": [
@@ -69760,7 +69762,7 @@
     },
     "Index": "E Sling",
     "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
+    "Percent": "1/1220 (0.082%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -69850,7 +69852,7 @@
     },
     "Index": "E Opalvein",
     "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
+    "Percent": "1/1220 (0.082%)",
     "Lvl": "58",
     "LvlReq": "50",
     "Properties": [
@@ -70224,72 +70226,6 @@
       }
     ],
     "ImageMapping": "helmet_unique_warlock_helm.webp",
-    "Drops": true
-  },
-  {
-    "Name": "Exalted Bul-Kathos' Wedding Band",
-    "BaseItemName": "Ring",
-    "Tier": "",
-    "Types": [
-      "ring",
-      "misc"
-    ],
-    "Stats": {
-      "Defense": "0",
-      "Damage": "0 to 0",
-      "Durability": "0",
-      "Block Chance": "0",
-      "Required Dexterity": "0",
-      "Required Strength": "0"
-    },
-    "Index": "E Bul Katho's Wedding Band",
-    "Rarity": "1",
-    "Percent": "1/1221 (0.082%)",
-    "Lvl": "66",
-    "LvlReq": "58",
-    "Properties": [
-      {
-        "Prop": "hp/lvl",
-        "Par": "6",
-        "Min": "0.75",
-        "Max": "0.75",
-        "Description": "0.75 [*level] to Life",
-        "Priority": "57"
-      },
-      {
-        "Prop": "allskills",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "+1 to All Skills",
-        "Priority": "156"
-      },
-      {
-        "Prop": "lifesteal",
-        "Par": "",
-        "Min": "6",
-        "Max": "8",
-        "Description": "[6-8]% Life stolen per hit",
-        "Priority": "88"
-      },
-      {
-        "Prop": "stam",
-        "Par": "",
-        "Min": "100",
-        "Max": "100",
-        "Description": "+100 Maximum Stamina",
-        "Priority": "51"
-      },
-      {
-        "Prop": "deadly",
-        "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Deadly Strike",
-        "Priority": "85"
-      }
-    ],
-    "ImageMapping": "ring_ring.webp",
     "Drops": true
   },
   {

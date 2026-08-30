@@ -18748,7 +18748,7 @@
       },
       {
         "Prop": "light",
-        "Par": "40",
+        "Par": "",
         "Min": "7",
         "Max": "7",
         "Description": "+7 to Light Radius",
@@ -18772,7 +18772,7 @@
       },
       {
         "Prop": "galaxy-stars",
-        "Par": "Teleport",
+        "Par": "",
         "Min": "2",
         "Max": "2",
         "Description": "2 picks of 4:",
@@ -22509,6 +22509,127 @@
     "IsTorso": false,
     "IsHelmet": false,
     "IsShield": true
+  },
+  {
+    "Name": "Alea",
+    "RowId": "Runeword2042",
+    "AllowedItems": [
+      "aleb"
+    ],
+    "Types": [
+      "aleb",
+      "swor",
+      "blde",
+      "mele",
+      "weap"
+    ],
+    "ItemTypes": [
+      "aleb"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r24",
+      "r24",
+      "r24"
+    ],
+    "RuneNames": [
+      "Ist",
+      "Ist",
+      "Ist"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 3,
+    "LevelReq": 51,
+    "Properties": [
+      {
+        "Prop": "dmg-max",
+        "Par": "",
+        "Min": "77",
+        "Max": "127",
+        "Description": "+[77-127] to Maximum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Minimum Damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "77",
+        "Max": "77",
+        "Description": "77% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "140",
+        "Max": "190",
+        "Description": "[140-190]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "alea",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "2 picks of 8:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "[150-200]% Enhanced Damage",
+            "Chance": null
+          },
+          {
+            "Description": "66% Deadly Strike",
+            "Chance": null
+          },
+          {
+            "Description": "33% Chance of Crushing Blow",
+            "Chance": null
+          },
+          {
+            "Description": "66% Chance of Open Wounds",
+            "Chance": null
+          },
+          {
+            "Description": "Adds [1-500] lightning damage",
+            "Chance": null
+          },
+          {
+            "Description": "200% Extra Gold from Monsters",
+            "Chance": null
+          },
+          {
+            "Description": "+7 to Light Radius",
+            "Chance": null
+          },
+          {
+            "Description": "Requirements 30%",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": true,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": false
   },
   {
     "Name": "Mercy",

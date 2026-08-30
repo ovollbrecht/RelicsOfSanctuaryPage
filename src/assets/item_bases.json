@@ -9,6 +9,13 @@
       ]
     },
     {
+      "Code": "aleb",
+      "Name": "Cryptic Sword",
+      "Parents": [
+        "swor"
+      ]
+    },
+    {
       "Code": "amaz",
       "Name": "Amazon Item",
       "Parents": [
@@ -1475,7 +1482,7 @@
     {
       "Code": "7ls",
       "Name": "Cryptic Sword",
-      "Type": "swor",
+      "Type": "aleb",
       "Sockets": 4
     },
     {

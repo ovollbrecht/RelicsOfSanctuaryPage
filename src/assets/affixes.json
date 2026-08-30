@@ -30725,6 +30725,13 @@
       "csch",
       "char",
       "misc"
+    ],
+    "aleb": [
+      "aleb",
+      "swor",
+      "blde",
+      "mele",
+      "weap"
     ]
   },
   "TypeNames": {
@@ -30832,7 +30839,8 @@
     "sppl": "Spears and Polearms",
     "grim": "Grimoire",
     "cjwl": "Colossal Jewel",
-    "csch": "Crafted Sunder Charm"
+    "csch": "Crafted Sunder Charm",
+    "aleb": "Cryptic Sword"
   },
   "BaseItems": [
     {
@@ -30896,6 +30904,13 @@
       "Code": "amf",
       "Type": "ajav",
       "Qlvl": 65,
+      "MagicLvl": 0
+    },
+    {
+      "Name": "Cryptic Sword",
+      "Code": "7ls",
+      "Type": "aleb",
+      "Qlvl": 82,
       "MagicLvl": 0
     },
     {
@@ -34256,13 +34271,6 @@
       "Code": "7fb",
       "Type": "swor",
       "Qlvl": 80,
-      "MagicLvl": 0
-    },
-    {
-      "Name": "Cryptic Sword",
-      "Code": "7ls",
-      "Type": "swor",
-      "Qlvl": 82,
       "MagicLvl": 0
     },
     {
