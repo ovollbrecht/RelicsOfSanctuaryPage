@@ -119,7 +119,9 @@ const fitsSelectedItem = (runeword) => {
     if (!base) return true;
     if (base.Sockets < runeword.Sockets) return false;
 
-    const chain = chainOf(base.Type);
+    // A base can sit in two families: the mod gives the Cryptic Sword a second
+    // type so one runeword can name that sword and nothing else.
+    const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
     if (excluded.some((type) => chain.has(type))) return false;
     return own.some((type) => chain.has(type));
   }

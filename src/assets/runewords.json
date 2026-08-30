@@ -4525,6 +4525,140 @@
     ]
   },
   {
+    "Name": "Exile",
+    "RowId": "Runeword37",
+    "AllowedItems": [
+      "pala"
+    ],
+    "Types": [
+      "pala",
+      "clas",
+      "ashd",
+      "shld",
+      "armo",
+      "seco"
+    ],
+    "ItemTypes": [
+      "pala"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r26",
+      "r27",
+      "r24",
+      "r14"
+    ],
+    "RuneNames": [
+      "Vex",
+      "Ohm",
+      "Ist",
+      "Dol"
+    ],
+    "ClassOnly": [
+      "pal"
+    ],
+    "ClassNames": [
+      "Paladin"
+    ],
+    "Sockets": 4,
+    "LevelReq": 57,
+    "Properties": [
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "freeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Freezes target",
+        "Priority": "78"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "220",
+        "Max": "260",
+        "Description": "[220-260]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "aura",
+        "Par": "Defiance",
+        "Min": "13",
+        "Max": "16",
+        "Description": "Level [13-16] Defiance Aura When Equipped",
+        "Priority": "157"
+      },
+      {
+        "Prop": "skilltab",
+        "Par": "10",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to Offensive Auras (Paladin Only)",
+        "Priority": "151"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Life Tap",
+        "Min": "15",
+        "Max": "5",
+        "Description": "15% Chance to cast level 5 Life Tap on striking",
+        "Priority": "158"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "25",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "res-fire-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
+        "Priority": "42"
+      },
+      {
+        "Prop": "res-cold-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
+        "Priority": "44"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Replenish Life +7",
+        "Priority": "56"
+      }
+    ],
+    "IsNew": false,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
     "Name": "Faith",
     "RowId": "Runeword38",
     "AllowedItems": [
@@ -21264,17 +21398,17 @@
       {
         "Prop": "allskills",
         "Par": "",
-        "Min": "2",
-        "Max": "2",
-        "Description": "+2 to All Skills",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to All Skills",
         "Priority": "156"
       },
       {
         "Prop": "cast3",
         "Par": "",
-        "Min": "45",
-        "Max": "45",
-        "Description": "45% Faster Cast Rate",
+        "Min": "60",
+        "Max": "70",
+        "Description": "[60-70]% Faster Cast Rate",
         "Priority": "142"
       },
       {
@@ -21302,12 +21436,20 @@
         "Priority": "88"
       },
       {
-        "Prop": "mana%",
+        "Prop": "red-dmg%",
         "Par": "",
-        "Min": "10",
+        "Min": "12",
         "Max": "15",
-        "Description": "Increase Maximum Mana [10-15]%",
-        "Priority": "54"
+        "Description": "Physical Damage Received Reduced by [12-15]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "35",
+        "Max": "45",
+        "Description": "+[35-45] to Vitality",
+        "Priority": "63"
       },
       {
         "Prop": "openwounds",

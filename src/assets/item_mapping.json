@@ -182,5 +182,13 @@
   "cjwl": {
     "name": "Jewel",
     "type": "misc"
+  },
+  "aleb": {
+    "name": "Cryptic Sword",
+    "type": "weapon"
+  },
+  "pala": {
+    "name": "Paladin Shield",
+    "type": "armor"
   }
 }

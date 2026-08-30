@@ -14694,5 +14694,172 @@
         "NestedGroup": null
       }
     ]
+  },
+  {
+    "Code": "alea",
+    "Id": "251",
+    "PickMode": "1",
+    "Entries": [
+      {
+        "Prop": "dmg%",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "150",
+        "ModMax": "200",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "dmg%",
+            "Par": "",
+            "Min": "150",
+            "Max": "200",
+            "Description": "[150-200]% Enhanced Damage",
+            "Priority": "1000"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "deadly",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "66",
+        "ModMax": "66",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "deadly",
+            "Par": "",
+            "Min": "66",
+            "Max": "66",
+            "Description": "66% Deadly Strike",
+            "Priority": "85"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "crush",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "33",
+        "ModMax": "33",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "crush",
+            "Par": "",
+            "Min": "33",
+            "Max": "33",
+            "Description": "33% Chance of Crushing Blow",
+            "Priority": "87"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "openwounds",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "66",
+        "ModMax": "66",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "openwounds",
+            "Par": "",
+            "Min": "66",
+            "Max": "66",
+            "Description": "66% Chance of Open Wounds",
+            "Priority": "83"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "dmg-ltng",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "1",
+        "ModMax": "500",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "dmg-ltng",
+            "Par": "",
+            "Min": "1",
+            "Max": "500",
+            "Description": "Adds [1-500] lightning damage",
+            "Priority": "300"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "gold%",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "200",
+        "ModMax": "200",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "gold%",
+            "Par": "",
+            "Min": "200",
+            "Max": "200",
+            "Description": "200% Extra Gold from Monsters",
+            "Priority": "10"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "light",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "7",
+        "ModMax": "7",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "light",
+            "Par": "",
+            "Min": "7",
+            "Max": "7",
+            "Description": "+7 to Light Radius",
+            "Priority": "6"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "ease",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "30",
+        "ModMax": "30",
+        "Chance": "1",
+        "Probability": 0.125,
+        "ResolvedProperties": [
+          {
+            "Prop": "ease",
+            "Par": "",
+            "Min": "30",
+            "Max": "30",
+            "Description": "Requirements 30%",
+            "Priority": "0"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
   }
 ]
