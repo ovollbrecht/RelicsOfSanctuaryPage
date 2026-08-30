@@ -30,8 +30,6 @@
                 <li>Duriel drops like an act boss now: the town portal spam is gone and his gold and junk are cut to what Andariel and Mephisto drop, so what falls is mostly equipment — about 3.1 pieces a kill instead of 1.9</li>
                 <li>Reworked ten of the mod's existing Runewords: Galaxy draws two different stars from one slot, and Conflux pierces resistances instead of adding damage, with +3 all skills, 60-70% faster cast, damage reduction and vitality</li>
                 <li>The in-game Runeword menu lists every Runeword the mod adds, and the High tier no longer stops before the Zod words</li>
-                <li>Fixed a Mythic property being added twice, which shifted every stat after it — the ethereal-indestructible line on the new uniques was rolling as a Sorceress skill</li>
-                <li>Fixed curse resistance showing nothing on an item, however much of it the item carried: Blizzard ships the stat without a description</li>
                 <li>The chronicle option now covers every unique this mod adds, not only the exalted ones — the chronicle identifies an item by its place in the table, so the new uniques carry the same risk</li>
                 <li>Website: filter Runewords by the item you are holding and by its socket count — pick a base or a whole kind, at every level of the family tree</li>
                 <li>Website: the Runeword list is one row per word, cut into rune tiers, with a rune picker that says how many words your runes can make and which ones you are a single rune short of</li>
