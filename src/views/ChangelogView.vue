@@ -21,6 +21,26 @@
         <div class="card card-enhanced">
           <div class="card-body p-4">
             <div class="changelog-entry">
+              <div class="version">Version 3.4.0</div>
+              <ul class="changelog-list">
+                <li>Added 30 new Runewords, among them the first shield trio built against the Stormshield/Phoenix duopoly — Mercy, Anathema and Motley — and Alea, a gambling word that only forms in a Cryptic Sword</li>
+                <li>Added 25 new unique items, each with an exalted version: 14 on elite bases nobody had claimed, 9 low-level class items for the levels where their class struggles, and 2 that are jokes with a working statline</li>
+                <li>Reviewed every exalted unique and changed 34 of them — the number inflation on normal-tier weapons comes down, the maximum-resistance budget is enforced, and a dozen items got the mechanic their name always promised</li>
+                <li>Added an option for the ultra rare Mythic tier, the 1-in-1000 stat that grants a skill or an aura. On by default; turn it off to cap Mythic stats at the rare tier</li>
+                <li>Duriel drops like an act boss now: the town portal spam is gone and his gold and junk are cut to what Andariel and Mephisto drop, so what falls is mostly equipment — about 3.1 pieces a kill instead of 1.9</li>
+                <li>Reworked ten of the mod's existing Runewords: Galaxy draws two different stars from one slot, and Conflux pierces resistances instead of adding damage, with +3 all skills, 60-70% faster cast, damage reduction and vitality</li>
+                <li>The in-game Runeword menu lists every Runeword the mod adds, and the High tier no longer stops before the Zod words</li>
+                <li>Fixed a Mythic property being added twice, which shifted every stat after it — the ethereal-indestructible line on the new uniques was rolling as a Sorceress skill</li>
+                <li>Fixed curse resistance showing nothing on an item, however much of it the item carried: Blizzard ships the stat without a description</li>
+                <li>The chronicle option now covers every unique this mod adds, not only the exalted ones — the chronicle identifies an item by its place in the table, so the new uniques carry the same risk</li>
+                <li>Website: filter Runewords by the item you are holding and by its socket count — pick a base or a whole kind, at every level of the family tree</li>
+                <li>Website: the Runeword list is one row per word, cut into rune tiers, with a rune picker that says how many words your runes can make and which ones you are a single rune short of</li>
+                <li>Website: every filter lives in the address bar, so a search is a link you can send</li>
+                <li>Website: the drop calculator marks the items this mod adds or changes</li>
+                <li>Website: ethereal items say so, and the front page reads its numbers out of the data instead of a hand-written list</li>
+              </ul>
+            </div>
+            <div class="changelog-entry">
               <div class="version">Version 3.3.0</div>
               <ul class="changelog-list">
                 <li>Updated for Diablo II: Resurrected patch 3.3</li>
