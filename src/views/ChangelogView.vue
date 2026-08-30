@@ -30,6 +30,8 @@
                 <li>Duriel drops like an act boss now: the town portal spam is gone and his gold and junk are cut to what Andariel and Mephisto drop, so what falls is mostly equipment — about 3.1 pieces a kill instead of 1.9</li>
                 <li>Reworked ten of the mod's existing Runewords, Galaxy among them: it draws two different stars from one slot now, instead of granting the same two skills every time</li>
                 <li>The in-game Runeword menu lists every Runeword the mod adds, and the High tier no longer stops before the Zod words</li>
+                <li>Fixed six exalted uniques rolling the wrong property: an internal row was added twice and shifted everything after it, so E Arachnid Mesh, E Death's Web, E Mang Song's Lesson, E Ribcracker and E Woestave granted a random class skill where they should have been ethereal and indestructible, and E Chromatic Ire was ethereal and indestructible instead of piercing elemental resistance</li>
+                <li>Fixed the exalted Bul-Kathos' Wedding Band showing its raw table name instead of its own</li>
                 <li>The chronicle option now covers every unique this mod adds, not only the exalted ones — the chronicle identifies an item by its place in the table, so the new uniques carry the same risk</li>
                 <li>Website: filter Runewords by the item you are holding and by its socket count — pick a base or a whole kind, at every level of the family tree</li>
                 <li>Website: the Runeword list is one row per word, cut into rune tiers, with a rune picker that says how many words your runes can make and which ones you are a single rune short of</li>
