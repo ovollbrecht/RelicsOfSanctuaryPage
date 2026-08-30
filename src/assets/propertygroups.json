@@ -14861,5 +14861,159 @@
         "NestedGroup": null
       }
     ]
+  },
+  {
+    "Code": "elem-duo",
+    "Id": "252",
+    "PickMode": "1",
+    "Entries": [
+      {
+        "Prop": "res-fire",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "40",
+        "ModMax": "50",
+        "Chance": "2",
+        "Probability": 0.2222222222222222222222222222,
+        "ResolvedProperties": [
+          {
+            "Prop": "res-fire",
+            "Par": "",
+            "Min": "40",
+            "Max": "50",
+            "Description": "Fire Resist [40-50]%",
+            "Priority": "36"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "res-ltng",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "40",
+        "ModMax": "50",
+        "Chance": "2",
+        "Probability": 0.2222222222222222222222222222,
+        "ResolvedProperties": [
+          {
+            "Prop": "res-ltng",
+            "Par": "",
+            "Min": "40",
+            "Max": "50",
+            "Description": "Lightning Resist [40-50]%",
+            "Priority": "38"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "res-cold",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "40",
+        "ModMax": "50",
+        "Chance": "2",
+        "Probability": 0.2222222222222222222222222222,
+        "ResolvedProperties": [
+          {
+            "Prop": "res-cold",
+            "Par": "",
+            "Min": "40",
+            "Max": "50",
+            "Description": "Cold Resist [40-50]%",
+            "Priority": "40"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "res-pois",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "40",
+        "ModMax": "50",
+        "Chance": "2",
+        "Probability": 0.2222222222222222222222222222,
+        "ResolvedProperties": [
+          {
+            "Prop": "res-pois",
+            "Par": "",
+            "Min": "40",
+            "Max": "50",
+            "Description": "Poison Resist [40-50]%",
+            "Priority": "34"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "res-mag",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "20",
+        "ModMax": "25",
+        "Chance": "1",
+        "Probability": 0.1111111111111111111111111111,
+        "ResolvedProperties": [
+          {
+            "Prop": "res-mag",
+            "Par": "",
+            "Min": "20",
+            "Max": "25",
+            "Description": "Magic Resist [20-25]%",
+            "Priority": "41"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
+  },
+  {
+    "Code": "motley-melee",
+    "Id": "253",
+    "PickMode": "1",
+    "Entries": [
+      {
+        "Prop": "crush",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "15",
+        "ModMax": "20",
+        "Chance": "1",
+        "Probability": 0.5,
+        "ResolvedProperties": [
+          {
+            "Prop": "crush",
+            "Par": "",
+            "Min": "15",
+            "Max": "20",
+            "Description": "[15-20]% Chance of Crushing Blow",
+            "Priority": "87"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "slow",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "20",
+        "ModMax": "25",
+        "Chance": "1",
+        "Probability": 0.5,
+        "ResolvedProperties": [
+          {
+            "Prop": "slow",
+            "Par": "",
+            "Min": "20",
+            "Max": "25",
+            "Description": "Slows Target by [20-25]%",
+            "Priority": "77"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
   }
 ]

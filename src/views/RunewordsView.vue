@@ -484,11 +484,16 @@ const entryItemLabels = (runeword) => {
     if (!labels.includes(label)) labels.push(label);
   });
 
-  // The exclusion belongs to the kind it narrows, which is the last one named:
-  // "Shield (not Paladin Shield)".
+  // The exclusion belongs to the kind it narrows, which is the kind it sits
+  // under: Anathema goes in shields and grimoires and not in paladin shields,
+  // and a paladin shield is a shield - so the note goes on "Shield". Only when
+  // nothing here contains it does it fall to the last kind named.
   const excluded = fieldOf(runeword, 'ETypes') ?? [];
   if (excluded.length && labels.length) {
-    labels[labels.length - 1] += ` (not ${getAllowedItemsText(excluded)})`;
+    const parent = types.findIndex((type) =>
+      excluded.some((code) => code !== type && chainOf(code).has(type)));
+    const at = parent >= 0 ? Math.min(parent, labels.length - 1) : labels.length - 1;
+    labels[at] += ` (not ${getAllowedItemsText(excluded)})`;
   }
 
   return labels.length ? labels : ['None'];

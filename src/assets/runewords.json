@@ -22509,5 +22509,361 @@
     "IsTorso": false,
     "IsHelmet": false,
     "IsShield": true
+  },
+  {
+    "Name": "Mercy",
+    "RowId": "Runeword2043",
+    "AllowedItems": [
+      "shld"
+    ],
+    "Types": [
+      "shld",
+      "armo",
+      "seco"
+    ],
+    "ItemTypes": [
+      "shld"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r30",
+      "r28",
+      "r22"
+    ],
+    "RuneNames": [
+      "Ber",
+      "Lo",
+      "Um"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 3,
+    "LevelReq": 63,
+    "Properties": [
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "35",
+        "Max": "40",
+        "Description": "[35-40]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "20",
+        "Max": "23",
+        "Description": "Physical Damage Received Reduced by [20-23]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "+[200-250] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "+[15-20] to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "40",
+        "Max": "60",
+        "Description": "+[40-60] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "res-ltng-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Lightning Resist",
+        "Priority": "43"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "22",
+        "Max": "22",
+        "Description": "All Resistances +22",
+        "Priority": "34"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Anathema",
+    "RowId": "Runeword2044",
+    "AllowedItems": [
+      "shld",
+      "grim"
+    ],
+    "Types": [
+      "shld",
+      "armo",
+      "seco",
+      "grim",
+      "warl",
+      "clas"
+    ],
+    "ItemTypes": [
+      "shld",
+      "grim"
+    ],
+    "ETypes": [
+      "ashd"
+    ],
+    "Runes": [
+      "r32",
+      "r22"
+    ],
+    "RuneNames": [
+      "Cham",
+      "Um"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 2,
+    "LevelReq": 67,
+    "Properties": [
+      {
+        "Prop": "curse-res",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "Curse Resistance [50-60]%",
+        "Priority": "35"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "10",
+        "Max": "12",
+        "Description": "Physical Damage Received Reduced by [10-12]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "37",
+        "Max": "42",
+        "Description": "All Resistances +[37-42]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "hp",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "+[60-80] to Life",
+        "Priority": "59"
+      },
+      {
+        "Prop": "block2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Block Rate",
+        "Priority": "136"
+      },
+      {
+        "Prop": "dmg-mag",
+        "Par": "",
+        "Min": "250",
+        "Max": "300",
+        "Description": "Adds [250-300] magic damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
+  },
+  {
+    "Name": "Motley",
+    "RowId": "Runeword2045",
+    "AllowedItems": [
+      "shld"
+    ],
+    "Types": [
+      "shld",
+      "armo",
+      "seco"
+    ],
+    "ItemTypes": [
+      "shld"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r26",
+      "r24",
+      "r02"
+    ],
+    "RuneNames": [
+      "Vex",
+      "Ist",
+      "Eld"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 3,
+    "LevelReq": 55,
+    "Properties": [
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "50",
+        "Max": "60",
+        "Description": "[50-60]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "balance2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Hit Recovery",
+        "Priority": "139"
+      },
+      {
+        "Prop": "res-fire-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
+        "Priority": "42"
+      },
+      {
+        "Prop": "block",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "7% Increased Chance of Blocking",
+        "Priority": "134"
+      },
+      {
+        "Prop": "elem-duo",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "2 picks of 5:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "Fire Resist [40-50]%",
+            "Chance": 0.2222222222222222
+          },
+          {
+            "Description": "Lightning Resist [40-50]%",
+            "Chance": 0.2222222222222222
+          },
+          {
+            "Description": "Cold Resist [40-50]%",
+            "Chance": 0.2222222222222222
+          },
+          {
+            "Description": "Poison Resist [40-50]%",
+            "Chance": 0.2222222222222222
+          },
+          {
+            "Description": "Magic Resist [20-25]%",
+            "Chance": 0.1111111111111111
+          }
+        ]
+      },
+      {
+        "Prop": "motley-melee",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 2:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "[15-20]% Chance of Crushing Blow",
+            "Chance": null
+          },
+          {
+            "Description": "Slows Target by [20-25]%",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": false,
+    "IsShield": true
   }
 ]
