@@ -10,8 +10,9 @@
  * precomputed calendar, because the generator behind Blizzard's seed is not
  * public and has not yielded to reverse engineering (see docs/terror-zones.md
  * in the tooling repo). Zone names, areas and superuniques are derived from
- * this site's own data, so only the slot sequence, the immunities and the
- * boss pack counts are taken over.
+ * this site's own data - immunities too, per area, from the monsters that
+ * spawn there - so only the slot sequence and the boss pack counts are taken
+ * over.
  *
  *   node scripts/import-terror-zones.mjs                # fetch from d2emu
  *   node scripts/import-terror-zones.mjs --from tz.json # use a saved copy
@@ -31,8 +32,6 @@ const arg = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1
 const SOURCE_PAGE = 'https://d2emu.com/tz-sp';
 const SOURCE_DATA = 'https://d2emu.com/data/tz-2023-localized.json';
 const SLOT_MS = 30 * 60 * 1000;
-const IMMUNITY = { c: 'Cold', f: 'Fire', l: 'Lightning', p: 'Poison', ph: 'Physical', m: 'Magic',
-  cold: 'Cold', fire: 'Fire', lightning: 'Lightning', poison: 'Poison', physical: 'Physical', magic: 'Magic' };
 
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8').replace(/^﻿/, ''));
 const config = readJson(resolve(root, arg('--zones') ?? 'scripts/data/desecratedzones.json')).desecrated_zones[0];
@@ -69,7 +68,6 @@ const zones = config.zones.map((zone) => {
     short: names[0],
     areas: levelIds,
     waypoint,
-    immunities: [],
     bossPacks: null,
   };
 });
@@ -112,11 +110,6 @@ calendar.forEach((entry, k) => {
   const index = resolveLabel(entry.zone.enUS);
   zoneIndex.push(index);
   const zone = zones[index];
-  // The import spells immunities two ways ("Lightning" here, "l" there);
-  // one vocabulary on the page.
-  if (zone.immunities.length === 0 && entry.immunities?.length) {
-    zone.immunities = [...new Set(entry.immunities.map((i) => IMMUNITY[i.toLowerCase()] ?? i))];
-  }
   if (!zone.bossPacks && entry.numBossPacks?.length === 2) zone.bossPacks = [...entry.numBossPacks];
 });
 

@@ -142,6 +142,42 @@ const ctx = computed(() => buildContext(dropData, {
   heraldTier: heraldTier.value,
 }));
 
+// ---------- elements: what a zone can be farmed with ----------
+// An element is usable in a zone when at least one of its areas has no
+// monster immune to it - a whole zone is written off only when every area is.
+const ELEMENTS = ['Fire', 'Cold', 'Lightning', 'Poison', 'Magic', 'Physical'];
+const ELEMENT_SHORT = { Fire: 'Fire', Cold: 'Cold', Lightning: 'Ltng', Poison: 'Pois', Magic: 'Mag', Physical: 'Phys' };
+const immunityCache = new Map(); // `${diff}` -> Map(areaId -> Set(element))
+const areaImmunities = (areaId, diff) => {
+  let byArea = immunityCache.get(diff);
+  if (!byArea) {
+    byArea = new Map();
+    const add = (id, list) => {
+      if (!list?.length) return;
+      let set = byArea.get(id);
+      if (!set) byArea.set(id, set = new Set());
+      list.forEach((e) => set.add(e));
+    };
+    dropData.Monsters.forEach((m) => m.Areas[diff].forEach((id) => add(id, m.Immunities?.[diff])));
+    dropData.SuperUniques.forEach((su) => {
+      if (su.Monster < 0) return;
+      su.Areas.forEach((id) => add(id, dropData.Monsters[su.Monster]?.Immunities?.[diff]));
+    });
+    immunityCache.set(diff, byArea);
+  }
+  return byArea.get(areaId) ?? new Set();
+};
+/// Elements with at least one area free of immunity to them, in a fixed order.
+const farmableElements = (zone, diff) => ELEMENTS.filter((e) => zone.areas.some((id) => !areaImmunities(id, diff).has(e)));
+const blockedElements = (zone, diff) => ELEMENTS.filter((e) => zone.areas.every((id) => areaImmunities(id, diff).has(e)));
+const elementFilter = ref(new Set());
+const toggleElement = (e) => {
+  const next = new Set(elementFilter.value);
+  if (next.has(e)) next.delete(e); else next.add(e);
+  elementFilter.value = next;
+};
+const elementClass = (e) => `el-${e.toLowerCase()}`;
+
 const areaName = (id) => dropData.Areas.find((a) => a.Id === id)?.Name ?? `Area ${id}`;
 const areaLevel = (id, diff) => dropData.Areas.find((a) => a.Id === id)?.Levels[diff] ?? 0;
 const superUniquesOf = (zone) => {
@@ -308,11 +344,15 @@ const itemZoneSet = computed(() => (itemSearch.value.heraldOnly ? null : new Set
 // ---------- lists ----------
 const passesFilters = (zone, zoneIndex) => {
   if (actFilter.value && zone.act !== actFilter.value) return false;
+  if (elementFilter.value.size) {
+    const ok = farmableElements(zone, difficulty.value);
+    for (const e of elementFilter.value) if (!ok.includes(e)) return false;
+  }
   if (onlyFavorites.value && !favorites.value.has(zone.key)) return false;
   if (selectedItem.value != null && itemZoneSet.value && !itemZoneSet.value.has(zoneIndex)) return false;
   return true;
 };
-const filtersActive = computed(() => actFilter.value !== 0 || onlyFavorites.value || selectedItem.value != null);
+const filtersActive = computed(() => actFilter.value !== 0 || onlyFavorites.value || selectedItem.value != null || elementFilter.value.size > 0);
 
 const nextSlot = computed(() => slotAt(currentIndex.value + 1));
 const UPCOMING = 12;
@@ -363,7 +403,6 @@ const itemLink = computed(() => (selectedItem.value == null ? null : {
   query: { mode: 'item', itemkind: itemKind.value, item: (itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets)[selectedItem.value].Index, tz: '1', diff: String(difficulty.value) },
 }));
 
-const immunityClass = (name) => `imm-${name.toLowerCase()}`;
 const fmt = (p) => formatChance(p, 'ratio');
 
 // ---------- URL state ----------
@@ -379,6 +418,7 @@ onMounted(() => {
   charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
   actFilter.value = clampInt(q.act, 0, 5, 0);
+  if (q.el) elementFilter.value = new Set(String(q.el).split(',').filter((e) => ELEMENTS.includes(e)));
   if (q.fav === '1') onlyFavorites.value = true;
   if (q.kind === 'set') itemKind.value = 'set';
   if (q.item) {
@@ -390,7 +430,7 @@ onMounted(() => {
     if (idx != null) selectedItem.value = idx;
   }
 });
-watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, onlyFavorites, itemKind, selectedItem], () => {
+watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, onlyFavorites, itemKind, selectedItem, elementFilter], () => {
   const list = itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets;
   router.replace({
     query: {
@@ -400,6 +440,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
       ...(charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}),
       ...(heraldTier.value !== 1 ? { ht: String(heraldTier.value) } : {}),
       ...(actFilter.value ? { act: String(actFilter.value) } : {}),
+      ...(elementFilter.value.size ? { el: ELEMENTS.filter((e) => elementFilter.value.has(e)).join(',') } : {}),
       ...(onlyFavorites.value ? { fav: '1' } : {}),
       ...(itemKind.value !== 'unique' ? { kind: itemKind.value } : {}),
       ...(selectedItem.value != null ? { item: list[selectedItem.value].Index } : {}),
@@ -453,8 +494,14 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 </h2>
                 <div class="d-flex flex-wrap gap-2 align-items-center small">
                   <span class="badge act-badge" :class="`act-${current.zone.act}`">Act {{ current.zone.act }}</span>
-                  <span v-for="imm in current.zone.immunities" :key="imm" class="badge imm" :class="immunityClass(imm)">{{ imm }} immune</span>
                   <span v-if="current.zone.bossPacks" class="text-muted">{{ current.zone.bossPacks[0] }}–{{ current.zone.bossPacks[1] }} boss packs</span>
+                </div>
+                <div class="mt-2 small d-flex flex-wrap gap-1 align-items-center">
+                  <span class="text-muted me-1">Farm with:</span>
+                  <span v-for="e in farmableElements(current.zone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ e }}</span>
+                  <span v-if="blockedElements(current.zone, difficulty).length" class="text-muted ms-2">
+                    immune everywhere: {{ blockedElements(current.zone, difficulty).join(', ') }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -510,6 +557,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                   </div>
                   <button v-if="selectedItem != null" class="btn btn-sm btn-outline-secondary" title="Clear" @click="selectedItem = null">×</button>
                 </div>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-1 align-items-center">
+                <span class="small text-muted me-1" title="Keeps the zones where at least one area has no monster immune to the element">Farmable with</span>
+                <button v-for="e in ELEMENTS" :key="e" class="btn btn-sm el-toggle" :class="[elementClass(e), { active: elementFilter.has(e) }]" @click="toggleElement(e)">{{ e }}</button>
               </div>
               <div class="col-12 d-flex flex-wrap gap-3 align-items-center">
                 <div class="form-check form-switch mb-0">
@@ -573,6 +624,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ sameLocalDay(slot.start, now) ? fmtTime(slot.start) : `${fmtShortDay(slot.start)} ${fmtTime(slot.start)}` }}</span>
                 <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}</a>
+                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
                 <span class="slot-when text-muted small">{{ fmtWhen(slot.start) }}</span>
               </li>
@@ -599,6 +651,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ fmtTime(slot.start) }}</span>
                 <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}</a>
+                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
               </li>
             </ul>
@@ -615,8 +668,11 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <h2 class="h5 card-title m-0">{{ selectedZone.name }}</h2>
                 <div class="d-flex flex-wrap gap-2 mt-1 small">
                   <span class="badge act-badge" :class="`act-${selectedZone.act}`">Act {{ selectedZone.act }}</span>
-                  <span v-for="imm in selectedZone.immunities" :key="imm" class="badge imm" :class="immunityClass(imm)">{{ imm }}</span>
                   <span v-if="selectedZone.bossPacks" class="text-muted">{{ selectedZone.bossPacks[0] }}–{{ selectedZone.bossPacks[1] }} boss packs</span>
+                </div>
+                <div class="d-flex flex-wrap gap-1 mt-2 small align-items-center">
+                  <span class="text-muted me-1">Farm with:</span>
+                  <span v-for="e in farmableElements(selectedZone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ e }}</span>
                 </div>
               </div>
               <div class="d-flex gap-1">
@@ -634,10 +690,15 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
               </ul>
 
               <div class="section-header mb-1">Areas</div>
-              <div class="d-flex flex-wrap gap-1 mb-3">
-                <router-link v-for="areaId in selectedZone.areas" :key="areaId" :to="dropCalcLink({ area: String(areaId) })" class="chip"
-                             :title="`Area level ${areaLevel(areaId, difficulty)} - open in the drop calculator`">{{ areaName(areaId) }}</router-link>
-              </div>
+              <ul class="list-unstyled mb-3 small area-list">
+                <li v-for="areaId in selectedZone.areas" :key="areaId" class="d-flex flex-wrap align-items-center gap-1">
+                  <router-link :to="dropCalcLink({ area: String(areaId) })" class="chip"
+                               :title="`Area level ${areaLevel(areaId, difficulty)} - open in the drop calculator`">{{ areaName(areaId) }}</router-link>
+                  <span v-if="areaImmunities(areaId, difficulty).size" class="text-muted">immune:</span>
+                  <span v-for="e in ELEMENTS.filter((x) => areaImmunities(areaId, difficulty).has(x))" :key="e" class="el-dot" :class="elementClass(e)">{{ ELEMENT_SHORT[e] }}</span>
+                  <span v-if="!areaImmunities(areaId, difficulty).size" class="text-muted">no immunities</span>
+                </li>
+              </ul>
 
               <div class="section-header mb-1">Superuniques</div>
               <div class="d-flex flex-wrap gap-1 mb-3">
@@ -746,13 +807,25 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
 .act-4 { background: rgba(190, 80, 60, 0.35); }
 .act-5 { background: rgba(110, 140, 200, 0.35); }
 
-.imm { background: rgba(255, 255, 255, 0.06); color: var(--d2r-text); font-weight: 500; }
-.imm-cold { color: #8fd3ff; }
-.imm-fire { color: #ff9a5c; }
-.imm-lightning { color: #ffe97a; }
-.imm-poison { color: #9fe870; }
-.imm-physical { color: #e0d6c2; }
-.imm-magic { color: #d7a6ff; }
+.el, .el-dot, .el-toggle { font-weight: 500; }
+.el { background: rgba(255, 255, 255, 0.06); }
+.el-fire { color: #ff9a5c; }
+.el-cold { color: #8fd3ff; }
+.el-lightning { color: #ffe97a; }
+.el-poison { color: #9fe870; }
+.el-magic { color: #d7a6ff; }
+.el-physical { color: #e0d6c2; }
+.el-row { display: inline-flex; gap: 0.2rem; flex-wrap: wrap; justify-content: flex-end; min-width: 9rem; }
+.el-dot {
+  font-size: 0.68rem; line-height: 1; padding: 0.15rem 0.3rem; border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.06); letter-spacing: 0.02em;
+}
+.el-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03);
+  padding: 0.1rem 0.55rem; font-size: 0.8rem; opacity: 0.7;
+}
+.el-toggle.active { opacity: 1; border-color: currentColor; background: rgba(255, 255, 255, 0.1); }
+.area-list li { padding: 0.15rem 0; }
 
 .star {
   background: none; border: 0; padding: 0 0.25rem; line-height: 1;
