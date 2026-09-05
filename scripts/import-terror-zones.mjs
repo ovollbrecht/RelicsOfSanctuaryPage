@@ -42,6 +42,11 @@ const calendar = from
   ? readJson(resolve(process.cwd(), from))
   : await fetch(SOURCE_DATA).then((r) => { if (!r.ok) throw new Error(`${SOURCE_DATA}: HTTP ${r.status}`); return r.json(); });
 
+// The act bosses, by the zone that holds them. The monster data places bosses
+// through a curated map that does not cover these five, so they are named here.
+const ACT_BOSS = { 'Act1-Catacombs': 'Andariel', 'Act2-TalRashas': 'Duriel', 'Act3-DuranceOfHate': 'Mephisto',
+  'Act4-ChaosSanctuary': 'Diablo', 'Act5-WorldstoneKeep': 'Baal' };
+
 // One entry per zone in the file's order - the order the game's index refers to.
 // "Catacombs Level 1" through "Level 4" read as one place, as they do on the
 // waypoint screen; the level list keeps every id for the drop calculator.
@@ -68,6 +73,7 @@ const zones = config.zones.map((zone) => {
     short: names[0],
     areas: levelIds,
     waypoint,
+    boss: ACT_BOSS[zone.id] ?? null,
     bossPacks: null,
   };
 });

@@ -494,6 +494,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 </h2>
                 <div class="d-flex flex-wrap gap-2 align-items-center small">
                   <span class="badge act-badge" :class="`act-${current.zone.act}`">Act {{ current.zone.act }}</span>
+                  <span v-if="current.zone.boss" class="badge boss-badge" :title="`${current.zone.boss}'s zone`">{{ current.zone.boss }}</span>
                   <span v-if="current.zone.bossPacks" class="text-muted">{{ current.zone.bossPacks[0] }}–{{ current.zone.bossPacks[1] }} boss packs</span>
                 </div>
                 <div class="mt-2 small d-flex flex-wrap gap-1 align-items-center">
@@ -524,6 +525,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <span class="text-muted small">Next, {{ fmtTime(nextSlot.start) }}:</span>
                 <a href="#" class="zone-link" @click.prevent="selectZone(nextSlot.zone)">{{ nextSlot.zone.name }}</a>
                 <span class="badge act-badge ms-1" :class="`act-${nextSlot.zone.act}`">A{{ nextSlot.zone.act }}</span>
+                <span v-if="nextSlot.zone.boss" class="badge boss-badge ms-1">{{ nextSlot.zone.boss }}</span>
               </div>
             </div>
           </div>
@@ -598,6 +600,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                     <td>
                       <a href="#" class="zone-link" @click.prevent="selectZone(entry.zone)">{{ entry.zone.short }}</a>
                       <span class="badge act-badge ms-1" :class="`act-${entry.zone.act}`">A{{ entry.zone.act }}</span>
+                      <span v-if="entry.zone.boss" class="badge boss-badge ms-1">{{ entry.zone.boss }}</span>
                     </td>
                     <td class="text-nowrap">
                       <template v-if="entry.next">{{ entry.next.index === currentIndex ? 'now' : fmtWhen(entry.next.start) }}</template>
@@ -620,10 +623,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
           <div class="card-body p-0">
             <div v-if="upcoming.length === 0" class="p-3 text-muted small">Nothing matches in the imported range.</div>
             <ul v-else class="list-unstyled mb-0 slot-list">
-              <li v-for="slot in upcoming" :key="slot.index" class="slot-row">
+              <li v-for="slot in upcoming" :key="slot.index" class="slot-row" :class="{ 'row-boss': slot.zone.boss }">
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ sameLocalDay(slot.start, now) ? fmtTime(slot.start) : `${fmtShortDay(slot.start)} ${fmtTime(slot.start)}` }}</span>
-                <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}</a>
+                <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}<span v-if="slot.zone.boss" class="badge boss-badge ms-2">{{ slot.zone.boss }}</span></a>
                 <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
                 <span class="slot-when text-muted small">{{ fmtWhen(slot.start) }}</span>
@@ -647,10 +650,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
             <div v-if="daySlots.length === 0" class="p-3 text-muted small">No schedule for this day.</div>
             <ul v-else class="list-unstyled mb-0 slot-list">
               <li v-for="slot in daySlots" :key="slot.index" class="slot-row"
-                  :class="{ 'row-now': slot.index === currentIndex, 'row-past': slot.end <= now, 'row-dim': !passesFilters(slot.zone, slot.zoneIndex) }">
+                  :class="{ 'row-now': slot.index === currentIndex, 'row-past': slot.end <= now, 'row-dim': !passesFilters(slot.zone, slot.zoneIndex), 'row-boss': slot.zone.boss }">
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ fmtTime(slot.start) }}</span>
-                <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}</a>
+                <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}<span v-if="slot.zone.boss" class="badge boss-badge ms-2">{{ slot.zone.boss }}</span></a>
                 <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
               </li>
@@ -668,6 +671,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <h2 class="h5 card-title m-0">{{ selectedZone.name }}</h2>
                 <div class="d-flex flex-wrap gap-2 mt-1 small">
                   <span class="badge act-badge" :class="`act-${selectedZone.act}`">Act {{ selectedZone.act }}</span>
+                  <span v-if="selectedZone.boss" class="badge boss-badge">{{ selectedZone.boss }}</span>
                   <span v-if="selectedZone.bossPacks" class="text-muted">{{ selectedZone.bossPacks[0] }}–{{ selectedZone.bossPacks[1] }} boss packs</span>
                 </div>
                 <div class="d-flex flex-wrap gap-1 mt-2 small align-items-center">
@@ -763,11 +767,17 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
             <div class="section-header mb-2">Zone details</div>
             <p class="mb-2">Pick a zone from the lists - or from this overview - to see its next slots, its areas and superuniques with links into the drop calculator, and what it can drop in terror mode.</p>
             <div class="zone-grid">
-              <button v-for="(zone, zi) in zones" :key="zone.key" class="zone-tile" :class="{ dim: !passesFilters(zone, zi), fav: isFavorite(zone) }" @click="selectZone(zone)">
-                <span class="badge act-badge" :class="`act-${zone.act}`">A{{ zone.act }}</span>
-                <span class="tile-name">{{ zone.short }}</span>
-                <span class="tile-next">{{ nextOccurrences(zi, 1)[0] ? (nextOccurrences(zi, 1)[0].index === currentIndex ? 'now' : fmtWhen(nextOccurrences(zi, 1)[0].start)) : '—' }}</span>
-              </button>
+              <div v-for="(zone, zi) in zones" :key="zone.key" class="zone-tile" :class="{ dim: !passesFilters(zone, zi), fav: isFavorite(zone), boss: zone.boss }">
+                <button class="star tile-star" :class="{ on: isFavorite(zone) }" :title="isFavorite(zone) ? 'Remove favorite' : 'Mark as favorite'" @click="toggleFavorite(zone)">★</button>
+                <button class="tile-main" @click="selectZone(zone)">
+                  <span class="d-flex gap-1 align-items-center">
+                    <span class="badge act-badge" :class="`act-${zone.act}`">A{{ zone.act }}</span>
+                    <span v-if="zone.boss" class="badge boss-badge">{{ zone.boss }}</span>
+                  </span>
+                  <span class="tile-name">{{ zone.short }}</span>
+                  <span class="tile-next">{{ nextOccurrences(zi, 1)[0] ? (nextOccurrences(zi, 1)[0].index === currentIndex ? 'now' : fmtWhen(nextOccurrences(zi, 1)[0].start)) : '—' }}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -865,15 +875,26 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
   background: var(--d2r-gold); margin-left: 0.35rem; vertical-align: middle; opacity: 0.8;
 }
 
+/* act bosses: one colour, everywhere the zone shows up */
+.boss-badge { background: rgba(170, 40, 40, 0.45); color: #ffb3b3; font-weight: 600; }
+.row-boss { box-shadow: inset 3px 0 0 rgba(200, 50, 50, 0.7); }
+
 .zone-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0.4rem; }
 .zone-tile {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem;
-  padding: 0.45rem 0.55rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 0.4rem;
-  background: rgba(255, 255, 255, 0.03); color: var(--d2r-text); text-align: left; cursor: pointer;
+  position: relative; display: flex; flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.03); color: var(--d2r-text);
 }
 .zone-tile:hover { border-color: var(--d2r-gold); }
 .zone-tile.fav { border-color: rgba(212, 175, 55, 0.6); }
+.zone-tile.boss { border-left: 3px solid rgba(200, 50, 50, 0.8); }
 .zone-tile.dim { opacity: 0.35; }
+.tile-main {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem;
+  width: 100%; padding: 0.45rem 1.6rem 0.45rem 0.55rem; border: 0; background: none;
+  color: inherit; text-align: left; cursor: pointer;
+}
+.tile-star { position: absolute; top: 0.3rem; right: 0.3rem; }
 .tile-name { font-size: 0.85rem; line-height: 1.15; }
 .tile-next { font-size: 0.75rem; color: var(--d2r-muted); }
 
