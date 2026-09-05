@@ -9,6 +9,33 @@ const dataStamp = (() => {
   return [version, date && `data ${date}`].filter(Boolean).join(' · ')
 })()
 
+// The menu in four shelves: what there is to find, what to work it out
+// with, where to farm it, and the mod itself.
+const navGroups = [
+  { label: 'Items', items: [
+    { to: '/items/uniques', label: 'Uniques' },
+    { to: '/items/sets', label: 'Sets' },
+    { to: '/runewords', label: 'Runewords' },
+    { to: '/items/crafting', label: 'Crafting' },
+    { to: '/items/cube', label: 'Horadric Cube' },
+    { to: '/items/mythic-affixes', label: 'Mythic Affixes' },
+  ] },
+  { label: 'Calculators', items: [
+    { to: '/drop-calc', label: 'Drop Calculator' },
+    { to: '/items/affixes', label: 'Affix Calculator' },
+  ] },
+  { label: 'Farming', items: [
+    { to: '/terror-zones', label: 'Terror Zones', hint: 'live' },
+    { to: '/where-to-farm', label: 'Where to Farm' },
+    { to: '/tonight', label: 'Tonight' },
+    { to: '/grail', label: 'Grail' },
+  ] },
+  { label: 'The mod', items: [
+    { to: '/options', label: 'Options' },
+    { to: '/changelog', label: 'Changelog' },
+  ] },
+]
+
 const isSidebarOpen = ref(false)
 const isWideScreen = ref(false)
 const wasWideScreen = ref(false)
@@ -97,53 +124,14 @@ const handleClickOutside = (event) => {
       </div>
 
       <nav class="sidebar-nav">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/uniques" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Uniques</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/sets" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Sets</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/crafting" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Crafting</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/cube" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Horadric Cube</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/mythic-affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Mythic Affixes</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/runewords" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Runewords</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/drop-calc" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Drop Calculator</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/terror-zones" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Terror Zones</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/where-to-farm" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Where to Farm</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/tonight" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Tonight</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/grail" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Grail</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/items/affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Affix Calculator</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/options" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Options</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/changelog" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Changelog</router-link>
-          </li>
-        </ul>
+        <router-link to="/" class="sidebar-link home-link" @click="!isWideScreen && (isSidebarOpen = false)">Home</router-link>
+        <div v-for="group in navGroups" :key="group.label" class="nav-group">
+          <div class="nav-group-label">{{ group.label }}</div>
+          <router-link v-for="item in group.items" :key="item.to" :to="item.to" class="sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">
+            <span>{{ item.label }}</span>
+            <span v-if="item.hint" class="nav-hint">{{ item.hint }}</span>
+          </router-link>
+        </div>
       </nav>
 
       <div class="sidebar-footer">
@@ -230,7 +218,22 @@ const handleClickOutside = (event) => {
 }
 
 .sidebar-nav {
-  padding: 1rem 0.75rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+}
+
+.nav-group {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(201, 163, 106, 0.12);
+}
+
+.nav-group-label {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(201, 163, 106, 0.65);
+  padding: 0.15rem 0.9rem 0.35rem;
 }
 
 .sidebar-link {
@@ -239,10 +242,25 @@ const handleClickOutside = (event) => {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.6rem 0.9rem;
-  border-radius: 10px;
+  padding: 0.38rem 0.9rem;
+  border-radius: 8px;
   border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 0.98rem;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.home-link {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.nav-hint {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--d2r-gold);
+  opacity: 0.8;
 }
 
 .sidebar-link:hover {
@@ -252,8 +270,13 @@ const handleClickOutside = (event) => {
 
 .sidebar-link.router-link-active {
   background: rgba(201, 163, 106, 0.2);
-  color: var(--d2r-gold);
+  color: var(--d2r-gold-bright) !important;
   border-color: rgba(201, 163, 106, 0.4);
+}
+.home-link.router-link-active:not(.router-link-exact-active) {
+  background: transparent;
+  border-color: transparent;
+  color: var(--d2r-text) !important;
 }
 
 .sidebar-footer {
