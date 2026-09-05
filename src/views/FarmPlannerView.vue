@@ -5,7 +5,7 @@ import dropData from '@/assets/dropcalc.json';
 import tz from '@/assets/terror_zones.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext } from '@/composables/useDropSimulation.js';
-import { DEFAULT_PROFILE, resolveTargets, targetToken, buildSpots, scoreSpot } from '@/composables/useFarmPlanner.js';
+import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot } from '@/composables/useFarmPlanner.js';
 import { useFarmList } from '@/composables/useFarmList.js';
 
 /**
@@ -49,6 +49,11 @@ const clearTargets = () => farmList.clear();
 const difficulty = ref(2);
 const charLevel = ref(99);
 const heraldTier = ref(1);
+// What counts as a high rune. The Countess' own table ends at Ist, so at Vex+
+// she drops out of the rune score by herself - the way to keep her from
+// deciding it without pretending she drops nothing.
+const runeFloor = ref(21);
+const runeFloorName = computed(() => RUNE_FLOORS.find((f) => f.number === runeFloor.value)?.name ?? 'Pul');
 const sortBy = ref('tz'); // tz | plain | runes
 const ROW_LIMIT = 40;
 const showAll = ref(false);
@@ -80,7 +85,21 @@ try {
   if (saved && typeof saved === 'object') overrides.value = saved;
 } catch { /* none */ }
 watch(overrides, (o) => { try { localStorage.setItem('farm_overrides', JSON.stringify(o)); } catch { /* fine */ } }, { deep: true });
-const profileFor = (areaId) => ({ ...profile.value, ...(overrides.value[areaId] ?? {}) });
+/// A spot's pack count from the zone data: the zone's span, spread over its areas.
+const packsFromZone = (areaId) => {
+  const zi = zoneOfArea.get(areaId);
+  const zone = zi != null ? tz.zones[zi] : null;
+  if (!zone?.bossPacks) return null;
+  return Math.max(1, Math.round((zone.bossPacks[0] + zone.bossPacks[1]) / 2 / zone.areas.length));
+};
+const profileFor = (areaId) => {
+  const base = { ...profile.value };
+  if (base.packsFromZone) {
+    const fromZone = packsFromZone(areaId);
+    if (fromZone != null) base.packs = fromZone;
+  }
+  return { ...base, ...(overrides.value[areaId] ?? {}) };
+};
 const hasOverride = (areaId) => overrides.value[areaId] != null;
 const editing = ref(null); // areaId being edited
 const draft = ref(null);
@@ -140,8 +159,9 @@ const rows = computed(() => {
   for (const spot of spots) {
     const zoneIndex = zoneOfArea.get(spot.areaId);
     const p = profileFor(spot.areaId);
-    const a = scoreSpot(plain, spot, targets.value, p, diff);
-    const b = zoneIndex != null ? scoreSpot(terror, spot, targets.value, p, diff) : null;
+    const opts = { highRune: runeFloor.value };
+    const a = scoreSpot(plain, spot, targets.value, p, diff, opts);
+    const b = zoneIndex != null ? scoreSpot(terror, spot, targets.value, p, diff, opts) : null;
     if (a.perRun <= 0 && (!b || b.perRun <= 0)) continue;
     out.push({
       spot,
@@ -213,15 +233,17 @@ onMounted(() => {
   difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
   charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
+  if (RUNE_FLOORS.some((f) => String(f.number) === q.rune)) runeFloor.value = Number(q.rune);
   if (['tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
 });
-watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
+watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
   router.replace({
     query: {
       ...(tokens.value.length ? { items: tokens.value.join('|') } : {}),
       ...(difficulty.value !== 2 ? { diff: String(difficulty.value) } : {}),
       ...(charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}),
       ...(heraldTier.value !== 1 ? { ht: String(heraldTier.value) } : {}),
+      ...(runeFloor.value !== 21 ? { rune: String(runeFloor.value) } : {}),
       ...(sortBy.value !== 'tz' ? { sort: sortBy.value } : {}),
     },
   });
@@ -247,6 +269,10 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
         <label class="small text-muted" title="Herald tier for the terrorized column; sunder charms need tier 4+">Herald tier</label>
         <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
           <option v-for="tier in 5" :key="tier" :value="tier">{{ tier }}</option>
+        </select>
+        <label class="small text-muted" title="What counts as a high rune in the rune score. The Countess' own table ends at Ist - at Vex+ she no longer decides it">High rune</label>
+        <select v-model.number="runeFloor" class="form-select form-select-sm w-auto">
+          <option v-for="f in RUNE_FLOORS" :key="f.number" :value="f.number">{{ f.name }}+</option>
         </select>
       </div>
     </div>
@@ -297,6 +323,7 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
               <div class="col-12 small text-muted">{{ killsPerRun }} kills / run<template v-if="overrideCount"> · {{ overrideCount }} spot{{ overrideCount === 1 ? '' : 's' }} with own numbers (<a href="#" @click.prevent="clearAllOverrides">reset</a>)</template></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-su" v-model="profile.superUniques" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-su">Superuniques</label></div></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-boss" v-model="profile.boss" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-boss">Act / quest boss</label></div></div>
+              <div class="col-12"><div class="form-check form-switch mb-0"><input id="p-zone" v-model="profile.packsFromZone" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-zone" title="The terror zone data carries a pack span per zone; spread over the zone's areas it replaces the number above wherever it exists">Unique packs from the zone data where known</label></div></div>
             </div>
           </div>
         </div>
@@ -307,15 +334,15 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
       <div class="card-body p-3 d-flex flex-wrap gap-4">
         <div>
           <div class="section-header mb-1">Best for your list</div>
-          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · Pul+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
+          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
         </div>
         <div>
           <div class="section-header mb-1">Best for high runes</div>
-          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span> <span class="text-muted small">Pul+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}</span></div>
+          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span> <span class="text-muted small">{{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}<template v-if="scoreOf(bestFor.byRunes).runes.carrier && scoreOf(bestFor.byRunes).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(bestFor.byRunes).runes.carrier.label)"> · mostly {{ scoreOf(bestFor.byRunes).runes.carrier.label }}</template></span></div>
         </div>
         <div v-if="bestFor.both">
           <div class="section-header mb-1">Best of both</div>
-          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · Pul+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
+          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
         </div>
         <div class="small text-muted align-self-center ms-auto verdict-note">
           Bosses pay in uniques and sets and hand out few runes; a clear is the other way round. The bars in the table put both on one scale, each against the best spot.
@@ -331,7 +358,7 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
           <select v-model="sortBy" class="form-select form-select-sm w-auto">
             <option value="tz">chance, terrorized</option>
             <option value="plain">chance, not terrorized</option>
-            <option value="runes">Pul+ rune per run</option>
+            <option value="runes">{{ runeFloorName }}+ rune per run</option>
           </select>
         </div>
       </div>
@@ -346,7 +373,7 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
                 <th class="text-end">Terrorized</th>
                 <th>Carried by</th>
                 <th>Runes</th>
-                <th title="Chance for the list and for a Pul+ rune, each relative to the best spot on the table">Items · runes</th>
+                <th :title="`Chance for the list and for a ${runeFloorName}+ rune, each relative to the best spot on the table`">Items · runes</th>
                 <th>Next terror</th>
               </tr>
             </thead>
@@ -374,8 +401,11 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
                 <td class="small text-nowrap">
                   <template v-if="scoreOf(row).runes.max">
                     <div>up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span></div>
-                    <div class="text-muted">Pul+ {{ pct(scoreOf(row).runes.highPerRun) }} / run</div>
+                    <div class="text-muted">{{ runeFloorName }}+ {{ pct(scoreOf(row).runes.highPerRun) }} / run</div>
                     <div class="text-muted">~{{ scoreOf(row).runes.expected.toFixed(1) }} runes / run</div>
+                    <div v-if="scoreOf(row).runes.carrier && scoreOf(row).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(row).runes.carrier.label)" class="carrier">
+                      mostly {{ scoreOf(row).runes.carrier.label }} ({{ Math.round(scoreOf(row).runes.carrier.share * 100) }} %)
+                    </div>
                   </template>
                   <span v-else class="text-muted">—</span>
                 </td>
@@ -467,4 +497,5 @@ watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
 .lean-items { color: #c7b377; }
 .lean-runes { color: #ffb84d; }
 .lean-both { color: #9fe870; }
+.carrier { color: #ffb84d; font-size: 0.78rem; }
 </style>

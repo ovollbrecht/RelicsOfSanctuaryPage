@@ -26,6 +26,7 @@ export const DEFAULT_PROFILE = {
   heralds: 0,        // heralds met per run - terror zones only
   superUniques: true,
   boss: true,
+  packsFromZone: true, // take a spot's pack count from the terror zone data where it has one
 };
 
 /// Act and quest bosses have no spawn list; this is the level they stand in.
@@ -34,7 +35,7 @@ export const BOSS_AREAS = {
   izual: 105, bloodraven: 17, griswold: 38, nihlathakboss: 124, baalcrab: 132,
 };
 
-const HIGH_RUNE = 21; // Pul
+export const RUNE_FLOORS = [{ number: 21, name: 'Pul' }, { number: 25, name: 'Vex' }, { number: 30, name: 'Ber' }];
 
 /**
  * 'u:<Name>' / 's:<Name>' tokens -> targets. A name covers every spawnable row
@@ -76,7 +77,7 @@ const runeNumber = (code) => {
  * One source, one kill: the chance of each target and the rune picture.
  * Returns null when the source drops nothing.
  */
-function evaluateSource(ctx, sel, targets) {
+function evaluateSource(ctx, sel, targets, highRune) {
   const source = resolveSource(ctx, sel);
   if (source.tcIndex == null || source.tcIndex < 0) return null;
   const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus, source);
@@ -122,7 +123,7 @@ function evaluateSource(ctx, sel, targets) {
     if (!base.IsRune || p <= 0) continue;
     const n = runeNumber(base.Code);
     runes.any += p;
-    if (n >= HIGH_RUNE) runes.high += p;
+    if (n >= highRune) runes.high += p;
     if (n > runes.max) runes.max = n;
   }
   return { any, perTarget, runes, mlvl: source.mlvl, terrorized: source.terrorized };
@@ -168,13 +169,13 @@ export function buildSpots(data, difficulty) {
  * probabilities for the target list, the rune picture and what carried the
  * result.
  */
-export function scoreSpot(ctx, spot, targets, profile, difficulty) {
+export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 21 } = {}) {
   const types = ['normal', 'champion', 'unique', 'minion'];
   const byType = {};
   for (const type of types) {
     const hits = [];
     for (const monsterIndex of spot.monsters) {
-      const r = evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets);
+      const r = evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets, highRune);
       if (r) hits.push(r);
     }
     byType[type] = {
@@ -194,6 +195,7 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty) {
   let miss = 1;
   let runesExpected = 0; let highExpected = 0; let highMiss = 1; let runesMax = 0;
   const parts = [];
+  const runeParts = []; // who hands out the high runes - the Countess has a table of her own
   const take = (label, p, n, runes) => {
     if (n <= 0) return;
     const hit = 1 - Math.pow(1 - Math.min(p, 1), n);
@@ -203,6 +205,7 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty) {
       highExpected += n * runes.high;
       highMiss *= Math.pow(1 - Math.min(runes.high, 1), n);
       runesMax = Math.max(runesMax, runes.max);
+      if (runes.high > 0) runeParts.push({ label, expected: n * runes.high });
     }
     if (hit > 0) parts.push({ label, hit });
   };
@@ -213,24 +216,28 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty) {
 
   if (profile.superUniques) {
     for (const superUniqueIndex of spot.superUniques) {
-      const r = evaluateSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty }, targets);
+      const r = evaluateSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty }, targets, highRune);
       if (r) take(ctx.superUniques[superUniqueIndex].Name, r.any, 1, r.runes);
     }
   }
   if (profile.boss && spot.boss >= 0) {
-    const r = evaluateSource(ctx, { kind: 'monster', monsterIndex: spot.boss, sourceType: 'boss', difficulty, areaId: spot.areaId }, targets);
+    const r = evaluateSource(ctx, { kind: 'monster', monsterIndex: spot.boss, sourceType: 'boss', difficulty, areaId: spot.areaId }, targets, highRune);
     if (r) take(ctx.monsters[spot.boss].Name, r.any, 1, r.runes);
   }
   // Heralds are a terror zone's own elite; there are none in an ordinary run.
   if (ctx.options.terror?.enabled && (profile.heralds | 0) > 0) {
-    const r = evaluateSource(ctx, { kind: 'herald', difficulty }, targets);
+    const r = evaluateSource(ctx, { kind: 'herald', difficulty }, targets, highRune);
     if (r) take('Heralds', r.any, profile.heralds | 0, r.runes);
   }
 
   parts.sort((a, b) => b.hit - a.hit);
+  runeParts.sort((a, b) => b.expected - a.expected);
+  const carrier = runeParts.length && highExpected > 0
+    ? { label: runeParts[0].label, share: runeParts[0].expected / highExpected }
+    : null;
   return {
     perRun: 1 - miss,
     parts,
-    runes: { expected: runesExpected, highExpected, highPerRun: 1 - highMiss, max: runesMax },
+    runes: { expected: runesExpected, highExpected, highPerRun: 1 - highMiss, max: runesMax, carrier },
   };
 }
