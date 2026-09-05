@@ -23,6 +23,7 @@ export const DEFAULT_PROFILE = {
   champPacks: 2,     // champion packs per run
   champsPerPack: 3,
   trash: 30,         // ordinary kills per run
+  minutes: 4,        // how long a run takes - the denominator behind "worth"
   heralds: 0,        // heralds met per run - terror zones only
   superUniques: true,
   boss: true,
@@ -47,12 +48,12 @@ export const RUNE_FLOORS = [{ number: 21, name: 'Pul' }, { number: 25, name: 'Ve
 const council = (m) => /^councilmember\d$/.test(m.Id);
 export const SPOT_PRESETS = {
   102: [ // Durance of Hate Level 3
-    { id: 'meph', label: 'Mephisto only', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: false, boss: true } },
-    { id: 'meph-council', label: 'Mephisto + council', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: true, boss: true } },
+    { id: 'meph', label: 'Mephisto only', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: false, boss: true, minutes: 1.5 } },
+    { id: 'meph-council', label: 'Mephisto + council', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: true, boss: true, minutes: 2.5 } },
   ],
   83: [ // Travincal
     { id: 'council', label: 'Council only', monsters: council,
-      profile: { packs: 2, minionsPerPack: 3, champPacks: 1, champsPerPack: 3, trash: 6, heralds: 0, superUniques: true, boss: false } },
+      profile: { packs: 2, minionsPerPack: 3, champPacks: 1, champsPerPack: 3, trash: 6, heralds: 0, superUniques: true, boss: false, minutes: 3 } },
   ],
 };
 export const presetsFor = (areaId) => SPOT_PRESETS[areaId] ?? [];

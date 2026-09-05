@@ -60,7 +60,10 @@ watch(players, (n) => { if (party.value > n) party.value = n; });
 // deciding it without pretending she drops nothing.
 const runeFloor = ref(25);
 const runeFloorName = computed(() => RUNE_FLOORS.find((f) => f.number === runeFloor.value)?.name ?? 'Pul');
-const sortBy = ref('tz'); // tz | plain | runes
+const sortBy = ref('worth'); // worth | tz | plain | runes
+// Where the hour is best spent: items and high runes per hour, each against
+// the best spot, mixed by this weight. 100 = only the list counts, 0 = only runes.
+const weightItems = ref(50);
 const ROW_LIMIT = 40;
 const showAll = ref(false);
 
@@ -197,6 +200,7 @@ const rows = computed(() => {
     if (a.perRun <= 0 && (!b || b.perRun <= 0)) continue;
     out.push({
       spot,
+      minutes: Math.max(0.5, Number(p.minutes) || DEFAULT_PROFILE.minutes),
       zone: zoneIndex != null ? tz.zones[zoneIndex] : null,
       next: zoneIndex != null ? nextSlotOfZone(zoneIndex) : null,
       plain: a,
@@ -211,7 +215,8 @@ const rows = computed(() => {
 });
 const sorted = computed(() => {
   const list = [...rows.value];
-  if (sortBy.value === 'plain') list.sort((x, y) => y.plain.perRun - x.plain.perRun);
+  if (sortBy.value === 'worth') list.sort((x, y) => worth(y) - worth(x));
+  else if (sortBy.value === 'plain') list.sort((x, y) => y.plain.perRun - x.plain.perRun);
   else if (sortBy.value === 'runes') list.sort((x, y) => scoreOf(y).runes.highPerRun - scoreOf(x).runes.highPerRun);
   else list.sort((x, y) => (y.tz?.perRun ?? 0) - (x.tz?.perRun ?? 0) || y.plain.perRun - x.plain.perRun);
   return list;
@@ -227,6 +232,29 @@ const visible = computed(() => (showAll.value ? sorted.value : sorted.value.slic
 // character level 99 every table reaches Zod; outside it most do not.
 const terrorView = computed(() => sortBy.value !== 'plain');
 const scoreOf = (row) => (terrorView.value ? (row.tz ?? row.plain) : row.plain);
+
+// per hour: expected hits on the list and expected high runes, runs/h = 60/minutes
+const runsPerHour = (row) => 60 / row.minutes;
+const itemsPerHour = (row) => scoreOf(row).perRun * runsPerHour(row);
+const runesPerHour = (row) => scoreOf(row).runes.highExpected * runsPerHour(row);
+const maxItemsHour = computed(() => rows.value.reduce((m, r) => Math.max(m, itemsPerHour(r)), 0));
+const maxRunesHour = computed(() => rows.value.reduce((m, r) => Math.max(m, runesPerHour(r)), 0));
+const worth = (row) => {
+  const w = weightItems.value / 100;
+  const i = maxItemsHour.value > 0 ? itemsPerHour(row) / maxItemsHour.value : 0;
+  const r = maxRunesHour.value > 0 ? runesPerHour(row) / maxRunesHour.value : 0;
+  return w * i + (1 - w) * r;
+};
+const ranking = computed(() => [...rows.value].sort((x, y) => worth(y) - worth(x)));
+const rankOf = (row) => ranking.value.indexOf(row) + 1;
+/// "1 in 7 h" - hours per expected hit
+const hours = (perHour) => {
+  if (!(perHour > 0)) return '—';
+  const h = 1 / perHour;
+  if (h < 1) return `${Math.round(60 * h)} min`;
+  if (h < 10) return `${h.toFixed(1)} h`;
+  return `${Math.round(h).toLocaleString()} h`;
+};
 const maxItems = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).perRun), 0));
 const maxRunes = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).runes.highPerRun), 0));
 const itemShare = (row) => (maxItems.value > 0 ? scoreOf(row).perRun / maxItems.value : 0);
@@ -276,9 +304,10 @@ onMounted(() => {
   party.value = clampInt(q.party, 1, players.value, party.value);
   mf.value = clampInt(q.mf, 0, 9999, mf.value);
   if (RUNE_FLOORS.some((f) => String(f.number) === q.rune)) runeFloor.value = Number(q.rune);
-  if (['tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
+  if (['worth', 'tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
+  weightItems.value = clampInt(q.w, 0, 100, weightItems.value);
 });
-watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy], () => {
+watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, weightItems], () => {
   router.replace({
     query: {
       ...(tokens.value.length ? { items: tokens.value.join('|') } : {}),
@@ -289,7 +318,8 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       ...(party.value !== 1 ? { party: String(party.value) } : {}),
       ...(mf.value !== 0 ? { mf: String(mf.value) } : {}),
       ...(runeFloor.value !== 25 ? { rune: String(runeFloor.value) } : {}),
-      ...(sortBy.value !== 'tz' ? { sort: sortBy.value } : {}),
+      ...(sortBy.value !== 'worth' ? { sort: sortBy.value } : {}),
+      ...(weightItems.value !== 50 ? { w: String(weightItems.value) } : {}),
     },
   });
 }, { deep: true });
@@ -375,6 +405,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
               <div class="col-4"><label class="form-label small mb-0">Champion packs</label><input v-model.number="profile.champPacks" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
               <div class="col-4"><label class="form-label small mb-0">Champs / pack</label><input v-model.number="profile.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
               <div class="col-4"><label class="form-label small mb-0" title="Only in the terrorized column">Heralds (TZ)</label><input v-model.number="profile.heralds" type="number" min="0" max="10" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0" title="How long one run takes, town to town - the denominator behind the per-hour ranking">Minutes / run</label><input v-model.number="profile.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm" /></div>
               <div class="col-12 small text-muted">{{ killsPerRun }} kills / run<template v-if="overrideCount"> · {{ overrideCount }} spot{{ overrideCount === 1 ? '' : 's' }} with own numbers (<a href="#" @click.prevent="clearAllOverrides">reset</a>)</template></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-su" v-model="profile.superUniques" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-su">Superuniques</label></div></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-boss" v-model="profile.boss" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-boss">Act / quest boss</label></div></div>
@@ -387,6 +418,20 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
 
     <div v-if="bestFor" class="card card-enhanced mt-4 verdict">
       <div class="card-body p-3 d-flex flex-wrap gap-4">
+        <div class="ranking">
+          <div class="section-header mb-1">Most worth your time</div>
+          <ol class="mb-1 ps-3">
+            <li v-for="row in ranking.slice(0, 3)" :key="row.spot.areaId">
+              <span class="spot-strong">{{ row.spot.name }}</span><span v-if="row.preset" class="text-muted small"> ({{ row.preset.label }})</span>
+              <span class="text-muted small"> · a hit every {{ hours(itemsPerHour(row)) }} · a {{ runeFloorName }}+ every {{ hours(runesPerHour(row)) }} · {{ row.minutes }} min runs</span>
+            </li>
+          </ol>
+          <div class="d-flex align-items-center gap-2 small text-muted">
+            <span>runes</span>
+            <input v-model.number="weightItems" type="range" min="0" max="100" step="5" class="form-range weight" title="What the hour is for: only runes on the left, only the list on the right" />
+            <span>items</span>
+          </div>
+        </div>
         <div>
           <div class="section-header mb-1">Best for your list</div>
           <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span><span v-if="bestFor.byItems.preset" class="text-muted small"> ({{ bestFor.byItems.preset.label }})</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
@@ -411,6 +456,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
         <div class="d-flex gap-2 align-items-center">
           <label class="small text-muted">Sort by</label>
           <select v-model="sortBy" class="form-select form-select-sm w-auto">
+            <option value="worth">worth per hour</option>
             <option value="tz">chance, terrorized</option>
             <option value="plain">chance, not terrorized</option>
             <option value="runes">{{ runeFloorName }}+ rune per run</option>
@@ -423,7 +469,9 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
           <table class="table table-dark table-sm table-hover mb-0 align-middle plan-table">
             <thead>
               <tr>
+                <th class="text-end rank-col">#</th>
                 <th>Spot</th>
+                <th class="text-end" title="Expected hits on the list and high runes per hour at this spot's run time">Per hour</th>
                 <th class="text-end">Not terrorized</th>
                 <th class="text-end">Terrorized</th>
                 <th>Carried by</th>
@@ -435,6 +483,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
             <tbody>
               <template v-for="row in visible" :key="row.spot.areaId">
               <tr :class="{ 'row-edited': row.overridden }">
+                <td class="text-end rank-col text-muted">{{ rankOf(row) }}</td>
                 <td>
                   <router-link :to="dropCalcLink(row.spot, false)" class="spot-link">{{ row.spot.name }}</router-link>
                   <span class="badge act-badge ms-1" :class="`act-${row.spot.act}`">A{{ row.spot.act }}</span>
@@ -444,6 +493,11 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     <option v-for="pr in row.presets" :key="pr.id" :value="pr.id">{{ pr.label }}</option>
                   </select>
                   <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? 'This spot has its own run numbers' : 'Own run numbers for this spot'" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
+                </td>
+                <td class="text-end text-nowrap small">
+                  <div>hit every <strong>{{ hours(itemsPerHour(row)) }}</strong></div>
+                  <div><span class="rune-high">{{ runeFloorName }}+</span> every <strong>{{ hours(runesPerHour(row)) }}</strong></div>
+                  <div class="text-muted">{{ row.minutes }} min / run</div>
                 </td>
                 <td class="text-end text-nowrap">
                   <div>{{ pct(row.plain.perRun) }}</div>
@@ -484,7 +538,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                 </td>
               </tr>
               <tr v-if="editing === row.spot.areaId && draft" class="edit-row">
-                <td colspan="7">
+                <td colspan="9">
                   <div class="d-flex flex-wrap gap-2 align-items-end">
                     <span class="small text-muted me-1">A run in {{ row.spot.name }}:</span>
                     <label class="small">packs <input v-model.number="draft.packs" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
@@ -493,6 +547,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     <label class="small">champs/pack <input v-model.number="draft.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
                     <label class="small">trash <input v-model.number="draft.trash" type="number" min="0" max="999" class="form-control form-control-sm d-inline-block mini" /></label>
                     <label class="small">heralds <input v-model.number="draft.heralds" type="number" min="0" max="10" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">minutes <input v-model.number="draft.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm d-inline-block mini" /></label>
                     <label class="small form-check mb-0 ms-1"><input v-model="draft.superUniques" class="form-check-input" type="checkbox" /> superuniques</label>
                     <label class="small form-check mb-0"><input v-model="draft.boss" class="form-check-input" type="checkbox" /> boss</label>
                     <span class="ms-auto d-flex gap-1">
@@ -553,6 +608,10 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
 .edit-row td { background: rgba(212, 175, 55, 0.06); }
 .mini { width: 4.2rem; margin-left: 0.25rem; }
 .verdict { border-color: rgba(201, 163, 106, 0.45); }
+.ranking { min-width: 20rem; }
+.ranking ol li { margin-bottom: 0.15rem; }
+.weight { width: 9rem; }
+.rank-col { width: 2.2rem; }
 .verdict-note { max-width: 22rem; }
 .spot-strong { color: var(--d2r-gold-bright); font-weight: 600; }
 .lean-cell { min-width: 7.5rem; }
