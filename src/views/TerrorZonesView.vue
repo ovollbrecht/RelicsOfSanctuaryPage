@@ -294,15 +294,26 @@ const nextOccurrences = (zoneIndex, limit = 5, includeCurrent = true) => {
 
 // ---------- item search: when can I farm this? ----------
 const itemKind = ref('unique');
-const selectedItem = ref(null);
-const itemOptions = computed(() => (itemKind.value === 'unique'
-  ? dropData.Uniques.map((u, i) => ({ value: i, label: u.Name, hint: dropData.BaseItems[u.Base]?.Name ?? '', spawnable: u.Spawnable }))
-  : dropData.Sets.map((s, i) => ({ value: i, label: s.Name, hint: `${s.SetName} · ${dropData.BaseItems[s.Base]?.Name ?? ''}`, spawnable: s.Spawnable })))
-  .filter((o) => o.spawnable !== false));
+const selectedItem = ref(null); // an item name; every spawnable row with it counts
+const itemList = computed(() => (itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets));
+// one option per name - the eight Rainbow Facets are one search, not eight
+const itemOptions = computed(() => {
+  const seen = new Map();
+  itemList.value.forEach((e) => {
+    if (e.Spawnable === false) return;
+    const base = dropData.BaseItems[e.Base]?.Name ?? '';
+    const hint = itemKind.value === 'unique' ? base : `${e.SetName} · ${base}`;
+    const prev = seen.get(e.Name);
+    if (!prev) seen.set(e.Name, { value: e.Name, label: e.Name, hint, count: 1 });
+    else { prev.count += 1; if (!prev.hint.includes(base)) prev.hint += `, ${base}`; }
+  });
+  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${o.count} variants` } : o));
+});
 watch(itemKind, () => { selectedItem.value = null; });
 
-const itemName = computed(() => (selectedItem.value == null ? null
-  : (itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets)[selectedItem.value]?.Name ?? null));
+const itemName = computed(() => selectedItem.value);
+const itemRows = computed(() => (selectedItem.value == null ? []
+  : itemList.value.map((e, i) => (e.Name === selectedItem.value && e.Spawnable !== false ? i : -1)).filter((i) => i >= 0)));
 
 /**
  * Where the chosen item drops, zone by zone, with the zone's next slot.
@@ -314,8 +325,17 @@ const itemName = computed(() => (selectedItem.value == null ? null
  * and then every zone is as good as the next.
  */
 const itemSearch = computed(() => {
-  if (selectedItem.value == null) return { zones: [], herald: null, heraldOnly: false };
-  const rows = computeItemSources(ctx.value, { itemKind: itemKind.value, itemIndex: selectedItem.value, difficulty: difficulty.value });
+  if (selectedItem.value == null || itemRows.value.length === 0) return { zones: [], herald: null, heraldOnly: false };
+  // rows of the same name are the same wish: one source's chances add up
+  const merged = new Map();
+  for (const itemIndex of itemRows.value) {
+    for (const row of computeItemSources(ctx.value, { itemKind: itemKind.value, itemIndex, difficulty: difficulty.value })) {
+      const key = `${row.sourceType}|${row.monsterIndex ?? ''}|${row.superUniqueIndex ?? ''}|${row.areaId ?? ''}`;
+      const prev = merged.get(key);
+      if (prev) prev.chance += row.chance; else merged.set(key, { ...row });
+    }
+  }
+  const rows = [...merged.values()];
   const herald = rows.find((row) => row.sourceType === 'herald') ?? null;
   const byZone = new Map();
   for (const row of rows) {
@@ -400,7 +420,7 @@ const dayMax = toDayKey(scheduleEnd - 1);
 const dropCalcLink = (query) => ({ path: '/drop-calc', query: { tz: '1', diff: String(difficulty.value), ...(charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}), ...(heraldTier.value !== 1 ? { ht: String(heraldTier.value) } : {}), ...query } });
 const itemLink = computed(() => (selectedItem.value == null ? null : {
   path: '/drop-calc',
-  query: { mode: 'item', itemkind: itemKind.value, item: (itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets)[selectedItem.value].Index, tz: '1', diff: String(difficulty.value) },
+  query: { mode: 'item', itemkind: itemKind.value, item: itemList.value[itemRows.value[0]].Index, tz: '1', diff: String(difficulty.value) },
 }));
 
 const fmt = (p) => formatChance(p, 'ratio');
@@ -422,16 +442,13 @@ onMounted(() => {
   if (q.fav === '1') onlyFavorites.value = true;
   if (q.kind === 'set') itemKind.value = 'set';
   if (q.item) {
-    // The file carries a second, non-spawnable copy of some rows (the sunder
-    // charms among them); the one the picker offers is the spawnable one.
     const list = itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets;
-    const matches = list.map((e, i) => (e.Index === q.item ? i : -1)).filter((i) => i >= 0);
-    const idx = matches.find((i) => list[i].Spawnable !== false) ?? matches[0];
-    if (idx != null) selectedItem.value = idx;
+    // by name; older links carried the row's index
+    const byName = list.find((e) => e.Name === q.item && e.Spawnable !== false) ?? list.find((e) => e.Index === q.item);
+    if (byName) selectedItem.value = byName.Name;
   }
 });
 watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, onlyFavorites, itemKind, selectedItem, elementFilter], () => {
-  const list = itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets;
   router.replace({
     query: {
       ...(selectedZoneKey.value ? { zone: selectedZoneKey.value } : {}),
@@ -443,7 +460,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
       ...(elementFilter.value.size ? { el: ELEMENTS.filter((e) => elementFilter.value.has(e)).join(',') } : {}),
       ...(onlyFavorites.value ? { fav: '1' } : {}),
       ...(itemKind.value !== 'unique' ? { kind: itemKind.value } : {}),
-      ...(selectedItem.value != null ? { item: list[selectedItem.value].Index } : {}),
+      ...(selectedItem.value != null ? { item: selectedItem.value } : {}),
     },
   });
 });

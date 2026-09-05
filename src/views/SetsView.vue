@@ -1,6 +1,11 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import setsData from '@/assets/sets.json';
+import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+
+// "+" on every set item: the wish list behind Where to Farm
+const farmList = useFarmList();
+const farmTokenOf = (item) => farmToken('set', stripMythicPrefix(item.Name));
 
 const MYTHIC_PREFIX = 'Mythic ';
 const ITEM_MYTHIC_PROP = 'item-mythic';
@@ -351,6 +356,12 @@ const getVariantSummary = (pair) => {
                             <summary class="set-item-summary">
                               <span class="item-name">{{ stripMythicPrefix(item.Name) }}</span>
                               <span class="summary-right">
+                                <button
+                                  class="btn btn-sm farm-add"
+                                  :class="{ on: farmList.has(farmTokenOf(item)) }"
+                                  :title="farmList.has(farmTokenOf(item)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                                  @click.stop.prevent="farmList.toggle(farmTokenOf(item))"
+                                >{{ farmList.has(farmTokenOf(item)) ? '✓' : '+' }}</button>
                                 <span class="expand-hint" aria-hidden="true"><span class="hint-arrow">▸</span></span>
                               </span>
                             </summary>
@@ -476,6 +487,12 @@ const getVariantSummary = (pair) => {
                             <summary class="set-item-summary">
                               <span class="item-name">{{ stripMythicPrefix(item.Name) }}</span>
                               <span class="summary-right">
+                                <button
+                                  class="btn btn-sm farm-add"
+                                  :class="{ on: farmList.has(farmTokenOf(item)) }"
+                                  :title="farmList.has(farmTokenOf(item)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                                  @click.stop.prevent="farmList.toggle(farmTokenOf(item))"
+                                >{{ farmList.has(farmTokenOf(item)) ? '✓' : '+' }}</button>
                                 <span class="expand-hint" aria-hidden="true"><span class="hint-arrow">▸</span></span>
                               </span>
                             </summary>
@@ -852,4 +869,10 @@ const getVariantSummary = (pair) => {
     overflow: visible;
   }
 }
+.farm-add {
+  border: 1px solid rgba(201, 163, 106, 0.45); background: rgba(0, 0, 0, 0.25);
+  color: var(--d2r-gold); line-height: 1; padding: 0.05rem 0.45rem; font-weight: 700; margin-right: 0.5rem;
+}
+.farm-add:hover { border-color: var(--d2r-gold); color: var(--d2r-gold-bright); }
+.farm-add.on { background: rgba(212, 175, 55, 0.25); color: var(--d2r-gold-bright); }
 </style>

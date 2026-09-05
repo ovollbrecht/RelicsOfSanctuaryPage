@@ -2,6 +2,11 @@
 import { ref, onMounted, computed, nextTick } from 'vue';
 import uniqueItemsData from '@/assets/unique_items.json';
 import itemMapping from '@/assets/item_mapping.json';
+import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+
+// "+" on every card: the wish list behind Where to Farm, shared across pages
+const farmList = useFarmList();
+const farmTokenOf = (pair) => farmToken('unique', pair.normal.Name);
 
 const uniqueItems = ref([]);
 const searchQuery = ref('');
@@ -580,7 +585,13 @@ onMounted(() => {
     <div class="row g-4 mt-3" ref="itemsSection">
       <div v-for="(pair, index) in filteredItemPairs" :key="index" class="col-12 col-xl-6">
         <div class="card card-enhanced card-hover h-100" :class="pair.element ? 'facet-card facet-' + pair.element : ''">
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-primary position-relative">
+            <button
+              class="btn btn-sm farm-add"
+              :class="{ on: farmList.has(farmTokenOf(pair)) }"
+              :title="farmList.has(farmTokenOf(pair)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+              @click="farmList.toggle(farmTokenOf(pair))"
+            >{{ farmList.has(farmTokenOf(pair)) ? '✓' : '+' }}</button>
             <h2 class="h4 mb-1">
               {{ pair.title ?? pair.normal.Name }}<template v-if="pair.element"> — {{ FACET_ELEMENTS[pair.element] }}</template>
             </h2>
@@ -869,4 +880,11 @@ onMounted(() => {
   color: rgba(194, 176, 143, 0.6);
   font-size: 0.75rem;
 }
+.farm-add {
+  position: absolute; top: 0.6rem; right: 0.75rem;
+  border: 1px solid rgba(201, 163, 106, 0.45); background: rgba(0, 0, 0, 0.25);
+  color: var(--d2r-gold); line-height: 1; padding: 0.1rem 0.5rem; font-weight: 700;
+}
+.farm-add:hover { border-color: var(--d2r-gold); color: var(--d2r-gold-bright); }
+.farm-add.on { background: rgba(212, 175, 55, 0.25); color: var(--d2r-gold-bright); }
 </style>

@@ -6,6 +6,7 @@ import tz from '@/assets/terror_zones.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext } from '@/composables/useDropSimulation.js';
 import { DEFAULT_PROFILE, resolveTargets, targetToken, buildSpots, scoreSpot } from '@/composables/useFarmPlanner.js';
+import { useFarmList } from '@/composables/useFarmList.js';
 
 /**
  * Where to farm: a list of wanted items, and every spot scored by the chance
@@ -16,26 +17,38 @@ import { DEFAULT_PROFILE, resolveTargets, targetToken, buildSpots, scoreSpot } f
 const route = useRoute();
 const router = useRouter();
 
-// ---------- the list ----------
-const tokens = ref([]);
+// ---------- the list (shared with the "+" buttons elsewhere) ----------
+const farmList = useFarmList();
+const tokens = farmList.tokens;
 const targets = computed(() => resolveTargets(dropData, tokens.value));
 const pickKind = ref('unique');
 const pickValue = ref(null);
-const pickOptions = computed(() => (pickKind.value === 'unique'
-  ? dropData.Uniques.map((u, i) => ({ value: `u:${u.Index}`, label: u.Name, hint: dropData.BaseItems[u.Base]?.Name ?? '', spawnable: u.Spawnable }))
-  : dropData.Sets.map((s, i) => ({ value: `s:${s.Index}`, label: s.Name, hint: `${s.SetName} · ${dropData.BaseItems[s.Base]?.Name ?? ''}`, spawnable: s.Spawnable })))
-  .filter((o) => o.spawnable !== false));
+// one option per name: the eight facets and the four attunements are one wish each
+const pickOptions = computed(() => {
+  const seen = new Map();
+  const list = pickKind.value === 'unique' ? dropData.Uniques : dropData.Sets;
+  list.forEach((e) => {
+    if (e.Spawnable === false) return;
+    const base = dropData.BaseItems[e.Base]?.Name ?? '';
+    const hint = pickKind.value === 'unique' ? base : `${e.SetName} · ${base}`;
+    const prev = seen.get(e.Name);
+    if (!prev) seen.set(e.Name, { value: `${pickKind.value === 'unique' ? 'u' : 's'}:${e.Name}`, label: e.Name, hint, count: 1 });
+    else { prev.count += 1; if (!prev.hint.includes(base)) prev.hint += `, ${base}`; }
+  });
+  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${o.count} variants` } : o));
+});
 watch(pickValue, (token) => {
   if (!token) return;
-  if (!tokens.value.includes(token)) tokens.value = [...tokens.value, token];
+  farmList.add(token);
   pickValue.value = null;
 });
-const removeTarget = (t) => { tokens.value = tokens.value.filter((tok) => tok !== targetToken(t)); };
-const clearTargets = () => { tokens.value = []; };
+const removeTarget = (t) => farmList.remove(targetToken(t));
+const clearTargets = () => farmList.clear();
 
 // ---------- settings ----------
 const difficulty = ref(2);
 const charLevel = ref(99);
+const heraldTier = ref(1);
 const sortBy = ref('tz'); // tz | plain | runes
 const ROW_LIMIT = 40;
 const showAll = ref(false);
@@ -55,8 +68,41 @@ const killsPerRun = computed(() => {
 const makeCtx = (terror) => buildContext(dropData, {
   dataMode: 'mod', players: 1, partyNearby: 1, mf: 0,
   terror: { enabled: terror, charLevel: charLevel.value },
-  exalted: { enabled: true, percent: 5 }, mythic: { enabled: true, percent: 5 }, heraldTier: 1,
+  exalted: { enabled: true, percent: 5 }, mythic: { enabled: true, percent: 5 }, heraldTier: heraldTier.value,
 });
+
+// ---------- per-spot exceptions ----------
+// The global profile says what a run is; a spot can say otherwise - Mephisto
+// is one kill, the Sewers are a clear. Stored by area id.
+const overrides = ref({});
+try {
+  const saved = JSON.parse(localStorage.getItem('farm_overrides') ?? 'null');
+  if (saved && typeof saved === 'object') overrides.value = saved;
+} catch { /* none */ }
+watch(overrides, (o) => { try { localStorage.setItem('farm_overrides', JSON.stringify(o)); } catch { /* fine */ } }, { deep: true });
+const profileFor = (areaId) => ({ ...profile.value, ...(overrides.value[areaId] ?? {}) });
+const hasOverride = (areaId) => overrides.value[areaId] != null;
+const editing = ref(null); // areaId being edited
+const draft = ref(null);
+const startEdit = (areaId) => { editing.value = areaId; draft.value = { ...profileFor(areaId) }; };
+const saveEdit = () => {
+  if (editing.value == null) return;
+  const d = draft.value; const g = profile.value;
+  const diff = {};
+  for (const key of Object.keys(DEFAULT_PROFILE)) if (d[key] !== g[key]) diff[key] = d[key];
+  const next = { ...overrides.value };
+  if (Object.keys(diff).length) next[editing.value] = diff; else delete next[editing.value];
+  overrides.value = next;
+  editing.value = null;
+};
+const clearEdit = () => {
+  if (editing.value == null) return;
+  const next = { ...overrides.value }; delete next[editing.value]; overrides.value = next;
+  editing.value = null;
+};
+const cancelEdit = () => { editing.value = null; };
+const overrideCount = computed(() => Object.keys(overrides.value).length);
+const clearAllOverrides = () => { overrides.value = {}; editing.value = null; };
 
 // ---------- terror zone lookup ----------
 const SLOT_MS = tz.config.slotMinutes * 60 * 1000;
@@ -93,8 +139,9 @@ const rows = computed(() => {
   const out = [];
   for (const spot of spots) {
     const zoneIndex = zoneOfArea.get(spot.areaId);
-    const a = scoreSpot(plain, spot, targets.value, profile.value, diff);
-    const b = zoneIndex != null ? scoreSpot(terror, spot, targets.value, profile.value, diff) : null;
+    const p = profileFor(spot.areaId);
+    const a = scoreSpot(plain, spot, targets.value, p, diff);
+    const b = zoneIndex != null ? scoreSpot(terror, spot, targets.value, p, diff) : null;
     if (a.perRun <= 0 && (!b || b.perRun <= 0)) continue;
     out.push({
       spot,
@@ -103,6 +150,7 @@ const rows = computed(() => {
       plain: a,
       tz: b,
       best: Math.max(a.perRun, b?.perRun ?? 0),
+      overridden: hasOverride(spot.areaId),
     });
   }
   return out;
@@ -115,6 +163,30 @@ const sorted = computed(() => {
   return list;
 });
 const visible = computed(() => (showAll.value ? sorted.value : sorted.value.slice(0, ROW_LIMIT)));
+
+// ---------- items or runes: the trade-off behind the choice ----------
+// A boss pays in uniques and sets and hands out few runes; a clear is the
+// other way round. Both scores are put on the same scale - each relative to
+// the best spot on the table - so a row shows which side of the trade it is on.
+const scoreOf = (row) => row.tz ?? row.plain;
+const maxItems = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).perRun), 0));
+const maxRunes = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).runes.highPerRun), 0));
+const itemShare = (row) => (maxItems.value > 0 ? scoreOf(row).perRun / maxItems.value : 0);
+const runeShare = (row) => (maxRunes.value > 0 ? scoreOf(row).runes.highPerRun / maxRunes.value : 0);
+const leaning = (row) => {
+  const i = itemShare(row); const r = runeShare(row);
+  if (i >= 0.5 && r >= 0.5) return { label: 'both', cls: 'lean-both' };
+  if (i >= 0.5 && r < 0.25) return { label: 'items', cls: 'lean-items' };
+  if (r >= 0.5 && i < 0.25) return { label: 'runes', cls: 'lean-runes' };
+  return null;
+};
+const bestFor = computed(() => {
+  if (rows.value.length === 0) return null;
+  const byItems = [...rows.value].sort((a, b) => scoreOf(b).perRun - scoreOf(a).perRun)[0];
+  const byRunes = [...rows.value].sort((a, b) => scoreOf(b).runes.highPerRun - scoreOf(a).runes.highPerRun)[0];
+  const both = [...rows.value].sort((a, b) => Math.sqrt(itemShare(b) * runeShare(b)) - Math.sqrt(itemShare(a) * runeShare(a)))[0];
+  return { byItems, byRunes, both: both !== byItems && both !== byRunes ? both : null };
+});
 
 // ---------- formatting ----------
 const pct = (p) => {
@@ -136,21 +208,24 @@ const clampInt = (value, min, max, fallback) => {
 };
 onMounted(() => {
   const q = route.query;
-  if (q.items) tokens.value = String(q.items).split('|').filter(Boolean);
+  // a shared link brings its own list and replaces the visitor's
+  if (q.items) farmList.replace(String(q.items).split('|').filter(Boolean));
   difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
   charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
+  heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
   if (['tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
 });
-watch([tokens, difficulty, charLevel, sortBy], () => {
+watch([tokens, difficulty, charLevel, heraldTier, sortBy], () => {
   router.replace({
     query: {
       ...(tokens.value.length ? { items: tokens.value.join('|') } : {}),
       ...(difficulty.value !== 2 ? { diff: String(difficulty.value) } : {}),
       ...(charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}),
+      ...(heraldTier.value !== 1 ? { ht: String(heraldTier.value) } : {}),
       ...(sortBy.value !== 'tz' ? { sort: sortBy.value } : {}),
     },
   });
-});
+}, { deep: true });
 </script>
 
 <template>
@@ -169,6 +244,10 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
         </select>
         <label class="small text-muted" title="For the terrorized column: terrorized monsters follow the character level">Char level</label>
         <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control form-control-sm clvl" />
+        <label class="small text-muted" title="Herald tier for the terrorized column; sunder charms need tier 4+">Herald tier</label>
+        <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
+          <option v-for="tier in 5" :key="tier" :value="tier">{{ tier }}</option>
+        </select>
       </div>
     </div>
 
@@ -191,7 +270,7 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
             </div>
             <div v-if="targets.length" class="d-flex flex-wrap gap-1">
               <span v-for="t in targets" :key="targetToken(t)" class="target-chip" :class="t.kind">
-                {{ t.name }}
+                {{ t.name }}<span v-if="t.rows.length > 1" class="text-muted"> ×{{ t.rows.length }}</span>
                 <button class="chip-x" :title="`Remove ${t.name}`" @click="removeTarget(t)">×</button>
               </span>
             </div>
@@ -214,11 +293,32 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
               <div class="col-4"><label class="form-label small mb-0">Trash kills</label><input v-model.number="profile.trash" type="number" min="0" max="999" class="form-control form-control-sm" /></div>
               <div class="col-4"><label class="form-label small mb-0">Champion packs</label><input v-model.number="profile.champPacks" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
               <div class="col-4"><label class="form-label small mb-0">Champs / pack</label><input v-model.number="profile.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
-              <div class="col-4 small text-muted">{{ killsPerRun }} kills / run</div>
+              <div class="col-4"><label class="form-label small mb-0" title="Only in the terrorized column">Heralds (TZ)</label><input v-model.number="profile.heralds" type="number" min="0" max="10" class="form-control form-control-sm" /></div>
+              <div class="col-12 small text-muted">{{ killsPerRun }} kills / run<template v-if="overrideCount"> · {{ overrideCount }} spot{{ overrideCount === 1 ? '' : 's' }} with own numbers (<a href="#" @click.prevent="clearAllOverrides">reset</a>)</template></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-su" v-model="profile.superUniques" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-su">Superuniques</label></div></div>
               <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-boss" v-model="profile.boss" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-boss">Act / quest boss</label></div></div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="bestFor" class="card card-enhanced mt-4 verdict">
+      <div class="card-body p-3 d-flex flex-wrap gap-4">
+        <div>
+          <div class="section-header mb-1">Best for your list</div>
+          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · Pul+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
+        </div>
+        <div>
+          <div class="section-header mb-1">Best for high runes</div>
+          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span> <span class="text-muted small">Pul+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}</span></div>
+        </div>
+        <div v-if="bestFor.both">
+          <div class="section-header mb-1">Best of both</div>
+          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · Pul+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
+        </div>
+        <div class="small text-muted align-self-center ms-auto verdict-note">
+          Bosses pay in uniques and sets and hand out few runes; a clear is the other way round. The bars in the table put both on one scale, each against the best spot.
         </div>
       </div>
     </div>
@@ -246,15 +346,18 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
                 <th class="text-end">Terrorized</th>
                 <th>Carried by</th>
                 <th>Runes</th>
+                <th title="Chance for the list and for a Pul+ rune, each relative to the best spot on the table">Items · runes</th>
                 <th>Next terror</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in visible" :key="row.spot.areaId">
+              <template v-for="row in visible" :key="row.spot.areaId">
+              <tr :class="{ 'row-edited': row.overridden }">
                 <td>
                   <router-link :to="dropCalcLink(row.spot, false)" class="spot-link">{{ row.spot.name }}</router-link>
                   <span class="badge act-badge ms-1" :class="`act-${row.spot.act}`">A{{ row.spot.act }}</span>
                   <span v-if="row.spot.boss >= 0" class="badge boss-badge ms-1">{{ dropData.Monsters[row.spot.boss].Name }}</span>
+                  <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? 'This spot has its own run numbers' : 'Own run numbers for this spot'" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
                 </td>
                 <td class="text-end text-nowrap">
                   <div>{{ pct(row.plain.perRun) }}</div>
@@ -269,17 +372,44 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
                 </td>
                 <td class="small text-muted">{{ partsText(row.tz ?? row.plain) }}</td>
                 <td class="small text-nowrap">
-                  <template v-if="(row.tz ?? row.plain).runes.max">
-                    <div>up to <span class="rune-name">{{ runeName((row.tz ?? row.plain).runes.max) }}</span></div>
-                    <div class="text-muted">Pul+ {{ pct((row.tz ?? row.plain).runes.highPerRun) }} / run</div>
+                  <template v-if="scoreOf(row).runes.max">
+                    <div>up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span></div>
+                    <div class="text-muted">Pul+ {{ pct(scoreOf(row).runes.highPerRun) }} / run</div>
+                    <div class="text-muted">~{{ scoreOf(row).runes.expected.toFixed(1) }} runes / run</div>
                   </template>
                   <span v-else class="text-muted">—</span>
+                </td>
+                <td class="lean-cell">
+                  <div class="lean-bar"><span class="lean-fill items" :style="{ width: `${Math.round(itemShare(row) * 100)}%` }"></span></div>
+                  <div class="lean-bar"><span class="lean-fill runes" :style="{ width: `${Math.round(runeShare(row) * 100)}%` }"></span></div>
+                  <span v-if="leaning(row)" class="lean-label" :class="leaning(row).cls">{{ leaning(row).label }}</span>
                 </td>
                 <td class="small text-nowrap">
                   <router-link v-if="row.zone" :to="tzLink(row.zone)" :class="{ 'text-warning': row.next?.now }">{{ fmtWhen(row.next) }}</router-link>
                   <span v-else class="text-muted">—</span>
                 </td>
               </tr>
+              <tr v-if="editing === row.spot.areaId && draft" class="edit-row">
+                <td colspan="7">
+                  <div class="d-flex flex-wrap gap-2 align-items-end">
+                    <span class="small text-muted me-1">A run in {{ row.spot.name }}:</span>
+                    <label class="small">packs <input v-model.number="draft.packs" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">minions/pack <input v-model.number="draft.minionsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">champ packs <input v-model.number="draft.champPacks" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">champs/pack <input v-model.number="draft.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">trash <input v-model.number="draft.trash" type="number" min="0" max="999" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">heralds <input v-model.number="draft.heralds" type="number" min="0" max="10" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small form-check mb-0 ms-1"><input v-model="draft.superUniques" class="form-check-input" type="checkbox" /> superuniques</label>
+                    <label class="small form-check mb-0"><input v-model="draft.boss" class="form-check-input" type="checkbox" /> boss</label>
+                    <span class="ms-auto d-flex gap-1">
+                      <button class="btn btn-sm btn-outline-secondary" @click="cancelEdit">Cancel</button>
+                      <button v-if="row.overridden" class="btn btn-sm btn-outline-secondary" @click="clearEdit">Use defaults</button>
+                      <button class="btn btn-sm btn-primary" @click="saveEdit">Save</button>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -320,4 +450,21 @@ watch([tokens, difficulty, charLevel, sortBy], () => {
 .chip-x:hover { color: var(--d2r-gold-bright); }
 .profile-grid input { max-width: 6rem; }
 .plan-table td { vertical-align: middle; }
+.edit-btn { border: 0; background: none; color: var(--d2r-muted); padding: 0 0.25rem; line-height: 1; }
+.edit-btn:hover, .edit-btn.on { color: var(--d2r-gold-bright); }
+.row-edited .spot-link::after { content: ' •'; color: var(--d2r-gold); }
+.edit-row td { background: rgba(212, 175, 55, 0.06); }
+.mini { width: 4.2rem; margin-left: 0.25rem; }
+.verdict { border-color: rgba(201, 163, 106, 0.45); }
+.verdict-note { max-width: 22rem; }
+.spot-strong { color: var(--d2r-gold-bright); font-weight: 600; }
+.lean-cell { min-width: 7.5rem; }
+.lean-bar { height: 5px; background: rgba(255, 255, 255, 0.07); border-radius: 3px; margin: 3px 0; overflow: hidden; }
+.lean-fill { display: block; height: 100%; }
+.lean-fill.items { background: #c7b377; }
+.lean-fill.runes { background: #ffb84d; }
+.lean-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.lean-items { color: #c7b377; }
+.lean-runes { color: #ffb84d; }
+.lean-both { color: #9fe870; }
 </style>

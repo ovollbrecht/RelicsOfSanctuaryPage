@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
+import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 import {
   buildContext, computeMonsterDrops, computeItemDetail, computeItemSources,
   formatChance, playerBonus, effectiveMf, noDropChance, DIFFICULTIES,
@@ -70,6 +71,14 @@ watch(filterKind, () => {
 // ---------- item mode ----------
 const itemKind = ref('unique'); // unique | set | base
 const selectedItem = ref(null);
+
+// the wish list behind Where to Farm - a "+" next to the picked item
+const farmList = useFarmList();
+const farmTokenOfSelection = computed(() => {
+  if (selectedItem.value == null || itemKind.value === 'base') return null;
+  const entry = (itemKind.value === 'unique' ? dropData.Uniques : dropData.Sets)[selectedItem.value];
+  return entry ? farmToken(itemKind.value, entry.Name) : null;
+});
 const allDifficulties = ref(false);
 const ITEM_ROW_LIMIT = 300;
 
@@ -934,7 +943,16 @@ watch(
           </div>
           <div class="col-md-5">
             <label class="form-label text-warning">Item</label>
-            <SearchableSelect v-model="selectedItem" :options="itemOptions" placeholder="Search items..." />
+            <div class="d-flex gap-2 align-items-center">
+              <div class="flex-grow-1"><SearchableSelect v-model="selectedItem" :options="itemOptions" placeholder="Search items..." /></div>
+              <button
+                v-if="farmTokenOfSelection"
+                class="btn btn-sm pill farm-add"
+                :class="{ active: farmList.has(farmTokenOfSelection) }"
+                :title="farmList.has(farmTokenOfSelection) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                @click="farmList.toggle(farmTokenOfSelection)"
+              >{{ farmList.has(farmTokenOfSelection) ? '✓ listed' : '+ farm list' }}</button>
+            </div>
           </div>
           <div class="col-md-4">
             <div class="form-check option-toggle">

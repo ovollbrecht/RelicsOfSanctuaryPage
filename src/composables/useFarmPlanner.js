@@ -23,6 +23,7 @@ export const DEFAULT_PROFILE = {
   champPacks: 2,     // champion packs per run
   champsPerPack: 3,
   trash: 30,         // ordinary kills per run
+  heralds: 0,        // heralds met per run - terror zones only
   superUniques: true,
   boss: true,
 };
@@ -35,21 +36,31 @@ export const BOSS_AREAS = {
 
 const HIGH_RUNE = 21; // Pul
 
-/** 'u:<Index>' / 's:<Index>' tokens -> target descriptors. Unknown tokens are dropped. */
+/**
+ * 'u:<Name>' / 's:<Name>' tokens -> targets. A name covers every spawnable row
+ * that carries it: the eight Rainbow Facets are one wish, not eight, and a
+ * source's chance for the wish is the sum over its rows. Old links named the
+ * row's index instead - those still resolve.
+ */
 export function resolveTargets(data, tokens) {
   const out = [];
   for (const token of tokens) {
     const [kind, ...rest] = token.split(':');
-    const index = rest.join(':');
-    if (kind === 'u') {
-      const matches = data.Uniques.map((u, i) => (u.Index === index ? i : -1)).filter((i) => i >= 0);
-      const i = matches.find((m) => data.Uniques[m].Spawnable !== false) ?? matches[0];
-      if (i != null) out.push({ kind: 'unique', index: i, name: data.Uniques[i].Name, key: data.Uniques[i].Index, baseIndex: data.Uniques[i].Base });
-    } else if (kind === 's') {
-      const matches = data.Sets.map((s, i) => (s.Index === index ? i : -1)).filter((i) => i >= 0);
-      const i = matches.find((m) => data.Sets[m].Spawnable !== false) ?? matches[0];
-      if (i != null) out.push({ kind: 'set', index: i, name: data.Sets[i].Name, key: data.Sets[i].Index, baseIndex: data.Sets[i].Base });
+    const name = rest.join(':');
+    const list = kind === 'u' ? data.Uniques : kind === 's' ? data.Sets : null;
+    if (!list) continue;
+    let rows = list.map((e, i) => (e.Name === name && e.Spawnable !== false ? i : -1)).filter((i) => i >= 0);
+    if (rows.length === 0) {
+      const byIndex = list.findIndex((e) => e.Index === name);
+      if (byIndex >= 0) rows = [byIndex];
     }
+    if (rows.length === 0) continue;
+    out.push({
+      kind: kind === 'u' ? 'unique' : 'set',
+      name: list[rows[0]].Name,
+      key: list[rows[0]].Name,
+      rows: rows.map((index) => ({ index, baseIndex: list[index].Base })),
+    });
   }
   return out;
 }
@@ -71,33 +82,35 @@ function evaluateSource(ctx, sel, targets) {
   const { drops, uniqueDrops, setDrops, cm } = traverseTc(ctx, source.upgradedTcIndex, ctx.bonus, source);
 
   const perTarget = new Array(targets.length).fill(0);
-  const byBase = new Map();
-  targets.forEach((t, k) => {
-    if (t.baseIndex >= 0) (byBase.get(t.baseIndex) ?? byBase.set(t.baseIndex, []).get(t.baseIndex)).push(k);
-  });
+  const byBase = new Map(); // baseIndex -> [{ k, row }]
+  targets.forEach((t, k) => t.rows.forEach((row) => {
+    if (row.baseIndex < 0) return;
+    let list = byBase.get(row.baseIndex);
+    if (!list) byBase.set(row.baseIndex, list = []);
+    list.push({ k, row });
+  }));
 
-  for (const [baseIndex, ks] of byBase) {
+  for (const [baseIndex, hits] of byBase) {
     const p = drops.get(baseIndex) ?? 0;
     if (p <= 0) continue;
     const uniques = uniquePool(ctx, baseIndex, source.mlvl);
     const sets = setPool(ctx, baseIndex, source.mlvl);
     const quality = qualityChances(ctx, ctx.baseItems[baseIndex], source.mlvl, cm, { hasUniques: uniques.length > 0, hasSets: sets.length > 0 });
-    for (const k of ks) {
-      const t = targets[k];
-      if (t.kind === 'unique') {
-        const entry = uniques.find((u) => u.entry === ctx.uniques[t.index]);
+    for (const { k, row } of hits) {
+      if (targets[k].kind === 'unique') {
+        const entry = uniques.find((u) => u.entry === ctx.uniques[row.index]);
         if (entry) perTarget[k] += p * quality.unique * entry.share;
       } else {
-        const entry = sets.find((s) => s.entry === ctx.sets[t.index]);
+        const entry = sets.find((s) => s.entry === ctx.sets[row.index]);
         if (entry) perTarget[k] += p * quality.set * entry.share;
       }
     }
   }
   // treasure classes that name an item outright (quest drops, the Annihilus line)
-  targets.forEach((t, k) => {
-    const direct = t.kind === 'unique' ? uniqueDrops.get(t.index) : setDrops.get(t.index);
+  targets.forEach((t, k) => t.rows.forEach((row) => {
+    const direct = t.kind === 'unique' ? uniqueDrops.get(row.index) : setDrops.get(row.index);
     if (direct) perTarget[k] += direct;
-  });
+  }));
 
   let any = 1;
   for (const p of perTarget) any *= 1 - Math.min(p, 1);
@@ -207,6 +220,11 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty) {
   if (profile.boss && spot.boss >= 0) {
     const r = evaluateSource(ctx, { kind: 'monster', monsterIndex: spot.boss, sourceType: 'boss', difficulty, areaId: spot.areaId }, targets);
     if (r) take(ctx.monsters[spot.boss].Name, r.any, 1, r.runes);
+  }
+  // Heralds are a terror zone's own elite; there are none in an ordinary run.
+  if (ctx.options.terror?.enabled && (profile.heralds | 0) > 0) {
+    const r = evaluateSource(ctx, { kind: 'herald', difficulty }, targets);
+    if (r) take('Heralds', r.any, profile.heralds | 0, r.runes);
   }
 
   parts.sort((a, b) => b.hit - a.hit);
