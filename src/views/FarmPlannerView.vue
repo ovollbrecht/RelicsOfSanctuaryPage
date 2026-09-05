@@ -49,6 +49,12 @@ const clearTargets = () => farmList.clear();
 const difficulty = ref(2);
 const charLevel = ref(99);
 const heraldTier = ref(1);
+// Same knobs as the drop calculator: player count sets the no-drop odds, the
+// party the share of them near you, magic find the unique and set rolls.
+const players = ref(1);
+const party = ref(1);
+const mf = ref(0);
+watch(players, (n) => { if (party.value > n) party.value = n; });
 // What counts as a high rune. The Countess' own table ends at Ist, so at Vex+
 // she drops out of the rune score by herself - the way to keep her from
 // deciding it without pretending she drops nothing.
@@ -71,7 +77,7 @@ const killsPerRun = computed(() => {
 });
 
 const makeCtx = (terror) => buildContext(dropData, {
-  dataMode: 'mod', players: 1, partyNearby: 1, mf: 0,
+  dataMode: 'mod', players: players.value, partyNearby: party.value, mf: mf.value,
   terror: { enabled: terror, charLevel: charLevel.value },
   exalted: { enabled: true, percent: 5 }, mythic: { enabled: true, percent: 5 }, heraldTier: heraldTier.value,
 });
@@ -262,16 +268,22 @@ onMounted(() => {
   difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
   charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
+  players.value = clampInt(q.players, 1, 8, players.value);
+  party.value = clampInt(q.party, 1, players.value, party.value);
+  mf.value = clampInt(q.mf, 0, 9999, mf.value);
   if (RUNE_FLOORS.some((f) => String(f.number) === q.rune)) runeFloor.value = Number(q.rune);
   if (['tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
 });
-watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
+watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy], () => {
   router.replace({
     query: {
       ...(tokens.value.length ? { items: tokens.value.join('|') } : {}),
       ...(difficulty.value !== 2 ? { diff: String(difficulty.value) } : {}),
       ...(charLevel.value !== 99 ? { clvl: String(charLevel.value) } : {}),
       ...(heraldTier.value !== 1 ? { ht: String(heraldTier.value) } : {}),
+      ...(players.value !== 1 ? { players: String(players.value) } : {}),
+      ...(party.value !== 1 ? { party: String(party.value) } : {}),
+      ...(mf.value !== 0 ? { mf: String(mf.value) } : {}),
       ...(runeFloor.value !== 21 ? { rune: String(runeFloor.value) } : {}),
       ...(sortBy.value !== 'tz' ? { sort: sortBy.value } : {}),
     },
@@ -299,6 +311,16 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
         <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
           <option v-for="tier in 5" :key="tier" :value="tier">{{ tier }}</option>
         </select>
+        <label class="small text-muted" title="Players in the game - fewer empty drops with more">Players</label>
+        <select v-model.number="players" class="form-select form-select-sm w-auto">
+          <option v-for="n in 8" :key="n" :value="n">{{ n }}</option>
+        </select>
+        <label class="small text-muted" title="Of those, how many are in your party and near you">Party</label>
+        <select v-model.number="party" class="form-select form-select-sm w-auto">
+          <option v-for="n in players" :key="n" :value="n">{{ n }}</option>
+        </select>
+        <label class="small text-muted" title="Magic find - lifts the unique and set rolls, never the runes">MF</label>
+        <input v-model.number="mf" type="number" min="0" max="9999" class="form-control form-control-sm mf" />
         <label class="small text-muted" title="What counts as a high rune in the rune score. The Countess' own table ends at Ist - at Vex+ she no longer decides it">High rune</label>
         <select v-model.number="runeFloor" class="form-select form-select-sm w-auto">
           <option v-for="f in RUNE_FLOORS" :key="f.number" :value="f.number">{{ f.name }}+</option>
@@ -434,7 +456,7 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
                 <td class="small text-nowrap">
                   <template v-if="scoreOf(row).runes.max">
                     <div>up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span></div>
-                    <div class="text-muted">{{ runeFloorName }}+ {{ pct(scoreOf(row).runes.highPerRun) }} / run</div>
+                    <div><span class="rune-high">{{ runeFloorName }}+</span> {{ pct(scoreOf(row).runes.highPerRun) }} / run<span class="text-muted"> · {{ runs(scoreOf(row).runes.highPerRun) }}</span></div>
                     <div class="text-muted">~{{ scoreOf(row).runes.expected.toFixed(1) }} runes / run</div>
                     <div v-if="scoreOf(row).runes.carrier && scoreOf(row).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(row).runes.carrier.label)" class="carrier">
                       mostly {{ scoreOf(row).runes.carrier.label }} ({{ Math.round(scoreOf(row).runes.carrier.share * 100) }} %)
@@ -484,7 +506,7 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
 
     <p class="small text-muted mt-4 mb-0">
       Per kill, the chance of at least one listed item is 1 − Π(1 − p); per run the misses multiply across the kills in the profile. An area's monsters go in as the
-      average over its spawn list. Players 1, no magic find, exalted and mythic rolls counted as their base item. The terrorized column uses the character level
+      average over its spawn list. Player count, party and magic find as set above; exalted and mythic rolls count as their base item. The terrorized column uses the character level
       above; the next terror time comes from the <router-link to="/terror-zones">Terror Zones</router-link> schedule.
     </p>
   </div>
@@ -492,6 +514,8 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
 
 <style scoped>
 .clvl { width: 4.5rem; }
+.mf { width: 5rem; }
+.rune-high { color: #ffb84d; font-weight: 600; }
 .spot-link { color: var(--d2r-gold-bright); text-decoration: none; }
 .spot-link:hover { text-decoration: underline; }
 .act-badge { background: rgba(255, 255, 255, 0.08); color: var(--d2r-text); font-weight: 600; }

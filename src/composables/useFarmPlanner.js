@@ -239,8 +239,16 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
 
   if (profile.superUniques) {
     for (const superUniqueIndex of spot.superUniques) {
+      const su = ctx.superUniques[superUniqueIndex];
       const r = evaluateSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty }, targets, highRune);
-      if (r) take(ctx.superUniques[superUniqueIndex].Name, r.any, 1, r.runes);
+      if (r) take(su.Name, r.any, 1, r.runes);
+      // its pack dies with it: Pindleskin's six, the council's two - minions
+      // of the base class, at the minion's level bonus
+      const pack = su.Minions ? Math.round((su.Minions[0] + su.Minions[1]) / 2) : 0;
+      if (pack > 0 && su.Monster >= 0) {
+        const m = evaluateSource(ctx, { kind: 'monster', monsterIndex: su.Monster, sourceType: 'minion', difficulty, areaId: spot.areaId }, targets, highRune);
+        if (m) take(`${su.Name}'s pack`, m.any, pack, m.runes);
+      }
     }
   }
   if (profile.boss && spot.boss >= 0) {
