@@ -111,6 +111,9 @@ const handleClickOutside = (event) => {
             <router-link to="/items/crafting" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Crafting</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/items/cube" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Horadric Cube</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/items/mythic-affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Mythic Affixes</router-link>
           </li>
           <li class="nav-item">

@@ -83,6 +83,11 @@ const tools = [
     to: '/items/uniques',
   },
   {
+    title: 'Horadric Cube',
+    question: 'What goes in, what comes out? Every recipe, the mod\'s marked.',
+    to: '/items/cube',
+  },
+  {
     title: 'Affix Calculator',
     question: 'Which affixes can this base still roll at my level?',
     to: '/items/affixes',

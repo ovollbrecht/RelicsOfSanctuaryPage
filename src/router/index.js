@@ -66,6 +66,7 @@ const routes = [
     name: 'WhereToFarm',
     component: () => import('../views/FarmPlannerView.vue')
   },
+  { path: '/cube', redirect: '/items/cube' },
   {
     path: '/tonight',
     name: 'Tonight',
