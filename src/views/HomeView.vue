@@ -85,6 +85,11 @@ const tools = [
     question: 'Which zone is terrorized right now - and when is the one I want?',
     to: '/terror-zones',
   },
+  {
+    title: 'Where to Farm',
+    question: 'I want any of these five items - where is a run most likely to pay?',
+    to: '/where-to-farm',
+  },
 ];
 </script>
 

@@ -60,6 +60,11 @@ const routes = [
     path: '/terror-zones',
     name: 'TerrorZones',
     component: () => import('../views/TerrorZonesView.vue')
+  },
+  {
+    path: '/where-to-farm',
+    name: 'WhereToFarm',
+    component: () => import('../views/FarmPlannerView.vue')
   }
 ]
 
