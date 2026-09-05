@@ -461,7 +461,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
       <!-- Left: upcoming + day -->
       <div class="col-lg-7">
         <!-- Filters -->
-        <div class="card card-enhanced mb-4">
+        <div class="card card-enhanced filters-card mb-4">
           <div class="card-body p-3">
             <div class="row g-3 align-items-end">
               <div class="col-sm-4">
@@ -687,6 +687,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
 
 <style scoped>
 .clvl { width: 4.5rem; }
+
+/* the theme's .card clips overflow (rounded corners) - the item picker's
+   dropdown has to escape the card, as it does on the drop calculator */
+.filters-card { overflow: visible; }
 
 .now-card { border-color: var(--d2r-gold); }
 .now-name { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.2; }
