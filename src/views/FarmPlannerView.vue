@@ -58,7 +58,7 @@ watch(players, (n) => { if (party.value > n) party.value = n; });
 // What counts as a high rune. The Countess' own table ends at Ist, so at Vex+
 // she drops out of the rune score by herself - the way to keep her from
 // deciding it without pretending she drops nothing.
-const runeFloor = ref(21);
+const runeFloor = ref(25);
 const runeFloorName = computed(() => RUNE_FLOORS.find((f) => f.number === runeFloor.value)?.name ?? 'Pul');
 const sortBy = ref('tz'); // tz | plain | runes
 const ROW_LIMIT = 40;
@@ -212,7 +212,7 @@ const rows = computed(() => {
 const sorted = computed(() => {
   const list = [...rows.value];
   if (sortBy.value === 'plain') list.sort((x, y) => y.plain.perRun - x.plain.perRun);
-  else if (sortBy.value === 'runes') list.sort((x, y) => (y.tz ?? y.plain).runes.highPerRun - (x.tz ?? x.plain).runes.highPerRun);
+  else if (sortBy.value === 'runes') list.sort((x, y) => scoreOf(y).runes.highPerRun - scoreOf(x).runes.highPerRun);
   else list.sort((x, y) => (y.tz?.perRun ?? 0) - (x.tz?.perRun ?? 0) || y.plain.perRun - x.plain.perRun);
   return list;
 });
@@ -222,7 +222,11 @@ const visible = computed(() => (showAll.value ? sorted.value : sorted.value.slic
 // A boss pays in uniques and sets and hands out few runes; a clear is the
 // other way round. Both scores are put on the same scale - each relative to
 // the best spot on the table - so a row shows which side of the trade it is on.
-const scoreOf = (row) => row.tz ?? row.plain;
+// The runes, the bars and the verdict follow the column being sorted: the
+// terrorized run unless the plain one is asked for. In a terror zone at
+// character level 99 every table reaches Zod; outside it most do not.
+const terrorView = computed(() => sortBy.value !== 'plain');
+const scoreOf = (row) => (terrorView.value ? (row.tz ?? row.plain) : row.plain);
 const maxItems = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).perRun), 0));
 const maxRunes = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).runes.highPerRun), 0));
 const itemShare = (row) => (maxItems.value > 0 ? scoreOf(row).perRun / maxItems.value : 0);
@@ -284,7 +288,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       ...(players.value !== 1 ? { players: String(players.value) } : {}),
       ...(party.value !== 1 ? { party: String(party.value) } : {}),
       ...(mf.value !== 0 ? { mf: String(mf.value) } : {}),
-      ...(runeFloor.value !== 21 ? { rune: String(runeFloor.value) } : {}),
+      ...(runeFloor.value !== 25 ? { rune: String(runeFloor.value) } : {}),
       ...(sortBy.value !== 'tz' ? { sort: sortBy.value } : {}),
     },
   });
@@ -423,7 +427,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                 <th class="text-end">Not terrorized</th>
                 <th class="text-end">Terrorized</th>
                 <th>Carried by</th>
-                <th>Runes</th>
+                <th>Runes <span class="fw-normal text-muted">({{ terrorView ? 'terrorized' : 'not terrorized' }})</span></th>
                 <th :title="`Chance for the list and for a ${runeFloorName}+ rune, each relative to the best spot on the table`">Items · runes</th>
                 <th>Next terror</th>
               </tr>
@@ -455,7 +459,12 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                 <td class="small text-muted">{{ partsText(row.tz ?? row.plain) }}</td>
                 <td class="small text-nowrap">
                   <template v-if="scoreOf(row).runes.max">
-                    <div>up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span></div>
+                    <div>
+                      up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span>
+                      <span v-if="row.tz && row.tz.runes.max !== row.plain.runes.max" class="text-muted">
+                        · {{ terrorView ? 'not terrorized' : 'terrorized' }} up to {{ runeName(terrorView ? row.plain.runes.max : row.tz.runes.max) }}
+                      </span>
+                    </div>
                     <div><span class="rune-high">{{ runeFloorName }}+</span> {{ pct(scoreOf(row).runes.highPerRun) }} / run<span class="text-muted"> · {{ runs(scoreOf(row).runes.highPerRun) }}</span></div>
                     <div class="text-muted">~{{ scoreOf(row).runes.expected.toFixed(1) }} runes / run</div>
                     <div v-if="scoreOf(row).runes.carrier && scoreOf(row).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(row).runes.carrier.label)" class="carrier">
