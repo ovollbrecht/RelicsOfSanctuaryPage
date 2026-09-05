@@ -304,6 +304,16 @@ const clampInt = (value, min, max, fallback) => {
   const n = parseInt(String(value), 10);
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
+// the settings outlive the tab; a link's own values win over the saved ones
+const SETTINGS_KEY = 'farm_settings';
+const settingRefs = { difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, terrorMode, weightItems };
+try {
+  const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
+  if (saved && typeof saved === 'object') for (const [key, r] of Object.entries(settingRefs)) if (saved[key] !== undefined) r.value = saved[key];
+} catch { /* defaults */ }
+watch(Object.values(settingRefs), () => {
+  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(Object.fromEntries(Object.entries(settingRefs).map(([k, r]) => [k, r.value])))); } catch { /* fine */ }
+});
 onMounted(() => {
   const q = route.query;
   // a shared link brings its own list and replaces the visitor's

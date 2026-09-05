@@ -39,6 +39,13 @@ const settings = ref({ ...DEFAULTS });
 try {
   const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
   if (saved && typeof saved === 'object') settings.value = { ...DEFAULTS, ...saved };
+  else {
+    // first visit: the game settings from Where to Farm, where they exist
+    const farm = JSON.parse(localStorage.getItem('farm_settings') ?? 'null');
+    if (farm && typeof farm === 'object') {
+      for (const key of ['difficulty', 'charLevel', 'heraldTier', 'players', 'party', 'mf', 'runeFloor', 'weightItems']) if (farm[key] !== undefined) settings.value[key] = farm[key];
+    }
+  }
 } catch { /* defaults */ }
 watch(settings, (s) => { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch { /* fine */ } }, { deep: true });
 watch(() => settings.value.players, (n) => { if (settings.value.party > n) settings.value.party = n; });
