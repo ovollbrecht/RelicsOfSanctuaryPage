@@ -164,9 +164,17 @@ const zonesForSource = (row) => {
 
 /**
  * What a zone can drop, best chance per kill across its monsters (as unique
- * monsters, the strongest ordinary source) and superuniques. Computed once per
- * zone and setting and kept.
+ * monsters, the strongest ordinary source) and superuniques - and what its
+ * runes look like: the highest one any source there reaches, and the ordinary
+ * monster that pays best per kill, since runes are farmed by the hundred and
+ * not by the boss. Computed once per zone and setting and kept.
  */
+const HIGH_RUNE = 21; // Pul - where a rune starts to be worth the run on its own
+const runeNumber = (row) => {
+  const match = /^r(\d+)$/.exec(dropData.BaseItems[row.baseIndex]?.Code ?? '');
+  return match ? Number(match[1]) : 0;
+};
+const runeName = (number) => (dropData.BaseItems.find((b) => b.Code === `r${String(number).padStart(2, '0')}`)?.Name ?? '').replace(/ Rune$/, '');
 const dropCache = new Map();
 const zoneDrops = (zone) => {
   const key = `${zone.key}|${difficulty.value}|${charLevel.value}|${heraldTier.value}`;
@@ -174,26 +182,44 @@ const zoneDrops = (zone) => {
   const diff = difficulty.value;
   const areaSet = new Set(zone.areas);
   const best = new Map();
+  const runes = { max: 0, any: null, high: null };
   const consider = (row, source) => {
     if (row.kind !== 'unique' && row.kind !== 'set') return;
     const id = `${row.kind}:${row.name}`;
     const prev = best.get(id);
     if (!prev || row.chance > prev.chance) best.set(id, { ...row, source });
   };
+  const considerRunes = (rows, source, ordinary) => {
+    let any = 0; let high = 0;
+    for (const row of rows) {
+      if (row.kind !== 'base' || !row.isRune) continue;
+      const number = runeNumber(row);
+      if (row.chance > 0 && number > runes.max) runes.max = number;
+      any += row.chance;
+      if (number >= HIGH_RUNE) high += row.chance;
+    }
+    if (!ordinary) return;
+    if (any > 0 && (!runes.any || any > runes.any.chance)) runes.any = { chance: any, source };
+    if (high > 0 && (!runes.high || high > runes.high.chance)) runes.high = { chance: high, source };
+  };
   dropData.Monsters.forEach((monster, monsterIndex) => {
     if (monster.Boss) return;
     const areas = monster.Areas[diff].filter((a) => areaSet.has(a));
     if (areas.length === 0) return;
     const areaId = areas.reduce((top, a) => (areaLevel(a, diff) > areaLevel(top, diff) ? a : top), areas[0]);
-    const { rows } = computeMonsterDrops(ctx.value, { kind: 'monster', monsterIndex, sourceType: 'unique', difficulty: diff, areaId });
-    rows.forEach((row) => consider(row, { label: monster.Name, query: { monster: monster.Id, area: String(areaId), type: 'unique' } }));
+    const unique = computeMonsterDrops(ctx.value, { kind: 'monster', monsterIndex, sourceType: 'unique', difficulty: diff, areaId });
+    unique.rows.forEach((row) => consider(row, { label: monster.Name, query: { monster: monster.Id, area: String(areaId), type: 'unique' } }));
+    considerRunes(unique.rows, null, false);
+    const normal = computeMonsterDrops(ctx.value, { kind: 'monster', monsterIndex, sourceType: 'normal', difficulty: diff, areaId });
+    considerRunes(normal.rows, { label: monster.Name, query: { monster: monster.Id, area: String(areaId), filter: 'runes', rv: 'better' } }, true);
   });
   dropData.SuperUniques.forEach((su, superUniqueIndex) => {
     if (!su.Areas.some((a) => areaSet.has(a))) return;
     const { rows } = computeMonsterDrops(ctx.value, { kind: 'superunique', superUniqueIndex, difficulty: diff });
     rows.forEach((row) => consider(row, { label: su.Name, query: { su: su.Id } }));
+    considerRunes(rows, null, false);
   });
-  const result = [...best.values()].sort((a, b) => b.chance - a.chance);
+  const result = { items: [...best.values()].sort((a, b) => b.chance - a.chance), runes };
   dropCache.set(key, result);
   return result;
 };
@@ -204,17 +230,17 @@ const selectedZoneKey = ref(null);
 const selectedZone = computed(() => (selectedZoneKey.value != null && zoneByKey.has(selectedZoneKey.value)
   ? zones[zoneByKey.get(selectedZoneKey.value)] : null));
 const selectZone = (zone) => { selectedZoneKey.value = zone ? zone.key : null; };
+const selectedZoneRunes = computed(() => (selectedZone.value ? zoneDrops(selectedZone.value).runes : null));
 
-const dropKind = ref('all'); // all | uniques | sets | exalted
+const dropKind = ref('all'); // all | uniques | sets
 const dropQuery = ref('');
 const DROP_ROW_LIMIT = 60;
 const selectedZoneDrops = computed(() => {
   if (!selectedZone.value) return [];
   const q = dropQuery.value.trim().toLowerCase();
-  return zoneDrops(selectedZone.value).filter((row) => {
+  return zoneDrops(selectedZone.value).items.filter((row) => {
     if (dropKind.value === 'uniques' && row.kind !== 'unique') return false;
     if (dropKind.value === 'sets' && row.kind !== 'set') return false;
-    if (dropKind.value === 'exalted' && !row.variantName) return false;
     if (q && !row.name.toLowerCase().includes(q) && !row.baseName.toLowerCase().includes(q)) return false;
     return true;
   });
@@ -288,6 +314,7 @@ const passesFilters = (zone, zoneIndex) => {
 };
 const filtersActive = computed(() => actFilter.value !== 0 || onlyFavorites.value || selectedItem.value != null);
 
+const nextSlot = computed(() => slotAt(currentIndex.value + 1));
 const UPCOMING = 12;
 const upcoming = computed(() => {
   const out = [];
@@ -446,10 +473,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
               <div class="progress tz-progress" role="progressbar" :aria-valuenow="Math.round(progress)" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
               </div>
-              <div v-if="upcoming.length && !filtersActive" class="small mt-2">
-                <span class="text-muted">Next:</span>
-                <a href="#" class="zone-link" @click.prevent="selectZone(upcoming[0].zone)">{{ upcoming[0].zone.name }}</a>
-                <span class="text-muted"> at {{ fmtTime(upcoming[0].start) }}</span>
+              <div v-if="nextSlot" class="next-up mt-2">
+                <span class="text-muted small">Next, {{ fmtTime(nextSlot.start) }}:</span>
+                <a href="#" class="zone-link" @click.prevent="selectZone(nextSlot.zone)">{{ nextSlot.zone.name }}</a>
+                <span class="badge act-badge ms-1" :class="`act-${nextSlot.zone.act}`">A{{ nextSlot.zone.act }}</span>
               </div>
             </div>
           </div>
@@ -508,7 +535,6 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
             <div v-if="itemZones.length === 0 && !itemSearch.herald" class="p-3 text-muted small">No terror zone drops this item on this difficulty.</div>
             <div v-if="itemSearch.herald" class="p-3 pb-2 small">
               <span class="text-muted">Any terror zone, from a Herald:</span> {{ fmt(itemSearch.herald.chance) }}
-              <span v-if="itemSearch.herald.variantChance" class="text-muted">· variant {{ fmt(itemSearch.herald.variantChance) }}</span>
               <span v-if="itemSearch.heraldOnly" class="text-muted d-block">Only heralds carry it, so no zone beats another.</span>
             </div>
             <div v-if="itemZones.length" class="table-responsive">
@@ -526,10 +552,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                       <template v-if="entry.next">{{ entry.next.index === currentIndex ? 'now' : fmtWhen(entry.next.start) }}</template>
                       <span v-else class="text-muted">not in the imported range</span>
                     </td>
-                    <td class="text-end text-nowrap">
-                      {{ fmt(entry.row.chance) }}
-                      <span v-if="entry.row.variantChance" class="text-muted small d-block">variant {{ fmt(entry.row.variantChance) }}</span>
-                    </td>
+                    <td class="text-end text-nowrap">{{ fmt(entry.row.chance) }}</td>
                     <td class="small text-muted">{{ entry.row.monsterName }}</td>
                   </tr>
                 </tbody>
@@ -622,17 +645,34 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <span v-if="superUniquesOf(selectedZone).length === 0" class="text-muted small">none</span>
               </div>
 
+              <div class="section-header mb-1">Runes</div>
+              <div v-if="selectedZoneRunes" class="rune-box mb-3 small">
+                <div v-if="selectedZoneRunes.max">
+                  <span class="text-muted">Highest rune here:</span> <strong class="rune-name">{{ runeName(selectedZoneRunes.max) }}</strong>
+                </div>
+                <div v-if="selectedZoneRunes.any">
+                  <span class="text-muted">Any rune, per ordinary kill:</span> {{ fmt(selectedZoneRunes.any.chance) }}
+                  <span class="text-muted">· best from</span>
+                  <router-link :to="dropCalcLink(selectedZoneRunes.any.source.query)" class="text-muted">{{ selectedZoneRunes.any.source.label }}</router-link>
+                </div>
+                <div v-if="selectedZoneRunes.high">
+                  <span class="text-muted">Pul or better, per ordinary kill:</span> {{ fmt(selectedZoneRunes.high.chance) }}
+                  <span class="text-muted">· best from</span>
+                  <router-link :to="dropCalcLink(selectedZoneRunes.high.source.query)" class="text-muted">{{ selectedZoneRunes.high.source.label }}</router-link>
+                </div>
+                <div v-if="!selectedZoneRunes.max" class="text-muted">No rune drops from this zone's tables.</div>
+              </div>
+
               <div class="section-header mb-1">What can drop here</div>
               <p class="small text-muted mb-2">
                 Best chance per kill on {{ ['Normal', 'Nightmare', 'Hell'][difficulty] }} at character level {{ charLevel }}, from unique monsters and
-                superuniques, players 1, no magic find. The "variant" line is the exalted or mythic roll.
+                superuniques, players 1, no magic find.
               </p>
               <div class="d-flex gap-2 mb-2">
                 <select v-model="dropKind" class="form-select form-select-sm w-auto">
                   <option value="all">Uniques + sets</option>
                   <option value="uniques">Uniques</option>
                   <option value="sets">Sets</option>
-                  <option value="exalted">With exalted / mythic roll</option>
                 </select>
                 <input v-model="dropQuery" class="form-control form-control-sm" placeholder="Filter by name or base" />
               </div>
@@ -646,10 +686,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                         <span v-if="row.mod" class="flag" :title="row.mod === 'added' ? 'Added by the mod' : 'Changed by the mod'"></span>
                         <div class="small text-muted">{{ row.baseName }}<span v-if="row.setName"> · {{ row.setName }}</span></div>
                       </td>
-                      <td class="text-end text-nowrap">
-                        {{ fmt(row.chance) }}
-                        <div v-if="row.variantChance" class="small text-muted">variant {{ fmt(row.variantChance) }}</div>
-                      </td>
+                      <td class="text-end text-nowrap">{{ fmt(row.chance) }}</td>
                       <td class="small"><router-link :to="dropCalcLink(row.source.query)" class="text-muted">{{ row.source.label }}</router-link></td>
                     </tr>
                   </tbody>
@@ -746,6 +783,9 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
 .zone-panel { position: sticky; top: 1rem; }
 .drop-table { max-height: 28rem; overflow-y: auto; }
 .unique-name { color: #c7b377; }
+.rune-name { color: #ffb84d; }
+.rune-box { line-height: 1.6; }
+.next-up { font-size: 0.95rem; }
 .set-name { color: #7fdc7f; }
 .flag {
   display: inline-block; width: 0.45rem; height: 0.45rem; border-radius: 50%;
