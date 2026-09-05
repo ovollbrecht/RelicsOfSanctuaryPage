@@ -12,6 +12,13 @@ import meta from '@/assets/meta.json';
  */
 const counts = meta.counts ?? {};
 
+// The visitor's own Grail, if they have one - written by the Grail page.
+const grailSummary = (() => {
+  try { return JSON.parse(localStorage.getItem('grail_state') ?? 'null')?.summary ?? null; } catch { return null; }
+})();
+const grailFound = grailSummary ? Object.values(grailSummary).reduce((s, p) => s + p.found, 0) : 0;
+const grailTotal = grailSummary ? Object.values(grailSummary).reduce((s, p) => s + p.total, 0) : 0;
+
 // The page is written in English, so the date is too - the visitor's locale
 // would put a German month in the middle of an English sentence.
 const generatedOn = meta.generatedAt
@@ -92,7 +99,9 @@ const tools = [
   },
   {
     title: 'Grail',
-    question: 'What have I found so far? Read straight out of the save files.',
+    question: grailSummary
+      ? `${grailFound} of ${grailTotal} found - ${Math.round((grailFound / Math.max(1, grailTotal)) * 100)} % of the way.`
+      : 'What have I found so far? Read straight out of the save files.',
     to: '/grail',
   },
 ];

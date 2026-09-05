@@ -25,6 +25,13 @@ const load = () => {
 const state = ref(load());
 watch(state, (s) => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch { /* no storage */ } }, { deep: true });
 
+// Whether the player's install has "Moves RotW uniques to the end" on. It
+// changes the row ids of every unique from the Warlock section on, so the
+// import has to know which of the two layouts wrote the save.
+const ROTW_KEY = 'grail_rotw_shift';
+const rotwShift = ref((() => { try { return localStorage.getItem(ROTW_KEY) === '1'; } catch { return false; } })());
+watch(rotwShift, (v) => { try { localStorage.setItem(ROTW_KEY, v ? '1' : '0'); } catch { /* fine */ } });
+
 let parserPromise = null;
 const loadParser = () => {
   parserPromise ??= Promise.all([import('@/vendor/d2s.js'), import('@/assets/save_constants.json')]).then(([d2s, data]) => {
@@ -101,29 +108,37 @@ const minuteToIso = (minute) => new Date(minute * 60000).toISOString();
 
 /**
  * Folds parsed files into the record. Returns what the import added.
+ *
+ * Unique ids are translated into the catalog's own numbering when the save
+ * was written by the other row layout (see rotwShift); set and runeword ids
+ * are the same in both.
  */
-export function absorb(results) {
+export function absorb(results, catalog, buildShifted) {
   const found = { ...state.value.found };
   const now = new Date().toISOString();
   let added = 0;
-  const note = (key, source, when) => {
+  const translate = rotwShift.value !== !!buildShifted && catalog
+    ? new Map(catalog.uniques.map((u) => [u.idOther, u.id]))
+    : null;
+  const uniqueKey = (id) => `u:${translate ? (translate.get(id) ?? id) : id}`;
+  const note = (key, source, when, by) => {
     const prev = found[key];
-    if (!prev) { found[key] = { source, when: when ?? null }; added++; return; }
+    if (!prev) { found[key] = { source, when: when ?? null, ...(by ? { by } : {}) }; added++; return; }
     if (prev.source === 'manual') return;
     // keep the earliest date we know of
-    if (when && (!prev.when || when < prev.when)) found[key] = { ...prev, when, source };
+    if (when && (!prev.when || when < prev.when)) found[key] = { ...prev, when, source, ...(by ? { by } : {}) };
   };
   for (const r of results) {
     if (r.error) continue;
     for (const item of r.items) {
-      if (item.quality === 7 && item.unique_id != null && item.unique_id < 4095) note(`u:${item.unique_id}`, r.kind, null);
+      if (item.quality === 7 && item.unique_id != null && item.unique_id < 4095) note(uniqueKey(item.unique_id), r.kind, null);
       else if (item.quality === 5 && item.set_id != null) note(`s:${item.set_id}`, r.kind, null);
       if (item.given_runeword && item.runeword_id != null) note(`r:${item.runeword_id}`, r.kind, null);
     }
     if (r.chronicle) {
-      for (const e of r.chronicle.uniques) if (e.id < 4095) note(`u:${e.id}`, 'chronicle', minuteToIso(e.minute));
-      for (const e of r.chronicle.sets) note(`s:${e.id}`, 'chronicle', minuteToIso(e.minute));
-      for (const e of r.chronicle.runewords) note(`rs:${e.id}`, 'chronicle', minuteToIso(e.minute));
+      for (const e of r.chronicle.uniques) if (e.id < 4095) note(uniqueKey(e.id), 'chronicle', minuteToIso(e.minute), e.source || null);
+      for (const e of r.chronicle.sets) note(`s:${e.id}`, 'chronicle', minuteToIso(e.minute), e.source || null);
+      for (const e of r.chronicle.runewords) note(`rs:${e.id}`, 'chronicle', minuteToIso(e.minute), null);
     }
   }
   state.value = {
@@ -149,5 +164,5 @@ export function useGrail() {
     if (!parsed || typeof parsed !== 'object' || !parsed.found) throw new Error('not a grail file');
     state.value = { found: parsed.found, imports: parsed.imports ?? [] };
   };
-  return { state, found, has, setManual, reset, exportState, importState, loadParser };
+  return { state, found, has, setManual, reset, exportState, importState, loadParser, rotwShift };
 }

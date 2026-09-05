@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useGrail, readSaveFile, absorb } from '@/composables/useGrail.js';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 
@@ -13,11 +13,13 @@ const grail = useGrail();
 const farmList = useFarmList();
 
 const catalog = ref(null);
+const buildShifted = ref(false);
 const loadError = ref(null);
 onMounted(async () => {
   try {
     const { payload } = await grail.loadParser();
     catalog.value = payload.catalog;
+    buildShifted.value = !!payload.from?.rotwShifted;
   } catch (e) {
     loadError.value = String(e?.message ?? e);
   }
@@ -35,7 +37,7 @@ const importFiles = async (fileList) => {
   try {
     const results = [];
     for (const f of files) results.push(await readSaveFile(f));
-    const added = absorb(results);
+    const added = absorb(results, catalog.value, buildShifted.value);
     lastImport.value = { files: results.map((r) => ({ name: r.name, kind: r.kind, items: r.items.length, chronicle: !!r.chronicle, error: r.error })), added };
   } finally {
     busy.value = false;
@@ -113,7 +115,8 @@ const sourceText = (entry) => {
   const r = recordOf(entry);
   if (!r) return '';
   const where = { chronicle: 'Chronicle', stash: 'stash', character: 'character', manual: 'ticked by hand' }[r.source] ?? r.source;
-  return r.when ? `${where} · ${dateFmt.format(new Date(r.when))}` : where;
+  const by = r.by && catalog.value?.sources?.[r.by] ? ` · ${catalog.value.sources[r.by]}` : '';
+  return r.when ? `${where}${by} · ${dateFmt.format(new Date(r.when))}` : `${where}${by}`;
 };
 const itemLink = (entry) => (entry.kind === 'runeword'
   ? { path: '/runewords', query: { q: entry.name } }
@@ -132,6 +135,8 @@ const addMissingToFarm = () => {
   }
 };
 const totalFound = computed(() => Object.values(progress.value).reduce((s, p) => s + p.found, 0));
+// the front page shows the numbers without loading the catalog
+watch(progress, (p) => { if (catalog.value) grail.state.value = { ...grail.state.value, summary: p }; }, { deep: true });
 </script>
 
 <template>
@@ -169,6 +174,12 @@ const totalFound = computed(() => Object.values(progress.value).reduce((s, p) =>
             <label class="btn btn-sm btn-outline-primary mb-0">Choose folder <input type="file" webkitdirectory class="d-none" @change="onPick" /></label>
           </div>
           <div v-if="busy" class="small text-muted mt-2">Reading…</div>
+        </div>
+        <div class="form-check form-switch mt-3 mb-0 small">
+          <input id="rotw" v-model="grail.rotwShift.value" class="form-check-input" type="checkbox" />
+          <label class="form-check-label" for="rotw" title="The D2RMM option moves the mod's uniques in front of the Warlock section, which renumbers every row from there on. Set it as your install has it, or the wrong items get ticked.">
+            My D2RMM install has <em>Moves RotW uniques to the end</em> switched on
+          </label>
         </div>
         <div v-if="lastImport" class="mt-3 small">
           <template v-if="lastImport.nothing"><span class="text-muted">No save files among those - the page reads <code>.d2i</code> and <code>.d2s</code>.</span></template>

@@ -102,12 +102,43 @@ for (const row of tsv(buffers['runes.txt'])) {
     runes: [1, 2, 3, 4, 5, 6].map((i) => row[`Rune${i}`]).filter(Boolean).map((code) => displayName(code).replace(/ Rune$/, '')) });
 }
 
+// The mod's D2RMM option "Moves RotW uniques to the end" inserts the mod's
+// own rows before the "Warlock Class Pack" section instead of appending them,
+// so every id from there on differs between the two installs. The build has
+// one of the two layouts; the other is derived by moving the block, and each
+// unique carries both ids.
+const vanillaIndex = new Set(tsv(readFileSync(resolve(VANILLA, 'global/excel/uniqueitems.txt'), 'utf8')).map((r) => r.index));
+const buildRows = tsv(buffers['uniqueitems.txt']).filter((r) => r.index && r.index !== 'Expansion');
+const pushed = buildRows.filter((r) => !vanillaIndex.has(r.index));
+const warlockAt = buildRows.findIndex((r) => r.index.startsWith('Warlock Class Pack'));
+const pushedFirst = buildRows.findIndex((r) => !vanillaIndex.has(r.index));
+const buildIsShifted = warlockAt >= 0 && pushedFirst >= 0 && pushedFirst < warlockAt;
+let idsShifted = null;
+if (warlockAt >= 0 && pushed.length) {
+  const rest = buildRows.filter((r) => vanillaIndex.has(r.index));
+  const other = buildIsShifted
+    ? [...rest, ...pushed]                                                        // shift off: appended
+    : [...rest.slice(0, rest.findIndex((r) => r.index.startsWith('Warlock Class Pack'))), ...pushed, ...rest.slice(rest.findIndex((r) => r.index.startsWith('Warlock Class Pack')))];
+  const otherId = new Map(other.map((r, i) => [r.index, i]));
+  idsShifted = uniques.map((u) => otherId.get(u.key) ?? u.id);
+}
+uniques.forEach((u, i) => { u.idOther = idsShifted ? idsShifted[i] : u.id; });
+
+// who dropped it: the Chronicle names the source by the string id of the
+// monster (or object) name
+const sources = {};
+for (const file of ['monsters.json', 'objects.json', 'npcs.json']) {
+  const p = pick(`local/lng/strings/${file}`);
+  for (const e of JSON.parse(readFileSync(p, 'utf8').replace(/^﻿/, ''))) if (typeof e.id === 'number' && e.enUS) sources[e.id] = e.enUS;
+}
+
 const out = {
   generatedAt: new Date().toISOString(),
-  from: { build: config.generate.from, itemVersion: 0x69 },
+  from: { build: config.generate.from, itemVersion: 0x69, rotwShifted: buildIsShifted },
   constants,
-  catalog: { uniques, sets, runewords },
+  catalog: { uniques, sets, runewords, sources },
 };
 const target = resolve(root, 'src/assets/save_constants.json');
 writeFileSync(target, JSON.stringify(out));
+console.log(`build layout: RotW ${buildIsShifted ? 'shifted (mod rows before the Warlock section)' : 'appended (mod rows at the end)'} · pushed rows ${pushed.length} · sources ${Object.keys(sources).length}`);
 console.log(`constants ${(JSON.stringify(constants).length / 1024).toFixed(0)} KB · uniques ${uniques.length} (${uniques.filter((u) => u.exalted).length} exalted) · sets ${sets.length} (${sets.filter((s) => s.mythic).length} mythic) · runewords ${runewords.length} -> ${target}`);
