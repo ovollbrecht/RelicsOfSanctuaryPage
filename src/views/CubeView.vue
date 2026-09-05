@@ -51,8 +51,31 @@ const shelves = computed(() => categories
     groups.sort((a, b) => groupRank(c.Id, a.title) - groupRank(c.Id, b.title));
     return { ...c, count: list.length, groups };
   }));
-// the compact views for runes and gems only make sense when nothing is filtered away
+// the compact views only make sense when nothing is filtered away
 const compact = computed(() => !normalized.value);
+const showVanillaRunes = ref(false);
+
+// one line per craft: base, rune, gem
+const craftRow = (r) => ({
+  r, base: r.Inputs[0], rune: r.Inputs.find((i) => i.Kind === 'rune'), gem: r.Inputs.find((i) => i.Kind === 'gem'),
+  extra: r.Inputs.filter((i) => i.Kind !== 'rune' && i.Kind !== 'gem' && i !== r.Inputs[0]),
+});
+// the five forging recipes differ only in the statue
+const forging = (group) => {
+  const first = group.recipes[0];
+  return { statues: group.recipes.map((x) => x.Inputs[0].Text), shards: first.Inputs.filter((i) => i.Kind === 'shard'), out: first };
+};
+// the eleven essence recipes are three rules
+const essenceLines = (group) => {
+  const q = (r) => r.Inputs[0].Quality;
+  const pick = (test) => group.recipes.filter(test);
+  const lines = [
+    { items: 'Any low quality, normal or superior item', recipes: pick((r) => ['Low Quality', 'Normal', 'Superior'].includes(q(r))) },
+    { items: 'Any magic helm, body armor, weapon or shield', recipes: pick((r) => q(r) === 'Magic') },
+    { items: 'Any rare, set, unique or crafted item', recipes: pick((r) => ['Rare', 'Set', 'Unique', 'Crafted'].includes(q(r))) },
+  ].filter((l) => l.recipes.length);
+  return lines.map((l) => ({ ...l, essences: l.recipes[0].Inputs.filter((i) => i.Kind === 'essence'), title: l.recipes[0].Title, note: l.recipes[0].Notes.filter((n) => n.startsWith('gets')).join(' · ') }));
+};
 
 // ---------- rune ladder ----------
 const runeNumber = (code) => Number((code ?? '').replace(/^r/, '')) || 0;
@@ -168,21 +191,21 @@ const jump = (id) => {
             <p class="small text-muted mb-0 mt-1">{{ shelf.Blurb }}<router-link v-if="shelf.Id === 'crafting'" to="/items/crafting" class="ms-1">The crafting table with every affix →</router-link></p>
           </div>
 
-          <!-- runes: one ladder instead of 55 lines -->
+          <!-- runes: one ladder, the mod's way first -->
           <div v-if="shelf.Id === 'runes' && compact && !modOnly" class="card-body p-0">
+            <div class="px-3 pt-2 pb-1 form-check form-switch small">
+              <input id="vanilla-runes" v-model="showVanillaRunes" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="vanilla-runes">Show the game's recipes, which need a gem as well</label>
+            </div>
             <div class="table-responsive">
               <table class="table table-dark table-sm mb-0 align-middle ladder">
-                <thead><tr><th>Result</th><th>Runes</th><th>Gem in the game</th><th>In Relics</th></tr></thead>
+                <thead><tr><th>Runes</th><th></th><th>Result</th><th v-if="showVanillaRunes">In the game: same runes plus</th></tr></thead>
                 <tbody>
                   <tr v-for="row in runeLadder" :key="row.toCode">
-                    <td><router-link :to="runeLink(row.to)" class="chip k-rune">{{ row.to }}</router-link></td>
-                    <td><span class="qty">{{ row.qty }} ×</span> <span class="chip k-rune">{{ row.from }}</span></td>
-                    <td><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)">{{ row.gem }}</span><span v-else class="text-muted small">none</span></td>
-                    <td class="small">
-                      <template v-if="row.alone && row.gem"><span class="badge origin-mod">Relics</span> <span class="text-muted">runes alone, no gem</span></template>
-                      <template v-else-if="row.alone"><span class="text-muted">runes alone</span></template>
-                      <template v-else><span class="text-muted">as in the game</span></template>
-                    </td>
+                    <td class="text-nowrap"><span class="qty">{{ row.qty }} ×</span> <span class="chip k-rune">{{ row.from }}</span></td>
+                    <td class="arrow-cell">→</td>
+                    <td><router-link :to="runeLink(row.to)" class="chip k-rune">{{ row.to }}</router-link><span v-if="row.gem && showVanillaRunes" class="badge origin-mod ms-2">Relics</span></td>
+                    <td v-if="showVanillaRunes"><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)">{{ row.gem }}</span><span v-else class="text-muted small">nothing - the game asks no gem here</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -200,39 +223,111 @@ const jump = (id) => {
             <div class="small text-muted mt-2"><span class="qty">3 ×</span> of a grade become one of the next - any family, any time.</div>
           </div>
 
+          <!-- crafting: one aligned line per recipe; the affixes live on the crafting page -->
+          <div v-else-if="shelf.Id === 'crafting'" class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-dark table-sm mb-0 align-middle aligned">
+                <thead><tr><th>Result</th><th>Magic base</th><th>Rune</th><th>Gem</th><th></th></tr></thead>
+                <tbody>
+                  <template v-for="g in shelf.groups" :key="g.title">
+                    <tr class="group-row"><td colspan="5">{{ g.title }}<span class="text-muted fw-normal"> · {{ g.recipes.length }}</span></td></tr>
+                    <tr v-for="c in g.recipes.map(craftRow)" :key="c.r.Id">
+                      <td><router-link :to="{ path: '/items/crafting', query: { q: c.r.Title } }" class="title q-crafted">{{ c.r.Title }}</router-link></td>
+                      <td><span class="chip" :class="chipClass(c.base)">{{ c.base.Text }}</span><span v-if="c.extra.length" class="text-muted small"> + {{ c.extra.map((e) => e.Text).join(' + ') }}</span></td>
+                      <td><router-link v-if="c.rune" :to="runeLink(c.rune.Text)" class="chip k-rune">{{ c.rune.Text }}</router-link></td>
+                      <td><span v-if="c.gem" class="chip k-gem" :class="gemClass(c.gem.Text)">{{ c.gem.Text }}</span></td>
+                      <td class="text-end"><span v-if="c.r.Origin === 'mod'" class="badge origin-mod">Relics</span></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <div class="small text-muted p-3 pt-2">Every craft adds a jewel to the three above and rolls a 5 % chance at one Exalted affix. The fixed affixes of each craft are on the <router-link to="/items/crafting">crafting page</router-link>.</div>
+          </div>
+
+          <!-- the mythic affix: one line per item, the condition once -->
+          <div v-else-if="shelf.Id === 'mythic'" class="card-body p-0">
+            <template v-for="g in shelf.groups" :key="g.title">
+              <div v-if="g.title === 'Forging the Standard'" class="group">
+                <div class="group-title">{{ g.title }}</div>
+                <div class="recipe mod">
+                  <div class="ingredients">
+                    <span class="ing"><span class="chip k-relic" :title="forging(g).statues.join(', ')">Any Ancient's statue</span><span class="flags">{{ forging(g).statues.join(', ') }}</span></span>
+                    <span class="plus">+</span>
+                    <span class="ing"><span class="chip k-relic">the five Worldstone Shards</span><span class="flags">{{ forging(g).shards.map((x) => x.Text.replace(' Worldstone Shard', '')).join(', ') }}</span></span>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="result"><div class="result-line"><span class="title k-relic">{{ forging(g).out.Title }}</span><span class="badge origin-mod">Relics</span></div></div>
+                </div>
+              </div>
+              <div v-else class="group">
+                <div class="group-title">{{ g.title }}<span class="text-muted fw-normal"> · {{ g.recipes.length }}</span></div>
+                <table class="table table-dark table-sm mb-0 align-middle aligned">
+                  <tbody>
+                    <tr v-for="r in g.recipes" :key="r.Id">
+                      <td><span class="chip" :class="chipClass(r.Inputs[0])">{{ r.Inputs[0].Text }}</span></td>
+                      <td class="text-muted">+ <span class="chip k-relic">Standard of Heroes</span></td>
+                      <td class="text-muted">+ <router-link :to="runeLink(r.Inputs.find((i) => i.Kind === 'rune').Text)" class="chip k-rune">{{ r.Inputs.find((i) => i.Kind === 'rune').Text }}</router-link></td>
+                      <td class="arrow-cell">→</td>
+                      <td><span class="title k-mythic">{{ r.Title }}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </template>
+            <div class="small text-muted p-3 pt-2">The item keeps its affixes and gains one Exalted affix; it becomes Mythic and cannot take a second. The Standard is used up.</div>
+          </div>
+
           <!-- everything else: one line per recipe -->
           <div v-else class="card-body p-0">
             <div v-for="g in shelf.groups" :key="g.title" class="group">
               <div class="group-title">{{ g.title }}<span class="text-muted fw-normal"> · {{ g.recipes.length }}</span></div>
-              <div v-for="r in g.recipes" :key="r.Id" class="recipe" :class="{ mod: r.Origin === 'mod' }">
-                <div class="ingredients">
-                  <template v-for="(i, n) in r.Inputs" :key="n">
-                    <span v-if="n > 0" class="plus">+</span>
-                    <span class="ing">
-                      <span v-if="i.Qty > 1" class="qty">{{ i.Qty }} ×</span>
-                      <router-link v-if="i.Kind === 'rune'" :to="runeLink(i.Text)" class="chip" :class="chipClass(i)">{{ i.Text }}</router-link>
-                      <span v-else class="chip" :class="chipClass(i)">{{ i.Text }}</span>
-                      <span v-if="i.Flags.length" class="flags">{{ i.Flags.join(', ') }}</span>
-                    </span>
-                  </template>
-                </div>
-                <div class="arrow">→</div>
-                <div class="result">
-                  <div class="result-line">
-                    <span class="title" :class="resultClass(r)">{{ r.Title }}</span>
-                    <span v-if="r.Origin === 'mod'" class="badge origin-mod">Relics</span>
-                    <span v-else-if="r.Origin === 'changed'" class="badge origin-changed" title="In the game too, but Relics changed what it does">changed</span>
-                    <span v-if="r.Difficulty" class="badge diff-badge">{{ r.Difficulty }}</span>
+              <!-- the essence recipes collapse into three rules -->
+              <template v-if="g.title === 'With the four Essences' && compact">
+                <div v-for="line in essenceLines(g)" :key="line.items" class="recipe mod">
+                  <div class="ingredients">
+                    <span class="ing"><span class="chip">{{ line.items }}</span><span class="flags">no sockets yet</span></span>
+                    <span class="plus">+</span>
+                    <span class="ing"><span class="chip k-essence">the four Essences</span><span class="flags">{{ line.essences.map((e) => e.Text.replace(/ of .*$/, '')).join(', ') }}</span></span>
                   </div>
-                  <div v-if="r.Output.Text !== r.Title || r.Notes.length" class="small text-muted">
-                    <template v-if="r.Output.Text !== r.Title">{{ r.Output.Text }}</template><template v-if="r.Output.Text !== r.Title && r.Notes.length"> · </template>{{ r.Notes.join(' · ') }}
+                  <div class="arrow">→</div>
+                  <div class="result">
+                    <div class="result-line"><span class="title">{{ line.title }}</span><span class="badge origin-mod">Relics</span></div>
+                    <div class="small text-muted">the same item · {{ line.note }}</div>
                   </div>
-                  <ul v-if="r.Props.length" class="props">
-                    <li v-for="(p, n) in r.Props" :key="n" :class="{ chance: p.Chance < 100 }">{{ p.Description }}<span v-if="p.Chance < 100" class="text-muted"> · {{ p.Chance }} %</span></li>
-                  </ul>
-                  <div v-if="r.Requires" class="small requires">Only if {{ r.Requires }}.</div>
                 </div>
-              </div>
+              </template>
+              <template v-else>
+                <div v-for="r in g.recipes" :key="r.Id" class="recipe" :class="{ mod: r.Origin === 'mod' }">
+                  <div class="ingredients">
+                    <template v-for="(i, n) in r.Inputs" :key="n">
+                      <span v-if="n > 0" class="plus">+</span>
+                      <span class="ing">
+                        <span v-if="i.Qty > 1" class="qty">{{ i.Qty }} ×</span>
+                        <router-link v-if="i.Kind === 'rune'" :to="runeLink(i.Text)" class="chip" :class="chipClass(i)">{{ i.Text }}</router-link>
+                        <span v-else class="chip" :class="chipClass(i)">{{ i.Text }}</span>
+                        <span v-if="i.Flags.length" class="flags">{{ i.Flags.join(', ') }}</span>
+                      </span>
+                    </template>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="result">
+                    <div class="result-line">
+                      <span class="title" :class="resultClass(r)">{{ r.Title }}</span>
+                      <span v-if="r.Origin === 'mod'" class="badge origin-mod">Relics</span>
+                      <span v-else-if="r.Origin === 'changed'" class="badge origin-changed" title="In the game too, but Relics changed what it does">changed</span>
+                      <span v-if="r.Difficulty" class="badge diff-badge">{{ r.Difficulty }}</span>
+                    </div>
+                    <div v-if="r.Output.Text !== r.Title || r.Notes.length" class="small text-muted">
+                      <template v-if="r.Output.Text !== r.Title">{{ r.Output.Text }}</template><template v-if="r.Output.Text !== r.Title && r.Notes.length"> · </template>{{ r.Notes.join(' · ') }}
+                    </div>
+                    <ul v-if="r.Props.length" class="props">
+                      <li v-for="(p, n) in r.Props" :key="n" :class="{ chance: p.Chance < 100 }">{{ p.Description }}<span v-if="p.Chance < 100" class="text-muted"> · {{ p.Chance }} %</span></li>
+                    </ul>
+                    <div v-if="r.Requires" class="small requires">Only if {{ r.Requires }}.</div>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
         </section>
@@ -312,6 +407,10 @@ a.chip:hover { border-color: currentColor; }
 .diff-badge { background: rgba(170, 40, 40, 0.4); color: #ffb3b3; font-weight: 500; font-size: 0.65rem; vertical-align: middle; }
 
 .ladder td, .ladder th { padding: 0.35rem 0.75rem; }
+.ladder td:first-child, .ladder th:first-child { width: 1%; white-space: nowrap; }
+.aligned td, .aligned th { padding: 0.3rem 0.75rem; vertical-align: middle; }
+.aligned .group-row td { font-family: var(--font-display); font-size: 0.9rem; color: var(--d2r-gold); background: rgba(255, 255, 255, 0.025); padding-top: 0.5rem; }
+.arrow-cell { color: var(--d2r-muted); width: 2rem; text-align: center; }
 .gem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: 0.5rem; }
 .gem-col { border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 0.5rem; overflow: hidden; }
 .gem-family { font-family: var(--font-display); text-align: center; padding: 0.35rem; background: rgba(255, 255, 255, 0.05); }
