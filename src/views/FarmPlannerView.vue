@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import dropData from '@/assets/dropcalc.json';
 import tz from '@/assets/terror_zones.json';
@@ -60,7 +60,15 @@ watch(players, (n) => { if (party.value > n) party.value = n; });
 // deciding it without pretending she drops nothing.
 const runeFloor = ref(25);
 const runeFloorName = computed(() => RUNE_FLOORS.find((f) => f.number === runeFloor.value)?.name ?? 'Pul');
-const sortBy = ref('worth'); // worth | tz | plain | runes
+const sortBy = ref('worth'); // worth | items | runes
+// Which zones count as terrorized in the ranking: the one that is up right
+// now (what to do this half hour), every zone (what a spot is worth when its
+// turn comes), or none (terror left out of the picture).
+const terrorMode = ref('now'); // now | all | none
+const now = ref(Date.now());
+let ticker = null;
+onMounted(() => { ticker = setInterval(() => { now.value = Date.now(); }, 30000); });
+onBeforeUnmount(() => { if (ticker) clearInterval(ticker); });
 // Where the hour is best spent: items and high runes per hour, each against
 // the best spot, mixed by this weight. 100 = only the list counts, 0 = only runes.
 const weightItems = ref(50);
@@ -162,7 +170,7 @@ const FIRST = Date.parse(tz.schedule.firstSlotUtc);
 const zoneOfArea = new Map();
 tz.zones.forEach((z, zi) => z.areas.forEach((a) => zoneOfArea.set(a, zi)));
 const nextSlotOfZone = (zoneIndex) => {
-  const k0 = Math.max(0, Math.floor((Date.now() - FIRST) / SLOT_MS));
+  const k0 = Math.max(0, Math.floor((now.value - FIRST) / SLOT_MS));
   for (let k = k0; k < tz.schedule.zoneIndex.length; k++) {
     if (tz.schedule.zoneIndex[k] === zoneIndex) return { start: FIRST + k * SLOT_MS, end: FIRST + (k + 1) * SLOT_MS, now: k === k0 };
   }
@@ -173,7 +181,7 @@ const dayFmt = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'nume
 const fmtWhen = (slot) => {
   if (!slot) return '—';
   if (slot.now) return `now, until ${timeFmt.format(new Date(slot.end))}`;
-  const delta = slot.start - Date.now();
+  const delta = slot.start - now.value;
   const minutes = Math.round(delta / 60000);
   if (minutes < 60) return `in ${minutes} min`;
   if (minutes < 24 * 60) return `in ${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, '0')} min`;
@@ -216,9 +224,8 @@ const rows = computed(() => {
 const sorted = computed(() => {
   const list = [...rows.value];
   if (sortBy.value === 'worth') list.sort((x, y) => worth(y) - worth(x));
-  else if (sortBy.value === 'plain') list.sort((x, y) => y.plain.perRun - x.plain.perRun);
   else if (sortBy.value === 'runes') list.sort((x, y) => scoreOf(y).runes.highPerRun - scoreOf(x).runes.highPerRun);
-  else list.sort((x, y) => (y.tz?.perRun ?? 0) - (x.tz?.perRun ?? 0) || y.plain.perRun - x.plain.perRun);
+  else list.sort((x, y) => scoreOf(y).perRun - scoreOf(x).perRun);
   return list;
 });
 const visible = computed(() => (showAll.value ? sorted.value : sorted.value.slice(0, ROW_LIMIT)));
@@ -227,11 +234,18 @@ const visible = computed(() => (showAll.value ? sorted.value : sorted.value.slic
 // A boss pays in uniques and sets and hands out few runes; a clear is the
 // other way round. Both scores are put on the same scale - each relative to
 // the best spot on the table - so a row shows which side of the trade it is on.
-// The runes, the bars and the verdict follow the column being sorted: the
-// terrorized run unless the plain one is asked for. In a terror zone at
-// character level 99 every table reaches Zod; outside it most do not.
-const terrorView = computed(() => sortBy.value !== 'plain');
-const scoreOf = (row) => (terrorView.value ? (row.tz ?? row.plain) : row.plain);
+// The runes, the bars, the ranking and the verdict read the run the terror
+// mode picks for a spot. In a terror zone at character level 99 every table
+// reaches Zod; outside it most do not.
+const terrorizedInView = (row) => {
+  if (!row.tz) return false;
+  if (terrorMode.value === 'all') return true;
+  if (terrorMode.value === 'now') return !!row.next?.now;
+  return false;
+};
+const scoreOf = (row) => (terrorizedInView(row) ? row.tz : row.plain);
+const terrorView = computed(() => terrorMode.value !== 'none');
+const terrorLabel = computed(() => ({ now: 'terror as it is now', all: 'all terrorized', none: 'not terrorized' })[terrorMode.value]);
 
 // per hour: expected hits on the list and expected high runes, runs/h = 60/minutes
 const runsPerHour = (row) => 60 / row.minutes;
@@ -304,10 +318,12 @@ onMounted(() => {
   party.value = clampInt(q.party, 1, players.value, party.value);
   mf.value = clampInt(q.mf, 0, 9999, mf.value);
   if (RUNE_FLOORS.some((f) => String(f.number) === q.rune)) runeFloor.value = Number(q.rune);
-  if (['worth', 'tz', 'plain', 'runes'].includes(q.sort)) sortBy.value = q.sort;
+  if (['worth', 'items', 'runes'].includes(q.sort)) sortBy.value = q.sort;
+  else if (q.sort === 'tz' || q.sort === 'plain') sortBy.value = 'items'; // older links
+  if (['now', 'all', 'none'].includes(q.terror)) terrorMode.value = q.terror;
   weightItems.value = clampInt(q.w, 0, 100, weightItems.value);
 });
-watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, weightItems], () => {
+watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, weightItems, terrorMode], () => {
   router.replace({
     query: {
       ...(tokens.value.length ? { items: tokens.value.join('|') } : {}),
@@ -319,6 +335,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       ...(mf.value !== 0 ? { mf: String(mf.value) } : {}),
       ...(runeFloor.value !== 25 ? { rune: String(runeFloor.value) } : {}),
       ...(sortBy.value !== 'worth' ? { sort: sortBy.value } : {}),
+      ...(terrorMode.value !== 'now' ? { terror: terrorMode.value } : {}),
       ...(weightItems.value !== 50 ? { w: String(weightItems.value) } : {}),
     },
   });
@@ -339,7 +356,13 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
           <option :value="1">Nightmare</option>
           <option :value="2">Hell</option>
         </select>
-        <label class="small text-muted" title="For the terrorized column: terrorized monsters follow the character level">Char level</label>
+        <label class="small text-muted" title="Which zones count as terrorized in the ranking">Terror zones</label>
+        <select v-model="terrorMode" class="form-select form-select-sm w-auto">
+          <option value="now">only the one up right now</option>
+          <option value="all">every zone, when its turn comes</option>
+          <option value="none">leave terror out</option>
+        </select>
+        <label class="small text-muted" title="For the terrorized numbers: terrorized monsters follow the character level">Char level</label>
         <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control form-control-sm clvl" />
         <label class="small text-muted" title="Herald tier for the terrorized column; sunder charms need tier 4+">Herald tier</label>
         <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
@@ -422,7 +445,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
           <div class="section-header mb-1">Most worth your time</div>
           <ol class="mb-1 ps-3">
             <li v-for="row in ranking.slice(0, 3)" :key="row.spot.areaId">
-              <span class="spot-strong">{{ row.spot.name }}</span><span v-if="row.preset" class="text-muted small"> ({{ row.preset.label }})</span>
+              <span class="spot-strong">{{ row.spot.name }}</span><span v-if="row.preset" class="text-muted small"> ({{ row.preset.label }})</span><span v-if="terrorizedInView(row)" class="badge tz-now ms-1">TZ</span>
               <span class="text-muted small"> · a hit every {{ hours(itemsPerHour(row)) }} · a {{ runeFloorName }}+ every {{ hours(runesPerHour(row)) }} · {{ row.minutes }} min runs</span>
             </li>
           </ol>
@@ -457,8 +480,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
           <label class="small text-muted">Sort by</label>
           <select v-model="sortBy" class="form-select form-select-sm w-auto">
             <option value="worth">worth per hour</option>
-            <option value="tz">chance, terrorized</option>
-            <option value="plain">chance, not terrorized</option>
+            <option value="items">chance on the list per run</option>
             <option value="runes">{{ runeFloorName }}+ rune per run</option>
           </select>
         </div>
@@ -471,11 +493,11 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
               <tr>
                 <th class="text-end rank-col">#</th>
                 <th>Spot</th>
-                <th class="text-end" title="Expected hits on the list and high runes per hour at this spot's run time">Per hour</th>
+                <th class="text-end" :title="`Expected hits on the list and high runes per hour at this spot's run time - ${terrorLabel}`">Per hour</th>
                 <th class="text-end">Not terrorized</th>
                 <th class="text-end">Terrorized</th>
                 <th>Carried by</th>
-                <th>Runes <span class="fw-normal text-muted">({{ terrorView ? 'terrorized' : 'not terrorized' }})</span></th>
+                <th>Runes <span class="fw-normal text-muted">({{ terrorLabel }})</span></th>
                 <th :title="`Chance for the list and for a ${runeFloorName}+ rune, each relative to the best spot on the table`">Items · runes</th>
                 <th>Next terror</th>
               </tr>
@@ -499,13 +521,13 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                   <div><span class="rune-high">{{ runeFloorName }}+</span> every <strong>{{ hours(runesPerHour(row)) }}</strong></div>
                   <div class="text-muted">{{ row.minutes }} min / run</div>
                 </td>
-                <td class="text-end text-nowrap">
+                <td class="text-end text-nowrap" :class="{ 'in-view': !terrorizedInView(row) }">
                   <div>{{ pct(row.plain.perRun) }}</div>
                   <div class="small text-muted">{{ runs(row.plain.perRun) }}</div>
                 </td>
-                <td class="text-end text-nowrap">
+                <td class="text-end text-nowrap" :class="{ 'in-view': terrorizedInView(row) }">
                   <template v-if="row.tz">
-                    <div>{{ pct(row.tz.perRun) }}</div>
+                    <div>{{ pct(row.tz.perRun) }}<span v-if="row.next?.now" class="badge tz-now ms-1" title="Terrorized right now">TZ</span></div>
                     <div class="small text-muted">{{ runs(row.tz.perRun) }}</div>
                   </template>
                   <span v-else class="text-muted small">no terror zone</span>
@@ -516,7 +538,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     <div>
                       up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span>
                       <span v-if="row.tz && row.tz.runes.max !== row.plain.runes.max" class="text-muted">
-                        · {{ terrorView ? 'not terrorized' : 'terrorized' }} up to {{ runeName(terrorView ? row.plain.runes.max : row.tz.runes.max) }}
+                        · {{ terrorizedInView(row) ? 'not terrorized' : 'terrorized' }} up to {{ runeName(terrorizedInView(row) ? row.plain.runes.max : row.tz.runes.max) }}
                       </span>
                     </div>
                     <div><span class="rune-high">{{ runeFloorName }}+</span> {{ pct(scoreOf(row).runes.highPerRun) }} / run<span class="text-muted"> · {{ runs(scoreOf(row).runes.highPerRun) }}</span></div>
@@ -612,6 +634,8 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
 .ranking ol li { margin-bottom: 0.15rem; }
 .weight { width: 9rem; }
 .rank-col { width: 2.2rem; }
+.in-view { box-shadow: inset 0 -2px 0 rgba(212, 175, 55, 0.5); }
+.tz-now { background: rgba(120, 60, 160, 0.5); color: #e6c8ff; font-size: 0.65rem; vertical-align: middle; }
 .verdict-note { max-width: 22rem; }
 .spot-strong { color: var(--d2r-gold-bright); font-weight: 600; }
 .lean-cell { min-width: 7.5rem; }
