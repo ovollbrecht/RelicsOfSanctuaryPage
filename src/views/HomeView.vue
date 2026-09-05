@@ -90,6 +90,11 @@ const tools = [
     question: 'I want any of these five items - where is a run most likely to pay?',
     to: '/where-to-farm',
   },
+  {
+    title: 'Grail',
+    question: 'What have I found so far? Read straight out of the save files.',
+    to: '/grail',
+  },
 ];
 </script>
 

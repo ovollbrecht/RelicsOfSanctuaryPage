@@ -126,6 +126,9 @@ const handleClickOutside = (event) => {
             <router-link to="/where-to-farm" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Where to Farm</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/grail" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Grail</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/items/affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Affix Calculator</router-link>
           </li>
           <li class="nav-item">

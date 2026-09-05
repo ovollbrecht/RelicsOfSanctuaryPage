@@ -65,6 +65,11 @@ const routes = [
     path: '/where-to-farm',
     name: 'WhereToFarm',
     component: () => import('../views/FarmPlannerView.vue')
+  },
+  {
+    path: '/grail',
+    name: 'Grail',
+    component: () => import('../views/GrailView.vue')
   }
 ]
 
