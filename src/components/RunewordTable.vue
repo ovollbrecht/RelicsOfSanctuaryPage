@@ -1,4 +1,5 @@
 <script setup>
+import { runeIcon } from '@/composables/useItemIcon.js';
 import { ref } from 'vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 
@@ -110,8 +111,9 @@ const setAll = (open) => {
                        whole point, so it is the one thing marked. -->
                   <template v-for="(rune, runeIndex) in group.runes" :key="runeIndex">
                     <span v-if="runeIndex > 0"> - </span><span
+                      class="rune-name"
                       :class="{ 'rune-missing': (group.missingNames ?? []).includes(rune) }"
-                    >{{ rune }}</span>
+                    ><img v-if="runeIcon(rune)" :src="runeIcon(rune)" class="rune-icon" alt="" />{{ rune }}</span>
                   </template>
                 </td>
                 <td class="text-center tnum">{{ group.sockets }}</td>
@@ -232,4 +234,6 @@ const setAll = (open) => {
   background: rgba(201, 163, 106, 0.1);
   box-shadow: inset 0 1px 0 rgba(201, 163, 106, 0.35), inset 0 -1px 0 rgba(201, 163, 106, 0.35);
 }
+.rune-name { white-space: nowrap; }
+.rune-icon { display: inline-block; width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-right: 0.15rem; }
 </style>

@@ -1,4 +1,5 @@
 <script setup>
+import { runeIcon } from '@/composables/useItemIcon.js';
 import ReworkChanges from '@/components/ReworkChanges.vue';
 
 /**
@@ -29,7 +30,7 @@ const formatChance = (chance) => {
     <div v-if="showHeader" class="detail-head">
       <div class="detail-name">{{ group.name }}</div>
       <div class="detail-meta">
-        {{ group.runes.join(' - ') }}
+        <template v-for="(rune, n) in group.runes" :key="n"><span v-if="n > 0"> - </span><span class="rune-name"><img v-if="runeIcon(rune)" :src="runeIcon(rune)" class="rune-icon" alt="" />{{ rune }}</span></template>
         · {{ group.sockets }} {{ group.sockets === 1 ? 'socket' : 'sockets' }}
         <template v-if="group.levelReq"> · Level {{ group.levelReq }}</template>
       </div>
@@ -146,4 +147,6 @@ const formatChance = (chance) => {
   font-variant-numeric: tabular-nums;
   opacity: 0.7;
 }
+.rune-name { white-space: nowrap; }
+.rune-icon { display: inline-block; width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-right: 0.15rem; }
 </style>

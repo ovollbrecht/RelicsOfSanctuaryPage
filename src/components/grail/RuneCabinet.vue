@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { iconUrl } from '@/composables/useItemIcon.js';
 
 /**
  * The runes lying loose in the imported files, and what they are good for:
@@ -64,6 +65,7 @@ const reach = computed(() => {
       <template v-if="files">
         <div class="rune-grid">
           <div v-for="r in cells" :key="r.code" class="rune" :class="{ have: r.n > 0, high: r.high }" :title="`${r.name} Rune (#${r.number}) · ${r.n} loose`">
+            <img v-if="iconUrl(r.code)" :src="iconUrl(r.code)" class="rune-img" alt="" />
             <div class="rune-name">{{ r.name }}</div>
             <div class="rune-n">{{ r.n || '·' }}</div>
           </div>
@@ -103,6 +105,7 @@ const reach = computed(() => {
 .rune { border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 4px; padding: 0.25rem 0.2rem; text-align: center; opacity: 0.45; }
 .rune.have { opacity: 1; border-color: rgba(201, 163, 106, 0.45); background: rgba(201, 163, 106, 0.08); }
 .rune.high.have { border-color: var(--d2r-gold-bright); background: rgba(212, 175, 55, 0.16); box-shadow: 0 0 6px rgba(228, 198, 138, 0.25); }
+.rune-img { width: 28px; height: 28px; object-fit: contain; display: block; margin: 0 auto 0.1rem; }
 .rune-name { font-family: var(--font-display); font-size: 0.8rem; color: var(--d2r-gold-bright); }
 .rune-n { font-size: 0.85rem; line-height: 1.1; }
 .reach-title { font-weight: 600; margin-bottom: 0.25rem; }

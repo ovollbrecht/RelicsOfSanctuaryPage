@@ -2,6 +2,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import cube from '@/assets/cube.json';
+import { iconUrl } from '@/composables/useItemIcon.js';
 
 /**
  * The Horadric Cube: every recipe the game and the mod know, on ten shelves.
@@ -85,8 +86,8 @@ const runeLadder = computed(() => {
     if (r.Category !== 'runes') continue;
     const rune = r.Inputs.find((i) => i.Kind === 'rune');
     const gem = r.Inputs.find((i) => i.Kind === 'gem');
-    const row = rows.get(r.Output.Code) ?? { to: r.Output.Text, toCode: r.Output.Code, from: rune?.Text, qty: rune?.Qty ?? 1, gem: null, alone: false };
-    if (gem) row.gem = gem.Text; else row.alone = true;
+    const row = rows.get(r.Output.Code) ?? { to: r.Output.Text, toCode: r.Output.Code, from: rune?.Text, fromCode: rune?.Code, qty: rune?.Qty ?? 1, gem: null, gemCode: null, alone: false };
+    if (gem) { row.gem = gem.Text; row.gemCode = gem.Code; } else row.alone = true;
     rows.set(r.Output.Code, row);
   }
   return [...rows.values()].sort((a, b) => runeNumber(a.toCode) - runeNumber(b.toCode));
@@ -204,10 +205,10 @@ const jump = (id) => {
                 <thead><tr><th>Runes</th><th></th><th>Result</th><th v-if="showVanillaRunes">In the game: same runes plus</th></tr></thead>
                 <tbody>
                   <tr v-for="row in runeLadder" :key="row.toCode">
-                    <td class="text-nowrap"><span class="qty">{{ row.qty }} ×</span> <span class="chip k-rune">{{ row.from }}</span></td>
+                    <td class="text-nowrap"><span class="qty">{{ row.qty }} ×</span> <span class="chip k-rune"><img v-if="iconUrl(row.fromCode)" :src="iconUrl(row.fromCode)" class="ico" alt="" />{{ row.from }}</span></td>
                     <td class="arrow-cell">→</td>
-                    <td><router-link :to="runeLink(row.to)" class="chip k-rune">{{ row.to }}</router-link><span v-if="row.gem && showVanillaRunes" class="badge origin-mod ms-2">Relics</span></td>
-                    <td v-if="showVanillaRunes"><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)">{{ row.gem }}</span><span v-else class="text-muted small">nothing - the game asks no gem here</span></td>
+                    <td><router-link :to="runeLink(row.to)" class="chip k-rune"><img v-if="iconUrl(row.toCode)" :src="iconUrl(row.toCode)" class="ico" alt="" />{{ row.to }}</router-link><span v-if="row.gem && showVanillaRunes" class="badge origin-mod ms-2">Relics</span></td>
+                    <td v-if="showVanillaRunes"><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)"><img v-if="iconUrl(row.gemCode)" :src="iconUrl(row.gemCode)" class="ico" alt="" />{{ row.gem }}</span><span v-else class="text-muted small">nothing - the game asks no gem here</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -235,9 +236,9 @@ const jump = (id) => {
                     <tr class="group-row"><td colspan="5">{{ g.title }}<span class="text-muted fw-normal"> · {{ g.recipes.length }}</span></td></tr>
                     <tr v-for="c in g.recipes.map(craftRow)" :key="c.r.Id">
                       <td><router-link :to="{ path: '/items/crafting', query: { q: c.r.Title } }" class="title q-crafted">{{ c.r.Title }}</router-link></td>
-                      <td><span class="chip" :class="chipClass(c.base)">{{ c.base.Text }}</span><span v-if="c.extra.length" class="text-muted small"> + {{ c.extra.map((e) => e.Text).join(' + ') }}</span></td>
-                      <td><router-link v-if="c.rune" :to="runeLink(c.rune.Text)" class="chip k-rune">{{ c.rune.Text }}</router-link></td>
-                      <td><span v-if="c.gem" class="chip k-gem" :class="gemClass(c.gem.Text)">{{ c.gem.Text }}</span></td>
+                      <td><span class="chip" :class="chipClass(c.base)"><img v-if="iconUrl(c.base.Code)" :src="iconUrl(c.base.Code)" class="ico" alt="" />{{ c.base.Text }}</span><span v-if="c.extra.length" class="text-muted small"> + {{ c.extra.map((e) => e.Text).join(' + ') }}</span></td>
+                      <td><router-link v-if="c.rune" :to="runeLink(c.rune.Text)" class="chip k-rune"><img v-if="iconUrl(c.rune.Code)" :src="iconUrl(c.rune.Code)" class="ico" alt="" />{{ c.rune.Text }}</router-link></td>
+                      <td><span v-if="c.gem" class="chip k-gem" :class="gemClass(c.gem.Text)"><img v-if="iconUrl(c.gem.Code)" :src="iconUrl(c.gem.Code)" class="ico" alt="" />{{ c.gem.Text }}</span></td>
                       <td class="text-end"><span v-if="c.r.Origin === 'mod'" class="badge origin-mod">Relics</span></td>
                     </tr>
                   </template>
@@ -259,7 +260,7 @@ const jump = (id) => {
                     <span class="ing"><span class="chip k-relic">the five Worldstone Shards</span><span class="flags">{{ forging(g).shards.map((x) => x.Text.replace(' Worldstone Shard', '')).join(', ') }}</span></span>
                   </div>
                   <div class="arrow">→</div>
-                  <div class="result"><div class="result-line"><span class="title k-relic">{{ forging(g).out.Title }}</span><span class="badge origin-mod">Relics</span></div></div>
+                  <div class="result"><div class="result-line"><img v-if="iconUrl('std')" :src="iconUrl('std')" class="ico result-ico" alt="" /><span class="title k-relic">{{ forging(g).out.Title }}</span><span class="badge origin-mod">Relics</span></div></div>
                 </div>
               </div>
               <div v-else class="group">
@@ -267,9 +268,9 @@ const jump = (id) => {
                 <table class="table table-dark table-sm mb-0 align-middle aligned">
                   <tbody>
                     <tr v-for="r in g.recipes" :key="r.Id">
-                      <td><span class="chip" :class="chipClass(r.Inputs[0])">{{ r.Inputs[0].Text }}</span></td>
-                      <td class="text-muted">+ <span class="chip k-relic">Standard of Heroes</span></td>
-                      <td class="text-muted">+ <router-link :to="runeLink(r.Inputs.find((i) => i.Kind === 'rune').Text)" class="chip k-rune">{{ r.Inputs.find((i) => i.Kind === 'rune').Text }}</router-link></td>
+                      <td><span class="chip" :class="chipClass(r.Inputs[0])"><img v-if="iconUrl(r.Inputs[0].Code)" :src="iconUrl(r.Inputs[0].Code)" class="ico" alt="" />{{ r.Inputs[0].Text }}</span></td>
+                      <td class="text-muted">+ <span class="chip k-relic"><img v-if="iconUrl('std')" :src="iconUrl('std')" class="ico" alt="" />Standard of Heroes</span></td>
+                      <td class="text-muted">+ <router-link :to="runeLink(r.Inputs.find((i) => i.Kind === 'rune').Text)" class="chip k-rune"><img v-if="iconUrl(r.Inputs.find((i) => i.Kind === 'rune').Code)" :src="iconUrl(r.Inputs.find((i) => i.Kind === 'rune').Code)" class="ico" alt="" />{{ r.Inputs.find((i) => i.Kind === 'rune').Text }}</router-link></td>
                       <td class="arrow-cell">→</td>
                       <td><span class="title k-mythic">{{ r.Title }}</span></td>
                     </tr>
@@ -290,7 +291,7 @@ const jump = (id) => {
                   <div class="ingredients">
                     <span class="ing"><span class="chip">{{ line.items }}</span><span class="flags">no sockets yet</span></span>
                     <span class="plus">+</span>
-                    <span class="ing"><span class="chip k-essence">the four Essences</span><span class="flags">{{ line.essences.map((e) => e.Text.replace(/ of .*$/, '')).join(', ') }}</span></span>
+                    <span class="ing"><span class="chip k-essence"><img v-for="e in line.essences" :key="e.Code" :src="iconUrl(e.Code)" class="ico" alt="" />the four Essences</span><span class="flags">{{ line.essences.map((e) => e.Text.replace(/ of .*$/, '')).join(', ') }}</span></span>
                   </div>
                   <div class="arrow">→</div>
                   <div class="result">
@@ -306,8 +307,8 @@ const jump = (id) => {
                       <span v-if="n > 0" class="plus">+</span>
                       <span class="ing">
                         <span v-if="i.Qty > 1" class="qty">{{ i.Qty }} ×</span>
-                        <router-link v-if="i.Kind === 'rune'" :to="runeLink(i.Text)" class="chip" :class="chipClass(i)">{{ i.Text }}</router-link>
-                        <span v-else class="chip" :class="chipClass(i)">{{ i.Text }}</span>
+                        <router-link v-if="i.Kind === 'rune'" :to="runeLink(i.Text)" class="chip" :class="chipClass(i)"><img v-if="iconUrl(i.Code)" :src="iconUrl(i.Code)" class="ico" alt="" />{{ i.Text }}</router-link>
+                        <span v-else class="chip" :class="chipClass(i)"><img v-if="iconUrl(i.Code)" :src="iconUrl(i.Code)" class="ico" alt="" />{{ i.Text }}</span>
                         <span v-if="i.Flags.length" class="flags">{{ i.Flags.join(', ') }}</span>
                       </span>
                     </template>
@@ -315,6 +316,7 @@ const jump = (id) => {
                   <div class="arrow">→</div>
                   <div class="result">
                     <div class="result-line">
+                      <img v-if="r.Output.Kind !== 'same' && iconUrl(r.Output.Code)" :src="iconUrl(r.Output.Code)" class="ico result-ico" alt="" />
                       <span class="title" :class="resultClass(r)">{{ r.Title }}</span>
                       <span v-if="r.Origin === 'mod'" class="badge origin-mod">Relics</span>
                       <span v-else-if="r.Origin === 'changed'" class="badge origin-changed" title="In the game too, but Relics changed what it does">changed</span>
@@ -369,6 +371,8 @@ const jump = (id) => {
 .arrow { font-size: 1.1rem; padding-top: 0.05rem; }
 .qty { color: var(--d2r-gold-bright); font-weight: 600; font-size: 0.9rem; }
 .flags { font-size: 0.75rem; color: var(--d2r-muted); font-style: italic; }
+.ico { display: inline-block; width: 20px; height: 20px; object-fit: contain; vertical-align: -5px; margin-right: 0.3rem; }
+.result-ico { width: 24px; height: 24px; vertical-align: -6px; margin-right: 0.1rem; }
 .chip {
   display: inline-block; padding: 0.05rem 0.5rem; border-radius: 999px; background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.9rem; text-decoration: none; color: var(--d2r-text); line-height: 1.5;
