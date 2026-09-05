@@ -512,7 +512,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
               <span v-if="itemSearch.heraldOnly" class="text-muted d-block">Only heralds carry it, so no zone beats another.</span>
             </div>
             <div v-if="itemZones.length" class="table-responsive">
-              <table class="table table-sm table-hover mb-0 align-middle">
+              <table class="table table-dark table-sm table-hover mb-0 align-middle">
                 <thead>
                   <tr><th>Zone</th><th>Next</th><th class="text-end">Best chance / kill</th><th>From</th></tr>
                 </thead>
@@ -637,7 +637,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                 <input v-model="dropQuery" class="form-control form-control-sm" placeholder="Filter by name or base" />
               </div>
               <div class="table-responsive drop-table">
-                <table class="table table-sm table-hover mb-0 align-middle">
+                <table class="table table-dark table-sm table-hover mb-0 align-middle">
                   <thead><tr><th>Item</th><th class="text-end">Chance</th><th>Best from</th></tr></thead>
                   <tbody>
                     <tr v-for="row in selectedZoneDrops.slice(0, DROP_ROW_LIMIT)" :key="row.kind + row.name">
