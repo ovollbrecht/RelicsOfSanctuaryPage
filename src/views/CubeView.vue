@@ -193,9 +193,11 @@ const jump = (id) => {
 
           <!-- runes: one ladder, the mod's way first -->
           <div v-if="shelf.Id === 'runes' && compact && !modOnly" class="card-body p-0">
-            <div class="px-3 pt-2 pb-1 form-check form-switch small">
-              <input id="vanilla-runes" v-model="showVanillaRunes" class="form-check-input" type="checkbox" />
-              <label class="form-check-label" for="vanilla-runes">Show the game's recipes, which need a gem as well</label>
+            <div class="px-3 pt-2 pb-1">
+              <div class="form-check form-switch small mb-0">
+                <input id="vanilla-runes" v-model="showVanillaRunes" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="vanilla-runes">Show the game's recipes, which need a gem as well</label>
+              </div>
             </div>
             <div class="table-responsive">
               <table class="table table-dark table-sm mb-0 align-middle ladder">
