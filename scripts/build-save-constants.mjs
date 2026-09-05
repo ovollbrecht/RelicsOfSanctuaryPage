@@ -64,8 +64,33 @@ const spawnableUnique = new Map(dropcalc.Uniques.map((u) => [u.Index, u.Spawnabl
 const spawnableSet = new Map(dropcalc.Sets.map((s) => [s.Index, s.Spawnable !== false]));
 const baseByCode = new Map(dropcalc.BaseItems.map((b) => [b.Code, b]));
 
+// the slot an item goes in, from the type hierarchy: a Pelt is a Helm, a
+// Voodoo Head a Shield, an Orb a Weapon
+const itemBases = JSON.parse(readFileSync(resolve(root, 'src/assets/item_bases.json'), 'utf8'));
+const typeParents = new Map(itemBases.Types.map((t) => [t.Code, t.Parents ?? []]));
+const typeName = new Map(itemBases.Types.map((t) => [t.Code, t.Name]));
+const ancestors = (code) => {
+  const seen = new Set(); const stack = [code];
+  while (stack.length) { const c = stack.pop(); if (!c || seen.has(c)) continue; seen.add(c); stack.push(...(typeParents.get(c) ?? [])); }
+  return seen;
+};
+const SLOTS = [['tors', 'Body Armor'], ['helm', 'Helm'], ['shld', 'Shield'], ['glov', 'Gloves'], ['boot', 'Boots'], ['belt', 'Belt'],
+  ['ring', 'Ring'], ['amul', 'Amulet'], ['jewl', 'Jewel'], ['scha', 'Charm'], ['mcha', 'Charm'], ['lcha', 'Charm'], ['weap', 'Weapon']];
+// the site's type list leaves the throwing types out
+const THROWN = { taxe: 'Throwing Axe', tkni: 'Throwing Knife', jave: 'Javelin', ajav: 'Amazon Javelin', thro: 'Throwing Weapon' };
+const slotOf = (code) => {
+  const base = baseByCode.get(code);
+  if (!base) return { slot: 'Other', type: null };
+  if (THROWN[base.Type]) return { slot: 'Weapon', type: THROWN[base.Type] };
+  const anc = ancestors(base.Type);
+  const hit = SLOTS.find(([t]) => anc.has(t));
+  return { slot: hit ? hit[1] : 'Other', type: typeName.get(base.Type) ?? base.Type };
+};
+
 // ids count rows with an index, skipping the "Expansion" separators - the
-// way the parser numbers them, and the way the game stores them.
+// way the parser numbers them, and the way the game stores them. Section
+// headers ("Armor", "Rings") and rows the mod emptied keep their id but have
+// no code, so they are not spawnable.
 const uniques = [];
 let id = 0;
 for (const row of tsv(buffers['uniqueitems.txt'])) {
@@ -74,7 +99,7 @@ for (const row of tsv(buffers['uniqueitems.txt'])) {
   uniques.push({
     id, key: row.index, name: displayName(row.index), code: row.code,
     base: base?.Name ?? row.code, tier: base?.Tier ?? null, lvl: Number(row.lvl) || 0,
-    exalted: row.index.startsWith('E '), spawnable: spawnableUnique.get(row.index) ?? true,
+    exalted: row.index.startsWith('E '), spawnable: !!row.code && row.spawnable !== '0' && (spawnableUnique.get(row.index) ?? true), ...slotOf(row.code),
   });
   id++;
 }
@@ -86,7 +111,7 @@ for (const row of tsv(buffers['setitems.txt'])) {
   sets.push({
     id, key: row.index, name: displayName(row.index), set: displayName(row.set), code: row.item,
     base: base?.Name ?? row.item, tier: base?.Tier ?? null, lvl: Number(row.lvl) || 0,
-    mythic: row.index.startsWith('M '), spawnable: (spawnableSet.get(row.index) ?? true) && row.spawnable !== '0',
+    mythic: row.index.startsWith('M '), spawnable: !!row.item && (spawnableSet.get(row.index) ?? true) && row.spawnable !== '0', ...slotOf(row.item),
   });
   id++;
 }
@@ -124,6 +149,11 @@ if (warlockAt >= 0 && pushed.length) {
 }
 uniques.forEach((u, i) => { u.idOther = idsShifted ? idsShifted[i] : u.id; });
 
+// the runes, for the rune cabinet
+const runes = dropcalc.BaseItems.filter((b) => b.IsRune)
+  .map((b) => ({ code: b.Code, name: b.Name.replace(/ Rune$/, ''), number: Number(b.Code.slice(1)), lvl: b.Qlvl }))
+  .sort((a, b) => a.number - b.number);
+
 // who dropped it: the Chronicle names the source by the string id of the
 // monster (or object) name
 const sources = {};
@@ -136,7 +166,7 @@ const out = {
   generatedAt: new Date().toISOString(),
   from: { build: config.generate.from, itemVersion: 0x69, rotwShifted: buildIsShifted },
   constants,
-  catalog: { uniques, sets, runewords, sources },
+  catalog: { uniques, sets, runewords, runes, sources },
 };
 const target = resolve(root, 'src/assets/save_constants.json');
 writeFileSync(target, JSON.stringify(out));
