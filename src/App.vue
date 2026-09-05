@@ -126,6 +126,9 @@ const handleClickOutside = (event) => {
             <router-link to="/where-to-farm" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Where to Farm</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/tonight" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Tonight</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/grail" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Grail</router-link>
           </li>
           <li class="nav-item">

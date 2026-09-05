@@ -1,4 +1,5 @@
 import { resolveSource, traverseTc, qualityChances, uniquePool, setPool } from './useDropSimulation.js';
+import { monsterBlockedFor } from './useImmunities.js';
 
 /**
  * Where to farm for a list of items.
@@ -57,9 +58,49 @@ export const SPOT_PRESETS = {
   ],
 };
 export const presetsFor = (areaId) => SPOT_PRESETS[areaId] ?? [];
+
+/// A spot's pack count from the zone data: the zone's span, spread over its areas.
+export const zonePacksFor = (tz, areaId) => {
+  const zone = tz.zones.find((z) => z.areas.includes(areaId));
+  if (!zone?.bossPacks) return null;
+  return Math.max(1, Math.round((zone.bossPacks[0] + zone.bossPacks[1]) / 2 / zone.areas.length));
+};
+
+/**
+ * How a spot is run: the global profile, the zone's pack count where the
+ * profile asks for it, then a chosen preset (Mephisto only, council only),
+ * then the spot's own numbers on top. Overrides are keyed by area id and
+ * carry an optional preset id beside the numbers.
+ */
+export function spotRun(areaId, profile, overrides, tz) {
+  const base = { ...profile };
+  if (base.packsFromZone) {
+    const fromZone = zonePacksFor(tz, areaId);
+    if (fromZone != null) base.packs = fromZone;
+  }
+  const { preset: presetId, ...numbers } = overrides?.[areaId] ?? {};
+  const preset = presetId ? presetsFor(areaId).find((p) => p.id === presetId) ?? null : null;
+  return { profile: { ...base, ...(preset?.profile ?? {}), ...numbers }, preset };
+}
 export const applyPreset = (data, spot, preset) => (preset?.monsters
   ? { ...spot, monsters: spot.monsters.filter((i) => preset.monsters(data.Monsters[i])) }
   : spot);
+
+/**
+ * What the character's element leaves alive. Monsters immune to every chosen
+ * element stay on the spawn list but yield nothing - the run still meets
+ * them, they just do not die - and a superunique or boss that is immune is
+ * dropped. The spot reports how much of it went dead.
+ */
+export function applyElements(data, spot, difficulty, elements) {
+  if (!elements || elements.length === 0) return { ...spot, dead: null, immune: null };
+  const dead = new Set(spot.monsters.filter((i) => monsterBlockedFor(data, i, difficulty, elements)));
+  const superUniques = spot.superUniques.filter((i) => !monsterBlockedFor(data, data.SuperUniques[i].Monster, difficulty, elements));
+  const boss = spot.boss >= 0 && monsterBlockedFor(data, spot.boss, difficulty, elements) ? -1 : spot.boss;
+  const total = spot.monsters.length + spot.superUniques.length + (spot.boss >= 0 ? 1 : 0);
+  const gone = dead.size + (spot.superUniques.length - superUniques.length) + (spot.boss >= 0 && boss < 0 ? 1 : 0);
+  return { ...spot, superUniques, boss, dead, immune: { gone, total, all: total > 0 && gone === total } };
+}
 
 /**
  * 'u:<Name>' / 's:<Name>' tokens -> targets. A name covers every spawnable row
@@ -153,6 +194,7 @@ function evaluateSource(ctx, sel, targets, highRune) {
   return { any, perTarget, runes, mlvl: source.mlvl, terrorized: source.terrorized };
 }
 
+const NOTHING = { any: 0, runes: { any: 0, high: 0, max: 0 } };
 const average = (list, pick) => (list.length ? list.reduce((s, x) => s + pick(x), 0) / list.length : 0);
 
 /**
@@ -199,7 +241,8 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
   for (const type of types) {
     const hits = [];
     for (const monsterIndex of spot.monsters) {
-      const r = evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets, highRune);
+      // an immune monster is met and left standing: a kill that yields nothing
+      const r = spot.dead?.has(monsterIndex) ? NOTHING : evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets, highRune);
       if (r) hits.push(r);
     }
     byType[type] = {

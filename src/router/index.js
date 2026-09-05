@@ -67,6 +67,11 @@ const routes = [
     component: () => import('../views/FarmPlannerView.vue')
   },
   {
+    path: '/tonight',
+    name: 'Tonight',
+    component: () => import('../views/EveningPlannerView.vue')
+  },
+  {
     path: '/grail',
     name: 'Grail',
     component: () => import('../views/GrailView.vue')

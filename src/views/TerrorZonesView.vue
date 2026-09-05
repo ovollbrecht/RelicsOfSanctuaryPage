@@ -5,6 +5,8 @@ import tz from '@/assets/terror_zones.json';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext, computeMonsterDrops, computeItemSources, formatChance } from '@/composables/useDropSimulation.js';
+import { downloadIcs } from '@/composables/useCalendar.js';
+import { ELEMENTS, ELEMENT_SHORT, elementClass, areaImmunities as areaImmunitiesOf, farmableElements as farmableElementsOf, blockedElements as blockedElementsOf } from '@/composables/useImmunities.js';
 
 /**
  * The single-player terror zone schedule, read against the clock.
@@ -104,6 +106,23 @@ try {
   notify.value = localStorage.getItem('tz_notify') === '1';
 } catch { /* a browser without storage still gets the page */ }
 const isFavorite = (zone) => favorites.value.has(zone.key);
+// the favorites' slots for the next two weeks as calendar events
+const exportFavorites = () => {
+  const from = Math.max(0, currentIndex.value);
+  const to = Math.min(COUNT, from + (14 * 24 * 60) / tz.config.slotMinutes);
+  const events = [];
+  for (let k = from; k < to; k++) {
+    const zone = zones[INDEX[k]];
+    if (!favorites.value.has(zone.key)) continue;
+    const slot = slotAt(k);
+    events.push({
+      uid: `tz-${k}-${zone.key}@relicsofsanctuary.com`, start: slot.start, end: slot.end,
+      summary: `Terror zone: ${zone.short}`, description: `${zone.name}${zone.boss ? ` · ${zone.boss}` : ''}`,
+      url: `https://relicsofsanctuary.com/#/terror-zones?zone=${encodeURIComponent(zone.key)}`,
+    });
+  }
+  downloadIcs(`relics-terror-zones-${new Date().toISOString().slice(0, 10)}.ics`, events, { name: 'Relics of Sanctuary · Terror Zones' });
+};
 const toggleFavorite = (zone) => {
   const next = new Set(favorites.value);
   if (next.has(zone.key)) next.delete(zone.key); else next.add(zone.key);
@@ -143,40 +162,15 @@ const ctx = computed(() => buildContext(dropData, {
 }));
 
 // ---------- elements: what a zone can be farmed with ----------
-// An element is usable in a zone when at least one of its areas has no
-// monster immune to it - a whole zone is written off only when every area is.
-const ELEMENTS = ['Fire', 'Cold', 'Lightning', 'Poison', 'Magic', 'Physical'];
-const ELEMENT_SHORT = { Fire: 'Fire', Cold: 'Cold', Lightning: 'Ltng', Poison: 'Pois', Magic: 'Mag', Physical: 'Phys' };
-const immunityCache = new Map(); // `${diff}` -> Map(areaId -> Set(element))
-const areaImmunities = (areaId, diff) => {
-  let byArea = immunityCache.get(diff);
-  if (!byArea) {
-    byArea = new Map();
-    const add = (id, list) => {
-      if (!list?.length) return;
-      let set = byArea.get(id);
-      if (!set) byArea.set(id, set = new Set());
-      list.forEach((e) => set.add(e));
-    };
-    dropData.Monsters.forEach((m) => m.Areas[diff].forEach((id) => add(id, m.Immunities?.[diff])));
-    dropData.SuperUniques.forEach((su) => {
-      if (su.Monster < 0) return;
-      su.Areas.forEach((id) => add(id, dropData.Monsters[su.Monster]?.Immunities?.[diff]));
-    });
-    immunityCache.set(diff, byArea);
-  }
-  return byArea.get(areaId) ?? new Set();
-};
-/// Elements with at least one area free of immunity to them, in a fixed order.
-const farmableElements = (zone, diff) => ELEMENTS.filter((e) => zone.areas.some((id) => !areaImmunities(id, diff).has(e)));
-const blockedElements = (zone, diff) => ELEMENTS.filter((e) => zone.areas.every((id) => areaImmunities(id, diff).has(e)));
+const areaImmunities = (areaId, diff) => areaImmunitiesOf(dropData, areaId, diff);
+const farmableElements = (zone, diff) => farmableElementsOf(dropData, zone, diff);
+const blockedElements = (zone, diff) => blockedElementsOf(dropData, zone, diff);
 const elementFilter = ref(new Set());
 const toggleElement = (e) => {
   const next = new Set(elementFilter.value);
   if (next.has(e)) next.delete(e); else next.add(e);
   elementFilter.value = next;
 };
-const elementClass = (e) => `el-${e.toLowerCase()}`;
 
 const areaName = (id) => dropData.Areas.find((a) => a.Id === id)?.Name ?? `Area ${id}`;
 const areaLevel = (id, diff) => dropData.Areas.find((a) => a.Id === id)?.Levels[diff] ?? 0;
@@ -590,6 +584,7 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                   <input id="notify" class="form-check-input" type="checkbox" :checked="notify" @change="toggleNotify" />
                   <label class="form-check-label small" for="notify" title="A browser notification when a favorite starts - only while this tab is open">Notify me when a favorite starts</label>
                 </div>
+                <button class="btn btn-sm btn-outline-secondary" :disabled="!favorites.size" title="An .ics file with every slot of your favorites in the next two weeks - import it once and the phone rings when Travincal is up" @click="exportFavorites">Favorites to calendar</button>
               </div>
             </div>
           </div>

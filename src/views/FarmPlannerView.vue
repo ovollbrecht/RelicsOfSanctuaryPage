@@ -5,7 +5,7 @@ import dropData from '@/assets/dropcalc.json';
 import tz from '@/assets/terror_zones.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext } from '@/composables/useDropSimulation.js';
-import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset } from '@/composables/useFarmPlanner.js';
+import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset, spotRun, zonePacksFor } from '@/composables/useFarmPlanner.js';
 import { useFarmList } from '@/composables/useFarmList.js';
 
 /**
@@ -102,13 +102,7 @@ try {
   if (saved && typeof saved === 'object') overrides.value = saved;
 } catch { /* none */ }
 watch(overrides, (o) => { try { localStorage.setItem('farm_overrides', JSON.stringify(o)); } catch { /* fine */ } }, { deep: true });
-/// A spot's pack count from the zone data: the zone's span, spread over its areas.
-const packsFromZone = (areaId) => {
-  const zi = zoneOfArea.get(areaId);
-  const zone = zi != null ? tz.zones[zi] : null;
-  if (!zone?.bossPacks) return null;
-  return Math.max(1, Math.round((zone.bossPacks[0] + zone.bossPacks[1]) / 2 / zone.areas.length));
-};
+const packsFromZone = (areaId) => zonePacksFor(tz, areaId);
 // A spot's run: the global profile, the zone's pack count, then a chosen
 // preset (Mephisto only, council only), then the spot's own numbers on top.
 const presetOf = (areaId) => {
@@ -123,15 +117,7 @@ const setPreset = (areaId, id) => {
   overrides.value = next;
   if (editing.value === areaId) editing.value = null;
 };
-const profileFor = (areaId) => {
-  const base = { ...profile.value };
-  if (base.packsFromZone) {
-    const fromZone = packsFromZone(areaId);
-    if (fromZone != null) base.packs = fromZone;
-  }
-  const { preset, ...numbers } = overrides.value[areaId] ?? {};
-  return { ...base, ...(presetOf(areaId)?.profile ?? {}), ...numbers };
-};
+const profileFor = (areaId) => spotRun(areaId, profile.value, overrides.value, tz).profile;
 const hasOverride = (areaId) => { const o = overrides.value[areaId]; return !!o && Object.keys(o).some((k) => k !== 'preset'); };
 const editing = ref(null); // areaId being edited
 const draft = ref(null);

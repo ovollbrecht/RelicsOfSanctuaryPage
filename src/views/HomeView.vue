@@ -98,6 +98,11 @@ const tools = [
     to: '/where-to-farm',
   },
   {
+    title: 'Tonight',
+    question: 'I have three hours and a cold sorc - which terror zones are worth it, and where do I stand in between?',
+    to: '/tonight',
+  },
+  {
     title: 'Grail',
     question: grailSummary
       ? `${grailFound} of ${grailTotal} found - ${Math.round((grailFound / Math.max(1, grailTotal)) * 100)} % of the way.`
