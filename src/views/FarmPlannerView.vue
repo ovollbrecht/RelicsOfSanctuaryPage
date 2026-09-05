@@ -176,12 +176,12 @@ const fmtWhen = (slot) => {
 
 // ---------- the plan ----------
 const computing = ref(false);
+const ctxs = computed(() => ({ plain: makeCtx(false), terror: makeCtx(true) }));
 const rows = computed(() => {
   if (targets.value.length === 0) return [];
   const diff = difficulty.value;
   const spots = buildSpots(dropData, diff);
-  const plain = makeCtx(false);
-  const terror = makeCtx(true);
+  const { plain, terror } = ctxs.value;
   const out = [];
   for (const spot of spots) {
     const zoneIndex = zoneOfArea.get(spot.areaId);
@@ -207,6 +207,17 @@ const rows = computed(() => {
   }
   return out;
 });
+// ---------- why: the numbers behind one row ----------
+const why = ref(null); // areaId
+const whyDetail = computed(() => {
+  const row = rows.value.find((r) => r.spot.areaId === why.value);
+  if (!row) return null;
+  const ctx = terrorizedInView(row) ? ctxs.value.terror : ctxs.value.plain;
+  const run = applyPreset(dropData, row.spot, row.preset);
+  const score = scoreSpot(ctx, run, targets.value, profileFor(row.spot.areaId), difficulty.value, { highRune: runeFloor.value, detail: true });
+  return { row, score, terror: terrorizedInView(row) };
+});
+const toggleWhy = (areaId) => { why.value = why.value === areaId ? null : areaId; };
 const sorted = computed(() => {
   const list = [...rows.value];
   if (sortBy.value === 'worth') list.sort((x, y) => worth(y) - worth(x));
@@ -501,6 +512,7 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     <option v-for="pr in row.presets" :key="pr.id" :value="pr.id">{{ pr.label }}</option>
                   </select>
                   <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? 'This spot has its own run numbers' : 'Own run numbers for this spot'" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
+                  <button class="btn btn-sm edit-btn" :class="{ on: why === row.spot.areaId }" title="Why this number - the monsters and kills behind it" @click="toggleWhy(row.spot.areaId)">?</button>
                 </td>
                 <td class="text-end text-nowrap small">
                   <div>hit every <strong>{{ hours(itemsPerHour(row)) }}</strong></div>
@@ -566,6 +578,49 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                   </div>
                 </td>
               </tr>
+              <tr v-if="why === row.spot.areaId && whyDetail" class="why-row">
+                <td colspan="9">
+                  <div class="small mb-2">
+                    <strong>A run in {{ row.spot.name }}</strong><span v-if="row.preset"> ({{ row.preset.label }})</span>, {{ whyDetail.terror ? 'terrorized' : 'not terrorized' }}:
+                    {{ whyDetail.score.detail.counts.unique }} unique packs with {{ whyDetail.score.detail.counts.minion }} minions, {{ whyDetail.score.detail.counts.champion }} champions, {{ whyDetail.score.detail.counts.normal }} trash kills<template v-if="profileFor(row.spot.areaId).superUniques && row.spot.superUniques.length">, the superuniques</template><template v-if="profileFor(row.spot.areaId).boss && row.spot.boss >= 0">, {{ dropData.Monsters[row.spot.boss].Name }}</template>.
+                    <span class="text-muted">
+                      <template v-if="whyDetail.score.detail.packsFromPlaced">No rolled monster is left for the packs, so the placed ones stand in.</template>
+                      <template v-else-if="whyDetail.score.detail.rollSize">Packs average over the roll - {{ whyDetail.score.detail.rollTypes }} types<template v-if="whyDetail.score.detail.numMon">, the game picks {{ whyDetail.score.detail.numMon }} per game</template> - weighted by rarity; placed monsters are met as trash only.</template>
+                    </span>
+                  </div>
+                  <table class="table table-dark table-sm mb-2 why-table">
+                    <thead>
+                      <tr>
+                        <th>Monster</th>
+                        <th>In the roll</th>
+                        <th class="text-end" title="Monster level of a unique pack here">mlvl</th>
+                        <th class="text-end" title="Chance of a listed item from one ordinary kill">Trash</th>
+                        <th class="text-end">Champion</th>
+                        <th class="text-end">Unique</th>
+                        <th class="text-end">Minion</th>
+                        <th class="text-end" :title="`Expected ${runeFloorName}+ runes from one unique kill`">{{ runeFloorName }}+ / unique</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="m in whyDetail.score.detail.monsters" :key="m.monsterIndex" :class="{ 'text-muted': m.placed || m.dead }">
+                        <td>{{ m.name }}<span v-if="m.dead" class="text-warning"> · immune</span></td>
+                        <td>{{ m.placed ? 'placed by the map' : `weight ${m.weight}` }}</td>
+                        <td class="text-end">{{ m.per.unique?.mlvl ?? m.per.normal?.mlvl ?? '—' }}</td>
+                        <td class="text-end">{{ m.per.normal ? pct(m.per.normal.any) : '—' }}</td>
+                        <td class="text-end">{{ m.per.champion ? pct(m.per.champion.any) : '—' }}</td>
+                        <td class="text-end">{{ m.per.unique ? pct(m.per.unique.any) : '—' }}</td>
+                        <td class="text-end">{{ m.per.minion ? pct(m.per.minion.any) : '—' }}</td>
+                        <td class="text-end">{{ m.per.unique && m.per.unique.high > 0 ? pct(m.per.unique.high) : '—' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="small">
+                    <span class="text-muted">Per run, what carries it:</span>
+                    <span v-for="part in whyDetail.score.parts" :key="part.label" class="ms-2">{{ part.label }} <strong>{{ pct(part.hit) }}</strong></span>
+                    <span class="ms-2">→ <strong>{{ pct(whyDetail.score.perRun) }}</strong> for the list</span>
+                  </div>
+                </td>
+              </tr>
               </template>
             </tbody>
           </table>
@@ -577,8 +632,9 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
     </div>
 
     <p class="small text-muted mt-4 mb-0">
-      Per kill, the chance of at least one listed item is 1 − Π(1 − p); per run the misses multiply across the kills in the profile. An area's monsters go in as the
-      average over its spawn list. Player count, party and magic find as set above; exalted and mythic rolls count as their base item. The terrorized column uses the character level
+      Per kill, the chance of at least one listed item is 1 − Π(1 − p); per run the misses multiply across the kills in the profile. Packs go in as the average over
+      the area's random roll, weighted by monster rarity; monsters the map places rather than rolls - the Trapped Souls, Travincal's council - are met as trash and do
+      not thin that average. The <strong>?</strong> on a row shows the numbers behind it. Player count, party and magic find as set above; exalted and mythic rolls count as their base item. The terrorized column uses the character level
       above; the next terror time comes from the <router-link to="/terror-zones">Terror Zones</router-link> schedule.
     </p>
   </div>
@@ -614,6 +670,9 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
 .edit-btn:hover, .edit-btn.on { color: var(--d2r-gold-bright); }
 .row-edited .spot-link::after { content: ' •'; color: var(--d2r-gold); }
 .edit-row td { background: rgba(212, 175, 55, 0.06); }
+.why-row td { background: rgba(255, 255, 255, 0.03); }
+.why-table { font-size: 0.8rem; }
+.why-table td, .why-table th { padding: 0.15rem 0.5rem; }
 .mini { width: 4.2rem; margin-left: 0.25rem; }
 .verdict { border-color: rgba(201, 163, 106, 0.45); }
 .ranking { min-width: 20rem; }

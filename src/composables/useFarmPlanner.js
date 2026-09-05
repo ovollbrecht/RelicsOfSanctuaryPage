@@ -13,9 +13,12 @@ import { monsterBlockedFor } from './useImmunities.js';
  * not a fact in the data.
  *
  * Per kill, the chance of at least one hit is 1 - prod(1 - p_item); per run
- * the misses multiply again across kills. Monsters of an area go in as the
- * average over its spawn list: the game picks a subset per game, and the mean
- * is what a player meets over many games.
+ * the misses multiply again across kills. Packs go in as the average over the
+ * area's random roll - the spawn list weighted by monstats Rarity: the game
+ * picks NumMon types per game, and the weighted mean is what a player meets
+ * over many games. Monsters the fixed map places (the Trapped Souls, the
+ * council in Travincal) are never rolled, so they do not thin that average;
+ * they are met as ordinary kills on the way through.
  */
 
 export const DEFAULT_PROFILE = {
@@ -83,7 +86,7 @@ export function spotRun(areaId, profile, overrides, tz) {
   return { profile: { ...base, ...(preset?.profile ?? {}), ...numbers }, preset };
 }
 export const applyPreset = (data, spot, preset) => (preset?.monsters
-  ? { ...spot, monsters: spot.monsters.filter((i) => preset.monsters(data.Monsters[i])) }
+  ? { ...spot, monsters: spot.monsters.filter((i) => preset.monsters(data.Monsters[i])), placed: (spot.placed ?? []).filter((i) => preset.monsters(data.Monsters[i])) }
   : spot);
 
 /**
@@ -94,10 +97,11 @@ export const applyPreset = (data, spot, preset) => (preset?.monsters
  */
 export function applyElements(data, spot, difficulty, elements) {
   if (!elements || elements.length === 0) return { ...spot, dead: null, immune: null };
-  const dead = new Set(spot.monsters.filter((i) => monsterBlockedFor(data, i, difficulty, elements)));
+  const placed = spot.placed ?? [];
+  const dead = new Set([...spot.monsters, ...placed].filter((i) => monsterBlockedFor(data, i, difficulty, elements)));
   const superUniques = spot.superUniques.filter((i) => !monsterBlockedFor(data, data.SuperUniques[i].Monster, difficulty, elements));
   const boss = spot.boss >= 0 && monsterBlockedFor(data, spot.boss, difficulty, elements) ? -1 : spot.boss;
-  const total = spot.monsters.length + spot.superUniques.length + (spot.boss >= 0 ? 1 : 0);
+  const total = spot.monsters.length + placed.length + spot.superUniques.length + (spot.boss >= 0 ? 1 : 0);
   const gone = dead.size + (spot.superUniques.length - superUniques.length) + (spot.boss >= 0 && boss < 0 ? 1 : 0);
   return { ...spot, superUniques, boss, dead, immune: { gone, total, all: total > 0 && gone === total } };
 }
@@ -199,8 +203,10 @@ const average = (list, pick) => (list.length ? list.reduce((s, x) => s + pick(x)
 
 /**
  * All farm spots for a difficulty, with the monsters, superuniques and boss
- * each holds. Areas nothing spawns in (towns, the odd empty level) are left
- * out.
+ * each holds. `monsters` are the area's random roll, weighted by Rarity;
+ * `placed` are met there but never rolled - put down by the map, or listed
+ * with Rarity 0 like Hephasto. Areas nothing spawns in (towns, the odd empty
+ * level) are left out.
  */
 export function buildSpots(data, difficulty) {
   const spots = new Map();
@@ -208,14 +214,19 @@ export function buildSpots(data, difficulty) {
     let s = spots.get(areaId);
     if (!s) {
       const area = data.Areas.find((a) => a.Id === areaId);
-      s = { areaId, name: area?.Name ?? `Area ${areaId}`, act: area?.Act ?? 0, monsters: [], superUniques: [], boss: -1 };
+      s = { areaId, name: area?.Name ?? `Area ${areaId}`, act: area?.Act ?? 0, numMon: area?.NumMon ?? 0, monsters: [], weights: new Map(), placed: [], superUniques: [], boss: -1 };
       spots.set(areaId, s);
     }
     return s;
   };
   data.Monsters.forEach((m, i) => {
     if (m.Boss) return;
-    m.Areas[difficulty].forEach((areaId) => spot(areaId).monsters.push(i));
+    const rarity = m.Rarity ?? 1;
+    const rolled = new Set(rarity > 0 ? (m.SpawnAreas?.[difficulty] ?? m.Areas[difficulty]) : []);
+    m.Areas[difficulty].forEach((areaId) => {
+      const s = spot(areaId);
+      if (rolled.has(areaId)) { s.monsters.push(i); s.weights.set(i, rarity); } else s.placed.push(i);
+    });
   });
   data.SuperUniques.forEach((su, i) => { if (su.Areas[0] != null) spot(su.Areas[0]).superUniques.push(i); });
   // The named bosses first; the Defilers of act 5 are flagged as bosses too
@@ -226,32 +237,49 @@ export function buildSpots(data, difficulty) {
     const areaId = m.Areas[difficulty][0];
     if (areaId != null && spot(areaId).boss < 0) spot(areaId).boss = i;
   });
-  return [...spots.values()].filter((s) => s.monsters.length || s.superUniques.length || s.boss >= 0)
+  return [...spots.values()].filter((s) => s.monsters.length || s.placed.length || s.superUniques.length || s.boss >= 0)
     .sort((a, b) => a.act - b.act || a.areaId - b.areaId);
 }
 
 /**
  * Scores one spot for one context (terror on or off). Returns per-run
  * probabilities for the target list, the rune picture and what carried the
- * result.
+ * result; with `detail` also the per-monster numbers behind it.
+ *
+ * Packs - unique, minion, champion - average over the random roll, weighted
+ * by rarity; when a preset leaves no rolled monster (Travincal's council),
+ * the placed ones stand in. Trash averages over everything met: the roll and
+ * the placed monsters alike, a placed one weighing like a rarity of 1.
  */
-export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 21 } = {}) {
+export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 21, detail = false } = {}) {
   const types = ['normal', 'champion', 'unique', 'minion'];
-  const byType = {};
-  for (const type of types) {
-    const hits = [];
-    for (const monsterIndex of spot.monsters) {
+  const placed = spot.placed ?? [];
+  const weightOf = (i) => spot.weights?.get(i) ?? 1;
+  const evaluated = new Map(); // `${i}:${type}` -> result | null
+  const evalFor = (monsterIndex, type) => {
+    const key = `${monsterIndex}:${type}`;
+    if (!evaluated.has(key)) {
       // an immune monster is met and left standing: a kill that yields nothing
-      const r = spot.dead?.has(monsterIndex) ? NOTHING : evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets, highRune);
-      if (r) hits.push(r);
+      evaluated.set(key, spot.dead?.has(monsterIndex) ? NOTHING : evaluateSource(ctx, { kind: 'monster', monsterIndex, sourceType: type, difficulty, areaId: spot.areaId }, targets, highRune));
     }
-    byType[type] = {
-      any: average(hits, (h) => h.any),
-      runesAny: average(hits, (h) => h.runes.any),
-      runesHigh: average(hits, (h) => h.runes.high),
-      runesMax: hits.reduce((m, h) => Math.max(m, h.runes.max), 0),
-    };
-  }
+    return evaluated.get(key);
+  };
+  const weighted = (pool, type, placedWeight) => {
+    let w = 0; let any = 0; let runesAny = 0; let runesHigh = 0; let runesMax = 0;
+    for (const { i, placed: isPlaced } of pool) {
+      const r = evalFor(i, type);
+      if (!r) continue;
+      const wi = isPlaced ? placedWeight : weightOf(i);
+      w += wi; any += wi * r.any; runesAny += wi * r.runes.any; runesHigh += wi * r.runes.high; runesMax = Math.max(runesMax, r.runes.max);
+    }
+    return w > 0 ? { any: any / w, runesAny: runesAny / w, runesHigh: runesHigh / w, runesMax } : { any: 0, runesAny: 0, runesHigh: 0, runesMax: 0 };
+  };
+  const rolled = spot.monsters.map((i) => ({ i, placed: false }));
+  const standIns = placed.map((i) => ({ i, placed: true }));
+  const packPool = rolled.length ? rolled : standIns;
+  const trashPool = [...rolled, ...standIns];
+  const byType = {};
+  for (const type of types) byType[type] = weighted(type === 'normal' ? trashPool : packPool, type, 1);
   const counts = {
     normal: Math.max(0, profile.trash | 0),
     champion: Math.max(0, (profile.champPacks | 0) * (profile.champsPerPack | 0)),
@@ -310,9 +338,22 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
   const carrier = runeParts.length && highExpected > 0
     ? { label: runeParts[0].label, share: runeParts[0].expected / highExpected }
     : null;
-  return {
+  const result = {
     perRun: 1 - miss,
     parts,
     runes: { expected: runesExpected, highExpected, highPerRun: 1 - highMiss, max: runesMax, carrier },
   };
+  if (detail) {
+    const row = (i, isPlaced) => {
+      const per = {};
+      for (const type of types) { const r = evalFor(i, type); per[type] = r ? { any: r.any, high: r.runes.high, mlvl: r.mlvl } : null; }
+      return { monsterIndex: i, name: ctx.monsters[i].Name, placed: isPlaced, weight: isPlaced ? 0 : weightOf(i), dead: !!spot.dead?.has(i), per };
+    };
+    result.detail = {
+      monsters: [...rolled.map(({ i }) => row(i, false)), ...standIns.map(({ i }) => row(i, true))],
+      counts, numMon: spot.numMon ?? 0, packsFromPlaced: rolled.length === 0 && standIns.length > 0,
+      rollTypes: rolled.length, rollSize: rolled.reduce((sum, { i }) => sum + weightOf(i), 0),
+    };
+  }
+  return result;
 }
