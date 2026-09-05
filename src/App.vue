@@ -120,6 +120,9 @@ const handleClickOutside = (event) => {
             <router-link to="/drop-calc" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Drop Calculator</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/terror-zones" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Terror Zones</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/items/affixes" class="nav-link sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">Affix Calculator</router-link>
           </li>
           <li class="nav-item">

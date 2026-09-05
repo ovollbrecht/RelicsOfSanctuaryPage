@@ -80,6 +80,11 @@ const tools = [
     question: 'Which affixes can this base still roll at my level?',
     to: '/items/affixes',
   },
+  {
+    title: 'Terror Zones',
+    question: 'Which zone is terrorized right now - and when is the one I want?',
+    to: '/terror-zones',
+  },
 ];
 </script>
 

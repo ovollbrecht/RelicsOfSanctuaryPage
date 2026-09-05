@@ -55,6 +55,11 @@ const routes = [
     path: '/drop-calc',
     name: 'DropCalc',
     component: () => import('../views/DropCalcView.vue')
+  },
+  {
+    path: '/terror-zones',
+    name: 'TerrorZones',
+    component: () => import('../views/TerrorZonesView.vue')
   }
 ]
 
