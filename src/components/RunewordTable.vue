@@ -66,11 +66,11 @@ const setAll = (open) => {
           <!-- Fixed widths, so the three tier tables line up as one grid
                instead of each measuring its own longest name. -->
           <colgroup>
-            <col style="width: 26%" />
-            <col style="width: 21%" />
+            <col style="width: 22%" />
+            <col style="width: 30%" />
             <col style="width: 9%" />
-            <col style="width: 9%" />
-            <col style="width: 35%" />
+            <col style="width: 8%" />
+            <col style="width: 31%" />
           </colgroup>
           <thead>
             <tr>
@@ -203,7 +203,10 @@ const setAll = (open) => {
 }
 
 .runes-cell {
-  white-space: nowrap;
+  /* with an icon per rune a six-rune word no longer fits one line at every
+     width; the runes wrap as pairs of icon and name */
+  white-space: normal;
+  line-height: 1.9;
 }
 
 /* The rune you do not have yet. */
@@ -235,5 +238,5 @@ const setAll = (open) => {
   box-shadow: inset 0 1px 0 rgba(201, 163, 106, 0.35), inset 0 -1px 0 rgba(201, 163, 106, 0.35);
 }
 .rune-name { white-space: nowrap; }
-.rune-icon { display: inline-block; width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-right: 0.15rem; }
+.rune-icon { display: inline-block; width: 17px; height: 17px; object-fit: contain; vertical-align: -3px; margin-right: 0.1rem; }
 </style>
