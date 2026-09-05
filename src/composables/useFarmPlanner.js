@@ -38,6 +38,29 @@ export const BOSS_AREAS = {
 export const RUNE_FLOORS = [{ number: 21, name: 'Pul' }, { number: 25, name: 'Vex' }, { number: 30, name: 'Ber' }];
 
 /**
+ * Named ways to run a spot, where the numbers alone do not say it. Mephisto
+ * is farmed alone or with the three council members beside him; Travincal is
+ * farmed for its council - the three named ones and the ordinary council
+ * members with them, some of which come up unique - and not for the zealots
+ * around them. A preset sets the profile and may narrow the monsters counted.
+ */
+const council = (m) => /^councilmember\d$/.test(m.Id);
+export const SPOT_PRESETS = {
+  102: [ // Durance of Hate Level 3
+    { id: 'meph', label: 'Mephisto only', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: false, boss: true } },
+    { id: 'meph-council', label: 'Mephisto + council', profile: { packs: 0, champPacks: 0, trash: 0, heralds: 0, superUniques: true, boss: true } },
+  ],
+  83: [ // Travincal
+    { id: 'council', label: 'Council only', monsters: council,
+      profile: { packs: 2, minionsPerPack: 3, champPacks: 1, champsPerPack: 3, trash: 6, heralds: 0, superUniques: true, boss: false } },
+  ],
+};
+export const presetsFor = (areaId) => SPOT_PRESETS[areaId] ?? [];
+export const applyPreset = (data, spot, preset) => (preset?.monsters
+  ? { ...spot, monsters: spot.monsters.filter((i) => preset.monsters(data.Monsters[i])) }
+  : spot);
+
+/**
  * 'u:<Name>' / 's:<Name>' tokens -> targets. A name covers every spawnable row
  * that carries it: the eight Rainbow Facets are one wish, not eight, and a
  * source's chance for the wish is the sum over its rows. Old links named the

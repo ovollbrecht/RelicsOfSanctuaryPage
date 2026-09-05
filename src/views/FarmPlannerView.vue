@@ -5,7 +5,7 @@ import dropData from '@/assets/dropcalc.json';
 import tz from '@/assets/terror_zones.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext } from '@/composables/useDropSimulation.js';
-import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot } from '@/composables/useFarmPlanner.js';
+import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset } from '@/composables/useFarmPlanner.js';
 import { useFarmList } from '@/composables/useFarmList.js';
 
 /**
@@ -92,35 +92,59 @@ const packsFromZone = (areaId) => {
   if (!zone?.bossPacks) return null;
   return Math.max(1, Math.round((zone.bossPacks[0] + zone.bossPacks[1]) / 2 / zone.areas.length));
 };
+// A spot's run: the global profile, the zone's pack count, then a chosen
+// preset (Mephisto only, council only), then the spot's own numbers on top.
+const presetOf = (areaId) => {
+  const id = overrides.value[areaId]?.preset;
+  return id ? presetsFor(areaId).find((p) => p.id === id) ?? null : null;
+};
+const setPreset = (areaId, id) => {
+  const next = { ...overrides.value };
+  const { preset, ...numbers } = next[areaId] ?? {};
+  // switching the way a spot is run drops the numbers typed for the old way
+  if (id) next[areaId] = { preset: id }; else if (Object.keys(numbers).length) next[areaId] = numbers; else delete next[areaId];
+  overrides.value = next;
+  if (editing.value === areaId) editing.value = null;
+};
 const profileFor = (areaId) => {
   const base = { ...profile.value };
   if (base.packsFromZone) {
     const fromZone = packsFromZone(areaId);
     if (fromZone != null) base.packs = fromZone;
   }
-  return { ...base, ...(overrides.value[areaId] ?? {}) };
+  const { preset, ...numbers } = overrides.value[areaId] ?? {};
+  return { ...base, ...(presetOf(areaId)?.profile ?? {}), ...numbers };
 };
-const hasOverride = (areaId) => overrides.value[areaId] != null;
+const hasOverride = (areaId) => { const o = overrides.value[areaId]; return !!o && Object.keys(o).some((k) => k !== 'preset'); };
 const editing = ref(null); // areaId being edited
 const draft = ref(null);
 const startEdit = (areaId) => { editing.value = areaId; draft.value = { ...profileFor(areaId) }; };
 const saveEdit = () => {
   if (editing.value == null) return;
-  const d = draft.value; const g = profile.value;
+  const areaId = editing.value;
+  const d = draft.value;
+  const preset = presetOf(areaId);
+  // the numbers a spot would have without its own: profile, zone packs, preset
+  const base = { ...profile.value, ...(profile.value.packsFromZone && packsFromZone(areaId) != null ? { packs: packsFromZone(areaId) } : {}), ...(preset?.profile ?? {}) };
   const diff = {};
-  for (const key of Object.keys(DEFAULT_PROFILE)) if (d[key] !== g[key]) diff[key] = d[key];
+  for (const key of Object.keys(DEFAULT_PROFILE)) if (key !== 'packsFromZone' && d[key] !== base[key]) diff[key] = d[key];
   const next = { ...overrides.value };
-  if (Object.keys(diff).length) next[editing.value] = diff; else delete next[editing.value];
+  const entry = { ...(preset ? { preset: preset.id } : {}), ...diff };
+  if (Object.keys(entry).length) next[areaId] = entry; else delete next[areaId];
   overrides.value = next;
   editing.value = null;
 };
 const clearEdit = () => {
   if (editing.value == null) return;
-  const next = { ...overrides.value }; delete next[editing.value]; overrides.value = next;
+  const areaId = editing.value;
+  const next = { ...overrides.value };
+  const preset = next[areaId]?.preset;
+  if (preset) next[areaId] = { preset }; else delete next[areaId];
+  overrides.value = next;
   editing.value = null;
 };
 const cancelEdit = () => { editing.value = null; };
-const overrideCount = computed(() => Object.keys(overrides.value).length);
+const overrideCount = computed(() => Object.keys(overrides.value).filter((k) => hasOverride(Number(k))).length);
 const clearAllOverrides = () => { overrides.value = {}; editing.value = null; };
 
 // ---------- terror zone lookup ----------
@@ -159,9 +183,11 @@ const rows = computed(() => {
   for (const spot of spots) {
     const zoneIndex = zoneOfArea.get(spot.areaId);
     const p = profileFor(spot.areaId);
+    const preset = presetOf(spot.areaId);
+    const run = applyPreset(dropData, spot, preset);
     const opts = { highRune: runeFloor.value };
-    const a = scoreSpot(plain, spot, targets.value, p, diff, opts);
-    const b = zoneIndex != null ? scoreSpot(terror, spot, targets.value, p, diff, opts) : null;
+    const a = scoreSpot(plain, run, targets.value, p, diff, opts);
+    const b = zoneIndex != null ? scoreSpot(terror, run, targets.value, p, diff, opts) : null;
     if (a.perRun <= 0 && (!b || b.perRun <= 0)) continue;
     out.push({
       spot,
@@ -171,6 +197,8 @@ const rows = computed(() => {
       tz: b,
       best: Math.max(a.perRun, b?.perRun ?? 0),
       overridden: hasOverride(spot.areaId),
+      preset,
+      presets: presetsFor(spot.areaId),
     });
   }
   return out;
@@ -213,7 +241,8 @@ const pct = (p) => {
   if (!(p > 0)) return '—';
   if (p >= 0.1) return `${(p * 100).toFixed(0)} %`;
   if (p >= 0.01) return `${(p * 100).toFixed(1)} %`;
-  return `${(p * 100).toFixed(2)} %`;
+  if (p >= 0.0001) return `${(p * 100).toFixed(2)} %`;
+  return `${(p * 100).toFixed(3)} %`;
 };
 const runs = (p) => (p > 0 ? `1 in ${Math.round(1 / p).toLocaleString()} runs` : '');
 const runeName = (n) => (dropData.BaseItems.find((b) => b.Code === `r${String(n).padStart(2, '0')}`)?.Name ?? '').replace(/ Rune$/, '');
@@ -334,15 +363,15 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
       <div class="card-body p-3 d-flex flex-wrap gap-4">
         <div>
           <div class="section-header mb-1">Best for your list</div>
-          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
+          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span><span v-if="bestFor.byItems.preset" class="text-muted small"> ({{ bestFor.byItems.preset.label }})</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
         </div>
         <div>
           <div class="section-header mb-1">Best for high runes</div>
-          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span> <span class="text-muted small">{{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}<template v-if="scoreOf(bestFor.byRunes).runes.carrier && scoreOf(bestFor.byRunes).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(bestFor.byRunes).runes.carrier.label)"> · mostly {{ scoreOf(bestFor.byRunes).runes.carrier.label }}</template></span></div>
+          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span><span v-if="bestFor.byRunes.preset" class="text-muted small"> ({{ bestFor.byRunes.preset.label }})</span> <span class="text-muted small">{{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}<template v-if="scoreOf(bestFor.byRunes).runes.carrier && scoreOf(bestFor.byRunes).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(bestFor.byRunes).runes.carrier.label)"> · mostly {{ scoreOf(bestFor.byRunes).runes.carrier.label }}</template></span></div>
         </div>
         <div v-if="bestFor.both">
           <div class="section-header mb-1">Best of both</div>
-          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
+          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span><span v-if="bestFor.both.preset" class="text-muted small"> ({{ bestFor.both.preset.label }})</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
         </div>
         <div class="small text-muted align-self-center ms-auto verdict-note">
           Bosses pay in uniques and sets and hand out few runes; a clear is the other way round. The bars in the table put both on one scale, each against the best spot.
@@ -384,6 +413,10 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
                   <router-link :to="dropCalcLink(row.spot, false)" class="spot-link">{{ row.spot.name }}</router-link>
                   <span class="badge act-badge ms-1" :class="`act-${row.spot.act}`">A{{ row.spot.act }}</span>
                   <span v-if="row.spot.boss >= 0" class="badge boss-badge ms-1">{{ dropData.Monsters[row.spot.boss].Name }}</span>
+                  <select v-if="row.presets.length" class="form-select form-select-sm preset-select ms-1" :value="row.preset?.id ?? ''" :title="'How this spot is run'" @change="setPreset(row.spot.areaId, $event.target.value)">
+                    <option value="">Full clear</option>
+                    <option v-for="pr in row.presets" :key="pr.id" :value="pr.id">{{ pr.label }}</option>
+                  </select>
                   <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? 'This spot has its own run numbers' : 'Own run numbers for this spot'" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
                 </td>
                 <td class="text-end text-nowrap">
@@ -481,6 +514,7 @@ watch([tokens, difficulty, charLevel, heraldTier, runeFloor, sortBy], () => {
 .profile-grid input { max-width: 6rem; }
 .plan-table td { vertical-align: middle; }
 .edit-btn { border: 0; background: none; color: var(--d2r-muted); padding: 0 0.25rem; line-height: 1; }
+.preset-select { display: inline-block; width: auto; padding: 0 1.6rem 0 0.4rem; font-size: 0.75rem; height: 1.5rem; vertical-align: middle; }
 .edit-btn:hover, .edit-btn.on { color: var(--d2r-gold-bright); }
 .row-edited .spot-link::after { content: ' •'; color: var(--d2r-gold); }
 .edit-row td { background: rgba(212, 175, 55, 0.06); }
