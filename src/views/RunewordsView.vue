@@ -13,6 +13,7 @@ const searchQuery = ref('');
 const runesSearchQuery = ref('');
 const selectedCategory = ref('all');
 const dataMode = ref('mod'); // mod | vanilla (mod is the default)
+watch(dataMode, (mode) => { if (mode === 'vanilla' && statusFilter.value === 'new') statusFilter.value = 'all'; });
 
 // Mode-aware field access: vanilla mode resolves the embedded Vanilla* value
 // for reworked runewords; new (mod-added) runewords stay visible either way.
@@ -325,6 +326,8 @@ const classOptions = computed(() => {
 });
 
 const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
+  // the vanilla view shows the game as shipped: the mod's own runewords are not in it
+  if (dataMode.value === 'vanilla' && runeword.IsNew) return false;
   if (classPick.value !== 'any') {
     // Bound to that class, and bound at all: an entry that also fits a plain
     // sword names no class, and would otherwise slip through on a sibling
@@ -1008,7 +1011,7 @@ onUnmounted(() => {
                   <input id="rw-status-all" v-model="statusFilter" value="all" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-all">All</label>
                 </div>
-                <div class="form-check reworked-toggle">
+                <div v-if="dataMode !== 'vanilla'" class="form-check reworked-toggle">
                   <input id="rw-status-new" v-model="statusFilter" value="new" class="form-check-input" type="radio" />
                   <label class="form-check-label" for="rw-status-new">
                     Only new <span class="flag">•</span>
