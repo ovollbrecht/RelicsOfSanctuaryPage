@@ -48,6 +48,19 @@ const buffers = {};
 for (const name of STRINGS) buffers[name] = readText(`local/lng/strings/${name}`);
 for (const table of TABLES) buffers[`${table}.txt`] = readText(`global/excel/${table}.txt`);
 
+// The parser keys skills by the *Id column, the game by row order - and the
+// mod's two Druid clones (Mythic Armageddon, Mythic Hurricane) still carry
+// their originals' ids, so keyed by *Id the Druid has 30 skills where the
+// save writes 32. Renumber the comment column to the row index the game uses.
+buffers['skills.txt'] = buffers['skills.txt'].split(/\r?\n/).map((line, i) => {
+  if (!line) return line;
+  const cells = line.split('\t');
+  if (i === 0) { buffers.skillsId = cells.indexOf('*Id'); return line; }
+  if (buffers.skillsId >= 0) cells[buffers.skillsId] = String(i - 1);
+  return cells.join('\t');
+}).join('\n');
+delete buffers.skillsId;
+
 const constants = d2s.readConstantData(buffers);
 
 // ---- the catalog ----
