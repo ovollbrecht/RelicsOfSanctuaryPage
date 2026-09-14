@@ -160,12 +160,28 @@ watch(tab, () => { slot.value = ''; tiers.value = new Set(); if (show.value === 
 
 const toggle = (entry) => grail.setManual(keysOf(entry)[0], !isFound(entry));
 const dateFmt = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+// where the item sits right now, from the files' holdings: "stash", "on Hara"
+const locationsOf = (entry) => {
+  const keys = keysOf(entry);
+  const out = new Set();
+  for (const [file, h] of Object.entries(grail.holdings.value)) {
+    if (keys.some((k) => (h.items?.[k] ?? 0) > 0)) out.add(h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash');
+  }
+  return [...out];
+};
+// the places first, the Chronicle's word - who dropped it, when - always last
 const sourceText = (entry) => {
   const r = recordOf(entry);
   if (!r) return '';
-  const where = { chronicle: 'Chronicle', stash: 'stash', character: r.who ? `on ${r.who}` : 'character', manual: 'ticked by hand' }[r.source] ?? r.source;
-  const by = r.by && catalog.value?.sources?.[r.by] ? ` · ${catalog.value.sources[r.by]}` : '';
-  return r.when ? `${where}${by} · ${dateFmt.format(new Date(r.when))}` : `${where}${by}`;
+  const parts = locationsOf(entry);
+  if (r.source === 'manual') parts.push('ticked by hand');
+  if (r.when) {
+    const by = r.by && catalog.value?.sources?.[r.by] ? ` · ${catalog.value.sources[r.by]}` : '';
+    parts.push(`Chronicle${by} · ${dateFmt.format(new Date(r.when))}`);
+  } else if (parts.length === 0) {
+    parts.push({ chronicle: 'Chronicle', stash: 'stash', character: r.who ? `on ${r.who}` : 'character' }[r.source] ?? r.source);
+  }
+  return parts.join(' · ');
 };
 const itemLink = (entry) => (entry.kind === 'runeword'
   ? { path: '/runewords', query: { q: entry.name } }
