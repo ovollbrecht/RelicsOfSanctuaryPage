@@ -1,14 +1,15 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import GlobalSearch from '@/components/GlobalSearch.vue'
+import { locale, setLocale, t } from '@/i18n'
 import logoUrl from '@/assets/RelicsOfSancturay-symbol.png'
 import dataMeta from '@/assets/meta.json'
 
-const dataStamp = (() => {
+const dataStamp = computed(() => {
   const date = dataMeta.generatedAt ? dataMeta.generatedAt.substring(0, 10) : null
   const version = dataMeta.modVersion ? `v${dataMeta.modVersion}` : null
-  return [version, date && `data ${date}`].filter(Boolean).join(' · ')
-})()
+  return [version, date && `${t('data')} ${date}`].filter(Boolean).join(' · ')
+})
 
 // The menu in four shelves: what there is to find, what to work it out
 // with, where to farm it, and the mod itself.
@@ -110,11 +111,11 @@ const handleClickOutside = (event) => {
       @click="toggleSidebar"
       :aria-expanded="isSidebarOpen"
       aria-controls="sidebar"
-      aria-label="Toggle navigation"
+      :aria-label="$t('Toggle navigation')"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button class="btn search-fab d-lg-none position-fixed top-0 end-0 mt-3 me-3" aria-label="Search" title="Search" @click="openSearch">⌕</button>
+    <button class="btn search-fab d-lg-none position-fixed top-0 end-0 mt-3 me-3" :aria-label="$t('Search')" :title="$t('Search')" @click="openSearch">⌕</button>
 
     <aside id="sidebar" class="sidebar" :class="{ show: isSidebarOpen }" aria-label="Primary navigation">
       <div class="sidebar-header">
@@ -125,25 +126,29 @@ const handleClickOutside = (event) => {
             <span class="brand-title">Sanctuary</span>
           </div>
         </div>
-        <button class="btn-close btn-close-white d-lg-none" @click="toggleSidebar" aria-label="Close navigation"></button>
+        <button class="btn-close btn-close-white d-lg-none" @click="toggleSidebar" :aria-label="$t('Close navigation')"></button>
       </div>
 
       <nav class="sidebar-nav">
-        <button type="button" class="sidebar-search" title="Search everything - items, runewords, recipes, zones, monsters" @click="openSearch">
-          <span>⌕ Search</span><kbd>⌘K</kbd>
+        <button type="button" class="sidebar-search" :title="$t('Search everything - items, runewords, recipes, zones, monsters')" @click="openSearch">
+          <span>⌕ {{ $t('Search') }}</span><kbd>⌘K</kbd>
         </button>
-        <router-link to="/" class="sidebar-link home-link" @click="!isWideScreen && (isSidebarOpen = false)">Home</router-link>
+        <router-link to="/" class="sidebar-link home-link" @click="!isWideScreen && (isSidebarOpen = false)">{{ $t('Home') }}</router-link>
         <div v-for="group in navGroups" :key="group.label" class="nav-group">
-          <div class="nav-group-label">{{ group.label }}</div>
+          <div class="nav-group-label">{{ $t(group.label) }}</div>
           <router-link v-for="item in group.items" :key="item.to" :to="item.to" class="sidebar-link" @click="!isWideScreen && (isSidebarOpen = false)">
-            <span>{{ item.label }}</span>
+            <span>{{ $t(item.label) }}</span>
             <span v-if="item.hint" class="nav-hint">{{ item.hint }}</span>
           </router-link>
         </div>
       </nav>
 
       <div class="sidebar-footer">
-        Build your legend with exalted relics and rune-crafted power.
+        <div class="lang-switch" role="group" :aria-label="$t('Language')">
+          <button type="button" :class="{ on: locale === 'en' }" @click="setLocale('en')">EN</button>
+          <button type="button" :class="{ on: locale === 'de' }" @click="setLocale('de')">DE</button>
+        </div>
+        {{ $t('Build your legend with exalted relics and rune-crafted power.') }}
         <div v-if="dataStamp" class="data-stamp">{{ dataStamp }}</div>
       </div>
     </aside>
@@ -297,6 +302,10 @@ const handleClickOutside = (event) => {
   border-color: transparent;
   color: var(--d2r-text) !important;
 }
+
+.lang-switch { display: inline-flex; gap: 0; margin-bottom: 0.6rem; border: 1px solid rgba(201, 163, 106, 0.3); border-radius: 0.3rem; overflow: hidden; }
+.lang-switch button { padding: 0.1rem 0.55rem; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--d2r-muted); background: transparent; border: 0; cursor: pointer; }
+.lang-switch button.on { color: var(--d2r-gold-bright); background: rgba(201, 163, 106, 0.16); }
 
 .sidebar-footer {
   padding: 0 1.25rem 1.5rem;
