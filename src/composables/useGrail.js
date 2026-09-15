@@ -44,21 +44,23 @@ const loadParser = () => {
 };
 
 /**
- * The Chronicle section: a header with three counts - set items, uniques,
- * runewords - then ten bytes per entry: a source (u16), the minute it happened
- * (u32, minutes since 1970) and the id (u32). Set items and uniques are row
- * ids of their tables, runewords the string id of their name.
+ * The Chronicle section: a 20-byte header - magic, version, three counts for
+ * set items, uniques and runewords - then ten bytes per entry: the id (u32),
+ * the source (u16, the string id of the monster or chest) and the minute it
+ * happened (u32, minutes since 1970). Set items and uniques are row ids of
+ * their tables, runewords the string id of their name. The first reading of
+ * this put the id last, which paired every date with the next entry's item.
  */
 export function decodeChronicle(bytes) {
   if (!bytes || bytes.length < 24) return null;
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   if (view.getUint32(0, true) !== 0xc0eaedc0) return null;
   const counts = [view.getUint16(6, true), view.getUint16(8, true), view.getUint16(10, true)];
-  let pos = 24;
+  let pos = 20;
   const read = (count) => {
     const list = [];
     for (let i = 0; i < count && pos + 10 <= bytes.length; i++) {
-      list.push({ source: view.getUint16(pos, true), minute: view.getUint32(pos + 2, true), id: view.getUint32(pos + 6, true) });
+      list.push({ id: view.getUint32(pos, true), source: view.getUint16(pos + 4, true), minute: view.getUint32(pos + 6, true) });
       pos += 10;
     }
     return list;
