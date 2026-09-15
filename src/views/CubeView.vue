@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import cube from '@/assets/cube.json';
 import { iconUrl } from '@/composables/useItemIcon.js';
+import { t } from '@/i18n';
 
 /**
  * The Horadric Cube: every recipe the game and the mod know, on ten shelves.
@@ -71,9 +72,9 @@ const essenceLines = (group) => {
   const q = (r) => r.Inputs[0].Quality;
   const pick = (test) => group.recipes.filter(test);
   const lines = [
-    { items: 'Any low quality, normal or superior item', recipes: pick((r) => ['Low Quality', 'Normal', 'Superior'].includes(q(r))) },
-    { items: 'Any magic helm, body armor, weapon or shield', recipes: pick((r) => q(r) === 'Magic') },
-    { items: 'Any rare, set, unique or crafted item', recipes: pick((r) => ['Rare', 'Set', 'Unique', 'Crafted'].includes(q(r))) },
+    { items: t('Any low quality, normal or superior item'), recipes: pick((r) => ['Low Quality', 'Normal', 'Superior'].includes(q(r))) },
+    { items: t('Any magic helm, body armor, weapon or shield'), recipes: pick((r) => q(r) === 'Magic') },
+    { items: t('Any rare, set, unique or crafted item'), recipes: pick((r) => ['Rare', 'Set', 'Unique', 'Crafted'].includes(q(r))) },
   ].filter((l) => l.recipes.length);
   return lines.map((l) => ({ ...l, essences: l.recipes[0].Inputs.filter((i) => i.Kind === 'essence'), title: l.recipes[0].Title, note: l.recipes[0].Notes.filter((n) => n.startsWith('gets')).join(' · ') }));
 };
@@ -156,14 +157,14 @@ const jump = (id) => {
   <div class="container py-4 page-content cube-page">
     <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
       <div>
-        <h1 class="h2 mb-1">Horadric Cube</h1>
-        <p class="text-muted mb-0">Every recipe the cube knows, on ten shelves. What the mod added is marked <span class="badge origin-mod">Relics</span>, what it changed <span class="badge origin-changed">changed</span>.</p>
+        <h1 class="h2 mb-1">{{ $t('Horadric Cube') }}</h1>
+        <p class="text-muted mb-0">{{ $t('Every recipe the cube knows, on ten shelves.') }} {{ $t('What the mod added is marked') }} <span class="badge origin-mod">Relics</span>, {{ $t('what it changed') }} <span class="badge origin-changed">{{ $t('changed') }}</span>.</p>
       </div>
       <div class="d-flex flex-wrap gap-2 align-items-center">
-        <input v-model="query" class="form-control form-control-sm search" placeholder="Search an ingredient or a result…" />
+        <input v-model="query" class="form-control form-control-sm search" :placeholder="$t('Search an ingredient or a result…')" />
         <div class="form-check form-switch small mb-0">
           <input id="mod-only" v-model="modOnly" class="form-check-input" type="checkbox" />
-          <label class="form-check-label" for="mod-only">Relics only <span class="text-muted">({{ modCount }})</span></label>
+          <label class="form-check-label" for="mod-only">{{ $t('Relics only') }} <span class="text-muted">({{ modCount }})</span></label>
         </div>
       </div>
     </div>
@@ -174,7 +175,7 @@ const jump = (id) => {
         <div class="card card-enhanced shelf-nav">
           <div class="card-body p-2">
             <button class="shelf-link" :class="{ active: activeCategory == null }" @click="activeCategory = null">
-              <span>All shelves</span><span class="count">{{ filtered.length }}</span>
+              <span>{{ $t('All shelves') }}</span><span class="count">{{ filtered.length }}</span>
             </button>
             <button v-for="c in categories" :key="c.Id" class="shelf-link" :class="{ active: activeCategory === c.Id, empty: !countBy[c.Id] }" :disabled="!countBy[c.Id]" @click="activeCategory === c.Id ? jump(c.Id) : (activeCategory = c.Id)">
               <span>{{ c.Title }}</span><span class="count">{{ countBy[c.Id] ?? 0 }}</span>
@@ -184,12 +185,12 @@ const jump = (id) => {
       </div>
 
       <div class="col-lg-9">
-        <div v-if="shelves.length === 0" class="card card-enhanced"><div class="card-body text-muted">No recipe matches that.</div></div>
+        <div v-if="shelves.length === 0" class="card card-enhanced"><div class="card-body text-muted">{{ $t('No recipe matches that.') }}</div></div>
 
         <section v-for="shelf in shelves" :id="`shelf-${shelf.Id}`" :key="shelf.Id" class="shelf card card-enhanced mb-4">
           <div class="card-header card-header-primary">
             <h2 class="h5 card-title m-0">{{ shelf.Title }}<span class="text-muted fw-normal small"> · {{ shelf.count }}</span></h2>
-            <p class="small text-muted mb-0 mt-1">{{ shelf.Blurb }}<router-link v-if="shelf.Id === 'crafting'" to="/items/crafting" class="ms-1">The crafting table with every affix →</router-link></p>
+            <p class="small text-muted mb-0 mt-1">{{ shelf.Blurb }}<router-link v-if="shelf.Id === 'crafting'" to="/items/crafting" class="ms-1">{{ $t('The crafting table with every affix →') }}</router-link></p>
           </div>
 
           <!-- runes: one ladder, the mod's way first -->
@@ -197,18 +198,18 @@ const jump = (id) => {
             <div class="px-3 pt-2 pb-1">
               <div class="form-check form-switch small mb-0">
                 <input id="vanilla-runes" v-model="showVanillaRunes" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="vanilla-runes">Show the game's recipes, which need a gem as well</label>
+                <label class="form-check-label" for="vanilla-runes">{{ $t("Show the game's recipes, which need a gem as well") }}</label>
               </div>
             </div>
             <div class="table-responsive">
               <table class="table table-dark table-sm mb-0 align-middle ladder">
-                <thead><tr><th>Runes</th><th></th><th>Result</th><th v-if="showVanillaRunes">In the game: same runes plus</th></tr></thead>
+                <thead><tr><th>{{ $t('Runes') }}</th><th></th><th>{{ $t('Result') }}</th><th v-if="showVanillaRunes">{{ $t('In the game: same runes plus') }}</th></tr></thead>
                 <tbody>
                   <tr v-for="row in runeLadder" :key="row.toCode">
                     <td class="text-nowrap"><span class="qty">{{ row.qty }} ×</span> <span class="chip k-rune"><img v-if="iconUrl(row.fromCode)" :src="iconUrl(row.fromCode)" class="ico" alt="" />{{ row.from }}</span></td>
                     <td class="arrow-cell">→</td>
                     <td><router-link :to="runeLink(row.to)" class="chip k-rune"><img v-if="iconUrl(row.toCode)" :src="iconUrl(row.toCode)" class="ico" alt="" />{{ row.to }}</router-link><span v-if="row.gem && showVanillaRunes" class="badge origin-mod ms-2">Relics</span></td>
-                    <td v-if="showVanillaRunes"><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)"><img v-if="iconUrl(row.gemCode)" :src="iconUrl(row.gemCode)" class="ico" alt="" />{{ row.gem }}</span><span v-else class="text-muted small">nothing - the game asks no gem here</span></td>
+                    <td v-if="showVanillaRunes"><span v-if="row.gem" class="chip k-gem" :class="gemClass(row.gem)"><img v-if="iconUrl(row.gemCode)" :src="iconUrl(row.gemCode)" class="ico" alt="" />{{ row.gem }}</span><span v-else class="text-muted small">{{ $t('nothing - the game asks no gem here') }}</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -220,17 +221,17 @@ const jump = (id) => {
             <div class="gem-grid">
               <div v-for="g in gemGrid" :key="g.family" class="gem-col">
                 <div class="gem-family" :class="gemClass(g.family)">{{ g.family }}</div>
-                <div v-for="grade in GRADES" :key="grade" class="gem-step" :class="gemClass(g.family)">{{ grade }}</div>
+                <div v-for="grade in GRADES" :key="grade" class="gem-step" :class="gemClass(g.family)">{{ $t(grade) }}</div>
               </div>
             </div>
-            <div class="small text-muted mt-2"><span class="qty">3 ×</span> of a grade become one of the next - any family, any time.</div>
+            <div class="small text-muted mt-2"><span class="qty">3 ×</span> {{ $t('of a grade become one of the next - any family, any time.') }}</div>
           </div>
 
           <!-- crafting: one aligned line per recipe; the affixes live on the crafting page -->
           <div v-else-if="shelf.Id === 'crafting'" class="card-body p-0">
             <div class="table-responsive">
               <table class="table table-dark table-sm mb-0 align-middle aligned">
-                <thead><tr><th>Result</th><th>Magic base</th><th>Rune</th><th>Gem</th><th></th></tr></thead>
+                <thead><tr><th>{{ $t('Result') }}</th><th>{{ $t('Magic base') }}</th><th>{{ $t('Rune') }}</th><th>{{ $t('Gem') }}</th><th></th></tr></thead>
                 <tbody>
                   <template v-for="g in shelf.groups" :key="g.title">
                     <tr class="group-row"><td colspan="5">{{ g.title }}<span class="text-muted fw-normal"> · {{ g.recipes.length }}</span></td></tr>
@@ -245,7 +246,7 @@ const jump = (id) => {
                 </tbody>
               </table>
             </div>
-            <div class="small text-muted p-3 pt-2">Every craft adds a jewel to the three above and rolls a 5 % chance at one Exalted affix. The fixed affixes of each craft are on the <router-link to="/items/crafting">crafting page</router-link>.</div>
+            <div class="small text-muted p-3 pt-2">{{ $t('Every craft adds a jewel to the three above and rolls a 5 % chance at one Exalted affix.') }} {{ $t('The fixed affixes of each craft are on the') }} <router-link to="/items/crafting">{{ $t('crafting page') }}</router-link>.</div>
           </div>
 
           <!-- the mythic affix: one line per item, the condition once -->
@@ -255,9 +256,9 @@ const jump = (id) => {
                 <div class="group-title">{{ g.title }}</div>
                 <div class="recipe mod">
                   <div class="ingredients">
-                    <span class="ing"><span class="chip k-relic" :title="forging(g).statues.join(', ')">Any Ancient's statue</span><span class="flags">{{ forging(g).statues.join(', ') }}</span></span>
+                    <span class="ing"><span class="chip k-relic" :title="forging(g).statues.join(', ')">{{ $t("Any Ancient's statue") }}</span><span class="flags">{{ forging(g).statues.join(', ') }}</span></span>
                     <span class="plus">+</span>
-                    <span class="ing"><span class="chip k-relic">the five Worldstone Shards</span><span class="flags">{{ forging(g).shards.map((x) => x.Text.replace(' Worldstone Shard', '')).join(', ') }}</span></span>
+                    <span class="ing"><span class="chip k-relic">{{ $t('the five Worldstone Shards') }}</span><span class="flags">{{ forging(g).shards.map((x) => x.Text.replace(' Worldstone Shard', '')).join(', ') }}</span></span>
                   </div>
                   <div class="arrow">→</div>
                   <div class="result"><div class="result-line"><img v-if="iconUrl('std')" :src="iconUrl('std')" class="ico result-ico" alt="" /><span class="title k-relic">{{ forging(g).out.Title }}</span><span class="badge origin-mod">Relics</span></div></div>
@@ -278,7 +279,7 @@ const jump = (id) => {
                 </table>
               </div>
             </template>
-            <div class="small text-muted p-3 pt-2">The item keeps its affixes and gains one Exalted affix; it becomes Mythic and cannot take a second. The Standard is used up.</div>
+            <div class="small text-muted p-3 pt-2">{{ $t('The item keeps its affixes and gains one Exalted affix; it becomes Mythic and cannot take a second. The Standard is used up.') }}</div>
           </div>
 
           <!-- everything else: one line per recipe -->
@@ -289,14 +290,14 @@ const jump = (id) => {
               <template v-if="g.title === 'With the four Essences' && compact">
                 <div v-for="line in essenceLines(g)" :key="line.items" class="recipe mod">
                   <div class="ingredients">
-                    <span class="ing"><span class="chip">{{ line.items }}</span><span class="flags">no sockets yet</span></span>
+                    <span class="ing"><span class="chip">{{ line.items }}</span><span class="flags">{{ $t('no sockets yet') }}</span></span>
                     <span class="plus">+</span>
-                    <span class="ing"><span class="chip k-essence"><img v-for="e in line.essences" :key="e.Code" :src="iconUrl(e.Code)" class="ico" alt="" />the four Essences</span><span class="flags">{{ line.essences.map((e) => e.Text.replace(/ of .*$/, '')).join(', ') }}</span></span>
+                    <span class="ing"><span class="chip k-essence"><img v-for="e in line.essences" :key="e.Code" :src="iconUrl(e.Code)" class="ico" alt="" />{{ $t('the four Essences') }}</span><span class="flags">{{ line.essences.map((e) => e.Text.replace(/ of .*$/, '')).join(', ') }}</span></span>
                   </div>
                   <div class="arrow">→</div>
                   <div class="result">
                     <div class="result-line"><span class="title">{{ line.title }}</span><span class="badge origin-mod">Relics</span></div>
-                    <div class="small text-muted">the same item · {{ line.note }}</div>
+                    <div class="small text-muted">{{ $t('the same item') }} · {{ line.note }}</div>
                   </div>
                 </div>
               </template>
@@ -319,7 +320,7 @@ const jump = (id) => {
                       <img v-if="r.Output.Kind !== 'same' && iconUrl(r.Output.Code)" :src="iconUrl(r.Output.Code)" class="ico result-ico" alt="" />
                       <span class="title" :class="resultClass(r)">{{ r.Title }}</span>
                       <span v-if="r.Origin === 'mod'" class="badge origin-mod">Relics</span>
-                      <span v-else-if="r.Origin === 'changed'" class="badge origin-changed" title="In the game too, but Relics changed what it does">changed</span>
+                      <span v-else-if="r.Origin === 'changed'" class="badge origin-changed" :title="$t('In the game too, but Relics changed what it does')">{{ $t('changed') }}</span>
                       <span v-if="r.Difficulty" class="badge diff-badge">{{ r.Difficulty }}</span>
                     </div>
                     <div v-if="r.Output.Text !== r.Title || r.Notes.length" class="small text-muted">
@@ -328,7 +329,7 @@ const jump = (id) => {
                     <ul v-if="r.Props.length" class="props">
                       <li v-for="(p, n) in r.Props" :key="n" :class="{ chance: p.Chance < 100 }">{{ p.Description }}<span v-if="p.Chance < 100" class="text-muted"> · {{ p.Chance }} %</span></li>
                     </ul>
-                    <div v-if="r.Requires" class="small requires">Only if {{ r.Requires }}.</div>
+                    <div v-if="r.Requires" class="small requires">{{ $t('Only if {condition}.', { condition: r.Requires }) }}</div>
                   </div>
                 </div>
               </template>
@@ -339,8 +340,7 @@ const jump = (id) => {
     </div>
 
     <p class="small text-muted mt-2 mb-0">
-      Read from the game's cubemain table as the mod installs it; disabled rows are left out. An item's level after a recipe follows the notes: a share of your
-      character level plus a share of the item's own. "Exceptional and elite bases too" means the recipe takes the upgraded versions of the base as well.
+      {{ $t("Read from the game's cubemain table as the mod installs it; disabled rows are left out. An item's level after a recipe follows the notes: a share of your character level plus a share of the item's own. \"Exceptional and elite bases too\" means the recipe takes the upgraded versions of the base as well.") }}
     </p>
   </div>
 </template>

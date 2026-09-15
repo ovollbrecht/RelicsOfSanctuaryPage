@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { t, locale } from '@/i18n';
 
 /**
  * One search over everything the site knows: items, sets, runewords, runes,
@@ -31,10 +32,10 @@ const build = async () => {
   ].map((p) => p.then((m) => m.default ?? m)));
   const out = [];
   const add = (kind, label, hint, to) => out.push({ kind, label, hint, to, key: label.toLowerCase() });
-  for (const [label, path] of PAGES) add('Page', label, '', { path });
+  for (const [label, path] of PAGES) add('Page', t(label), '', { path });
   for (const u of uniques) add('Unique', u.Name, u.BaseItemName, { path: '/items/uniques', query: { q: u.Name } });
   for (const s of sets) {
-    add('Set', s.Name, `${(s.Items ?? []).length} pieces`, { path: '/items/sets', query: { q: s.Name } });
+    add('Set', s.Name, t('{n} pieces', { n: (s.Items ?? []).length }), { path: '/items/sets', query: { q: s.Name } });
     for (const it of s.Items ?? []) add('Set item', it.Name, s.Name, { path: '/items/sets', query: { q: it.Name } });
   }
   const seenRw = new Set(); const runes = new Map();
@@ -44,10 +45,10 @@ const build = async () => {
     seenRw.add(rw.RowId);
     add('Runeword', rw.Name, (rw.RuneNames ?? []).join(' '), { path: '/runewords', query: { q: rw.Name } });
   }
-  for (const [name] of runes) add('Rune', `${name} Rune`, 'runewords using it', { path: '/runewords', query: { runes: name } });
+  for (const [name] of runes) add('Rune', t('{name} Rune', { name }), t('runewords using it'), { path: '/runewords', query: { runes: name } });
   for (const r of cube.Recipes ?? []) add('Recipe', r.Title, r.Group ?? r.Category ?? '', { path: '/items/cube', query: { q: r.Title } });
-  for (const z of tz.zones ?? []) add('Zone', z.name, `Act ${z.act} · terror zone`, { path: '/terror-zones', query: { zone: z.key } });
-  for (const a of drop.Areas ?? []) add('Area', a.Name, `Act ${a.Act}`, { path: '/drop-calc', query: { area: String(a.Id) } });
+  for (const z of tz.zones ?? []) add('Zone', z.name, t('Act {act} · terror zone', { act: z.act }), { path: '/terror-zones', query: { zone: z.key } });
+  for (const a of drop.Areas ?? []) add('Area', a.Name, t('Act {act}', { act: a.Act }), { path: '/drop-calc', query: { area: String(a.Id) } });
   for (const m of drop.Monsters ?? []) add('Monster', m.Name, m.Id, { path: '/drop-calc', query: { monster: m.Id } });
   for (const su of drop.SuperUniques ?? []) add('Superunique', su.Name, drop.Monsters[su.Monster]?.Name ?? '', { path: '/drop-calc', query: { su: su.Id } });
   index.value = out;
@@ -76,6 +77,8 @@ const results = computed(() => {
   return out;
 });
 watch(results, () => { active.value = 0; });
+// the page names and hints are built in one language - a switch throws the index away
+watch(locale, () => { index.value = null; building = null; });
 
 const show = async () => {
   open.value = true;
@@ -109,19 +112,19 @@ defineExpose({ show });
 <template>
   <Teleport to="body">
     <div v-if="open" class="gs-backdrop" @mousedown.self="hide">
-      <div class="gs-box" role="dialog" aria-label="Search the site">
-        <input ref="input" v-model="q" class="gs-input" type="text" placeholder="Search items, runewords, recipes, zones, monsters…" autocomplete="off" spellcheck="false" />
-        <div v-if="!index" class="gs-hint">Loading the index…</div>
-        <div v-else-if="q.trim().length < 2" class="gs-hint">Type two letters. ↑↓ to move, Enter to open, Esc to close.</div>
-        <div v-else-if="results.length === 0" class="gs-hint">Nothing called "{{ q.trim() }}".</div>
+      <div class="gs-box" role="dialog" :aria-label="$t('Search the site')">
+        <input ref="input" v-model="q" class="gs-input" type="text" :placeholder="$t('Search items, runewords, recipes, zones, monsters…')" autocomplete="off" spellcheck="false" />
+        <div v-if="!index" class="gs-hint">{{ $t('Loading the index…') }}</div>
+        <div v-else-if="q.trim().length < 2" class="gs-hint">{{ $t('Type two letters. ↑↓ to move, Enter to open, Esc to close.') }}</div>
+        <div v-else-if="results.length === 0" class="gs-hint">{{ $t('Nothing called "{q}".', { q: q.trim() }) }}</div>
         <ul v-else class="gs-list">
           <li v-for="(r, i) in results" :key="r.kind + r.label + r.hint" class="gs-item" :class="{ active: i === active }" @mouseenter="active = i" @mousedown.prevent="go(r)">
-            <span class="gs-kind" :class="'k-' + r.kind.toLowerCase().replace(' ', '-')">{{ r.kind }}</span>
+            <span class="gs-kind" :class="'k-' + r.kind.toLowerCase().replace(' ', '-')">{{ $t(r.kind) }}</span>
             <span class="gs-label">{{ r.label }}</span>
             <span v-if="r.hint" class="gs-sub">{{ r.hint }}</span>
           </li>
         </ul>
-        <div class="gs-foot">{{ isMac ? '⌘K' : 'Ctrl+K' }} or / opens this anywhere</div>
+        <div class="gs-foot">{{ $t('{key} or / opens this anywhere', { key: isMac ? '⌘K' : 'Ctrl+K' }) }}</div>
       </div>
     </div>
   </Teleport>

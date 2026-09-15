@@ -1,5 +1,7 @@
 <script setup>
+import { computed } from 'vue';
 import meta from '@/assets/meta.json';
+import { t, dateLocale } from '@/i18n';
 
 /**
  * The front page, which had grown into an archive: five versions of changelog
@@ -19,102 +21,102 @@ const grailSummary = (() => {
 const grailFound = grailSummary ? Object.values(grailSummary).reduce((s, p) => s + p.found, 0) : 0;
 const grailTotal = grailSummary ? Object.values(grailSummary).reduce((s, p) => s + p.total, 0) : 0;
 
-// The page is written in English, so the date is too - the visitor's locale
-// would put a German month in the middle of an English sentence.
-const generatedOn = meta.generatedAt
-  ? new Date(meta.generatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
-  : null;
+// The date follows the page's language, not the visitor's locale - a German
+// month in the middle of an English sentence reads wrong either way.
+const generatedOn = computed(() => (meta.generatedAt
+  ? new Date(meta.generatedAt).toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' })
+  : null));
 
 // What the mod puts in the game, in the order somebody meets it.
-const highlights = [
+const highlights = computed(() => [
   {
     value: counts.exalted,
-    label: 'Exalted uniques',
-    hint: 'every unique item has one',
+    label: t('Exalted uniques'),
+    hint: t('every unique item has one'),
     to: '/items/uniques',
   },
   {
     value: counts.uniquesNew,
-    label: 'New uniques',
-    hint: 'bases nobody had claimed',
+    label: t('New uniques'),
+    hint: t('bases nobody had claimed'),
     to: '/items/uniques',
   },
   {
     value: counts.runewordsNew,
-    label: 'New runewords',
-    hint: `of ${counts.runewords ?? ''} on the page`,
+    label: t('New runewords'),
+    hint: t('of {n} on the page', { n: counts.runewords ?? '' }),
     to: '/runewords',
   },
   {
     value: counts.runewordsReworked,
-    label: 'Reworked runewords',
-    hint: 'vanilla words worth making',
+    label: t('Reworked runewords'),
+    hint: t('vanilla words worth making'),
     to: '/runewords',
   },
   {
     value: counts.mythicSetItems,
-    label: 'Mythic set items',
-    hint: `across ${counts.mythicSets ?? ''} sets`,
+    label: t('Mythic set items'),
+    hint: t('across {n} sets', { n: counts.mythicSets ?? '' }),
     to: '/items/sets',
   },
   {
     value: counts.affixesReworked,
-    label: 'Reworked affixes',
-    hint: 'large and grand charms',
+    label: t('Reworked affixes'),
+    hint: t('large and grand charms'),
     to: '/items/affixes',
   },
-].filter((entry) => entry.value);
+].filter((entry) => entry.value));
 
 // The pages that answer a question rather than list a table.
-const tools = [
+const tools = computed(() => [
   {
-    title: 'Drop Calculator',
-    question: 'What can this monster drop, and how often?',
+    title: t('Drop Calculator'),
+    question: t('What can this monster drop, and how often?'),
     to: '/drop-calc',
   },
   {
-    title: 'Runewords',
-    question: 'I found a long staff with three sockets - what fits in it?',
+    title: t('Runewords'),
+    question: t('I found a long staff with three sockets - what fits in it?'),
     to: '/runewords',
   },
   {
-    title: 'Unique Items',
-    question: 'What does the exalted version of this item roll?',
+    title: t('Unique Items'),
+    question: t('What does the exalted version of this item roll?'),
     to: '/items/uniques',
   },
   {
-    title: 'Horadric Cube',
-    question: 'What goes in, what comes out? Every recipe, the mod\'s marked.',
+    title: t('Horadric Cube'),
+    question: t('What goes in, what comes out? Every recipe, the mod\'s marked.'),
     to: '/items/cube',
   },
   {
-    title: 'Affix Calculator',
-    question: 'Which affixes can this base still roll at my level?',
+    title: t('Affix Calculator'),
+    question: t('Which affixes can this base still roll at my level?'),
     to: '/items/affixes',
   },
   {
-    title: 'Terror Zones',
-    question: 'Which zone is terrorized right now - and when is the one I want?',
+    title: t('Terror Zones'),
+    question: t('Which zone is terrorized right now - and when is the one I want?'),
     to: '/terror-zones',
   },
   {
-    title: 'Where to Farm',
-    question: 'I want any of these five items - where is a run most likely to pay?',
+    title: t('Where to Farm'),
+    question: t('I want any of these five items - where is a run most likely to pay?'),
     to: '/where-to-farm',
   },
   {
-    title: 'Tonight',
-    question: 'I have three hours and a cold sorc - which terror zones are worth it, and where do I stand in between?',
+    title: t('Tonight'),
+    question: t('I have three hours and a cold sorc - which terror zones are worth it, and where do I stand in between?'),
     to: '/tonight',
   },
   {
-    title: 'Grail',
+    title: t('Grail'),
     question: grailSummary
-      ? `${grailFound} of ${grailTotal} found - ${Math.round((grailFound / Math.max(1, grailTotal)) * 100)} % of the way.`
-      : 'What have I found so far? Read straight out of the save files.',
+      ? t('{found} of {total} found - {pct} % of the way.', { found: grailFound, total: grailTotal, pct: Math.round((grailFound / Math.max(1, grailTotal)) * 100) })
+      : t('What have I found so far? Read straight out of the save files.'),
     to: '/grail',
   },
-];
+]);
 </script>
 
 <template>
@@ -128,19 +130,18 @@ const tools = [
           <span class="title-icon">⚔</span>
         </h1>
         <p class="lead mb-3">
-          A Diablo II: Resurrected mod that keeps the item hunt going: an exalted version of
-          every unique, mythic sets and affixes, and a runeword list worth reading again.
+          {{ $t('A Diablo II: Resurrected mod that keeps the item hunt going: an exalted version of every unique, mythic sets and affixes, and a runeword list worth reading again.') }}
         </p>
         <div class="d-flex justify-content-center flex-wrap gap-3">
           <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
-            🔗 Download on NexusMods
+            🔗 {{ $t('Download on NexusMods') }}
           </a>
           <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-outline-primary">
-            💬 Join the Discord
+            💬 {{ $t('Join the Discord') }}
           </a>
         </div>
         <p v-if="meta.modVersion" class="stamp mt-3 mb-0">
-          Version {{ meta.modVersion }}<template v-if="generatedOn"> · data from {{ generatedOn }}</template>
+          {{ $t('Version {v}', { v: meta.modVersion }) }}<template v-if="generatedOn"> · {{ $t('data from {date}', { date: generatedOn }) }}</template>
         </p>
       </div>
     </div>
@@ -163,26 +164,16 @@ const tools = [
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h2 class="h4 card-title m-0">Why Play It?</h2>
+            <h2 class="h4 card-title m-0">{{ $t('Why Play It?') }}</h2>
           </div>
           <div class="card-body p-4">
+            <p class="card-text" v-html="$t('Exalted uniques are improved versions of the items you already know - stronger, and often with a twist that changes what the item is for. They drop at the same rate as an ethereal item does, which means you cannot target farm them: you will not get the one you are waiting for, but you <em>will</em> keep finding ones you did not expect. Find a strong one and there is a good chance you build a character around it.')"></p>
             <p class="card-text">
-              Exalted uniques are improved versions of the items you already know - stronger, and
-              often with a twist that changes what the item is for. They drop at the same rate as
-              an ethereal item does, which means you cannot target farm them: you will not get the
-              one you are waiting for, but you <em>will</em> keep finding ones you did not expect.
-              Find a strong one and there is a good chance you build a character around it.
-            </p>
-            <p class="card-text">
-              Around that sit the parts that make the rest of the game worth searching again:
-              mythic set items and mythic affixes as an endgame tier, new uniques on bases nobody
-              had claimed, and runewords - both new ones and the vanilla words that nobody built
-              because the numbers never justified the runes.
+              {{ $t('Around that sit the parts that make the rest of the game worth searching again: mythic set items and mythic affixes as an endgame tier, new uniques on bases nobody had claimed, and runewords - both new ones and the vanilla words that nobody built because the numbers never justified the runes.') }}
             </p>
             <p class="card-text mb-0">
-              Everything is optional and every part works on its own -
-              <router-link to="/options">the full list of options</router-link> says what each one
-              does, and what the standalone archive already contains.
+              {{ $t('Everything is optional and every part works on its own -') }}
+              <router-link to="/options">{{ $t('the full list of options') }}</router-link> {{ $t('says what each one does, and what the standalone archive already contains.') }}
             </p>
           </div>
         </div>
@@ -206,21 +197,20 @@ const tools = [
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h2 class="h4 card-title m-0">Exalted Items</h2>
+            <h2 class="h4 card-title m-0">{{ $t('Exalted Items') }}</h2>
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              <strong>{{ counts.exalted }}</strong> exalted uniques - one for every unique item in
-              the game, each rolling at a 5% chance in place of the ordinary one.
+              <strong>{{ counts.exalted }}</strong> {{ $t('exalted uniques - one for every unique item in the game, each rolling at a 5% chance in place of the ordinary one.') }}
             </p>
             <ul class="feature-list">
-              <li>Normal-tier exalted items carry you through normal and, upgraded, into nightmare</li>
-              <li>Exceptional ones are strong choices for nightmare and often hell</li>
-              <li>Elite ones are endgame gear, frequently best in slot for a particular build</li>
-              <li>Across every tier there are items that open builds the original never supported</li>
+              <li>{{ $t('Normal-tier exalted items carry you through normal and, upgraded, into nightmare') }}</li>
+              <li>{{ $t('Exceptional ones are strong choices for nightmare and often hell') }}</li>
+              <li>{{ $t('Elite ones are endgame gear, frequently best in slot for a particular build') }}</li>
+              <li>{{ $t('Across every tier there are items that open builds the original never supported') }}</li>
             </ul>
             <div class="text-center mt-3">
-              <router-link to="/items/uniques" class="btn btn-outline-primary">Browse Unique Items</router-link>
+              <router-link to="/items/uniques" class="btn btn-outline-primary">{{ $t('Browse Unique Items') }}</router-link>
             </div>
           </div>
         </div>
@@ -228,21 +218,19 @@ const tools = [
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h2 class="h4 card-title m-0">Mythic Progression</h2>
+            <h2 class="h4 card-title m-0">{{ $t('Mythic Progression') }}</h2>
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              <strong>{{ counts.mythicSetItems }}</strong> mythic set items across
-              {{ counts.mythicSets }} sets, plus a mythic affix you can craft onto rare and magic
-              items.
+              <strong>{{ counts.mythicSetItems }}</strong> {{ $t('mythic set items across {sets} sets, plus a mythic affix you can craft onto rare and magic items.', { sets: counts.mythicSets }) }}
             </p>
             <ul class="feature-list">
-              <li>Mythic set items are a chase tier of their own, next to the exalted uniques</li>
-              <li>Recipes add a mythic affix to an item you already have</li>
-              <li>The tables show which affixes each item type can roll, and how likely each is</li>
+              <li>{{ $t('Mythic set items are a chase tier of their own, next to the exalted uniques') }}</li>
+              <li>{{ $t('Recipes add a mythic affix to an item you already have') }}</li>
+              <li>{{ $t('The tables show which affixes each item type can roll, and how likely each is') }}</li>
             </ul>
             <div class="text-center mt-3">
-              <router-link to="/items/mythic-affixes" class="btn btn-outline-primary">Browse Mythic Affixes</router-link>
+              <router-link to="/items/mythic-affixes" class="btn btn-outline-primary">{{ $t('Browse Mythic Affixes') }}</router-link>
             </div>
           </div>
         </div>
@@ -254,25 +242,19 @@ const tools = [
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h2 class="h4 card-title m-0">Getting Started</h2>
+            <h2 class="h4 card-title m-0">{{ $t('Getting Started') }}</h2>
           </div>
           <div class="card-body p-4">
-            <p class="card-text">
-              Two downloads, one mod. The <strong>D2RMM version</strong> builds the game files when
-              you install it and lets you set every option; the <strong>standalone version</strong>
-              is that same install with the defaults already baked in.
-            </p>
-            <div class="section-header">Standalone, in three steps</div>
+            <p class="card-text" v-html="$t('Two downloads, one mod. The <strong>D2RMM version</strong> builds the game files when you install it and lets you set every option; the <strong>standalone version</strong> is that same install with the defaults already baked in.')"></p>
+            <div class="section-header">{{ $t('Standalone, in three steps') }}</div>
             <ol class="step-list">
-              <li>Extract the archive into <code>[GamePath]/mods</code>, so you have
-                <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code></li>
-              <li>Make a shortcut of <code>D2R.exe</code></li>
-              <li>Add <code>-mod RelicsOfSanctuary -txt</code> to the shortcut's target</li>
+              <li v-html="$t('Extract the archive into <code>[GamePath]/mods</code>, so you have <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code>')"></li>
+              <li v-html="$t('Make a shortcut of <code>D2R.exe</code>')"></li>
+              <li v-html="$t('Add <code>-mod RelicsOfSanctuary -txt</code> to the shortcut\'s target')"></li>
             </ol>
             <p class="card-text mb-0">
-              With D2RMM, install the mod from the manager instead and pick your options there -
-              <router-link to="/options">what each option changes</router-link> is listed page by
-              page.
+              {{ $t('With D2RMM, install the mod from the manager instead and pick your options there -') }}
+              <router-link to="/options">{{ $t('what each option changes') }}</router-link> {{ $t('is listed page by page.') }}
             </p>
           </div>
         </div>
@@ -285,10 +267,10 @@ const tools = [
         <div class="card card-enhanced">
           <div class="card-body p-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
             <div>
-              <div class="section-header mb-1">Changelog</div>
-              <p class="card-text mb-0">What changed in this version and every one before it.</p>
+              <div class="section-header mb-1">{{ $t('Changelog') }}</div>
+              <p class="card-text mb-0">{{ $t('What changed in this version and every one before it.') }}</p>
             </div>
-            <router-link to="/changelog" class="btn btn-outline-primary">Read the changelog</router-link>
+            <router-link to="/changelog" class="btn btn-outline-primary">{{ $t('Read the changelog') }}</router-link>
           </div>
         </div>
       </div>

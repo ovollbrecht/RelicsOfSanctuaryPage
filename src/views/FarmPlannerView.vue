@@ -8,6 +8,7 @@ import { buildContext } from '@/composables/useDropSimulation.js';
 import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, grailTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset, spotRun, zonePacksFor } from '@/composables/useFarmPlanner.js';
 import { useFarmList } from '@/composables/useFarmList.js';
 import { useGrail } from '@/composables/useGrail.js';
+import { t } from '@/i18n';
 
 /**
  * Where to farm: a list of wanted items, and every spot scored by the chance
@@ -56,7 +57,7 @@ const pickOptions = computed(() => {
     if (!prev) seen.set(e.Name, { value: `${pickKind.value === 'unique' ? 'u' : 's'}:${e.Name}`, label: e.Name, hint, count: 1 });
     else { prev.count += 1; if (!prev.hint.includes(base)) prev.hint += `, ${base}`; }
   });
-  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${o.count} variants` } : o));
+  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${t('{n} variants', { n: o.count })}` } : o));
 });
 watch(pickValue, (token) => {
   if (!token) return;
@@ -187,11 +188,11 @@ const timeFmt = new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2
 const dayFmt = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
 const fmtWhen = (slot) => {
   if (!slot) return '—';
-  if (slot.now) return `now, until ${timeFmt.format(new Date(slot.end))}`;
+  if (slot.now) return t('now, until {time}', { time: timeFmt.format(new Date(slot.end)) });
   const delta = slot.start - now.value;
   const minutes = Math.round(delta / 60000);
-  if (minutes < 60) return `in ${minutes} min`;
-  if (minutes < 24 * 60) return `in ${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, '0')} min`;
+  if (minutes < 60) return t('in {n} min', { n: minutes });
+  if (minutes < 24 * 60) return t('in {h} h {m} min', { h: Math.floor(minutes / 60), m: String(minutes % 60).padStart(2, '0') });
   return `${dayFmt.format(new Date(slot.start))}, ${timeFmt.format(new Date(slot.start))}`;
 };
 
@@ -263,7 +264,9 @@ const terrorizedInView = (row) => {
 };
 const scoreOf = (row) => (terrorizedInView(row) ? row.tz : row.plain);
 const terrorView = computed(() => terrorMode.value !== 'none');
-const terrorLabel = computed(() => ({ now: 'terror as it is now', all: 'all terrorized', none: 'not terrorized' })[terrorMode.value]);
+const terrorLabel = computed(() => ({ now: t('terror as it is now'), all: t('all terrorized'), none: t('not terrorized') })[terrorMode.value]);
+// the pack labels the score names, as opposed to a named monster - the carrier is only worth naming when it is one
+const genericParts = computed(() => ['Trash', 'Minions', 'Champions', 'Unique packs'].map((l) => t(l)));
 
 // per hour: expected hits on the list and expected high runes, runs/h = 60/minutes
 const runsPerHour = (row) => 60 / row.minutes;
@@ -283,9 +286,9 @@ const rankOf = (row) => ranking.value.indexOf(row) + 1;
 const hours = (perHour) => {
   if (!(perHour > 0)) return '—';
   const h = 1 / perHour;
-  if (h < 1) return `${Math.round(60 * h)} min`;
-  if (h < 10) return `${h.toFixed(1)} h`;
-  return `${Math.round(h).toLocaleString()} h`;
+  if (h < 1) return t('{n} min', { n: Math.round(60 * h) });
+  if (h < 10) return t('{n} h', { n: h.toFixed(1) });
+  return t('{n} h', { n: Math.round(h).toLocaleString() });
 };
 const maxItems = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).perRun), 0));
 const maxRunes = computed(() => rows.value.reduce((m, r) => Math.max(m, scoreOf(r).runes.highPerRun), 0));
@@ -293,9 +296,9 @@ const itemShare = (row) => (maxItems.value > 0 ? scoreOf(row).perRun / maxItems.
 const runeShare = (row) => (maxRunes.value > 0 ? scoreOf(row).runes.highPerRun / maxRunes.value : 0);
 const leaning = (row) => {
   const i = itemShare(row); const r = runeShare(row);
-  if (i >= 0.5 && r >= 0.5) return { label: 'both', cls: 'lean-both' };
-  if (i >= 0.5 && r < 0.25) return { label: 'items', cls: 'lean-items' };
-  if (r >= 0.5 && i < 0.25) return { label: 'runes', cls: 'lean-runes' };
+  if (i >= 0.5 && r >= 0.5) return { label: t('both'), cls: 'lean-both' };
+  if (i >= 0.5 && r < 0.25) return { label: t('items'), cls: 'lean-items' };
+  if (r >= 0.5 && i < 0.25) return { label: t('runes'), cls: 'lean-runes' };
   return null;
 };
 const bestFor = computed(() => {
@@ -314,7 +317,7 @@ const pct = (p) => {
   if (p >= 0.0001) return `${(p * 100).toFixed(2)} %`;
   return `${(p * 100).toFixed(3)} %`;
 };
-const runs = (p) => (p > 0 ? `1 in ${Math.round(1 / p).toLocaleString()} runs` : '');
+const runs = (p) => (p > 0 ? t('1 in {n} runs', { n: Math.round(1 / p).toLocaleString() }) : '');
 const runeName = (n) => (dropData.BaseItems.find((b) => b.Code === `r${String(n).padStart(2, '0')}`)?.Name ?? '').replace(/ Rune$/, '');
 const partsText = (score) => score.parts.slice(0, 3).map((p) => `${p.label} ${pct(p.hit)}`).join(' · ');
 const dropCalcLink = (spot, terror) => ({ path: '/drop-calc', query: { area: String(spot.areaId), diff: String(difficulty.value), ...(terror ? { tz: '1' } : {}) } });
@@ -374,39 +377,39 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
   <div class="container py-4 page-content">
     <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
       <div>
-        <h1 class="h2 mb-1">Where to Farm</h1>
-        <p class="text-muted mb-0">Put the items you are after on the list - every spot is scored by the chance that one run turns up at least one of them.</p>
+        <h1 class="h2 mb-1">{{ $t('Where to Farm') }}</h1>
+        <p class="text-muted mb-0">{{ $t('Put the items you are after on the list - every spot is scored by the chance that one run turns up at least one of them.') }}</p>
       </div>
       <div class="d-flex flex-wrap gap-2 align-items-center">
-        <label class="small text-muted">Difficulty</label>
+        <label class="small text-muted">{{ $t('Difficulty') }}</label>
         <select v-model.number="difficulty" class="form-select form-select-sm w-auto">
-          <option :value="0">Normal</option>
-          <option :value="1">Nightmare</option>
-          <option :value="2">Hell</option>
+          <option :value="0">{{ $t('Normal') }}</option>
+          <option :value="1">{{ $t('Nightmare') }}</option>
+          <option :value="2">{{ $t('Hell') }}</option>
         </select>
-        <label class="small text-muted" title="Which zones count as terrorized in the ranking">Terror zones</label>
+        <label class="small text-muted" :title="$t('Which zones count as terrorized in the ranking')">{{ $t('Terror zones') }}</label>
         <select v-model="terrorMode" class="form-select form-select-sm w-auto">
-          <option value="now">only the one up right now</option>
-          <option value="all">every zone, when its turn comes</option>
-          <option value="none">leave terror out</option>
+          <option value="now">{{ $t('only the one up right now') }}</option>
+          <option value="all">{{ $t('every zone, when its turn comes') }}</option>
+          <option value="none">{{ $t('leave terror out') }}</option>
         </select>
-        <label class="small text-muted" title="For the terrorized numbers: terrorized monsters follow the character level">Char level</label>
+        <label class="small text-muted" :title="$t('For the terrorized numbers: terrorized monsters follow the character level')">{{ $t('Char level') }}</label>
         <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control form-control-sm clvl" />
-        <label class="small text-muted" title="Herald tier for the terrorized column; sunder charms need tier 4+">Herald tier</label>
+        <label class="small text-muted" :title="$t('Herald tier for the terrorized column; sunder charms need tier 4+')">{{ $t('Herald tier') }}</label>
         <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
           <option v-for="tier in 5" :key="tier" :value="tier">{{ tier }}</option>
         </select>
-        <label class="small text-muted" title="Players in the game - fewer empty drops with more">Players</label>
+        <label class="small text-muted" :title="$t('Players in the game - fewer empty drops with more')">{{ $t('Players') }}</label>
         <select v-model.number="players" class="form-select form-select-sm w-auto">
           <option v-for="n in 8" :key="n" :value="n">{{ n }}</option>
         </select>
-        <label class="small text-muted" title="Of those, how many are in your party and near you">Party</label>
+        <label class="small text-muted" :title="$t('Of those, how many are in your party and near you')">{{ $t('Party') }}</label>
         <select v-model.number="party" class="form-select form-select-sm w-auto">
           <option v-for="n in players" :key="n" :value="n">{{ n }}</option>
         </select>
-        <label class="small text-muted" title="Magic find - lifts the unique and set rolls, never the runes">MF</label>
+        <label class="small text-muted" :title="$t('Magic find - lifts the unique and set rolls, never the runes')">MF</label>
         <input v-model.number="mf" type="number" min="0" max="9999" class="form-control form-control-sm mf" />
-        <label class="small text-muted" title="What counts as a high rune in the rune score. The Countess' own table ends at Ist - at Vex+ she no longer decides it">High rune</label>
+        <label class="small text-muted" :title="$t(`What counts as a high rune in the rune score. The Countess' own table ends at Ist - at Vex+ she no longer decides it`)">{{ $t('High rune') }}</label>
         <select v-model.number="runeFloor" class="form-select form-select-sm w-auto">
           <option v-for="f in RUNE_FLOORS" :key="f.number" :value="f.number">{{ f.name }}+</option>
         </select>
@@ -417,42 +420,42 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       <div class="col-lg-7">
         <div class="card card-enhanced list-card">
           <div class="card-header card-header-primary d-flex justify-content-between align-items-center">
-            <h2 class="h5 card-title m-0">{{ grailMode ? 'Your Grail' : 'Your list' }}<span v-if="targets.length" class="text-muted fw-normal small"> · {{ targets.length }}</span></h2>
+            <h2 class="h5 card-title m-0">{{ grailMode ? $t('Your Grail') : $t('Your list') }}<span v-if="targets.length" class="text-muted fw-normal small"> · {{ targets.length }}</span></h2>
             <div class="d-flex align-items-center gap-3">
-              <div v-if="grailHas" class="form-check form-switch mb-0 small" title="Score every spot against everything your Grail still lacks, instead of the list">
+              <div v-if="grailHas" class="form-check form-switch mb-0 small" :title="$t('Score every spot against everything your Grail still lacks, instead of the list')">
                 <input id="farm-grail" v-model="grailMode" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="farm-grail">Everything my Grail is missing</label>
+                <label class="form-check-label" for="farm-grail">{{ $t('Everything my Grail is missing') }}</label>
               </div>
-              <button v-if="targets.length && !grailMode" class="btn btn-sm btn-outline-secondary" @click="clearTargets">Clear</button>
+              <button v-if="targets.length && !grailMode" class="btn btn-sm btn-outline-secondary" @click="clearTargets">{{ $t('Clear') }}</button>
             </div>
           </div>
           <div v-if="grailMode" class="card-body p-3 small">
-            <template v-if="!catalog">Reading the Grail…</template>
+            <template v-if="!catalog">{{ $t('Reading the Grail…') }}</template>
             <template v-else-if="grailList.length">
-              <strong>{{ grailList.length }}</strong> items your Grail still lacks:
-              {{ grailTally.uniques }} uniques and {{ grailTally.exalted }} Exalted, {{ grailTally.sets }} set items and {{ grailTally.mythic }} Mythic.
-              A missing plain item counts its ordinary roll, a missing Exalted or Mythic only the variant roll. Open a row's <strong>?</strong> to see which of them a run there can turn up.
-              <router-link to="/grail">Manage in the Grail</router-link>.
+              <strong>{{ grailList.length }}</strong> {{ $t('items your Grail still lacks:') }}
+              {{ $t('{u} uniques and {e} Exalted, {s} set items and {m} Mythic.', { u: grailTally.uniques, e: grailTally.exalted, s: grailTally.sets, m: grailTally.mythic }) }}
+              {{ $t(`A missing plain item counts its ordinary roll, a missing Exalted or Mythic only the variant roll. Open a row's`) }} <strong>?</strong> {{ $t('to see which of them a run there can turn up.') }}
+              <router-link to="/grail">{{ $t('Manage in the Grail') }}</router-link>.
             </template>
-            <template v-else>Your Grail is complete - nothing left to farm for. <router-link to="/grail">Look at it</router-link>.</template>
+            <template v-else>{{ $t('Your Grail is complete - nothing left to farm for.') }} <router-link to="/grail">{{ $t('Look at it') }}</router-link>.</template>
           </div>
           <div v-else class="card-body p-3">
             <div class="d-flex gap-2 mb-2">
               <select v-model="pickKind" class="form-select form-select-sm w-auto">
-                <option value="unique">Unique</option>
-                <option value="set">Set</option>
+                <option value="unique">{{ $t('Unique') }}</option>
+                <option value="set">{{ $t('Set') }}</option>
               </select>
               <div class="flex-grow-1">
-                <SearchableSelect v-model="pickValue" :options="pickOptions" placeholder="Add an item…" />
+                <SearchableSelect v-model="pickValue" :options="pickOptions" :placeholder="$t('Add an item…')" />
               </div>
             </div>
             <div v-if="targets.length" class="d-flex flex-wrap gap-1">
               <span v-for="t in targets" :key="targetToken(t)" class="target-chip" :class="t.kind">
                 {{ t.name }}<span v-if="t.rows.length > 1" class="text-muted"> ×{{ t.rows.length }}</span>
-                <button class="chip-x" :title="`Remove ${t.name}`" @click="removeTarget(t)">×</button>
+                <button class="chip-x" :title="$t('Remove {name}', { name: t.name })" @click="removeTarget(t)">×</button>
               </span>
             </div>
-            <p v-else class="text-muted small mb-0">Nothing on the list yet. Add a few uniques or set items - the table appears as soon as there is one.</p>
+            <p v-else class="text-muted small mb-0">{{ $t('Nothing on the list yet. Add a few uniques or set items - the table appears as soon as there is one.') }}</p>
           </div>
         </div>
       </div>
@@ -460,23 +463,23 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       <div class="col-lg-5">
         <div class="card card-enhanced profile-card h-100">
           <div class="card-header card-header-primary d-flex justify-content-between align-items-center">
-            <h2 class="h5 card-title m-0">Run profile</h2>
-            <button class="btn btn-sm btn-outline-secondary" @click="resetProfile">Defaults</button>
+            <h2 class="h5 card-title m-0">{{ $t('Run profile') }}</h2>
+            <button class="btn btn-sm btn-outline-secondary" @click="resetProfile">{{ $t('Defaults') }}</button>
           </div>
           <div class="card-body p-3">
-            <p class="small text-muted mb-2">What one run kills in an area. Bosses and superuniques count once; the rest is up to you - clearing the Sewers is not killing Mephisto.</p>
+            <p class="small text-muted mb-2">{{ $t('What one run kills in an area. Bosses and superuniques count once; the rest is up to you - clearing the Sewers is not killing Mephisto.') }}</p>
             <div class="row g-2 align-items-end profile-grid">
-              <div class="col-4"><label class="form-label small mb-0">Unique packs</label><input v-model.number="profile.packs" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0">Minions / pack</label><input v-model.number="profile.minionsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0">Trash kills</label><input v-model.number="profile.trash" type="number" min="0" max="999" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0">Champion packs</label><input v-model.number="profile.champPacks" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0">Champs / pack</label><input v-model.number="profile.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0" title="Only in the terrorized column">Heralds (TZ)</label><input v-model.number="profile.heralds" type="number" min="0" max="10" class="form-control form-control-sm" /></div>
-              <div class="col-4"><label class="form-label small mb-0" title="How long one run takes, town to town - the denominator behind the per-hour ranking">Minutes / run</label><input v-model.number="profile.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm" /></div>
-              <div class="col-12 small text-muted">{{ killsPerRun }} kills / run<template v-if="overrideCount"> · {{ overrideCount }} spot{{ overrideCount === 1 ? '' : 's' }} with own numbers (<a href="#" @click.prevent="clearAllOverrides">reset</a>)</template></div>
-              <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-su" v-model="profile.superUniques" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-su">Superuniques</label></div></div>
-              <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-boss" v-model="profile.boss" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-boss">Act / quest boss</label></div></div>
-              <div class="col-12"><div class="form-check form-switch mb-0"><input id="p-zone" v-model="profile.packsFromZone" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-zone" title="The terror zone data carries a pack span per zone; spread over the zone's areas it replaces the number above wherever it exists">Unique packs from the zone data where known</label></div></div>
+              <div class="col-4"><label class="form-label small mb-0">{{ $t('Unique packs') }}</label><input v-model.number="profile.packs" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0">{{ $t('Minions / pack') }}</label><input v-model.number="profile.minionsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0">{{ $t('Trash kills') }}</label><input v-model.number="profile.trash" type="number" min="0" max="999" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0">{{ $t('Champion packs') }}</label><input v-model.number="profile.champPacks" type="number" min="0" max="99" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0">{{ $t('Champs / pack') }}</label><input v-model.number="profile.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0" :title="$t('Only in the terrorized column')">{{ $t('Heralds (TZ)') }}</label><input v-model.number="profile.heralds" type="number" min="0" max="10" class="form-control form-control-sm" /></div>
+              <div class="col-4"><label class="form-label small mb-0" :title="$t('How long one run takes, town to town - the denominator behind the per-hour ranking')">{{ $t('Minutes / run') }}</label><input v-model.number="profile.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm" /></div>
+              <div class="col-12 small text-muted">{{ $t('{n} kills / run', { n: killsPerRun }) }}<template v-if="overrideCount"> · {{ overrideCount === 1 ? $t('1 spot with own numbers') : $t('{n} spots with own numbers', { n: overrideCount }) }} (<a href="#" @click.prevent="clearAllOverrides">{{ $t('reset') }}</a>)</template></div>
+              <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-su" v-model="profile.superUniques" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-su">{{ $t('Superuniques') }}</label></div></div>
+              <div class="col-6"><div class="form-check form-switch mb-0"><input id="p-boss" v-model="profile.boss" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-boss">{{ $t('Act / quest boss') }}</label></div></div>
+              <div class="col-12"><div class="form-check form-switch mb-0"><input id="p-zone" v-model="profile.packsFromZone" class="form-check-input" type="checkbox" /><label class="form-check-label small" for="p-zone" :title="$t(`The terror zone data carries a pack span per zone; spread over the zone's areas it replaces the number above wherever it exists`)">{{ $t('Unique packs from the zone data where known') }}</label></div></div>
             </div>
           </div>
         </div>
@@ -486,64 +489,64 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
     <div v-if="bestFor" class="card card-enhanced mt-4 verdict">
       <div class="card-body p-3 d-flex flex-wrap gap-4">
         <div class="ranking">
-          <div class="section-header mb-1">Most worth your time</div>
+          <div class="section-header mb-1">{{ $t('Most worth your time') }}</div>
           <ol class="mb-1 ps-3">
             <li v-for="row in ranking.slice(0, 3)" :key="row.spot.areaId">
               <span class="spot-strong">{{ row.spot.name }}</span><span v-if="row.preset" class="text-muted small"> ({{ row.preset.label }})</span><span v-if="terrorizedInView(row)" class="badge tz-now ms-1">TZ</span>
-              <span class="text-muted small"> · a hit every {{ hours(itemsPerHour(row)) }} · a {{ runeFloorName }}+ every {{ hours(runesPerHour(row)) }} · {{ row.minutes }} min runs</span>
+              <span class="text-muted small"> · {{ $t('a hit every {t}', { t: hours(itemsPerHour(row)) }) }} · {{ $t('a {rune}+ every {t}', { rune: runeFloorName, t: hours(runesPerHour(row)) }) }} · {{ $t('{n} min runs', { n: row.minutes }) }}</span>
             </li>
           </ol>
           <div class="d-flex align-items-center gap-2 small text-muted">
-            <span>runes</span>
-            <input v-model.number="weightItems" type="range" min="0" max="100" step="5" class="form-range weight" title="What the hour is for: only runes on the left, only the list on the right" />
-            <span>items</span>
+            <span>{{ $t('runes') }}</span>
+            <input v-model.number="weightItems" type="range" min="0" max="100" step="5" class="form-range weight" :title="$t('What the hour is for: only runes on the left, only the list on the right')" />
+            <span>{{ $t('items') }}</span>
           </div>
         </div>
         <div>
-          <div class="section-header mb-1">Best for your list</div>
-          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span><span v-if="bestFor.byItems.preset" class="text-muted small"> ({{ bestFor.byItems.preset.label }})</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.byItems).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
+          <div class="section-header mb-1">{{ $t('Best for your list') }}</div>
+          <div><span class="spot-strong">{{ bestFor.byItems.spot.name }}</span><span v-if="bestFor.byItems.preset" class="text-muted small"> ({{ bestFor.byItems.preset.label }})</span> <span class="text-muted small">{{ $t('{p} per run', { p: pct(scoreOf(bestFor.byItems).perRun) }) }} · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byItems).runes.highPerRun) }}</span></div>
         </div>
         <div>
-          <div class="section-header mb-1">Best for high runes</div>
-          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span><span v-if="bestFor.byRunes.preset" class="text-muted small"> ({{ bestFor.byRunes.preset.label }})</span> <span class="text-muted small">{{ runeFloorName }}+ {{ pct(scoreOf(bestFor.byRunes).runes.highPerRun) }} per run · list {{ pct(scoreOf(bestFor.byRunes).perRun) }}<template v-if="scoreOf(bestFor.byRunes).runes.carrier && scoreOf(bestFor.byRunes).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(bestFor.byRunes).runes.carrier.label)"> · mostly {{ scoreOf(bestFor.byRunes).runes.carrier.label }}</template></span></div>
+          <div class="section-header mb-1">{{ $t('Best for high runes') }}</div>
+          <div><span class="spot-strong">{{ bestFor.byRunes.spot.name }}</span><span v-if="bestFor.byRunes.preset" class="text-muted small"> ({{ bestFor.byRunes.preset.label }})</span> <span class="text-muted small">{{ runeFloorName }}+ {{ $t('{p} per run', { p: pct(scoreOf(bestFor.byRunes).runes.highPerRun) }) }} · {{ $t('list {p}', { p: pct(scoreOf(bestFor.byRunes).perRun) }) }}<template v-if="scoreOf(bestFor.byRunes).runes.carrier && scoreOf(bestFor.byRunes).runes.carrier.share >= 0.5 && !genericParts.includes(scoreOf(bestFor.byRunes).runes.carrier.label)"> · {{ $t('mostly {who}', { who: scoreOf(bestFor.byRunes).runes.carrier.label }) }}</template></span></div>
         </div>
         <div v-if="bestFor.both">
-          <div class="section-header mb-1">Best of both</div>
-          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span><span v-if="bestFor.both.preset" class="text-muted small"> ({{ bestFor.both.preset.label }})</span> <span class="text-muted small">{{ pct(scoreOf(bestFor.both).perRun) }} per run · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
+          <div class="section-header mb-1">{{ $t('Best of both') }}</div>
+          <div><span class="spot-strong">{{ bestFor.both.spot.name }}</span><span v-if="bestFor.both.preset" class="text-muted small"> ({{ bestFor.both.preset.label }})</span> <span class="text-muted small">{{ $t('{p} per run', { p: pct(scoreOf(bestFor.both).perRun) }) }} · {{ runeFloorName }}+ {{ pct(scoreOf(bestFor.both).runes.highPerRun) }}</span></div>
         </div>
         <div class="small text-muted align-self-center ms-auto verdict-note">
-          Bosses pay in uniques and sets and hand out few runes; a clear is the other way round. The bars in the table put both on one scale, each against the best spot.
+          {{ $t('Bosses pay in uniques and sets and hand out few runes; a clear is the other way round. The bars in the table put both on one scale, each against the best spot.') }}
         </div>
       </div>
     </div>
 
     <div v-if="targets.length" class="card card-enhanced mt-4">
       <div class="card-header card-header-primary d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <h2 class="h5 card-title m-0">Spots<span class="text-muted fw-normal small"> · {{ sorted.length }} with a chance</span></h2>
+        <h2 class="h5 card-title m-0">{{ $t('Spots') }}<span class="text-muted fw-normal small"> · {{ $t('{n} with a chance', { n: sorted.length }) }}</span></h2>
         <div class="d-flex gap-2 align-items-center">
-          <label class="small text-muted">Sort by</label>
+          <label class="small text-muted">{{ $t('Sort by') }}</label>
           <select v-model="sortBy" class="form-select form-select-sm w-auto">
-            <option value="worth">worth per hour</option>
-            <option value="items">chance on the list per run</option>
-            <option value="runes">{{ runeFloorName }}+ rune per run</option>
+            <option value="worth">{{ $t('worth per hour') }}</option>
+            <option value="items">{{ $t('chance on the list per run') }}</option>
+            <option value="runes">{{ $t('{rune}+ rune per run', { rune: runeFloorName }) }}</option>
           </select>
         </div>
       </div>
       <div class="card-body p-0">
-        <div v-if="sorted.length === 0" class="p-3 text-muted small">No spot drops anything on the list on this difficulty.</div>
+        <div v-if="sorted.length === 0" class="p-3 text-muted small">{{ $t('No spot drops anything on the list on this difficulty.') }}</div>
         <div v-else class="table-responsive">
           <table class="table table-dark table-sm table-hover mb-0 align-middle plan-table">
             <thead>
               <tr>
                 <th class="text-end rank-col">#</th>
-                <th>Spot</th>
-                <th class="text-end" :title="`Expected hits on the list and high runes per hour at this spot's run time - ${terrorLabel}`">Per hour</th>
-                <th class="text-end">Not terrorized</th>
-                <th class="text-end">Terrorized</th>
-                <th>Carried by</th>
-                <th>Runes <span class="fw-normal text-muted">({{ terrorLabel }})</span></th>
-                <th :title="`Chance for the list and for a ${runeFloorName}+ rune, each relative to the best spot on the table`">Items · runes</th>
-                <th>Next terror</th>
+                <th>{{ $t('Spot') }}</th>
+                <th class="text-end" :title="$t(`Expected hits on the list and high runes per hour at this spot's run time - {mode}`, { mode: terrorLabel })">{{ $t('Per hour') }}</th>
+                <th class="text-end">{{ $t('Not terrorized') }}</th>
+                <th class="text-end">{{ $t('Terrorized') }}</th>
+                <th>{{ $t('Carried by') }}</th>
+                <th>{{ $t('Runes') }} <span class="fw-normal text-muted">({{ terrorLabel }})</span></th>
+                <th :title="$t('Chance for the list and for a {rune}+ rune, each relative to the best spot on the table', { rune: runeFloorName })">{{ $t('Items · runes') }}</th>
+                <th>{{ $t('Next terror') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -554,17 +557,17 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                   <router-link :to="dropCalcLink(row.spot, false)" class="spot-link">{{ row.spot.name }}</router-link>
                   <span class="badge act-badge ms-1" :class="`act-${row.spot.act}`">A{{ row.spot.act }}</span>
                   <span v-if="row.spot.boss >= 0" class="badge boss-badge ms-1">{{ dropData.Monsters[row.spot.boss].Name }}</span>
-                  <select v-if="row.presets.length" class="form-select form-select-sm preset-select ms-1" :value="row.preset?.id ?? ''" :title="'How this spot is run'" @change="setPreset(row.spot.areaId, $event.target.value)">
-                    <option value="">Full clear</option>
+                  <select v-if="row.presets.length" class="form-select form-select-sm preset-select ms-1" :value="row.preset?.id ?? ''" :title="$t('How this spot is run')" @change="setPreset(row.spot.areaId, $event.target.value)">
+                    <option value="">{{ $t('Full clear') }}</option>
                     <option v-for="pr in row.presets" :key="pr.id" :value="pr.id">{{ pr.label }}</option>
                   </select>
-                  <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? 'This spot has its own run numbers' : 'Own run numbers for this spot'" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
-                  <button class="btn btn-sm edit-btn" :class="{ on: why === row.spot.areaId }" title="Why this number - the monsters and kills behind it" @click="toggleWhy(row.spot.areaId)">?</button>
+                  <button class="btn btn-sm edit-btn ms-1" :class="{ on: row.overridden }" :title="row.overridden ? $t('This spot has its own run numbers') : $t('Own run numbers for this spot')" @click="editing === row.spot.areaId ? cancelEdit() : startEdit(row.spot.areaId)">✎</button>
+                  <button class="btn btn-sm edit-btn" :class="{ on: why === row.spot.areaId }" :title="$t('Why this number - the monsters and kills behind it')" @click="toggleWhy(row.spot.areaId)">?</button>
                 </td>
                 <td class="text-end text-nowrap small">
-                  <div>hit every <strong>{{ hours(itemsPerHour(row)) }}</strong></div>
-                  <div><span class="rune-high">{{ runeFloorName }}+</span> every <strong>{{ hours(runesPerHour(row)) }}</strong></div>
-                  <div class="text-muted">{{ row.minutes }} min / run</div>
+                  <div>{{ $t('hit every') }} <strong>{{ hours(itemsPerHour(row)) }}</strong></div>
+                  <div><span class="rune-high">{{ runeFloorName }}+</span> {{ $t('every') }} <strong>{{ hours(runesPerHour(row)) }}</strong></div>
+                  <div class="text-muted">{{ $t('{n} min / run', { n: row.minutes }) }}</div>
                 </td>
                 <td class="text-end text-nowrap" :class="{ 'in-view': !terrorizedInView(row) }">
                   <div>{{ pct(row.plain.perRun) }}</div>
@@ -572,24 +575,24 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                 </td>
                 <td class="text-end text-nowrap" :class="{ 'in-view': terrorizedInView(row) }">
                   <template v-if="row.tz">
-                    <div>{{ pct(row.tz.perRun) }}<span v-if="row.next?.now" class="badge tz-now ms-1" title="Terrorized right now">TZ</span></div>
+                    <div>{{ pct(row.tz.perRun) }}<span v-if="row.next?.now" class="badge tz-now ms-1" :title="$t('Terrorized right now')">TZ</span></div>
                     <div class="small text-muted">{{ runs(row.tz.perRun) }}</div>
                   </template>
-                  <span v-else class="text-muted small">no terror zone</span>
+                  <span v-else class="text-muted small">{{ $t('no terror zone') }}</span>
                 </td>
                 <td class="small text-muted">{{ partsText(row.tz ?? row.plain) }}</td>
                 <td class="small text-nowrap">
                   <template v-if="scoreOf(row).runes.max">
                     <div>
-                      up to <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span>
+                      {{ $t('up to') }} <span class="rune-name">{{ runeName(scoreOf(row).runes.max) }}</span>
                       <span v-if="row.tz && row.tz.runes.max !== row.plain.runes.max" class="text-muted">
-                        · {{ terrorizedInView(row) ? 'not terrorized' : 'terrorized' }} up to {{ runeName(terrorizedInView(row) ? row.plain.runes.max : row.tz.runes.max) }}
+                        · {{ $t(terrorizedInView(row) ? 'not terrorized up to {rune}' : 'terrorized up to {rune}', { rune: runeName(terrorizedInView(row) ? row.plain.runes.max : row.tz.runes.max) }) }}
                       </span>
                     </div>
-                    <div><span class="rune-high">{{ runeFloorName }}+</span> {{ pct(scoreOf(row).runes.highPerRun) }} / run<span class="text-muted"> · {{ runs(scoreOf(row).runes.highPerRun) }}</span></div>
-                    <div class="text-muted">~{{ scoreOf(row).runes.expected.toFixed(1) }} runes / run</div>
-                    <div v-if="scoreOf(row).runes.carrier && scoreOf(row).runes.carrier.share >= 0.5 && !['Trash', 'Minions', 'Champions', 'Unique packs'].includes(scoreOf(row).runes.carrier.label)" class="carrier">
-                      mostly {{ scoreOf(row).runes.carrier.label }} ({{ Math.round(scoreOf(row).runes.carrier.share * 100) }} %)
+                    <div><span class="rune-high">{{ runeFloorName }}+</span> {{ $t('{p} / run', { p: pct(scoreOf(row).runes.highPerRun) }) }}<span class="text-muted"> · {{ runs(scoreOf(row).runes.highPerRun) }}</span></div>
+                    <div class="text-muted">{{ $t('~{n} runes / run', { n: scoreOf(row).runes.expected.toFixed(1) }) }}</div>
+                    <div v-if="scoreOf(row).runes.carrier && scoreOf(row).runes.carrier.share >= 0.5 && !genericParts.includes(scoreOf(row).runes.carrier.label)" class="carrier">
+                      {{ $t('mostly {who} ({p} %)', { who: scoreOf(row).runes.carrier.label, p: Math.round(scoreOf(row).runes.carrier.share * 100) }) }}
                     </div>
                   </template>
                   <span v-else class="text-muted">—</span>
@@ -607,20 +610,20 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
               <tr v-if="editing === row.spot.areaId && draft" class="edit-row">
                 <td colspan="9">
                   <div class="d-flex flex-wrap gap-2 align-items-end">
-                    <span class="small text-muted me-1">A run in {{ row.spot.name }}:</span>
-                    <label class="small">packs <input v-model.number="draft.packs" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">minions/pack <input v-model.number="draft.minionsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">champ packs <input v-model.number="draft.champPacks" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">champs/pack <input v-model.number="draft.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">trash <input v-model.number="draft.trash" type="number" min="0" max="999" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">heralds <input v-model.number="draft.heralds" type="number" min="0" max="10" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small">minutes <input v-model.number="draft.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm d-inline-block mini" /></label>
-                    <label class="small form-check mb-0 ms-1"><input v-model="draft.superUniques" class="form-check-input" type="checkbox" /> superuniques</label>
-                    <label class="small form-check mb-0"><input v-model="draft.boss" class="form-check-input" type="checkbox" /> boss</label>
+                    <span class="small text-muted me-1">{{ $t('A run in {spot}:', { spot: row.spot.name }) }}</span>
+                    <label class="small">{{ $t('packs') }} <input v-model.number="draft.packs" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('minions/pack') }} <input v-model.number="draft.minionsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('champ packs') }} <input v-model.number="draft.champPacks" type="number" min="0" max="99" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('champs/pack') }} <input v-model.number="draft.champsPerPack" type="number" min="0" max="20" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('trash') }} <input v-model.number="draft.trash" type="number" min="0" max="999" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('heralds') }} <input v-model.number="draft.heralds" type="number" min="0" max="10" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small">{{ $t('minutes') }} <input v-model.number="draft.minutes" type="number" min="0.5" max="60" step="0.5" class="form-control form-control-sm d-inline-block mini" /></label>
+                    <label class="small form-check mb-0 ms-1"><input v-model="draft.superUniques" class="form-check-input" type="checkbox" /> {{ $t('superuniques') }}</label>
+                    <label class="small form-check mb-0"><input v-model="draft.boss" class="form-check-input" type="checkbox" /> {{ $t('boss') }}</label>
                     <span class="ms-auto d-flex gap-1">
-                      <button class="btn btn-sm btn-outline-secondary" @click="cancelEdit">Cancel</button>
-                      <button v-if="row.overridden" class="btn btn-sm btn-outline-secondary" @click="clearEdit">Use defaults</button>
-                      <button class="btn btn-sm btn-primary" @click="saveEdit">Save</button>
+                      <button class="btn btn-sm btn-outline-secondary" @click="cancelEdit">{{ $t('Cancel') }}</button>
+                      <button v-if="row.overridden" class="btn btn-sm btn-outline-secondary" @click="clearEdit">{{ $t('Use defaults') }}</button>
+                      <button class="btn btn-sm btn-primary" @click="saveEdit">{{ $t('Save') }}</button>
                     </span>
                   </div>
                 </td>
@@ -628,30 +631,30 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
               <tr v-if="why === row.spot.areaId && whyDetail" class="why-row">
                 <td colspan="9">
                   <div class="small mb-2">
-                    <strong>A run in {{ row.spot.name }}</strong><span v-if="row.preset"> ({{ row.preset.label }})</span>, {{ whyDetail.terror ? 'terrorized' : 'not terrorized' }}:
-                    {{ whyDetail.score.detail.counts.unique }} unique packs with {{ whyDetail.score.detail.counts.minion }} minions, {{ whyDetail.score.detail.counts.champion }} champions, {{ whyDetail.score.detail.counts.normal }} trash kills<template v-if="profileFor(row.spot.areaId).superUniques && row.spot.superUniques.length">, the superuniques</template><template v-if="profileFor(row.spot.areaId).boss && row.spot.boss >= 0">, {{ dropData.Monsters[row.spot.boss].Name }}</template>.
+                    <strong>{{ $t('A run in {spot}', { spot: row.spot.name }) }}</strong><span v-if="row.preset"> ({{ row.preset.label }})</span>, {{ whyDetail.terror ? $t('terrorized') : $t('not terrorized') }}:
+                    {{ $t('{u} unique packs with {m} minions, {c} champions, {n} trash kills', { u: whyDetail.score.detail.counts.unique, m: whyDetail.score.detail.counts.minion, c: whyDetail.score.detail.counts.champion, n: whyDetail.score.detail.counts.normal }) }}<template v-if="profileFor(row.spot.areaId).superUniques && row.spot.superUniques.length">{{ $t(', the superuniques') }}</template><template v-if="profileFor(row.spot.areaId).boss && row.spot.boss >= 0">, {{ dropData.Monsters[row.spot.boss].Name }}</template>.
                     <span class="text-muted">
-                      <template v-if="whyDetail.score.detail.packsFromPlaced">No rolled monster is left for the packs, so the placed ones stand in.</template>
-                      <template v-else-if="whyDetail.score.detail.rollSize">Packs average over the roll - {{ whyDetail.score.detail.rollTypes }} types<template v-if="whyDetail.score.detail.numMon">, the game picks {{ whyDetail.score.detail.numMon }} per game</template> - weighted by rarity; placed monsters are met as trash only.</template>
+                      <template v-if="whyDetail.score.detail.packsFromPlaced">{{ $t('No rolled monster is left for the packs, so the placed ones stand in.') }}</template>
+                      <template v-else-if="whyDetail.score.detail.rollSize">{{ $t('Packs average over the roll - {n} types', { n: whyDetail.score.detail.rollTypes }) }}<template v-if="whyDetail.score.detail.numMon">{{ $t(', the game picks {n} per game', { n: whyDetail.score.detail.numMon }) }}</template> {{ $t('- weighted by rarity; placed monsters are met as trash only.') }}</template>
                     </span>
                   </div>
                   <table class="table table-dark table-sm mb-2 why-table">
                     <thead>
                       <tr>
-                        <th>Monster</th>
-                        <th>In the roll</th>
-                        <th class="text-end" title="Monster level of a unique pack here">mlvl</th>
-                        <th class="text-end" title="Chance of a listed item from one ordinary kill">Trash</th>
-                        <th class="text-end">Champion</th>
-                        <th class="text-end">Unique</th>
-                        <th class="text-end">Minion</th>
-                        <th class="text-end" :title="`Expected ${runeFloorName}+ runes from one unique kill`">{{ runeFloorName }}+ / unique</th>
+                        <th>{{ $t('Monster') }}</th>
+                        <th>{{ $t('In the roll') }}</th>
+                        <th class="text-end" :title="$t('Monster level of a unique pack here')">mlvl</th>
+                        <th class="text-end" :title="$t('Chance of a listed item from one ordinary kill')">{{ $t('Trash') }}</th>
+                        <th class="text-end">{{ $t('Champion') }}</th>
+                        <th class="text-end">{{ $t('Unique') }}</th>
+                        <th class="text-end">{{ $t('Minion') }}</th>
+                        <th class="text-end" :title="$t('Expected {rune}+ runes from one unique kill', { rune: runeFloorName })">{{ $t('{rune}+ / unique', { rune: runeFloorName }) }}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr v-for="m in whyDetail.score.detail.monsters" :key="m.monsterIndex" :class="{ 'text-muted': m.placed || m.dead }">
-                        <td>{{ m.name }}<span v-if="m.dead" class="text-warning"> · immune</span></td>
-                        <td>{{ m.placed ? 'placed by the map' : `weight ${m.weight}` }}</td>
+                        <td>{{ m.name }}<span v-if="m.dead" class="text-warning"> · {{ $t('immune') }}</span></td>
+                        <td>{{ m.placed ? $t('placed by the map') : $t('weight {n}', { n: m.weight }) }}</td>
                         <td class="text-end">{{ m.per.unique?.mlvl ?? m.per.normal?.mlvl ?? '—' }}</td>
                         <td class="text-end">{{ m.per.normal ? pct(m.per.normal.any) : '—' }}</td>
                         <td class="text-end">{{ m.per.champion ? pct(m.per.champion.any) : '—' }}</td>
@@ -662,14 +665,14 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     </tbody>
                   </table>
                   <div class="small">
-                    <span class="text-muted">Per run, what carries it:</span>
+                    <span class="text-muted">{{ $t('Per run, what carries it:') }}</span>
                     <span v-for="part in whyDetail.score.parts" :key="part.label" class="ms-2">{{ part.label }} <strong>{{ pct(part.hit) }}</strong></span>
-                    <span class="ms-2">→ <strong>{{ pct(whyDetail.score.perRun) }}</strong> for the list</span>
+                    <span class="ms-2">→ <strong>{{ pct(whyDetail.score.perRun) }}</strong> {{ $t('for the list') }}</span>
                   </div>
                   <div v-if="whyDetail.score.detail.targets?.length" class="small mt-1">
-                    <span class="text-muted">{{ grailMode ? 'Missing Grail items a run here can turn up:' : 'Which of the list:' }}</span>
+                    <span class="text-muted">{{ grailMode ? $t('Missing Grail items a run here can turn up:') : $t('Which of the list:') }}</span>
                     <span v-for="t in whyDetail.score.detail.targets.slice(0, 15)" :key="t.k" class="ms-2 text-nowrap">{{ targets[t.k].name }} <strong>{{ pct(t.hit) }}</strong></span>
-                    <span v-if="whyDetail.score.detail.targets.length > 15" class="ms-2 text-muted">+{{ whyDetail.score.detail.targets.length - 15 }} more</span>
+                    <span v-if="whyDetail.score.detail.targets.length > 15" class="ms-2 text-muted">{{ $t('+{n} more', { n: whyDetail.score.detail.targets.length - 15 }) }}</span>
                   </div>
                 </td>
               </tr>
@@ -678,16 +681,13 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
           </table>
         </div>
         <div v-if="sorted.length > ROW_LIMIT" class="p-2 small">
-          <a href="#" @click.prevent="showAll = !showAll">{{ showAll ? 'Show the top ' + ROW_LIMIT : `Show all ${sorted.length} spots` }}</a>
+          <a href="#" @click.prevent="showAll = !showAll">{{ showAll ? $t('Show the top {n}', { n: ROW_LIMIT }) : $t('Show all {n} spots', { n: sorted.length }) }}</a>
         </div>
       </div>
     </div>
 
     <p class="small text-muted mt-4 mb-0">
-      Per kill, the chance of at least one listed item is 1 − Π(1 − p); per run the misses multiply across the kills in the profile. Packs go in as the average over
-      the area's random roll, weighted by monster rarity; monsters the map places rather than rolls - the Trapped Souls, Travincal's council - are met as trash and do
-      not thin that average. The <strong>?</strong> on a row shows the numbers behind it. Player count, party and magic find as set above; exalted and mythic rolls count as their base item. The terrorized column uses the character level
-      above; the next terror time comes from the <router-link to="/terror-zones">Terror Zones</router-link> schedule.
+      {{ $t(`Per kill, the chance of at least one listed item is 1 − Π(1 − p); per run the misses multiply across the kills in the profile. Packs go in as the average over the area's random roll, weighted by monster rarity; monsters the map places rather than rolls - the Trapped Souls, Travincal's council - are met as trash and do not thin that average. The`) }} <strong>?</strong> {{ $t('on a row shows the numbers behind it. Player count, party and magic find as set above; exalted and mythic rolls count as their base item. The terrorized column uses the character level above; the next terror time comes from the') }} <router-link to="/terror-zones">{{ $t('Terror Zones schedule') }}</router-link>.
     </p>
   </div>
 </template>

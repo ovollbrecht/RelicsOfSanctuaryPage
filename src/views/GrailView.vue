@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { t } from '@/i18n';
 import { useGrail, readSaveFile, absorb } from '@/composables/useGrail.js';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 import GrailOverview from '@/components/grail/GrailOverview.vue';
@@ -167,7 +168,7 @@ const locationsOf = (entry) => {
   const keys = keysOf(entry);
   const out = new Set();
   for (const [file, h] of Object.entries(grail.holdings.value)) {
-    if (keys.some((k) => (h.items?.[k] ?? 0) > 0)) out.add(h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash');
+    if (keys.some((k) => (h.items?.[k] ?? 0) > 0)) out.add(h.kind === 'character' ? t('on {name}', { name: h.character ?? file.replace(/\.d2s$/i, '') }) : t('stash'));
   }
   return [...out];
 };
@@ -176,12 +177,12 @@ const sourceText = (entry) => {
   const r = recordOf(entry);
   if (!r) return '';
   const parts = locationsOf(entry);
-  if (r.source === 'manual') parts.push('ticked by hand');
+  if (r.source === 'manual') parts.push(t('ticked by hand'));
   if (r.when) {
     const by = r.by && catalog.value?.sources?.[r.by] ? ` · ${catalog.value.sources[r.by]}` : '';
-    parts.push(`Chronicle${by} · ${dateFmt.format(new Date(r.when))}`);
+    parts.push(`${t('Chronicle')}${by} · ${dateFmt.format(new Date(r.when))}`);
   } else if (parts.length === 0) {
-    parts.push({ chronicle: 'Chronicle', stash: 'stash', character: r.who ? `on ${r.who}` : 'character' }[r.source] ?? r.source);
+    parts.push({ chronicle: t('Chronicle'), stash: t('stash'), character: r.who ? t('on {name}', { name: r.who }) : t('character') }[r.source] ?? r.source);
   }
   return parts.join(' · ');
 };
@@ -217,8 +218,8 @@ const pickShow = (s) => { show.value = s; if (tab.value === 'runewords') tab.val
 const copied = ref(false);
 const copySummary = async () => {
   const pct = Math.round((totalFound.value / Math.max(1, totalAll.value)) * 100);
-  const parts = TABS.map((t) => `${t.label} ${progress.value[t.id].found}/${progress.value[t.id].total}`).join(' · ');
-  const text = `Relics of Sanctuary Grail: ${totalFound.value}/${totalAll.value} (${pct} %)\n${parts}\nhttps://relicsofsanctuary.com/#/grail`;
+  const parts = TABS.map((x) => `${t(x.label)} ${progress.value[x.id].found}/${progress.value[x.id].total}`).join(' · ');
+  const text = `${t('Relics of Sanctuary Grail: {found}/{total} ({pct} %)', { found: totalFound.value, total: totalAll.value, pct })}\n${parts}\nhttps://relicsofsanctuary.com/#/grail`;
   try { await navigator.clipboard.writeText(text); copied.value = true; setTimeout(() => { copied.value = false; }, 1500); } catch { /* clipboard blocked */ }
 };
 </script>
@@ -227,68 +228,68 @@ const copySummary = async () => {
   <div class="container py-4 page-content grail-page">
     <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
       <div>
-        <h1 class="h2 mb-1">Grail</h1>
-        <p class="text-muted mb-0">Everything there is to find, ticked off from your save files - read here in the browser, never uploaded.</p>
+        <h1 class="h2 mb-1">{{ $t('Grail') }}</h1>
+        <p class="text-muted mb-0">{{ $t('Everything there is to find, ticked off from your save files - read here in the browser, never uploaded.') }}</p>
       </div>
       <div class="d-flex gap-2 align-items-center small">
-        <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="copySummary">{{ copied ? 'Copied' : 'Copy summary' }}</button>
-        <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="exportGrail">Back up</button>
-        <label class="btn btn-sm btn-outline-secondary mb-0">Restore <input type="file" accept=".json" class="d-none" @change="restoreGrail" /></label>
-        <button v-if="!confirmReset" class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="confirmReset = true">Reset</button>
+        <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="copySummary">{{ copied ? $t('Copied') : $t('Copy summary') }}</button>
+        <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="exportGrail">{{ $t('Back up') }}</button>
+        <label class="btn btn-sm btn-outline-secondary mb-0">{{ $t('Restore') }} <input type="file" accept=".json" class="d-none" @change="restoreGrail" /></label>
+        <button v-if="!confirmReset" class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="confirmReset = true">{{ $t('Reset') }}</button>
         <template v-else>
-          <span class="text-warning">Forget everything?</span>
-          <button class="btn btn-sm btn-danger" @click="doReset">Yes</button>
-          <button class="btn btn-sm btn-outline-secondary" @click="confirmReset = false">No</button>
+          <span class="text-warning">{{ $t('Forget everything?') }}</span>
+          <button class="btn btn-sm btn-danger" @click="doReset">{{ $t('Yes') }}</button>
+          <button class="btn btn-sm btn-outline-secondary" @click="confirmReset = false">{{ $t('No') }}</button>
         </template>
       </div>
     </div>
-    <div v-if="restoreError" class="alert alert-warning py-2 small">Could not restore: {{ restoreError }}</div>
-    <div v-if="loadError" class="alert alert-danger py-2 small">The parser did not load: {{ loadError }}</div>
+    <div v-if="restoreError" class="alert alert-warning py-2 small">{{ $t('Could not restore: {error}', { error: restoreError }) }}</div>
+    <div v-if="loadError" class="alert alert-danger py-2 small">{{ $t('The parser did not load: {error}', { error: loadError }) }}</div>
 
     <!-- Import: the full drop zone until there is data, a slim bar afterwards -->
     <div class="card card-enhanced mb-4">
       <div v-if="totalFound && !importOpen && !lastImport" class="card-body p-3 d-flex flex-wrap justify-content-between align-items-center gap-2 small">
         <span class="text-muted">
           <template v-if="grail.state.value.imports?.length">
-            Last import {{ dateFmt.format(new Date(grail.state.value.imports.at(-1).at)) }} · {{ grail.state.value.imports.at(-1).files.length }} {{ grail.state.value.imports.at(-1).files.length === 1 ? 'file' : 'files' }}.
+            {{ $t('Last import {date}', { date: dateFmt.format(new Date(grail.state.value.imports.at(-1).at)) }) }} · {{ grail.state.value.imports.at(-1).files.length === 1 ? $t('1 file') : $t('{n} files', { n: grail.state.value.imports.at(-1).files.length }) }}.
           </template>
-          <template v-else>Ticked by hand so far.</template>
-          Importing again only ever adds.
+          <template v-else>{{ $t('Ticked by hand so far.') }}</template>
+          {{ $t('Importing again only ever adds.') }}
         </span>
-        <button class="btn btn-sm btn-primary" @click="importOpen = true">Import save files</button>
+        <button class="btn btn-sm btn-primary" @click="importOpen = true">{{ $t('Import save files') }}</button>
       </div>
       <div v-else class="card-body p-3">
         <div class="drop" :class="{ over: dragging, busy }" @dragover.prevent="dragging = true" @dragleave="dragging = false" @drop.prevent="onDrop">
-          <div class="drop-title">Drop your save files here</div>
+          <div class="drop-title">{{ $t('Drop your save files here') }}</div>
           <div class="small text-muted mb-2">
-            The shared stash (<code>SharedStash…V2.d2i</code>, <code>ModernSharedStash…V2.d2i</code>) and your characters (<code>.d2s</code>). For the mod they live in
-            <code>Saved Games\Diablo II Resurrected\mods\&lt;save path&gt;\</code>. Pick the whole folder if you like - only save files are read.
+            {{ $t('The shared stash') }} (<code>SharedStash…V2.d2i</code>, <code>ModernSharedStash…V2.d2i</code>) {{ $t('and your characters') }} (<code>.d2s</code>). {{ $t('For the mod they live in') }}
+            <code>Saved Games\Diablo II Resurrected\mods\&lt;save path&gt;\</code>. {{ $t('Pick the whole folder if you like - only save files are read.') }}
           </div>
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <label class="btn btn-sm btn-primary mb-0">Choose files <input type="file" multiple accept=".d2i,.d2s" class="d-none" @change="onPick" /></label>
-            <label class="btn btn-sm btn-outline-primary mb-0">Choose folder <input type="file" webkitdirectory class="d-none" @change="onPick" /></label>
+            <label class="btn btn-sm btn-primary mb-0">{{ $t('Choose files') }} <input type="file" multiple accept=".d2i,.d2s" class="d-none" @change="onPick" /></label>
+            <label class="btn btn-sm btn-outline-primary mb-0">{{ $t('Choose folder') }} <input type="file" webkitdirectory class="d-none" @change="onPick" /></label>
           </div>
-          <div v-if="busy" class="small text-muted mt-2">Reading…</div>
+          <div v-if="busy" class="small text-muted mt-2">{{ $t('Reading…') }}</div>
         </div>
         <div class="form-check form-switch mt-3 mb-0 small">
           <input id="rotw" v-model="grail.rotwShift.value" class="form-check-input" type="checkbox" />
-          <label class="form-check-label" for="rotw" title="The D2RMM option moves the mod's uniques in front of the Warlock section, which renumbers every row from there on. Set it as your install has it, or the wrong items get ticked.">
-            My D2RMM install has <em>Moves RotW uniques to the end</em> switched on
+          <label class="form-check-label" for="rotw" :title="$t(`The D2RMM option moves the mod's uniques in front of the Warlock section, which renumbers every row from there on. Set it as your install has it, or the wrong items get ticked.`)">
+            {{ $t('My D2RMM install has') }} <em>Moves RotW uniques to the end</em> {{ $t('switched on') }}
           </label>
         </div>
         <div v-if="lastImport" class="mt-3 small">
-          <template v-if="lastImport.nothing"><span class="text-muted">No save files among those - the page reads <code>.d2i</code> and <code>.d2s</code>.</span></template>
+          <template v-if="lastImport.nothing"><span class="text-muted">{{ $t('No save files among those - the page reads') }} <code>.d2i</code> {{ $t('and') }} <code>.d2s</code>.</span></template>
           <template v-else>
-            <div class="mb-1"><strong>{{ lastImport.added }}</strong> new {{ lastImport.added === 1 ? 'entry' : 'entries' }} from {{ lastImport.files.length }} {{ lastImport.files.length === 1 ? 'file' : 'files' }}.</div>
+            <div class="mb-1"><strong>{{ lastImport.added }}</strong> {{ lastImport.added === 1 ? $t('new entry') : $t('new entries') }} {{ $t('from') }} {{ lastImport.files.length === 1 ? $t('1 file') : $t('{n} files', { n: lastImport.files.length }) }}.</div>
             <ul class="list-unstyled mb-0 import-list">
               <li v-for="f in lastImport.files" :key="f.name" :class="{ 'text-danger': f.error }">
-                {{ f.name }} <span class="text-muted">— {{ f.error ? f.error : `${f.kind}, ${f.items} items${f.chronicle ? ', Chronicle' : ''}` }}</span>
+                {{ f.name }} <span class="text-muted">— {{ f.error ? f.error : `${$t(f.kind)}, ${$t('{n} items', { n: f.items })}${f.chronicle ? `, ${$t('Chronicle')}` : ''}` }}</span>
               </li>
             </ul>
           </template>
         </div>
         <div v-if="totalFound && (importOpen || lastImport)" class="mt-2 text-end">
-          <button class="btn btn-sm btn-link text-muted p-0" @click="importOpen = false; lastImport = null">Hide</button>
+          <button class="btn btn-sm btn-link text-muted p-0" @click="importOpen = false; lastImport = null">{{ $t('Hide') }}</button>
         </div>
       </div>
     </div>
@@ -307,11 +308,11 @@ const copySummary = async () => {
         <button class="progress-card card card-enhanced h-100 w-100 text-start" :class="{ active: tab === t.id }" @click="tab = t.id">
           <div class="card-body p-3">
             <div class="d-flex justify-content-between align-items-baseline">
-              <span class="progress-label">{{ t.label }}</span>
+              <span class="progress-label">{{ $t(t.label) }}</span>
               <span class="progress-pct">{{ progress[t.id].pct }} %</span>
             </div>
             <div class="progress grail-bar my-2"><div class="progress-bar" :style="{ width: `${progress[t.id].pct}%` }"></div></div>
-            <div class="small text-muted">{{ progress[t.id].found }} of {{ progress[t.id].total }}</div>
+            <div class="small text-muted">{{ $t('{n} of {total}', { n: progress[t.id].found, total: progress[t.id].total }) }}</div>
           </div>
         </button>
       </div>
@@ -321,84 +322,84 @@ const copySummary = async () => {
     <div v-if="catalog" class="card card-enhanced mb-4">
       <div class="card-header card-header-primary d-flex flex-wrap justify-content-between align-items-center gap-2">
         <h2 class="h5 card-title m-0">
-          {{ TABS.find((t) => t.id === tab).label }}
+          {{ $t(TABS.find((t) => t.id === tab).label) }}
           <span class="text-muted fw-normal small"> · {{ progress[tab].found }} / {{ progress[tab].total }}</span>
-          <span v-if="setsComplete" class="text-muted fw-normal small"> · {{ setsComplete.complete }} of {{ setsComplete.total }} sets complete</span>
+          <span v-if="setsComplete" class="text-muted fw-normal small"> · {{ $t('{n} of {total} sets complete', { n: setsComplete.complete, total: setsComplete.total }) }}</span>
         </h2>
         <div class="d-flex flex-wrap gap-2 align-items-center">
-          <button v-for="tp in tierProgress" :key="tp.tier" class="badge tier-badge tier-toggle" :class="[`tier-${tp.tier}`, { dim: tiers.size && !tiers.has(tp.tier) }]" :title="`Only ${tp.label}`" @click="toggleTier(tp.tier)">
-            {{ tp.label }} {{ tp.found }}/{{ tp.total }}
+          <button v-for="tp in tierProgress" :key="tp.tier" class="badge tier-badge tier-toggle" :class="[`tier-${tp.tier}`, { dim: tiers.size && !tiers.has(tp.tier) }]" :title="$t('Only {tier}', { tier: $t(tp.label) })" @click="toggleTier(tp.tier)">
+            {{ $t(tp.label) }} {{ tp.found }}/{{ tp.total }}
           </button>
         </div>
       </div>
       <div class="card-body p-3 pb-2">
         <div class="d-flex flex-wrap gap-2 align-items-center">
-          <input v-model="query" class="form-control form-control-sm search" :placeholder="tab === 'runewords' ? 'Search name or rune…' : 'Search name, base or set…'" />
+          <input v-model="query" class="form-control form-control-sm search" :placeholder="tab === 'runewords' ? $t('Search name or rune…') : $t('Search name, base or set…')" />
           <div class="btn-group btn-group-sm">
-            <button class="btn btn-outline-secondary" :class="{ active: show === 'all' }" @click="show = 'all'">All</button>
-            <button class="btn btn-outline-secondary" :class="{ active: show === 'missing' }" @click="show = 'missing'">Missing</button>
-            <button class="btn btn-outline-secondary" :class="{ active: show === 'found' }" @click="show = 'found'">Found</button>
-            <button v-if="holdingFiles" class="btn btn-outline-secondary" :class="{ active: show === 'spares' }" title="Held more than once in your files" @click="show = 'spares'">Spares</button>
+            <button class="btn btn-outline-secondary" :class="{ active: show === 'all' }" @click="show = 'all'">{{ $t('All') }}</button>
+            <button class="btn btn-outline-secondary" :class="{ active: show === 'missing' }" @click="show = 'missing'">{{ $t('Missing') }}</button>
+            <button class="btn btn-outline-secondary" :class="{ active: show === 'found' }" @click="show = 'found'">{{ $t('Found') }}</button>
+            <button v-if="holdingFiles" class="btn btn-outline-secondary" :class="{ active: show === 'spares' }" :title="$t('Held more than once in your files')" @click="show = 'spares'">{{ $t('Spares') }}</button>
           </div>
           <select v-if="slotsInTab.length" v-model="slot" class="form-select form-select-sm w-auto">
-            <option value="">Every slot</option>
+            <option value="">{{ $t('Every slot') }}</option>
             <option v-for="s in slotsInTab" :key="s" :value="s">{{ s }}</option>
           </select>
-          <select v-model="sort" class="form-select form-select-sm w-auto" title="Sort">
-            <option value="default">{{ isSetTab ? 'Tier, set' : 'Tier, level' }}</option>
-            <option value="name">Name</option>
-            <option value="lvl">Level, high first</option>
-            <option value="date">Found, latest first</option>
+          <select v-model="sort" class="form-select form-select-sm w-auto" :title="$t('Sort')">
+            <option value="default">{{ isSetTab ? $t('Tier, set') : $t('Tier, level') }}</option>
+            <option value="name">{{ $t('Name') }}</option>
+            <option value="lvl">{{ $t('Level, high first') }}</option>
+            <option value="date">{{ $t('Found, latest first') }}</option>
           </select>
           <div v-if="isSetTab" class="form-check form-switch small mb-0">
             <input id="groupsets" v-model="groupBySet" class="form-check-input" type="checkbox" :disabled="sort !== 'default'" />
-            <label class="form-check-label" for="groupsets">Group by set</label>
+            <label class="form-check-label" for="groupsets">{{ $t('Group by set') }}</label>
           </div>
-          <button v-if="filtersActive" class="btn btn-sm btn-link text-muted p-0" @click="clearFilters">Clear</button>
-          <button v-if="missingForFarm.length" class="btn btn-sm btn-outline-primary ms-auto" :title="`Put the ${missingForFarm.length} missing items shown on the Where to Farm list`" @click="addMissingToFarm">
-            + {{ missingForFarm.length }} missing to Where to Farm
+          <button v-if="filtersActive" class="btn btn-sm btn-link text-muted p-0" @click="clearFilters">{{ $t('Clear') }}</button>
+          <button v-if="missingForFarm.length" class="btn btn-sm btn-outline-primary ms-auto" :title="$t('Put the {n} missing items shown on the Where to Farm list', { n: missingForFarm.length })" @click="addMissingToFarm">
+            + {{ $t('{n} missing to Where to Farm', { n: missingForFarm.length }) }}
           </button>
         </div>
       </div>
       <div class="card-body p-0">
-        <div v-if="visible.length === 0" class="p-3 text-muted small">Nothing here.</div>
+        <div v-if="visible.length === 0" class="p-3 text-muted small">{{ $t('Nothing here.') }}</div>
         <template v-else-if="grouped">
           <div v-for="sec in grouped" :key="sec.set" class="set-section">
             <div class="set-head" :class="{ complete: sec.found === sec.total }">
               <span class="set-name">{{ sec.set }}</span>
-              <span class="small text-muted">{{ sec.found }} / {{ sec.total }}<template v-if="sec.found === sec.total"> · complete</template></span>
+              <span class="small text-muted">{{ sec.found }} / {{ sec.total }}<template v-if="sec.found === sec.total"> · {{ $t('complete') }}</template></span>
               <div class="progress grail-bar set-bar"><div class="progress-bar" :style="{ width: `${(sec.found / sec.total) * 100}%` }"></div></div>
             </div>
             <ul class="list-unstyled mb-0 grail-list">
               <li v-for="e in sec.items" :key="e.kind + e.id" class="grail-row" :class="{ found: isFound(e) }">
-                <input type="checkbox" class="form-check-input mt-0" :checked="isFound(e)" :title="isFound(e) ? 'Untick (a later import will not tick it again unless it finds it)' : 'Tick by hand'" @change="toggle(e)" />
+                <input type="checkbox" class="form-check-input mt-0" :checked="isFound(e)" :title="isFound(e) ? $t('Untick (a later import will not tick it again unless it finds it)') : $t('Tick by hand')" @change="toggle(e)" />
                 <div class="flex-grow-1 min-w-0">
                   <router-link :to="itemLink(e)" class="name" :class="e.kind">{{ e.name }}</router-link>
                   <span class="text-muted small"> · {{ e.base }}</span>
-                  <span v-if="isRecent(e)" class="badge new-badge ms-1">new</span>
-                  <span v-if="ownedOf(e) > 1" class="badge copies-badge ms-1" :title="`${ownedOf(e)} copies in your files`">×{{ ownedOf(e) }}</span>
+                  <span v-if="isRecent(e)" class="badge new-badge ms-1">{{ $t('new') }}</span>
+                  <span v-if="ownedOf(e) > 1" class="badge copies-badge ms-1" :title="$t('{n} copies in your files', { n: ownedOf(e) })">×{{ ownedOf(e) }}</span>
                 </div>
-                <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ TIER[e.tier] }}</span>
+                <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ $t(TIER[e.tier]) }}</span>
                 <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
-                <router-link v-if="!isFound(e)" :to="farmLink(e)" class="farm-link small" title="Where to farm it">farm</router-link>
+                <router-link v-if="!isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
               </li>
             </ul>
           </div>
         </template>
         <ul v-else class="list-unstyled mb-0 grail-list">
           <li v-for="e in visible" :key="e.kind + e.id" class="grail-row" :class="{ found: isFound(e) }">
-            <input type="checkbox" class="form-check-input mt-0" :checked="isFound(e)" :title="isFound(e) ? 'Untick (a later import will not tick it again unless it finds it)' : 'Tick by hand'" @change="toggle(e)" />
+            <input type="checkbox" class="form-check-input mt-0" :checked="isFound(e)" :title="isFound(e) ? $t('Untick (a later import will not tick it again unless it finds it)') : $t('Tick by hand')" @change="toggle(e)" />
             <div class="flex-grow-1 min-w-0">
               <router-link :to="itemLink(e)" class="name" :class="e.kind">{{ e.name }}</router-link>
               <span v-if="e.kind !== 'runeword'" class="text-muted small"> · {{ e.base }}</span>
               <span v-if="e.set" class="text-muted small"> · {{ e.set }}</span>
               <span v-if="e.kind === 'runeword'" class="text-muted small"> · {{ e.runes.join(' ') }}</span>
-              <span v-if="isRecent(e)" class="badge new-badge ms-1">new</span>
-              <span v-if="ownedOf(e) > 1" class="badge copies-badge ms-1" :title="`${ownedOf(e)} copies in your files`">×{{ ownedOf(e) }}</span>
+              <span v-if="isRecent(e)" class="badge new-badge ms-1">{{ $t('new') }}</span>
+              <span v-if="ownedOf(e) > 1" class="badge copies-badge ms-1" :title="$t('{n} copies in your files', { n: ownedOf(e) })">×{{ ownedOf(e) }}</span>
             </div>
-            <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ TIER[e.tier] }}</span>
+            <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ $t(TIER[e.tier]) }}</span>
             <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
-            <router-link v-if="e.kind !== 'runeword' && !isFound(e)" :to="farmLink(e)" class="farm-link small" title="Where to farm it">farm</router-link>
+            <router-link v-if="e.kind !== 'runeword' && !isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
           </li>
         </ul>
       </div>
@@ -408,9 +409,7 @@ const copySummary = async () => {
     <RuneCabinet v-if="catalog" :runes="catalog.runes ?? []" :counts="grail.owned.value.runes" :runewords="allEntries.filter((e) => e.kind === 'runeword')" :files="holdingFiles" />
 
     <p class="small text-muted mt-4 mb-0">
-      Uniques and set items are matched by the row the save file stores, runewords by name. The Chronicle section of the shared stash lists what was found since it
-      was last reset, with the minute and the monster; owned items and loose runes come from the stash and the characters; anything older you tick by hand. Ticks and
-      imports stay in this browser - use Back up to move them.
+      {{ $t('Uniques and set items are matched by the row the save file stores, runewords by name. The Chronicle section of the shared stash lists what was found since it was last reset, with the minute and the monster; owned items and loose runes come from the stash and the characters; anything older you tick by hand. Ticks and imports stay in this browser - use Back up to move them.') }}
     </p>
   </div>
 </template>

@@ -25,9 +25,13 @@ export const setLocale = (lang) => {
 };
 if (typeof document !== 'undefined') document.documentElement.lang = locale.value;
 
+// 'Magic|quality' and 'Magic' may need different German; the part after the
+// bar is context only and never shown
 export function t(key, params) {
-  const text = (locale.value === 'de' && de[key]) || key;
+  const text = (locale.value === 'de' && de[key]) || key.split('|')[0];
   return params ? text.replace(/\{(\w+)\}/g, (m, name) => (params[name] !== undefined ? String(params[name]) : m)) : text;
 }
+// for toLocaleDateString and friends, where the page's language should win
+export const dateLocale = () => (locale.value === 'de' ? 'de-DE' : 'en-GB');
 export const useI18n = () => ({ t, locale, setLocale });
 export const i18n = { install(app) { app.config.globalProperties.$t = t; app.config.globalProperties.$locale = locale; } };

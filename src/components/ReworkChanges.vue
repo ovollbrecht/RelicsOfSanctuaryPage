@@ -27,8 +27,8 @@ defineProps({
         <span v-if="change.old" class="rework-old">{{ change.old }}</span>
         <span v-if="change.old && change.new" class="rework-arrow"> → </span>
         <span v-if="change.new" class="rework-new">{{ change.new }}</span>
-        <span v-if="!change.new" class="rework-removed"> (removed)</span>
-        <span v-if="!change.old" class="rework-added"> (new)</span>
+        <span v-if="!change.new" class="rework-removed"> {{ $t('(removed)') }}</span>
+        <span v-if="!change.old" class="rework-added"> {{ $t('(new)') }}</span>
       </li>
     </ul>
   </div>

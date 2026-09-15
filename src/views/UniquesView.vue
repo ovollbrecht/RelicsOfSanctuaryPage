@@ -33,7 +33,7 @@ const FACET_ELEMENTS = {
 
 const FACET_TRIGGER_LABELS = {
   death: 'Death',
-  level: 'Level',
+  level: 'Level|facet',
   hit: 'On Hit',
   gethit: 'Get Hit',
 };
@@ -386,7 +386,7 @@ onMounted(() => {
       <div class="col-12">
         <h1 class="display-4 mb-4">
           <span class="title-icon">⚔</span> 
-          Unique Items 
+          {{ $t('Unique Items') }} 
           <span class="title-icon">⚔</span>
         </h1>
       </div>
@@ -403,7 +403,7 @@ onMounted(() => {
                 <input 
                   type="text" 
                   class="form-control search-input" 
-                  placeholder="Search items..." 
+                  :placeholder="$t('Search items...')" 
                   @input="handleSearch"
                   @keyup="handleSearchKeyup"
                   :value="searchQuery"
@@ -414,7 +414,7 @@ onMounted(() => {
                   @click="resetFilters"
                   v-if="searchQuery || activeFilters.tier"
                 >
-                  Clear
+                  {{ $t('Clear') }}
                 </button>
               </div>
             </div>
@@ -426,11 +426,11 @@ onMounted(() => {
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h3 class="h5 mb-0">Normal</h3>
+                      <h3 class="h5 mb-0">{{ $t('Normal') }}</h3>
                     </div>
                     <div class="card-body">
                       <div class="mb-3">
-                        <h4 class="h6 mb-2">Weapons</h4>
+                        <h4 class="h6 mb-2">{{ $t('Weapons') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.normal.weapon" 
@@ -444,7 +444,7 @@ onMounted(() => {
                         </div>
                       </div>
                       <div>
-                        <h4 class="h6 mb-2">Armor</h4>
+                        <h4 class="h6 mb-2">{{ $t('Armor') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.normal.armor" 
@@ -464,11 +464,11 @@ onMounted(() => {
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h3 class="h5 mb-0">Exceptional</h3>
+                      <h3 class="h5 mb-0">{{ $t('Exceptional') }}</h3>
                     </div>
                     <div class="card-body">
                       <div class="mb-3">
-                        <h4 class="h6 mb-2">Weapons</h4>
+                        <h4 class="h6 mb-2">{{ $t('Weapons') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.exceptional.weapon" 
@@ -482,7 +482,7 @@ onMounted(() => {
                         </div>
                       </div>
                       <div>
-                        <h4 class="h6 mb-2">Armor</h4>
+                        <h4 class="h6 mb-2">{{ $t('Armor') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.exceptional.armor" 
@@ -502,11 +502,11 @@ onMounted(() => {
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h3 class="h5 mb-0">Elite</h3>
+                      <h3 class="h5 mb-0">{{ $t('Elite') }}</h3>
                     </div>
                     <div class="card-body">
                       <div class="mb-3">
-                        <h4 class="h6 mb-2">Weapons</h4>
+                        <h4 class="h6 mb-2">{{ $t('Weapons') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.elite.weapon" 
@@ -520,7 +520,7 @@ onMounted(() => {
                         </div>
                       </div>
                       <div>
-                        <h4 class="h6 mb-2">Armor</h4>
+                        <h4 class="h6 mb-2">{{ $t('Armor') }}</h4>
                         <div class="d-flex flex-wrap gap-2">
                           <a 
                             v-for="(items, type) in categorizedItems.elite.armor" 
@@ -543,7 +543,7 @@ onMounted(() => {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h3 class="h5 mb-0">Miscellaneous</h3>
+                      <h3 class="h5 mb-0">{{ $t('Miscellaneous') }}</h3>
                     </div>
                     <div class="card-body">
                       <div class="d-flex flex-wrap gap-2">
@@ -572,14 +572,14 @@ onMounted(() => {
       <div class="col-12">
         <div class="d-flex align-items-center flex-wrap filter-indicator">
           <h2 class="h4 mb-2 me-2">
-            <span v-if="searchQuery">Search results for "{{ searchQuery }}"</span>
+            <span v-if="searchQuery">{{ $t('Search results for "{q}"', { q: searchQuery }) }}</span>
             <span v-else-if="activeFilters.type">{{ activeFilters.type }}</span>
-            <span v-else-if="activeFilters.category">{{ activeFilters.category === 'weapon' ? 'Weapons' : 'Armor' }}</span>
-            <span v-else-if="activeFilters.tier === 'misc'">Miscellaneous</span>
-            <span v-else>{{ activeFilters.tier.charAt(0).toUpperCase() + activeFilters.tier.slice(1) }}</span>
+            <span v-else-if="activeFilters.category">{{ $t(activeFilters.category === 'weapon' ? 'Weapons' : 'Armor') }}</span>
+            <span v-else-if="activeFilters.tier === 'misc'">{{ $t('Miscellaneous') }}</span>
+            <span v-else>{{ $t(activeFilters.tier.charAt(0).toUpperCase() + activeFilters.tier.slice(1)) }}</span>
           </h2>
           <button class="btn btn-sm btn-outline-secondary mb-2" @click="resetFilters">
-            Back to All
+            {{ $t('Back to All') }}
           </button>
         </div>
       </div>
@@ -593,18 +593,18 @@ onMounted(() => {
             <button
               class="btn btn-sm farm-add"
               :class="{ on: farmList.has(farmTokenOf(pair)) }"
-              :title="farmList.has(farmTokenOf(pair)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+              :title="farmList.has(farmTokenOf(pair)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
               @click="farmList.toggle(farmTokenOf(pair))"
             >{{ farmList.has(farmTokenOf(pair)) ? '✓' : '+' }}</button>
             <h2 class="h4 mb-1">
-              {{ pair.title ?? pair.normal.Name }}<template v-if="pair.element"> — {{ FACET_ELEMENTS[pair.element] }}</template>
+              {{ pair.title ?? pair.normal.Name }}<template v-if="pair.element"> — {{ $t(FACET_ELEMENTS[pair.element]) }}</template>
             </h2>
             <h3 class="h6 mb-0 fw-normal">
               {{ pair.normal.BaseItemName }}
               <template v-if="pair.facet">
-                <span class="badge facet-chip ms-2">{{ FACET_TRIGGER_LABELS[pair.facet.trigger] }}</span>
+                <span class="badge facet-chip ms-2">{{ $t(FACET_TRIGGER_LABELS[pair.facet.trigger]) }}</span>
                 <span class="facet-chip-arrow">→</span>
-                <span class="badge facet-chip">Exalted: {{ FACET_TRIGGER_LABELS[exaltedTriggerOf(pair.facet.trigger)] }}</span>
+                <span class="badge facet-chip">{{ $t('Exalted: {trigger}', { trigger: $t(FACET_TRIGGER_LABELS[exaltedTriggerOf(pair.facet.trigger)]) }) }}</span>
               </template>
             </h3>
           </div>
@@ -629,7 +629,7 @@ onMounted(() => {
               >
                 <div class="card h-100 item-variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h4 class="h5 mb-0">{{ variant.label }}</h4>
+                    <h4 class="h5 mb-0">{{ $t(variant.label) }}</h4>
                     <!-- What you do to get one: the odds, or the cube recipe
                          for the items you assemble rather than find. -->
                     <small v-if="variant.item.Recipe" class="text-light opacity-75 recipe-line">
@@ -638,24 +638,24 @@ onMounted(() => {
                     <small v-else-if="variant.item.Drops !== false" class="text-light opacity-75">
                       {{ variant.item.Percent }}
                     </small>
-                    <small v-else class="text-light opacity-75">does not drop</small>
+                    <small v-else class="text-light opacity-75">{{ $t('does not drop') }}</small>
                   </div>
                   <div class="card-body">
                     <template v-if="variant.stats.length">
-                      <h5 class="section-header">Stats</h5>
+                      <h5 class="section-header">{{ $t('Stats') }}</h5>
                       <ul class="list-group list-group-flush mb-3">
                         <li
                             v-for="(stat, index) in variant.stats"
                             :key="index"
                             class="list-group-item list-item-enhanced"
                         >
-                          {{ stat[0] }}: {{ stat[1] }}
+                          {{ $t(stat[0]) }}: {{ stat[1] }}
                         </li>
                       </ul>
                     </template>
 
                     <template v-if="variant.properties.length">
-                      <h5 class="section-header">Properties</h5>
+                      <h5 class="section-header">{{ $t('Properties') }}</h5>
                       <ul class="list-group list-group-flush">
                         <li
                             v-for="(prop, propIndex) in variant.properties"
@@ -678,8 +678,8 @@ onMounted(() => {
                          are the odds players see; what it rolls does not. -->
                     <p v-if="variant.item.Spoiler" class="spoiler-note">
                       {{ variant.item.Spoiler === 'all'
-                        ? 'Unnamed here on purpose — find it in game.'
-                        : 'Stats hidden on purpose — find them in game.' }}
+                        ? $t('Unnamed here on purpose — find it in game.')
+                        : $t('Stats hidden on purpose — find them in game.') }}
                     </p>
                   </div>
                 </div>

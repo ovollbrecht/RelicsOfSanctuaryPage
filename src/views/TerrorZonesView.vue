@@ -6,6 +6,7 @@ import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext, computeMonsterDrops, computeItemSources, formatChance } from '@/composables/useDropSimulation.js';
 import { downloadIcs } from '@/composables/useCalendar.js';
+import { t } from '@/i18n';
 import { ELEMENTS, ELEMENT_SHORT, elementClass, areaImmunities as areaImmunitiesOf, farmableElements as farmableElementsOf, blockedElements as blockedElementsOf } from '@/composables/useImmunities.js';
 
 /**
@@ -77,11 +78,11 @@ const fmtCountdown = (ms) => {
 /// "in 2 h 30 min" for a slot start; today's times read as a clock, later ones carry the day.
 const fmtWhen = (ms) => {
   const delta = ms - now.value;
-  if (delta <= 0) return 'now';
+  if (delta <= 0) return t('now');
   const minutes = Math.round(delta / 60000);
-  if (minutes < 60) return `in ${minutes} min`;
+  if (minutes < 60) return t('in {n} min', { n: minutes });
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `in ${hours} h ${String(minutes % 60).padStart(2, '0')} min`;
+  if (hours < 24) return t('in {h} h {m} min', { h: hours, m: String(minutes % 60).padStart(2, '0') });
   return `${fmtShortDay(ms)}, ${fmtTime(ms)}`;
 };
 const sameLocalDay = (a, b) => {
@@ -117,11 +118,11 @@ const exportFavorites = () => {
     const slot = slotAt(k);
     events.push({
       uid: `tz-${k}-${zone.key}@relicsofsanctuary.com`, start: slot.start, end: slot.end,
-      summary: `Terror zone: ${zone.short}`, description: `${zone.name}${zone.boss ? ` · ${zone.boss}` : ''}`,
+      summary: t('Terror zone: {zone}', { zone: zone.short }), description: `${zone.name}${zone.boss ? ` · ${zone.boss}` : ''}`,
       url: `https://relicsofsanctuary.com/#/terror-zones?zone=${encodeURIComponent(zone.key)}`,
     });
   }
-  downloadIcs(`relics-terror-zones-${new Date().toISOString().slice(0, 10)}.ics`, events, { name: 'Relics of Sanctuary · Terror Zones' });
+  downloadIcs(`relics-terror-zones-${new Date().toISOString().slice(0, 10)}.ics`, events, { name: `Relics of Sanctuary · ${t('Terror Zones')}` });
 };
 const toggleFavorite = (zone) => {
   const next = new Set(favorites.value);
@@ -146,7 +147,7 @@ watch(currentIndex, (k, previous) => {
   if (!notify.value || previous == null || k === previous) return;
   const slot = slotAt(k);
   if (!slot || !favorites.value.has(slot.zone.key) || Notification.permission !== 'granted') return;
-  try { new Notification(`Terror Zone: ${slot.zone.name}`, { body: `Terrorized until ${fmtTime(slot.end)}` }); } catch { /* blocked */ }
+  try { new Notification(t('Terror Zone: {zone}', { zone: slot.zone.name }), { body: t('Terrorized until {time}', { time: fmtTime(slot.end) }) }); } catch { /* blocked */ }
 });
 
 // ---------- the drop engine, in terror mode ----------
@@ -172,7 +173,7 @@ const toggleElement = (e) => {
   elementFilter.value = next;
 };
 
-const areaName = (id) => dropData.Areas.find((a) => a.Id === id)?.Name ?? `Area ${id}`;
+const areaName = (id) => dropData.Areas.find((a) => a.Id === id)?.Name ?? t('Area {id}', { id });
 const areaLevel = (id, diff) => dropData.Areas.find((a) => a.Id === id)?.Levels[diff] ?? 0;
 const superUniquesOf = (zone) => {
   const areaSet = new Set(zone.areas);
@@ -301,7 +302,7 @@ const itemOptions = computed(() => {
     if (!prev) seen.set(e.Name, { value: e.Name, label: e.Name, hint, count: 1 });
     else { prev.count += 1; if (!prev.hint.includes(base)) prev.hint += `, ${base}`; }
   });
-  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${o.count} variants` } : o));
+  return [...seen.values()].map((o) => (o.count > 1 ? { ...o, hint: `${o.hint} · ${t('{n} variants', { n: o.count })}` } : o));
 });
 watch(itemKind, () => { selectedItem.value = null; });
 
@@ -464,21 +465,21 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
   <div class="container py-4 page-content tz-page">
     <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
       <div>
-        <h1 class="h2 mb-1">Terror Zones</h1>
+        <h1 class="h2 mb-1">{{ $t('Terror Zones') }}</h1>
         <p class="text-muted mb-0">
-          Single player and offline, {{ tz.config.slotMinutes }} minutes a zone. Times in your zone ({{ timeZone }}).
+          {{ $t('Single player and offline, {n} minutes a zone. Times in your zone ({zone}).', { n: tz.config.slotMinutes, zone: timeZone }) }}
         </p>
       </div>
       <div class="d-flex flex-wrap gap-2 align-items-center">
-        <label class="small text-muted">Difficulty</label>
+        <label class="small text-muted">{{ $t('Difficulty') }}</label>
         <select v-model.number="difficulty" class="form-select form-select-sm w-auto">
-          <option :value="0">Normal</option>
-          <option :value="1">Nightmare</option>
-          <option :value="2">Hell</option>
+          <option :value="0">{{ $t('Normal') }}</option>
+          <option :value="1">{{ $t('Nightmare') }}</option>
+          <option :value="2">{{ $t('Hell') }}</option>
         </select>
-        <label class="small text-muted" title="Terrorized monsters follow the character level of the player who made the game">Char level</label>
+        <label class="small text-muted" :title="$t('Terrorized monsters follow the character level of the player who made the game')">{{ $t('Char level') }}</label>
         <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control form-control-sm clvl" />
-        <label class="small text-muted" title="Sunder charms need a tier 4+ Herald">Herald tier</label>
+        <label class="small text-muted" :title="$t('Sunder charms need a tier 4+ Herald')">{{ $t('Herald tier') }}</label>
         <select v-model.number="heraldTier" class="form-select form-select-sm w-auto">
           <option v-for="tier in 5" :key="tier" :value="tier">{{ tier }}</option>
         </select>
@@ -487,8 +488,8 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
 
     <!-- Schedule outside the imported range: say so instead of showing an empty clock -->
     <div v-if="coverage !== 'ok'" class="alert alert-warning">
-      <template v-if="coverage === 'before'">The imported schedule starts on {{ fmtDay(FIRST) }}.</template>
-      <template v-else>The imported schedule ended on {{ fmtDay(scheduleEnd) }} - the page needs a fresh import.</template>
+      <template v-if="coverage === 'before'">{{ $t('The imported schedule starts on {day}.', { day: fmtDay(FIRST) }) }}</template>
+      <template v-else>{{ $t('The imported schedule ended on {day} - the page needs a fresh import.', { day: fmtDay(scheduleEnd) }) }}</template>
     </div>
 
     <!-- Now -->
@@ -496,44 +497,44 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
       <div class="card-body p-4">
         <div class="row g-4 align-items-center">
           <div class="col-lg-7">
-            <div class="section-header mb-1">Terrorized now</div>
+            <div class="section-header mb-1">{{ $t('Terrorized now') }}</div>
             <div class="d-flex align-items-start gap-2">
-              <button class="star" :class="{ on: isFavorite(current.zone) }" :title="isFavorite(current.zone) ? 'Remove favorite' : 'Mark as favorite'" @click="toggleFavorite(current.zone)">★</button>
+              <button class="star" :class="{ on: isFavorite(current.zone) }" :title="isFavorite(current.zone) ? $t('Remove favorite') : $t('Mark as favorite')" @click="toggleFavorite(current.zone)">★</button>
               <div>
                 <h2 class="now-name mb-1">
                   <a href="#" class="zone-link" @click.prevent="selectZone(current.zone)">{{ current.zone.name }}</a>
                 </h2>
                 <div class="d-flex flex-wrap gap-2 align-items-center small">
-                  <span class="badge act-badge" :class="`act-${current.zone.act}`">Act {{ current.zone.act }}</span>
-                  <span v-if="current.zone.boss" class="badge boss-badge" :title="`${current.zone.boss}'s zone`">{{ current.zone.boss }}</span>
-                  <span v-if="current.zone.bossPacks" class="text-muted">{{ current.zone.bossPacks[0] }}–{{ current.zone.bossPacks[1] }} boss packs</span>
+                  <span class="badge act-badge" :class="`act-${current.zone.act}`">{{ $t('Act {n}', { n: current.zone.act }) }}</span>
+                  <span v-if="current.zone.boss" class="badge boss-badge" :title="$t(`{boss}'s zone`, { boss: current.zone.boss })">{{ current.zone.boss }}</span>
+                  <span v-if="current.zone.bossPacks" class="text-muted">{{ $t('{min}–{max} boss packs', { min: current.zone.bossPacks[0], max: current.zone.bossPacks[1] }) }}</span>
                 </div>
                 <div class="mt-2 small d-flex flex-wrap gap-1 align-items-center">
-                  <span class="text-muted me-1">Farm with:</span>
-                  <span v-for="e in farmableElements(current.zone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ e }}</span>
+                  <span class="text-muted me-1">{{ $t('Farm with:') }}</span>
+                  <span v-for="e in farmableElements(current.zone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ $t(e) }}</span>
                   <span v-if="blockedElements(current.zone, difficulty).length" class="text-muted ms-2">
-                    immune everywhere: {{ blockedElements(current.zone, difficulty).join(', ') }}
+                    {{ $t('immune everywhere: {list}', { list: blockedElements(current.zone, difficulty).map((e) => $t(e)).join(', ') }) }}
                   </span>
                 </div>
               </div>
             </div>
             <div class="mt-3 small">
-              <span class="text-muted">Superuniques:</span>
+              <span class="text-muted">{{ $t('Superuniques:') }}</span>
               <template v-if="superUniquesOf(current.zone).length">
                 <router-link v-for="su in superUniquesOf(current.zone)" :key="su.Id" :to="dropCalcLink({ su: su.Id })" class="chip">{{ su.Name }}</router-link>
               </template>
-              <span v-else class="text-muted">none</span>
+              <span v-else class="text-muted">{{ $t('none') }}</span>
             </div>
           </div>
           <div class="col-lg-5">
             <div class="countdown-box">
-              <div class="small text-muted">Ends {{ fmtTime(current.end) }} · remaining</div>
+              <div class="small text-muted">{{ $t('Ends {time} · remaining', { time: fmtTime(current.end) }) }}</div>
               <div class="countdown">{{ fmtCountdown(remainingMs) }}</div>
               <div class="progress tz-progress" role="progressbar" :aria-valuenow="Math.round(progress)" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
               </div>
               <div v-if="nextSlot" class="next-up mt-2">
-                <span class="text-muted small">Next, {{ fmtTime(nextSlot.start) }}:</span>
+                <span class="text-muted small">{{ $t('Next, {time}:', { time: fmtTime(nextSlot.start) }) }}</span>
                 <a href="#" class="zone-link" @click.prevent="selectZone(nextSlot.zone)">{{ nextSlot.zone.name }}</a>
                 <span class="badge act-badge ms-1" :class="`act-${nextSlot.zone.act}`">A{{ nextSlot.zone.act }}</span>
                 <span v-if="nextSlot.zone.boss" class="badge boss-badge ms-1">{{ nextSlot.zone.boss }}</span>
@@ -552,39 +553,39 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
           <div class="card-body p-3">
             <div class="row g-3 align-items-end">
               <div class="col-sm-4">
-                <label class="form-label small text-muted mb-1">Show</label>
+                <label class="form-label small text-muted mb-1">{{ $t('Show') }}</label>
                 <select v-model.number="actFilter" class="form-select form-select-sm">
-                  <option :value="0">All acts</option>
-                  <option v-for="act in 5" :key="act" :value="act">Act {{ act }} only</option>
+                  <option :value="0">{{ $t('All acts') }}</option>
+                  <option v-for="act in 5" :key="act" :value="act">{{ $t('Act {n} only', { n: act }) }}</option>
                 </select>
               </div>
               <div class="col-sm-8">
-                <label class="form-label small text-muted mb-1">When can I farm…</label>
+                <label class="form-label small text-muted mb-1">{{ $t('When can I farm…') }}</label>
                 <div class="d-flex gap-2">
                   <select v-model="itemKind" class="form-select form-select-sm w-auto">
-                    <option value="unique">Unique</option>
-                    <option value="set">Set</option>
+                    <option value="unique">{{ $t('Unique') }}</option>
+                    <option value="set">{{ $t('Set') }}</option>
                   </select>
                   <div class="flex-grow-1">
-                    <SearchableSelect v-model="selectedItem" :options="itemOptions" placeholder="Pick an item - the lists keep only zones where it can drop" />
+                    <SearchableSelect v-model="selectedItem" :options="itemOptions" :placeholder="$t('Pick an item - the lists keep only zones where it can drop')" />
                   </div>
-                  <button v-if="selectedItem != null" class="btn btn-sm btn-outline-secondary" title="Clear" @click="selectedItem = null">×</button>
+                  <button v-if="selectedItem != null" class="btn btn-sm btn-outline-secondary" :title="$t('Clear')" @click="selectedItem = null">×</button>
                 </div>
               </div>
               <div class="col-12 d-flex flex-wrap gap-1 align-items-center">
-                <span class="small text-muted me-1" title="Keeps the zones where at least one area has no monster immune to the element">Farmable with</span>
-                <button v-for="e in ELEMENTS" :key="e" class="btn btn-sm el-toggle" :class="[elementClass(e), { active: elementFilter.has(e) }]" @click="toggleElement(e)">{{ e }}</button>
+                <span class="small text-muted me-1" :title="$t('Keeps the zones where at least one area has no monster immune to the element')">{{ $t('Farmable with') }}</span>
+                <button v-for="e in ELEMENTS" :key="e" class="btn btn-sm el-toggle" :class="[elementClass(e), { active: elementFilter.has(e) }]" @click="toggleElement(e)">{{ $t(e) }}</button>
               </div>
               <div class="col-12 d-flex flex-wrap gap-3 align-items-center">
                 <div class="form-check form-switch mb-0">
                   <input id="fav-only" v-model="onlyFavorites" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label small" for="fav-only">Favorites only <span class="text-muted">({{ favorites.size }})</span></label>
+                  <label class="form-check-label small" for="fav-only">{{ $t('Favorites only') }} <span class="text-muted">({{ favorites.size }})</span></label>
                 </div>
                 <div v-if="notifyAvailable" class="form-check form-switch mb-0">
                   <input id="notify" class="form-check-input" type="checkbox" :checked="notify" @change="toggleNotify" />
-                  <label class="form-check-label small" for="notify" title="A browser notification when a favorite starts - only while this tab is open">Notify me when a favorite starts</label>
+                  <label class="form-check-label small" for="notify" :title="$t('A browser notification when a favorite starts - only while this tab is open')">{{ $t('Notify me when a favorite starts') }}</label>
                 </div>
-                <button class="btn btn-sm btn-outline-secondary" :disabled="!favorites.size" title="An .ics file with every slot of your favorites in the next two weeks - import it once and the phone rings when Travincal is up" @click="exportFavorites">Favorites to calendar</button>
+                <button class="btn btn-sm btn-outline-secondary" :disabled="!favorites.size" :title="$t('An .ics file with every slot of your favorites in the next two weeks - import it once and the phone rings when Travincal is up')" @click="exportFavorites">{{ $t('Favorites to calendar') }}</button>
               </div>
             </div>
           </div>
@@ -593,19 +594,19 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
         <!-- Item result -->
         <div v-if="selectedItem != null" class="card card-enhanced mb-4">
           <div class="card-header card-header-primary d-flex justify-content-between align-items-center">
-            <h2 class="h5 card-title m-0">{{ itemName }} - where and when</h2>
-            <router-link v-if="itemLink" :to="itemLink" class="small">all sources ›</router-link>
+            <h2 class="h5 card-title m-0">{{ $t('{item} - where and when', { item: itemName }) }}</h2>
+            <router-link v-if="itemLink" :to="itemLink" class="small">{{ $t('all sources') }} ›</router-link>
           </div>
           <div class="card-body p-0">
-            <div v-if="itemZones.length === 0 && !itemSearch.herald" class="p-3 text-muted small">No terror zone drops this item on this difficulty.</div>
+            <div v-if="itemZones.length === 0 && !itemSearch.herald" class="p-3 text-muted small">{{ $t('No terror zone drops this item on this difficulty.') }}</div>
             <div v-if="itemSearch.herald" class="p-3 pb-2 small">
-              <span class="text-muted">Any terror zone, from a Herald:</span> {{ fmt(itemSearch.herald.chance) }}
-              <span v-if="itemSearch.heraldOnly" class="text-muted d-block">Only heralds carry it, so no zone beats another.</span>
+              <span class="text-muted">{{ $t('Any terror zone, from a Herald:') }}</span> {{ fmt(itemSearch.herald.chance) }}
+              <span v-if="itemSearch.heraldOnly" class="text-muted d-block">{{ $t('Only heralds carry it, so no zone beats another.') }}</span>
             </div>
             <div v-if="itemZones.length" class="table-responsive">
               <table class="table table-dark table-sm table-hover mb-0 align-middle">
                 <thead>
-                  <tr><th>Zone</th><th>Next</th><th class="text-end">Best chance / kill</th><th>From</th></tr>
+                  <tr><th>{{ $t('Zone') }}</th><th>{{ $t('Next') }}</th><th class="text-end">{{ $t('Best chance / kill') }}</th><th>{{ $t('From') }}</th></tr>
                 </thead>
                 <tbody>
                   <tr v-for="entry in itemZones" :key="entry.zoneIndex" :class="{ 'row-now': entry.next && entry.next.index === currentIndex }">
@@ -615,8 +616,8 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                       <span v-if="entry.zone.boss" class="badge boss-badge ms-1">{{ entry.zone.boss }}</span>
                     </td>
                     <td class="text-nowrap">
-                      <template v-if="entry.next">{{ entry.next.index === currentIndex ? 'now' : fmtWhen(entry.next.start) }}</template>
-                      <span v-else class="text-muted">not in the imported range</span>
+                      <template v-if="entry.next">{{ entry.next.index === currentIndex ? $t('now') : fmtWhen(entry.next.start) }}</template>
+                      <span v-else class="text-muted">{{ $t('not in the imported range') }}</span>
                     </td>
                     <td class="text-end text-nowrap">{{ fmt(entry.row.chance) }}</td>
                     <td class="small text-muted">{{ entry.row.monsterName }}</td>
@@ -630,16 +631,16 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
         <!-- Upcoming -->
         <div class="card card-enhanced mb-4">
           <div class="card-header card-header-primary">
-            <h2 class="h5 card-title m-0">Coming up<span v-if="filtersActive" class="text-muted fw-normal small"> · filtered</span></h2>
+            <h2 class="h5 card-title m-0">{{ $t('Coming up') }}<span v-if="filtersActive" class="text-muted fw-normal small"> · {{ $t('filtered') }}</span></h2>
           </div>
           <div class="card-body p-0">
-            <div v-if="upcoming.length === 0" class="p-3 text-muted small">Nothing matches in the imported range.</div>
+            <div v-if="upcoming.length === 0" class="p-3 text-muted small">{{ $t('Nothing matches in the imported range.') }}</div>
             <ul v-else class="list-unstyled mb-0 slot-list">
               <li v-for="slot in upcoming" :key="slot.index" class="slot-row" :class="{ 'row-boss': slot.zone.boss }">
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ sameLocalDay(slot.start, now) ? fmtTime(slot.start) : `${fmtShortDay(slot.start)} ${fmtTime(slot.start)}` }}</span>
                 <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}<span v-if="slot.zone.boss" class="badge boss-badge ms-2">{{ slot.zone.boss }}</span></a>
-                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
+                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="$t('{el}: farmable', { el: $t(e) })">{{ $t(ELEMENT_SHORT[e]) }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
                 <span class="slot-when text-muted small">{{ fmtWhen(slot.start) }}</span>
               </li>
@@ -650,23 +651,23 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
         <!-- Day view -->
         <div class="card card-enhanced">
           <div class="card-header card-header-primary d-flex flex-wrap justify-content-between align-items-center gap-2">
-            <h2 class="h5 card-title m-0">{{ dayLabel }}<span v-if="isToday" class="text-muted fw-normal small"> · today</span></h2>
+            <h2 class="h5 card-title m-0">{{ dayLabel }}<span v-if="isToday" class="text-muted fw-normal small"> · {{ $t('today') }}</span></h2>
             <div class="d-flex gap-1 align-items-center">
               <button class="btn btn-sm btn-outline-secondary" :disabled="dayKey <= dayMin" @click="shiftDay(-1)">‹</button>
               <input v-model="dayKey" type="date" class="form-control form-control-sm w-auto" :min="dayMin" :max="dayMax" />
               <button class="btn btn-sm btn-outline-secondary" :disabled="dayKey >= dayMax" @click="shiftDay(1)">›</button>
-              <button v-if="!isToday" class="btn btn-sm btn-outline-secondary" @click="dayKey = toDayKey(now)">Today</button>
+              <button v-if="!isToday" class="btn btn-sm btn-outline-secondary" @click="dayKey = toDayKey(now)">{{ $t('Today') }}</button>
             </div>
           </div>
           <div class="card-body p-0">
-            <div v-if="daySlots.length === 0" class="p-3 text-muted small">No schedule for this day.</div>
+            <div v-if="daySlots.length === 0" class="p-3 text-muted small">{{ $t('No schedule for this day.') }}</div>
             <ul v-else class="list-unstyled mb-0 slot-list">
               <li v-for="slot in daySlots" :key="slot.index" class="slot-row"
                   :class="{ 'row-now': slot.index === currentIndex, 'row-past': slot.end <= now, 'row-dim': !passesFilters(slot.zone, slot.zoneIndex), 'row-boss': slot.zone.boss }">
                 <button class="star" :class="{ on: isFavorite(slot.zone) }" @click="toggleFavorite(slot.zone)">★</button>
                 <span class="slot-time">{{ fmtTime(slot.start) }}</span>
                 <a href="#" class="zone-link flex-grow-1" @click.prevent="selectZone(slot.zone)">{{ slot.zone.name }}<span v-if="slot.zone.boss" class="badge boss-badge ms-2">{{ slot.zone.boss }}</span></a>
-                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
+                <span class="el-row"><span v-for="e in farmableElements(slot.zone, difficulty)" :key="e" class="el-dot" :class="elementClass(e)" :title="$t('{el}: farmable', { el: $t(e) })">{{ $t(ELEMENT_SHORT[e]) }}</span></span>
                 <span class="badge act-badge" :class="`act-${slot.zone.act}`">A{{ slot.zone.act }}</span>
               </li>
             </ul>
@@ -682,85 +683,84 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
               <div>
                 <h2 class="h5 card-title m-0">{{ selectedZone.name }}</h2>
                 <div class="d-flex flex-wrap gap-2 mt-1 small">
-                  <span class="badge act-badge" :class="`act-${selectedZone.act}`">Act {{ selectedZone.act }}</span>
+                  <span class="badge act-badge" :class="`act-${selectedZone.act}`">{{ $t('Act {n}', { n: selectedZone.act }) }}</span>
                   <span v-if="selectedZone.boss" class="badge boss-badge">{{ selectedZone.boss }}</span>
-                  <span v-if="selectedZone.bossPacks" class="text-muted">{{ selectedZone.bossPacks[0] }}–{{ selectedZone.bossPacks[1] }} boss packs</span>
+                  <span v-if="selectedZone.bossPacks" class="text-muted">{{ $t('{min}–{max} boss packs', { min: selectedZone.bossPacks[0], max: selectedZone.bossPacks[1] }) }}</span>
                 </div>
                 <div class="d-flex flex-wrap gap-1 mt-2 small align-items-center">
-                  <span class="text-muted me-1">Farm with:</span>
-                  <span v-for="e in farmableElements(selectedZone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ e }}</span>
+                  <span class="text-muted me-1">{{ $t('Farm with:') }}</span>
+                  <span v-for="e in farmableElements(selectedZone, difficulty)" :key="e" class="badge el" :class="elementClass(e)">{{ $t(e) }}</span>
                 </div>
               </div>
               <div class="d-flex gap-1">
                 <button class="star" :class="{ on: isFavorite(selectedZone) }" @click="toggleFavorite(selectedZone)">★</button>
-                <button class="btn btn-sm btn-outline-secondary" title="Close" @click="selectZone(null)">×</button>
+                <button class="btn btn-sm btn-outline-secondary" :title="$t('Close')" @click="selectZone(null)">×</button>
               </div>
             </div>
             <div class="card-body p-3">
-              <div class="section-header mb-1">Next up</div>
+              <div class="section-header mb-1">{{ $t('Next up') }}</div>
               <ul class="list-unstyled mb-3 small">
                 <li v-for="slot in nextOccurrences(zoneByKey.get(selectedZone.key))" :key="slot.index" :class="{ 'fw-semibold': slot.index === currentIndex }">
-                  {{ slot.index === currentIndex ? 'Now, until ' + fmtTime(slot.end) : `${fmtShortDay(slot.start)} ${fmtTime(slot.start)} · ${fmtWhen(slot.start)}` }}
+                  {{ slot.index === currentIndex ? $t('Now, until {time}', { time: fmtTime(slot.end) }) : `${fmtShortDay(slot.start)} ${fmtTime(slot.start)} · ${fmtWhen(slot.start)}` }}
                 </li>
-                <li v-if="nextOccurrences(zoneByKey.get(selectedZone.key)).length === 0" class="text-muted">Not within the imported range.</li>
+                <li v-if="nextOccurrences(zoneByKey.get(selectedZone.key)).length === 0" class="text-muted">{{ $t('Not within the imported range.') }}</li>
               </ul>
 
-              <div class="section-header mb-1">Areas</div>
+              <div class="section-header mb-1">{{ $t('Areas') }}</div>
               <ul class="list-unstyled mb-3 small area-list">
                 <li v-for="areaId in selectedZone.areas" :key="areaId" class="d-flex flex-wrap align-items-center gap-1">
                   <router-link :to="dropCalcLink({ area: String(areaId) })" class="chip"
-                               :title="`Area level ${areaLevel(areaId, difficulty)} - open in the drop calculator`">{{ areaName(areaId) }}</router-link>
-                  <span v-if="areaImmunities(areaId, difficulty).size" class="text-muted">immune:</span>
-                  <span v-for="e in ELEMENTS.filter((x) => areaImmunities(areaId, difficulty).has(x))" :key="e" class="el-dot" :class="elementClass(e)">{{ ELEMENT_SHORT[e] }}</span>
-                  <span v-if="!areaImmunities(areaId, difficulty).size" class="text-muted">no immunities</span>
+                               :title="$t('Area level {lvl} - open in the drop calculator', { lvl: areaLevel(areaId, difficulty) })">{{ areaName(areaId) }}</router-link>
+                  <span v-if="areaImmunities(areaId, difficulty).size" class="text-muted">{{ $t('immune:') }}</span>
+                  <span v-for="e in ELEMENTS.filter((x) => areaImmunities(areaId, difficulty).has(x))" :key="e" class="el-dot" :class="elementClass(e)">{{ $t(ELEMENT_SHORT[e]) }}</span>
+                  <span v-if="!areaImmunities(areaId, difficulty).size" class="text-muted">{{ $t('no immunities') }}</span>
                 </li>
               </ul>
 
-              <div class="section-header mb-1">Superuniques</div>
+              <div class="section-header mb-1">{{ $t('Superuniques') }}</div>
               <div class="d-flex flex-wrap gap-1 mb-3">
                 <router-link v-for="su in superUniquesOf(selectedZone)" :key="su.Id" :to="dropCalcLink({ su: su.Id })" class="chip">{{ su.Name }}</router-link>
-                <span v-if="superUniquesOf(selectedZone).length === 0" class="text-muted small">none</span>
+                <span v-if="superUniquesOf(selectedZone).length === 0" class="text-muted small">{{ $t('none') }}</span>
               </div>
 
-              <div class="section-header mb-1">Runes</div>
+              <div class="section-header mb-1">{{ $t('Runes') }}</div>
               <div v-if="selectedZoneRunes" class="rune-box mb-3 small">
                 <div v-if="selectedZoneRunes.max">
-                  <span class="text-muted">Highest rune here:</span> <strong class="rune-name">{{ runeName(selectedZoneRunes.max) }}</strong>
+                  <span class="text-muted">{{ $t('Highest rune here:') }}</span> <strong class="rune-name">{{ runeName(selectedZoneRunes.max) }}</strong>
                 </div>
                 <div v-if="selectedZoneRunes.any">
-                  <span class="text-muted">Any rune, per ordinary kill:</span> {{ fmt(selectedZoneRunes.any.chance) }}
-                  <span class="text-muted">· best from</span>
+                  <span class="text-muted">{{ $t('Any rune, per ordinary kill:') }}</span> {{ fmt(selectedZoneRunes.any.chance) }}
+                  <span class="text-muted">· {{ $t('best from') }}</span>
                   <router-link :to="dropCalcLink(selectedZoneRunes.any.source.query)" class="text-muted">{{ selectedZoneRunes.any.source.label }}</router-link>
                 </div>
                 <div v-if="selectedZoneRunes.high">
-                  <span class="text-muted">Pul or better, per ordinary kill:</span> {{ fmt(selectedZoneRunes.high.chance) }}
-                  <span class="text-muted">· best from</span>
+                  <span class="text-muted">{{ $t('Pul or better, per ordinary kill:') }}</span> {{ fmt(selectedZoneRunes.high.chance) }}
+                  <span class="text-muted">· {{ $t('best from') }}</span>
                   <router-link :to="dropCalcLink(selectedZoneRunes.high.source.query)" class="text-muted">{{ selectedZoneRunes.high.source.label }}</router-link>
                 </div>
-                <div v-if="!selectedZoneRunes.max" class="text-muted">No rune drops from this zone's tables.</div>
+                <div v-if="!selectedZoneRunes.max" class="text-muted">{{ $t(`No rune drops from this zone's tables.`) }}</div>
               </div>
 
-              <div class="section-header mb-1">What can drop here</div>
+              <div class="section-header mb-1">{{ $t('What can drop here') }}</div>
               <p class="small text-muted mb-2">
-                Best chance per kill on {{ ['Normal', 'Nightmare', 'Hell'][difficulty] }} at character level {{ charLevel }}, from unique monsters and
-                superuniques, players 1, no magic find.
+                {{ $t('Best chance per kill on {diff} at character level {lvl}, from unique monsters and superuniques, players 1, no magic find.', { diff: $t(['Normal', 'Nightmare', 'Hell'][difficulty]), lvl: charLevel }) }}
               </p>
               <div class="d-flex gap-2 mb-2">
                 <select v-model="dropKind" class="form-select form-select-sm w-auto">
-                  <option value="all">Uniques + sets</option>
-                  <option value="uniques">Uniques</option>
-                  <option value="sets">Sets</option>
+                  <option value="all">{{ $t('Uniques + sets') }}</option>
+                  <option value="uniques">{{ $t('Uniques') }}</option>
+                  <option value="sets">{{ $t('Sets') }}</option>
                 </select>
-                <input v-model="dropQuery" class="form-control form-control-sm" placeholder="Filter by name or base" />
+                <input v-model="dropQuery" class="form-control form-control-sm" :placeholder="$t('Filter by name or base')" />
               </div>
               <div class="table-responsive drop-table">
                 <table class="table table-dark table-sm table-hover mb-0 align-middle">
-                  <thead><tr><th>Item</th><th class="text-end">Chance</th><th>Best from</th></tr></thead>
+                  <thead><tr><th>{{ $t('Item') }}</th><th class="text-end">{{ $t('Chance') }}</th><th>{{ $t('Best from') }}</th></tr></thead>
                   <tbody>
                     <tr v-for="row in selectedZoneDrops.slice(0, DROP_ROW_LIMIT)" :key="row.kind + row.name">
                       <td>
                         <span :class="row.kind === 'set' ? 'set-name' : 'unique-name'">{{ row.name }}</span>
-                        <span v-if="row.mod" class="flag" :title="row.mod === 'added' ? 'Added by the mod' : 'Changed by the mod'"></span>
+                        <span v-if="row.mod" class="flag" :title="row.mod === 'added' ? $t('Added by the mod') : $t('Changed by the mod')"></span>
                         <div class="small text-muted">{{ row.baseName }}<span v-if="row.setName"> · {{ row.setName }}</span></div>
                       </td>
                       <td class="text-end text-nowrap">{{ fmt(row.chance) }}</td>
@@ -769,25 +769,25 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
                   </tbody>
                 </table>
                 <div v-if="selectedZoneDrops.length > DROP_ROW_LIMIT" class="small text-muted p-2">
-                  {{ selectedZoneDrops.length - DROP_ROW_LIMIT }} more - narrow it down with the filter, or open an area in the drop calculator.
+                  {{ $t('{n} more - narrow it down with the filter, or open an area in the drop calculator.', { n: selectedZoneDrops.length - DROP_ROW_LIMIT }) }}
                 </div>
-                <div v-if="selectedZoneDrops.length === 0" class="small text-muted p-2">Nothing matches.</div>
+                <div v-if="selectedZoneDrops.length === 0" class="small text-muted p-2">{{ $t('Nothing matches.') }}</div>
               </div>
             </div>
           </template>
           <div v-else class="card-body p-4 text-muted">
-            <div class="section-header mb-2">Zone details</div>
-            <p class="mb-2">Pick a zone from the lists - or from this overview - to see its next slots, its areas and superuniques with links into the drop calculator, and what it can drop in terror mode.</p>
+            <div class="section-header mb-2">{{ $t('Zone details') }}</div>
+            <p class="mb-2">{{ $t('Pick a zone from the lists - or from this overview - to see its next slots, its areas and superuniques with links into the drop calculator, and what it can drop in terror mode.') }}</p>
             <div class="zone-grid">
               <div v-for="(zone, zi) in zones" :key="zone.key" class="zone-tile" :class="{ dim: !passesFilters(zone, zi), fav: isFavorite(zone), boss: zone.boss }">
-                <button class="star tile-star" :class="{ on: isFavorite(zone) }" :title="isFavorite(zone) ? 'Remove favorite' : 'Mark as favorite'" @click="toggleFavorite(zone)">★</button>
+                <button class="star tile-star" :class="{ on: isFavorite(zone) }" :title="isFavorite(zone) ? $t('Remove favorite') : $t('Mark as favorite')" @click="toggleFavorite(zone)">★</button>
                 <button class="tile-main" @click="selectZone(zone)">
                   <span class="d-flex gap-1 align-items-center">
                     <span class="badge act-badge" :class="`act-${zone.act}`">A{{ zone.act }}</span>
                     <span v-if="zone.boss" class="badge boss-badge">{{ zone.boss }}</span>
                   </span>
                   <span class="tile-name">{{ zone.short }}</span>
-                  <span class="tile-next">{{ nextOccurrences(zi, 1)[0] ? (nextOccurrences(zi, 1)[0].index === currentIndex ? 'now' : fmtWhen(nextOccurrences(zi, 1)[0].start)) : '—' }}</span>
+                  <span class="tile-next">{{ nextOccurrences(zi, 1)[0] ? (nextOccurrences(zi, 1)[0].index === currentIndex ? $t('now') : fmtWhen(nextOccurrences(zi, 1)[0].start)) : '—' }}</span>
                 </button>
               </div>
             </div>
@@ -797,10 +797,10 @@ watch([selectedZoneKey, dayKey, difficulty, charLevel, heraldTier, actFilter, on
     </div>
 
     <p class="small text-muted mt-4 mb-0 source-note">
-      Zones and levels from the game's <code>desecratedzones.json</code>; areas, superuniques and drop odds from this site's data.
-      The slot sequence is imported from <a :href="tz.source.page" target="_blank" rel="noopener">{{ tz.source.name }}</a>
-      (imported {{ new Date(tz.generatedAt).toLocaleDateString() }}, covers until {{ fmtDay(scheduleEnd) }}<template v-if="daysLeft >= 0">, {{ daysLeft }} days</template>).
-      Blizzard's generator behind the seed is not public; when it is, the import goes away.
+      <span v-html="$t(`Zones and levels from the game's {file}; areas, superuniques and drop odds from this site's data.`, { file: '<code>desecratedzones.json</code>' })"></span>
+      {{ $t('The slot sequence is imported from') }} <a :href="tz.source.page" target="_blank" rel="noopener">{{ tz.source.name }}</a>
+      ({{ $t('imported {date}, covers until {day}', { date: new Date(tz.generatedAt).toLocaleDateString(), day: fmtDay(scheduleEnd) }) }}<template v-if="daysLeft >= 0">, {{ $t('{n} days', { n: daysLeft }) }}</template>).
+      {{ $t(`Blizzard's generator behind the seed is not public; when it is, the import goes away.`) }}
     </p>
   </div>
 </template>

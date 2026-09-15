@@ -56,15 +56,15 @@ const reach = computed(() => {
 <template>
   <div class="card card-enhanced">
     <div class="card-header card-header-primary d-flex flex-wrap justify-content-between align-items-baseline gap-2">
-      <h2 class="h5 card-title m-0">Rune cabinet</h2>
+      <h2 class="h5 card-title m-0">{{ $t('Rune cabinet') }}</h2>
       <span v-if="totals.all" class="small text-muted">
-        {{ totals.all }} loose {{ totals.all === 1 ? 'rune' : 'runes' }} · {{ totals.high }} Vex or higher<template v-if="totals.best"> · highest {{ totals.best.name }}</template>
+        {{ totals.all === 1 ? $t('1 loose rune') : $t('{n} loose runes', { n: totals.all }) }} · {{ $t('{n} Vex or higher', { n: totals.high }) }}<template v-if="totals.best"> · {{ $t('highest {rune}', { rune: totals.best.name }) }}</template>
       </span>
     </div>
     <div class="card-body p-3">
       <template v-if="files">
         <div class="rune-grid">
-          <div v-for="r in cells" :key="r.code" class="rune" :class="{ have: r.n > 0, high: r.high }" :title="`${r.name} Rune (#${r.number}) · ${r.n} loose`">
+          <div v-for="r in cells" :key="r.code" class="rune" :class="{ have: r.n > 0, high: r.high }" :title="$t('{rune} Rune (#{num}) · {n} loose', { rune: r.name, num: r.number, n: r.n })">
             <img v-if="iconUrl(r.code)" :src="iconUrl(r.code)" class="rune-img" alt="" />
             <div class="rune-name">{{ r.name }}</div>
             <div class="rune-n">{{ r.n || '·' }}</div>
@@ -72,30 +72,30 @@ const reach = computed(() => {
         </div>
         <div class="row g-3 mt-1">
           <div class="col-md-6">
-            <div class="reach-title">Missing runewords you could make now <span class="text-muted">· {{ reach.now.length }}</span></div>
+            <div class="reach-title">{{ $t('Missing runewords you could make now') }} <span class="text-muted">· {{ reach.now.length }}</span></div>
             <ul v-if="reach.now.length" class="list-unstyled small m-0 reach">
               <li v-for="rw in (allNow ? reach.now : reach.now.slice(0, SHOW))" :key="rw.id">
                 <router-link :to="{ path: '/runewords', query: { q: rw.name } }" class="name runeword">{{ rw.name }}</router-link>
                 <span class="text-muted"> · {{ rw.runes.join(' ') }}</span>
               </li>
-              <li v-if="reach.now.length > SHOW"><a href="#" class="text-muted" @click.prevent="allNow = !allNow">{{ allNow ? 'Fewer' : `All ${reach.now.length}` }}</a></li>
+              <li v-if="reach.now.length > SHOW"><a href="#" class="text-muted" @click.prevent="allNow = !allNow">{{ allNow ? $t('Fewer') : $t('All {n}', { n: reach.now.length }) }}</a></li>
             </ul>
-            <div v-else class="small text-muted">None - either the runes are short or the words are made already.</div>
+            <div v-else class="small text-muted">{{ $t('None - either the runes are short or the words are made already.') }}</div>
           </div>
           <div class="col-md-6">
-            <div class="reach-title">One rune short <span class="text-muted">· {{ reach.oneShort.length }}</span></div>
+            <div class="reach-title">{{ $t('One rune short') }} <span class="text-muted">· {{ reach.oneShort.length }}</span></div>
             <ul v-if="reach.oneShort.length" class="list-unstyled small m-0 reach">
               <li v-for="rw in (allShort ? reach.oneShort : reach.oneShort.slice(0, SHOW))" :key="rw.id">
                 <router-link :to="{ path: '/runewords', query: { q: rw.name } }" class="name runeword">{{ rw.name }}</router-link>
-                <span class="text-muted"> · needs <strong class="text-body">{{ rw.missing[0] }}</strong></span>
+                <span class="text-muted"> · {{ $t('needs') }} <strong class="text-body">{{ rw.missing[0] }}</strong></span>
               </li>
-              <li v-if="reach.oneShort.length > SHOW"><a href="#" class="text-muted" @click.prevent="allShort = !allShort">{{ allShort ? 'Fewer' : `All ${reach.oneShort.length}` }}</a></li>
+              <li v-if="reach.oneShort.length > SHOW"><a href="#" class="text-muted" @click.prevent="allShort = !allShort">{{ allShort ? $t('Fewer') : $t('All {n}', { n: reach.oneShort.length }) }}</a></li>
             </ul>
-            <div v-else class="small text-muted">Nothing within one rune.</div>
+            <div v-else class="small text-muted">{{ $t('Nothing within one rune.') }}</div>
           </div>
         </div>
       </template>
-      <div v-else class="small text-muted">Import the shared stash and your characters to see which runes lie around and which missing runewords they already cover.</div>
+      <div v-else class="small text-muted">{{ $t('Import the shared stash and your characters to see which runes lie around and which missing runewords they already cover.') }}</div>
     </div>
   </div>
 </template>

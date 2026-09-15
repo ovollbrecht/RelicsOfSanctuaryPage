@@ -1,5 +1,6 @@
 import { resolveSource, traverseTc, qualityChances, uniquePool, setPool } from './useDropSimulation.js';
 import { monsterBlockedFor } from './useImmunities.js';
+import { t } from '@/i18n';
 
 /**
  * Where to farm for a list of items.
@@ -60,7 +61,7 @@ export const SPOT_PRESETS = {
       profile: { packs: 2, minionsPerPack: 3, champPacks: 1, champsPerPack: 3, trash: 6, heralds: 0, superUniques: true, boss: false, minutes: 3 } },
   ],
 };
-export const presetsFor = (areaId) => SPOT_PRESETS[areaId] ?? [];
+export const presetsFor = (areaId) => (SPOT_PRESETS[areaId] ?? []).map((p) => ({ ...p, label: t(p.label) }));
 
 /// A spot's pack count from the zone data: the zone's span, spread over its areas.
 export const zonePacksFor = (tz, areaId) => {
@@ -248,7 +249,7 @@ export function buildSpots(data, difficulty) {
     let s = spots.get(areaId);
     if (!s) {
       const area = data.Areas.find((a) => a.Id === areaId);
-      s = { areaId, name: area?.Name ?? `Area ${areaId}`, act: area?.Act ?? 0, numMon: area?.NumMon ?? 0, monsters: [], weights: new Map(), placed: [], superUniques: [], boss: -1 };
+      s = { areaId, name: area?.Name ?? t('Area {id}', { id: areaId }), act: area?.Act ?? 0, numMon: area?.NumMon ?? 0, monsters: [], weights: new Map(), placed: [], superUniques: [], boss: -1 };
       spots.set(areaId, s);
     }
     return s;
@@ -344,10 +345,10 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
     }
     if (hit > 0) parts.push({ label, hit });
   };
-  take('Trash', byType.normal.any, counts.normal, { any: byType.normal.runesAny, high: byType.normal.runesHigh, max: byType.normal.runesMax }, byType.normal.per);
-  take('Champions', byType.champion.any, counts.champion, { any: byType.champion.runesAny, high: byType.champion.runesHigh, max: byType.champion.runesMax }, byType.champion.per);
-  take('Unique packs', byType.unique.any, counts.unique, { any: byType.unique.runesAny, high: byType.unique.runesHigh, max: byType.unique.runesMax }, byType.unique.per);
-  take('Minions', byType.minion.any, counts.minion, { any: byType.minion.runesAny, high: byType.minion.runesHigh, max: byType.minion.runesMax }, byType.minion.per);
+  take(t('Trash'), byType.normal.any, counts.normal, { any: byType.normal.runesAny, high: byType.normal.runesHigh, max: byType.normal.runesMax }, byType.normal.per);
+  take(t('Champions'), byType.champion.any, counts.champion, { any: byType.champion.runesAny, high: byType.champion.runesHigh, max: byType.champion.runesMax }, byType.champion.per);
+  take(t('Unique packs'), byType.unique.any, counts.unique, { any: byType.unique.runesAny, high: byType.unique.runesHigh, max: byType.unique.runesMax }, byType.unique.per);
+  take(t('Minions'), byType.minion.any, counts.minion, { any: byType.minion.runesAny, high: byType.minion.runesHigh, max: byType.minion.runesMax }, byType.minion.per);
 
   if (profile.superUniques) {
     for (const superUniqueIndex of spot.superUniques) {
@@ -359,7 +360,7 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
       const pack = su.Minions ? Math.round((su.Minions[0] + su.Minions[1]) / 2) : 0;
       if (pack > 0 && su.Monster >= 0) {
         const m = evaluateSource(ctx, { kind: 'monster', monsterIndex: su.Monster, sourceType: 'minion', difficulty, areaId: spot.areaId }, targets, highRune);
-        if (m) take(`${su.Name}'s pack`, m.any, pack, m.runes, m.perTarget);
+        if (m) take(t("{name}'s pack", { name: su.Name }), m.any, pack, m.runes, m.perTarget);
       }
     }
   }
@@ -370,7 +371,7 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
   // Heralds are a terror zone's own elite; there are none in an ordinary run.
   if (ctx.options.terror?.enabled && (profile.heralds | 0) > 0) {
     const r = evaluateSource(ctx, { kind: 'herald', difficulty }, targets, highRune);
-    if (r) take('Heralds', r.any, profile.heralds | 0, r.runes, r.perTarget);
+    if (r) take(t('Heralds'), r.any, profile.heralds | 0, r.runes, r.perTarget);
   }
 
   parts.sort((a, b) => b.hit - a.hit);

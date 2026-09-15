@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import craftingData from '@/assets/crafting.json';
 import itemMapping from '@/assets/item_mapping.json';
+import { t } from '@/i18n';
 
 const craftingRecipes = ref([]);
 const searchQuery = ref('');
@@ -74,13 +75,13 @@ const runeTypes = computed(() => {
 const categorizedRecipes = computed(() => {
   if (activeFilters.value.itemType) {
     return {
-      [`Item Type: ${getItemTypeName(activeFilters.value.itemType)}`]: filteredRecipes.value
+      [t('Item Type: {name}', { name: getItemTypeName(activeFilters.value.itemType) })]: filteredRecipes.value
     };
   }
 
   if (activeFilters.value.rune) {
     return {
-      [`Rune: ${activeFilters.value.rune.replace(' Rune', '')}`]: filteredRecipes.value
+      [t('Rune: {rune}', { rune: activeFilters.value.rune.replace(' Rune', '') })]: filteredRecipes.value
     };
   }
 
@@ -253,7 +254,7 @@ onMounted(() => {
       <div class="col-12">
         <h1 class="display-4 mb-4">
           <span class="title-icon">◆</span> 
-          Crafting Recipes 
+          {{ $t('Crafting Recipes') }} 
           <span class="title-icon">◆</span>
         </h1>
       </div>
@@ -264,18 +265,18 @@ onMounted(() => {
       <div class="col-12">
         <div class="card card-enhanced filter-card filters-panel">
           <div class="card-header card-header-primary">
-            <h2 class="h4 mb-0">Search & Filters</h2>
+            <h2 class="h4 mb-0">{{ $t('Search & Filters') }}</h2>
           </div>
           <div class="card-body">
             <!-- Search Field -->
             <div class="mb-4 search-section">
-              <label for="ingredientSearch" class="form-label text-warning">Search by Ingredients</label>
+              <label for="ingredientSearch" class="form-label text-warning">{{ $t('Search by Ingredients') }}</label>
               <div class="input-group search-input-group">
                 <input 
                   id="ingredientSearch"
                   type="text" 
                   class="form-control search-input" 
-                  placeholder="Search ingredients..." 
+                  :placeholder="$t('Search ingredients...')" 
                   @input="(e) => { searchQuery = e.target.value; resetOnlyFilters(); }"
                 />
                 <button 
@@ -284,24 +285,24 @@ onMounted(() => {
                   @click="resetFilters"
                   v-if="searchQuery || activeFilters.craftedType || activeFilters.itemType || activeFilters.rune"
                 >
-                  <i class="fas fa-times"></i> Clear
+                  <i class="fas fa-times"></i> {{ $t('Clear') }}
                 </button>
               </div>
-              <small class="form-text">Search for ingredients like runes, gems, or base items</small>
+              <small class="form-text">{{ $t('Search for ingredients like runes, gems, or base items') }}</small>
             </div>
 
             <div class="filter-divider"></div>
 
             <!-- Crafted Type Filters -->
             <div class="mb-4 filter-section">
-              <label class="form-label text-warning">Crafted Type</label>
+              <label class="form-label text-warning">{{ $t('Crafted Type') }}</label>
               <div class="btn-group d-flex flex-wrap gap-2" role="group">
                 <button 
                   class="btn flex-fill filter-btn"
                   :class="activeFilters.craftedType === null ? 'btn-secondary' : 'btn-outline-secondary'"
                   @click="setCraftedTypeFilter('All')"
                 >
-                  All
+                  {{ $t('All') }}
                 </button>
                 <button 
                   v-for="craftedType in craftedTypes" 
@@ -330,14 +331,14 @@ onMounted(() => {
 
             <!-- Item Type Filters -->
             <div class="mb-4 filter-section">
-              <label class="form-label text-warning">Item Type</label>
+              <label class="form-label text-warning">{{ $t('Item Type') }}</label>
               <div class="btn-group d-flex flex-wrap gap-2" role="group">
                 <button 
                   class="btn flex-fill filter-btn"
                   :class="activeFilters.itemType === null ? 'btn-secondary' : 'btn-outline-secondary'"
                   @click="setItemTypeFilter('All')"
                 >
-                  All
+                  {{ $t('All') }}
                 </button>
                 <button 
                   v-for="itemType in itemTypes" 
@@ -355,14 +356,14 @@ onMounted(() => {
 
             <!-- Rune Filters -->
             <div class="mb-3 filter-section">
-              <label class="form-label text-warning">Rune</label>
+              <label class="form-label text-warning">{{ $t('Rune') }}</label>
               <div class="btn-group d-flex flex-wrap gap-2" role="group">
                 <button 
                   class="btn flex-fill filter-btn"
                   :class="activeFilters.rune === null ? 'btn-secondary' : 'btn-outline-secondary'"
                   @click="setRuneFilter('All')"
                 >
-                  All
+                  {{ $t('All') }}
                 </button>
                 <button 
                   v-for="rune in runeTypes" 
@@ -379,26 +380,26 @@ onMounted(() => {
             <!-- Active Filters Summary -->
             <div class="active-filters mt-4" v-if="searchQuery || activeFilters.craftedType || activeFilters.itemType || activeFilters.rune">
               <div class="d-flex align-items-center">
-                <span class="me-2 text-warning">Active Filters:</span>
+                <span class="me-2 text-warning">{{ $t('Active Filters:') }}</span>
                 <div class="d-flex flex-wrap gap-2">
                   <span class="badge bg-secondary active-filter-badge" v-if="searchQuery">
-                    <span class="active-filter-label">Search</span>
+                    <span class="active-filter-label">{{ $t('Search') }}</span>
                     <span>{{ searchQuery }}</span>
                   </span>
                   <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.craftedType">
-                    <span class="active-filter-label">Crafted Type</span>
+                    <span class="active-filter-label">{{ $t('Crafted Type') }}</span>
                     <span>{{ activeFilters.craftedType }}</span>
                   </span>
                   <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.itemType">
-                    <span class="active-filter-label">Item Type</span>
+                    <span class="active-filter-label">{{ $t('Item Type') }}</span>
                     <span>{{ getItemTypeName(activeFilters.itemType) }}</span>
                   </span>
                   <span class="badge bg-secondary active-filter-badge" v-if="activeFilters.rune">
-                    <span class="active-filter-label">Rune</span>
+                    <span class="active-filter-label">{{ $t('Rune') }}</span>
                     <span>{{ activeFilters.rune.replace(' Rune', '') }}</span>
                   </span>
                   <button class="btn btn-sm btn-outline-warning ms-2" @click="resetFilters">
-                    Clear All
+                    {{ $t('Clear All') }}
                   </button>
                 </div>
               </div>
@@ -421,9 +422,9 @@ onMounted(() => {
                 <table class="table table-dark table-hover">
                   <thead>
                     <tr>
-                      <th>Item Type</th>
-                      <th>Ingredients</th>
-                      <th>Properties</th>
+                      <th>{{ $t('Item Type') }}</th>
+                      <th>{{ $t('Ingredients') }}</th>
+                      <th>{{ $t('Properties') }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -441,17 +442,17 @@ onMounted(() => {
                         <td>
                           <div v-for="property in sortPropertiesByPriority(recipe.Properties)" :key="property.Prop" class="mb-1 small">
                             <span v-if="property.Chance < 100" class="text-info">
-                              {{ property.Description }} <strong>({{ property.Chance }}% chance)</strong>
+                              {{ property.Description }} <strong>{{ $t('({n}% chance)', { n: property.Chance }) }}</strong>
                             </span>
                             <span v-else>
                               {{ property.Description }}
                             </span>
                           </div>
                           <div class="mb-1 small mythic-affix-text">
-                            Mythic Affix (5% Chance)
+                            {{ $t('Mythic Affix (5% Chance)') }}
                           </div>
                           <div class="text-muted small mt-2">
-                            <em>+ up to 4 Rare Affixes</em>
+                            <em>{{ $t('+ up to 4 Rare Affixes') }}</em>
                           </div>
                         </td>
                       </tr>
@@ -470,12 +471,12 @@ onMounted(() => {
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h2 class="h4 mb-0">Search Results</h2>
+            <h2 class="h4 mb-0">{{ $t('Search Results') }}</h2>
           </div>
           <div class="card-body text-center py-5">
-            <h5 class="text-muted">No recipes found</h5>
-            <p class="text-muted">Try adjusting your search or filters</p>
-            <button class="btn btn-outline-warning" @click="resetFilters">Reset Filters</button>
+            <h5 class="text-muted">{{ $t('No recipes found') }}</h5>
+            <p class="text-muted">{{ $t('Try adjusting your search or filters') }}</p>
+            <button class="btn btn-outline-warning" @click="resetFilters">{{ $t('Reset Filters') }}</button>
           </div>
         </div>
       </div>

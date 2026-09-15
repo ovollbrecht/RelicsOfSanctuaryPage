@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import propertyGroupsData from '@/assets/propertygroups.json';
+import { t } from '@/i18n';
 
 const MAX_AFFIX_COLUMNS = 8;
 const SHARED_ULTRA_GROUP_CODE = 'ex-ultra-rare';
@@ -135,7 +136,7 @@ const getEntryDescription = (entry) => {
 
   return resolvedDescriptions.length
     ? resolvedDescriptions.join(' + ')
-    : (entry.Prop || 'Unknown property');
+    : (entry.Prop || t('Unknown property'));
 };
 
 const buildLeafOutcomes = (group, accumulatedFraction = createFraction(1, 1)) => {
@@ -334,7 +335,7 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
       <div class="col-12">
         <h1 class="display-4 mb-3">
           <span class="title-icon">◆</span>
-          Mythic Affixes
+          {{ $t('Mythic Affixes') }}
           <span class="title-icon">◆</span>
         </h1>
       </div>
@@ -344,19 +345,19 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-primary">
-            <h2 class="h4 mb-0">Quick Overview</h2>
+            <h2 class="h4 mb-0">{{ $t('Quick Overview') }}</h2>
           </div>
           <div class="card-body">
             <p class="mb-2">
-              Use the tables below to see which mythic affixes can roll for each item type and how likely each affix is.
+              {{ $t('Use the tables below to see which mythic affixes can roll for each item type and how likely each affix is.') }}
             </p>
             <p class="mb-2">
-              If a column shows a group, that means this slot can roll one of several affixes listed in that same column.
+              {{ $t('If a column shows a group, that means this slot can roll one of several affixes listed in that same column.') }}
             </p>
-            <p class="mb-2">Rarity split (same for all item types):</p>
+            <p class="mb-2">{{ $t('Rarity split (same for all item types):') }}</p>
             <div class="rarity-ratio-row">
               <div v-for="split in raritySplitDisplay" :key="split.key" class="rarity-ratio-item">
-                <span class="badge" :class="split.badgeClass">{{ split.label }}</span>
+                <span class="badge" :class="split.badgeClass">{{ $t(split.label) }}</span>
                 <span>{{ formatFraction(split.fraction) }} ({{ formatPercent(split.fraction) }})</span>
               </div>
             </div>
@@ -369,24 +370,24 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-dark">
-            <h2 class="h4 mb-0">Ultra Rare Affixes (Shared for All Item Types)</h2>
+            <h2 class="h4 mb-0">{{ $t('Ultra Rare Affixes (Shared for All Item Types)') }}</h2>
           </div>
           <div class="card-body p-0">
             <p class="ultra-note px-3 pt-3 mb-0">
-              One roll in a thousand, and the only tier that can be switched off —
-              <router-link to="/options">the D2RMM options</router-link> have it on by default.
+              {{ $t('One roll in a thousand, and the only tier that can be switched off —') }}
+              <router-link to="/options">{{ $t('the D2RMM options') }}</router-link> {{ $t('have it on by default.') }}
             </p>
             <table class="table table-dark table-striped mb-0 mythic-table compact-table">
               <thead>
                 <tr>
-                  <th scope="col" class="rarity-head">Rarity</th>
-                  <th scope="col">Affix Slots (1-8)</th>
+                  <th scope="col" class="rarity-head">{{ $t('Rarity') }}</th>
+                  <th scope="col">{{ $t('Affix Slots (1-8)') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="rarity-cell">
-                    <span class="badge rarity-ultra">Ultra Rare</span>
+                    <span class="badge rarity-ultra">{{ $t('Ultra Rare') }}</span>
                   </td>
                   <td class="slots-cell">
                     <div class="affix-slot-grid">
@@ -404,7 +405,7 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
                           </div>
                         </div>
                         <details v-else-if="slot && slot.isGroup" class="slot-group">
-                          <summary>Group ({{ slot.outcomes.length }} options)</summary>
+                          <summary>{{ $t('Group ({n} options)', { n: slot.outcomes.length }) }}</summary>
                           <div class="group-list">
                             <div
                               v-for="(outcome, outcomeIndex) in slot.outcomes"
@@ -434,24 +435,24 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
       <div v-for="itemTable in mythicItemTables" :key="itemTable.groupCode" class="col-12">
         <div class="card card-enhanced card-hover">
           <div class="card-header card-header-dark">
-            <h2 class="h4 mb-0">{{ itemTable.label }}</h2>
+            <h2 class="h4 mb-0">{{ $t(itemTable.label) }}</h2>
           </div>
           <div class="card-body p-0">
             <table class="table table-dark table-striped table-hover mb-0 mythic-table compact-table">
               <thead>
                 <tr>
-                  <th scope="col" class="rarity-head">Rarity</th>
-                  <th scope="col">Affix Slots (1-8)</th>
+                  <th scope="col" class="rarity-head">{{ $t('Rarity') }}</th>
+                  <th scope="col">{{ $t('Affix Slots (1-8)') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="row in itemTable.rows" :key="`${itemTable.groupCode}-${row.rarityKey}`">
                   <td class="rarity-cell">
-                    <span class="badge" :class="row.badgeClass">{{ row.rarityLabel }}</span>
+                    <span class="badge" :class="row.badgeClass">{{ $t(row.rarityLabel) }}</span>
                   </td>
 
                   <td v-if="row.isSharedUltra" class="shared-ultra-cell">
-                    Shared across all item types. See the "Ultra Rare Affixes" table above.
+                    {{ $t('Shared across all item types. See the "Ultra Rare Affixes" table above.') }}
                   </td>
 
                   <td v-else class="slots-cell">
@@ -470,7 +471,7 @@ const raritySplitDisplay = GLOBAL_RARITY_SPLIT.map((split) => {
                           </div>
                         </div>
                         <details v-else-if="slot && slot.isGroup" class="slot-group">
-                          <summary>Group ({{ slot.outcomes.length }} options)</summary>
+                          <summary>{{ $t('Group ({n} options)', { n: slot.outcomes.length }) }}</summary>
                           <div class="group-list">
                             <div
                               v-for="(outcome, outcomeIndex) in slot.outcomes"

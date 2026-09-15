@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { t, dateLocale } from '@/i18n';
 
 /**
  * The Grail at a glance: how far along it is, when the finds happened, who
@@ -71,8 +72,8 @@ const heatmap = computed(() => {
     const d = new Date(start); d.setDate(start.getDate() + i);
     const k = dayKey(d);
     const n = byDay.value.get(k) ?? 0;
-    if (i % 7 === 0 && d.getMonth() !== lastMonth) { months.push({ col: i / 7, label: d.toLocaleDateString('en-GB', { month: 'short' }) }); lastMonth = d.getMonth(); }
-    cells.push({ key: k, n, future: d > today, title: `${d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}: ${n} ${n === 1 ? 'find' : 'finds'}` });
+    if (i % 7 === 0 && d.getMonth() !== lastMonth) { months.push({ col: i / 7, label: d.toLocaleDateString(dateLocale(), { month: 'short' }) }); lastMonth = d.getMonth(); }
+    cells.push({ key: k, n, future: d > today, title: `${d.toLocaleDateString(dateLocale(), { day: 'numeric', month: 'short' })}: ${n === 1 ? t('1 find') : t('{n} finds', { n })}` });
   }
   const max = Math.max(1, ...cells.map((c) => c.n));
   return { cells: cells.map((c) => ({ ...c, level: c.n === 0 ? 0 : Math.min(4, Math.ceil((c.n / max) * 4)) })), months };
@@ -87,8 +88,8 @@ const dayStats = computed(() => {
   const span = first ? Math.max(1, Math.round((now - first) / 86400000)) : 0;
   return { last7: within(7), last30: within(30), best, first, activeDays, span, perActiveDay: activeDays ? dated.value.length / activeDays : 0 };
 });
-const fmtDay = (k) => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); };
-const fmtDate = (d) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const fmtDay = (k) => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d).toLocaleDateString(dateLocale(), { day: 'numeric', month: 'short', year: 'numeric' }); };
+const fmtDate = (d) => d.toLocaleDateString(dateLocale(), { day: 'numeric', month: 'short', year: 'numeric' });
 
 // ---- who: the Chronicle's sources ----
 const droppers = computed(() => {
@@ -131,20 +132,20 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <div class="col-md-4 col-xl-3">
         <div class="card card-enhanced h-100">
           <div class="card-body p-3 d-flex flex-column align-items-center text-center">
-            <svg class="ring" viewBox="0 0 120 120" role="img" :aria-label="`${Math.round(pct)} percent of the Grail found`">
+            <svg class="ring" viewBox="0 0 120 120" role="img" :aria-label="$t('{p} percent of the Grail found', { p: Math.round(pct) })">
               <circle cx="60" cy="60" :r="R" class="ring-track" />
               <circle cx="60" cy="60" :r="R" class="ring-fill" :stroke-dasharray="dash" transform="rotate(-90 60 60)" />
               <text x="60" y="56" class="ring-pct">{{ pct < 10 ? pct.toFixed(1) : Math.round(pct) }}<tspan class="ring-unit">%</tspan></text>
               <text x="60" y="76" class="ring-sub">{{ found.length }} / {{ total }}</text>
             </svg>
             <div class="small mt-2">
-              <div><strong>{{ milestone.toGo }}</strong> to go until <strong>{{ milestone.next }}</strong></div>
+              <div><strong>{{ milestone.toGo }}</strong> {{ $t('to go until') }} <strong>{{ milestone.next }}</strong></div>
               <div v-if="milestone.closest" class="text-muted">
-                {{ milestone.closest.label }} hits {{ milestone.closest.nextPct }} % in {{ milestone.closest.need }} {{ milestone.closest.need === 1 ? 'item' : 'items' }}
+                {{ milestone.closest.need === 1 ? $t('{cat} hits {p} % in 1 item', { cat: $t(milestone.closest.label), p: milestone.closest.nextPct }) : $t('{cat} hits {p} % in {n} items', { cat: $t(milestone.closest.label), p: milestone.closest.nextPct, n: milestone.closest.need }) }}
               </div>
             </div>
             <div v-if="spares.items" class="small text-muted mt-2">
-              <a href="#" @click.prevent="emit('pick-show', 'spares')">{{ spares.copies }} spare {{ spares.copies === 1 ? 'copy' : 'copies' }}</a> of {{ spares.items }} {{ spares.items === 1 ? 'item' : 'items' }} in your files
+              <a href="#" @click.prevent="emit('pick-show', 'spares')">{{ spares.copies === 1 ? $t('1 spare copy') : $t('{n} spare copies', { n: spares.copies }) }}</a> {{ spares.items === 1 ? $t('of 1 item in your files') : $t('of {n} items in your files', { n: spares.items }) }}
             </div>
           </div>
         </div>
@@ -153,16 +154,16 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <!-- per category, split by tier -->
       <div class="col-md-8 col-xl-4">
         <div class="card card-enhanced h-100">
-          <div class="card-header card-header-primary py-2"><span class="h6 m-0">By category</span></div>
+          <div class="card-header card-header-primary py-2"><span class="h6 m-0">{{ $t('By category') }}</span></div>
           <div class="card-body p-3">
             <div v-for="t in perTab" :key="t.id" class="cat-row" role="button" @click="emit('pick-tab', t.id)">
               <div class="d-flex justify-content-between align-items-baseline">
-                <span class="fw-semibold">{{ t.label }}</span>
+                <span class="fw-semibold">{{ $t(t.label) }}</span>
                 <span class="small text-muted">{{ t.found }} / {{ t.total }} <span class="cat-pct">{{ Math.round(t.pct) }} %</span></span>
               </div>
               <div class="stack">
                 <template v-for="tier in t.tiers" :key="tier.tier">
-                  <div class="seg" :class="`tier-${tier.tier}`" :style="{ flex: tier.total }" :title="`${tier.label}: ${tier.found} of ${tier.total}`">
+                  <div class="seg" :class="`tier-${tier.tier}`" :style="{ flex: tier.total }" :title="$t('{tier}: {n} of {total}', { tier: $t(tier.label), n: tier.found, total: tier.total })">
                     <div class="seg-fill" :style="{ width: `${(tier.found / tier.total) * 100}%` }"></div>
                   </div>
                 </template>
@@ -170,7 +171,7 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
               </div>
             </div>
             <div class="legend small text-muted mt-2">
-              <span><i class="sw tier-0"></i>Normal</span><span><i class="sw tier-1"></i>Exceptional</span><span><i class="sw tier-2"></i>Elite</span>
+              <span><i class="sw tier-0"></i>{{ $t('Normal') }}</span><span><i class="sw tier-1"></i>{{ $t('Exceptional') }}</span><span><i class="sw tier-2"></i>{{ $t('Elite') }}</span>
             </div>
           </div>
         </div>
@@ -180,8 +181,8 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <div class="col-xl-5">
         <div class="card card-enhanced h-100">
           <div class="card-header card-header-primary py-2 d-flex justify-content-between align-items-baseline">
-            <span class="h6 m-0">Activity</span>
-            <span class="small text-muted">{{ dated.length }} dated by the Chronicle</span>
+            <span class="h6 m-0">{{ $t('Activity') }}</span>
+            <span class="small text-muted">{{ $t('{n} dated by the Chronicle', { n: dated.length }) }}</span>
           </div>
           <div class="card-body p-3">
             <template v-if="dated.length">
@@ -194,15 +195,15 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
                 </div>
               </div>
               <div class="row g-2 mt-1 small stats">
-                <div class="col-4"><div class="num">{{ dayStats.last7 }}</div><div class="text-muted">last 7 days</div></div>
-                <div class="col-4"><div class="num">{{ dayStats.last30 }}</div><div class="text-muted">last 30 days</div></div>
-                <div class="col-4"><div class="num">{{ dayStats.perActiveDay.toFixed(1) }}</div><div class="text-muted">per active day</div></div>
-                <div class="col-4"><div class="num">{{ dayStats.activeDays }}</div><div class="text-muted">days with a find</div></div>
-                <div class="col-4" v-if="dayStats.best"><div class="num">{{ dayStats.best.n }}</div><div class="text-muted" :title="fmtDay(dayStats.best.day)">best day · {{ fmtDay(dayStats.best.day).replace(/ \d{4}$/, '') }}</div></div>
-                <div class="col-4" v-if="dayStats.first"><div class="num">{{ dayStats.span }}</div><div class="text-muted">days since the first · {{ fmtDate(dayStats.first) }}</div></div>
+                <div class="col-4"><div class="num">{{ dayStats.last7 }}</div><div class="text-muted">{{ $t('last 7 days') }}</div></div>
+                <div class="col-4"><div class="num">{{ dayStats.last30 }}</div><div class="text-muted">{{ $t('last 30 days') }}</div></div>
+                <div class="col-4"><div class="num">{{ dayStats.perActiveDay.toFixed(1) }}</div><div class="text-muted">{{ $t('per active day') }}</div></div>
+                <div class="col-4"><div class="num">{{ dayStats.activeDays }}</div><div class="text-muted">{{ $t('days with a find') }}</div></div>
+                <div class="col-4" v-if="dayStats.best"><div class="num">{{ dayStats.best.n }}</div><div class="text-muted" :title="fmtDay(dayStats.best.day)">{{ $t('best day') }} · {{ fmtDay(dayStats.best.day).replace(/ \d{4}$/, '') }}</div></div>
+                <div class="col-4" v-if="dayStats.first"><div class="num">{{ dayStats.span }}</div><div class="text-muted">{{ $t('days since the first') }} · {{ fmtDate(dayStats.first) }}</div></div>
               </div>
             </template>
-            <div v-else class="small text-muted">No dates yet - the Chronicle in the shared stash carries the minute of every first find. Import the stash to see when things happened.</div>
+            <div v-else class="small text-muted">{{ $t('No dates yet - the Chronicle in the shared stash carries the minute of every first find. Import the stash to see when things happened.') }}</div>
           </div>
         </div>
       </div>
@@ -213,8 +214,8 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <div class="col-md-6 col-xl-4">
         <div class="card card-enhanced h-100">
           <div class="card-header card-header-primary py-2 d-flex justify-content-between align-items-baseline">
-            <span class="h6 m-0">Who dropped it</span>
-            <span v-if="droppers.known" class="small text-muted">{{ droppers.distinct }} sources</span>
+            <span class="h6 m-0">{{ $t('Who dropped it') }}</span>
+            <span v-if="droppers.known" class="small text-muted">{{ $t('{n} sources', { n: droppers.distinct }) }}</span>
           </div>
           <div class="card-body p-3">
             <template v-if="droppers.top.length">
@@ -223,7 +224,7 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
                 <div class="bar"><div class="bar-fill" :style="{ width: `${d.w}%` }"></div></div>
               </div>
             </template>
-            <div v-else class="small text-muted">The Chronicle names the monster or chest behind each first find - none imported yet.</div>
+            <div v-else class="small text-muted">{{ $t('The Chronicle names the monster or chest behind each first find - none imported yet.') }}</div>
           </div>
         </div>
       </div>
@@ -231,7 +232,7 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <!-- recent finds -->
       <div class="col-md-6 col-xl-4">
         <div class="card card-enhanced h-100">
-          <div class="card-header card-header-primary py-2"><span class="h6 m-0">Latest finds</span></div>
+          <div class="card-header card-header-primary py-2"><span class="h6 m-0">{{ $t('Latest finds') }}</span></div>
           <div class="card-body p-0">
             <ul v-if="recent.length" class="list-unstyled m-0 recent">
               <li v-for="e in recent" :key="e.kind + e.id" class="d-flex justify-content-between gap-2">
@@ -239,7 +240,7 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
                 <span class="small text-muted text-nowrap">{{ fmtDate(e.at).replace(/ \d{4}$/, '') }}</span>
               </li>
             </ul>
-            <div v-else class="p-3 small text-muted">Nothing dated yet.</div>
+            <div v-else class="p-3 small text-muted">{{ $t('Nothing dated yet.') }}</div>
           </div>
         </div>
       </div>
@@ -247,9 +248,9 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
       <!-- by slot -->
       <div class="col-xl-4">
         <div class="card card-enhanced h-100">
-          <div class="card-header card-header-primary py-2"><span class="h6 m-0">By slot</span></div>
+          <div class="card-header card-header-primary py-2"><span class="h6 m-0">{{ $t('By slot') }}</span></div>
           <div class="card-body p-3">
-            <div v-for="s in bySlot" :key="s.slot" class="bar-row" role="button" :title="`Show ${s.slot} in the checklist`" @click="emit('pick-slot', s.slot)">
+            <div v-for="s in bySlot" :key="s.slot" class="bar-row" role="button" :title="$t('Show {slot} in the checklist', { slot: s.slot })" @click="emit('pick-slot', s.slot)">
               <div class="d-flex justify-content-between small"><span>{{ s.slot }}</span><span class="text-muted">{{ s.found }} / {{ s.total }}</span></div>
               <div class="bar"><div class="bar-fill" :style="{ width: `${s.pct}%` }"></div></div>
             </div>

@@ -57,13 +57,13 @@ const setAll = (open) => {
         <span class="tier-hint">{{ subtitle ? subtitle + ' · ' : '' }}{{ groups.length }}</span>
       </h2>
       <span v-if="!panelMode" class="d-flex gap-2">
-        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">Expand all</button>
-        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">Collapse all</button>
+        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">{{ $t('Expand all') }}</button>
+        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">{{ $t('Collapse all') }}</button>
       </span>
     </div>
     <div class="card-body">
       <div v-if="groups.length === 0" class="text-center text-muted py-4">
-        No runewords found matching your criteria.
+        {{ $t('No runewords found matching your criteria.') }}
       </div>
       <div v-else class="table-responsive">
         <table class="table table-dark table-hover runeword-table">
@@ -78,18 +78,18 @@ const setAll = (open) => {
           </colgroup>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Runes</th>
-              <th class="text-center text-nowrap">Sockets</th>
-              <th class="text-center text-nowrap">Level</th>
-              <th>Allowed Items</th>
+              <th>{{ $t('Name') }}</th>
+              <th>{{ $t('Runes') }}</th>
+              <th class="text-center text-nowrap">{{ $t('Sockets') }}</th>
+              <th class="text-center text-nowrap">{{ $t('Level') }}</th>
+              <th>{{ $t('Allowed Items') }}</th>
             </tr>
           </thead>
           <tbody>
             <template v-for="group in groups" :key="group.key">
               <tr
                 :class="{ 'is-selected': panelMode && group.key === selectedKey, 'is-built': markBuilt && group.built }"
-                :title="markBuilt && group.built ? 'Built - your Grail has it' : null"
+                :title="markBuilt && group.built ? $t('Built - your Grail has it') : null"
                 @click="rowClick(group)"
                 style="cursor: pointer;"
               >
@@ -100,7 +100,7 @@ const setAll = (open) => {
                   {{ group.name }}<span
                     v-if="group.isNew || group.isReworked"
                     class="flag"
-                    :title="group.isNew ? 'New in Relics of Sanctuary' : 'Reworked by Relics of Sanctuary'"
+                    :title="group.isNew ? $t('New in Relics of Sanctuary') : $t('Reworked by Relics of Sanctuary')"
                   >•</span>
                   <span
                     v-for="className in group.classNames"
@@ -117,8 +117,8 @@ const setAll = (open) => {
                     v-if="group.build?.state"
                     class="badge build-badge ms-2"
                     :class="group.build.state"
-                    :title="group.build.state === 'now' ? 'You hold every rune for it' : `Via the cube: ${group.build.upgradeText}`"
-                  >{{ group.build.state === 'now' ? 'can build' : 'via cube' }}</span>
+                    :title="group.build.state === 'now' ? $t('You hold every rune for it') : $t('Via the cube: {text}', { text: group.build.upgradeText })"
+                  >{{ group.build.state === 'now' ? $t('can build') : $t('via cube') }}</span>
                 </td>
                 <td class="runes-cell">
                   <!-- In the "one rune away" list the one you lack is the

@@ -87,14 +87,14 @@ const onBlur = () => {
       type="text"
       class="form-control"
       :value="isOpen ? query : (selectedOption?.label ?? '')"
-      :placeholder="selectedOption?.label ?? placeholder"
+      :placeholder="selectedOption?.label ?? $t(placeholder)"
       @focus="open"
       @blur="onBlur"
       @input="query = $event.target.value"
       @keydown="onKeydown"
     />
     <div v-if="isOpen" class="select-dropdown">
-      <div v-if="filtered.length === 0" class="select-empty">No matches</div>
+      <div v-if="filtered.length === 0" class="select-empty">{{ $t('No matches') }}</div>
       <div ref="listEl">
         <button
           v-for="(option, index) in filtered"

@@ -34,8 +34,8 @@ const formatChance = (chance) => {
       <div class="detail-name">{{ group.name }}</div>
       <div class="detail-meta">
         <template v-for="(rune, n) in group.runes" :key="n"><span v-if="n > 0"> - </span><span class="rune-name"><img v-if="runeIcon(rune)" :src="runeIcon(rune)" class="rune-icon" alt="" />{{ rune }}</span></template>
-        · {{ group.sockets }} {{ group.sockets === 1 ? 'socket' : 'sockets' }}
-        <template v-if="group.levelReq"> · Level {{ group.levelReq }}</template>
+        · {{ group.sockets === 1 ? $t('1 socket') : $t('{n} sockets', { n: group.sockets }) }}
+        <template v-if="group.levelReq"> · {{ $t('Level {n}', { n: group.levelReq }) }}</template>
       </div>
     </div>
 
@@ -43,7 +43,7 @@ const formatChance = (chance) => {
       <div v-for="variant in group.variants" :key="variant.label" class="variant-block">
         <!-- The heading only earns its place where there is more than one
              kind: on a weapon-only runeword it would just repeat the row. -->
-        <div v-if="group.variants.length > 1" class="variant-label">In {{ variant.label }}</div>
+        <div v-if="group.variants.length > 1" class="variant-label">{{ $t('In {item}', { item: variant.label }) }}</div>
         <ul class="prop-lines">
           <li v-for="(prop, propIndex) in variant.properties" :key="propIndex">
             {{ prop.Description }}
@@ -63,14 +63,14 @@ const formatChance = (chance) => {
       </div>
     </div>
     <div v-if="built || bases.length || group.build" class="grail-note">
-      <div v-if="built" class="grail-built">✓ Built - your Grail has it</div>
-      <div v-if="group.build?.state === 'now'" class="grail-built">Your runes cover it as they lie.</div>
-      <div v-else-if="group.build?.state === 'upgrade'" class="grail-cube">Via the cube: make {{ group.build.upgradeText }}.</div>
-      <div v-else-if="group.build" class="text-muted">Short of {{ group.build.missingNames.join(', ') }}<template v-if="group.build.upgrades.length"> even after making {{ group.build.upgradeText }}</template>.</div>
+      <div v-if="built" class="grail-built">✓ {{ $t('Built - your Grail has it') }}</div>
+      <div v-if="group.build?.state === 'now'" class="grail-built">{{ $t('Your runes cover it as they lie.') }}</div>
+      <div v-else-if="group.build?.state === 'upgrade'" class="grail-cube">{{ $t('Via the cube: make {text}.', { text: group.build.upgradeText }) }}</div>
+      <div v-else-if="group.build" class="text-muted">{{ group.build.upgrades.length ? $t('Short of {names} even after making {text}.', { names: group.build.missingNames.join(', '), text: group.build.upgradeText }) : $t('Short of {names}.', { names: group.build.missingNames.join(', ') }) }}</div>
       <template v-if="bases.length">
-        <div class="grail-label">Bases you hold for it</div>
+        <div class="grail-label">{{ $t('Bases you hold for it') }}</div>
         <ul class="grail-bases">
-          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.how }}</span><span v-if="b.mods" class="staffmods"> · {{ b.mods }}</span><span class="text-muted"> · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
+          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · {{ $t('ethereal') }}</span><span class="text-muted"> · {{ b.how }}</span><span v-if="b.mods" class="staffmods"> · {{ b.mods }}</span><span class="text-muted"> · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
         </ul>
       </template>
     </div>

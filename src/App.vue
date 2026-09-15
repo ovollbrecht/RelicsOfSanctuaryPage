@@ -303,7 +303,7 @@ const handleClickOutside = (event) => {
   color: var(--d2r-text) !important;
 }
 
-.lang-switch { display: inline-flex; gap: 0; margin-bottom: 0.6rem; border: 1px solid rgba(201, 163, 106, 0.3); border-radius: 0.3rem; overflow: hidden; }
+.lang-switch { display: flex; width: max-content; gap: 0; margin-bottom: 0.6rem; border: 1px solid rgba(201, 163, 106, 0.3); border-radius: 0.3rem; overflow: hidden; }
 .lang-switch button { padding: 0.1rem 0.55rem; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--d2r-muted); background: transparent; border: 0; cursor: pointer; }
 .lang-switch button.on { color: var(--d2r-gold-bright); background: rgba(201, 163, 106, 0.16); }
 

@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import setsData from '@/assets/sets.json';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { t } from '@/i18n';
 
 // "+" on every set item: the wish list behind Where to Farm
 const farmList = useFarmList();
@@ -29,9 +30,9 @@ const selectedBaseName = ref('');
 
 const getClassLabel = (uiClass) => {
   if (!uiClass) {
-    return CLASS_LABELS[''];
+    return t(CLASS_LABELS['']);
   }
-  return CLASS_LABELS[uiClass] ?? `Class: ${uiClass.toUpperCase()}`;
+  return CLASS_LABELS[uiClass] ? t(CLASS_LABELS[uiClass]) : t('Class: {code}', { code: uiClass.toUpperCase() });
 };
 
 const stripMythicPrefix = (name = '') => {
@@ -222,24 +223,24 @@ const formatMythicAffixLabel = (affixCount) => {
     return '';
   }
 
-  return `+${count} Mythic ${count === 1 ? 'Affix' : 'Affixes'}`;
+  return t(count === 1 ? '+{n} Mythic Affix' : '+{n} Mythic Affixes', { n: count });
 };
 
 const formatPartialBonusLabel = (equippedItems) => {
   const count = toNumber(equippedItems);
-  return `${count} Item${count === 1 ? '' : 's'} Equipped`;
+  return t(count === 1 ? '{n} Item Equipped' : '{n} Items Equipped', { n: count });
 };
 
 const formatAdditionalBonusLabel = (additionalSetItemsEquipped) => {
   const count = toNumber(additionalSetItemsEquipped);
-  return `+${count} Additional Set Item${count === 1 ? '' : 's'} Equipped`;
+  return t(count === 1 ? '+{n} Additional Set Item Equipped' : '+{n} Additional Set Items Equipped', { n: count });
 };
 
 const getVariantSummary = (pair) => {
   if (!pair?.normal || !pair?.mythic) {
-    return 'Partial Variant Data';
+    return t('Partial Variant Data');
   }
-  return 'Normal + Mythic';
+  return t('Normal + Mythic');
 };
 </script>
 
@@ -249,11 +250,11 @@ const getVariantSummary = (pair) => {
       <div class="col-12">
         <h1 class="display-4 mb-3">
           <span class="title-icon">◈</span>
-          Sets
+          {{ $t('Sets') }}
           <span class="title-icon">◈</span>
         </h1>
         <p class="lead text-muted mb-0">
-          Browse all set collections by class and compare normal and mythic versions side by side. {{ setPairs.length }} sets total.
+          {{ $t('Browse all set collections by class and compare normal and mythic versions side by side. {n} sets total.', { n: setPairs.length }) }}
         </p>
       </div>
     </div>
@@ -262,18 +263,18 @@ const getVariantSummary = (pair) => {
       <div class="col-12 col-xl-4">
         <div class="card card-enhanced overview-panel">
           <div class="card-header card-header-primary">
-            <h2 class="h5 mb-0">Set Overview</h2>
+            <h2 class="h5 mb-0">{{ $t('Set Overview') }}</h2>
           </div>
           <div class="card-body overview-body">
             <div class="mb-3">
-              <label for="set-search" class="form-label text-warning">Search Sets</label>
+              <label for="set-search" class="form-label text-warning">{{ $t('Search Sets') }}</label>
               <div class="input-group search-input-group">
                 <input
                   id="set-search"
                   v-model="searchQuery"
                   type="text"
                   class="form-control search-input"
-                  placeholder="Search by set or item name..."
+                  :placeholder="$t('Search by set or item name...')"
                   autocomplete="off"
                 >
                 <button
@@ -282,7 +283,7 @@ const getVariantSummary = (pair) => {
                   type="button"
                   @click="clearSearch"
                 >
-                  Clear
+                  {{ $t('Clear') }}
                 </button>
               </div>
             </div>
@@ -313,7 +314,7 @@ const getVariantSummary = (pair) => {
             </div>
 
             <p v-else class="no-data mb-0">
-              No sets found for "{{ searchQuery }}".
+              {{ $t('No sets found for "{q}".', { q: searchQuery }) }}
             </p>
           </div>
         </div>
@@ -326,7 +327,7 @@ const getVariantSummary = (pair) => {
               <div>
                 <h2 class="h3 mb-1">{{ selectedPair.baseName }}</h2>
                 <p class="mb-0 text-light opacity-75">
-                  {{ getClassLabel(selectedPair.uiClass) }} • {{ getPairItemCount(selectedPair) }} set items
+                  {{ getClassLabel(selectedPair.uiClass) }} • {{ $t('{n} set items', { n: getPairItemCount(selectedPair) }) }}
                 </p>
               </div>
               <span class="badge bg-secondary detail-badge">{{ getVariantSummary(selectedPair) }}</span>
@@ -338,17 +339,17 @@ const getVariantSummary = (pair) => {
               <div class="col-12 col-lg-6">
                 <div class="card h-100 variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h3 class="h5 mb-0">Normal</h3>
+                    <h3 class="h5 mb-0">{{ $t('Normal') }}</h3>
                   </div>
                   <div class="card-body p-3">
                     <template v-if="selectedNormal && isSpawnable(selectedNormal)">
                       <div class="variant-meta">
-                        <span class="meta-pill">Items: {{ getSetItemCount(selectedNormal) }}</span>
+                        <span class="meta-pill">{{ $t('Items') }}: {{ getSetItemCount(selectedNormal) }}</span>
                       </div>
 
                       <section class="variant-section section-set-items">
-                        <h4 class="section-header">Set Items</h4>
-                        <p class="expand-hint-note">Select a set piece row to show details.</p>
+                        <h4 class="section-header">{{ $t('Set Items') }}</h4>
+                        <p class="expand-hint-note">{{ $t('Select a set piece row to show details.') }}</p>
                         <div v-if="getSpawnableItems(selectedNormal).length">
                           <details
                             v-for="item in getSpawnableItems(selectedNormal)"
@@ -361,7 +362,7 @@ const getVariantSummary = (pair) => {
                                 <button
                                   class="btn btn-sm farm-add"
                                   :class="{ on: farmList.has(farmTokenOf(item)) }"
-                                  :title="farmList.has(farmTokenOf(item)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                                  :title="farmList.has(farmTokenOf(item)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
                                   @click.stop.prevent="farmList.toggle(farmTokenOf(item))"
                                 >{{ farmList.has(farmTokenOf(item)) ? '✓' : '+' }}</button>
                                 <span class="expand-hint" aria-hidden="true"><span class="hint-arrow">▸</span></span>
@@ -369,7 +370,7 @@ const getVariantSummary = (pair) => {
                             </summary>
                             <div class="set-item-details">
                               <p class="item-mini-meta mb-2">
-                                Level {{ item.Lvl }} • Required Level {{ item.LvlReq }}
+                                {{ $t('Level {lvl} • Required Level {req}', { lvl: item.Lvl, req: item.LvlReq }) }}
                               </p>
 
                               <ul
@@ -391,7 +392,7 @@ const getVariantSummary = (pair) => {
                                   {{ formatMythicAffixLabel(getMythicAffixCount(item.Properties)) }}
                                 </li>
                               </ul>
-                              <p v-else class="no-data mb-3">No item properties listed.</p>
+                              <p v-else class="no-data mb-3">{{ $t('No item properties listed.') }}</p>
 
                               <div v-if="item.AdditionalBonuses?.length">
                                 <div
@@ -415,14 +416,14 @@ const getVariantSummary = (pair) => {
                           </details>
                         </div>
                         <p v-else class="no-data">
-                          {{ selectedNormal?.Items?.length ? 'Currently not available.' : 'No set items listed.' }}
+                          {{ $t(selectedNormal?.Items?.length ? 'Currently not available.' : 'No set items listed.') }}
                         </p>
                       </section>
 
                       <section class="variant-section section-set-bonuses">
-                        <h4 class="section-header">Set Bonuses</h4>
+                        <h4 class="section-header">{{ $t('Set Bonuses') }}</h4>
 
-                        <h5 class="bonus-subsection-title">Partial Set Bonuses</h5>
+                        <h5 class="bonus-subsection-title">{{ $t('Partial Set Bonuses') }}</h5>
                         <div v-if="selectedNormal.PartialBonuses?.length">
                           <div
                             v-for="bonus in sortPartialBonuses(selectedNormal.PartialBonuses)"
@@ -441,9 +442,9 @@ const getVariantSummary = (pair) => {
                             </ul>
                           </div>
                         </div>
-                        <p v-else class="no-data">No partial bonuses listed.</p>
+                        <p v-else class="no-data">{{ $t('No partial bonuses listed.') }}</p>
 
-                        <h5 class="bonus-subsection-title bonus-subsection-title-full">Full Set Bonuses</h5>
+                        <h5 class="bonus-subsection-title bonus-subsection-title-full">{{ $t('Full Set Bonuses') }}</h5>
                         <div class="full-bonus-panel">
                           <ul v-if="selectedNormal.FullSetBonuses?.length" class="list-group list-group-flush">
                             <li
@@ -454,13 +455,13 @@ const getVariantSummary = (pair) => {
                               {{ property.Description }}
                             </li>
                           </ul>
-                          <p v-else class="no-data mb-0">No full set bonuses listed.</p>
+                          <p v-else class="no-data mb-0">{{ $t('No full set bonuses listed.') }}</p>
                         </div>
                       </section>
                     </template>
 
                     <p v-else class="no-data mb-0">
-                      {{ selectedNormal ? 'Currently not available.' : 'No normal version found for this set.' }}
+                      {{ $t(selectedNormal ? 'Currently not available.' : 'No normal version found for this set.') }}
                     </p>
                   </div>
                 </div>
@@ -469,17 +470,17 @@ const getVariantSummary = (pair) => {
               <div class="col-12 col-lg-6">
                 <div class="card h-100 variant-card">
                   <div class="card-header card-header-dark text-center">
-                    <h3 class="h5 mb-0">Mythic</h3>
+                    <h3 class="h5 mb-0">{{ $t('Mythic') }}</h3>
                   </div>
                   <div class="card-body p-3">
                     <template v-if="selectedMythic && isSpawnable(selectedMythic)">
                       <div class="variant-meta">
-                        <span class="meta-pill">Items: {{ getSetItemCount(selectedMythic) }}</span>
+                        <span class="meta-pill">{{ $t('Items') }}: {{ getSetItemCount(selectedMythic) }}</span>
                       </div>
 
                       <section class="variant-section section-set-items">
-                        <h4 class="section-header">Set Items</h4>
-                        <p class="expand-hint-note">Select a set piece row to show details.</p>
+                        <h4 class="section-header">{{ $t('Set Items') }}</h4>
+                        <p class="expand-hint-note">{{ $t('Select a set piece row to show details.') }}</p>
                         <div v-if="getSpawnableItems(selectedMythic).length">
                           <details
                             v-for="item in getSpawnableItems(selectedMythic)"
@@ -492,7 +493,7 @@ const getVariantSummary = (pair) => {
                                 <button
                                   class="btn btn-sm farm-add"
                                   :class="{ on: farmList.has(farmTokenOf(item)) }"
-                                  :title="farmList.has(farmTokenOf(item)) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                                  :title="farmList.has(farmTokenOf(item)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
                                   @click.stop.prevent="farmList.toggle(farmTokenOf(item))"
                                 >{{ farmList.has(farmTokenOf(item)) ? '✓' : '+' }}</button>
                                 <span class="expand-hint" aria-hidden="true"><span class="hint-arrow">▸</span></span>
@@ -500,7 +501,7 @@ const getVariantSummary = (pair) => {
                             </summary>
                             <div class="set-item-details">
                               <p class="item-mini-meta mb-2">
-                                Level {{ item.Lvl }} • Required Level {{ item.LvlReq }}
+                                {{ $t('Level {lvl} • Required Level {req}', { lvl: item.Lvl, req: item.LvlReq }) }}
                               </p>
 
                               <ul
@@ -522,7 +523,7 @@ const getVariantSummary = (pair) => {
                                   {{ formatMythicAffixLabel(getMythicAffixCount(item.Properties)) }}
                                 </li>
                               </ul>
-                              <p v-else class="no-data mb-3">No item properties listed.</p>
+                              <p v-else class="no-data mb-3">{{ $t('No item properties listed.') }}</p>
 
                               <div v-if="item.AdditionalBonuses?.length">
                                 <div
@@ -546,14 +547,14 @@ const getVariantSummary = (pair) => {
                           </details>
                         </div>
                         <p v-else class="no-data">
-                          {{ selectedMythic?.Items?.length ? 'Currently not available.' : 'No set items listed.' }}
+                          {{ $t(selectedMythic?.Items?.length ? 'Currently not available.' : 'No set items listed.') }}
                         </p>
                       </section>
 
                       <section class="variant-section section-set-bonuses">
-                        <h4 class="section-header">Set Bonuses</h4>
+                        <h4 class="section-header">{{ $t('Set Bonuses') }}</h4>
 
-                        <h5 class="bonus-subsection-title">Partial Set Bonuses</h5>
+                        <h5 class="bonus-subsection-title">{{ $t('Partial Set Bonuses') }}</h5>
                         <div v-if="selectedMythic.PartialBonuses?.length">
                           <div
                             v-for="bonus in sortPartialBonuses(selectedMythic.PartialBonuses)"
@@ -572,9 +573,9 @@ const getVariantSummary = (pair) => {
                             </ul>
                           </div>
                         </div>
-                        <p v-else class="no-data">No partial bonuses listed.</p>
+                        <p v-else class="no-data">{{ $t('No partial bonuses listed.') }}</p>
 
-                        <h5 class="bonus-subsection-title bonus-subsection-title-full">Full Set Bonuses</h5>
+                        <h5 class="bonus-subsection-title bonus-subsection-title-full">{{ $t('Full Set Bonuses') }}</h5>
                         <div class="full-bonus-panel">
                           <ul v-if="selectedMythic.FullSetBonuses?.length" class="list-group list-group-flush">
                             <li
@@ -585,13 +586,13 @@ const getVariantSummary = (pair) => {
                               {{ property.Description }}
                             </li>
                           </ul>
-                          <p v-else class="no-data mb-0">No full set bonuses listed.</p>
+                          <p v-else class="no-data mb-0">{{ $t('No full set bonuses listed.') }}</p>
                         </div>
                       </section>
                     </template>
 
                     <p v-else class="no-data mb-0">
-                      {{ selectedMythic ? 'Currently not available.' : 'No mythic version found for this set.' }}
+                      {{ $t(selectedMythic ? 'Currently not available.' : 'No mythic version found for this set.') }}
                     </p>
                   </div>
                 </div>
@@ -602,7 +603,7 @@ const getVariantSummary = (pair) => {
 
         <div v-else class="card card-enhanced detail-shell">
           <div class="card-body">
-            <p class="no-data mb-0">Select a set from the overview to compare normal and mythic versions.</p>
+            <p class="no-data mb-0">{{ $t('Select a set from the overview to compare normal and mythic versions.') }}</p>
           </div>
         </div>
       </div>

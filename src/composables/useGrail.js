@@ -1,4 +1,5 @@
 import { ref, computed, watch } from 'vue';
+import { t } from '@/i18n';
 
 /**
  * The Grail: what has been found, read out of the game's own save files.
@@ -97,7 +98,7 @@ export async function readSaveFile(file) {
       walkItems(character.corpse_items, result.items);
       result.character = character.header?.name ?? name.replace(/\.d2s$/i, '');
     } else {
-      result.error = 'not a save file';
+      result.error = t('not a save file');
     }
   } catch (error) {
     result.error = String(error?.message ?? error).split('\n')[0].slice(0, 200);
@@ -186,7 +187,7 @@ export function useGrail() {
   const exportState = () => JSON.stringify(state.value);
   const importState = (json) => {
     const parsed = JSON.parse(json);
-    if (!parsed || typeof parsed !== 'object' || !parsed.found) throw new Error('not a grail file');
+    if (!parsed || typeof parsed !== 'object' || !parsed.found) throw new Error(t('not a grail file'));
     state.value = { found: parsed.found, imports: parsed.imports ?? [], holdings: parsed.holdings ?? {} };
   };
   // what the files hold right now, summed over all of them
@@ -203,7 +204,7 @@ export function useGrail() {
   const bases = computed(() => {
     const out = [];
     for (const [file, h] of Object.entries(holdings.value)) {
-      const where = h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash';
+      const where = h.kind === 'character' ? t('on {name}', { name: h.character ?? file.replace(/\.d2s$/i, '') }) : t('stash');
       for (const [k, count] of Object.entries(h.bases ?? {})) {
         const [code, sockets, eth, superior, ilvl, mods] = k.split('|');
         out.push({ code, sockets: Number(sockets), eth: eth === '1', superior: superior === '1', ilvl: Number(ilvl ?? 99),

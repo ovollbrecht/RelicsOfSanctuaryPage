@@ -10,6 +10,7 @@ import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { useGrail } from '@/composables/useGrail.js';
+import { t } from '@/i18n';
 
 const runewords = ref([]);
 const searchQuery = ref('');
@@ -76,7 +77,7 @@ watch(grail.found, async (found) => {
   skillNames.value = skills;
   builtKeys.value = new Set(catalog.filter((rw) => found[`r:${rw.id}`] || (rw.stringId != null && found[`rs:${rw.stringId}`])).map((rw) => rw.key));
 }, { immediate: true });
-const staffmodsText = (mods) => mods.map((m) => `+${m.level} ${skillNames.value[m.skill]?.s ?? `skill ${m.skill}`}`).join(', ');
+const staffmodsText = (mods) => mods.map((m) => `+${m.level} ${skillNames.value[m.skill]?.s ?? t('skill {n}', { n: m.skill })}`).join(', ');
 
 const typeByCode = new Map(itemBaseData.Types.map((type) => [type.Code, type]));
 const baseByCode = new Map(itemBaseData.Bases.map((base) => [base.Code, base]));
@@ -101,15 +102,15 @@ const chainOf = (code) => {
 const byLabel = (a, b) => a.label.localeCompare(b.label);
 
 const itemFilterOptions = computed(() => [
-  { value: ITEM_FILTER_ANY, label: 'Any item' },
+  { value: ITEM_FILTER_ANY, label: t('Any item') },
   ...itemBaseData.Types
-    .map((type) => ({ value: `type:${type.Code}`, label: type.Name, hint: 'kind' }))
+    .map((type) => ({ value: `type:${type.Code}`, label: type.Name, hint: t('kind') }))
     .sort(byLabel),
   ...itemBaseData.Bases
     .map((base) => ({
       value: `base:${base.Code}`,
       label: base.Name,
-      hint: `${base.Sockets} sockets max`,
+      hint: t('{n} sockets max', { n: base.Sockets }),
     }))
     .sort(byLabel),
 ]);
@@ -497,7 +498,7 @@ const nearMisses = computed(() => {
 
 // Get human-readable allowed items
 const getAllowedItemsText = (allowedItems) => {
-  if (!allowedItems || allowedItems.length === 0) return 'None';
+  if (!allowedItems || allowedItems.length === 0) return t('None');
 
   return allowedItems.map(itemCode => {
     // Find the mapping for the item code
@@ -550,10 +551,10 @@ const entryItemLabels = (runeword) => {
     const parent = types.findIndex((type) =>
       excluded.some((code) => code !== type && chainOf(code).has(type)));
     const at = parent >= 0 ? Math.min(parent, labels.length - 1) : labels.length - 1;
-    labels[at] += ` (not ${getAllowedItemsText(excluded)})`;
+    labels[at] += ` ${t('(not {items})', { items: getAllowedItemsText(excluded) })}`;
   }
 
-  return labels.length ? labels : ['None'];
+  return labels.length ? labels : [t('None')];
 };
 
 const getEntryItemsText = (runeword) => entryItemLabels(runeword).join(', ');
@@ -585,7 +586,7 @@ const getReworkChanges = (runeword) => {
 
   if (runeword.VanillaAllowedItems) {
     changes.push({
-      label: 'Usable in',
+      label: t('Usable in'),
       old: getAllowedItemsText(runeword.VanillaAllowedItems),
       new: getAllowedItemsText(fieldOf(runeword, 'AllowedItems'))
     });
@@ -593,7 +594,7 @@ const getReworkChanges = (runeword) => {
 
   if (runeword.VanillaRuneNames) {
     changes.push({
-      label: 'Runes',
+      label: t('Runes'),
       old: runeword.VanillaRuneNames.join(' - '),
       new: fieldOf(runeword, 'RuneNames').join(' - ')
     });
@@ -738,9 +739,9 @@ const basesFor = (group) => {
     if (!base || !base.Sockets) continue;
     const most = Math.min(base.Sockets, socketCap(held.ilvl));
     let how;
-    if (held.sockets > 0) { if (held.sockets !== group.sockets) continue; how = `${held.sockets} open ${held.sockets === 1 ? 'socket' : 'sockets'}`; }
-    else if (held.superior) { if (group.sockets !== most) continue; how = `superior, ${most} from Larzuk`; }
-    else { if (group.sockets > most) continue; how = `unsocketed, up to ${most}`; }
+    if (held.sockets > 0) { if (held.sockets !== group.sockets) continue; how = held.sockets === 1 ? t('1 open socket') : t('{n} open sockets', { n: held.sockets }); }
+    else if (held.superior) { if (group.sockets !== most) continue; how = t('superior, {n} from Larzuk', { n: most }); }
+    else { if (group.sockets > most) continue; how = t('unsocketed, up to {n}', { n: most }); }
     const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
     const fits = group.rows.some((row) => !row.excluded.some((t) => chain.has(t)) && row.own.some((t) => chain.has(t)));
     if (!fits) continue;
@@ -778,7 +779,7 @@ const tiers = computed(() => RUNE_TIERS
 const resultCount = computed(() => tiers.value.reduce((total, tier) => total + tier.groups.length, 0));
 
 const reworkTitle = computed(() =>
-  dataMode.value === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla');
+  dataMode.value === 'vanilla' ? t('Changes by Relics of Sanctuary') : t('Changes vs. vanilla'));
 
 /* ---- the link ------------------------------------------------------------
    Everything the page is showing, in the address bar: "a long staff with three
@@ -875,7 +876,7 @@ onUnmounted(() => {
       <div class="col-12">
         <h1 class="display-4 mb-4">
           <span class="title-icon">◆</span> 
-          Runewords 
+          {{ $t('Runewords') }} 
           <span class="title-icon">◆</span>
         </h1>
       </div>
@@ -894,100 +895,100 @@ onUnmounted(() => {
                     id="rwSearch"
                     type="text"
                     class="form-control search-input"
-                    placeholder="Name, or runes: Jah Ber"
-                    title="A runeword's name - or rune names, which finds every runeword using them"
+                    :placeholder="$t('Name, or runes: Jah Ber')"
+                    :title="$t('A runeword\'s name - or rune names, which finds every runeword using them')"
                     :value="searchText"
                     @input="onSearch"
                     @keyup="handleSearchKeyup"
                   >
-                  <button v-if="searchText" class="btn btn-outline-secondary" type="button" title="Clear the search" @click="clearSearch">×</button>
+                  <button v-if="searchText" class="btn btn-outline-secondary" type="button" :title="$t('Clear the search')" @click="clearSearch">×</button>
                 </div>
               </div>
               <div class="col-lg-4">
                 <SearchableSelect
                   v-model="itemFilter"
                   :options="itemFilterOptions"
-                  placeholder="Any item base or kind…"
+                  :placeholder="$t('Any item base or kind…')"
                 />
               </div>
               <div class="col-lg-2">
-                <div class="btn-group btn-group-sm d-flex" role="group" title="Sockets">
-                  <button type="button" class="btn flex-fill" :class="socketFilter === 'any' ? 'btn-secondary' : 'btn-outline-secondary'" @click="socketFilter = 'any'">Any</button>
+                <div class="btn-group btn-group-sm d-flex" role="group" :title="$t('Sockets')">
+                  <button type="button" class="btn flex-fill" :class="socketFilter === 'any' ? 'btn-secondary' : 'btn-outline-secondary'" @click="socketFilter = 'any'">{{ $t('Any') }}</button>
                   <button v-for="count in socketOptions" :key="count" type="button" class="btn flex-fill" :class="socketFilter === count ? 'btn-secondary' : 'btn-outline-secondary'" @click="socketFilter = count">{{ count }}</button>
                 </div>
               </div>
               <div class="col-lg-2 d-flex gap-1">
-                <select id="rw-sort" v-model="sortBy" class="form-select form-select-sm flex-grow-1" title="Sort by">
-                  <option v-for="option in SORT_OPTIONS" :key="option.value" :value="option.value">{{ option.label }}</option>
+                <select id="rw-sort" v-model="sortBy" class="form-select form-select-sm flex-grow-1" :title="$t('Sort by')">
+                  <option v-for="option in SORT_OPTIONS" :key="option.value" :value="option.value">{{ $t(option.label) }}</option>
                 </select>
-                <button type="button" class="btn btn-sm btn-outline-secondary flex-shrink-0" :title="sortDir === 'asc' ? 'Ascending - click for descending' : 'Descending - click for ascending'" @click="sortDir = sortDir === 'asc' ? 'desc' : 'asc'">{{ sortDir === 'asc' ? '↑' : '↓' }}</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary flex-shrink-0" :title="sortDir === 'asc' ? $t('Ascending - click for descending') : $t('Descending - click for ascending')" @click="sortDir = sortDir === 'asc' ? 'desc' : 'asc'">{{ sortDir === 'asc' ? '↑' : '↓' }}</button>
               </div>
             </div>
-            <small v-if="selectedBase" class="text-muted d-block mt-1">A {{ selectedBase.Name }} holds up to {{ selectedBase.Sockets }} sockets.</small>
+            <small v-if="selectedBase" class="text-muted d-block mt-1">{{ $t('A {name} holds up to {n} sockets.', { name: selectedBase.Name, n: selectedBase.Sockets }) }}</small>
 
             <!-- 2. narrow: kind, the mod's marks, class, and which data -->
             <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
-              <div class="btn-group btn-group-sm" role="group" title="Kind of item">
-                <button v-for="kind in KINDS" :key="kind.id" type="button" class="btn" :class="selectedCategory === kind.id ? 'btn-secondary' : 'btn-outline-secondary'" @click="setCategoryFilter(kind.id)">{{ kind.label }}</button>
+              <div class="btn-group btn-group-sm" role="group" :title="$t('Kind of item')">
+                <button v-for="kind in KINDS" :key="kind.id" type="button" class="btn" :class="selectedCategory === kind.id ? 'btn-secondary' : 'btn-outline-secondary'" @click="setCategoryFilter(kind.id)">{{ $t(kind.label) }}</button>
               </div>
-              <div class="btn-group btn-group-sm" role="group" title="The dot in the table: new to the mod, or reworked by it">
-                <button type="button" class="btn" :class="statusFilter === 'all' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'all'">All</button>
-                <button v-if="dataMode !== 'vanilla'" type="button" class="btn" :class="statusFilter === 'new' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'new'">New <span class="flag">•</span></button>
-                <button type="button" class="btn" :class="statusFilter === 'reworked' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'reworked'">{{ dataMode === 'vanilla' ? 'Changed by mod' : 'Reworked' }} <span class="flag">•</span></button>
-                <button v-if="grailHasData" type="button" class="btn" :class="statusFilter === 'unbuilt' ? 'btn-secondary' : 'btn-outline-secondary'" title="Runewords your Grail has not seen built" @click="statusFilter = 'unbuilt'">Unbuilt</button>
+              <div class="btn-group btn-group-sm" role="group" :title="$t('The dot in the table: new to the mod, or reworked by it')">
+                <button type="button" class="btn" :class="statusFilter === 'all' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'all'">{{ $t('All') }}</button>
+                <button v-if="dataMode !== 'vanilla'" type="button" class="btn" :class="statusFilter === 'new' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'new'">{{ $t('New') }} <span class="flag">•</span></button>
+                <button type="button" class="btn" :class="statusFilter === 'reworked' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'reworked'">{{ dataMode === 'vanilla' ? $t('Changed by mod') : $t('Reworked') }} <span class="flag">•</span></button>
+                <button v-if="grailHasData" type="button" class="btn" :class="statusFilter === 'unbuilt' ? 'btn-secondary' : 'btn-outline-secondary'" :title="$t('Runewords your Grail has not seen built')" @click="statusFilter = 'unbuilt'">{{ $t('Unbuilt') }}</button>
               </div>
-              <select id="rw-class" v-model="classSelect" class="form-select form-select-sm w-auto" title="Class-specific runewords: keep, hide, or one class">
-                <option value="all">Any class</option>
-                <option value="only">Class-specific only</option>
-                <option value="hide">No class-specific</option>
+              <select id="rw-class" v-model="classSelect" class="form-select form-select-sm w-auto" :title="$t('Class-specific runewords: keep, hide, or one class')">
+                <option value="all">{{ $t('Any class') }}</option>
+                <option value="only">{{ $t('Class-specific only') }}</option>
+                <option value="hide">{{ $t('No class-specific') }}</option>
                 <option disabled>──────</option>
                 <option v-for="name in classOptions" :key="name" :value="name">{{ name }}</option>
               </select>
-              <div class="btn-group btn-group-sm ms-lg-auto" role="group" title="Which data the page reads">
+              <div class="btn-group btn-group-sm ms-lg-auto" role="group" :title="$t('Which data the page reads')">
                 <button type="button" class="btn" :class="dataMode === 'mod' ? 'btn-secondary' : 'btn-outline-secondary'" @click="dataMode = 'mod'">Relics</button>
                 <button type="button" class="btn" :class="dataMode === 'vanilla' ? 'btn-secondary' : 'btn-outline-secondary'" @click="dataMode = 'vanilla'">Vanilla</button>
               </div>
-              <button v-if="filtersActive" type="button" class="btn btn-sm btn-link text-decoration-none px-1" @click="resetFilters">Reset</button>
+              <button v-if="filtersActive" type="button" class="btn btn-sm btn-link text-decoration-none px-1" @click="resetFilters">{{ $t('Reset') }}</button>
             </div>
 
             <!-- 3. yours: the runes you hold and what they say -->
             <div class="rw-yours d-flex flex-wrap align-items-center gap-3 mt-2">
               <button v-if="!countedMode" type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
-                {{ pickerOpen ? '▾' : '▸' }} My runes
+                {{ pickerOpen ? '▾' : '▸' }} {{ $t('My runes') }}
                 <span class="picker-count">{{ ownedRunes.size }}/{{ allRunes.length }}</span>
               </button>
-              <span v-else title="The loose runes in the save files you gave the Grail, counted">
-                My runes: <strong>{{ grailRuneTotal }}</strong> from the Grail, best {{ grailBestRune }}
+              <span v-else :title="$t('The loose runes in the save files you gave the Grail, counted')">
+                {{ $t('My runes:') }} <strong>{{ grailRuneTotal }}</strong> {{ $t('from the Grail, best {rune}', { rune: grailBestRune }) }}
               </span>
-              <div v-if="grailRuneTotal > 0" class="form-check reworked-toggle mb-0" title="Count the runes in your imported save files instead of ticking them by hand">
+              <div v-if="grailRuneTotal > 0" class="form-check reworked-toggle mb-0" :title="$t('Count the runes in your imported save files instead of ticking them by hand')">
                 <input id="rw-grail-runes" v-model="useGrailRunes" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="rw-grail-runes">From my Grail</label>
+                <label class="form-check-label" for="rw-grail-runes">{{ $t('From my Grail') }}</label>
               </div>
-              <div v-if="countedMode" class="form-check reworked-toggle mb-0" title="A missing rune counts as had when the ones below it in the cube's ladder are there - three Ist are a Gul">
+              <div v-if="countedMode" class="form-check reworked-toggle mb-0" :title="$t('A missing rune counts as had when the ones below it in the cube\'s ladder are there - three Ist are a Gul')">
                 <input id="rw-rune-upgrades" v-model="withUpgrades" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="rw-rune-upgrades">Count cube upgrades</label>
+                <label class="form-check-label" for="rw-rune-upgrades">{{ $t('Count cube upgrades') }}</label>
               </div>
               <div class="form-check reworked-toggle mb-0">
                 <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
+                <label class="form-check-label" for="rw-rune-filter">{{ $t('Only what I can make') }}</label>
               </div>
-              <small v-if="useRuneFilter && runeStock.size === 0" class="text-muted">pick a rune first</small>
+              <small v-if="useRuneFilter && runeStock.size === 0" class="text-muted">{{ $t('pick a rune first') }}</small>
               <span v-if="runeStock.size > 0" class="craftable-line">
-                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable<template v-if="craftable.viaCube">, {{ craftable.viaCube }} via the cube</template>
-                <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">{{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}</span>
-                <span v-if="nearMisses.length" class="craftable-tier">{{ nearMisses.length }} one rune away</span>
+                <strong>{{ craftable.total }}</strong> {{ $t('of {total} craftable', { total: craftable.of }) }}<template v-if="craftable.viaCube">, {{ $t('{n} via the cube', { n: craftable.viaCube }) }}</template>
+                <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">{{ $t(tier.title.replace(' Runewords', '')) }} {{ craftable.perTier[tier.key] }}</span>
+                <span v-if="nearMisses.length" class="craftable-tier">{{ $t('{n} one rune away', { n: nearMisses.length }) }}</span>
               </span>
               <!-- How far a missing high rune may sit above your best one and
                    still count as "one away". Gul and below always do. Only
                    asked once the filter is on, since only then is it heard. -->
-              <div v-if="runeFilterActive" class="rw-inline-field reach-field" title="A missing rune above Gul only counts when it is this close to the best rune you own.">
-                <label class="form-label mb-0" for="rw-rune-reach">one away: within</label>
+              <div v-if="runeFilterActive" class="rw-inline-field reach-field" :title="$t('A missing rune above Gul only counts when it is this close to the best rune you own.')">
+                <label class="form-label mb-0" for="rw-rune-reach">{{ $t('one away: within') }}</label>
                 <input id="rw-rune-reach" v-model.number="runeReach" class="form-control form-control-sm reach-input" type="number" min="0" max="10" />
-                <span>of my best</span>
+                <span>{{ $t('of my best') }}</span>
               </div>
               <div v-if="grailHasData" class="form-check form-switch reworked-toggle mb-0 ms-lg-auto">
                 <input id="rw-mark-built" v-model="markBuilt" class="form-check-input" type="checkbox" />
-                <label class="form-check-label" for="rw-mark-built" title="A green edge on every runeword your Grail import has seen built">Mark what I built</label>
+                <label class="form-check-label" for="rw-mark-built" :title="$t('A green edge on every runeword your Grail import has seen built')">{{ $t('Mark what I built') }}</label>
               </div>
             </div>
 
@@ -996,12 +997,12 @@ onUnmounted(() => {
                 <button v-for="rune in allRunes" :key="rune.code" type="button" class="rune-chip" :class="{ 'is-owned': ownedRunes.has(rune.code) }" @click="toggleRune(rune.code)">{{ rune.name }}</button>
               </div>
               <div class="rune-slider">
-                <label for="rw-rune-upto" class="rune-slider-label">Up to <strong>{{ runeUpToName || '—' }}</strong></label>
+                <label for="rw-rune-upto" class="rune-slider-label">{{ $t('Up to') }} <strong>{{ runeUpToName || '—' }}</strong></label>
                 <input id="rw-rune-upto" type="range" class="form-range" min="0" :max="allRunes.length" :value="runeUpTo" @input="setRuneUpTo(Number($event.target.value))" />
               </div>
               <div class="d-flex gap-2 mt-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">{{ $t('Select all') }}</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">{{ $t('Clear') }}</button>
               </div>
             </div>
           </div>
@@ -1016,14 +1017,14 @@ onUnmounted(() => {
         <div class="col-12" v-if="resultCount === 0">
           <div class="card card-enhanced">
             <div class="card-body text-center text-muted py-4">
-              No runewords match the current filters.
+              {{ $t('No runewords match the current filters.') }}
             </div>
           </div>
         </div>
 
         <div class="col-12" v-for="tier in tiers" :key="tier.key">
           <RunewordTable
-            :title="tier.title"
+            :title="$t(tier.title)"
             :subtitle="tier.hint"
             :groups="tier.groups"
             :mark-built="markBuilt && grailHasData"
@@ -1041,8 +1042,8 @@ onUnmounted(() => {
         <div class="col-12" v-if="nearMisses.length" >
           <RunewordTable
             class="near-miss-table"
-            title="One rune away"
-            subtitle="with the runes you have"
+            :title="$t('One rune away')"
+            :subtitle="$t('with the runes you have')"
             :groups="nearMisses"
             :mark-built="markBuilt && grailHasData"
             :bases-for="grailHasData ? basesFor : null"
@@ -1066,7 +1067,7 @@ onUnmounted(() => {
               show-header
             />
             <div v-else class="text-muted rw-panel-hint">
-              Click a runeword to see its stats here.
+              {{ $t('Click a runeword to see its stats here.') }}
             </div>
           </div>
         </div>

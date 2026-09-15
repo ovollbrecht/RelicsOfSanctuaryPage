@@ -7,6 +7,7 @@ import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, buildSpots, scoreSpot, ap
 import { useFarmList } from '@/composables/useFarmList.js';
 import { ELEMENTS, ELEMENT_SHORT, elementClass, farmableElements } from '@/composables/useImmunities.js';
 import { downloadIcs } from '@/composables/useCalendar.js';
+import { t } from '@/i18n';
 
 /**
  * Tonight: a window of time instead of "now". The terror zone schedule says
@@ -164,9 +165,9 @@ const plan = computed(() => {
     const x = pick ? rate(pick.row, pick.score) : { items: 0, runes: 0 };
     let why = null;
     if (!takeTz) {
-      if (zoneBlocked) why = 'everything there is immune to your element';
-      else if (!bestTz) why = 'nothing there for this list';
-      else if (base) why = `${Math.round((bestTz.w / base.w) * 100)} % of ${base.row.spot.name}`;
+      if (zoneBlocked) why = t('everything there is immune to your element');
+      else if (!bestTz) why = t('nothing there for this list');
+      else if (base) why = t('{pct} % of {spot}', { pct: Math.round((bestTz.w / base.w) * 100), spot: base.row.spot.name });
     }
     return { slot, bestTz, pick, expected: { items: x.items * slot.hours, runes: x.runes * slot.hours }, zoneBlocked, why, gain: takeTz && base ? bestTz.w / base.w : null };
   });
@@ -190,7 +191,7 @@ const totals = computed(() => {
 // expected counts are small; the chance of at least one is the honest number
 const chance = (expected) => 1 - Math.exp(-expected);
 const pct = (p) => (p >= 0.995 ? '> 99 %' : p >= 0.1 ? `${Math.round(p * 100)} %` : p >= 0.01 ? `${(p * 100).toFixed(1)} %` : p > 0 ? `${(p * 100).toFixed(2)} %` : '—');
-const immuneNote = (row) => (row.immune && row.immune.gone ? `${row.immune.gone} of ${row.immune.total} monster types immune` : '');
+const immuneNote = (row) => (row.immune && row.immune.gone ? t('{gone} of {total} monster types immune', { gone: row.immune.gone, total: row.immune.total }) : '');
 
 // ---------- formatting ----------
 const timeFmt = new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit' });
@@ -200,11 +201,11 @@ const fmtRange = (a, b) => `${fmtTime(a)}–${fmtTime(b)}`;
 const sameDay = (a, b) => new Date(a).toDateString() === new Date(b).toDateString();
 const windowLabel = computed(() => {
   const s = windowStart.value; const e = windowEnd.value;
-  const day = sameDay(s, now.value) ? 'Today' : dayFmt.format(new Date(s));
+  const day = sameDay(s, now.value) ? t('Today') : dayFmt.format(new Date(s));
   return `${day} ${fmtRange(s, e)}${sameDay(s, e) ? '' : ` (${dayFmt.format(new Date(e))})`}`;
 });
 const num = (x) => (x >= 10 ? x.toFixed(0) : x >= 1 ? x.toFixed(1) : x.toFixed(2));
-const pctGain = (a, b) => (b > 0 ? `${a >= b ? '+' : ''}${Math.round(((a - b) / b) * 100)} %` : a > 0 ? 'new' : '—');
+const pctGain = (a, b) => (b > 0 ? `${a >= b ? '+' : ''}${Math.round(((a - b) / b) * 100)} %` : a > 0 ? t('new') : '—');
 const pickLabel = (pick) => (pick ? `${pick.row.spot.name}${pick.row.preset ? ` · ${pick.row.preset.label}` : ''}` : '—');
 const dropCalcLink = (row, terror) => ({ path: '/drop-calc', query: { area: String(row.spot.areaId), diff: String(settings.value.difficulty), ...(terror ? { tz: '1' } : {}) } });
 const tzLink = (zone) => ({ path: '/terror-zones', query: { zone: zone.key, diff: String(settings.value.difficulty) } });
@@ -213,13 +214,13 @@ const diffName = ['Normal', 'Nightmare', 'Hell'][settings.value.difficulty];
 // ---------- take it with you ----------
 const copied = ref(false);
 const planText = () => {
-  const lines = [`Relics of Sanctuary · ${windowLabel.value} · ${['Normal', 'Nightmare', 'Hell'][settings.value.difficulty]}, P${settings.value.players}`];
+  const lines = [`Relics of Sanctuary · ${windowLabel.value} · ${t(['Normal', 'Nightmare', 'Hell'][settings.value.difficulty])}, P${settings.value.players}`];
   for (const b of blocks.value) {
     const tzNote = b.pick?.terror ? ' (TZ)' : '';
     const skipped = b.slots.filter((p) => !p.pick?.terror && p.slot.zone).map((p) => `${p.slot.zone.short}${p.why ? `: ${p.why}` : ''}`);
-    lines.push(`${fmtRange(b.from, b.to)}  ${pickLabel(b.pick)}${tzNote}${skipped.length && !b.pick?.terror ? `  – TZ skipped: ${[...new Set(skipped)].join('; ')}` : ''}`);
+    lines.push(`${fmtRange(b.from, b.to)}  ${pickLabel(b.pick)}${tzNote}${skipped.length && !b.pick?.terror ? `  – ${t('TZ skipped')}: ${[...new Set(skipped)].join('; ')}` : ''}`);
   }
-  lines.push(`Chance tonight: ${targets.value.length ? `${pct(chance(totals.value.items))} for a hit on the list, ` : ''}${pct(chance(totals.value.runes))} for a ${runeFloorName.value}+`);
+  lines.push(`${t('Chance tonight:')} ${targets.value.length ? `${t('{pct} for a hit on the list', { pct: pct(chance(totals.value.items)) })}, ` : ''}${t('{pct} for a {rune}+', { pct: pct(chance(totals.value.runes)), rune: runeFloorName.value })}`);
   lines.push('https://relicsofsanctuary.com/#/tonight');
   return lines.join('\n');
 };
@@ -231,10 +232,10 @@ const exportCalendar = () => {
     uid: `plan-${b.from}-${b.pick.row.spot.areaId}@relicsofsanctuary.com`,
     start: b.from, end: b.to,
     summary: `${b.pick.terror ? 'TZ ' : ''}${pickLabel(b.pick)}`,
-    description: `Expected: ${num(b.expected.items)} hits on the list, ${num(b.expected.runes)} ${runeFloorName.value}+ runes.${b.pick.terror ? ` Terror zone: ${b.pick.row.zone.name}.` : ''}`,
+    description: `${t('Expected: {items} hits on the list, {runes} {rune}+ runes.', { items: num(b.expected.items), runes: num(b.expected.runes), rune: runeFloorName.value })}${b.pick.terror ? ` ${t('Terror zone: {zone}', { zone: b.pick.row.zone.name })}.` : ''}`,
     url: 'https://relicsofsanctuary.com/#/tonight',
   }));
-  downloadIcs(`relics-tonight-${new Date(windowStart.value).toISOString().slice(0, 10)}.ics`, events, { name: 'Relics of Sanctuary · Tonight' });
+  downloadIcs(`relics-tonight-${new Date(windowStart.value).toISOString().slice(0, 10)}.ics`, events, { name: `Relics of Sanctuary · ${t('Tonight')}` });
 };
 </script>
 
@@ -242,12 +243,12 @@ const exportCalendar = () => {
   <div class="container py-4 page-content tonight">
     <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
       <div>
-        <h1 class="h2 mb-1">Tonight</h1>
-        <p class="text-muted mb-0">Pick a window and your element - the plan says which terror zones are worth switching for and where to stand in between.</p>
+        <h1 class="h2 mb-1">{{ $t('Tonight') }}</h1>
+        <p class="text-muted mb-0">{{ $t('Pick a window and your element - the plan says which terror zones are worth switching for and where to stand in between.') }}</p>
       </div>
       <div class="d-flex gap-2 align-items-center small">
-        <button class="btn btn-sm btn-outline-secondary" :disabled="!plan.length" @click="copyPlan">{{ copied ? 'Copied' : 'Copy plan' }}</button>
-        <button class="btn btn-sm btn-outline-secondary" :disabled="!blocks.length" title="An .ics file with one event per stretch of the plan" @click="exportCalendar">Add to calendar</button>
+        <button class="btn btn-sm btn-outline-secondary" :disabled="!plan.length" @click="copyPlan">{{ copied ? $t('Copied') : $t('Copy plan') }}</button>
+        <button class="btn btn-sm btn-outline-secondary" :disabled="!blocks.length" :title="$t('An .ics file with one event per stretch of the plan')" @click="exportCalendar">{{ $t('Add to calendar') }}</button>
       </div>
     </div>
 
@@ -256,130 +257,130 @@ const exportCalendar = () => {
       <div class="card-body p-3">
         <div class="row g-3">
           <div class="col-md-4">
-            <div class="section-header mb-1">When</div>
+            <div class="section-header mb-1">{{ $t('When') }}</div>
             <div class="d-flex flex-wrap gap-2 align-items-center">
               <input v-model="startInput" type="datetime-local" class="form-control form-control-sm w-auto" />
-              <button class="btn btn-sm" :class="startIsNow ? 'btn-primary' : 'btn-outline-secondary'" @click="setNow">Now</button>
-              <span class="small text-muted">for</span>
+              <button class="btn btn-sm" :class="startIsNow ? 'btn-primary' : 'btn-outline-secondary'" @click="setNow">{{ $t('Now') }}</button>
+              <span class="small text-muted">{{ $t('for') }}</span>
               <select v-model.number="settings.hours" class="form-select form-select-sm w-auto">
                 <option v-for="h in HOURS" :key="h" :value="h">{{ h }} h</option>
               </select>
             </div>
-            <div class="small text-muted mt-1">{{ windowLabel }} · {{ slots.length }} half hours</div>
+            <div class="small text-muted mt-1">{{ windowLabel }} · {{ $t('{n} half hours', { n: slots.length }) }}</div>
           </div>
           <div class="col-md-4">
-            <div class="section-header mb-1">Your character kills with</div>
+            <div class="section-header mb-1">{{ $t('Your character kills with') }}</div>
             <div class="d-flex flex-wrap gap-1">
-              <button v-for="e in ELEMENTS" :key="e" class="btn btn-sm el-toggle" :class="[elementClass(e), { on: settings.elements.includes(e) }]" @click="toggleElement(e)">{{ ELEMENT_SHORT[e] }}</button>
+              <button v-for="e in ELEMENTS" :key="e" class="btn btn-sm el-toggle" :class="[elementClass(e), { on: settings.elements.includes(e) }]" @click="toggleElement(e)">{{ $t(ELEMENT_SHORT[e]) }}</button>
             </div>
             <div class="form-check form-switch small mt-1 mb-0">
               <input id="kill-only" v-model="settings.killOnly" class="form-check-input" type="checkbox" :disabled="!settings.elements.length" />
-              <label class="form-check-label" for="kill-only" title="Monsters immune to every chosen element are met but left standing - they drop nothing, the rest of the spot still counts">Count only what these can kill</label>
+              <label class="form-check-label" for="kill-only" :title="$t('Monsters immune to every chosen element are met but left standing - they drop nothing, the rest of the spot still counts')">{{ $t('Count only what these can kill') }}</label>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="section-header mb-1">Game</div>
+            <div class="section-header mb-1">{{ $t('Game') }}</div>
             <div class="d-flex flex-wrap gap-2 align-items-center small">
-              <select v-model.number="settings.difficulty" class="form-select form-select-sm w-auto"><option :value="0">Normal</option><option :value="1">Nightmare</option><option :value="2">Hell</option></select>
-              <label class="text-muted">Players <select v-model.number="settings.players" class="form-select form-select-sm w-auto d-inline-block"><option v-for="n in 8" :key="n" :value="n">{{ n }}</option></select></label>
-              <label class="text-muted">Party <select v-model.number="settings.party" class="form-select form-select-sm w-auto d-inline-block"><option v-for="n in settings.players" :key="n" :value="n">{{ n }}</option></select></label>
+              <select v-model.number="settings.difficulty" class="form-select form-select-sm w-auto"><option :value="0">{{ $t('Normal') }}</option><option :value="1">{{ $t('Nightmare') }}</option><option :value="2">{{ $t('Hell') }}</option></select>
+              <label class="text-muted">{{ $t('Players') }} <select v-model.number="settings.players" class="form-select form-select-sm w-auto d-inline-block"><option v-for="n in 8" :key="n" :value="n">{{ n }}</option></select></label>
+              <label class="text-muted">{{ $t('Party') }} <select v-model.number="settings.party" class="form-select form-select-sm w-auto d-inline-block"><option v-for="n in settings.players" :key="n" :value="n">{{ n }}</option></select></label>
               <label class="text-muted">MF <input v-model.number="settings.mf" type="number" min="0" max="9999" class="form-control form-control-sm d-inline-block mf" /></label>
-              <label class="text-muted" title="Terrorized monsters follow the character level">Clvl <input v-model.number="settings.charLevel" type="number" min="1" max="99" class="form-control form-control-sm d-inline-block clvl" /></label>
-              <label class="text-muted" title="Herald tier in terror zones">Herald <select v-model.number="settings.heraldTier" class="form-select form-select-sm w-auto d-inline-block"><option v-for="t in 5" :key="t" :value="t">{{ t }}</option></select></label>
-              <label class="text-muted" title="What counts as a high rune">Rune <select v-model.number="settings.runeFloor" class="form-select form-select-sm w-auto d-inline-block"><option v-for="f in RUNE_FLOORS" :key="f.number" :value="f.number">{{ f.name }}+</option></select></label>
+              <label class="text-muted" :title="$t('Terrorized monsters follow the character level')">{{ $t('Clvl') }} <input v-model.number="settings.charLevel" type="number" min="1" max="99" class="form-control form-control-sm d-inline-block clvl" /></label>
+              <label class="text-muted" :title="$t('Herald tier in terror zones')">{{ $t('Herald') }} <select v-model.number="settings.heraldTier" class="form-select form-select-sm w-auto d-inline-block"><option v-for="t in 5" :key="t" :value="t">{{ t }}</option></select></label>
+              <label class="text-muted" :title="$t('What counts as a high rune')">{{ $t('Rune') }} <select v-model.number="settings.runeFloor" class="form-select form-select-sm w-auto d-inline-block"><option v-for="f in RUNE_FLOORS" :key="f.number" :value="f.number">{{ f.name }}+</option></select></label>
             </div>
           </div>
         </div>
         <div class="d-flex flex-wrap gap-3 align-items-center mt-3 small">
           <div>
-            <span class="text-muted">Your list:</span>
+            <span class="text-muted">{{ $t('Your list:') }}</span>
             <template v-if="targets.length">
               <span v-for="t in targets" :key="t.key" class="target-chip ms-1" :class="t.kind">{{ t.name }}</span>
-              <router-link to="/where-to-farm" class="ms-2">edit</router-link>
+              <router-link to="/where-to-farm" class="ms-2">{{ $t('edit') }}</router-link>
             </template>
-            <template v-else><span class="text-warning ms-1">empty</span> <span class="text-muted">- planning for {{ runeFloorName }}+ runes only.</span> <router-link to="/where-to-farm">Add items</router-link></template>
+            <template v-else><span class="text-warning ms-1">{{ $t('empty') }}</span> <span class="text-muted">{{ $t('- planning for {rune}+ runes only.', { rune: runeFloorName }) }}</span> <router-link to="/where-to-farm">{{ $t('Add items') }}</router-link></template>
           </div>
           <div v-if="targets.length" class="d-flex align-items-center gap-2 text-muted ms-auto">
-            <span>runes</span>
-            <input v-model.number="settings.weightItems" type="range" min="0" max="100" step="5" class="form-range weight" title="What the evening is for: only runes on the left, only the list on the right" />
-            <span>items</span>
+            <span>{{ $t('runes') }}</span>
+            <input v-model.number="settings.weightItems" type="range" min="0" max="100" step="5" class="form-range weight" :title="$t('What the evening is for: only runes on the left, only the list on the right')" />
+            <span>{{ $t('items') }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-if="coverage === 'none'" class="alert alert-warning small">The schedule on this site does not cover that window. It runs from the import date for a few months - pick a time inside it.</div>
-    <div v-else-if="coverage === 'partial'" class="alert alert-warning small py-2">The schedule ends inside this window; the last half hours are missing.</div>
+    <div v-if="coverage === 'none'" class="alert alert-warning small">{{ $t('The schedule on this site does not cover that window. It runs from the import date for a few months - pick a time inside it.') }}</div>
+    <div v-else-if="coverage === 'partial'" class="alert alert-warning small py-2">{{ $t('The schedule ends inside this window; the last half hours are missing.') }}</div>
 
     <!-- verdict -->
     <div v-if="plan.length && (baseline || totals.tzSlots)" class="card card-enhanced verdict mb-4">
       <div class="card-body p-3 d-flex flex-wrap gap-4">
         <div>
-          <div class="section-header mb-1">Following the plan</div>
-          <div class="big"><span v-if="targets.length">{{ pct(chance(totals.items)) }} <span class="small text-muted">for a hit on the list</span> · </span>{{ pct(chance(totals.runes)) }} <span class="small text-muted">for a {{ runeFloorName }}+</span></div>
-          <div class="small text-muted">expected <span v-if="targets.length">{{ num(totals.items) }} hits, </span>{{ num(totals.runes) }} runes over {{ num(totals.hours) }} h · {{ totals.tzSlots }} of {{ plan.length }} half hours in a terror zone</div>
+          <div class="section-header mb-1">{{ $t('Following the plan') }}</div>
+          <div class="big"><span v-if="targets.length">{{ pct(chance(totals.items)) }} <span class="small text-muted">{{ $t('for a hit on the list') }}</span> · </span>{{ pct(chance(totals.runes)) }} <span class="small text-muted">{{ $t('for a {rune}+', { rune: runeFloorName }) }}</span></div>
+          <div class="small text-muted">{{ $t('expected') }} <span v-if="targets.length">{{ $t('{n} hits,', { n: num(totals.items) }) }} </span>{{ $t('{n} runes over {h} h', { n: num(totals.runes), h: num(totals.hours) }) }} · {{ $t('{a} of {b} half hours in a terror zone', { a: totals.tzSlots, b: plan.length }) }}</div>
         </div>
         <div v-if="baseline">
-          <div class="section-header mb-1">Camping {{ baseline.row.spot.name }}<span v-if="baseline.row.preset" class="text-muted fw-normal"> · {{ baseline.row.preset.label }}</span></div>
-          <div class="big"><span v-if="targets.length">{{ pct(chance(totals.base.items)) }} <span class="small text-muted">hit</span> · </span>{{ pct(chance(totals.base.runes)) }} <span class="small text-muted">{{ runeFloorName }}+</span></div>
-          <div class="small text-muted">expected <span v-if="targets.length">{{ num(totals.base.items) }} hits, </span>{{ num(totals.base.runes) }} runes · the best spot without terror, all evening</div>
+          <div class="section-header mb-1">{{ $t('Camping {spot}', { spot: baseline.row.spot.name }) }}<span v-if="baseline.row.preset" class="text-muted fw-normal"> · {{ baseline.row.preset.label }}</span></div>
+          <div class="big"><span v-if="targets.length">{{ pct(chance(totals.base.items)) }} <span class="small text-muted">{{ $t('hit') }}</span> · </span>{{ pct(chance(totals.base.runes)) }} <span class="small text-muted">{{ runeFloorName }}+</span></div>
+          <div class="small text-muted">{{ $t('expected') }} <span v-if="targets.length">{{ $t('{n} hits,', { n: num(totals.base.items) }) }} </span>{{ $t('{n} runes · the best spot without terror, all evening', { n: num(totals.base.runes) }) }}</div>
         </div>
         <div v-if="baseline && totals.tzSlots">
-          <div class="section-header mb-1">Terror zones add</div>
-          <div class="big"><span v-if="targets.length">{{ pctGain(totals.items, totals.base.items) }} <span class="small text-muted">items</span> · </span>{{ pctGain(totals.runes, totals.base.runes) }} <span class="small text-muted">runes</span></div>
-          <div class="small text-muted">in expected finds, against camping</div>
+          <div class="section-header mb-1">{{ $t('Terror zones add') }}</div>
+          <div class="big"><span v-if="targets.length">{{ pctGain(totals.items, totals.base.items) }} <span class="small text-muted">{{ $t('items') }}</span> · </span>{{ pctGain(totals.runes, totals.base.runes) }} <span class="small text-muted">{{ $t('runes') }}</span></div>
+          <div class="small text-muted">{{ $t('in expected finds, against camping') }}</div>
         </div>
-        <div v-else-if="baseline" class="align-self-center small text-muted">No terror zone in this window beats {{ baseline.row.spot.name }} - stay put.</div>
+        <div v-else-if="baseline" class="align-self-center small text-muted">{{ $t('No terror zone in this window beats {spot} - stay put.', { spot: baseline.row.spot.name }) }}</div>
       </div>
     </div>
 
     <!-- the plan -->
     <div v-if="plan.length" class="card card-enhanced mb-4">
       <div class="card-header card-header-primary d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <h2 class="h5 card-title m-0">The plan<span class="text-muted fw-normal small"> · {{ windowLabel }}</span></h2>
-        <span class="small text-muted">Half hour by half hour; a terror zone is taken when it beats the best ordinary spot for what the evening is for.</span>
+        <h2 class="h5 card-title m-0">{{ $t('The plan') }}<span class="text-muted fw-normal small"> · {{ windowLabel }}</span></h2>
+        <span class="small text-muted">{{ $t('Half hour by half hour; a terror zone is taken when it beats the best ordinary spot for what the evening is for.') }}</span>
       </div>
       <div class="card-body p-0">
         <div class="table-responsive">
           <table class="table table-dark table-sm table-hover mb-0 align-middle plan-table">
             <thead>
               <tr>
-                <th>Time</th>
-                <th>Terror zone</th>
-                <th>Do</th>
-                <th class="text-end" :title="`Chance of at least one in this half hour: a hit on the list, a ${runeFloorName}+ rune`">Chance</th>
-                <th>The terror zone</th>
+                <th>{{ $t('Time') }}</th>
+                <th>{{ $t('Terror zone') }}</th>
+                <th>{{ $t('Do') }}</th>
+                <th class="text-end" :title="$t('Chance of at least one in this half hour: a hit on the list, a {rune}+ rune', { rune: runeFloorName })">{{ $t('Chance') }}</th>
+                <th>{{ $t('The terror zone') }}</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="p in plan" :key="p.slot.index" :class="{ 'tz-row': p.pick?.terror }">
                 <td class="text-nowrap">
                   {{ fmtRange(p.slot.from, p.slot.to) }}
-                  <span v-if="p.slot.from <= now && now < p.slot.to" class="badge now-badge ms-1">now</span>
+                  <span v-if="p.slot.from <= now && now < p.slot.to" class="badge now-badge ms-1">{{ $t('now') }}</span>
                 </td>
                 <td>
                   <router-link :to="tzLink(p.slot.zone)" class="zone-link" :class="{ dim: p.zoneBlocked }">{{ p.slot.zone.name }}</router-link>
                   <span v-if="p.slot.zone.boss" class="badge boss-badge ms-1">{{ p.slot.zone.boss }}</span>
-                  <span class="el-row ms-1"><span v-for="e in farmableElements(dropData, p.slot.zone, settings.difficulty)" :key="e" class="el-dot" :class="[elementClass(e), { mine: settings.elements.includes(e) }]" :title="`${e}: farmable`">{{ ELEMENT_SHORT[e] }}</span></span>
+                  <span class="el-row ms-1"><span v-for="e in farmableElements(dropData, p.slot.zone, settings.difficulty)" :key="e" class="el-dot" :class="[elementClass(e), { mine: settings.elements.includes(e) }]" :title="$t('{el}: farmable', { el: $t(e) })">{{ $t(ELEMENT_SHORT[e]) }}</span></span>
                 </td>
                 <td>
                   <template v-if="p.pick">
                     <router-link :to="dropCalcLink(p.pick.row, p.pick.terror)" class="spot-link">{{ p.pick.row.spot.name }}</router-link>
                     <span v-if="p.pick.row.preset" class="text-muted small"> · {{ p.pick.row.preset.label }}</span>
-                    <span v-if="p.pick.terror" class="badge tz-badge ms-1" :title="p.gain ? `${Math.round(p.gain * 100)} % of the best ordinary spot` : ''">TZ<template v-if="p.gain && p.gain < 9.99"> ×{{ p.gain.toFixed(1) }}</template></span>
-                    <span v-else class="text-muted small"> · not terrorized</span>
+                    <span v-if="p.pick.terror" class="badge tz-badge ms-1" :title="p.gain ? $t('{pct} % of the best ordinary spot', { pct: Math.round(p.gain * 100) }) : ''">TZ<template v-if="p.gain && p.gain < 9.99"> ×{{ p.gain.toFixed(1) }}</template></span>
+                    <span v-else class="text-muted small"> · {{ $t('not terrorized') }}</span>
                     <div v-if="immuneNote(p.pick.row)" class="small text-muted">{{ immuneNote(p.pick.row) }}</div>
                   </template>
                   <span v-else class="text-muted">—</span>
                 </td>
                 <td class="text-end text-nowrap small">
-                  <span v-if="targets.length">{{ pct(chance(p.expected.items)) }} <span class="text-muted">hit</span> · </span>{{ pct(chance(p.expected.runes)) }} <span class="text-muted rune-high">{{ runeFloorName }}+</span>
+                  <span v-if="targets.length">{{ pct(chance(p.expected.items)) }} <span class="text-muted">{{ $t('hit') }}</span> · </span>{{ pct(chance(p.expected.runes)) }} <span class="text-muted rune-high">{{ runeFloorName }}+</span>
                 </td>
                 <td class="small text-muted">
-                  <template v-if="p.pick?.terror">taken</template>
-                  <template v-else-if="p.zoneBlocked"><span class="text-warning">everything there is immune to your element</span></template>
-                  <template v-else-if="p.bestTz">skipped · {{ p.bestTz.row.spot.name }}<span v-if="p.bestTz.row.preset"> ({{ p.bestTz.row.preset.label }})</span> would be {{ p.why }}</template>
-                  <template v-else>nothing there for this list</template>
+                  <template v-if="p.pick?.terror">{{ $t('taken') }}</template>
+                  <template v-else-if="p.zoneBlocked"><span class="text-warning">{{ $t('everything there is immune to your element') }}</span></template>
+                  <template v-else-if="p.bestTz">{{ $t('skipped') }} · {{ p.bestTz.row.spot.name }}<span v-if="p.bestTz.row.preset"> ({{ p.bestTz.row.preset.label }})</span> {{ $t('would be {why}', { why: p.why }) }}</template>
+                  <template v-else>{{ $t('nothing there for this list') }}</template>
                 </td>
               </tr>
             </tbody>
@@ -390,14 +391,14 @@ const exportCalendar = () => {
 
     <!-- fallbacks -->
     <div v-if="plainRanking.length" class="card card-enhanced">
-      <div class="card-header card-header-primary"><h2 class="h5 card-title m-0">Between terror zones<span class="text-muted fw-normal small"> · the best ordinary spots for this evening</span></h2></div>
+      <div class="card-header card-header-primary"><h2 class="h5 card-title m-0">{{ $t('Between terror zones') }}<span class="text-muted fw-normal small"> · {{ $t('the best ordinary spots for this evening') }}</span></h2></div>
       <div class="card-body p-0">
         <table class="table table-dark table-sm mb-0 align-middle">
           <tbody>
             <tr v-for="(x, i) in plainRanking.slice(0, 5)" :key="x.row.spot.areaId">
               <td class="text-muted text-end rank-col">{{ i + 1 }}</td>
               <td><router-link :to="dropCalcLink(x.row, false)" class="spot-link">{{ x.row.spot.name }}</router-link><span v-if="x.row.preset" class="text-muted small"> · {{ x.row.preset.label }}</span><span v-if="immuneNote(x.row)" class="text-muted small"> · {{ immuneNote(x.row) }}</span></td>
-              <td class="small text-muted text-end text-nowrap"><span v-if="targets.length">{{ num(rate(x.row, x.row.plain).items) }} hits/h · </span>{{ num(rate(x.row, x.row.plain).runes) }} {{ runeFloorName }}+/h · {{ x.row.minutes }} min runs</td>
+              <td class="small text-muted text-end text-nowrap"><span v-if="targets.length">{{ $t('{n} hits/h', { n: num(rate(x.row, x.row.plain).items) }) }} · </span>{{ $t('{n} {rune}+/h', { n: num(rate(x.row, x.row.plain).runes), rune: runeFloorName }) }} · {{ $t('{n} min runs', { n: x.row.minutes }) }}</td>
             </tr>
           </tbody>
         </table>
@@ -405,9 +406,8 @@ const exportCalendar = () => {
     </div>
 
     <p class="small text-muted mt-4 mb-0">
-      Spots are scored the way <router-link to="/where-to-farm">Where to Farm</router-link> scores them, with its run profile and per-spot numbers; the half hours come from the
-      <router-link to="/terror-zones">Terror Zones</router-link> schedule. Monsters immune to every element you chose are met but left standing - they drop nothing, the rest of the spot still counts. Chances are for at
-      least one find in the time given; the expected numbers behind them are averages over many evenings like this one.
+      <span v-html="$t('Spots are scored the way {farm} scores them, with its run profile and per-spot numbers; the half hours come from the {tz} schedule.', { farm: `<a href='#/where-to-farm'>${$t('Where to Farm')}</a>`, tz: `<a href='#/terror-zones'>${$t('Terror Zones')}</a>` })"></span>
+      {{ $t('Monsters immune to every element you chose are met but left standing - they drop nothing, the rest of the spot still counts. Chances are for at least one find in the time given; the expected numbers behind them are averages over many evenings like this one.') }}
     </p>
   </div>
 </template>

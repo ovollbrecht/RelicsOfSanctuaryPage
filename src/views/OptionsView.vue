@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import optionData from '@/assets/mod_options.json';
+import { t } from '@/i18n';
 
 // The standalone archive is a D2RMM install of this same mod with every option
 // left alone, packaged as game files. So its column is not a second source of
@@ -8,16 +9,16 @@ import optionData from '@/assets/mod_options.json';
 const standaloneOf = (option) => {
   if (option.type === 'checkbox') {
     return option.defaultValue
-      ? { text: 'Included', included: true }
-      : { text: 'Not included', included: false };
+      ? { text: t('Included'), included: true }
+      : { text: t('Not included'), included: false };
   }
 
   const chosen = defaultLabel(option);
-  return chosen ? { text: `${chosen}, fixed`, included: true } : { text: 'Fixed', included: true };
+  return chosen ? { text: t('{chosen}, fixed', { chosen }), included: true } : { text: t('Fixed'), included: true };
 };
 
 const defaultLabel = (option) => {
-  if (option.type === 'checkbox') return option.defaultValue ? 'On' : 'Off';
+  if (option.type === 'checkbox') return option.defaultValue ? t('On') : t('Off');
 
   const choice = (option.options ?? []).find((entry) => entry.value === option.defaultValue);
   return choice?.label ?? (option.defaultValue == null ? '' : String(option.defaultValue));
@@ -27,11 +28,12 @@ const groups = computed(() => optionData.groups.map((group) => ({
   ...group,
   // Options ahead of the first section are the ones D2RMM shows above
   // everything else; they have no heading of their own in the installer.
-  name: group.name ?? 'General',
+  name: group.name ?? t('General'),
   options: group.options.map((option) => ({
     ...option,
     choices: (option.options ?? []).map((entry) => entry.label).join(' · '),
     default: defaultLabel(option),
+    off: option.type === 'checkbox' && !option.defaultValue,
     standalone: standaloneOf(option),
   })),
 })));
@@ -48,10 +50,9 @@ const offByDefault = computed(() => groups.value
   <div class="container py-4 page-content">
     <div class="row">
       <div class="col-12">
-        <h1 class="display-4 mb-3">Options</h1>
+        <h1 class="display-4 mb-3">{{ $t('Options') }}</h1>
         <p class="lead text-muted">
-          Every part of this mod can be switched off, and most of it can be tuned.
-          Here is the full list, what each one does, and what the standalone archive brings with it.
+          {{ $t('Every part of this mod can be switched off, and most of it can be tuned. Here is the full list, what each one does, and what the standalone archive brings with it.') }}
         </p>
       </div>
     </div>
@@ -61,17 +62,15 @@ const offByDefault = computed(() => groups.value
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">D2RMM — every option</h3>
+            <h3 class="card-title m-0">{{ $t('D2RMM — every option') }}</h3>
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              The D2RMM download is the installer script, not the game files: D2RMM builds them
-              when you install, from the settings you pick. All {{ optionCount }} options below
-              are yours to set, and changing your mind means changing a checkbox and installing again.
+              {{ $t('The D2RMM download is the installer script, not the game files: D2RMM builds them when you install, from the settings you pick. All {n} options below are yours to set, and changing your mind means changing a checkbox and installing again.', { n: optionCount }) }}
             </p>
             <ul class="feature-list">
-              <li>Install D2RMM, drop the mod into its <code>mods</code> folder</li>
-              <li>Set the options, then install</li>
+              <li v-html="$t('Install D2RMM, drop the mod into its <code>mods</code> folder')"></li>
+              <li>{{ $t('Set the options, then install') }}</li>
             </ul>
           </div>
         </div>
@@ -79,20 +78,14 @@ const offByDefault = computed(() => groups.value
       <div class="col-md-6">
         <div class="card h-100 card-enhanced card-hover">
           <div class="card-header card-header-primary">
-            <h3 class="card-title m-0">Standalone — the defaults</h3>
+            <h3 class="card-title m-0">{{ $t('Standalone — the defaults') }}</h3>
           </div>
           <div class="card-body p-4">
-            <p class="card-text">
-              The standalone archive carries the finished game files. It is this same mod installed
-              through D2RMM with every option left at its default and then packaged, so it needs no
-              tools — and it has no settings. What the <strong>Standalone</strong> column below says
-              is what is in it.
-            </p>
+            <p class="card-text" v-html="$t('The standalone archive carries the finished game files. It is this same mod installed through D2RMM with every option left at its default and then packaged, so it needs no tools — and it has no settings. What the <strong>Standalone</strong> column below says is what is in it.')"></p>
             <ul class="feature-list">
-              <li>Extract to <code>[GamePath]/mods</code> — you should end up with
-                <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code></li>
-              <li>Make a shortcut of <code>D2R.exe</code></li>
-              <li>Add <code>-mod RelicsOfSanctuary -txt</code> to its target path</li>
+              <li v-html="$t('Extract to <code>[GamePath]/mods</code> — you should end up with <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code>')"></li>
+              <li v-html="$t('Make a shortcut of <code>D2R.exe</code>')"></li>
+              <li v-html="$t('Add <code>-mod RelicsOfSanctuary -txt</code> to its target path')"></li>
             </ul>
           </div>
         </div>
@@ -104,13 +97,11 @@ const offByDefault = computed(() => groups.value
       <div class="col-12">
         <div class="card card-enhanced">
           <div class="card-header card-header-dark">
-            <h4 class="m-0">Only in the D2RMM version</h4>
+            <h4 class="m-0">{{ $t('Only in the D2RMM version') }}</h4>
           </div>
           <div class="card-body p-4">
             <p class="card-text">
-              Everything the mod does is in the standalone except the {{ offByDefault.length }} options
-              that stay off until you ask for them — a narrower way to play, or a workaround you may
-              not need:
+              {{ $t('Everything the mod does is in the standalone except the {n} options that stay off until you ask for them — a narrower way to play, or a workaround you may not need:', { n: offByDefault.length }) }}
             </p>
             <ul class="feature-list">
               <li v-for="option in offByDefault" :key="option.id">
@@ -119,8 +110,7 @@ const offByDefault = computed(() => groups.value
               </li>
             </ul>
             <p class="card-text mb-0">
-              The drop chances can be changed in D2RMM as well; the standalone is fixed at the
-              recommended 5%.
+              {{ $t('The drop chances can be changed in D2RMM as well; the standalone is fixed at the recommended 5%.') }}
             </p>
           </div>
         </div>
@@ -140,10 +130,10 @@ const offByDefault = computed(() => groups.value
               <table class="table table-dark table-striped table-hover mb-0 options-table">
                 <thead>
                   <tr>
-                    <th scope="col">Option</th>
-                    <th scope="col">What it does</th>
-                    <th scope="col" class="text-nowrap">Default</th>
-                    <th scope="col" class="text-nowrap">Standalone</th>
+                    <th scope="col">{{ $t('Option') }}</th>
+                    <th scope="col">{{ $t('What it does') }}</th>
+                    <th scope="col" class="text-nowrap">{{ $t('Default') }}</th>
+                    <th scope="col" class="text-nowrap">{{ $t('Standalone') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,7 +144,7 @@ const offByDefault = computed(() => groups.value
                     </th>
                     <td class="option-text">{{ option.description }}</td>
                     <td class="text-nowrap">
-                      <span class="badge" :class="option.default === 'Off' ? 'state-off' : 'state-on'">
+                      <span class="badge" :class="option.off ? 'state-off' : 'state-on'">
                         {{ option.default }}
                       </span>
                     </td>
@@ -173,8 +163,7 @@ const offByDefault = computed(() => groups.value
     </div>
 
     <p class="text-muted mt-4 mb-0 small">
-      Read from the mod's own installer manifest, version {{ optionData.modVersion }} — the same
-      list D2RMM shows you.
+      {{ $t('Read from the mod\'s own installer manifest, version {v} — the same list D2RMM shows you.', { v: optionData.modVersion }) }}
     </p>
   </div>
 </template>

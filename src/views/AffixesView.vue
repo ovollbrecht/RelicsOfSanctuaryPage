@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import affixData from '@/assets/affixes.json';
 import ReworkChanges from '@/components/ReworkChanges.vue';
 import { magicChance, rareCraftedChance } from '@/composables/useAffixSimulation.js';
+import { t } from '@/i18n';
 
 const route = useRoute();
 const router = useRouter();
@@ -14,6 +15,8 @@ const selectedType = ref('ring');
 const selectedBaseCode = ref('');
 const ilvl = ref(99);
 const quality = ref('rare');      // magic | rare | crafted
+// 'Magic' the quality, not the element - the dictionary tells them apart
+const QUALITY_LABELS = { magic: 'Magic|quality', rare: 'Rare', crafted: 'Crafted' };
 const dataMode = ref('mod');      // mod | vanilla (mod is the default)
 const searchQuery = ref('');
 const searchInput = ref('');
@@ -267,7 +270,7 @@ const wantedChance = computed(() => {
     const prefixGroups = wantedSelections.filter(s => s.kind === 'prefix');
     const suffixGroups = wantedSelections.filter(s => s.kind === 'suffix');
     if (prefixGroups.length > 1 || suffixGroups.length > 1) {
-      return { chance: 0, impossible: 'Magic items can get at most one prefix and one suffix.', approximate: false };
+      return { chance: 0, impossible: t('Magic items can get at most one prefix and one suffix.'), approximate: false };
     }
     const chance = magicChance({
       prefixes,
@@ -281,7 +284,7 @@ const wantedChance = computed(() => {
   const prefixSelections = wantedSelections.filter(s => s.kind === 'prefix');
   const suffixSelections = wantedSelections.filter(s => s.kind === 'suffix');
   if (prefixSelections.length > 3 || suffixSelections.length > 3) {
-    return { chance: 0, impossible: 'At most 3 prefixes and 3 suffixes are possible.', approximate: false };
+    return { chance: 0, impossible: t('At most 3 prefixes and 3 suffixes are possible.'), approximate: false };
   }
 
   const chance = rareCraftedChance({
@@ -300,7 +303,7 @@ const formatWantedChance = (chance) => {
   const pct = chance * 100;
   const formatted = pct >= 1 ? pct.toFixed(2) : pct >= 0.01 ? pct.toFixed(3) : pct.toExponential(2);
   const oneIn = Math.round(1 / chance);
-  return `${formatted}% (≈ 1 in ${oneIn.toLocaleString('en-US')})`;
+  return t('{pct}% (≈ 1 in {n})', { pct: formatted, n: oneIn.toLocaleString('en-US') });
 };
 
 // ---------- rework display ----------
@@ -326,20 +329,20 @@ const getReworkChanges = (affix) => {
       changes.push({ label, old: String(affix['Vanilla' + name]), new: String(affix[name]) });
     }
   };
-  numericChange('Affix level', 'Level');
-  numericChange('Max level', 'MaxLevel');
-  numericChange('Level req', 'LevelReq');
-  numericChange('Frequency', 'Frequency');
+  numericChange(t('Affix level'), 'Level');
+  numericChange(t('Max level'), 'MaxLevel');
+  numericChange(t('Level req'), 'LevelReq');
+  numericChange(t('Frequency'), 'Frequency');
 
   if (affix.VanillaAllowedTypes) {
     changes.push({
-      label: 'Item types',
+      label: t('Item types'),
       old: affix.VanillaAllowedTypes.map(typeName).join(', '),
       new: affix.AllowedTypes.map(typeName).join(', '),
     });
   }
   if (affix.VanillaOnly) {
-    changes.push({ label: 'Availability', old: 'available in vanilla', new: 'disabled by the mod' });
+    changes.push({ label: t('Availability'), old: t('available in vanilla'), new: t('disabled by the mod') });
   }
 
   return changes;
@@ -426,7 +429,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
       <div class="col-12">
         <h1 class="display-4 mb-4">
           <span class="title-icon">✦</span>
-          Affix Calculator
+          {{ $t('Affix Calculator') }}
           <span class="title-icon">✦</span>
         </h1>
       </div>
@@ -444,7 +447,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
               class="btn btn-sm pill"
               :class="{ active: selectedCategory === category.id }"
               @click="setCategory(category.id)"
-            >{{ category.label }}</button>
+            >{{ $t(category.label) }}</button>
           </div>
           <div class="d-flex flex-wrap gap-2">
             <button
@@ -460,9 +463,9 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
         <div class="row g-3 align-items-end">
           <!-- base item (weapons/armor only - jewelry and charms are all qlvl 1) -->
           <div v-if="hasBaseItemChoice" class="col-md-4">
-            <label class="form-label text-warning">Base item (sets qlvl)</label>
+            <label class="form-label text-warning">{{ $t('Base item (sets qlvl)') }}</label>
             <select v-model="selectedBaseCode" class="form-select">
-              <option value="">Any {{ typeName(selectedType) }} (qlvl 0)</option>
+              <option value="">{{ $t('Any {type} (qlvl 0)', { type: typeName(selectedType) }) }}</option>
               <option v-for="base in basesOfType" :key="base.Code" :value="base.Code">
                 {{ base.Name }} (qlvl {{ base.Qlvl }}{{ base.MagicLvl ? `, +${base.MagicLvl} mlvl` : '' }})
               </option>
@@ -471,14 +474,14 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
 
           <!-- ilvl -->
           <div class="col-md-2">
-            <label class="form-label text-warning">Item level</label>
+            <label class="form-label text-warning">{{ $t('Item level') }}</label>
             <input v-model.number="ilvl" type="number" min="1" max="99" class="form-control" />
           </div>
 
           <!-- quality -->
           <div class="col-md-3">
-            <label class="form-label text-warning">Quality</label>
-            <div class="btn-group w-100" :title="isCharmType ? 'Charms only spawn as magic items' : undefined">
+            <label class="form-label text-warning">{{ $t('Quality') }}</label>
+            <div class="btn-group w-100" :title="isCharmType ? $t('Charms only spawn as magic items') : undefined">
               <button
                 v-for="option in ['magic', 'rare', 'crafted']"
                 :key="option"
@@ -486,13 +489,13 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                 :class="{ active: quality === option }"
                 :disabled="isCharmType && option !== 'magic'"
                 @click="quality = option"
-              >{{ option.charAt(0).toUpperCase() + option.slice(1) }}</button>
+              >{{ $t(QUALITY_LABELS[option] ?? option) }}</button>
             </div>
           </div>
 
           <!-- data mode -->
           <div class="col-md-3">
-            <label class="form-label text-warning">Data</label>
+            <label class="form-label text-warning">{{ $t('Data') }}</label>
             <div class="btn-group w-100">
               <button class="btn btn-sm pill" :class="{ active: dataMode === 'mod' }" @click="dataMode = 'mod'">
                 Relics of Sanctuary
@@ -509,7 +512,7 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
             <input
               type="text"
               class="form-control"
-              placeholder="Search affixes by name or stat..."
+              :placeholder="$t('Search affixes by name or stat...')"
               :value="searchInput"
               @input="handleSearch"
             />
@@ -518,13 +521,13 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
             <div class="form-check reworked-toggle">
               <input id="only-reworked" v-model="onlyReworked" class="form-check-input" type="checkbox" />
               <label class="form-check-label" for="only-reworked">
-                {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
+                {{ $t(dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked') }}
               </label>
             </div>
           </div>
           <div class="col-md-4 text-md-end alvl-note">
-            Effective affix level: <strong>{{ alvl }}</strong>
-            <span v-if="selectedBase && selectedBase.MagicLvl > 0"> (ilvl + {{ selectedBase.MagicLvl }} magic lvl)</span>
+            {{ $t('Effective affix level:') }} <strong>{{ alvl }}</strong>
+            <span v-if="selectedBase && selectedBase.MagicLvl > 0"> {{ $t('(ilvl + {n} magic lvl)', { n: selectedBase.MagicLvl }) }}</span>
             <span v-else-if="selectedBase"> (ilvl {{ ilvl }}, qlvl {{ selectedBase.Qlvl }})</span>
           </div>
         </div>
@@ -535,32 +538,32 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
     <div v-if="pinnedList.length > 0" class="card wanted-card mb-4">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-baseline flex-wrap gap-2 mb-2">
-          <span class="section-header mb-0">Wanted affixes</span>
-          <button class="btn btn-sm pill" @click="clearPins">Clear all</button>
+          <span class="section-header mb-0">{{ $t('Wanted affixes') }}</span>
+          <button class="btn btn-sm pill" @click="clearPins">{{ $t('Clear all') }}</button>
         </div>
         <div class="d-flex flex-wrap gap-2 mb-3">
           <span v-for="pin in pinnedList" :key="pin.id" class="badge wanted-pin">
             {{ pin.kind === 'prefix' ? '⟨P⟩' : '⟨S⟩' }} {{ pin.affix.Name }}
-            <button class="pin-remove" @click="togglePin(pin.affix, pin.kind)" aria-label="Remove">×</button>
+            <button class="pin-remove" @click="togglePin(pin.affix, pin.kind)" :aria-label="$t('Remove')">×</button>
           </span>
         </div>
         <div v-if="wantedChance" class="wanted-result">
           <template v-if="wantedChance.impossible">
-            <span class="wanted-impossible">Impossible: {{ wantedChance.impossible }}</span>
+            <span class="wanted-impossible">{{ $t('Impossible: {reason}', { reason: wantedChance.impossible }) }}</span>
           </template>
           <template v-else-if="wantedChance.unavailable">
             <span class="wanted-impossible">
-              Not available with the current item/level settings: {{ wantedChance.unavailable.join(', ') }}
+              {{ $t('Not available with the current item/level settings: {names}', { names: wantedChance.unavailable.join(', ') }) }}
             </span>
           </template>
           <template v-else>
-            Chance per {{ quality }} roll:
+            {{ $t(`Chance per ${quality} roll:`) }}
             <strong>{{ wantedChance.approximate ? '≈ ' : '' }}{{ formatWantedChance(wantedChance.chance) }}</strong>
-            <span v-if="wantedChance.approximate" class="wanted-note"> · simulated (100k rolls)</span>
+            <span v-if="wantedChance.approximate" class="wanted-note"> · {{ $t('simulated (100k rolls)') }}</span>
           </template>
         </div>
         <div class="wanted-note mt-1">
-          Pins in the same affix group count as "any of these"; different groups must all appear.
+          {{ $t('Pins in the same affix group count as "any of these"; different groups must all appear.') }}
         </div>
       </div>
     </div>
@@ -570,16 +573,16 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
       <div v-for="[kind, pool] in [['prefix', prefixPool], ['suffix', suffixPool]]" :key="kind" class="col-lg-6">
         <div class="card h-100">
           <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <span>{{ kind === 'prefix' ? 'Prefixes' : 'Suffixes' }}</span>
+            <span>{{ $t(kind === 'prefix' ? 'Prefixes' : 'Suffixes') }}</span>
             <span class="d-flex align-items-center gap-2">
-              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, true)">Expand all</button>
-              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, false)">Collapse all</button>
-              <span class="pool-count">{{ pool.eligible.length }} possible</span>
+              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, true)">{{ $t('Expand all') }}</button>
+              <button class="btn btn-sm pill expand-btn" @click="setAllExpanded(pool, kind, false)">{{ $t('Collapse all') }}</button>
+              <span class="pool-count">{{ $t('{n} possible', { n: pool.eligible.length }) }}</span>
             </span>
           </div>
           <div class="card-body p-2">
             <div v-if="pool.groups.length === 0" class="empty-note p-3">
-              No {{ kind === 'prefix' ? 'prefixes' : 'suffixes' }} match the current selection.
+              {{ $t(kind === 'prefix' ? 'No prefixes match the current selection.' : 'No suffixes match the current selection.') }}
             </div>
             <div v-for="groupEntry in pool.groups" :key="groupEntry.group" class="affix-group mb-2">
               <div class="affix-group-header d-flex justify-content-between align-items-baseline">
@@ -588,12 +591,12 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                     v-if="groupEntry.affixes.length > 1"
                     class="pin-btn"
                     :class="{ pinned: isGroupPinned(groupEntry, kind) }"
-                    :title="isGroupPinned(groupEntry, kind) ? 'Remove group from wanted affixes' : 'Add whole group to wanted affixes (any of these)'"
+                    :title="$t(isGroupPinned(groupEntry, kind) ? 'Remove group from wanted affixes' : 'Add whole group to wanted affixes (any of these)')"
                     @click.stop="toggleGroupPin(groupEntry, kind)"
                   >{{ isGroupPinned(groupEntry, kind) ? '★' : '☆' }}</button>
-                  Group {{ groupEntry.group }}<span v-if="groupEntry.affixes.length > 1" class="group-note"> · one of these</span>
+                  {{ $t('Group {n}', { n: groupEntry.group }) }}<span v-if="groupEntry.affixes.length > 1" class="group-note"> · {{ $t('one of these') }}</span>
                 </span>
-                <span class="group-note">Σ freq {{ groupEntry.groupFrequency }}</span>
+                <span class="group-note">{{ $t('Σ freq {n}', { n: groupEntry.groupFrequency }) }}</span>
               </div>
               <div
                 v-for="affix in groupEntry.affixes"
@@ -612,20 +615,20 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                     <button
                       class="pin-btn"
                       :class="{ pinned: isPinned(affix, kind) }"
-                      :title="isPinned(affix, kind) ? 'Remove from wanted affixes' : 'Add to wanted affixes'"
+                      :title="$t(isPinned(affix, kind) ? 'Remove from wanted affixes' : 'Add to wanted affixes')"
                       @click.stop="togglePin(affix, kind)"
                     >{{ isPinned(affix, kind) ? '★' : '☆' }}</button>
                     {{ affix.Name }}
-                    <span v-if="affix.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-1">Reworked</span>
+                    <span v-if="affix.IsReworked && dataMode === 'mod'" class="badge rework-badge ms-1">{{ $t('Reworked') }}</span>
                     <span v-if="affix.ClassSpecific" class="badge class-badge ms-1">{{ affix.ClassSpecific }}</span>
                   </span>
                   <span class="affix-meta">
                     alvl {{ fieldOf(affix, 'Level') }}
-                    · req {{ fieldOf(affix, 'LevelReq') }}
+                    · {{ $t('req {n}', { n: fieldOf(affix, 'LevelReq') }) }}
                     <template v-if="groupEntry.affixes.length > 1">
-                      · freq {{ fieldOf(affix, 'Frequency') }} · in group {{ formatChance(fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) }}%
+                      · {{ $t('freq {n}', { n: fieldOf(affix, 'Frequency') }) }} · {{ $t('in group {pct}%', { pct: formatChance(fieldOf(affix, 'Frequency') / groupEntry.groupFrequency * 100) }) }}
                     </template>
-                    · roll {{ formatChance(chanceOf(affix, pool)) }}%
+                    · {{ $t('roll {pct}%', { pct: formatChance(chanceOf(affix, pool)) }) }}
                   </span>
                 </div>
                 <div class="affix-props">
@@ -635,18 +638,18 @@ watch([selectedType, selectedBaseCode, ilvl, quality, dataMode, pinnedIds], () =
                 </div>
                 <div v-if="expandedAffixes.has(affixKey(affix, kind))" class="affix-details" @click.stop>
                   <div class="detail-line">
-                    Frequency {{ fieldOf(affix, 'Frequency') }}
-                    <span v-if="fieldOf(affix, 'MaxLevel') != null"> · disappears above alvl {{ fieldOf(affix, 'MaxLevel') }}</span>
-                    <span v-if="!fieldOf(affix, 'Rare')"> · magic only</span>
+                    {{ $t('Frequency {n}', { n: fieldOf(affix, 'Frequency') }) }}
+                    <span v-if="fieldOf(affix, 'MaxLevel') != null"> · {{ $t('disappears above alvl {n}', { n: fieldOf(affix, 'MaxLevel') }) }}</span>
+                    <span v-if="!fieldOf(affix, 'Rare')"> · {{ $t('magic only') }}</span>
                   </div>
                   <div class="detail-line">
-                    Types: {{ fieldOf(affix, 'AllowedTypes').map(typeName).join(', ') }}
-                    <span v-if="fieldOf(affix, 'ExcludedTypes').length"> — except {{ fieldOf(affix, 'ExcludedTypes').map(typeName).join(', ') }}</span>
+                    {{ $t('Types:') }} {{ fieldOf(affix, 'AllowedTypes').map(typeName).join(', ') }}
+                    <span v-if="fieldOf(affix, 'ExcludedTypes').length"> — {{ $t('except') }} {{ fieldOf(affix, 'ExcludedTypes').map(typeName).join(', ') }}</span>
                   </div>
                   <ReworkChanges
                     v-if="affix.IsReworked"
                     :changes="getReworkChanges(affix)"
-                    :title="dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla'"
+                    :title="$t(dataMode === 'vanilla' ? 'Changes by Relics of Sanctuary' : 'Changes vs. vanilla')"
                   />
                 </div>
               </div>

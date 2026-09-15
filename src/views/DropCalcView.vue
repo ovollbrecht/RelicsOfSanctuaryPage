@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { t } from '@/i18n';
 import {
   buildContext, computeMonsterDrops, computeItemDetail, computeItemSources,
   formatChance, playerBonus, effectiveMf, noDropChance, DIFFICULTIES,
@@ -169,7 +170,7 @@ const monsterOptions = computed(() => {
       if (areas.length <= AREAS_STILL_NAMEABLE || actCounts.get(`${monster.Name}|${act}`) > 1) {
         label = `${monster.Name} — ${areaName(areas[0])}`;
       } else {
-        label = `${monster.Name} — Act ${act}`;
+        label = t('{name} — Act {act}', { name: monster.Name, act });
       }
     }
     return { monster, index, areas, label };
@@ -251,9 +252,9 @@ const superSourceOptions = computed(() => {
 
   labelled.forEach(({ m, index, label: base }) => {
     const label = labelCounts.get(base) > 1 ? `${base} — mlvl ${m.Levels[difficulty.value]}` : base;
-    options.push({ value: `boss:${index}`, label, hint: 'Boss' });
+    options.push({ value: `boss:${index}`, label, hint: t('Boss') });
     if (bossQuestDiffers(m)) {
-      options.push({ value: `bossq:${index}`, label: `${label} (Quest)`, hint: 'Boss, first kill' });
+      options.push({ value: `bossq:${index}`, label: `${label} (Quest)`, hint: t('Boss, first kill') });
     }
   });
 
@@ -297,7 +298,7 @@ const hasQuestTc = computed(() =>
   currentMonster.value && currentMonster.value.Tcs[difficulty.value][3] >= 0);
 
 function areaName(id) {
-  return dropData.Areas.find(a => a.Id === id)?.Name ?? `Area ${id}`;
+  return dropData.Areas.find(a => a.Id === id)?.Name ?? t('Area {id}', { id });
 }
 
 // ---------- item pickers ----------
@@ -578,9 +579,9 @@ const qualityRows = computed(() => {
   const q = detail.value.quality;
   const p = detail.value.baseChance;
   return [
-    ['Rare', q.rare, 'name-rare'], ['Magic', q.magic, 'name-magic'],
-    ['Superior', q.hiq, 'name-normal'], ['Normal', q.normal, 'name-normal'],
-    ['Low Quality', q.low, 'name-low'],
+    [t('Rare'), q.rare, 'name-rare'], [t('Magic|quality'), q.magic, 'name-magic'],
+    [t('Superior'), q.hiq, 'name-normal'], [t('Normal'), q.normal, 'name-normal'],
+    [t('Low Quality'), q.low, 'name-low'],
   ].filter(([, rel]) => rel > 0).map(([label, rel, colorClass]) => ({ label, relative: rel, chance: p * rel, colorClass }));
 });
 
@@ -597,7 +598,7 @@ const itemRows = computed(() => {
 const sourceTypeLabel = (row) => {
   const label = row.sourceType === 'superunique' ? 'Superunique'
     : row.sourceType.charAt(0).toUpperCase() + row.sourceType.slice(1);
-  return label;
+  return t(label);
 };
 
 const jumpToSource = (row) => {
@@ -741,7 +742,7 @@ watch(
       <div class="col-12">
         <h1 class="display-4 mb-4">
           <span class="title-icon">❖</span>
-          Drop Calculator
+          {{ $t('Drop Calculator') }}
           <span class="title-icon">❖</span>
         </h1>
       </div>
@@ -752,7 +753,7 @@ watch(
       <div class="card-body">
         <div class="row g-3 align-items-end">
           <div class="col-md-3">
-            <label class="form-label text-warning">Difficulty</label>
+            <label class="form-label text-warning">{{ $t('Difficulty') }}</label>
             <div class="btn-group w-100">
               <button
                 v-for="(name, index) in DIFFICULTIES"
@@ -760,23 +761,23 @@ watch(
                 class="btn btn-sm pill"
                 :class="{ active: difficulty === index }"
                 @click="difficulty = index"
-              >{{ name }}</button>
+              >{{ $t(name) }}</button>
             </div>
           </div>
           <div class="col-md-2">
-            <label class="form-label text-warning">Players</label>
+            <label class="form-label text-warning">{{ $t('Players') }}</label>
             <input v-model.number="players" type="number" min="1" max="8" class="form-control" />
           </div>
           <div class="col-md-2">
-            <label class="form-label text-warning" title="Players in your party near the kill">Party nearby</label>
+            <label class="form-label text-warning" :title="$t('Players in your party near the kill')">{{ $t('Party nearby') }}</label>
             <input v-model.number="party" type="number" min="1" :max="players" class="form-control" />
           </div>
           <div class="col-md-2">
-            <label class="form-label text-warning">Magic Find</label>
+            <label class="form-label text-warning">{{ $t('Magic Find') }}</label>
             <input v-model.number="mf" type="number" min="0" max="9999" class="form-control" />
           </div>
           <div class="col-md-3">
-            <label class="form-label text-warning">Data</label>
+            <label class="form-label text-warning">{{ $t('Data') }}</label>
             <div class="btn-group w-100">
               <button class="btn btn-sm pill" :class="{ active: dataMode === 'mod' }" @click="dataMode = 'mod'">
                 Relics of Sanctuary
@@ -792,20 +793,20 @@ watch(
           <div class="col-md-3">
             <div class="form-check option-toggle">
               <input id="terror" v-model="terrorEnabled" class="form-check-input" type="checkbox" />
-              <label class="form-check-label" for="terror">Terror Zone</label>
+              <label class="form-check-label" for="terror">{{ $t('Terror Zone') }}</label>
             </div>
             <input
               v-model.number="charLevel"
               type="number" min="1" max="99"
               class="form-control form-control-sm mt-1"
               :class="{ 'option-hidden': !terrorEnabled }"
-              title="Character level of the game creator"
+              :title="$t('Character level of the game creator')"
             />
           </div>
           <div v-if="dataMode === 'mod'" class="col-md-3">
             <div class="form-check option-toggle">
               <input id="exalted" v-model="exaltedEnabled" class="form-check-input" type="checkbox" />
-              <label class="form-check-label" for="exalted">Exalted uniques</label>
+              <label class="form-check-label" for="exalted">{{ $t('Exalted uniques') }}</label>
             </div>
             <div class="input-group input-group-sm mt-1" :class="{ 'option-hidden': !exaltedEnabled }">
               <input v-model.number="exaltedPercent" type="number" min="1" max="99" class="form-control" />
@@ -815,7 +816,7 @@ watch(
           <div v-if="dataMode === 'mod'" class="col-md-3">
             <div class="form-check option-toggle">
               <input id="mythic" v-model="mythicEnabled" class="form-check-input" type="checkbox" />
-              <label class="form-check-label" for="mythic">Mythic set items</label>
+              <label class="form-check-label" for="mythic">{{ $t('Mythic set items') }}</label>
             </div>
             <div class="input-group input-group-sm mt-1" :class="{ 'option-hidden': !mythicEnabled }">
               <input v-model.number="mythicPercent" type="number" min="1" max="99" class="form-control" />
@@ -823,11 +824,11 @@ watch(
             </div>
           </div>
           <div class="col-md-3 text-md-end info-note">
-            Player bonus: <strong>{{ bonus }}</strong>
+            {{ $t('Player bonus:') }} <strong>{{ bonus }}</strong>
             <template v-if="mf > 0">
               <br />
-              Effective MF:
-              <span title="Unique / Set / Rare / Magic after diminishing returns">
+              {{ $t('Effective MF:') }}
+              <span :title="$t('Unique / Set / Rare / Magic after diminishing returns')">
                 {{ mfInfo.unique }} / {{ mfInfo.set }} / {{ mfInfo.rare }} / {{ mfInfo.magic }}
               </span>
             </template>
@@ -838,29 +839,29 @@ watch(
 
     <!-- Mode -->
     <div class="d-flex flex-wrap gap-2 mb-3">
-      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'source' }" @click="viewMode = 'source'">Monster → Drops</button>
-      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'item' }" @click="viewMode = 'item'">Item → Sources</button>
+      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'source' }" @click="viewMode = 'source'">{{ $t('Monster → Drops') }}</button>
+      <button class="btn btn-sm pill mode-pill" :class="{ active: viewMode === 'item' }" @click="viewMode = 'item'">{{ $t('Item → Sources') }}</button>
     </div>
 
     <!-- Source -->
     <div v-if="viewMode === 'source'" class="card controls-card mb-3">
       <div class="card-body">
         <div class="d-flex flex-wrap gap-2 mb-3">
-          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'monster' }" @click="sourceKind = 'monster'">Monster</button>
-          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'superunique' }" @click="sourceKind = 'superunique'">Superunique / Boss</button>
-          <button v-if="heraldAvailable" class="btn btn-sm pill" :class="{ active: sourceKind === 'herald' }" @click="sourceKind = 'herald'">Herald</button>
-          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'chest' }" @click="sourceKind = 'chest'">Chest</button>
-          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'rawTc' }" @click="sourceKind = 'rawTc'">Treasure Class</button>
+          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'monster' }" @click="sourceKind = 'monster'">{{ $t('Monster') }}</button>
+          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'superunique' }" @click="sourceKind = 'superunique'">{{ $t('Superunique / Boss') }}</button>
+          <button v-if="heraldAvailable" class="btn btn-sm pill" :class="{ active: sourceKind === 'herald' }" @click="sourceKind = 'herald'">{{ $t('Herald') }}</button>
+          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'chest' }" @click="sourceKind = 'chest'">{{ $t('Chest') }}</button>
+          <button class="btn btn-sm pill" :class="{ active: sourceKind === 'rawTc' }" @click="sourceKind = 'rawTc'">{{ $t('Treasure Class') }}</button>
         </div>
 
         <div class="row g-3 align-items-end">
           <template v-if="sourceKind === 'monster'">
             <div class="col-md-4">
-              <label class="form-label text-warning">Monster</label>
-              <SearchableSelect v-model="selectedMonster" :options="monsterOptions" placeholder="Search monsters..." />
+              <label class="form-label text-warning">{{ $t('Monster') }}</label>
+              <SearchableSelect v-model="selectedMonster" :options="monsterOptions" :placeholder="$t('Search monsters...')" />
             </div>
             <div class="col-md-4">
-              <label class="form-label text-warning">Type</label>
+              <label class="form-label text-warning">{{ $t('Type') }}</label>
               <div class="btn-group w-100 flex-wrap">
                 <button
                   v-for="type in ['normal', 'champion', 'unique', 'minion']"
@@ -868,31 +869,31 @@ watch(
                   class="btn btn-sm pill"
                   :class="{ active: sourceType === type }"
                   @click="sourceType = type"
-                >{{ currentMonster?.Boss && type === 'normal' ? 'Boss' : type.charAt(0).toUpperCase() + type.slice(1) }}</button>
+                >{{ $t(currentMonster?.Boss && type === 'normal' ? 'Boss' : type.charAt(0).toUpperCase() + type.slice(1)) }}</button>
                 <button
                   v-if="hasQuestTc"
                   class="btn btn-sm pill"
                   :class="{ active: sourceType === 'quest' }"
                   @click="sourceType = 'quest'"
-                >Quest kill</button>
+                >{{ $t('Quest kill') }}</button>
               </div>
             </div>
             <div v-if="monsterAreaOptions.length > 1" class="col-md-4">
-              <label class="form-label text-warning">Area</label>
-              <SearchableSelect v-model="selectedAreaId" :options="monsterAreaOptions" placeholder="Area..." />
+              <label class="form-label text-warning">{{ $t('Area') }}</label>
+              <SearchableSelect v-model="selectedAreaId" :options="monsterAreaOptions" :placeholder="$t('Area...')" />
             </div>
           </template>
 
           <template v-else-if="sourceKind === 'superunique'">
             <div class="col-md-5">
-              <label class="form-label text-warning">Superunique / Boss</label>
-              <SearchableSelect v-model="selectedSuperSource" :options="superSourceOptions" placeholder="Search superuniques and bosses..." />
+              <label class="form-label text-warning">{{ $t('Superunique / Boss') }}</label>
+              <SearchableSelect v-model="selectedSuperSource" :options="superSourceOptions" :placeholder="$t('Search superuniques and bosses...')" />
             </div>
           </template>
 
           <template v-else-if="sourceKind === 'herald'">
             <div class="col-md-3">
-              <label class="form-label text-warning">Herald tier</label>
+              <label class="form-label text-warning">{{ $t('Herald tier') }}</label>
               <div class="btn-group w-100">
                 <button
                   v-for="tier in [1, 2, 3, 4, 5]"
@@ -904,25 +905,25 @@ watch(
               </div>
             </div>
             <div class="col-md-3">
-              <label class="form-label text-warning" title="Heralds are terror-zone elites - their level follows the game creator's character level">Character level</label>
+              <label class="form-label text-warning" :title="$t('Heralds are terror-zone elites - their level follows the game creator\'s character level')">{{ $t('Character level') }}</label>
               <input v-model.number="charLevel" type="number" min="1" max="99" class="form-control" />
             </div>
             <div class="col-md-6 info-note align-self-end">
-              Heralds are terror-zone elites. Sunder charms require herald tier 4+.
+              {{ $t('Heralds are terror-zone elites. Sunder charms require herald tier 4+.') }}
             </div>
           </template>
 
           <template v-else-if="sourceKind === 'chest'">
             <div class="col-md-5">
-              <label class="form-label text-warning">Area</label>
-              <SearchableSelect v-model="selectedAreaId" :options="areaOptions" placeholder="Search areas..." />
+              <label class="form-label text-warning">{{ $t('Area') }}</label>
+              <SearchableSelect v-model="selectedAreaId" :options="areaOptions" :placeholder="$t('Search areas...')" />
             </div>
           </template>
 
           <template v-else>
             <div class="col-md-5">
-              <label class="form-label text-warning">Treasure Class</label>
-              <SearchableSelect v-model="selectedTc" :options="tcOptions" placeholder="Search treasure classes..." />
+              <label class="form-label text-warning">{{ $t('Treasure Class') }}</label>
+              <SearchableSelect v-model="selectedTc" :options="tcOptions" :placeholder="$t('Search treasure classes...')" />
             </div>
           </template>
         </div>
@@ -934,30 +935,30 @@ watch(
       <div class="card-body">
         <div class="row g-3 align-items-end">
           <div class="col-md-3">
-            <label class="form-label text-warning">Item type</label>
+            <label class="form-label text-warning">{{ $t('Item type') }}</label>
             <div class="btn-group w-100">
-              <button class="btn btn-sm pill" :class="{ active: itemKind === 'unique' }" @click="itemKind = 'unique'">Unique</button>
-              <button class="btn btn-sm pill" :class="{ active: itemKind === 'set' }" @click="itemKind = 'set'">Set item</button>
-              <button class="btn btn-sm pill" :class="{ active: itemKind === 'base' }" @click="itemKind = 'base'">Base item</button>
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'unique' }" @click="itemKind = 'unique'">{{ $t('Unique') }}</button>
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'set' }" @click="itemKind = 'set'">{{ $t('Set item') }}</button>
+              <button class="btn btn-sm pill" :class="{ active: itemKind === 'base' }" @click="itemKind = 'base'">{{ $t('Base item') }}</button>
             </div>
           </div>
           <div class="col-md-5">
-            <label class="form-label text-warning">Item</label>
+            <label class="form-label text-warning">{{ $t('Item') }}</label>
             <div class="d-flex gap-2 align-items-center">
-              <div class="flex-grow-1"><SearchableSelect v-model="selectedItem" :options="itemOptions" placeholder="Search items..." /></div>
+              <div class="flex-grow-1"><SearchableSelect v-model="selectedItem" :options="itemOptions" :placeholder="$t('Search items...')" /></div>
               <button
                 v-if="farmTokenOfSelection"
                 class="btn btn-sm pill farm-add"
                 :class="{ active: farmList.has(farmTokenOfSelection) }"
-                :title="farmList.has(farmTokenOfSelection) ? 'On your Where to Farm list - click to remove' : 'Add to Where to Farm'"
+                :title="farmList.has(farmTokenOfSelection) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
                 @click="farmList.toggle(farmTokenOfSelection)"
-              >{{ farmList.has(farmTokenOfSelection) ? '✓ listed' : '+ farm list' }}</button>
+              >{{ farmList.has(farmTokenOfSelection) ? $t('✓ listed') : $t('+ farm list') }}</button>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-check option-toggle">
               <input id="alldiff" v-model="allDifficulties" class="form-check-input" type="checkbox" />
-              <label class="form-check-label" for="alldiff">All difficulties</label>
+              <label class="form-check-label" for="alldiff">{{ $t('All difficulties') }}</label>
             </div>
           </div>
         </div>
@@ -966,25 +967,25 @@ watch(
 
     <div v-if="viewMode === 'item' && itemRows" class="card mb-4">
       <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <span>Sources <span class="info-chip">{{ itemRows.length }} found</span></span>
+        <span>{{ $t('Sources') }} <span class="info-chip">{{ $t('{n} found', { n: itemRows.length }) }}</span></span>
         <span class="d-flex align-items-center gap-2">
           <button class="btn btn-sm pill" :class="{ active: chanceFormat === 'ratio' }" @click="chanceFormat = 'ratio'">1:N</button>
           <button class="btn btn-sm pill" :class="{ active: chanceFormat === 'pct' }" @click="chanceFormat = 'pct'">%</button>
         </span>
       </div>
       <div class="card-body p-2">
-        <div v-if="itemRows.length === 0" class="empty-note p-3">No source drops this item with the current settings.</div>
+        <div v-if="itemRows.length === 0" class="empty-note p-3">{{ $t('No source drops this item with the current settings.') }}</div>
         <div v-else class="table-responsive">
           <table class="table table-dark table-hover drop-table">
             <thead>
               <tr>
-                <th>Monster</th>
-                <th>Type</th>
-                <th v-if="allDifficulties">Difficulty</th>
-                <th>Area</th>
+                <th>{{ $t('Monster') }}</th>
+                <th>{{ $t('Type') }}</th>
+                <th v-if="allDifficulties">{{ $t('Difficulty') }}</th>
+                <th>{{ $t('Area') }}</th>
                 <th class="text-end">mlvl</th>
                 <th v-if="showItemVariantColumn" class="text-end">Exalted / Mythic</th>
-                <th class="text-end">Chance</th>
+                <th class="text-end">{{ $t('Chance') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -992,12 +993,12 @@ watch(
                 v-for="(row, index) in itemRows.slice(0, ITEM_ROW_LIMIT)"
                 :key="index"
                 class="clickable-row"
-                title="Show this source's full drop table"
+                :title="$t('Show this source\'s full drop table')"
                 @click="jumpToSource(row)"
               >
                 <td>{{ row.monsterName }} <span v-if="row.terrorized" class="badge terror-badge ms-1">TZ</span></td>
                 <td>{{ sourceTypeLabel(row) }}</td>
-                <td v-if="allDifficulties">{{ DIFFICULTIES[row.difficulty] }}</td>
+                <td v-if="allDifficulties">{{ $t(DIFFICULTIES[row.difficulty]) }}</td>
                 <td>{{ row.areaId != null ? areaName(row.areaId) : '-' }}</td>
                 <td class="text-end chance-cell">{{ row.mlvl }}</td>
                 <td v-if="showItemVariantColumn" class="text-end chance-cell variant-cell">
@@ -1009,7 +1010,7 @@ watch(
             </tbody>
           </table>
           <div v-if="itemRows.length > ITEM_ROW_LIMIT" class="empty-note p-2">
-            Showing the top {{ ITEM_ROW_LIMIT }} of {{ itemRows.length }} sources.
+            {{ $t('Showing the top {limit} of {total} sources.', { limit: ITEM_ROW_LIMIT, total: itemRows.length }) }}
           </div>
         </div>
       </div>
@@ -1020,12 +1021,12 @@ watch(
       <div class="card-header section-header d-flex justify-content-between align-items-center">
         <span>
           {{ detail.base.Name }}
-          <span class="info-chip">drop chance {{ dfmt(detail.baseChance) }} · ilvl {{ detail.source.mlvl }}</span>
+          <span class="info-chip">{{ $t('drop chance {chance} · ilvl {ilvl}', { chance: dfmt(detail.baseChance), ilvl: detail.source.mlvl }) }}</span>
         </span>
         <span class="d-flex align-items-center gap-2">
           <button class="btn btn-sm pill" :class="{ active: detailFormat === 'ratio' }" @click="detailFormat = 'ratio'">1:N</button>
           <button class="btn btn-sm pill" :class="{ active: detailFormat === 'pct' }" @click="detailFormat = 'pct'">%</button>
-          <button class="btn btn-sm pill" @click="detailBaseIndex = null">Close ×</button>
+          <button class="btn btn-sm pill" @click="detailBaseIndex = null">{{ $t('Close ×') }}</button>
         </span>
       </div>
       <div class="card-body p-2">
@@ -1033,15 +1034,15 @@ watch(
           <table class="table table-dark drop-table">
             <thead>
               <tr>
-                <th>Quality</th>
-                <th class="text-end">Relative</th>
+                <th>{{ $t('Quality') }}</th>
+                <th class="text-end">{{ $t('Relative') }}</th>
                 <th v-if="showDetailVariantColumn" class="text-end">Exalted / Mythic</th>
-                <th class="text-end">Absolute</th>
+                <th class="text-end">{{ $t('Absolute') }}</th>
                 <th
                   v-for="n in CUMULATIVE_KILLS"
                   :key="n"
                   class="text-end cumulative-col"
-                  :title="`Chance to see it at least once in ${n} drops`"
+                  :title="$t('Chance to see it at least once in {n} drops', { n })"
                 >{{ n }}×</th>
               </tr>
             </thead>
@@ -1051,7 +1052,7 @@ watch(
                   <span class="name-unique">{{ row.name }}</span><span
                     v-if="row.mod"
                     class="mod-flag"
-                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                    :title="row.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                   >•</span>
                 </td>
                 <td class="text-end chance-cell">{{ formatChance(row.relative, 'pct') }}</td>
@@ -1069,7 +1070,7 @@ watch(
                   <span class="name-set">{{ row.name }}</span><span
                     v-if="row.mod"
                     class="mod-flag"
-                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                    :title="row.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                   >•</span>
                   <span class="info-note">({{ row.setName }})</span>
                 </td>
@@ -1102,12 +1103,12 @@ watch(
     <div v-if="viewMode === 'source' && result && sourceInfo" class="card mb-4">
       <div class="card-header section-header d-flex justify-content-between align-items-center flex-wrap gap-2">
         <span>
-          Drops
+          {{ $t('Drops') }}
           <span class="info-chip">mlvl {{ sourceInfo.mlvl }}</span>
-          <span v-if="noDrop != null" class="info-chip" title="Chance that one pick of the treasure class drops nothing, after the player-count adjustment">
-            no drop {{ formatChance(noDrop, 'pct') }}
+          <span v-if="noDrop != null" class="info-chip" :title="$t('Chance that one pick of the treasure class drops nothing, after the player-count adjustment')">
+            {{ $t('no drop {pct}', { pct: formatChance(noDrop, 'pct') }) }}
           </span>
-          <span v-if="sourceInfo.terrorized" class="badge terror-badge ms-1" :title="`Base mlvl ${sourceInfo.baseMlvl}`">Terrorized</span>
+          <span v-if="sourceInfo.terrorized" class="badge terror-badge ms-1" :title="$t('Base mlvl {n}', { n: sourceInfo.baseMlvl })">{{ $t('Terrorized') }}</span>
         </span>
         <span class="d-flex align-items-center gap-2 flex-wrap">
           <span class="info-note">
@@ -1121,14 +1122,14 @@ watch(
       <div class="card-body p-2">
         <div v-if="summary" class="summary-strip d-flex flex-wrap gap-3 px-2 pt-2">
           <span v-if="summary.unique > 0">
-            Any <span class="name-unique">unique</span>: <strong>{{ fmt(summary.unique) }}</strong>
+            {{ $t('Any') }} <span class="name-unique">{{ $t('unique') }}</span>: <strong>{{ fmt(summary.unique) }}</strong>
             <template v-if="summary.uniqueVariant > 0"> · exalted <strong>{{ fmt(summary.uniqueVariant) }}</strong></template>
           </span>
           <span v-if="summary.set > 0">
-            Any <span class="name-set">set item</span>: <strong>{{ fmt(summary.set) }}</strong>
+            {{ $t('Any') }} <span class="name-set">{{ $t('set item') }}</span>: <strong>{{ fmt(summary.set) }}</strong>
             <template v-if="summary.setVariant > 0"> · mythic <strong>{{ fmt(summary.setVariant) }}</strong></template>
           </span>
-          <span v-if="summary.rune > 0">Any <span class="name-rune">rune</span>: <strong>{{ fmt(summary.rune) }}</strong></span>
+          <span v-if="summary.rune > 0">{{ $t('Any') }} <span class="name-rune">{{ $t('rune') }}</span>: <strong>{{ fmt(summary.rune) }}</strong></span>
         </div>
         <div class="d-flex flex-wrap gap-2 p-2">
           <button
@@ -1137,32 +1138,32 @@ watch(
             class="btn btn-sm pill"
             :class="{ active: filterKind === f[0] }"
             @click="filterKind = f[0]"
-          >{{ f[1] }}</button>
+          >{{ $t(f[1]) }}</button>
           <span v-if="filterKind === 'runes'" class="d-flex gap-2 runes-view-toggle">
-            <button class="btn btn-sm pill" :class="{ active: runesView === 'single' }" @click="runesView = 'single'">Single</button>
-            <button class="btn btn-sm pill" :class="{ active: runesView === 'better' }" @click="runesView = 'better'" title="Chance for this rune or any higher one">Or better</button>
+            <button class="btn btn-sm pill" :class="{ active: runesView === 'single' }" @click="runesView = 'single'">{{ $t('Single') }}</button>
+            <button class="btn btn-sm pill" :class="{ active: runesView === 'better' }" @click="runesView = 'better'" :title="$t('Chance for this rune or any higher one')">{{ $t('Or better') }}</button>
           </span>
           <span class="ms-auto d-flex gap-2">
-            <button class="btn btn-sm pill" :class="{ active: sortBy === 'chance' }" @click="setSort('chance')">By chance{{ sortArrow('chance') }}</button>
-            <button class="btn btn-sm pill" :class="{ active: sortBy === 'name' }" @click="setSort('name')">By name{{ sortArrow('name') }}</button>
-            <button v-if="filterKind === 'runes'" class="btn btn-sm pill" :class="{ active: sortBy === 'index' }" @click="setSort('index')">By index{{ sortArrow('index') }}</button>
+            <button class="btn btn-sm pill" :class="{ active: sortBy === 'chance' }" @click="setSort('chance')">{{ $t('By chance') }}{{ sortArrow('chance') }}</button>
+            <button class="btn btn-sm pill" :class="{ active: sortBy === 'name' }" @click="setSort('name')">{{ $t('By name') }}{{ sortArrow('name') }}</button>
+            <button v-if="filterKind === 'runes'" class="btn btn-sm pill" :class="{ active: sortBy === 'index' }" @click="setSort('index')">{{ $t('By index') }}{{ sortArrow('index') }}</button>
           </span>
         </div>
         <div v-if="filteredRows.length === 0" class="empty-note p-3">
-          No drops for this selection.
+          {{ $t('No drops for this selection.') }}
         </div>
         <div v-else-if="runesOrBetter" class="table-responsive">
           <table class="table table-dark table-hover drop-table">
             <thead>
               <tr>
-                <th>Rune</th>
-                <th class="text-end" title="Chance that a dropped rune is this one or a higher one">Of rune drops</th>
-                <th class="text-end" title="Chance per kill for this rune or a higher one">Chance</th>
+                <th>{{ $t('Rune') }}</th>
+                <th class="text-end" :title="$t('Chance that a dropped rune is this one or a higher one')">{{ $t('Of rune drops') }}</th>
+                <th class="text-end" :title="$t('Chance per kill for this rune or a higher one')">{{ $t('Chance') }}</th>
                 <th
                   v-for="n in CUMULATIVE_KILLS"
                   :key="n"
                   class="text-end cumulative-col"
-                  :title="`Chance to see this rune or better at least once in ${n} drops`"
+                  :title="$t('Chance to see this rune or better at least once in {n} drops', { n })"
                 >{{ n }}×</th>
               </tr>
             </thead>
@@ -1175,7 +1176,7 @@ watch(
                     :style="{ width: (row.chance / runeChanceSum * 100) + '%' }"
                   ></div>
                   <span class="name-label name-rune">{{ row.name }}</span>
-                  <span class="info-note"> or better</span>
+                  <span class="info-note"> {{ $t('or better') }}</span>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance / runeChanceSum) }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
@@ -1191,20 +1192,20 @@ watch(
           <table class="table table-dark table-hover drop-table">
             <thead>
               <tr>
-                <th>Item</th>
-                <th class="text-end quality-col name-magic" title="Chance this drop is magic">Magic</th>
-                <th class="text-end quality-col name-rare" title="Chance this drop is rare">Rare</th>
-                <th class="text-end quality-col name-set" title="Chance this drop is a set item">Set</th>
-                <th class="text-end quality-col name-unique" title="Chance this drop is unique">Unique</th>
+                <th>{{ $t('Item') }}</th>
+                <th class="text-end quality-col name-magic" :title="$t('Chance this drop is magic')">{{ $t('Magic|quality') }}</th>
+                <th class="text-end quality-col name-rare" :title="$t('Chance this drop is rare')">{{ $t('Rare') }}</th>
+                <th class="text-end quality-col name-set" :title="$t('Chance this drop is a set item')">{{ $t('Set') }}</th>
+                <th class="text-end quality-col name-unique" :title="$t('Chance this drop is unique')">{{ $t('Unique') }}</th>
                 <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
-                <th class="text-end">Chance</th>
+                <th class="text-end">{{ $t('Chance') }}</th>
               </tr>
             </thead>
             <tbody>
               <template v-for="(group, gi) in groupedRows" :key="gi">
                 <tr
                   :class="['row-' + group.base.kind, { 'clickable-row': group.base.baseIndex >= 0 && !group.base.direct }]"
-                  :title="group.base.baseIndex >= 0 && !group.base.direct ? 'Show the detailed quality table for this base item' : undefined"
+                  :title="group.base.baseIndex >= 0 && !group.base.direct ? $t('Show the detailed quality table for this base item') : undefined"
                   @click="openDetail(group.base)"
                 >
                   <td>
@@ -1233,7 +1234,7 @@ watch(
                     <span :class="child.kind === 'unique' ? 'name-unique' : 'name-set'">{{ child.name }}</span><span
                       v-if="child.mod"
                       class="mod-flag"
-                      :title="child.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                      :title="child.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                     >•</span>
                     <span v-if="child.kind === 'set'" class="info-note"> ({{ child.setName }})</span>
                   </td>
@@ -1253,14 +1254,14 @@ watch(
           <table class="table table-dark table-hover drop-table">
             <thead>
               <tr>
-                <th>Item</th>
+                <th>{{ $t('Item') }}</th>
                 <th
                   v-if="filterKind === 'runes' && runeChanceSum > 0"
                   class="text-end"
-                  title="Chance that a dropped rune is this one"
-                >Of rune drops</th>
+                  :title="$t('Chance that a dropped rune is this one')"
+                >{{ $t('Of rune drops') }}</th>
                 <th v-if="showVariantColumn" class="text-end">Exalted / Mythic</th>
-                <th class="text-end">Chance</th>
+                <th class="text-end">{{ $t('Chance') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -1268,7 +1269,7 @@ watch(
                 v-for="(row, index) in filteredRows"
                 :key="index"
                 :class="['row-' + row.kind, { 'clickable-row': row.baseIndex >= 0 && !row.direct }]"
-                :title="row.baseIndex >= 0 && !row.direct ? 'Show the detailed quality table for this base item' : undefined"
+                :title="row.baseIndex >= 0 && !row.direct ? $t('Show the detailed quality table for this base item') : undefined"
                 @click="openDetail(row)"
               >
                 <td class="name-cell">
@@ -1286,7 +1287,7 @@ watch(
                   --><span
                     v-if="row.mod"
                     class="mod-flag"
-                    :title="row.mod === 'added' ? 'Added by Relics of Sanctuary' : 'Changed by Relics of Sanctuary'"
+                    :title="row.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                   >•</span>
                 </td>
                 <td v-if="filterKind === 'runes' && runeChanceSum > 0" class="text-end chance-cell">
@@ -1304,22 +1305,18 @@ watch(
       </div>
     </div>
     <div v-else-if="viewMode === 'source'" class="empty-note p-3">
-      Select a monster, superunique, chest, or treasure class to see drop chances.
+      {{ $t('Select a monster, superunique, chest, or treasure class to see drop chances.') }}
     </div>
     <div v-else-if="viewMode === 'item' && !itemRows" class="empty-note p-3">
-      Select an item to see which monsters drop it.
+      {{ $t('Select an item to see which monsters drop it.') }}
     </div>
 
     <div class="limitations-note mt-4">
-      <strong>Notes:</strong>
-      Chances follow the game formulas (treasure classes, NoDrop scaling with the player count,
-      itemratio quality ladder, magic-find diminishing returns, rarity-weighted unique/set picks);
-      multiple paths to the same item are added together, matching classic drop calculators.
-      Terror Zones raise the monster level to character level +2/+4/+5 (capped per difficulty)
-      and upgrade the treasure class accordingly.
-      The mod does not change monstats.txt, so monster levels, spawn areas and the herald and
-      desecrated treasure classes are vanilla's in both data modes.
-      Chests use each act's standard chest treasure class.
+      <strong>{{ $t('Notes:') }}</strong>
+      {{ $t("Chances follow the game formulas (treasure classes, NoDrop scaling with the player count, itemratio quality ladder, magic-find diminishing returns, rarity-weighted unique/set picks); multiple paths to the same item are added together, matching classic drop calculators.") }}
+      {{ $t('Terror Zones raise the monster level to character level +2/+4/+5 (capped per difficulty) and upgrade the treasure class accordingly.') }}
+      {{ $t("The mod does not change monstats.txt, so monster levels, spawn areas and the herald and desecrated treasure classes are vanilla's in both data modes.") }}
+      {{ $t("Chests use each act's standard chest treasure class.") }}
     </div>
   </div>
 </template>
