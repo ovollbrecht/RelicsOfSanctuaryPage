@@ -110,6 +110,15 @@ const setAll = (open) => {
                   >
                     {{ className }}
                   </span>
+                  <!-- what your runes say: makeable as they lie, or once the
+                       cube has been at them. Beside the name, where there is
+                       room - the runes column wraps at four. -->
+                  <span
+                    v-if="group.build?.state"
+                    class="badge build-badge ms-2"
+                    :class="group.build.state"
+                    :title="group.build.state === 'now' ? 'You hold every rune for it' : `Via the cube: ${group.build.upgradeText}`"
+                  >{{ group.build.state === 'now' ? 'can build' : 'via cube' }}</span>
                 </td>
                 <td class="runes-cell">
                   <!-- In the "one rune away" list the one you lack is the
@@ -120,13 +129,6 @@ const setAll = (open) => {
                       :class="{ 'rune-missing': (group.missingNames ?? []).includes(rune) }"
                     ><img v-if="runeIcon(rune)" :src="runeIcon(rune)" class="rune-icon" alt="" />{{ rune }}</span>
                   </template>
-                  <!-- what your runes say: makeable as they lie, or once the cube has been at them -->
-                  <span
-                    v-if="group.build?.state"
-                    class="badge build-badge ms-1"
-                    :class="group.build.state"
-                    :title="group.build.state === 'now' ? 'You hold every rune for it' : `Via the cube: ${group.build.upgradeText}`"
-                  >{{ group.build.state === 'now' ? 'can build' : 'via cube' }}</span>
                 </td>
                 <td class="text-center tnum">{{ group.sockets }}</td>
                 <td class="text-center tnum">{{ group.levelReq || '—' }}</td>
