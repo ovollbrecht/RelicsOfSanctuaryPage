@@ -14,7 +14,7 @@ const props = defineProps({
   owned: { type: Object, default: () => ({}) }, // key -> copies held
   keyOf: { type: Function, required: true },
 });
-const emit = defineEmits(['pick-slot', 'pick-tab', 'pick-show']);
+const emit = defineEmits(['pick-slot', 'pick-tab', 'pick-show', 'pick-day']);
 
 const TIER = ['Normal', 'Exceptional', 'Elite'];
 const found = computed(() => props.entries.filter((e) => e.record));
@@ -191,7 +191,7 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
                   <span v-for="m in heatmap.months" :key="m.col" :style="{ gridColumnStart: m.col + 1 }">{{ m.label }}</span>
                 </div>
                 <div class="heat">
-                  <div v-for="c in heatmap.cells" :key="c.key" class="cell" :class="[`l${c.level}`, { future: c.future }]" :title="c.title"></div>
+                  <div v-for="c in heatmap.cells" :key="c.key" class="cell" :class="[`l${c.level}`, { future: c.future, pick: c.n > 0 }]" :title="c.title" @click="c.n > 0 && emit('pick-day', c.key)"></div>
                 </div>
               </div>
               <div class="row g-2 mt-1 small stats">
@@ -288,6 +288,8 @@ const kindClass = (e) => (e.kind === 'runeword' ? 'runeword' : e.kind);
 .heat { display: grid; grid-template-rows: repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; min-width: 20rem; }
 .cell { aspect-ratio: 1; border-radius: 2px; background: rgba(255, 255, 255, 0.06); }
 .cell.future { background: transparent; }
+.cell.pick { cursor: pointer; }
+.cell.pick:hover { outline: 1px solid var(--d2r-gold-bright); }
 .cell.l1 { background: rgba(201, 163, 106, 0.3); }
 .cell.l2 { background: rgba(201, 163, 106, 0.5); }
 .cell.l3 { background: rgba(212, 175, 55, 0.75); }

@@ -6,6 +6,10 @@ import { useGrail, readSaveFile, absorb } from '@/composables/useGrail.js';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 import GrailOverview from '@/components/grail/GrailOverview.vue';
 import RuneCabinet from '@/components/grail/RuneCabinet.vue';
+import GrailMilestones from '@/components/grail/GrailMilestones.vue';
+import GrailRarity from '@/components/grail/GrailRarity.vue';
+import GrailTimeline from '@/components/grail/GrailTimeline.vue';
+import { drawGrailCard } from '@/composables/useGrailCard.js';
 
 /**
  * The Grail page: the checklist of everything there is to find, ticked off
@@ -214,6 +218,40 @@ const pickSlot = (s) => { slot.value = s; if (tab.value === 'runewords') tab.val
 const pickTab = (t) => { tab.value = t; document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 const pickShow = (s) => { show.value = s; if (tab.value === 'runewords') tab.value = 'uniques'; document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 
+// a day picked on the heatmap narrows the Chronicle below
+const timelineDay = ref(null);
+const pickDay = (key) => { timelineDay.value = key; document.getElementById('chronicle')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+
+// a picture for Discord
+const cardUrl = ref(null);
+const cardCopied = ref(false);
+let cardCanvas = null;
+const openCard = () => {
+  const recent = allEntries.value.filter((e) => e.record?.when).sort((a, b) => (b.record.when > a.record.when ? 1 : -1)).slice(0, 5)
+    .map((e) => ({ name: e.name, kind: e.kind, date: dateFmt.format(new Date(e.record.when)).replace(/,? \d{2}:\d{2}$/, '') }));
+  cardCanvas = drawGrailCard({
+    found: totalFound.value, total: totalAll.value,
+    perTab: TABS.map((x) => ({ label: x.label, found: progress.value[x.id].found, total: progress.value[x.id].total })),
+    recent, stamp: new Date().toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' }),
+  });
+  cardUrl.value = cardCanvas.toDataURL('image/png');
+};
+const closeCard = () => { cardUrl.value = null; cardCanvas = null; };
+const downloadCard = () => {
+  if (!cardCanvas) return;
+  cardCanvas.toBlob((blob) => {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `relics-grail-${new Date().toISOString().slice(0, 10)}.png`; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }, 'image/png');
+};
+const canCopyImage = typeof ClipboardItem !== 'undefined' && !!navigator.clipboard?.write;
+const copyCard = () => {
+  if (!cardCanvas) return;
+  cardCanvas.toBlob(async (blob) => {
+    try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]); cardCopied.value = true; setTimeout(() => { cardCopied.value = false; }, 1500); } catch { /* blocked */ }
+  }, 'image/png');
+};
+
 // a line for Discord
 const copied = ref(false);
 const copySummary = async () => {
@@ -233,6 +271,7 @@ const copySummary = async () => {
       </div>
       <div class="d-flex gap-2 align-items-center small">
         <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="copySummary">{{ copied ? $t('Copied') : $t('Copy summary') }}</button>
+        <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound || !catalog" @click="openCard">{{ $t('Share as image') }}</button>
         <button class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="exportGrail">{{ $t('Back up') }}</button>
         <label class="btn btn-sm btn-outline-secondary mb-0">{{ $t('Restore') }} <input type="file" accept=".json" class="d-none" @change="restoreGrail" /></label>
         <button v-if="!confirmReset" class="btn btn-sm btn-outline-secondary" :disabled="!totalFound" @click="confirmReset = true">{{ $t('Reset') }}</button>
@@ -299,8 +338,15 @@ const copySummary = async () => {
       v-if="catalog && totalFound"
       class="mb-4"
       :entries="allEntries" :tabs="TABS" :sources="catalog.sources ?? {}" :owned="grail.owned.value.items" :key-of="(e) => keysOf(e)[0]"
-      @pick-slot="pickSlot" @pick-tab="pickTab" @pick-show="pickShow"
+      @pick-slot="pickSlot" @pick-tab="pickTab" @pick-show="pickShow" @pick-day="pickDay"
     />
+    <GrailMilestones v-if="catalog && totalFound" class="mb-4" :entries="allEntries" />
+
+    <!-- The story and the odds -->
+    <div v-if="catalog && totalFound" id="chronicle" class="row g-3 mb-4">
+      <div class="col-lg-7"><GrailTimeline :entries="allEntries" :sources="catalog.sources ?? {}" :day="timelineDay" @clear-day="timelineDay = null" /></div>
+      <div class="col-lg-5"><GrailRarity :entries="allEntries" :catalog="catalog" /></div>
+    </div>
 
     <!-- Progress -->
     <div v-if="catalog" id="checklist" class="row g-3 mb-4">
@@ -408,6 +454,20 @@ const copySummary = async () => {
     <!-- Runes -->
     <RuneCabinet v-if="catalog" :runes="catalog.runes ?? []" :counts="grail.owned.value.runes" :runewords="allEntries.filter((e) => e.kind === 'runeword')" :files="holdingFiles" />
 
+    <Teleport to="body">
+      <div v-if="cardUrl" class="card-backdrop" @mousedown.self="closeCard">
+        <div class="card-modal">
+          <img :src="cardUrl" alt="" class="card-img" />
+          <div class="d-flex flex-wrap gap-2 justify-content-end mt-2">
+            <span class="small text-muted me-auto">{{ $t('1200 × 630, the size Discord shows in full.') }}</span>
+            <button v-if="canCopyImage" class="btn btn-sm btn-outline-secondary" @click="copyCard">{{ cardCopied ? $t('Copied') : $t('Copy image') }}</button>
+            <button class="btn btn-sm btn-primary" @click="downloadCard">{{ $t('Download PNG') }}</button>
+            <button class="btn btn-sm btn-outline-secondary" @click="closeCard">{{ $t('Close') }}</button>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
     <p class="small text-muted mt-4 mb-0">
       {{ $t('Uniques and set items are matched by the row the save file stores, runewords by name. The Chronicle section of the shared stash lists what was found since it was last reset, with the minute and the monster; owned items and loose runes come from the stash and the characters; anything older you tick by hand. Ticks and imports stay in this browser - use Back up to move them.') }}
     </p>
@@ -421,6 +481,9 @@ const copySummary = async () => {
 }
 .drop.over { border-color: var(--d2r-gold-bright); background: rgba(212, 175, 55, 0.08); }
 .drop.busy { opacity: 0.7; }
+.card-backdrop { position: fixed; inset: 0; z-index: 2000; background: rgba(5, 4, 3, 0.75); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.card-modal { width: min(900px, 100%); background: var(--d2r-panel); border: 1px solid rgba(201, 163, 106, 0.45); border-radius: 0.5rem; padding: 0.75rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7); }
+.card-img { width: 100%; height: auto; border-radius: 0.3rem; display: block; }
 .farm-link { color: var(--d2r-gold, #c9a36a); text-decoration: none; opacity: 0.7; }
 .farm-link:hover { opacity: 1; text-decoration: underline; }
 .drop-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--d2r-gold-bright); margin-bottom: 0.25rem; }
