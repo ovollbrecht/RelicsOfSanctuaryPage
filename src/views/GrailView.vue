@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { useGrail, readSaveFile, absorb } from '@/composables/useGrail.js';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 import GrailOverview from '@/components/grail/GrailOverview.vue';
@@ -73,7 +74,8 @@ const TABS = [
   { id: 'sets', label: 'Sets' }, { id: 'mythic', label: 'Mythic' }, { id: 'runewords', label: 'Runewords' },
 ];
 const tab = ref('uniques');
-const query = ref('');
+const route = useRoute();
+const query = ref(typeof route.query.q === 'string' ? route.query.q : '');
 const show = ref('all'); // all | missing | found | spares
 const tiers = ref(new Set()); // empty = every tier
 const slot = ref('');

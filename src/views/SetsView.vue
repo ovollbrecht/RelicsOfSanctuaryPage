@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import setsData from '@/assets/sets.json';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
 
@@ -22,7 +23,8 @@ const CLASS_LABELS = {
 };
 const CLASS_ORDER = ['', 'ama', 'ass', 'bar', 'dru', 'nec', 'pal', 'sor', 'war'];
 
-const searchQuery = ref('');
+const route = useRoute();
+const searchQuery = ref(typeof route.query.q === 'string' ? route.query.q : '');
 const selectedBaseName = ref('');
 
 const getClassLabel = (uiClass) => {

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
 import uniqueItemsData from '@/assets/unique_items.json';
 import itemMapping from '@/assets/item_mapping.json';
 import { useFarmList, farmToken } from '@/composables/useFarmList.js';
@@ -371,8 +372,11 @@ const hideBrokenImage = (event) => {
   event.target.style.display = 'none';
 };
 
+const route = useRoute();
 onMounted(() => {
   uniqueItems.value = uniqueItemsData;
+  // a link may bring a search with it - the global search does
+  if (typeof route.query.q === 'string') searchQuery.value = route.query.q;
 });
 </script>
 

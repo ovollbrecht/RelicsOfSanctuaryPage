@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import GlobalSearch from '@/components/GlobalSearch.vue'
 import logoUrl from '@/assets/RelicsOfSancturay-symbol.png'
 import dataMeta from '@/assets/meta.json'
 
@@ -78,6 +79,9 @@ onUnmounted(() => {
   }
 })
 
+const search = ref(null)
+const openSearch = () => { search.value?.show(); if (!isWideScreen.value) isSidebarOpen.value = false }
+
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
@@ -110,6 +114,7 @@ const handleClickOutside = (event) => {
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <button class="btn search-fab d-lg-none position-fixed top-0 end-0 mt-3 me-3" aria-label="Search" title="Search" @click="openSearch">⌕</button>
 
     <aside id="sidebar" class="sidebar" :class="{ show: isSidebarOpen }" aria-label="Primary navigation">
       <div class="sidebar-header">
@@ -124,6 +129,9 @@ const handleClickOutside = (event) => {
       </div>
 
       <nav class="sidebar-nav">
+        <button type="button" class="sidebar-search" title="Search everything - items, runewords, recipes, zones, monsters" @click="openSearch">
+          <span>⌕ Search</span><kbd>⌘K</kbd>
+        </button>
         <router-link to="/" class="sidebar-link home-link" @click="!isWideScreen && (isSidebarOpen = false)">Home</router-link>
         <div v-for="group in navGroups" :key="group.label" class="nav-group">
           <div class="nav-group-label">{{ group.label }}</div>
@@ -141,6 +149,8 @@ const handleClickOutside = (event) => {
     </aside>
 
     <div class="sidebar-scrim" v-if="isSidebarOpen && !isWideScreen" @click="toggleSidebar"></div>
+
+    <GlobalSearch ref="search" />
 
     <main class="main-content">
       <div class="content-shell">
@@ -216,6 +226,15 @@ const handleClickOutside = (event) => {
   font-size: 1.25rem;
   color: var(--d2r-gold);
 }
+
+.sidebar-search {
+  display: flex; justify-content: space-between; align-items: center; width: calc(100% - 1.5rem); margin: 0.25rem 0.75rem 0.5rem;
+  padding: 0.4rem 0.75rem; font-size: 0.9rem; color: var(--d2r-muted); background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 163, 106, 0.25); border-radius: 0.4rem; cursor: pointer;
+}
+.sidebar-search:hover { color: var(--d2r-text); border-color: rgba(201, 163, 106, 0.5); }
+.sidebar-search kbd { font-size: 0.7rem; padding: 0.05rem 0.35rem; color: var(--d2r-muted); background: transparent; border: 1px solid rgba(201, 163, 106, 0.3); border-radius: 0.25rem; }
+.search-fab { z-index: 1030; font-size: 1.3rem; line-height: 1; padding: 0.35rem 0.6rem; color: var(--d2r-gold); background: var(--d2r-panel); border: 1px solid rgba(201, 163, 106, 0.4); }
 
 .sidebar-nav {
   padding: 0.75rem 0.75rem 0.5rem;
