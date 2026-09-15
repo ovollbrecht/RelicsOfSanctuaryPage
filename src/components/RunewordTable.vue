@@ -88,7 +88,8 @@ const setAll = (open) => {
           <tbody>
             <template v-for="group in groups" :key="group.key">
               <tr
-                :class="{ 'is-selected': panelMode && group.key === selectedKey }"
+                :class="{ 'is-selected': panelMode && group.key === selectedKey, 'is-built': markBuilt && group.built }"
+                :title="markBuilt && group.built ? 'Built - your Grail has it' : null"
                 @click="rowClick(group)"
                 style="cursor: pointer;"
               >
@@ -96,7 +97,7 @@ const setAll = (open) => {
                   <!-- One mark for both, since it answers one question: did
                        the mod touch this. Which of the two it was is in the
                        tooltip, and the filter above splits them. -->
-                  <span v-if="markBuilt && group.built" class="built" title="Built - your Grail has it">✓</span>{{ group.name }}<span
+                  {{ group.name }}<span
                     v-if="group.isNew || group.isReworked"
                     class="flag"
                     :title="group.isNew ? 'New in Relics of Sanctuary' : 'Reworked by Relics of Sanctuary'"
@@ -243,5 +244,7 @@ const setAll = (open) => {
 }
 .rune-name { white-space: nowrap; }
 .rune-icon { display: inline-block; width: 17px; height: 17px; object-fit: contain; vertical-align: -3px; margin-right: 0.1rem; }
-.built { color: #7fdc7f; margin-right: 0.35rem; font-weight: 700; }
+/* a built runeword: a green edge and a faint wash, nothing that moves the text */
+.runeword-table tbody tr.is-built > td:first-child { box-shadow: inset 3px 0 0 #7fdc7f; }
+.runeword-table tbody tr.is-built > td { background-color: rgba(127, 220, 127, 0.06); }
 </style>
