@@ -146,9 +146,12 @@ export function absorb(results, catalog, buildShifted) {
       if (key) { note(key, r.kind, null, null, r.character); count(key); }
       if (item.given_runeword && item.runeword_id != null) { note(`r:${item.runeword_id}`, r.kind, null, null, r.character); count(`r:${item.runeword_id}`); }
       if (!item.inSocket && /^r[0-3]\d$/.test(item.type ?? '')) held.runes[item.type] = (held.runes[item.type] ?? 0) + 1;
-      // a plain or superior base with sockets and nothing in them: a runeword waiting to happen
-      if (item.socketed === 1 && item.total_nr_of_sockets > 0 && !(item.socketed_items?.length) && (item.quality === 2 || item.quality === 3) && !item.given_runeword) {
-        const k = `${item.type}|${item.total_nr_of_sockets}|${item.ethereal ? 1 : 0}`;
+      // a plain or superior base that could take a runeword: sockets with
+      // nothing in them, or no sockets yet - the socket count, superior or
+      // not and the item level decide what it can still become
+      if ((item.quality === 2 || item.quality === 3) && !item.given_runeword && !(item.socketed_items?.length)) {
+        const sockets = item.socketed === 1 ? (item.total_nr_of_sockets ?? 0) : 0;
+        const k = `${item.type}|${sockets}|${item.ethereal ? 1 : 0}|${item.quality === 3 ? 1 : 0}|${item.level ?? 99}`;
         held.bases[k] = (held.bases[k] ?? 0) + 1;
       }
     }
@@ -200,8 +203,8 @@ export function useGrail() {
     for (const [file, h] of Object.entries(holdings.value)) {
       const where = h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash';
       for (const [k, count] of Object.entries(h.bases ?? {})) {
-        const [code, sockets, eth] = k.split('|');
-        out.push({ code, sockets: Number(sockets), eth: eth === '1', where, count });
+        const [code, sockets, eth, superior, ilvl] = k.split('|');
+        out.push({ code, sockets: Number(sockets), eth: eth === '1', superior: superior === '1', ilvl: Number(ilvl ?? 99), where, count });
       }
     }
     return out;

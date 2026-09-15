@@ -670,15 +670,27 @@ const toGroups = (list) => {
 // The bases in the files that this runeword would go into: the socket count
 // has to match exactly, and the base's type chain has to reach one of the
 // runeword's types without touching an excluded one.
+// An unsocketed base can still become several things: the item level caps
+// the sockets (3 to level 25, 4 to 40, then the base's own), a plain one takes
+// any count up to that through the cube, a superior one only the maximum
+// Larzuk punches.
+const socketCap = (ilvl) => (ilvl <= 25 ? 3 : ilvl <= 40 ? 4 : 6);
 const basesFor = (group) => {
   const out = [];
   for (const held of grail.bases.value) {
-    if (held.sockets !== group.sockets) continue;
     const base = baseByCode.get(held.code);
-    if (!base) continue;
+    if (!base || !base.Sockets) continue;
+    const most = Math.min(base.Sockets, socketCap(held.ilvl));
+    let how;
+    if (held.sockets > 0) { if (held.sockets !== group.sockets) continue; how = `${held.sockets} open ${held.sockets === 1 ? 'socket' : 'sockets'}`; }
+    else if (held.superior) { if (group.sockets !== most) continue; how = `superior, ${most} from Larzuk`; }
+    else { if (group.sockets > most) continue; how = `unsocketed, up to ${most}`; }
     const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
     const fits = group.rows.some((row) => !row.excluded.some((t) => chain.has(t)) && row.own.some((t) => chain.has(t)));
-    if (fits) out.push({ name: base.Name, sockets: held.sockets, eth: held.eth, where: held.where, count: held.count });
+    if (!fits) continue;
+    // two Diadems at different item levels read the same - one line, counted
+    const same = out.find((b) => b.name === base.Name && b.how === how && b.eth === held.eth && b.where === held.where);
+    if (same) same.count += held.count; else out.push({ name: base.Name, how, eth: held.eth, where: held.where, count: held.count });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name) || a.where.localeCompare(b.where));
 };

@@ -65,9 +65,9 @@ const formatChance = (chance) => {
     <div v-if="built || bases.length" class="grail-note">
       <div v-if="built" class="grail-built">✓ Built - your Grail has it</div>
       <template v-if="bases.length">
-        <div class="grail-label">Bases you hold with {{ group.sockets }} empty {{ group.sockets === 1 ? 'socket' : 'sockets' }}</div>
+        <div class="grail-label">Bases you hold for it</div>
         <ul class="grail-bases">
-          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
+          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.how }} · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
         </ul>
       </template>
     </div>
