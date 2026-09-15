@@ -151,7 +151,9 @@ export function absorb(results, catalog, buildShifted) {
       // not and the item level decide what it can still become
       if ((item.quality === 2 || item.quality === 3) && !item.given_runeword && !(item.socketed_items?.length)) {
         const sockets = item.socketed === 1 ? (item.total_nr_of_sockets ?? 0) : 0;
-        const k = `${item.type}|${sockets}|${item.ethereal ? 1 : 0}|${item.quality === 3 ? 1 : 0}|${item.level ?? 99}`;
+        // staffmods: the +skills a plain class item is born with
+        const mods = (item.magic_attributes ?? []).filter((a) => a.name === 'item_singleskill' && a.values?.length >= 2).map((a) => `${a.values[0]}:${a.values[1]}`).join(',');
+        const k = `${item.type}|${sockets}|${item.ethereal ? 1 : 0}|${item.quality === 3 ? 1 : 0}|${item.level ?? 99}|${mods}`;
         held.bases[k] = (held.bases[k] ?? 0) + 1;
       }
     }
@@ -203,8 +205,9 @@ export function useGrail() {
     for (const [file, h] of Object.entries(holdings.value)) {
       const where = h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash';
       for (const [k, count] of Object.entries(h.bases ?? {})) {
-        const [code, sockets, eth, superior, ilvl] = k.split('|');
-        out.push({ code, sockets: Number(sockets), eth: eth === '1', superior: superior === '1', ilvl: Number(ilvl ?? 99), where, count });
+        const [code, sockets, eth, superior, ilvl, mods] = k.split('|');
+        out.push({ code, sockets: Number(sockets), eth: eth === '1', superior: superior === '1', ilvl: Number(ilvl ?? 99),
+          mods: mods ? mods.split(',').map((m) => { const [skill, level] = m.split(':'); return { skill: Number(skill), level: Number(level) }; }) : [], where, count });
       }
     }
     return out;

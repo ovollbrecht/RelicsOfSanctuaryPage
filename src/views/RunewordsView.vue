@@ -66,12 +66,15 @@ watch(markBuilt, (v) => { try { localStorage.setItem('rw_mark_built', v ? '1' : 
 // the save catalog knows which ids a runeword saves under; it is only fetched
 // when there is a Grail to compare against
 let catalogPromise = null;
+const skillNames = ref([]); // by skill row, for the staffmods on held bases
 watch(grail.found, async (found) => {
   if (!Object.keys(found).length) { builtKeys.value = new Set(); return; }
-  catalogPromise ??= import('@/assets/save_constants.json').then((m) => (m.default ?? m).catalog.runewords);
-  const catalog = await catalogPromise;
+  catalogPromise ??= import('@/assets/save_constants.json').then((m) => { const d = m.default ?? m; return { runewords: d.catalog.runewords, skills: d.constants.skills }; });
+  const { runewords: catalog, skills } = await catalogPromise;
+  skillNames.value = skills;
   builtKeys.value = new Set(catalog.filter((rw) => found[`r:${rw.id}`] || (rw.stringId != null && found[`rs:${rw.stringId}`])).map((rw) => rw.key));
 }, { immediate: true });
+const staffmodsText = (mods) => mods.map((m) => `+${m.level} ${skillNames.value[m.skill]?.s ?? `skill ${m.skill}`}`).join(', ');
 
 const typeByCode = new Map(itemBaseData.Types.map((type) => [type.Code, type]));
 const baseByCode = new Map(itemBaseData.Bases.map((base) => [base.Code, base]));
@@ -689,8 +692,9 @@ const basesFor = (group) => {
     const fits = group.rows.some((row) => !row.excluded.some((t) => chain.has(t)) && row.own.some((t) => chain.has(t)));
     if (!fits) continue;
     // two Diadems at different item levels read the same - one line, counted
-    const same = out.find((b) => b.name === base.Name && b.how === how && b.eth === held.eth && b.where === held.where);
-    if (same) same.count += held.count; else out.push({ name: base.Name, how, eth: held.eth, where: held.where, count: held.count });
+    const mods = staffmodsText(held.mods ?? []);
+    const same = out.find((b) => b.name === base.Name && b.how === how && b.eth === held.eth && b.where === held.where && b.mods === mods);
+    if (same) same.count += held.count; else out.push({ name: base.Name, how, eth: held.eth, mods, where: held.where, count: held.count });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name) || a.where.localeCompare(b.where));
 };

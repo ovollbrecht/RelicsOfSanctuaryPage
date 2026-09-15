@@ -67,7 +67,7 @@ const formatChance = (chance) => {
       <template v-if="bases.length">
         <div class="grail-label">Bases you hold for it</div>
         <ul class="grail-bases">
-          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.how }} · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
+          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.how }}</span><span v-if="b.mods" class="staffmods"> · {{ b.mods }}</span><span class="text-muted"> · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
         </ul>
       </template>
     </div>
@@ -165,4 +165,5 @@ const formatChance = (chance) => {
 .grail-built { color: #7fdc7f; font-weight: 600; }
 .grail-label { color: var(--d2r-gold); font-family: var(--font-display); font-size: 0.8rem; margin-top: 0.25rem; }
 .grail-bases { margin: 0.2rem 0 0; padding-left: 1rem; }
+.staffmods { color: #8f8fff; }
 </style>
