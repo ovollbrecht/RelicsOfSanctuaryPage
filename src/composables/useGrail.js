@@ -137,7 +137,7 @@ export function absorb(results, catalog, buildShifted) {
   };
   for (const r of results) {
     if (r.error) continue;
-    const held = { kind: r.kind, character: r.character ?? null, at: now, items: {}, runes: {} };
+    const held = { kind: r.kind, character: r.character ?? null, at: now, items: {}, runes: {}, bases: {} };
     const count = (key) => { held.items[key] = (held.items[key] ?? 0) + 1; };
     for (const item of r.items) {
       let key = null;
@@ -146,6 +146,11 @@ export function absorb(results, catalog, buildShifted) {
       if (key) { note(key, r.kind, null, null, r.character); count(key); }
       if (item.given_runeword && item.runeword_id != null) { note(`r:${item.runeword_id}`, r.kind, null, null, r.character); count(`r:${item.runeword_id}`); }
       if (!item.inSocket && /^r[0-3]\d$/.test(item.type ?? '')) held.runes[item.type] = (held.runes[item.type] ?? 0) + 1;
+      // a plain or superior base with sockets and nothing in them: a runeword waiting to happen
+      if (item.socketed === 1 && item.total_nr_of_sockets > 0 && !(item.socketed_items?.length) && (item.quality === 2 || item.quality === 3) && !item.given_runeword) {
+        const k = `${item.type}|${item.total_nr_of_sockets}|${item.ethereal ? 1 : 0}`;
+        held.bases[k] = (held.bases[k] ?? 0) + 1;
+      }
     }
     if (r.chronicle) {
       for (const e of r.chronicle.uniques) if (e.id < 4095) note(uniqueKey(e.id), 'chronicle', minuteToIso(e.minute), e.source || null);
@@ -189,6 +194,18 @@ export function useGrail() {
     }
     return { items, runes };
   });
+  // empty-socketed bases across the files: [{ code, sockets, eth, where, count }]
+  const bases = computed(() => {
+    const out = [];
+    for (const [file, h] of Object.entries(holdings.value)) {
+      const where = h.kind === 'character' ? `on ${h.character ?? file.replace(/\.d2s$/i, '')}` : 'stash';
+      for (const [k, count] of Object.entries(h.bases ?? {})) {
+        const [code, sockets, eth] = k.split('|');
+        out.push({ code, sockets: Number(sockets), eth: eth === '1', where, count });
+      }
+    }
+    return out;
+  });
   const forgetHolding = (name) => { const next = { ...holdings.value }; delete next[name]; state.value = { ...state.value, holdings: next }; };
-  return { state, found, has, setManual, reset, exportState, importState, loadParser, rotwShift, holdings, owned, forgetHolding };
+  return { state, found, has, setManual, reset, exportState, importState, loadParser, rotwShift, holdings, owned, bases, forgetHolding };
 }

@@ -7,6 +7,7 @@ import itemBaseData from '@/assets/item_bases.json';
 import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 import SearchableSelect from '@/components/SearchableSelect.vue';
+import { useGrail } from '@/composables/useGrail.js';
 
 const runewords = ref([]);
 const searchQuery = ref('');
@@ -55,6 +56,22 @@ const sortDir = ref('asc');
 const ITEM_FILTER_ANY = 'any';
 const itemFilter = ref(ITEM_FILTER_ANY);
 const socketFilter = ref('any');
+
+// ---------- the Grail's word: what is built, what bases lie around ----------
+const grail = useGrail();
+const grailHasData = computed(() => Object.keys(grail.found.value).length > 0);
+const builtKeys = ref(new Set()); // RowIds the Grail counts as built
+const markBuilt = ref((() => { try { return localStorage.getItem('rw_mark_built') !== '0'; } catch { return true; } })());
+watch(markBuilt, (v) => { try { localStorage.setItem('rw_mark_built', v ? '1' : '0'); } catch { /* fine */ } });
+// the save catalog knows which ids a runeword saves under; it is only fetched
+// when there is a Grail to compare against
+let catalogPromise = null;
+watch(grail.found, async (found) => {
+  if (!Object.keys(found).length) { builtKeys.value = new Set(); return; }
+  catalogPromise ??= import('@/assets/save_constants.json').then((m) => (m.default ?? m).catalog.runewords);
+  const catalog = await catalogPromise;
+  builtKeys.value = new Set(catalog.filter((rw) => found[`r:${rw.id}`] || (rw.stringId != null && found[`rs:${rw.stringId}`])).map((rw) => rw.key));
+}, { immediate: true });
 
 const typeByCode = new Map(itemBaseData.Types.map((type) => [type.Code, type]));
 const baseByCode = new Map(itemBaseData.Bases.map((base) => [base.Code, base]));
@@ -339,6 +356,7 @@ const visibleRunewords = computed(() => runewords.value.filter((runeword) => {
   if (classFilter.value === 'only' && !classBoundRows.value.has(runeword.RowId)) return false;
   if (statusFilter.value === 'new') return runeword.IsNew;
   if (statusFilter.value === 'reworked') return runeword.IsReworked;
+  if (statusFilter.value === 'unbuilt') return !builtKeys.value.has(runeword.RowId);
   return true;
 }));
 
@@ -621,9 +639,12 @@ const toGroups = (list) => {
         // Only where every variant is bound: a runeword that also fits a plain
         // sword is not "Sorceress Only", however many orbs it lists.
         classNames: classBoundRows.value.has(runeword.RowId) ? (runeword.ClassNames ?? []) : [],
+        built: builtKeys.value.has(runeword.RowId),
+        rows: [],
         variants: [],
       });
     }
+    groups.get(key).rows.push({ own: runeword.ItemTypes ?? [], excluded: runeword.ETypes ?? [] });
 
     const changes = runeword.IsReworked ? getReworkChanges(runeword) : [];
     groups.get(key).variants.push({
@@ -646,6 +667,22 @@ const toGroups = (list) => {
    kinds of item it fits - and inside its tier, because the tiers are the
    page's shape rather than a sort order. Name breaks every tie, so the list
    never shuffles between two runewords that compare equal. */
+// The bases in the files that this runeword would go into: the socket count
+// has to match exactly, and the base's type chain has to reach one of the
+// runeword's types without touching an excluded one.
+const basesFor = (group) => {
+  const out = [];
+  for (const held of grail.bases.value) {
+    if (held.sockets !== group.sockets) continue;
+    const base = baseByCode.get(held.code);
+    if (!base) continue;
+    const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
+    const fits = group.rows.some((row) => !row.excluded.some((t) => chain.has(t)) && row.own.some((t) => chain.has(t)));
+    if (fits) out.push({ name: base.Name, sockets: held.sockets, eth: held.eth, where: held.where, count: held.count });
+  }
+  return out.sort((a, b) => a.name.localeCompare(b.name) || a.where.localeCompare(b.where));
+};
+
 const compareGroups = (a, b) => {
   const by = {
     level: (group) => group.levelReq ?? 0,
@@ -695,7 +732,7 @@ const readQuery = () => {
   runesSearchQuery.value = one(query.runes) ?? '';
   selectedCategory.value = oneOf(query.cat, ['weapons', 'armors', 'helmets', 'shields'], 'all');
   dataMode.value = oneOf(query.data, ['vanilla'], 'mod');
-  statusFilter.value = oneOf(query.status, ['new', 'reworked'], 'all');
+  statusFilter.value = oneOf(query.status, ['new', 'reworked', 'unbuilt'], 'all');
   classFilter.value = oneOf(query.classes, ['hide', 'only'], 'all');
   classPick.value = oneOf(query.cls, classOptions.value, 'any');
   itemFilter.value = one(query.base) ?? ITEM_FILTER_ANY;
@@ -1024,6 +1061,16 @@ onUnmounted(() => {
                     <span class="flag">•</span>
                   </label>
                 </div>
+                <template v-if="grailHasData">
+                  <div class="form-check reworked-toggle">
+                    <input id="rw-status-unbuilt" v-model="statusFilter" value="unbuilt" class="form-check-input" type="radio" />
+                    <label class="form-check-label" for="rw-status-unbuilt">Only not built yet</label>
+                  </div>
+                  <div class="form-check form-switch reworked-toggle">
+                    <input id="rw-mark-built" v-model="markBuilt" class="form-check-input" type="checkbox" />
+                    <label class="form-check-label" for="rw-mark-built" title="A check mark on every runeword your Grail import has seen built">Mark what I built</label>
+                  </div>
+                </template>
               </div>
               <div class="d-flex flex-wrap gap-4 mt-2">
                 <div class="form-check reworked-toggle">
@@ -1091,6 +1138,8 @@ onUnmounted(() => {
             :title="tier.title"
             :subtitle="tier.hint"
             :groups="tier.groups"
+            :mark-built="markBuilt && grailHasData"
+            :bases-for="grailHasData ? basesFor : null"
             :rework-title="reworkTitle"
             :panel-mode="isWide"
             :selected-key="selectedGroup?.key ?? null"
@@ -1107,6 +1156,8 @@ onUnmounted(() => {
             title="One rune away"
             subtitle="with the runes you have"
             :groups="nearMisses"
+            :mark-built="markBuilt && grailHasData"
+            :bases-for="grailHasData ? basesFor : null"
             :rework-title="reworkTitle"
             :panel-mode="isWide"
             :selected-key="selectedGroup?.key ?? null"
@@ -1122,6 +1173,8 @@ onUnmounted(() => {
               v-if="selectedGroup"
               :group="selectedGroup"
               :rework-title="reworkTitle"
+              :bases="grailHasData ? basesFor(selectedGroup) : []"
+              :built="markBuilt && grailHasData && selectedGroup.built"
               show-header
             />
             <div v-else class="text-muted rw-panel-hint">

@@ -15,6 +15,9 @@ defineProps({
   group: { type: Object, required: true },
   reworkTitle: { type: String, default: 'Changes vs. vanilla' },
   showHeader: { type: Boolean, default: false },
+  // from the Grail: empty-socketed bases in the files that fit this runeword
+  bases: { type: Array, default: () => [] },
+  built: { type: Boolean, default: false },
 });
 
 // A group's odds at the precision the numbers carry: 60% stays 60%, and a
@@ -58,6 +61,15 @@ const formatChance = (chance) => {
           :title="reworkTitle"
         />
       </div>
+    </div>
+    <div v-if="built || bases.length" class="grail-note">
+      <div v-if="built" class="grail-built">✓ Built - your Grail has it</div>
+      <template v-if="bases.length">
+        <div class="grail-label">Bases you hold with {{ group.sockets }} empty {{ group.sockets === 1 ? 'socket' : 'sockets' }}</div>
+        <ul class="grail-bases">
+          <li v-for="(b, n) in bases" :key="n">{{ b.name }}<span v-if="b.eth" class="text-muted"> · ethereal</span><span class="text-muted"> · {{ b.where }}</span><span v-if="b.count > 1" class="text-muted"> ×{{ b.count }}</span></li>
+        </ul>
+      </template>
     </div>
   </div>
 </template>
@@ -149,4 +161,8 @@ const formatChance = (chance) => {
 }
 .rune-name { white-space: nowrap; }
 .rune-icon { display: inline-block; width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-right: 0.15rem; }
+.grail-note { margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.9rem; }
+.grail-built { color: #7fdc7f; font-weight: 600; }
+.grail-label { color: var(--d2r-gold); font-family: var(--font-display); font-size: 0.8rem; margin-top: 0.25rem; }
+.grail-bases { margin: 0.2rem 0 0; padding-left: 1rem; }
 </style>

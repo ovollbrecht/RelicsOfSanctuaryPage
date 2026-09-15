@@ -21,6 +21,10 @@ const props = defineProps({
   // inline under its row: the row click selects, and selection lives with the
   // parent because it spans the three tier tables.
   panelMode: { type: Boolean, default: false },
+  // the Grail's word, when there is one: a check on built runewords, and the
+  // bases in the files a runeword would go into
+  markBuilt: { type: Boolean, default: false },
+  basesFor: { type: Function, default: null },
   selectedKey: { type: String, default: null },
 });
 
@@ -92,7 +96,7 @@ const setAll = (open) => {
                   <!-- One mark for both, since it answers one question: did
                        the mod touch this. Which of the two it was is in the
                        tooltip, and the filter above splits them. -->
-                  {{ group.name }}<span
+                  <span v-if="markBuilt && group.built" class="built" title="Built - your Grail has it">✓</span>{{ group.name }}<span
                     v-if="group.isNew || group.isReworked"
                     class="flag"
                     :title="group.isNew ? 'New in Relics of Sanctuary' : 'Reworked by Relics of Sanctuary'"
@@ -133,7 +137,7 @@ const setAll = (open) => {
               </tr>
               <tr v-if="!panelMode && expanded.has(group.key)" class="expanded-row">
                 <td colspan="5">
-                  <RunewordDetail :group="group" :rework-title="reworkTitle" />
+                  <RunewordDetail :group="group" :rework-title="reworkTitle" :bases="basesFor ? basesFor(group) : []" :built="markBuilt && group.built" />
                 </td>
               </tr>
             </template>
@@ -239,4 +243,5 @@ const setAll = (open) => {
 }
 .rune-name { white-space: nowrap; }
 .rune-icon { display: inline-block; width: 17px; height: 17px; object-fit: contain; vertical-align: -3px; margin-right: 0.1rem; }
+.built { color: #7fdc7f; margin-right: 0.35rem; font-weight: 700; }
 </style>
