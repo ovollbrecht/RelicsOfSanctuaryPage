@@ -115,32 +115,66 @@ export function applyElements(data, spot, difficulty, elements) {
 export function resolveTargets(data, tokens) {
   const out = [];
   for (const token of tokens) {
-    const [kind, ...rest] = token.split(':');
+    const [prefix, ...rest] = token.split(':');
     const name = rest.join(':');
-    const list = kind === 'u' ? data.Uniques : kind === 's' ? data.Sets : null;
-    if (!list) continue;
-    let rows = list.map((e, i) => (e.Name === name && e.Spawnable !== false ? i : -1)).filter((i) => i >= 0);
-    if (rows.length === 0) {
+    if (!/^[us]x?$/.test(prefix)) continue;
+    const kind = prefix[0] === 'u' ? 'unique' : 'set';
+    const list = kind === 'unique' ? data.Uniques : data.Sets;
+    // 'ux:' / 'sx:' ask for the Exalted or Mythic roll of the item by its own name
+    const variant = prefix.length === 2 ? (kind === 'unique' ? 'exalted' : 'mythic') : null;
+    const variantField = kind === 'unique' ? 'ExaltedName' : 'MythicName';
+    let rows = list.map((e, i) => (e.Spawnable !== false && (variant ? e[variantField] === name : e.Name === name) ? i : -1)).filter((i) => i >= 0);
+    if (rows.length === 0 && !variant) {
       const byIndex = list.findIndex((e) => e.Index === name);
       if (byIndex >= 0) rows = [byIndex];
     }
     if (rows.length === 0) continue;
     out.push({
-      kind: kind === 'u' ? 'unique' : 'set',
-      name: list[rows[0]].Name,
-      key: list[rows[0]].Name,
+      kind,
+      name: variant ? name : list[rows[0]].Name,
+      key: variant ? name : list[rows[0]].Name,
+      variant,
       rows: rows.map((index) => ({ index, baseIndex: list[index].Base })),
     });
   }
   return out;
 }
 
-export const targetToken = (t) => `${t.kind === 'unique' ? 'u' : 's'}:${t.key}`;
+/**
+ * Everything the Grail still lacks, as targets: one per missing catalog row.
+ * A missing plain item wants the ordinary roll, a missing Exalted or Mythic
+ * one the variant roll - so a spot is not credited with a Shako it would
+ * only turn up in the form already found.
+ */
+export function grailTargets(data, catalog, found) {
+  const out = [];
+  const index = (list) => { const m = new Map(); list.forEach((e, i) => { if (e.Spawnable !== false) m.set(e.Index, i); }); return m; };
+  const uniques = index(data.Uniques);
+  const sets = index(data.Sets);
+  for (const u of catalog.uniques) {
+    if (!u.spawnable || found[`u:${u.id}`]) continue;
+    const i = uniques.get(u.exalted ? u.key.replace(/^E /, '') : u.key);
+    if (i == null) continue;
+    out.push({ kind: 'unique', name: u.name, key: u.name, variant: u.exalted ? 'exalted' : 'base', rows: [{ index: i, baseIndex: data.Uniques[i].Base }] });
+  }
+  for (const s of catalog.sets) {
+    if (!s.spawnable || found[`s:${s.id}`]) continue;
+    const i = sets.get(s.mythic ? s.key.replace(/^M /, '') : s.key);
+    if (i == null) continue;
+    out.push({ kind: 'set', name: s.name, key: s.name, variant: s.mythic ? 'mythic' : 'base', rows: [{ index: i, baseIndex: data.Sets[i].Base }] });
+  }
+  return out;
+}
+
+export const targetToken = (t) => `${t.kind === 'unique' ? 'u' : 's'}${t.variant === 'exalted' || t.variant === 'mythic' ? 'x' : ''}:${t.key}`;
 
 const runeNumber = (code) => {
   const m = /^r(\d+)$/.exec(code ?? '');
   return m ? Number(m[1]) : 0;
 };
+
+// a target's slice of the pool's share: the variant roll, the plain roll, or both
+const shareOf = (entry, variantShare, variant) => (variant === 'exalted' || variant === 'mythic' ? variantShare : variant === 'base' ? entry.share - variantShare : entry.share);
 
 /**
  * One source, one kill: the chance of each target and the rune picture.
@@ -169,10 +203,10 @@ function evaluateSource(ctx, sel, targets, highRune) {
     for (const { k, row } of hits) {
       if (targets[k].kind === 'unique') {
         const entry = uniques.find((u) => u.entry === ctx.uniques[row.index]);
-        if (entry) perTarget[k] += p * quality.unique * entry.share;
+        if (entry) perTarget[k] += p * quality.unique * shareOf(entry, entry.exaltedShare, targets[k].variant);
       } else {
         const entry = sets.find((s) => s.entry === ctx.sets[row.index]);
-        if (entry) perTarget[k] += p * quality.set * entry.share;
+        if (entry) perTarget[k] += p * quality.set * shareOf(entry, entry.mythicShare, targets[k].variant);
       }
     }
   }
@@ -264,15 +298,19 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
     }
     return evaluated.get(key);
   };
+  // with detail, each target's own chance is carried through as well
+  const T = detail ? targets.length : 0;
   const weighted = (pool, type, placedWeight) => {
     let w = 0; let any = 0; let runesAny = 0; let runesHigh = 0; let runesMax = 0;
+    const per = T ? new Array(T).fill(0) : null;
     for (const { i, placed: isPlaced } of pool) {
       const r = evalFor(i, type);
       if (!r) continue;
       const wi = isPlaced ? placedWeight : weightOf(i);
       w += wi; any += wi * r.any; runesAny += wi * r.runes.any; runesHigh += wi * r.runes.high; runesMax = Math.max(runesMax, r.runes.max);
+      if (per) for (let k = 0; k < T; k++) per[k] += wi * (r.perTarget?.[k] ?? 0);
     }
-    return w > 0 ? { any: any / w, runesAny: runesAny / w, runesHigh: runesHigh / w, runesMax } : { any: 0, runesAny: 0, runesHigh: 0, runesMax: 0 };
+    return w > 0 ? { any: any / w, runesAny: runesAny / w, runesHigh: runesHigh / w, runesMax, per: per?.map((x) => x / w) ?? null } : { any: 0, runesAny: 0, runesHigh: 0, runesMax: 0, per: null };
   };
   const rolled = spot.monsters.map((i) => ({ i, placed: false }));
   const standIns = placed.map((i) => ({ i, placed: true }));
@@ -291,10 +329,12 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
   let runesExpected = 0; let highExpected = 0; let highMiss = 1; let runesMax = 0;
   const parts = [];
   const runeParts = []; // who hands out the high runes - the Countess has a table of her own
-  const take = (label, p, n, runes) => {
+  const missT = T ? new Array(T).fill(1) : null;
+  const take = (label, p, n, runes, per = null) => {
     if (n <= 0) return;
     const hit = 1 - Math.pow(1 - Math.min(p, 1), n);
     miss *= 1 - hit;
+    if (missT && per) for (let k = 0; k < T; k++) missT[k] *= Math.pow(1 - Math.min(per[k] ?? 0, 1), n);
     if (runes) {
       runesExpected += n * runes.any;
       highExpected += n * runes.high;
@@ -304,33 +344,33 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
     }
     if (hit > 0) parts.push({ label, hit });
   };
-  take('Trash', byType.normal.any, counts.normal, { any: byType.normal.runesAny, high: byType.normal.runesHigh, max: byType.normal.runesMax });
-  take('Champions', byType.champion.any, counts.champion, { any: byType.champion.runesAny, high: byType.champion.runesHigh, max: byType.champion.runesMax });
-  take('Unique packs', byType.unique.any, counts.unique, { any: byType.unique.runesAny, high: byType.unique.runesHigh, max: byType.unique.runesMax });
-  take('Minions', byType.minion.any, counts.minion, { any: byType.minion.runesAny, high: byType.minion.runesHigh, max: byType.minion.runesMax });
+  take('Trash', byType.normal.any, counts.normal, { any: byType.normal.runesAny, high: byType.normal.runesHigh, max: byType.normal.runesMax }, byType.normal.per);
+  take('Champions', byType.champion.any, counts.champion, { any: byType.champion.runesAny, high: byType.champion.runesHigh, max: byType.champion.runesMax }, byType.champion.per);
+  take('Unique packs', byType.unique.any, counts.unique, { any: byType.unique.runesAny, high: byType.unique.runesHigh, max: byType.unique.runesMax }, byType.unique.per);
+  take('Minions', byType.minion.any, counts.minion, { any: byType.minion.runesAny, high: byType.minion.runesHigh, max: byType.minion.runesMax }, byType.minion.per);
 
   if (profile.superUniques) {
     for (const superUniqueIndex of spot.superUniques) {
       const su = ctx.superUniques[superUniqueIndex];
       const r = evaluateSource(ctx, { kind: 'superunique', superUniqueIndex, difficulty }, targets, highRune);
-      if (r) take(su.Name, r.any, 1, r.runes);
+      if (r) take(su.Name, r.any, 1, r.runes, r.perTarget);
       // its pack dies with it: Pindleskin's six, the council's two - minions
       // of the base class, at the minion's level bonus
       const pack = su.Minions ? Math.round((su.Minions[0] + su.Minions[1]) / 2) : 0;
       if (pack > 0 && su.Monster >= 0) {
         const m = evaluateSource(ctx, { kind: 'monster', monsterIndex: su.Monster, sourceType: 'minion', difficulty, areaId: spot.areaId }, targets, highRune);
-        if (m) take(`${su.Name}'s pack`, m.any, pack, m.runes);
+        if (m) take(`${su.Name}'s pack`, m.any, pack, m.runes, m.perTarget);
       }
     }
   }
   if (profile.boss && spot.boss >= 0) {
     const r = evaluateSource(ctx, { kind: 'monster', monsterIndex: spot.boss, sourceType: 'boss', difficulty, areaId: spot.areaId }, targets, highRune);
-    if (r) take(ctx.monsters[spot.boss].Name, r.any, 1, r.runes);
+    if (r) take(ctx.monsters[spot.boss].Name, r.any, 1, r.runes, r.perTarget);
   }
   // Heralds are a terror zone's own elite; there are none in an ordinary run.
   if (ctx.options.terror?.enabled && (profile.heralds | 0) > 0) {
     const r = evaluateSource(ctx, { kind: 'herald', difficulty }, targets, highRune);
-    if (r) take('Heralds', r.any, profile.heralds | 0, r.runes);
+    if (r) take('Heralds', r.any, profile.heralds | 0, r.runes, r.perTarget);
   }
 
   parts.sort((a, b) => b.hit - a.hit);
@@ -353,6 +393,8 @@ export function scoreSpot(ctx, spot, targets, profile, difficulty, { highRune = 
       monsters: [...rolled.map(({ i }) => row(i, false)), ...standIns.map(({ i }) => row(i, true))],
       counts, numMon: spot.numMon ?? 0, packsFromPlaced: rolled.length === 0 && standIns.length > 0,
       rollTypes: rolled.length, rollSize: rolled.reduce((sum, { i }) => sum + weightOf(i), 0),
+      // each target's chance per run, best first
+      targets: missT.map((m, k) => ({ k, hit: 1 - m })).filter((t) => t.hit > 0).sort((a, b) => b.hit - a.hit),
     };
   }
   return result;

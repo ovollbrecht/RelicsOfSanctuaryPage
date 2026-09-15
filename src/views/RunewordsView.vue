@@ -4,6 +4,8 @@ import { useRoute, useRouter } from 'vue-router';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import itemBaseData from '@/assets/item_bases.json';
+import cubeData from '@/assets/cube.json';
+import { readLadder, planBuild, runeNumber } from '@/composables/useRuneLadder.js';
 import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 import SearchableSelect from '@/components/SearchableSelect.vue';
@@ -265,6 +267,38 @@ const setRuneUpTo = (target) => {
   ownedRunes.value = next;
 };
 
+/* ---- what the files hold, and what the cube can make of it -----------------
+   Counted copies from the Grail's files where there are any, the picker's
+   ticks otherwise; the maths is in useRuneLadder.js. */
+const LADDER = readLadder(cubeData);
+const GRAIL_RUNES_KEY = 'rw_grail_runes';
+const UPGRADES_KEY = 'rw_rune_upgrades';
+const readFlag = (key, fallback) => { try { const v = localStorage.getItem(key); return v === null ? fallback : v !== '0'; } catch { return fallback; } };
+const writeFlag = (key, v) => { try { localStorage.setItem(key, v ? '1' : '0'); } catch { /* fine */ } };
+const useGrailRunes = ref(readFlag(GRAIL_RUNES_KEY, true));
+const withUpgrades = ref(readFlag(UPGRADES_KEY, true));
+watch(useGrailRunes, (v) => writeFlag(GRAIL_RUNES_KEY, v));
+watch(withUpgrades, (v) => writeFlag(UPGRADES_KEY, v));
+const grailRunes = computed(() => grail.owned.value.runes ?? {});
+const grailRuneTotal = computed(() => Object.values(grailRunes.value).reduce((s, n) => s + n, 0));
+const countedMode = computed(() => useGrailRunes.value && grailRuneTotal.value > 0);
+// what there is to build from: counted copies out of the files, or the
+// picker's ticks - a tick means "enough of it"
+const runeStock = computed(() => (countedMode.value
+  ? new Map(Object.entries(grailRunes.value).filter(([, n]) => n > 0))
+  : new Map([...ownedRunes.value].map((code) => [code, 99]))));
+const runeNameOf = (code) => allRunes.value.find((r) => r.code === code)?.name ?? code;
+const grailBestRune = computed(() => runeNameOf(`r${String(Math.max(0, ...[...runeStock.value.keys()].map(runeNumber))).padStart(2, '0')}`));
+
+const buildPlan = (runeword) => {
+  const plan = planBuild(runeword.Runes, runeStock.value, LADDER, { upgrades: withUpgrades.value && countedMode.value });
+  return {
+    ...plan,
+    missingNames: plan.missing.map(runeNameOf),
+    upgradeText: plan.upgrades.map((u) => `${u.n > 1 ? `${u.n}× ` : ''}${runeNameOf(u.code)} (${u.qty} ${runeNameOf(u.from)})`).join(', '),
+  };
+};
+
 /* What the picked runes can make, counted against every runeword rather than
    against the current filters: "23 craftable" should not move because somebody
    is looking at shields. Grouped by row, so a runeword that goes in two kinds
@@ -274,15 +308,18 @@ const craftable = computed(() => {
   const counted = new Set();
   let total = 0;
 
+  let viaCube = 0;
   runewords.value.forEach((runeword) => {
     if (counted.has(runeword.RowId)) return;
     counted.add(runeword.RowId);
-    if (!(runeword.Runes ?? []).every((code) => ownedRunes.value.has(code))) return;
+    const state = buildPlan(runeword).state;
+    if (!state) return;
     total += 1;
+    if (state === 'upgrade') viaCube += 1;
     perTier[tierOf(runeword).key] += 1;
   });
 
-  return { total, perTier, of: counted.size };
+  return { total, viaCube, perTier, of: counted.size };
 });
 
 const selectAllRunes = () => { ownedRunes.value = new Set(allRunes.value.map((rune) => rune.code)); };
@@ -290,7 +327,7 @@ const clearRunes = () => { ownedRunes.value = new Set(); };
 
 // Off while nothing is ticked: "only what I can make" out of no runes is an
 // empty page, and an empty page is not an answer anyone asked for.
-const runeFilterActive = computed(() => useRuneFilter.value && ownedRunes.value.size > 0);
+const runeFilterActive = computed(() => useRuneFilter.value && runeStock.value.size > 0);
 
 watch(ownedRunes, (runes) => {
   writeSession(RUNES_KEY, [...runes]);
@@ -418,16 +455,13 @@ const filteredIgnoringRunes = computed(() => {
 });
 
 const filteredRunewords = computed(() => (runeFilterActive.value
-  ? filteredIgnoringRunes.value.filter((runeword) =>
-    (runeword.Runes ?? []).every((code) => ownedRunes.value.has(code)))
+  ? filteredIgnoringRunes.value.filter((runeword) => buildPlan(runeword).state != null)
   : filteredIgnoringRunes.value));
-
-const runeNumber = (code) => Number.parseInt(String(code).slice(1), 10) || 0;
 
 /* The best rune in the stash, which is what makes a near miss worth saying:
    "one Sur short" means something to somebody who already found a Lo. */
 const bestOwnedRune = computed(() =>
-  Math.max(0, ...[...ownedRunes.value].map(runeNumber)));
+  Math.max(0, ...[...runeStock.value.keys()].map(runeNumber)));
 
 /* One rune short - and only when that rune is within reach. Duplicates are not
    counted, here as everywhere on this page: the picker cannot say "two Hels",
@@ -437,8 +471,7 @@ const nearMisses = computed(() => {
 
   const rows = filteredIgnoringRunes.value
     .map((runeword) => {
-      const missing = [...new Set(runeword.Runes ?? [])]
-        .filter((code) => !ownedRunes.value.has(code));
+      const missing = buildPlan(runeword).missing;
       if (missing.length !== 1) return null;
 
       const number = runeNumber(missing[0]);
@@ -643,6 +676,7 @@ const toGroups = (list) => {
         // sword is not "Sorceress Only", however many orbs it lists.
         classNames: classBoundRows.value.has(runeword.RowId) ? (runeword.ClassNames ?? []) : [],
         built: builtKeys.value.has(runeword.RowId),
+        build: runeStock.value.size ? buildPlan(runeword) : null,
         rows: [],
         variants: [],
       });
@@ -877,10 +911,21 @@ onUnmounted(() => {
             <!-- Rune picker: which runes you have, and whether that filters -->
             <div class="mb-3">
               <div class="d-flex align-items-center flex-wrap gap-3">
-                <button type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
+                <button v-if="!countedMode" type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
                   {{ pickerOpen ? '▾' : '▸' }} My runes
                   <span class="picker-count">{{ ownedRunes.size }}/{{ allRunes.length }}</span>
                 </button>
+                <span v-else class="small" title="The loose runes in the save files you gave the Grail, counted">
+                  My runes: <strong>{{ grailRuneTotal }}</strong> from the Grail, best {{ grailBestRune }}
+                </span>
+                <div v-if="grailRuneTotal > 0" class="form-check reworked-toggle mb-0" title="Count the runes in your imported save files instead of ticking them by hand">
+                  <input id="rw-grail-runes" v-model="useGrailRunes" class="form-check-input" type="checkbox" />
+                  <label class="form-check-label" for="rw-grail-runes">From my Grail</label>
+                </div>
+                <div v-if="countedMode" class="form-check reworked-toggle mb-0" title="A missing rune counts as had when the ones below it in the cube's ladder are there - three Ist are a Gul">
+                  <input id="rw-rune-upgrades" v-model="withUpgrades" class="form-check-input" type="checkbox" />
+                  <label class="form-check-label" for="rw-rune-upgrades">Count cube upgrades</label>
+                </div>
                 <div class="form-check reworked-toggle mb-0">
                   <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
                   <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
@@ -899,13 +944,13 @@ onUnmounted(() => {
                   />
                   <span class="text-muted">runes of my best</span>
                 </div>
-                <small v-if="useRuneFilter && ownedRunes.size === 0" class="text-muted">
+                <small v-if="useRuneFilter && runeStock.size === 0" class="text-muted">
                   pick a rune first
                 </small>
               </div>
 
-              <div v-if="ownedRunes.size > 0" class="craftable-line">
-                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable
+              <div v-if="runeStock.size > 0" class="craftable-line">
+                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable<span v-if="craftable.viaCube" class="text-muted">, {{ craftable.viaCube }} of them via the cube</span>
                 <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">
                   {{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}
                 </span>
@@ -914,7 +959,7 @@ onUnmounted(() => {
                 </span>
               </div>
 
-              <div v-show="pickerOpen" class="rune-picker">
+              <div v-show="pickerOpen && !countedMode" class="rune-picker">
                 <div class="rune-grid">
                   <button
                     v-for="rune in allRunes"

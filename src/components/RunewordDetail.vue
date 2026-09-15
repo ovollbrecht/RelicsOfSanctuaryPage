@@ -62,8 +62,11 @@ const formatChance = (chance) => {
         />
       </div>
     </div>
-    <div v-if="built || bases.length" class="grail-note">
+    <div v-if="built || bases.length || group.build" class="grail-note">
       <div v-if="built" class="grail-built">✓ Built - your Grail has it</div>
+      <div v-if="group.build?.state === 'now'" class="grail-built">Your runes cover it as they lie.</div>
+      <div v-else-if="group.build?.state === 'upgrade'" class="grail-cube">Via the cube: make {{ group.build.upgradeText }}.</div>
+      <div v-else-if="group.build" class="text-muted">Short of {{ group.build.missingNames.join(', ') }}<template v-if="group.build.upgrades.length"> even after making {{ group.build.upgradeText }}</template>.</div>
       <template v-if="bases.length">
         <div class="grail-label">Bases you hold for it</div>
         <ul class="grail-bases">
@@ -163,6 +166,7 @@ const formatChance = (chance) => {
 .rune-icon { display: inline-block; width: 18px; height: 18px; object-fit: contain; vertical-align: -4px; margin-right: 0.15rem; }
 .grail-note { margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.9rem; }
 .grail-built { color: #7fdc7f; font-weight: 600; }
+.grail-cube { color: #e0b85a; font-weight: 600; }
 .grail-label { color: var(--d2r-gold); font-family: var(--font-display); font-size: 0.8rem; margin-top: 0.25rem; }
 .grail-bases { margin: 0.2rem 0 0; padding-left: 1rem; }
 .staffmods { color: #8f8fff; }

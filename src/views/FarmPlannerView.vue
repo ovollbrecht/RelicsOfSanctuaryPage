@@ -5,8 +5,9 @@ import dropData from '@/assets/dropcalc.json';
 import tz from '@/assets/terror_zones.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
 import { buildContext } from '@/composables/useDropSimulation.js';
-import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset, spotRun, zonePacksFor } from '@/composables/useFarmPlanner.js';
+import { DEFAULT_PROFILE, RUNE_FLOORS, resolveTargets, grailTargets, targetToken, buildSpots, scoreSpot, presetsFor, applyPreset, spotRun, zonePacksFor } from '@/composables/useFarmPlanner.js';
 import { useFarmList } from '@/composables/useFarmList.js';
+import { useGrail } from '@/composables/useGrail.js';
 
 /**
  * Where to farm: a list of wanted items, and every spot scored by the chance
@@ -20,7 +21,27 @@ const router = useRouter();
 // ---------- the list (shared with the "+" buttons elsewhere) ----------
 const farmList = useFarmList();
 const tokens = farmList.tokens;
-const targets = computed(() => resolveTargets(dropData, tokens.value));
+const listTargets = computed(() => resolveTargets(dropData, tokens.value));
+// ...or the Grail's word: everything still missing, each row its own wish.
+// The catalog that names the rows is only fetched once the switch is on.
+const grail = useGrail();
+const grailHas = computed(() => Object.keys(grail.found.value).length > 0);
+const grailMode = ref(false);
+const catalog = ref(null);
+watch(grailMode, async (on) => {
+  if (!on || catalog.value) return;
+  const m = await import('@/assets/save_constants.json');
+  catalog.value = (m.default ?? m).catalog;
+}, { immediate: true });
+const grailList = computed(() => (grailMode.value && catalog.value ? grailTargets(dropData, catalog.value, grail.found.value) : []));
+const grailTally = computed(() => {
+  const t = { uniques: 0, exalted: 0, sets: 0, mythic: 0 };
+  for (const x of grailList.value) {
+    if (x.kind === 'unique') { if (x.variant === 'exalted') t.exalted++; else t.uniques++; } else if (x.variant === 'mythic') t.mythic++; else t.sets++;
+  }
+  return t;
+});
+const targets = computed(() => (grailMode.value ? grailList.value : listTargets.value));
 const pickKind = ref('unique');
 const pickValue = ref(null);
 // one option per name: the eight facets and the four attunements are one wish each
@@ -306,7 +327,7 @@ const clampInt = (value, min, max, fallback) => {
 };
 // the settings outlive the tab; a link's own values win over the saved ones
 const SETTINGS_KEY = 'farm_settings';
-const settingRefs = { difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, terrorMode, weightItems };
+const settingRefs = { difficulty, charLevel, heraldTier, players, party, mf, runeFloor, sortBy, terrorMode, weightItems, grailMode };
 try {
   const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null');
   if (saved && typeof saved === 'object') for (const [key, r] of Object.entries(settingRefs)) if (saved[key] !== undefined) r.value = saved[key];
@@ -317,7 +338,7 @@ watch(Object.values(settingRefs), () => {
 onMounted(() => {
   const q = route.query;
   // a shared link brings its own list and replaces the visitor's
-  if (q.items) farmList.replace(String(q.items).split('|').filter(Boolean));
+  if (q.items) { farmList.replace(String(q.items).split('|').filter(Boolean)); grailMode.value = false; }
   difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
   charLevel.value = clampInt(q.clvl, 1, 99, charLevel.value);
   heraldTier.value = clampInt(q.ht, 1, 5, heraldTier.value);
@@ -396,10 +417,26 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
       <div class="col-lg-7">
         <div class="card card-enhanced list-card">
           <div class="card-header card-header-primary d-flex justify-content-between align-items-center">
-            <h2 class="h5 card-title m-0">Your list<span v-if="targets.length" class="text-muted fw-normal small"> · {{ targets.length }}</span></h2>
-            <button v-if="targets.length" class="btn btn-sm btn-outline-secondary" @click="clearTargets">Clear</button>
+            <h2 class="h5 card-title m-0">{{ grailMode ? 'Your Grail' : 'Your list' }}<span v-if="targets.length" class="text-muted fw-normal small"> · {{ targets.length }}</span></h2>
+            <div class="d-flex align-items-center gap-3">
+              <div v-if="grailHas" class="form-check form-switch mb-0 small" title="Score every spot against everything your Grail still lacks, instead of the list">
+                <input id="farm-grail" v-model="grailMode" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="farm-grail">Everything my Grail is missing</label>
+              </div>
+              <button v-if="targets.length && !grailMode" class="btn btn-sm btn-outline-secondary" @click="clearTargets">Clear</button>
+            </div>
           </div>
-          <div class="card-body p-3">
+          <div v-if="grailMode" class="card-body p-3 small">
+            <template v-if="!catalog">Reading the Grail…</template>
+            <template v-else-if="grailList.length">
+              <strong>{{ grailList.length }}</strong> items your Grail still lacks:
+              {{ grailTally.uniques }} uniques and {{ grailTally.exalted }} Exalted, {{ grailTally.sets }} set items and {{ grailTally.mythic }} Mythic.
+              A missing plain item counts its ordinary roll, a missing Exalted or Mythic only the variant roll. Open a row's <strong>?</strong> to see which of them a run there can turn up.
+              <router-link to="/grail">Manage in the Grail</router-link>.
+            </template>
+            <template v-else>Your Grail is complete - nothing left to farm for. <router-link to="/grail">Look at it</router-link>.</template>
+          </div>
+          <div v-else class="card-body p-3">
             <div class="d-flex gap-2 mb-2">
               <select v-model="pickKind" class="form-select form-select-sm w-auto">
                 <option value="unique">Unique</option>
@@ -628,6 +665,11 @@ watch([tokens, difficulty, charLevel, heraldTier, players, party, mf, runeFloor,
                     <span class="text-muted">Per run, what carries it:</span>
                     <span v-for="part in whyDetail.score.parts" :key="part.label" class="ms-2">{{ part.label }} <strong>{{ pct(part.hit) }}</strong></span>
                     <span class="ms-2">→ <strong>{{ pct(whyDetail.score.perRun) }}</strong> for the list</span>
+                  </div>
+                  <div v-if="whyDetail.score.detail.targets?.length" class="small mt-1">
+                    <span class="text-muted">{{ grailMode ? 'Missing Grail items a run here can turn up:' : 'Which of the list:' }}</span>
+                    <span v-for="t in whyDetail.score.detail.targets.slice(0, 15)" :key="t.k" class="ms-2 text-nowrap">{{ targets[t.k].name }} <strong>{{ pct(t.hit) }}</strong></span>
+                    <span v-if="whyDetail.score.detail.targets.length > 15" class="ms-2 text-muted">+{{ whyDetail.score.detail.targets.length - 15 }} more</span>
                   </div>
                 </td>
               </tr>

@@ -187,14 +187,15 @@ const itemLink = (entry) => (entry.kind === 'runeword'
   ? { path: '/runewords', query: { q: entry.name } }
   : { path: '/drop-calc', query: { mode: 'item', itemkind: entry.kind, item: entry.key } });
 
-// a missing item's name is what the farm list wants - the exalted row goes in
-// under its base name, since the planner counts the base and its variant together
-const farmName = (entry) => entry.name.replace(/^(Exalted|Mythic) /, '');
+// a missing item's name is what the farm list wants; an Exalted or Mythic row
+// asks for that roll alone
+const farmTokenOf = (entry) => farmToken(entry.kind, entry.name, !!(entry.exalted || entry.mythic));
+const farmLink = (entry) => ({ path: '/where-to-farm', query: { items: farmTokenOf(entry) } });
 const missingForFarm = computed(() => (tab.value === 'runewords' ? [] : visible.value.filter((e) => !isFound(e))));
 const addMissingToFarm = () => {
   const seen = new Set();
   for (const e of missingForFarm.value) {
-    const token = farmToken(e.kind, farmName(e));
+    const token = farmTokenOf(e);
     if (seen.has(token)) continue;
     seen.add(token); farmList.add(token);
   }
@@ -377,6 +378,7 @@ const copySummary = async () => {
                 </div>
                 <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ TIER[e.tier] }}</span>
                 <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
+                <router-link v-if="!isFound(e)" :to="farmLink(e)" class="farm-link small" title="Where to farm it">farm</router-link>
               </li>
             </ul>
           </div>
@@ -394,6 +396,7 @@ const copySummary = async () => {
             </div>
             <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ TIER[e.tier] }}</span>
             <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
+            <router-link v-if="e.kind !== 'runeword' && !isFound(e)" :to="farmLink(e)" class="farm-link small" title="Where to farm it">farm</router-link>
           </li>
         </ul>
       </div>
@@ -417,6 +420,8 @@ const copySummary = async () => {
 }
 .drop.over { border-color: var(--d2r-gold-bright); background: rgba(212, 175, 55, 0.08); }
 .drop.busy { opacity: 0.7; }
+.farm-link { color: var(--d2r-gold, #c9a36a); text-decoration: none; opacity: 0.7; }
+.farm-link:hover { opacity: 1; text-decoration: underline; }
 .drop-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--d2r-gold-bright); margin-bottom: 0.25rem; }
 .import-list li { padding: 0.1rem 0; }
 

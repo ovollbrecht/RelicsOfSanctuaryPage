@@ -120,6 +120,13 @@ const setAll = (open) => {
                       :class="{ 'rune-missing': (group.missingNames ?? []).includes(rune) }"
                     ><img v-if="runeIcon(rune)" :src="runeIcon(rune)" class="rune-icon" alt="" />{{ rune }}</span>
                   </template>
+                  <!-- what your runes say: makeable as they lie, or once the cube has been at them -->
+                  <span
+                    v-if="group.build?.state"
+                    class="badge build-badge ms-1"
+                    :class="group.build.state"
+                    :title="group.build.state === 'now' ? 'You hold every rune for it' : `Via the cube: ${group.build.upgradeText}`"
+                  >{{ group.build.state === 'now' ? 'can build' : 'via cube' }}</span>
                 </td>
                 <td class="text-center tnum">{{ group.sockets }}</td>
                 <td class="text-center tnum">{{ group.levelReq || '—' }}</td>
@@ -244,6 +251,11 @@ const setAll = (open) => {
 }
 .rune-name { white-space: nowrap; }
 .rune-icon { display: inline-block; width: 17px; height: 17px; object-fit: contain; vertical-align: -3px; margin-right: 0.1rem; }
+/* your runes' verdict, beside the runes it is about */
+.build-badge { font-size: 0.65rem; font-weight: 600; vertical-align: middle; border: 1px solid transparent; }
+.build-badge.now { color: #7fdc7f; background: rgba(127, 220, 127, 0.12); border-color: rgba(127, 220, 127, 0.4); }
+.build-badge.upgrade { color: #e0b85a; background: rgba(224, 184, 90, 0.12); border-color: rgba(224, 184, 90, 0.4); }
+
 /* a built runeword: a green edge and a faint wash, nothing that moves the text */
 .runeword-table tbody tr.is-built > td:first-child { box-shadow: inset 3px 0 0 #7fdc7f; }
 .runeword-table tbody tr.is-built > td { background-color: rgba(127, 220, 127, 0.06); }

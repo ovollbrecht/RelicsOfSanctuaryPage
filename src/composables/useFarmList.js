@@ -6,13 +6,14 @@ import { ref, computed, watch } from 'vue';
  * the browser. Items are named by kind and name ('u:Rainbow Facet',
  * 's:Tal Rasha's Lidless Eye'); a name covers every row that carries it, so
  * the eight facets and the four Elemental Attunements are one entry each.
+ * 'ux:Exalted Shako' wants the Exalted roll of it and nothing else.
  */
 const KEY = 'farm_list';
 
 const load = () => {
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) ?? '[]');
-    return Array.isArray(saved) ? saved.filter((t) => typeof t === 'string' && /^[us]:.+/.test(t)) : [];
+    return Array.isArray(saved) ? saved.filter((t) => typeof t === 'string' && /^[us]x?:.+/.test(t)) : [];
   } catch {
     return [];
   }
@@ -21,7 +22,9 @@ const load = () => {
 const tokens = ref(load());
 watch(tokens, (list) => { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch { /* no storage, no memory */ } }, { deep: true });
 
-export const farmToken = (kind, name) => `${kind === 'set' ? 's' : 'u'}:${name}`;
+// 'ux:' / 'sx:' name the Exalted or Mythic variant alone; without the x a name
+// covers the item whichever way it rolls
+export const farmToken = (kind, name, variant = false) => `${kind === 'set' ? 's' : 'u'}${variant ? 'x' : ''}:${name}`;
 
 export function useFarmList() {
   const has = (token) => tokens.value.includes(token);
