@@ -602,17 +602,36 @@ const getReworkChanges = (runeword) => {
   return changes;
 };
 
-// Handle search with debounce
-const handleSearch = (event, isRunesSearch = false) => {
+// One box for both searches. Rune names are a closed list, so a query made of
+// nothing but rune names is a rune search and anything else is a name.
+const searchText = computed(() => runesSearchQuery.value || searchQuery.value);
+const onSearch = (event) => {
+  const value = event.target.value;
   clearTimeout(debounceTimeout.value);
   debounceTimeout.value = setTimeout(() => {
-    if (isRunesSearch) {
-      runesSearchQuery.value = event.target.value;
-    } else {
-      searchQuery.value = event.target.value;
-    }
-  }, 300); // 300ms debounce
+    const names = new Set(allRunes.value.map((r) => r.name.toLowerCase()));
+    const tokens = value.split(/[\s,]+/).filter(Boolean);
+    const isRunes = tokens.length > 0 && tokens.every((t) => names.has(t.toLowerCase()));
+    runesSearchQuery.value = isRunes ? value : '';
+    searchQuery.value = isRunes ? '' : value;
+  }, 300);
 };
+const clearSearch = () => { clearTimeout(debounceTimeout.value); searchQuery.value = ''; runesSearchQuery.value = ''; };
+
+const KINDS = [
+  { id: 'all', label: 'All' }, { id: 'weapons', label: 'Weapons' }, { id: 'armors', label: 'Armors' },
+  { id: 'helmets', label: 'Helmets' }, { id: 'shields', label: 'Shields' },
+];
+
+// The class question as one control: keep, hide, or one class by name.
+const classSelect = computed({
+  get: () => (classPick.value !== 'any' ? classPick.value : classFilter.value),
+  set: (v) => { if (v === 'all' || v === 'hide' || v === 'only') { classPick.value = 'any'; classFilter.value = v; } else classPick.value = v; },
+});
+
+const filtersActive = computed(() => Boolean(searchQuery.value || runesSearchQuery.value) || selectedCategory.value !== 'all'
+  || statusFilter.value !== 'all' || classFilter.value !== 'all' || classPick.value !== 'any' || itemFilter.value !== ITEM_FILTER_ANY
+  || socketFilter.value !== 'any' || useRuneFilter.value || sortBy.value !== 'level' || sortDir.value !== 'asc');
 
 // Enter closes the keyboard on a phone; the list is already filtered as you
 // type. It used to scroll the page down to the results, which moved the ground
@@ -862,320 +881,128 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Search and Filter Section -->
+    <!-- Search and filters: three lines. Find it, narrow it, and what is yours. -->
     <div class="row mb-4">
       <div class="col-12">
         <div class="card card-enhanced filters-panel">
           <div class="card-body">
-            <!-- Name Search Field -->
-            <div class="mb-3">
-              <label for="nameSearch" class="form-label text-warning">Search by Name</label>
-              <div class="input-group search-input-group">
-                <input 
-                  id="nameSearch"
-                  type="text" 
-                  class="form-control search-input" 
-                  placeholder="Search runewords by name..." 
-                  @input="(e) => handleSearch(e, false)"
-                  @keyup="handleSearchKeyup"
-                  :value="searchQuery"
-                >
-              </div>
-            </div>
-
-            <!-- Runes Search Field -->
-            <div class="mb-3">
-              <label for="runesSearch" class="form-label text-warning">Search by Runes</label>
-              <div class="input-group search-input-group">
-                <input 
-                  id="runesSearch"
-                  type="text" 
-                  class="form-control search-input" 
-                  placeholder="Search by runes (e.g., Jah Ber)..." 
-                  @input="(e) => handleSearch(e, true)"
-                  @keyup="handleSearchKeyup"
-                  :value="runesSearchQuery"
-                >
-                <button 
-                  class="btn btn-outline-secondary" 
-                  type="button" 
-                  @click="resetFilters"
-                  v-if="searchQuery || runesSearchQuery"
-                >
-                  Clear
-                </button>
-              </div>
-              <small class="form-text text-muted">Enter exact rune names, separated by spaces or commas</small>
-            </div>
-
-            <!-- Rune picker: which runes you have, and whether that filters -->
-            <div class="mb-3">
-              <div class="d-flex align-items-center flex-wrap gap-3">
-                <button v-if="!countedMode" type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
-                  {{ pickerOpen ? '▾' : '▸' }} My runes
-                  <span class="picker-count">{{ ownedRunes.size }}/{{ allRunes.length }}</span>
-                </button>
-                <span v-else class="small" title="The loose runes in the save files you gave the Grail, counted">
-                  My runes: <strong>{{ grailRuneTotal }}</strong> from the Grail, best {{ grailBestRune }}
-                </span>
-                <div v-if="grailRuneTotal > 0" class="form-check reworked-toggle mb-0" title="Count the runes in your imported save files instead of ticking them by hand">
-                  <input id="rw-grail-runes" v-model="useGrailRunes" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label" for="rw-grail-runes">From my Grail</label>
-                </div>
-                <div v-if="countedMode" class="form-check reworked-toggle mb-0" title="A missing rune counts as had when the ones below it in the cube's ladder are there - three Ist are a Gul">
-                  <input id="rw-rune-upgrades" v-model="withUpgrades" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label" for="rw-rune-upgrades">Count cube upgrades</label>
-                </div>
-                <div class="form-check reworked-toggle mb-0">
-                  <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
-                  <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
-                </div>
-                <!-- How far a missing high rune may sit above your best one and
-                     still count as "one away". Gul and below always do. -->
-                <div class="rw-inline-field reach-field" title="A missing rune above Gul only counts when it is this close to the best rune you own.">
-                  <label class="form-label mb-0" for="rw-rune-reach">One rune away: within</label>
+            <!-- 1. find: one box for a name or for runes, the base in your hand, the order -->
+            <div class="row g-2 align-items-center">
+              <div class="col-lg-4">
+                <div class="input-group search-input-group">
                   <input
-                    id="rw-rune-reach"
-                    v-model.number="runeReach"
-                    class="form-control form-control-sm reach-input"
-                    type="number"
-                    min="0"
-                    max="10"
-                  />
-                  <span class="text-muted">runes of my best</span>
-                </div>
-                <small v-if="useRuneFilter && runeStock.size === 0" class="text-muted">
-                  pick a rune first
-                </small>
-              </div>
-
-              <div v-if="runeStock.size > 0" class="craftable-line">
-                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable<span v-if="craftable.viaCube" class="text-muted">, {{ craftable.viaCube }} of them via the cube</span>
-                <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">
-                  {{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}
-                </span>
-                <span v-if="nearMisses.length" class="craftable-tier">
-                  {{ nearMisses.length }} one rune away
-                </span>
-              </div>
-
-              <div v-show="pickerOpen && !countedMode" class="rune-picker">
-                <div class="rune-grid">
-                  <button
-                    v-for="rune in allRunes"
-                    :key="rune.code"
-                    type="button"
-                    class="rune-chip"
-                    :class="{ 'is-owned': ownedRunes.has(rune.code) }"
-                    @click="toggleRune(rune.code)"
+                    id="rwSearch"
+                    type="text"
+                    class="form-control search-input"
+                    placeholder="Name, or runes: Jah Ber"
+                    title="A runeword's name - or rune names, which finds every runeword using them"
+                    :value="searchText"
+                    @input="onSearch"
+                    @keyup="handleSearchKeyup"
                   >
-                    {{ rune.name }}
-                  </button>
-                </div>
-                <div class="rune-slider">
-                  <label for="rw-rune-upto" class="rune-slider-label">
-                    Up to
-                    <strong>{{ runeUpToName || '—' }}</strong>
-                  </label>
-                  <input
-                    id="rw-rune-upto"
-                    type="range"
-                    class="form-range"
-                    min="0"
-                    :max="allRunes.length"
-                    :value="runeUpTo"
-                    @input="setRuneUpTo(Number($event.target.value))"
-                  />
-                </div>
-
-                <div class="d-flex gap-2 mt-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
+                  <button v-if="searchText" class="btn btn-outline-secondary" type="button" title="Clear the search" @click="clearSearch">×</button>
                 </div>
               </div>
-            </div>
-
-            <!-- What fits the item in your hand: the base, and its sockets -->
-            <div class="row g-3 mb-3">
-              <div class="col-lg-7">
-                <label class="form-label text-warning">Item base</label>
+              <div class="col-lg-4">
                 <SearchableSelect
                   v-model="itemFilter"
                   :options="itemFilterOptions"
-                  placeholder="Any item - type a base or a kind..."
+                  placeholder="Any item base or kind…"
                 />
-                <small class="text-muted">
-                  Pick the base you found, or a whole kind: Crystal Sword, Sword, Melee Weapon.
-                </small>
               </div>
-              <div class="col-lg-5">
-                <label class="form-label text-warning">Sockets</label>
-                <div class="btn-group d-flex flex-wrap gap-2" role="group">
-                  <button
-                    type="button"
-                    class="btn flex-fill"
-                    :class="socketFilter === 'any' ? 'btn-secondary' : 'btn-outline-secondary'"
-                    @click="socketFilter = 'any'"
-                  >
-                    Any
-                  </button>
-                  <button
-                    v-for="count in socketOptions"
-                    :key="count"
-                    type="button"
-                    class="btn flex-fill"
-                    :class="socketFilter === count ? 'btn-secondary' : 'btn-outline-secondary'"
-                    @click="socketFilter = count"
-                  >
-                    {{ count }}
-                  </button>
-                </div>
-                <small v-if="selectedBase" class="text-muted">
-                  A {{ selectedBase.Name }} holds up to {{ selectedBase.Sockets }}.
-                </small>
-              </div>
-            </div>
-
-            <!-- Category Filter Buttons -->
-            <div class="mb-3">
-              <label class="form-label text-warning">Filter by Item</label>
-              <div class="btn-group d-flex flex-wrap gap-2" role="group">
-                <button 
-                  type="button" 
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'all' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('all')"
-                >
-                  All
-                </button>
-                <button 
-                  type="button" 
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'weapons' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('weapons')"
-                >
-                  Weapons
-                </button>
-                <button 
-                  type="button" 
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'armors' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('armors')"
-                >
-                  Armors
-                </button>
-                <button 
-                  type="button" 
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'helmets' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('helmets')"
-                >
-                  Helmets
-                </button>
-                <button
-                  type="button"
-                  class="btn flex-fill"
-                  :class="selectedCategory === 'shields' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="setCategoryFilter('shields')"
-                >
-                  Shields
-                </button>
-              </div>
-            </div>
-
-            <!-- Data source toggle -->
-            <div class="mb-1">
-              <label class="form-label text-warning">Data</label>
-              <div class="btn-group d-flex flex-wrap gap-2" role="group">
-                <button
-                  type="button"
-                  class="btn flex-fill"
-                  :class="dataMode === 'mod' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="dataMode = 'mod'"
-                >
-                  Relics of Sanctuary
-                </button>
-                <button
-                  type="button"
-                  class="btn flex-fill"
-                  :class="dataMode === 'vanilla' ? 'btn-secondary' : 'btn-outline-secondary'"
-                  @click="dataMode = 'vanilla'"
-                >
-                  Vanilla
-                </button>
-              </div>
-              <div class="d-flex flex-wrap gap-4 mt-2">
-                <div class="form-check reworked-toggle">
-                  <input id="rw-status-all" v-model="statusFilter" value="all" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-status-all">All</label>
-                </div>
-                <div v-if="dataMode !== 'vanilla'" class="form-check reworked-toggle">
-                  <input id="rw-status-new" v-model="statusFilter" value="new" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-status-new">
-                    Only new <span class="flag">•</span>
-                  </label>
-                </div>
-                <div class="form-check reworked-toggle">
-                  <input id="rw-status-reworked" v-model="statusFilter" value="reworked" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-status-reworked">
-                    {{ dataMode === 'vanilla' ? 'Only changed by mod' : 'Only reworked' }}
-                    <span class="flag">•</span>
-                  </label>
-                </div>
-                <template v-if="grailHasData">
-                  <div class="form-check reworked-toggle">
-                    <input id="rw-status-unbuilt" v-model="statusFilter" value="unbuilt" class="form-check-input" type="radio" />
-                    <label class="form-check-label" for="rw-status-unbuilt">Only not built yet</label>
-                  </div>
-                  <div class="form-check form-switch reworked-toggle">
-                    <input id="rw-mark-built" v-model="markBuilt" class="form-check-input" type="checkbox" />
-                    <label class="form-check-label" for="rw-mark-built" title="A check mark on every runeword your Grail import has seen built">Mark what I built</label>
-                  </div>
-                </template>
-              </div>
-              <div class="d-flex flex-wrap gap-4 mt-2">
-                <div class="form-check reworked-toggle">
-                  <input id="rw-class-all" v-model="classFilter" value="all" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-class-all">All</label>
-                </div>
-                <div class="form-check reworked-toggle">
-                  <input id="rw-class-hide" v-model="classFilter" value="hide" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-class-hide">Hide class specific</label>
-                </div>
-                <div class="form-check reworked-toggle">
-                  <input id="rw-class-only" v-model="classFilter" value="only" class="form-check-input" type="radio" />
-                  <label class="form-check-label" for="rw-class-only">Only class specific</label>
-                </div>
-                <!-- One class, when the question is what this character can
-                     wear. It answers the three above, so it clears them. -->
-                <div class="rw-inline-field">
-                  <label class="form-label mb-0" for="rw-class-pick">Class</label>
-                  <select id="rw-class-pick" v-model="classPick" class="form-select form-select-sm">
-                    <option value="any">Any</option>
-                    <option v-for="name in classOptions" :key="name" :value="name">{{ name }}</option>
-                  </select>
+              <div class="col-lg-2">
+                <div class="btn-group btn-group-sm d-flex" role="group" title="Sockets">
+                  <button type="button" class="btn flex-fill" :class="socketFilter === 'any' ? 'btn-secondary' : 'btn-outline-secondary'" @click="socketFilter = 'any'">Any</button>
+                  <button v-for="count in socketOptions" :key="count" type="button" class="btn flex-fill" :class="socketFilter === count ? 'btn-secondary' : 'btn-outline-secondary'" @click="socketFilter = count">{{ count }}</button>
                 </div>
               </div>
-            </div>
-
-            <!-- Sort order, inside each tier -->
-            <div class="d-flex flex-wrap align-items-end gap-3 mt-3">
-              <div class="rw-inline-field">
-                <label class="form-label mb-0" for="rw-sort">Sort by</label>
-                <select id="rw-sort" v-model="sortBy" class="form-select form-select-sm">
-                  <option v-for="option in SORT_OPTIONS" :key="option.value" :value="option.value">
-                    {{ option.label }}
-                  </option>
+              <div class="col-lg-2 d-flex gap-1">
+                <select id="rw-sort" v-model="sortBy" class="form-select form-select-sm flex-grow-1" title="Sort by">
+                  <option v-for="option in SORT_OPTIONS" :key="option.value" :value="option.value">{{ option.label }}</option>
                 </select>
+                <button type="button" class="btn btn-sm btn-outline-secondary flex-shrink-0" :title="sortDir === 'asc' ? 'Ascending - click for descending' : 'Descending - click for ascending'" @click="sortDir = sortDir === 'asc' ? 'desc' : 'asc'">{{ sortDir === 'asc' ? '↑' : '↓' }}</button>
               </div>
-              <button
-                type="button"
-                class="btn btn-sm btn-outline-secondary"
-                :title="sortDir === 'asc' ? 'Ascending - click for descending' : 'Descending - click for ascending'"
-                @click="sortDir = sortDir === 'asc' ? 'desc' : 'asc'"
-              >
-                {{ sortDir === 'asc' ? '↑ Ascending' : '↓ Descending' }}
+            </div>
+            <small v-if="selectedBase" class="text-muted d-block mt-1">A {{ selectedBase.Name }} holds up to {{ selectedBase.Sockets }} sockets.</small>
+
+            <!-- 2. narrow: kind, the mod's marks, class, and which data -->
+            <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+              <div class="btn-group btn-group-sm" role="group" title="Kind of item">
+                <button v-for="kind in KINDS" :key="kind.id" type="button" class="btn" :class="selectedCategory === kind.id ? 'btn-secondary' : 'btn-outline-secondary'" @click="setCategoryFilter(kind.id)">{{ kind.label }}</button>
+              </div>
+              <div class="btn-group btn-group-sm" role="group" title="The dot in the table: new to the mod, or reworked by it">
+                <button type="button" class="btn" :class="statusFilter === 'all' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'all'">All</button>
+                <button v-if="dataMode !== 'vanilla'" type="button" class="btn" :class="statusFilter === 'new' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'new'">New <span class="flag">•</span></button>
+                <button type="button" class="btn" :class="statusFilter === 'reworked' ? 'btn-secondary' : 'btn-outline-secondary'" @click="statusFilter = 'reworked'">{{ dataMode === 'vanilla' ? 'Changed by mod' : 'Reworked' }} <span class="flag">•</span></button>
+                <button v-if="grailHasData" type="button" class="btn" :class="statusFilter === 'unbuilt' ? 'btn-secondary' : 'btn-outline-secondary'" title="Runewords your Grail has not seen built" @click="statusFilter = 'unbuilt'">Unbuilt</button>
+              </div>
+              <select id="rw-class" v-model="classSelect" class="form-select form-select-sm w-auto" title="Class-specific runewords: keep, hide, or one class">
+                <option value="all">Any class</option>
+                <option value="only">Class-specific only</option>
+                <option value="hide">No class-specific</option>
+                <option disabled>──────</option>
+                <option v-for="name in classOptions" :key="name" :value="name">{{ name }}</option>
+              </select>
+              <div class="btn-group btn-group-sm ms-lg-auto" role="group" title="Which data the page reads">
+                <button type="button" class="btn" :class="dataMode === 'mod' ? 'btn-secondary' : 'btn-outline-secondary'" @click="dataMode = 'mod'">Relics</button>
+                <button type="button" class="btn" :class="dataMode === 'vanilla' ? 'btn-secondary' : 'btn-outline-secondary'" @click="dataMode = 'vanilla'">Vanilla</button>
+              </div>
+              <button v-if="filtersActive" type="button" class="btn btn-sm btn-link text-decoration-none px-1" @click="resetFilters">Reset</button>
+            </div>
+
+            <!-- 3. yours: the runes you hold and what they say -->
+            <div class="rw-yours d-flex flex-wrap align-items-center gap-3 mt-2">
+              <button v-if="!countedMode" type="button" class="btn btn-sm btn-outline-secondary" @click="pickerOpen = !pickerOpen">
+                {{ pickerOpen ? '▾' : '▸' }} My runes
+                <span class="picker-count">{{ ownedRunes.size }}/{{ allRunes.length }}</span>
               </button>
+              <span v-else title="The loose runes in the save files you gave the Grail, counted">
+                My runes: <strong>{{ grailRuneTotal }}</strong> from the Grail, best {{ grailBestRune }}
+              </span>
+              <div v-if="grailRuneTotal > 0" class="form-check reworked-toggle mb-0" title="Count the runes in your imported save files instead of ticking them by hand">
+                <input id="rw-grail-runes" v-model="useGrailRunes" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="rw-grail-runes">From my Grail</label>
+              </div>
+              <div v-if="countedMode" class="form-check reworked-toggle mb-0" title="A missing rune counts as had when the ones below it in the cube's ladder are there - three Ist are a Gul">
+                <input id="rw-rune-upgrades" v-model="withUpgrades" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="rw-rune-upgrades">Count cube upgrades</label>
+              </div>
+              <div class="form-check reworked-toggle mb-0">
+                <input id="rw-rune-filter" v-model="useRuneFilter" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="rw-rune-filter">Only what I can make</label>
+              </div>
+              <small v-if="useRuneFilter && runeStock.size === 0" class="text-muted">pick a rune first</small>
+              <span v-if="runeStock.size > 0" class="craftable-line">
+                <strong>{{ craftable.total }}</strong> of {{ craftable.of }} craftable<template v-if="craftable.viaCube">, {{ craftable.viaCube }} via the cube</template>
+                <span v-for="tier in RUNE_TIERS" :key="tier.key" class="craftable-tier">{{ tier.title.replace(' Runewords', '') }} {{ craftable.perTier[tier.key] }}</span>
+                <span v-if="nearMisses.length" class="craftable-tier">{{ nearMisses.length }} one rune away</span>
+              </span>
+              <!-- How far a missing high rune may sit above your best one and
+                   still count as "one away". Gul and below always do. Only
+                   asked once the filter is on, since only then is it heard. -->
+              <div v-if="runeFilterActive" class="rw-inline-field reach-field" title="A missing rune above Gul only counts when it is this close to the best rune you own.">
+                <label class="form-label mb-0" for="rw-rune-reach">one away: within</label>
+                <input id="rw-rune-reach" v-model.number="runeReach" class="form-control form-control-sm reach-input" type="number" min="0" max="10" />
+                <span>of my best</span>
+              </div>
+              <div v-if="grailHasData" class="form-check form-switch reworked-toggle mb-0 ms-lg-auto">
+                <input id="rw-mark-built" v-model="markBuilt" class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="rw-mark-built" title="A green edge on every runeword your Grail import has seen built">Mark what I built</label>
+              </div>
+            </div>
+
+            <div v-show="pickerOpen && !countedMode" class="rune-picker">
+              <div class="rune-grid">
+                <button v-for="rune in allRunes" :key="rune.code" type="button" class="rune-chip" :class="{ 'is-owned': ownedRunes.has(rune.code) }" @click="toggleRune(rune.code)">{{ rune.name }}</button>
+              </div>
+              <div class="rune-slider">
+                <label for="rw-rune-upto" class="rune-slider-label">Up to <strong>{{ runeUpToName || '—' }}</strong></label>
+                <input id="rw-rune-upto" type="range" class="form-range" min="0" :max="allRunes.length" :value="runeUpTo" @input="setRuneUpTo(Number($event.target.value))" />
+              </div>
+              <div class="d-flex gap-2 mt-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="selectAllRunes">Select all</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="clearRunes">Clear</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1284,8 +1111,12 @@ onUnmounted(() => {
 }
 
 /* ---- rune picker ------------------------------------------------------- */
+.rw-yours { font-size: 0.85rem; }
+.filters-panel .btn-group-sm .btn { white-space: nowrap; }
+/* the theme stretches every button to full width on a phone; these sit in
+   groups and beside selects, and stretched they push their neighbours out */
+.filters-panel .btn { width: auto; }
 .craftable-line {
-  margin-top: 0.5rem;
   font-size: 0.85rem;
   color: var(--d2r-muted);
 }
