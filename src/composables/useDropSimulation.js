@@ -409,10 +409,15 @@ export function uniquePool(ctx, baseIndex, ilvl) {
   }));
 }
 
-export function setPool(ctx, baseIndex, ilvl) {
+// The Cow King's Leathers only ever fall from the Cow King - the game hard-wires
+// it, whatever setitems.txt says about their rarity.
+const COW_KING_SET = "Cow King's Leathers";
+const isCowKing = (monster) => monster?.Id === 'cowking';
+
+export function setPool(ctx, baseIndex, ilvl, monster = null) {
   const candidates = (ctx.setsByBase.get(baseIndex) ?? [])
     .map(i => ctx.sets[i])
-    .filter(s => s.Lvl <= ilvl);
+    .filter(s => s.Lvl <= ilvl && (s.SetName !== COW_KING_SET || isCowKing(monster)));
   const totalRarity = candidates.reduce((sum, s) => sum + s.Rarity, 0);
   if (totalRarity === 0) return [];
   const mythicPct = ctx.options.mythic?.enabled ? (ctx.options.mythic.percent ?? 5) / 100 : 0;
@@ -524,7 +529,7 @@ export function computeMonsterDrops(ctx, sel) {
   for (const [baseIndex, p] of drops) {
     const base = ctx.baseItems[baseIndex];
     const uniques = uniquePool(ctx, baseIndex, source.mlvl);
-    const setItems = setPool(ctx, baseIndex, source.mlvl);
+    const setItems = setPool(ctx, baseIndex, source.mlvl, source.monster);
     const quality = qualityChances(ctx, base, source.mlvl, cm, {
       hasUniques: uniques.length > 0,
       hasSets: setItems.length > 0,
@@ -618,7 +623,7 @@ export function computeItemDetail(ctx, sel, baseIndex) {
 
   const base = ctx.baseItems[baseIndex];
   const uniques = uniquePool(ctx, baseIndex, source.mlvl);
-  const setItems = setPool(ctx, baseIndex, source.mlvl);
+  const setItems = setPool(ctx, baseIndex, source.mlvl, source.monster);
   const quality = qualityChances(ctx, base, source.mlvl, cm, {
     hasUniques: uniques.length > 0,
     hasSets: setItems.length > 0,
@@ -677,7 +682,7 @@ export function computeItemSources(ctx, { itemKind, itemIndex, difficulty = null
         chance = p;
       } else {
         const uniques = uniquePool(ctx, baseIndex, source.mlvl);
-        const setItems = setPool(ctx, baseIndex, source.mlvl);
+        const setItems = setPool(ctx, baseIndex, source.mlvl, source.monster);
         const quality = qualityChances(ctx, ctx.baseItems[baseIndex], source.mlvl, cm, {
           hasUniques: uniques.length > 0,
           hasSets: setItems.length > 0,

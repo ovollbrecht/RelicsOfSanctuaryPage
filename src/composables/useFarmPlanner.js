@@ -199,7 +199,7 @@ function evaluateSource(ctx, sel, targets, highRune) {
     const p = drops.get(baseIndex) ?? 0;
     if (p <= 0) continue;
     const uniques = uniquePool(ctx, baseIndex, source.mlvl);
-    const sets = setPool(ctx, baseIndex, source.mlvl);
+    const sets = setPool(ctx, baseIndex, source.mlvl, source.monster);
     const quality = qualityChances(ctx, ctx.baseItems[baseIndex], source.mlvl, cm, { hasUniques: uniques.length > 0, hasSets: sets.length > 0 });
     for (const { k, row } of hits) {
       if (targets[k].kind === 'unique') {
