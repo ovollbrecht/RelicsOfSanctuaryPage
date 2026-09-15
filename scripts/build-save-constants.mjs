@@ -157,8 +157,9 @@ if (warlockAt >= 0 && pushed.length) {
   const other = buildIsShifted
     ? [...rest, ...pushed]                                                        // shift off: appended
     : [...rest.slice(0, rest.findIndex((r) => r.index.startsWith('Warlock Class Pack'))), ...pushed, ...rest.slice(rest.findIndex((r) => r.index.startsWith('Warlock Class Pack')))];
-  const otherId = new Map(other.map((r, i) => [r.index, i]));
-  idsShifted = uniques.map((u) => otherId.get(u.key) ?? u.id);
+  // by row, not by name: vanilla names two Azurewraths and every quest item twice
+  const otherPos = new Map(other.map((r, i) => [r, i]));
+  idsShifted = buildRows.map((r, i) => otherPos.get(r) ?? i);
 }
 uniques.forEach((u, i) => { u.idOther = idsShifted ? idsShifted[i] : u.id; });
 

@@ -133,8 +133,10 @@ export function absorb(results, catalog, buildShifted) {
     const extra = { ...(by ? { by } : {}), ...(who ? { who } : {}) };
     if (!prev) { found[key] = { source, when: when ?? null, ...extra }; added++; return; }
     if (prev.source === 'manual') return;
-    // keep the earliest date we know of
-    if (when && (!prev.when || when < prev.when)) found[key] = { ...prev, when, source, ...extra };
+    // the Chronicle is the word on when and by whom - a re-import corrects
+    // what an earlier one wrote; other sources only fill a gap
+    if (source === 'chronicle' && when) { if (prev.when !== when || prev.by !== by) found[key] = { ...prev, when, source, ...extra }; return; }
+    if (when && !prev.when) found[key] = { ...prev, when, source, ...extra };
   };
   for (const r of results) {
     if (r.error) continue;

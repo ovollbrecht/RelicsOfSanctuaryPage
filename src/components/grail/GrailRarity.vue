@@ -17,6 +17,9 @@ const props = defineProps({
 });
 
 const rarity = ref(null); // `${kind}:${name}` -> { hit, spot }
+// Exalted and Mythic are a five-percent roll on top, so they would own every
+// list; off by default, one switch turns them in
+const withVariants = ref(false);
 const busy = ref(false);
 const error = ref(null);
 const compute = async () => {
@@ -48,9 +51,10 @@ const withRarity = computed(() => {
   if (!rarity.value) return [];
   return props.entries.filter((e) => e.kind !== 'runeword').map((e) => ({ ...e, r: rarity.value.get(`${e.kind}:${e.name}`) ?? null })).filter((e) => e.r);
 });
-const rarestFound = computed(() => withRarity.value.filter((e) => e.record).sort((a, b) => a.r.hit - b.r.hit).slice(0, 6));
-const rarestMissing = computed(() => withRarity.value.filter((e) => !e.record).sort((a, b) => a.r.hit - b.r.hit).slice(0, 4));
-const nearest = computed(() => withRarity.value.filter((e) => !e.record).sort((a, b) => b.r.hit - a.r.hit).slice(0, 8));
+const pool = computed(() => (withVariants.value ? withRarity.value : withRarity.value.filter((e) => !e.exalted && !e.mythic)));
+const rarestFound = computed(() => pool.value.filter((e) => e.record).sort((a, b) => a.r.hit - b.r.hit).slice(0, 6));
+const rarestMissing = computed(() => pool.value.filter((e) => !e.record).sort((a, b) => a.r.hit - b.r.hit).slice(0, 4));
+const nearest = computed(() => pool.value.filter((e) => !e.record).sort((a, b) => b.r.hit - a.r.hit).slice(0, 8));
 const unreachable = computed(() => (rarity.value ? props.entries.filter((e) => e.kind !== 'runeword' && !e.record && !rarity.value.has(`${e.kind}:${e.name}`)).length : 0));
 
 const runs = (hit) => (hit > 0 ? Math.round(1 / hit) : Infinity);
@@ -64,6 +68,10 @@ const kindClass = (e) => e.kind;
     <div class="card-header card-header-primary py-2 d-flex flex-wrap justify-content-between align-items-baseline gap-2">
       <span class="h6 m-0">{{ $t('Rarity') }}</span>
       <span class="small text-muted">{{ $t('runs per hit at the best spot · Hell, one player, no MF') }}</span>
+      <div class="form-check form-switch mb-0 small">
+        <input id="rarity-variants" v-model="withVariants" class="form-check-input" type="checkbox" />
+        <label class="form-check-label" for="rarity-variants">{{ $t('Exalted and Mythic too') }}</label>
+      </div>
     </div>
     <div class="card-body p-3">
       <div v-if="busy" class="small text-muted">{{ $t('Scoring every spot against every item…') }}</div>
