@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp dist/index.html dist/404.html",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -18,6 +20,7 @@
     "@vitejs/plugin-vue": "^6.0.0",
     "esbuild": "^0.24.2",
     "vite": "^7.0.0",
-    "vite-plugin-vue-devtools": "^7.7.7"
+    "vite-plugin-vue-devtools": "^7.7.7",
+    "vitest": "^3.2.7"
   }
 }
