@@ -97,5 +97,11 @@
  "No runewords match the current filters.": "Keine Runenwörter passen zu den aktuellen Filtern.",
  "One rune away": "Eine Rune entfernt",
  "with the runes you have": "mit deinen Runen",
- "Click a runeword to see its stats here.": "Klick ein Runenwort an, um seine Werte hier zu sehen."
+ "Click a runeword to see its stats here.": "Klick ein Runenwort an, um seine Werte hier zu sehen.",
+ "Every rune the runewords not built yet would take, one of each - what you already hold is not subtracted": "Jede Rune, die die noch nicht gebauten Runenwörter brauchen, je eins pro Runenwort. Was du schon hast, wird nicht abgezogen.",
+ "What the rest needs": "Was der Rest braucht",
+ "1 runeword not built yet takes": "1 noch nicht gebautes Runenwort braucht",
+ "{n} runewords not built yet take": "{n} noch nicht gebaute Runenwörter brauchen",
+ "All {n} runewords take": "Alle {n} Runenwörter brauchen",
+ "runes, {n} of them Vex or higher. One of each runeword; what you already hold is not counted.": "Runen, davon {n} ab Vex. Je eins pro Runenwort, dein Bestand wird nicht abgezogen."
 }

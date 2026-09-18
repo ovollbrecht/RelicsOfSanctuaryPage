@@ -6,6 +6,7 @@ import itemMapping from '@/assets/item_mapping.json';
 import itemBaseData from '@/assets/item_bases.json';
 import cubeData from '@/assets/cube.json';
 import { readLadder, planBuild, runeNumber } from '@/composables/useRuneLadder.js';
+import { runeIcon } from '@/composables/useItemIcon.js';
 import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 import SearchableSelect from '@/components/SearchableSelect.vue';
@@ -299,6 +300,29 @@ const buildPlan = (runeword) => {
     upgradeText: plan.upgrades.map((u) => `${u.n > 1 ? `${u.n}× ` : ''}${runeNameOf(u.code)} (${u.qty} ${runeNameOf(u.from)})`).join(', '),
   };
 };
+
+/* The bill for the rest: every rune the runewords not built yet would take,
+   one of each runeword, counted over the whole page rather than the current
+   filters - and without subtracting what lies in the stash, since that is a
+   shopping list, not a plan. Without a Grail, "the rest" is all of them. */
+const billOpen = ref(readSession('rw-bill-open', false) === true);
+watch(billOpen, (v) => writeSession('rw-bill-open', v));
+const runeBill = computed(() => {
+  const counts = new Map();
+  const seen = new Set();
+  let words = 0;
+  for (const runeword of runewords.value) {
+    if (dataMode.value === 'vanilla' && runeword.IsNew) continue;
+    if (seen.has(runeword.RowId) || builtKeys.value.has(runeword.RowId)) continue;
+    seen.add(runeword.RowId);
+    words++;
+    for (const code of runeword.Runes ?? []) counts.set(code, (counts.get(code) ?? 0) + 1);
+  }
+  const runes = allRunes.value.filter((r) => counts.has(r.code)).map((r) => ({ ...r, n: counts.get(r.code) }));
+  const total = runes.reduce((s, r) => s + r.n, 0);
+  const high = runes.filter((r) => r.number >= 26).reduce((s, r) => s + r.n, 0);
+  return { runes, total, high, words };
+});
 
 /* What the picked runes can make, counted against every runeword rather than
    against the current filters: "23 craftable" should not move because somebody
@@ -990,6 +1014,23 @@ onUnmounted(() => {
                 <input id="rw-mark-built" v-model="markBuilt" class="form-check-input" type="checkbox" />
                 <label class="form-check-label" for="rw-mark-built" :title="$t('A green edge on every runeword your Grail import has seen built')">{{ $t('Mark what I built') }}</label>
               </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary" :class="{ 'ms-lg-auto': !grailHasData }" :title="$t('Every rune the runewords not built yet would take, one of each - what you already hold is not subtracted')" @click="billOpen = !billOpen">
+                {{ billOpen ? '▾' : '▸' }} {{ $t('What the rest needs') }}
+              </button>
+            </div>
+
+            <!-- The bill: rune by rune, in rune order -->
+            <div v-show="billOpen" class="rune-bill">
+              <div class="small text-muted mb-2">
+                <template v-if="grailHasData">{{ runeBill.words === 1 ? $t('1 runeword not built yet takes') : $t('{n} runewords not built yet take', { n: runeBill.words }) }}</template>
+                <template v-else>{{ $t('All {n} runewords take', { n: runeBill.words }) }}</template>
+                <strong class="ms-1">{{ runeBill.total }}</strong> {{ $t('runes, {n} of them Vex or higher. One of each runeword; what you already hold is not counted.', { n: runeBill.high }) }}
+              </div>
+              <div class="rune-grid">
+                <span v-for="rune in runeBill.runes" :key="rune.code" class="rune-chip bill-chip" :class="{ 'is-high': rune.number >= 26 }">
+                  <img v-if="runeIcon(rune.name)" :src="runeIcon(rune.name)" class="rune-icon" alt="" />{{ rune.name }} <span class="bill-n">×{{ rune.n }}</span>
+                </span>
+              </div>
             </div>
 
             <div v-show="pickerOpen && !countedMode" class="rune-picker">
@@ -1113,6 +1154,11 @@ onUnmounted(() => {
 
 /* ---- rune picker ------------------------------------------------------- */
 .rw-yours { font-size: 0.85rem; }
+.rune-bill { margin-top: 0.75rem; padding: 0.75rem; border: 1px solid rgba(59, 42, 31, 0.8); border-radius: var(--radius-sm); background: rgba(0, 0, 0, 0.2); }
+.bill-chip { display: inline-flex; align-items: center; gap: 0.3rem; cursor: default; }
+.bill-chip .rune-icon { width: 1.1rem; height: 1.1rem; display: inline-block; object-fit: contain; }
+.bill-chip .bill-n { color: var(--d2r-gold-bright); font-variant-numeric: tabular-nums; font-weight: 600; }
+.bill-chip.is-high { border-color: rgba(224, 184, 90, 0.5); }
 .filters-panel .btn-group-sm .btn { white-space: nowrap; }
 /* the theme stretches every button to full width on a phone; these sit in
    groups and beside selects, and stretched they push their neighbours out */
