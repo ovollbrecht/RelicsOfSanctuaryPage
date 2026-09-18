@@ -157,6 +157,13 @@ a:hover {
   transition: box-shadow var(--transition-slow), border-color var(--transition-fast);
 }
 
+/* An open picker list may reach past the card's bottom edge; while one is
+   open the card must not clip it. The list only exists while open. */
+.card:has(.select-dropdown),
+.card:has(.rune-dd[open]) {
+  overflow: visible;
+}
+
 .card-enhanced {
   background: linear-gradient(180deg, rgba(36, 26, 18, 0.96), rgba(16, 12, 10, 0.98));
 }
