@@ -12,12 +12,14 @@ const props = defineProps({
   groups: { type: Array, required: true },  // table groups: { runes: [names], built }
   runes: { type: Array, required: true },   // [{ code, name, number }] in rune order
   label: { type: String, default: '' },
+  // leave the built ones out - on only while the page marks them
+  excludeBuilt: { type: Boolean, default: false },
 });
 const bill = computed(() => {
   const counts = new Map();
   let words = 0; let built = 0;
   for (const g of props.groups) {
-    if (g.built) { built++; continue; }
+    if (props.excludeBuilt && g.built) { built++; continue; }
     words++;
     for (const name of g.runes ?? []) counts.set(name, (counts.get(name) ?? 0) + 1);
   }

@@ -305,7 +305,8 @@ const buildPlan = (runeword) => {
 /* The bill for the rest: every rune the runewords not built yet would take,
    one of each runeword, counted over the whole page rather than the current
    filters - and without subtracting what lies in the stash, since that is a
-   shopping list, not a plan. Without a Grail, "the rest" is all of them. */
+   shopping list, not a plan. Built ones leave the count only while the page
+   marks them; without a Grail, "the rest" is all of them. */
 const billOpen = ref(readSession('rw-bill-open', false) === true);
 watch(billOpen, (v) => writeSession('rw-bill-open', v));
 const runeBill = computed(() => {
@@ -314,7 +315,7 @@ const runeBill = computed(() => {
   let words = 0;
   for (const runeword of runewords.value) {
     if (dataMode.value === 'vanilla' && runeword.IsNew) continue;
-    if (seen.has(runeword.RowId) || builtKeys.value.has(runeword.RowId)) continue;
+    if (seen.has(runeword.RowId) || (markBuilt.value && builtKeys.value.has(runeword.RowId))) continue;
     seen.add(runeword.RowId);
     words++;
     for (const code of runeword.Runes ?? []) counts.set(code, (counts.get(code) ?? 0) + 1);
@@ -1024,7 +1025,7 @@ onUnmounted(() => {
             <!-- The bill: rune by rune, in rune order -->
             <div v-show="billOpen" class="rune-bill">
               <div class="small text-muted mb-2">
-                <template v-if="grailHasData">{{ runeBill.words === 1 ? $t('1 runeword not built yet takes') : $t('{n} runewords not built yet take', { n: runeBill.words }) }}</template>
+                <template v-if="grailHasData && markBuilt">{{ runeBill.words === 1 ? $t('1 runeword not built yet takes') : $t('{n} runewords not built yet take', { n: runeBill.words }) }}</template>
                 <template v-else>{{ $t('All {n} runewords take', { n: runeBill.words }) }}</template>
                 <strong class="ms-1">{{ runeBill.total }}</strong> {{ $t('runes, {n} of them Vex or higher. One of each runeword; what you already hold is not counted.', { n: runeBill.high }) }}
               </div>
@@ -1069,7 +1070,7 @@ onUnmounted(() => {
         <div class="col-12" v-if="resultCount > 0">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 rw-results-line">
             <span class="small text-muted">{{ resultCount === 1 ? $t('1 runeword in view') : $t('{n} runewords in view', { n: resultCount }) }}</span>
-            <RuneBillDropdown :groups="allGroups" :runes="allRunes" :label="$t('Runes for all results')" />
+            <RuneBillDropdown :groups="allGroups" :runes="allRunes" :label="$t('Runes for all results')" :exclude-built="markBuilt && grailHasData" />
           </div>
         </div>
 

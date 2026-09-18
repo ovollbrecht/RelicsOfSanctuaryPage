@@ -60,7 +60,7 @@ const setAll = (open) => {
         <span class="tier-hint">{{ subtitle ? subtitle + ' · ' : '' }}{{ groups.length }}</span>
       </h2>
       <span class="d-flex gap-2 align-items-center">
-        <RuneBillDropdown v-if="runes && groups.length" :groups="groups" :runes="runes" />
+        <RuneBillDropdown v-if="runes && groups.length" :groups="groups" :runes="runes" :exclude-built="markBuilt" />
         <template v-if="!panelMode">
           <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">{{ $t('Expand all') }}</button>
           <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">{{ $t('Collapse all') }}</button>
