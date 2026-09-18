@@ -1,5 +1,6 @@
 <script setup>
 import { runeIcon } from '@/composables/useItemIcon.js';
+import RuneBillDropdown from '@/components/RuneBillDropdown.vue';
 import { ref } from 'vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 
@@ -26,6 +27,8 @@ const props = defineProps({
   markBuilt: { type: Boolean, default: false },
   basesFor: { type: Function, default: null },
   selectedKey: { type: String, default: null },
+  // the rune catalog in rune order; given, the header sums what this table takes
+  runes: { type: Array, default: null },
 });
 
 const emit = defineEmits(['select']);
@@ -56,9 +59,12 @@ const setAll = (open) => {
         {{ title }}
         <span class="tier-hint">{{ subtitle ? subtitle + ' · ' : '' }}{{ groups.length }}</span>
       </h2>
-      <span v-if="!panelMode" class="d-flex gap-2">
-        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">{{ $t('Expand all') }}</button>
-        <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">{{ $t('Collapse all') }}</button>
+      <span class="d-flex gap-2 align-items-center">
+        <RuneBillDropdown v-if="runes && groups.length" :groups="groups" :runes="runes" />
+        <template v-if="!panelMode">
+          <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(true)">{{ $t('Expand all') }}</button>
+          <button class="btn btn-sm btn-outline-secondary expand-btn" @click="setAll(false)">{{ $t('Collapse all') }}</button>
+        </template>
       </span>
     </div>
     <div class="card-body">

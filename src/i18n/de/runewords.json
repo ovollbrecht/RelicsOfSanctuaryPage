@@ -103,5 +103,16 @@
  "1 runeword not built yet takes": "1 noch nicht gebautes Runenwort braucht",
  "{n} runewords not built yet take": "{n} noch nicht gebaute Runenwörter brauchen",
  "All {n} runewords take": "Alle {n} Runenwörter brauchen",
- "runes, {n} of them Vex or higher. One of each runeword; what you already hold is not counted.": "Runen, davon {n} ab Vex. Je eins pro Runenwort, dein Bestand wird nicht abgezogen."
+ "runes, {n} of them Vex or higher. One of each runeword; what you already hold is not counted.": "Runen, davon {n} ab Vex. Je eins pro Runenwort, dein Bestand wird nicht abgezogen.",
+ "Runes needed": "Runen nötig",
+ "1 runeword takes": "1 Runenwort braucht",
+ "{n} runewords take": "{n} Runenwörter brauchen",
+ "runes, {n} of them Vex or higher.": "Runen, davon {n} ab Vex.",
+ "Nothing left to build here.": "Hier ist nichts mehr zu bauen.",
+ "1 built one left out.": "1 gebautes nicht mitgezählt.",
+ "{n} built ones left out.": "{n} gebaute nicht mitgezählt.",
+ "What you hold is not subtracted.": "Dein Bestand wird nicht abgezogen.",
+ "1 runeword in view": "1 Runenwort in der Ansicht",
+ "{n} runewords in view": "{n} Runenwörter in der Ansicht",
+ "Runes for all results": "Runen für alle Treffer"
 }

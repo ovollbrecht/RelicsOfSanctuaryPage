@@ -7,6 +7,7 @@ import itemBaseData from '@/assets/item_bases.json';
 import cubeData from '@/assets/cube.json';
 import { readLadder, planBuild, runeNumber } from '@/composables/useRuneLadder.js';
 import { runeIcon } from '@/composables/useItemIcon.js';
+import RuneBillDropdown from '@/components/RuneBillDropdown.vue';
 import RunewordTable from '@/components/RunewordTable.vue';
 import RunewordDetail from '@/components/RunewordDetail.vue';
 import SearchableSelect from '@/components/SearchableSelect.vue';
@@ -801,6 +802,7 @@ const tiers = computed(() => RUNE_TIERS
   .filter((tier) => tier.groups.length > 0));
 
 const resultCount = computed(() => tiers.value.reduce((total, tier) => total + tier.groups.length, 0));
+const allGroups = computed(() => tiers.value.flatMap((tier) => tier.groups));
 
 const reworkTitle = computed(() =>
   dataMode.value === 'vanilla' ? t('Changes by Relics of Sanctuary') : t('Changes vs. vanilla'));
@@ -1063,11 +1065,20 @@ onUnmounted(() => {
           </div>
         </div>
 
+        <!-- everything the filters let through, summed once -->
+        <div class="col-12" v-if="resultCount > 0">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 rw-results-line">
+            <span class="small text-muted">{{ resultCount === 1 ? $t('1 runeword in view') : $t('{n} runewords in view', { n: resultCount }) }}</span>
+            <RuneBillDropdown :groups="allGroups" :runes="allRunes" :label="$t('Runes for all results')" />
+          </div>
+        </div>
+
         <div class="col-12" v-for="tier in tiers" :key="tier.key">
           <RunewordTable
             :title="$t(tier.title)"
             :subtitle="tier.hint"
             :groups="tier.groups"
+            :runes="allRunes"
             :mark-built="markBuilt && grailHasData"
             :bases-for="grailHasData ? basesFor : null"
             :rework-title="reworkTitle"
@@ -1154,6 +1165,7 @@ onUnmounted(() => {
 
 /* ---- rune picker ------------------------------------------------------- */
 .rw-yours { font-size: 0.85rem; }
+.rw-results-line { margin-bottom: -0.75rem; }
 .rune-bill { margin-top: 0.75rem; padding: 0.75rem; border: 1px solid rgba(59, 42, 31, 0.8); border-radius: var(--radius-sm); background: rgba(0, 0, 0, 0.2); }
 .bill-chip { display: inline-flex; align-items: center; gap: 0.3rem; cursor: default; }
 .bill-chip .rune-icon { width: 1.1rem; height: 1.1rem; display: inline-block; object-fit: contain; }
