@@ -1,6 +1,5 @@
 {
  "A Diablo II: Resurrected mod that keeps the item hunt going: an exalted version of every unique, mythic sets and affixes, and a runeword list worth reading again.": "Eine Mod für Diablo II: Resurrected, die die Item-Jagd am Laufen hält: eine Exalted-Version jedes Uniques, mythische Sets und Affixe und eine Runenwort-Liste, die sich wieder zu lesen lohnt.",
- "Download on NexusMods": "Auf NexusMods herunterladen",
  "Join the Discord": "Dem Discord beitreten",
  "Version {v}": "Version {v}",
  "data from {date}": "Daten vom {date}",
@@ -190,7 +189,9 @@
  "Website: search everything from anywhere — items, sets, runewords, runes, recipes, zones, monsters and the pages themselves — with Ctrl+K": "Website: alles von überall durchsuchen — Gegenstände, Sets, Runenwörter, Runen, Rezepte, Zonen, Monster und die Seiten selbst — mit Strg+K",
  "Support on Ko-fi": "Auf Ko-fi unterstützen",
  "The mod is free and stays free - a coffee keeps the work going": "Die Mod ist kostenlos und bleibt es – ein Kaffee hält die Arbeit am Laufen",
- "Standalone {v}": "Standalone {v}",
- "D2RMM {v}": "D2RMM {v}",
- "The same archives as on NexusMods.": "Dieselben Archive wie auf NexusMods."
+ "Download standalone {v}": "Standalone {v} herunterladen",
+ "On NexusMods": "Auf NexusMods",
+ "Standalone and D2RMM version": "Standalone- und D2RMM-Version",
+ "The standalone archive - unpack into mods and start with -mod RelicsOfSanctuary -txt": "Das Standalone-Archiv – nach mods entpacken und mit -mod RelicsOfSanctuary -txt starten",
+ "The D2RMM version is on NexusMods.": "Die D2RMM-Version gibt es auf NexusMods."
 }

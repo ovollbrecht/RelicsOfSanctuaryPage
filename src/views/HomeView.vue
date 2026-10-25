@@ -16,10 +16,8 @@ import { t, dateLocale } from '@/i18n';
 const counts = meta.counts ?? {};
 // the archives ship with the site, under public/downloads, named by the version
 // the data was generated from - so a link never points past the data beside it
-const downloads = meta.modVersion ? {
-  standalone: `${import.meta.env.BASE_URL}downloads/RelicsOfSanctuary-${meta.modVersion}-standalone.zip`,
-  d2rmm: `${import.meta.env.BASE_URL}downloads/RelicsOfSanctuary-${meta.modVersion}-d2rmm.zip`,
-} : null;
+// Only the standalone ships here; the D2RMM archive stays on NexusMods.
+const standaloneUrl = meta.modVersion ? `${import.meta.env.BASE_URL}downloads/RelicsOfSanctuary-${meta.modVersion}-standalone.zip` : null;
 
 // The visitor's own Grail, if they have one - written by the Grail page.
 const grailSummary = (() => {
@@ -139,16 +137,19 @@ const tools = computed(() => [
         <p class="lead mb-3">
           {{ $t('A Diablo II: Resurrected mod that keeps the item hunt going: an exalted version of every unique, mythic sets and affixes, and a runeword list worth reading again.') }}
         </p>
+        <!-- Two ways to get the mod on the first line, the community links
+             smaller beneath - four equal buttons read as a menu. -->
         <div class="d-flex justify-content-center flex-wrap gap-3">
-          <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-primary">
-            🔗 {{ $t('Download on NexusMods') }}
+          <a v-if="standaloneUrl" :href="standaloneUrl" class="btn btn-primary" download :title="$t('The standalone archive - unpack into mods and start with -mod RelicsOfSanctuary -txt')">
+            ⬇ {{ $t('Download standalone {v}', { v: meta.modVersion }) }}
           </a>
-          <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-outline-primary">
-            💬 {{ $t('Join the Discord') }}
+          <a href="https://www.nexusmods.com/diablo2resurrected/mods/745" target="_blank" class="btn btn-outline-primary" :title="$t('Standalone and D2RMM version')">
+            🔗 {{ $t('On NexusMods') }}
           </a>
-          <a href="https://ko-fi.com/cpp42" target="_blank" rel="noopener" class="btn btn-outline-primary" :title="$t('The mod is free and stays free - a coffee keeps the work going')">
-            ☕ {{ $t('Support on Ko-fi') }}
-          </a>
+        </div>
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-2 hero-links">
+          <a href="https://discord.com/invite/navsmD3Ec9" target="_blank">💬 {{ $t('Join the Discord') }}</a>
+          <a href="https://ko-fi.com/cpp42" target="_blank" rel="noopener" :title="$t('The mod is free and stays free - a coffee keeps the work going')">☕ {{ $t('Support on Ko-fi') }}</a>
         </div>
         <p v-if="meta.modVersion" class="stamp mt-3 mb-0">
           {{ $t('Version {v}', { v: meta.modVersion }) }}<template v-if="generatedOn"> · {{ $t('data from {date}', { date: generatedOn }) }}</template>
@@ -256,11 +257,6 @@ const tools = computed(() => [
           </div>
           <div class="card-body p-4">
             <p class="card-text" v-html="$t('Two downloads, one mod. The <strong>D2RMM version</strong> builds the game files when you install it and lets you set every option; the <strong>standalone version</strong> is that same install with the defaults already baked in.')"></p>
-            <div v-if="downloads" class="d-flex flex-wrap align-items-center gap-3 mb-4">
-              <a :href="downloads.standalone" class="btn btn-primary" download>⬇ {{ $t('Standalone {v}', { v: meta.modVersion }) }}</a>
-              <a :href="downloads.d2rmm" class="btn btn-outline-primary" download>⬇ {{ $t('D2RMM {v}', { v: meta.modVersion }) }}</a>
-              <span class="small text-muted">{{ $t('The same archives as on NexusMods.') }}</span>
-            </div>
             <div class="section-header">{{ $t('Standalone, in three steps') }}</div>
             <ol class="step-list">
               <li v-html="$t('Extract the archive into <code>[GamePath]/mods</code>, so you have <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code>')"></li>
@@ -268,6 +264,7 @@ const tools = computed(() => [
               <li v-html="$t('Add <code>-mod RelicsOfSanctuary -txt</code> to the shortcut\'s target')"></li>
             </ol>
             <p class="card-text mb-0">
+              {{ $t('The D2RMM version is on NexusMods.') }}
               {{ $t('With D2RMM, install the mod from the manager instead and pick your options there -') }}
               <router-link to="/options">{{ $t('what each option changes') }}</router-link> {{ $t('is listed page by page.') }}
             </p>
@@ -366,4 +363,12 @@ const tools = computed(() => [
 .step-list code {
   color: var(--d2r-gold);
 }
+
+.hero-links a {
+  color: var(--d2r-gold);
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+.hero-links a:hover { opacity: 1; text-decoration: underline; }
 </style>
