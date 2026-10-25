@@ -154,6 +154,7 @@ const handleClickOutside = (event) => {
           <button type="button" :class="{ on: locale === 'de' }" @click="setLocale('de')">DE</button>
         </div>
         {{ $t('Build your legend with exalted relics and rune-crafted power.') }}
+        <a href="https://ko-fi.com/cpp42" target="_blank" rel="noopener" class="kofi-link" :title="$t('The mod is free and stays free - a coffee keeps the work going')">☕ {{ $t('Support on Ko-fi') }}</a>
         <div v-if="dataStamp" class="data-stamp">{{ dataStamp }}</div>
       </div>
     </aside>
@@ -318,6 +319,15 @@ const handleClickOutside = (event) => {
   font-size: 0.85rem;
   line-height: 1.4;
 }
+
+.kofi-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--d2r-gold);
+  text-decoration: none;
+  opacity: 0.8;
+}
+.kofi-link:hover { opacity: 1; text-decoration: underline; }
 
 .data-stamp {
   margin-top: 0.5rem;

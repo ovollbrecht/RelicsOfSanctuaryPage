@@ -140,6 +140,9 @@ const tools = computed(() => [
           <a href="https://discord.com/invite/navsmD3Ec9" target="_blank" class="btn btn-outline-primary">
             💬 {{ $t('Join the Discord') }}
           </a>
+          <a href="https://ko-fi.com/cpp42" target="_blank" rel="noopener" class="btn btn-outline-primary" :title="$t('The mod is free and stays free - a coffee keeps the work going')">
+            ☕ {{ $t('Support on Ko-fi') }}
+          </a>
         </div>
         <p v-if="meta.modVersion" class="stamp mt-3 mb-0">
           {{ $t('Version {v}', { v: meta.modVersion }) }}<template v-if="generatedOn"> · {{ $t('data from {date}', { date: generatedOn }) }}</template>
