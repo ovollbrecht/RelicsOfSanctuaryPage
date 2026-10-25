@@ -18690,12 +18690,12 @@
     "Runes": [
       "r31",
       "r26",
-      "r31"
+      "r29"
     ],
     "RuneNames": [
       "Jah",
       "Vex",
-      "Jah"
+      "Sur"
     ],
     "ClassOnly": [
       "sor"
@@ -18757,8 +18757,8 @@
       {
         "Prop": "ignore-ac",
         "Par": "",
-        "Min": "2",
-        "Max": "2",
+        "Min": "1",
+        "Max": "1",
         "Description": "Ignore Target's Defense",
         "Priority": "119"
       },
@@ -18771,6 +18771,14 @@
         "Priority": "89"
       },
       {
+        "Prop": "stupidity",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Hit Blinds Target",
+        "Priority": "80"
+      },
+      {
         "Prop": "galaxy-stars",
         "Par": "",
         "Min": "2",
@@ -18779,19 +18787,19 @@
         "Priority": "0",
         "Rolls": [
           {
-            "Description": "+[8-12] to Warmth (Sorceress Only)",
+            "Description": "+7 to Warmth (Sorceress Only)",
             "Chance": null
           },
           {
-            "Description": "+[8-12] to Teleport (Sorceress Only)",
+            "Description": "+7 to Teleport (Sorceress Only)",
             "Chance": null
           },
           {
-            "Description": "+[8-12] to Frozen Armor (Sorceress Only)",
+            "Description": "+7 to Frozen Armor (Sorceress Only)",
             "Chance": null
           },
           {
-            "Description": "+[8-12] to Static Field (Sorceress Only)",
+            "Description": "+7 to Static Field (Sorceress Only)",
             "Chance": null
           }
         ]
@@ -22986,5 +22994,389 @@
     "IsTorso": false,
     "IsHelmet": false,
     "IsShield": true
+  },
+  {
+    "Name": "Unholy Pact",
+    "RowId": "Runeword2046",
+    "AllowedItems": [
+      "helm"
+    ],
+    "Types": [
+      "helm",
+      "armo"
+    ],
+    "ItemTypes": [
+      "helm"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r32",
+      "r19",
+      "r23"
+    ],
+    "RuneNames": [
+      "Cham",
+      "Fal",
+      "Mal"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 3,
+    "LevelReq": 67,
+    "Properties": [
+      {
+        "Prop": "rep-dur",
+        "Par": "33",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
+      },
+      {
+        "Prop": "oskill",
+        "Par": "Summon Defiler",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 to Summon Defiler",
+        "Priority": "81"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "str",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Strength",
+        "Priority": "67"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "7",
+        "Max": "7",
+        "Description": "Magic Damage Reduced by 7",
+        "Priority": "21"
+      },
+      {
+        "Prop": "pact-price",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "All 4 of:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "-20% Faster Cast Rate",
+            "Chance": null
+          },
+          {
+            "Description": "Replenish Life -15",
+            "Chance": null
+          },
+          {
+            "Description": "Increase Maximum Life -[8-10]%",
+            "Chance": null
+          },
+          {
+            "Description": "-3 to Light Radius",
+            "Chance": null
+          }
+        ]
+      },
+      {
+        "Prop": "pact-ward",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 4:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "All Resistances +[20-25]",
+            "Chance": null
+          },
+          {
+            "Description": "+[200-250] Defense",
+            "Chance": null
+          },
+          {
+            "Description": "[200-250]% Enhanced Defense",
+            "Chance": null
+          },
+          {
+            "Description": "Damage Reduced by 10",
+            "Chance": null
+          }
+        ]
+      },
+      {
+        "Prop": "pact-gift",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 6:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "[60-70]% Enhanced Damage",
+            "Chance": null
+          },
+          {
+            "Description": "+[35-40] to Strength",
+            "Chance": null
+          },
+          {
+            "Description": "20% Deadly Strike",
+            "Chance": null
+          },
+          {
+            "Description": "20% Chance of Crushing Blow",
+            "Chance": null
+          },
+          {
+            "Description": "20% Increased Attack Speed",
+            "Chance": null
+          },
+          {
+            "Description": "33% Chance of Open Wounds",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
+  },
+  {
+    "Name": "Bravado",
+    "RowId": "Runeword2047",
+    "AllowedItems": [
+      "tors"
+    ],
+    "Types": [
+      "tors",
+      "armo"
+    ],
+    "ItemTypes": [
+      "tors"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r10",
+      "r27"
+    ],
+    "RuneNames": [
+      "Thul",
+      "Ohm"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 2,
+    "LevelReq": 57,
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "160",
+        "Max": "200",
+        "Description": "[160-200]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "deadly",
+        "Par": "",
+        "Min": "16",
+        "Max": "20",
+        "Description": "[16-20]% Deadly Strike",
+        "Priority": "85"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "nofreeze",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
+      },
+      {
+        "Prop": "hp%",
+        "Par": "",
+        "Min": "-10",
+        "Max": "-10",
+        "Description": "Increase Maximum Life -10%",
+        "Priority": "58"
+      },
+      {
+        "Prop": "res-cold",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Cold Resist 20%",
+        "Priority": "40"
+      },
+      {
+        "Prop": "res-cold-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Cold Resist",
+        "Priority": "44"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": true,
+    "IsHelmet": false,
+    "IsShield": false
+  },
+  {
+    "Name": "Reservoir",
+    "RowId": "Runeword2050",
+    "AllowedItems": [
+      "helm"
+    ],
+    "Types": [
+      "helm",
+      "armo"
+    ],
+    "ItemTypes": [
+      "helm"
+    ],
+    "ETypes": [],
+    "Runes": [
+      "r29",
+      "r16",
+      "r26"
+    ],
+    "RuneNames": [
+      "Sur",
+      "Io",
+      "Vex"
+    ],
+    "ClassOnly": [],
+    "ClassNames": [],
+    "Sockets": 3,
+    "LevelReq": 61,
+    "Properties": [
+      {
+        "Prop": "oskill",
+        "Par": "Warmth",
+        "Min": "18",
+        "Max": "21",
+        "Description": "+[18-21] to Warmth",
+        "Priority": "81"
+      },
+      {
+        "Prop": "dmg-to-mana",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Damage Taken Goes To Mana",
+        "Priority": "11"
+      },
+      {
+        "Prop": "mana%",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "Increase Maximum Mana [25-30]%",
+        "Priority": "54"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "cast2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Cast Rate",
+        "Priority": "142"
+      },
+      {
+        "Prop": "res-all",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "All Resistances +[20-25]",
+        "Priority": "34"
+      },
+      {
+        "Prop": "red-mag",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "Magic Damage Reduced by [8-10]",
+        "Priority": "21"
+      },
+      {
+        "Prop": "vit",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Vitality",
+        "Priority": "63"
+      },
+      {
+        "Prop": "res-fire-max",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "5% to Maximum Fire Resist",
+        "Priority": "42"
+      }
+    ],
+    "IsNew": true,
+    "IsWeapon": false,
+    "IsTorso": false,
+    "IsHelmet": true,
+    "IsShield": false
   }
 ]

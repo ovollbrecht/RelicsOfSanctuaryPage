@@ -19551,7 +19551,7 @@
     },
     "Index": "Schaefer's Hammer",
     "Rarity": "19",
-    "Percent": "19/100 (19%)",
+    "Percent": "19/120 (15.833%)",
     "Lvl": "83",
     "LvlReq": "79",
     "Properties": [
@@ -23279,7 +23279,7 @@
     },
     "Index": "Stone Crusher",
     "Rarity": "76",
-    "Percent": "76/100 (76%)",
+    "Percent": "76/120 (63.333%)",
     "Lvl": "76",
     "LvlReq": "68",
     "Properties": [
@@ -34051,9 +34051,9 @@
       {
         "Prop": "skill",
         "Par": "77",
-        "Min": "8",
-        "Max": "8",
-        "Description": "+8 to Terror (Necromancer Only)",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Terror (Necromancer Only)",
         "Priority": "81"
       },
       {
@@ -34407,16 +34407,16 @@
         "Prop": "skill",
         "Par": "110",
         "Min": "6",
-        "Max": "8",
-        "Description": "+[6-8] to Resist Lightning (Paladin Only)",
+        "Max": "7",
+        "Description": "+[6-7] to Resist Lightning (Paladin Only)",
         "Priority": "81"
       },
       {
         "Prop": "skill",
         "Par": "118",
         "Min": "6",
-        "Max": "8",
-        "Description": "+[6-8] to Holy Shock (Paladin Only)",
+        "Max": "7",
+        "Description": "+[6-7] to Holy Shock (Paladin Only)",
         "Priority": "81"
       },
       {
@@ -37603,9 +37603,9 @@
       {
         "Prop": "skill",
         "Par": "36",
-        "Min": "8",
-        "Max": "8",
-        "Description": "+8 to Fire Bolt (Sorceress Only)",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Fire Bolt (Sorceress Only)",
         "Priority": "81"
       },
       {
@@ -39700,8 +39700,8 @@
         "Prop": "skill",
         "Par": "69",
         "Min": "6",
-        "Max": "8",
-        "Description": "+[6-8] to Skeleton Mastery (Necromancer Only)",
+        "Max": "7",
+        "Description": "+[6-7] to Skeleton Mastery (Necromancer Only)",
         "Priority": "81"
       },
       {
@@ -40508,8 +40508,8 @@
         "Prop": "light-thorns",
         "Par": "",
         "Min": "22",
-        "Max": "33",
-        "Description": "Attacker Takes Lightning Damage of [22-33]",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of [22-30]",
         "Priority": "14"
       },
       {
@@ -44303,9 +44303,9 @@
       {
         "Prop": "regen",
         "Par": "",
-        "Min": "35",
-        "Max": "35",
-        "Description": "Replenish Life +35",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Replenish Life +33",
         "Priority": "56"
       },
       {
@@ -44486,7 +44486,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[172 - 212] to [331 - 371]",
+      "Damage": "[132 - 192] to [291 - 351]",
       "Durability": "140",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -44525,9 +44525,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "100",
-        "Max": "140",
-        "Description": "Adds [100-140] damage",
+        "Min": "60",
+        "Max": "120",
+        "Description": "Adds [60-120] damage",
         "Priority": "300"
       },
       {
@@ -44549,9 +44549,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "50",
-        "Max": "50",
-        "Description": "Attacker Takes Lightning Damage of 50",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -44580,10 +44580,10 @@
       },
       {
         "Prop": "kill-skill",
-        "Par": "57",
-        "Min": "10",
-        "Max": "15",
-        "Description": "10% Chance to cast level 15 Thunder Storm when you Kill an Enemy",
+        "Par": "48",
+        "Min": "15",
+        "Max": "25",
+        "Description": "15% Chance to cast level 25 Nova when you Kill an Enemy",
         "Priority": "158"
       }
     ],
@@ -46547,7 +46547,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[99 - 106] to [146 - 156]",
+      "Damage": "[94 - 106] to [141 - 156]",
       "Durability": "32",
       "Block Chance": "0",
       "Required Dexterity": "58",
@@ -46594,9 +46594,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "65",
+        "Min": "60",
         "Max": "70",
-        "Description": "Adds [65-70] damage",
+        "Description": "Adds [60-70] damage",
         "Priority": "300"
       },
       {
@@ -46929,10 +46929,10 @@
       },
       {
         "Prop": "dmg-pois",
-        "Par": "8",
-        "Min": "920",
-        "Max": "920",
-        "Description": "Adds 920 poison damage over 8 seconds",
+        "Par": "9",
+        "Min": "918",
+        "Max": "918",
+        "Description": "Adds 918 poison damage over 9 seconds",
         "Priority": "300"
       },
       {
@@ -47337,10 +47337,10 @@
       },
       {
         "Prop": "dmg-pois",
-        "Par": "6",
-        "Min": "762",
-        "Max": "762",
-        "Description": "Adds 762 poison damage over 6 seconds",
+        "Par": "7",
+        "Min": "714",
+        "Max": "714",
+        "Description": "Adds 714 poison damage over 7 seconds",
         "Priority": "300"
       },
       {
@@ -47462,9 +47462,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "60",
-        "Max": "60",
-        "Description": "Attacker Takes Lightning Damage of 60",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -47662,9 +47662,9 @@
       {
         "Prop": "ac-hth",
         "Par": "",
-        "Min": "400",
-        "Max": "400",
-        "Description": "+400 Defense vs. Melee",
+        "Min": "250",
+        "Max": "250",
+        "Description": "+250 Defense vs. Melee",
         "Priority": "70"
       },
       {
@@ -48046,9 +48046,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "60",
-        "Max": "60",
-        "Description": "Attacker Takes Lightning Damage of 60",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -48990,9 +48990,9 @@
       {
         "Prop": "regen",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "Replenish Life +40",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Replenish Life +33",
         "Priority": "56"
       },
       {
@@ -49090,9 +49090,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "263",
-        "Max": "522",
-        "Description": "Adds [263-522] fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
@@ -49223,9 +49223,9 @@
       {
         "Prop": "mana",
         "Par": "",
-        "Min": "250",
-        "Max": "250",
-        "Description": "+250 to Mana",
+        "Min": "222",
+        "Max": "222",
+        "Description": "+222 to Mana",
         "Priority": "55"
       },
       {
@@ -49441,9 +49441,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "75",
-        "Max": "75",
-        "Description": "Attacker Takes Lightning Damage of 75",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -49574,9 +49574,9 @@
       {
         "Prop": "ac-miss",
         "Par": "",
-        "Min": "600",
-        "Max": "600",
-        "Description": "+600 Defense vs. Missile",
+        "Min": "500",
+        "Max": "500",
+        "Description": "+500 Defense vs. Missile",
         "Priority": "69"
       },
       {
@@ -51485,9 +51485,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "80",
-        "Max": "80",
-        "Description": "Attacker Takes Lightning Damage of 80",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -51830,8 +51830,8 @@
         "Prop": "regen",
         "Par": "",
         "Min": "30",
-        "Max": "40",
-        "Description": "Replenish Life +[30-40]",
+        "Max": "33",
+        "Description": "Replenish Life +[30-33]",
         "Priority": "56"
       },
       {
@@ -53137,9 +53137,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "60",
-        "Max": "60",
-        "Description": "Attacker Takes Lightning Damage of 60",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -53829,9 +53829,9 @@
       {
         "Prop": "thorns",
         "Par": "",
-        "Min": "142",
-        "Max": "142",
-        "Description": "Attacker Takes Damage of 142",
+        "Min": "125",
+        "Max": "125",
+        "Description": "Attacker Takes Damage of 125",
         "Priority": "13"
       },
       {
@@ -55901,9 +55901,9 @@
       {
         "Prop": "light-thorns",
         "Par": "",
-        "Min": "75",
-        "Max": "75",
-        "Description": "Attacker Takes Lightning Damage of 75",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Attacker Takes Lightning Damage of 30",
         "Priority": "14"
       },
       {
@@ -55976,9 +55976,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "333",
+        "Min": "255",
         "Max": "500",
-        "Description": "Adds [333-500] fire damage",
+        "Description": "Adds [255-500] fire damage",
         "Priority": "300"
       },
       {
@@ -56276,7 +56276,7 @@
     },
     "Index": "E Schaefer's Hammer",
     "Rarity": "1",
-    "Percent": "1/100 (1%)",
+    "Percent": "1/120 (0.833%)",
     "Lvl": "83",
     "LvlReq": "79",
     "Properties": [
@@ -56355,9 +56355,9 @@
       {
         "Prop": "dmg-ltng",
         "Par": "",
-        "Min": "100",
-        "Max": "400",
-        "Description": "Adds [100-400] lightning damage",
+        "Min": "63",
+        "Max": "437",
+        "Description": "Adds [63-437] lightning damage",
         "Priority": "300"
       },
       {
@@ -56384,7 +56384,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[207 - 220] to [795 - 867]",
+      "Damage": "[192 - 220] to [780 - 867]",
       "Durability": "60",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -56439,9 +56439,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "75",
+        "Min": "60",
         "Max": "75",
-        "Description": "Adds 75 damage",
+        "Description": "Adds [60-75] damage",
         "Priority": "300"
       },
       {
@@ -58373,7 +58373,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[156 - 194] to [318 - 383]",
+      "Damage": "[141 - 194] to [303 - 383]",
       "Durability": "4",
       "Block Chance": "0",
       "Required Dexterity": "99",
@@ -58452,9 +58452,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "75",
+        "Min": "60",
         "Max": "100",
-        "Description": "Adds [75-100] damage",
+        "Description": "Adds [60-100] damage",
         "Priority": "300"
       },
       {
@@ -58499,7 +58499,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[141 - 176] to [218 - 264]",
+      "Damage": "[126 - 176] to [203 - 264]",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "110",
@@ -58578,9 +58578,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "75",
+        "Min": "60",
         "Max": "100",
-        "Description": "Adds [75-100] damage",
+        "Description": "Adds [60-100] damage",
         "Priority": "300"
       },
       {
@@ -58626,7 +58626,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[222 - 268] to [428 - 504]",
+      "Damage": "[207 - 268] to [413 - 504]",
       "Durability": "25",
       "Block Chance": "0",
       "Required Dexterity": "98",
@@ -58705,9 +58705,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "75",
+        "Min": "60",
         "Max": "100",
-        "Description": "Adds [75-100] damage",
+        "Description": "Adds [60-100] damage",
         "Priority": "300"
       },
       {
@@ -59002,7 +59002,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[148 - 184] to [197 - 240]",
+      "Damage": "[133 - 184] to [182 - 240]",
       "Durability": "69",
       "Block Chance": "0",
       "Required Dexterity": "79",
@@ -59081,9 +59081,9 @@
       {
         "Prop": "dmg-norm",
         "Par": "",
-        "Min": "75",
+        "Min": "60",
         "Max": "100",
-        "Description": "Adds [75-100] damage",
+        "Description": "Adds [60-100] damage",
         "Priority": "300"
       },
       {
@@ -60836,7 +60836,7 @@
     },
     "Index": "E Stone Crusher",
     "Rarity": "4",
-    "Percent": "4/100 (4%)",
+    "Percent": "4/120 (3.333%)",
     "Lvl": "76",
     "LvlReq": "68",
     "Properties": [
@@ -60875,9 +60875,9 @@
       {
         "Prop": "dmg-ac",
         "Par": "",
-        "Min": "-200",
-        "Max": "-200",
-        "Description": "-200 to Monster Defense Per Hit",
+        "Min": "-125",
+        "Max": "-125",
+        "Description": "-125 to Monster Defense Per Hit",
         "Priority": "75"
       },
       {
@@ -61396,9 +61396,9 @@
       {
         "Prop": "dmg-ac",
         "Par": "",
-        "Min": "-150",
-        "Max": "-150",
-        "Description": "-150 to Monster Defense Per Hit",
+        "Min": "-125",
+        "Max": "-125",
+        "Description": "-125 to Monster Defense Per Hit",
         "Priority": "75"
       },
       {
@@ -61700,9 +61700,9 @@
       {
         "Prop": "dmg-mag",
         "Par": "",
-        "Min": "284",
-        "Max": "363",
-        "Description": "Adds [284-363] magic damage",
+        "Min": "255",
+        "Max": "392",
+        "Description": "Adds [255-392] magic damage",
         "Priority": "300"
       },
       {
@@ -62486,9 +62486,9 @@
       {
         "Prop": "thorns",
         "Par": "",
-        "Min": "132",
-        "Max": "186",
-        "Description": "Attacker Takes Damage of [132-186]",
+        "Min": "125",
+        "Max": "125",
+        "Description": "Attacker Takes Damage of 125",
         "Priority": "13"
       },
       {
@@ -62779,7 +62779,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[121 - 137] to [345 - 391]",
+      "Damage": "[134 - 150] to [382 - 427]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "77",
@@ -62794,57 +62794,57 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "280",
-        "Max": "330",
-        "Description": "[280-330]% Enhanced Damage",
+        "Min": "320",
+        "Max": "370",
+        "Description": "[320-370]% Enhanced Damage",
         "Priority": "1000"
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Minimum Fire Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Minimum Fire Damage",
         "Priority": ""
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Maximum Fire Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Maximum Fire Damage",
         "Priority": ""
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Minimum Lightning Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Minimum Lightning Damage",
         "Priority": ""
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Maximum Lightning Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Maximum Lightning Damage",
         "Priority": ""
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Minimum Cold Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Minimum Cold Damage",
         "Priority": ""
       },
       {
         "Prop": "dmg-elem",
         "Par": "33",
-        "Min": "142",
-        "Max": "711",
-        "Description": "+[142-711] to Maximum Cold Damage",
+        "Min": "63",
+        "Max": "511",
+        "Description": "+[63-511] to Maximum Cold Damage",
         "Priority": ""
       },
       {
@@ -63331,9 +63331,9 @@
       {
         "Prop": "dmg-mag",
         "Par": "",
-        "Min": "316",
-        "Max": "316",
-        "Description": "Adds 316 magic damage",
+        "Min": "255",
+        "Max": "377",
+        "Description": "Adds [255-377] magic damage",
         "Priority": "300"
       },
       {
@@ -63535,25 +63535,25 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "368",
-        "Max": "596",
-        "Description": "Adds [368-596] fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
         "Prop": "dmg-cold",
         "Par": "100",
-        "Min": "287",
-        "Max": "523",
-        "Description": "Adds [287-523] cold damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] cold damage",
         "Priority": "300"
       },
       {
         "Prop": "dmg-ltng",
         "Par": "",
-        "Min": "73",
+        "Min": "63",
         "Max": "783",
-        "Description": "Adds [73-783] lightning damage",
+        "Description": "Adds [63-783] lightning damage",
         "Priority": "300"
       },
       {
@@ -63673,10 +63673,10 @@
       },
       {
         "Prop": "gethit-skill",
-        "Par": "57",
-        "Min": "4",
+        "Par": "42",
+        "Min": "10",
         "Max": "30",
-        "Description": "4% Chance to cast level 30 Thunder Storm when struck",
+        "Description": "10% Chance to cast level 30 Static Field when struck",
         "Priority": "158"
       },
       {
@@ -63927,9 +63927,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "410",
-        "Max": "523",
-        "Description": "Adds [410-523] fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
@@ -64573,9 +64573,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "380",
-        "Max": "570",
-        "Description": "Adds [380-570] fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
@@ -64904,9 +64904,9 @@
       {
         "Prop": "skill",
         "Par": "Raven",
-        "Min": "12",
-        "Max": "12",
-        "Description": "+12 to Raven (Druid Only)",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Raven (Druid Only)",
         "Priority": "81"
       },
       {
@@ -64974,16 +64974,16 @@
         "Prop": "skill",
         "Par": "Teeth",
         "Min": "6",
-        "Max": "8",
-        "Description": "+[6-8] to Teeth (Necromancer Only)",
+        "Max": "7",
+        "Description": "+[6-7] to Teeth (Necromancer Only)",
         "Priority": "81"
       },
       {
         "Prop": "skill",
         "Par": "Bone Armor",
         "Min": "6",
-        "Max": "8",
-        "Description": "+[6-8] to Bone Armor (Necromancer Only)",
+        "Max": "7",
+        "Description": "+[6-7] to Bone Armor (Necromancer Only)",
         "Priority": "81"
       },
       {
@@ -65065,9 +65065,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "400",
-        "Max": "700",
-        "Description": "Adds [400-700] fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
@@ -65141,6 +65141,14 @@
         "Max": "300",
         "Description": "+300 to Attack Rating",
         "Priority": "115"
+      },
+      {
+        "Prop": "extra-fire",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% to Fire Skill Damage",
+        "Priority": "88"
       }
     ],
     "ImageMapping": "sword_kinemils_awl.webp",
@@ -65839,9 +65847,9 @@
       {
         "Prop": "regen",
         "Par": "",
-        "Min": "35",
-        "Max": "45",
-        "Description": "Replenish Life +[35-45]",
+        "Min": "33",
+        "Max": "33",
+        "Description": "Replenish Life +33",
         "Priority": "56"
       },
       {
@@ -66995,9 +67003,9 @@
       {
         "Prop": "light",
         "Par": "",
-        "Min": "-5",
-        "Max": "-5",
-        "Description": "-5 to Light Radius",
+        "Min": "-4",
+        "Max": "-4",
+        "Description": "-4 to Light Radius",
         "Priority": "6"
       },
       {
@@ -67160,8 +67168,8 @@
         "Prop": "stam",
         "Par": "",
         "Min": "200",
-        "Max": "250",
-        "Description": "+[200-250] Maximum Stamina",
+        "Max": "222",
+        "Description": "+[200-222] Maximum Stamina",
         "Priority": "51"
       },
       {
@@ -67563,9 +67571,9 @@
       {
         "Prop": "light",
         "Par": "",
-        "Min": "-5",
-        "Max": "-5",
-        "Description": "-5 to Light Radius",
+        "Min": "-4",
+        "Max": "-4",
+        "Description": "-4 to Light Radius",
         "Priority": "6"
       }
     ],
@@ -67846,9 +67854,9 @@
       {
         "Prop": "dmg-cold",
         "Par": "125",
-        "Min": "500",
-        "Max": "600",
-        "Description": "Adds [500-600] cold damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] cold damage",
         "Priority": "300"
       },
       {
@@ -67946,9 +67954,9 @@
       {
         "Prop": "skilltab",
         "Par": "17",
-        "Min": "10",
-        "Max": "10",
-        "Description": "+10 to Elemental Skills (Druid Only)",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Elemental Skills (Druid Only)",
         "Priority": "151"
       },
       {
@@ -75827,5 +75835,403 @@
     "ImageMapping": "sword_crystal_sword.webp",
     "Drops": true,
     "Spoiler": "all"
+  },
+  {
+    "Name": "Corpse Grinder",
+    "BaseItemName": "Crusader Gauntlets",
+    "Tier": "elite",
+    "Types": [
+      "glov",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "136 - 170",
+      "Damage": "0 to 0",
+      "Durability": "18",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "151"
+    },
+    "Index": "Corpse Grinder",
+    "Rarity": "19",
+    "Percent": "19/20 (95%)",
+    "Lvl": "88",
+    "LvlReq": "70",
+    "Properties": [
+      {
+        "Prop": "kill-skill",
+        "Par": "Find Item",
+        "Min": "50",
+        "Max": "6",
+        "Description": "50% Chance to cast level 6 Find Item when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "-15% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "grinder-loot",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "One of 2:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "[20-30]% Better Chance of Getting Magic Items",
+            "Chance": null
+          },
+          {
+            "Description": "[50-80]% Extra Gold from Monsters",
+            "Chance": null
+          }
+        ]
+      }
+    ],
+    "ImageMapping": "glove_light_gauntlets.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Corpse Grinder",
+    "BaseItemName": "Crusader Gauntlets",
+    "Tier": "elite",
+    "Types": [
+      "glov",
+      "armo"
+    ],
+    "Stats": {
+      "Defense": "190 - 217",
+      "Damage": "0 to 0",
+      "Durability": "18",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "151"
+    },
+    "Index": "E Corpse Grinder",
+    "Rarity": "1",
+    "Percent": "1/20 (5%)",
+    "Lvl": "88",
+    "LvlReq": "70",
+    "Properties": [
+      {
+        "Prop": "kill-skill",
+        "Par": "Find Item",
+        "Min": "50",
+        "Max": "18",
+        "Description": "50% Chance to cast level 18 Find Item when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "[30-40]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "gold%",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "[80-100]% Extra Gold from Monsters",
+        "Priority": "10"
+      },
+      {
+        "Prop": "reduce-ac",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "-30% Target Defense",
+        "Priority": "118"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "ac%",
+        "Par": "",
+        "Min": "180",
+        "Max": "220",
+        "Description": "[180-220]% Enhanced Defense",
+        "Priority": "74"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Find Item",
+        "Min": "5",
+        "Max": "18",
+        "Description": "5% Chance to cast level 18 Find Item on striking",
+        "Priority": "158"
+      }
+    ],
+    "ImageMapping": "glove_light_gauntlets.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Hexenhammer",
+    "BaseItemName": "Legendary Mallet",
+    "Tier": "elite",
+    "Types": [
+      "hamm",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[210 - 235] to [256 - 286]",
+      "Durability": "65",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "189"
+    },
+    "Index": "Hexenhammer",
+    "Rarity": "19",
+    "Percent": "19/120 (15.833%)",
+    "Lvl": "87",
+    "LvlReq": "79",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "320",
+        "Max": "370",
+        "Description": "[320-370]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "kill-skill",
+        "Par": "Fire Wall",
+        "Min": "25",
+        "Max": "22",
+        "Description": "25% Chance to cast level 22 Fire Wall when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "curse-res",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "Curse Resistance 30%",
+        "Priority": "35"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "200",
+        "Max": "250",
+        "Description": "[200-250]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "487",
+        "Max": "487",
+        "Description": "+487 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "14",
+        "Max": "87",
+        "Description": "Adds [14-87] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "res-mag",
+        "Par": "",
+        "Min": "15",
+        "Max": "20",
+        "Description": "Magic Resist [15-20]%",
+        "Priority": "41"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "30",
+        "Max": "50",
+        "Description": "[30-50]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "6",
+        "Max": "8",
+        "Description": "[6-8]% Mana stolen per hit",
+        "Priority": "89"
+      }
+    ],
+    "ImageMapping": "hammer_war_hammer.webp",
+    "Drops": true
+  },
+  {
+    "Name": "Exalted Hexenhammer",
+    "BaseItemName": "Legendary Mallet",
+    "Tier": "elite",
+    "Types": [
+      "hamm",
+      "blun",
+      "mele",
+      "weap"
+    ],
+    "Stats": {
+      "Defense": "0",
+      "Damage": "[250 - 275] to [305 - 335]",
+      "Durability": "65",
+      "Block Chance": "0",
+      "Required Dexterity": "0",
+      "Required Strength": "189"
+    },
+    "Index": "E Hexenhammer",
+    "Rarity": "1",
+    "Percent": "1/120 (0.833%)",
+    "Lvl": "87",
+    "LvlReq": "79",
+    "Properties": [
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "400",
+        "Max": "450",
+        "Description": "[400-450]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "kill-skill",
+        "Par": "Fire Wall",
+        "Min": "33",
+        "Max": "28",
+        "Description": "33% Chance to cast level 28 Fire Wall when you Kill an Enemy",
+        "Priority": "158"
+      },
+      {
+        "Prop": "curse-res",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "Curse Resistance 40%",
+        "Priority": "35"
+      },
+      {
+        "Prop": "dmg-demon",
+        "Par": "",
+        "Min": "300",
+        "Max": "350",
+        "Description": "[300-350]% Damage to Demons",
+        "Priority": "112"
+      },
+      {
+        "Prop": "att-demon",
+        "Par": "",
+        "Min": "487",
+        "Max": "487",
+        "Description": "+487 to Attack Rating against Demons",
+        "Priority": "110"
+      },
+      {
+        "Prop": "dmg-fire",
+        "Par": "",
+        "Min": "148",
+        "Max": "187",
+        "Description": "Adds [148-187] fire damage",
+        "Priority": "300"
+      },
+      {
+        "Prop": "res-mag",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Magic Resist 25%",
+        "Priority": "41"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "60",
+        "Max": "80",
+        "Description": "[60-80]% Better Chance of Getting Magic Items",
+        "Priority": "8"
+      },
+      {
+        "Prop": "light",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Light Radius",
+        "Priority": "6"
+      },
+      {
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Prop": "hit-skill",
+        "Par": "Fist of the Heavens",
+        "Min": "12",
+        "Max": "25",
+        "Description": "12% Chance to cast level 25 Fist of the Heavens on striking",
+        "Priority": "158"
+      }
+    ],
+    "ImageMapping": "hammer_war_hammer.webp",
+    "Drops": true
   }
 ]

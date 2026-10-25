@@ -1,4 +1,5 @@
 <script setup>
+import { flattenAllOf } from '@/composables/useProperties.js';
 import { ref, onMounted, computed, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import uniqueItemsData from '@/assets/unique_items.json';
@@ -659,7 +660,7 @@ onMounted(() => {
                       <h5 class="section-header">{{ $t('Properties') }}</h5>
                       <ul class="list-group list-group-flush">
                         <li
-                            v-for="(prop, propIndex) in variant.properties"
+                            v-for="(prop, propIndex) in flattenAllOf(variant.properties)"
                             :key="propIndex"
                             class="list-group-item list-item-property"
                         >

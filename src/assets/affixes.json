@@ -23826,18 +23826,29 @@
         {
           "Prop": "hit-skill",
           "Par": "36",
+          "Min": "15",
+          "Max": "15",
+          "Description": "15% Chance to cast level 15 Fire Bolt on striking",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "hit-skill",
+          "Par": "36",
           "Min": "10",
           "Max": "8",
           "Description": "10% Chance to cast level 8 Fire Bolt on striking",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 419,
       "Name": "of Firebolts",
       "Level": 6,
-      "MaxLevel": null,
+      "MaxLevel": 19,
       "LevelReq": 4,
       "Rare": true,
       "Frequency": 1,
@@ -23855,12 +23866,24 @@
         {
           "Prop": "att-skill",
           "Par": "36",
+          "Min": "10",
+          "Max": "6",
+          "Description": "10% Chance to cast level 6 Fire Bolt on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "36",
           "Min": "5",
           "Max": "3",
           "Description": "5% Chance to cast level 3 Fire Bolt on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 420,
@@ -23884,18 +23907,29 @@
         {
           "Prop": "att-skill",
           "Par": "36",
+          "Min": "15",
+          "Max": "12",
+          "Description": "15% Chance to cast level 12 Fire Bolt on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "36",
           "Min": "10",
           "Max": "4",
           "Description": "10% Chance to cast level 4 Fire Bolt on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 421,
       "Name": "of Charged Shield",
       "Level": 6,
-      "MaxLevel": null,
+      "MaxLevel": 15,
       "LevelReq": 4,
       "Rare": true,
       "Frequency": 1,
@@ -23913,18 +23947,30 @@
         {
           "Prop": "gethit-skill",
           "Par": "38",
+          "Min": "15",
+          "Max": "8",
+          "Description": "15% Chance to cast level 8 Charged Bolt when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "38",
           "Min": "10",
           "Max": "3",
           "Description": "10% Chance to cast level 3 Charged Bolt when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 422,
       "Name": "of Charged Shield",
       "Level": 16,
-      "MaxLevel": null,
+      "MaxLevel": 25,
       "LevelReq": 12,
       "Rare": true,
       "Frequency": 1,
@@ -23942,12 +23988,24 @@
         {
           "Prop": "gethit-skill",
           "Par": "38",
+          "Min": "20",
+          "Max": "14",
+          "Description": "20% Chance to cast level 14 Charged Bolt when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "38",
           "Min": "12",
           "Max": "4",
           "Description": "12% Chance to cast level 4 Charged Bolt when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 423,
@@ -23971,12 +24029,23 @@
         {
           "Prop": "gethit-skill",
           "Par": "38",
+          "Min": "25",
+          "Max": "20",
+          "Description": "25% Chance to cast level 20 Charged Bolt when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "38",
           "Min": "14",
           "Max": "5",
           "Description": "14% Chance to cast level 5 Charged Bolt when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 424,
@@ -24000,12 +24069,23 @@
         {
           "Prop": "att-skill",
           "Par": "39",
+          "Min": "10",
+          "Max": "8",
+          "Description": "10% Chance to cast level 8 Ice Bolt on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "39",
           "Min": "5",
           "Max": "3",
           "Description": "5% Chance to cast level 3 Ice Bolt on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 428,
@@ -24028,18 +24108,29 @@
         {
           "Prop": "gethit-skill",
           "Par": "44",
+          "Min": "15",
+          "Max": "10",
+          "Description": "15% Chance to cast level 10 Frost Nova when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "44",
           "Min": "5",
           "Max": "3",
           "Description": "5% Chance to cast level 3 Frost Nova when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 432,
       "Name": "of Nova",
       "Level": 18,
-      "MaxLevel": null,
+      "MaxLevel": 27,
       "LevelReq": 13,
       "Rare": true,
       "Frequency": 1,
@@ -24057,12 +24148,24 @@
         {
           "Prop": "hit-skill",
           "Par": "48",
+          "Min": "12",
+          "Max": "10",
+          "Description": "12% Chance to cast level 10 Nova on striking",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "hit-skill",
+          "Par": "48",
           "Min": "10",
           "Max": "3",
           "Description": "10% Chance to cast level 3 Nova on striking",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 433,
@@ -24086,18 +24189,29 @@
         {
           "Prop": "hit-skill",
           "Par": "48",
+          "Min": "15",
+          "Max": "18",
+          "Description": "15% Chance to cast level 18 Nova on striking",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "hit-skill",
+          "Par": "48",
           "Min": "12",
           "Max": "4",
           "Description": "12% Chance to cast level 4 Nova on striking",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 434,
       "Name": "of Nova Shield",
       "Level": 18,
-      "MaxLevel": null,
+      "MaxLevel": 27,
       "LevelReq": 13,
       "Rare": true,
       "Frequency": 1,
@@ -24114,18 +24228,30 @@
         {
           "Prop": "gethit-skill",
           "Par": "48",
+          "Min": "15",
+          "Max": "10",
+          "Description": "15% Chance to cast level 10 Nova when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "48",
           "Min": "10",
           "Max": "3",
           "Description": "10% Chance to cast level 3 Nova when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 435,
       "Name": "of Nova Shield",
       "Level": 28,
-      "MaxLevel": null,
+      "MaxLevel": 37,
       "LevelReq": 21,
       "Rare": true,
       "Frequency": 1,
@@ -24142,12 +24268,24 @@
         {
           "Prop": "gethit-skill",
           "Par": "48",
+          "Min": "18",
+          "Max": "16",
+          "Description": "18% Chance to cast level 16 Nova when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "48",
           "Min": "12",
           "Max": "4",
           "Description": "12% Chance to cast level 4 Nova when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 436,
@@ -24170,12 +24308,23 @@
         {
           "Prop": "gethit-skill",
           "Par": "48",
+          "Min": "20",
+          "Max": "22",
+          "Description": "20% Chance to cast level 22 Nova when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "48",
           "Min": "14",
           "Max": "5",
           "Description": "14% Chance to cast level 5 Nova when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 437,
@@ -24199,10 +24348,48 @@
         {
           "Prop": "att-skill",
           "Par": "49",
+          "Min": "10",
+          "Max": "12",
+          "Description": "10% Chance to cast level 12 Lightning on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "49",
           "Min": "5",
           "Max": "3",
           "Description": "5% Chance to cast level 3 Lightning on attack",
           "Priority": "158"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 438,
+      "Name": "of Lightning",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 9,
+      "AllowedTypes": [
+        "weap"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "49",
+          "Min": "-100",
+          "Max": "-19",
+          "Description": "Level -19 Lightning (-100/-100 Charges)",
+          "Priority": "1"
         }
       ]
     },
@@ -24210,7 +24397,7 @@
       "RowIndex": 442,
       "Name": "of Chain Lightning",
       "Level": 25,
-      "MaxLevel": null,
+      "MaxLevel": 34,
       "LevelReq": 18,
       "Rare": true,
       "Frequency": 1,
@@ -24230,18 +24417,30 @@
         {
           "Prop": "att-skill",
           "Par": "53",
+          "Min": "10",
+          "Max": "10",
+          "Description": "10% Chance to cast level 10 Chain Lightning on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "53",
           "Min": "5",
           "Max": "3",
           "Description": "5% Chance to cast level 3 Chain Lightning on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 443,
       "Name": "of Chain Lightning",
       "Level": 35,
-      "MaxLevel": null,
+      "MaxLevel": 44,
       "LevelReq": 26,
       "Rare": true,
       "Frequency": 1,
@@ -24261,12 +24460,24 @@
         {
           "Prop": "att-skill",
           "Par": "53",
+          "Min": "12",
+          "Max": "16",
+          "Description": "12% Chance to cast level 16 Chain Lightning on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "53",
           "Min": "8",
           "Max": "3",
           "Description": "8% Chance to cast level 3 Chain Lightning on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "VanillaMaxLevel": null,
+      "IsReworked": true
     },
     {
       "RowIndex": 444,
@@ -24292,12 +24503,23 @@
         {
           "Prop": "att-skill",
           "Par": "53",
+          "Min": "15",
+          "Max": "22",
+          "Description": "15% Chance to cast level 22 Chain Lightning on attack",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "att-skill",
+          "Par": "53",
           "Min": "8",
           "Max": "5",
           "Description": "8% Chance to cast level 5 Chain Lightning on attack",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 454,
@@ -24320,11 +24542,22 @@
           "Prop": "gethit-skill",
           "Par": "62",
           "Min": "10",
+          "Max": "15",
+          "Description": "10% Chance to cast level 15 Hydra when struck",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "gethit-skill",
+          "Par": "62",
+          "Min": "10",
           "Max": "3",
           "Description": "10% Chance to cast level 3 Hydra when struck",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 458,
@@ -24347,9 +24580,48 @@
         {
           "Prop": "charged",
           "Par": "6",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Magic Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "6",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Magic Arrow (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 460,
+      "Name": "of Fire Arrows",
+      "Level": 13,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "miss",
+        "abow"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "7",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fire Arrow (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -24374,12 +24646,23 @@
         {
           "Prop": "charged",
           "Par": "7",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Fire Arrow (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "7",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Fire Arrow (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 462,
@@ -24404,11 +24687,22 @@
           "Prop": "charged",
           "Par": "8",
           "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Inner Sight (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "8",
+          "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Inner Sight (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 463,
@@ -24431,8 +24725,47 @@
           "Prop": "charged",
           "Par": "8",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Inner Sight (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "8",
+          "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Inner Sight (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 464,
+      "Name": "of Jabbing",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 3,
+      "AllowedTypes": [
+        "spea",
+        "aspe"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "10",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Jab (-120/-120 Charges)",
           "Priority": "1"
         }
       ]
@@ -24458,12 +24791,23 @@
         {
           "Prop": "charged",
           "Par": "11",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Cold Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "11",
           "Min": "-30",
           "Max": "-8",
           "Description": "Level -8 Cold Arrow (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 467,
@@ -24485,12 +24829,23 @@
         {
           "Prop": "charged",
           "Par": "11",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Cold Arrow (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "11",
           "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Cold Arrow (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 468,
@@ -24513,12 +24868,23 @@
         {
           "Prop": "charged",
           "Par": "12",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Multiple Shot (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "12",
           "Min": "-30",
           "Max": "-8",
           "Description": "Level -8 Multiple Shot (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 469,
@@ -24540,12 +24906,23 @@
         {
           "Prop": "charged",
           "Par": "12",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Multiple Shot (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "12",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Multiple Shot (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 470,
@@ -24568,12 +24945,23 @@
         {
           "Prop": "charged",
           "Par": "14",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Power Strike (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "14",
           "Min": "-60",
           "Max": "-6",
           "Description": "Level -6 Power Strike (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 471,
@@ -24595,9 +24983,48 @@
         {
           "Prop": "charged",
           "Par": "14",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Power Strike (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "14",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Power Strike (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 472,
+      "Name": "of Poison Jab",
+      "Level": 17,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "15",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Poison Javelin (-120/-120 Charges)",
           "Priority": "1"
         }
       ]
@@ -24623,12 +25050,23 @@
         {
           "Prop": "charged",
           "Par": "16",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Exploding Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "16",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Exploding Arrow (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 475,
@@ -24650,9 +25088,131 @@
         {
           "Prop": "charged",
           "Par": "16",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Exploding Arrow (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "16",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Exploding Arrow (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 476,
+      "Name": "of Slow Missiles",
+      "Level": 33,
+      "MaxLevel": null,
+      "LevelReq": 27,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "amaz"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "17",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Slow Missiles (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 477,
+      "Name": "of Slow Missiles",
+      "Level": 68,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 15,
+      "AllowedTypes": [
+        "glov",
+        "amul"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "17",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Slow Missiles (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 478,
+      "Name": "of Impaling Strike",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "spea",
+        "aspe"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "19",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Impale (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 480,
+      "Name": "of Lightning Javelin",
+      "Level": 25,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "20",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Lightning Bolt (-120/-120 Charges)",
           "Priority": "1"
         }
       ]
@@ -24678,12 +25238,23 @@
         {
           "Prop": "charged",
           "Par": "21",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Ice Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "21",
           "Min": "-30",
           "Max": "-5",
           "Description": "Level -5 Ice Arrow (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 483,
@@ -24705,9 +25276,48 @@
         {
           "Prop": "charged",
           "Par": "21",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Ice Arrow (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "21",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Ice Arrow (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 484,
+      "Name": "of Guided Arrows",
+      "Level": 34,
+      "MaxLevel": null,
+      "LevelReq": 26,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "miss",
+        "abow"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "22",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Guided Arrow (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -24733,12 +25343,23 @@
         {
           "Prop": "charged",
           "Par": "24",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Charged Strike (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "24",
           "Min": "-60",
           "Max": "-5",
           "Description": "Level -5 Charged Strike (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 487,
@@ -24760,9 +25381,104 @@
         {
           "Prop": "charged",
           "Par": "24",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Charged Strike (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "24",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Charged Strike (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 488,
+      "Name": "of Plague Jab",
+      "Level": 35,
+      "MaxLevel": null,
+      "LevelReq": 27,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "25",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Plague Javelin (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 490,
+      "Name": "of Immolating Arrows",
+      "Level": 42,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "miss",
+        "abow"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "27",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Immolation Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 492,
+      "Name": "of Fending",
+      "Level": 41,
+      "MaxLevel": null,
+      "LevelReq": 35,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "spea",
+        "aspe"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "30",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Fend (-120/-120 Charges)",
           "Priority": "1"
         }
       ]
@@ -24788,12 +25504,23 @@
         {
           "Prop": "charged",
           "Par": "31",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Freezing Arrow (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "31",
           "Min": "-30",
           "Max": "-4",
           "Description": "Level -4 Freezing Arrow (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 495,
@@ -24815,12 +25542,23 @@
         {
           "Prop": "charged",
           "Par": "31",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Freezing Arrow (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "31",
           "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Freezing Arrow (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 496,
@@ -24843,12 +25581,23 @@
         {
           "Prop": "charged",
           "Par": "34",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Lightning Strike (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "34",
           "Min": "-60",
           "Max": "-4",
           "Description": "Level -4 Lightning Strike (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 497,
@@ -24870,9 +25619,48 @@
         {
           "Prop": "charged",
           "Par": "34",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Lightning Strike (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "34",
           "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Lightning Strike (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 498,
+      "Name": "of Lightning Fury",
+      "Level": 49,
+      "MaxLevel": null,
+      "LevelReq": 41,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "ama",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "35",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Lightning Fury (-120/-120 Charges)",
           "Priority": "1"
         }
       ]
@@ -24898,12 +25686,23 @@
         {
           "Prop": "charged",
           "Par": "36",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fire Bolt (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "36",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Fire Bolt (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 501,
@@ -24927,12 +25726,23 @@
         {
           "Prop": "charged",
           "Par": "36",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Fire Bolt (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "36",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Fire Bolt (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 502,
@@ -24955,12 +25765,23 @@
         {
           "Prop": "charged",
           "Par": "38",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Charged Bolt (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "38",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Charged Bolt (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 503,
@@ -24986,12 +25807,23 @@
         {
           "Prop": "charged",
           "Par": "38",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Charged Bolt (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "38",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Charged Bolt (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 504,
@@ -25014,12 +25846,23 @@
         {
           "Prop": "charged",
           "Par": "39",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Ice Bolt (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "39",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Ice Bolt (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 505,
@@ -25041,9 +25884,135 @@
         {
           "Prop": "charged",
           "Par": "39",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Ice Bolt (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "39",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Ice Bolt (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 506,
+      "Name": "of Frozen Armor",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "40",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Frozen Armor (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 507,
+      "Name": "of Frozen Armor",
+      "Level": 14,
+      "MaxLevel": null,
+      "LevelReq": 14,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "knif",
+        "tors"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "40",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Frozen Armor (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 508,
+      "Name": "of Static Field",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "42",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Static Field (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 509,
+      "Name": "of Static Field",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "hamm",
+        "mace",
+        "scep",
+        "ring",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "42",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Static Field (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -25129,11 +26098,22 @@
           "Prop": "charged",
           "Par": "44",
           "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Frost Nova (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "44",
+          "Min": "-30",
           "Max": "-8",
           "Description": "Level -8 Frost Nova (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 513,
@@ -25158,11 +26138,22 @@
           "Prop": "charged",
           "Par": "44",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Frost Nova (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "44",
+          "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Frost Nova (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 514,
@@ -25185,12 +26176,23 @@
         {
           "Prop": "charged",
           "Par": "45",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Ice Blast (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "45",
           "Min": "-30",
           "Max": "-8",
           "Description": "Level -8 Ice Blast (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 515,
@@ -25216,9 +26218,75 @@
         {
           "Prop": "charged",
           "Par": "45",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Ice Blast (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "45",
           "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Ice Blast (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 516,
+      "Name": "of Blazing",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "46",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Blaze (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 517,
+      "Name": "of Blazing",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "boot"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "46",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Blaze (-40/-40 Charges)",
           "Priority": "1"
         }
       ]
@@ -25244,12 +26312,23 @@
         {
           "Prop": "charged",
           "Par": "47",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fire Ball (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "47",
           "Min": "-30",
           "Max": "-7",
           "Description": "Level -7 Fire Ball (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 519,
@@ -25272,12 +26351,23 @@
         {
           "Prop": "charged",
           "Par": "47",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Fire Ball (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "47",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Fire Ball (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 520,
@@ -25300,12 +26390,23 @@
         {
           "Prop": "charged",
           "Par": "48",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Nova (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "48",
           "Min": "-30",
           "Max": "-7",
           "Description": "Level -7 Nova (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 521,
@@ -25327,12 +26428,23 @@
         {
           "Prop": "charged",
           "Par": "48",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Nova (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "48",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Nova (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 522,
@@ -25355,12 +26467,23 @@
         {
           "Prop": "charged",
           "Par": "49",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Lightning (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "49",
           "Min": "-30",
           "Max": "-7",
           "Description": "Level -7 Lightning (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 523,
@@ -25383,9 +26506,131 @@
         {
           "Prop": "charged",
           "Par": "49",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Lightning (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "49",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Lightning (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 524,
+      "Name": "of Shiver Armor",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "50",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Shiver Armor (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 525,
+      "Name": "of Shiver Armor",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "knif",
+        "tors"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "50",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Shiver Armor (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 526,
+      "Name": "of Fire Walls",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "51",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fire Wall (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 527,
+      "Name": "of Fire Walls",
+      "Level": 48,
+      "MaxLevel": null,
+      "LevelReq": 48,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "pole"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "51",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Fire Wall (-40/-40 Charges)",
           "Priority": "1"
         }
       ]
@@ -25412,11 +26657,22 @@
           "Prop": "charged",
           "Par": "52",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Enchant (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "52",
+          "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Enchant (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 529,
@@ -25439,11 +26695,22 @@
           "Prop": "charged",
           "Par": "52",
           "Min": "-10",
+          "Max": "-14",
+          "Description": "Level -14 Enchant (-10/-10 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "52",
+          "Min": "-10",
           "Max": "-1",
           "Description": "Level -1 Enchant (-10/-10 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 530,
@@ -25466,12 +26733,23 @@
         {
           "Prop": "charged",
           "Par": "53",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Chain Lightning (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "53",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Chain Lightning (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 531,
@@ -25493,12 +26771,23 @@
         {
           "Prop": "charged",
           "Par": "53",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Chain Lightning (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "53",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Chain Lightning (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 532,
@@ -25577,12 +26866,23 @@
         {
           "Prop": "charged",
           "Par": "55",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Glacial Spike (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "55",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Glacial Spike (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 535,
@@ -25604,12 +26904,23 @@
         {
           "Prop": "charged",
           "Par": "55",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Glacial Spike (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "55",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Glacial Spike (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 536,
@@ -25632,12 +26943,23 @@
         {
           "Prop": "charged",
           "Par": "56",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Meteor (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "56",
           "Min": "-30",
           "Max": "-5",
           "Description": "Level -5 Meteor (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 537,
@@ -25660,9 +26982,131 @@
         {
           "Prop": "charged",
           "Par": "56",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Meteor (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "56",
           "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Meteor (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 538,
+      "Name": "of Thunder Storm",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "57",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Thunder Storm (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 539,
+      "Name": "of Thunder Storm",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "hamm",
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "57",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Thunder Storm (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 540,
+      "Name": "of Energy Shield",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "58",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Energy Shield (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 541,
+      "Name": "of Energy Shield",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "helm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "58",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Energy Shield (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -25688,12 +27132,23 @@
         {
           "Prop": "charged",
           "Par": "59",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Blizzard (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "59",
           "Min": "-30",
           "Max": "-5",
           "Description": "Level -5 Blizzard (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 543,
@@ -25715,9 +27170,130 @@
         {
           "Prop": "charged",
           "Par": "59",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Blizzard (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "59",
           "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Blizzard (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 544,
+      "Name": "of Chilling Armor",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "60",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Chilling Armor (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 545,
+      "Name": "of Chilling Armor",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "tors"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "60",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Chilling Armor (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 546,
+      "Name": "of Hydras",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "staf",
+        "orb"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "62",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Hydra (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 547,
+      "Name": "of Hydras",
+      "Level": 72,
+      "MaxLevel": null,
+      "LevelReq": 72,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "sor",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "62",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Hydra (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -25743,12 +27319,23 @@
         {
           "Prop": "charged",
           "Par": "64",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Frozen Orb (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "64",
           "Min": "-30",
           "Max": "-3",
           "Description": "Level -3 Frozen Orb (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 549,
@@ -25770,9 +27357,76 @@
         {
           "Prop": "charged",
           "Par": "64",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Frozen Orb (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "64",
           "Min": "-20",
           "Max": "-1",
           "Description": "Level -1 Frozen Orb (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 550,
+      "Name": "of Amplify Damage",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "66",
+          "Min": "-60",
+          "Max": "-10",
+          "Description": "Level -10 Amplify Damage (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 551,
+      "Name": "of Amplify Damage",
+      "Level": 14,
+      "MaxLevel": null,
+      "LevelReq": 14,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "blun"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "66",
+          "Min": "-20",
+          "Max": "-6",
+          "Description": "Level -6 Amplify Damage (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -25799,12 +27453,23 @@
         {
           "Prop": "charged",
           "Par": "67",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Teeth (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "67",
           "Min": "-60",
           "Max": "-10",
           "Description": "Level -10 Teeth (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 553,
@@ -25826,9 +27491,133 @@
         {
           "Prop": "charged",
           "Par": "67",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Teeth (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "67",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Teeth (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 554,
+      "Name": "of Bone Armor",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "68",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Bone Armor (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 555,
+      "Name": "of Bone Armor",
+      "Level": 14,
+      "MaxLevel": null,
+      "LevelReq": 14,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "tors"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "68",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Bone Armor (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 556,
+      "Name": "of Raise Skeletons",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "70",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Raise Skeleton (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 557,
+      "Name": "of Raise Skeletons",
+      "Level": 14,
+      "MaxLevel": null,
+      "LevelReq": 14,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "70",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Raise Skeleton (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -25856,11 +27645,22 @@
           "Prop": "charged",
           "Par": "71",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Dim Vision (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "71",
+          "Min": "-60",
           "Max": "-8",
           "Description": "Level -8 Dim Vision (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 559,
@@ -25884,11 +27684,22 @@
           "Prop": "charged",
           "Par": "71",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Dim Vision (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "71",
+          "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Dim Vision (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 560,
@@ -25913,11 +27724,22 @@
           "Prop": "charged",
           "Par": "72",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Weaken (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "72",
+          "Min": "-60",
           "Max": "-8",
           "Description": "Level -8 Weaken (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 561,
@@ -25940,11 +27762,22 @@
           "Prop": "charged",
           "Par": "72",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Weaken (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "72",
+          "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Weaken (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 562,
@@ -25967,12 +27800,23 @@
         {
           "Prop": "charged",
           "Par": "73",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Poison Dagger (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "73",
           "Min": "-60",
           "Max": "-8",
           "Description": "Level -8 Poison Dagger (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 563,
@@ -25996,9 +27840,189 @@
         {
           "Prop": "charged",
           "Par": "73",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Poison Dagger (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "73",
           "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Poison Dagger (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 564,
+      "Name": "of Corpse Explosions",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "74",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Corpse Explosion (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 565,
+      "Name": "of Corpse Explosions",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "74",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Corpse Explosion (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 566,
+      "Name": "of Clay Golem Summoning",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "75",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Clay Golem (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 567,
+      "Name": "of Clay Golem Summoning",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "75",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Clay Golem (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 568,
+      "Name": "of Iron Maiden",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "76",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Iron Maiden (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 569,
+      "Name": "of Iron Maiden",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "shld"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "76",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Iron Maiden (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -26026,11 +28050,22 @@
           "Prop": "charged",
           "Par": "77",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Terror (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "77",
+          "Min": "-60",
           "Max": "-7",
           "Description": "Level -7 Terror (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 571,
@@ -26053,8 +28088,134 @@
           "Prop": "charged",
           "Par": "77",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Terror (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "77",
+          "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Terror (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 572,
+      "Name": "of Bone Walls",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "78",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Bone Wall (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 573,
+      "Name": "of Bone Walls",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "club",
+        "mace",
+        "scep"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "78",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Bone Wall (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 574,
+      "Name": "of Raise Skeletal Mages",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "80",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Raise Skeletal Mage (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 575,
+      "Name": "of Raise Skeletal Mages",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "80",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Raise Skeletal Mage (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -26082,11 +28243,22 @@
           "Prop": "charged",
           "Par": "81",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Confuse (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "81",
+          "Min": "-60",
           "Max": "-6",
           "Description": "Level -6 Confuse (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 577,
@@ -26110,11 +28282,22 @@
           "Prop": "charged",
           "Par": "81",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Confuse (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "81",
+          "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Confuse (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 578,
@@ -26139,11 +28322,22 @@
           "Prop": "charged",
           "Par": "82",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Life Tap (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "82",
+          "Min": "-60",
           "Max": "-6",
           "Description": "Level -6 Life Tap (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 579,
@@ -26166,8 +28360,75 @@
           "Prop": "charged",
           "Par": "82",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Life Tap (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "82",
+          "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Life Tap (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 580,
+      "Name": "of Poison Explosion",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "83",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Poison Explosion (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 581,
+      "Name": "of Poison Explosion",
+      "Level": 48,
+      "MaxLevel": null,
+      "LevelReq": 48,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "blun"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "83",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Poison Explosion (-40/-40 Charges)",
           "Priority": "1"
         }
       ]
@@ -26194,12 +28455,23 @@
         {
           "Prop": "charged",
           "Par": "84",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Bone Spear (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "84",
           "Min": "-60",
           "Max": "-6",
           "Description": "Level -6 Bone Spear (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 583,
@@ -26221,9 +28493,76 @@
         {
           "Prop": "charged",
           "Par": "84",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Bone Spear (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "84",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Bone Spear (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 584,
+      "Name": "of Blood Golem Summoning",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "85",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Blood Golem (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 585,
+      "Name": "of Blood Golem Summoning",
+      "Level": 48,
+      "MaxLevel": null,
+      "LevelReq": 48,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "axe"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "85",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Blood Golem (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -26251,11 +28590,22 @@
           "Prop": "charged",
           "Par": "86",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Attract (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "86",
+          "Min": "-60",
           "Max": "-5",
           "Description": "Level -5 Attract (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 587,
@@ -26280,8 +28630,188 @@
           "Prop": "charged",
           "Par": "86",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Attract (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "86",
+          "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Attract (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 588,
+      "Name": "of Decrepification",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "87",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Decrepify (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 589,
+      "Name": "of Decrepification",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "shld"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "87",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Decrepify (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 590,
+      "Name": "of Bone Imprisonment",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "88",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Bone Prison (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 591,
+      "Name": "of Bone Imprisonment",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "mace",
+        "scep"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "88",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Bone Prison (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 592,
+      "Name": "of Iron Golem Creation",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "90",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Iron Golem (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 593,
+      "Name": "of Iron Golem Creation",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "swor"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "90",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Iron Golem (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -26309,11 +28839,22 @@
           "Prop": "charged",
           "Par": "91",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Lower Resist (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "91",
+          "Min": "-60",
           "Max": "-3",
           "Description": "Level -3 Lower Resist (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 595,
@@ -26336,11 +28877,22 @@
           "Prop": "charged",
           "Par": "91",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Lower Resist (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "91",
+          "Min": "-20",
           "Max": "-1",
           "Description": "Level -1 Lower Resist (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 596,
@@ -26364,12 +28916,23 @@
         {
           "Prop": "charged",
           "Par": "92",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Poison Nova (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "92",
           "Min": "-60",
           "Max": "-3",
           "Description": "Level -3 Poison Nova (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 597,
@@ -26391,12 +28954,23 @@
         {
           "Prop": "charged",
           "Par": "92",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Poison Nova (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "92",
           "Min": "-20",
           "Max": "-1",
           "Description": "Level -1 Poison Nova (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 598,
@@ -26420,12 +28994,23 @@
         {
           "Prop": "charged",
           "Par": "93",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Bone Spirit (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "93",
           "Min": "-60",
           "Max": "-3",
           "Description": "Level -3 Bone Spirit (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 599,
@@ -26448,9 +29033,132 @@
         {
           "Prop": "charged",
           "Par": "93",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Bone Spirit (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "93",
           "Min": "-20",
           "Max": "-1",
           "Description": "Level -1 Bone Spirit (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 600,
+      "Name": "of Fire Golem Summoning",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "94",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Fire Golem (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 601,
+      "Name": "of Fire Golem Summoning",
+      "Level": 72,
+      "MaxLevel": null,
+      "LevelReq": 72,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "hamm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "94",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Fire Golem (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 602,
+      "Name": "of Revivification",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "wand",
+        "knif",
+        "head"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "95",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Revive (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 603,
+      "Name": "of Revivification",
+      "Level": 72,
+      "MaxLevel": null,
+      "LevelReq": 72,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "nec",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "pole"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "95",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Revive (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -26476,12 +29184,23 @@
         {
           "Prop": "charged",
           "Par": "96",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Sacrifice (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "96",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Sacrifice (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 605,
@@ -26505,12 +29224,23 @@
         {
           "Prop": "charged",
           "Par": "96",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Sacrifice (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "96",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Sacrifice (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 606,
@@ -26533,12 +29263,23 @@
         {
           "Prop": "charged",
           "Par": "101",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Holy Bolt (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "101",
           "Min": "-30",
           "Max": "-8",
           "Description": "Level -8 Holy Bolt (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 607,
@@ -26561,12 +29302,23 @@
         {
           "Prop": "charged",
           "Par": "101",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Holy Bolt (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "101",
           "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 Holy Bolt (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 608,
@@ -26589,12 +29341,23 @@
         {
           "Prop": "charged",
           "Par": "106",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Zeal (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "106",
           "Min": "-30",
           "Max": "-7",
           "Description": "Level -7 Zeal (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 609,
@@ -26618,12 +29381,23 @@
         {
           "Prop": "charged",
           "Par": "106",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Zeal (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "106",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Zeal (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 610,
@@ -26646,12 +29420,23 @@
         {
           "Prop": "charged",
           "Par": "111",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Vengeance (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "111",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Vengeance (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 611,
@@ -26674,12 +29459,23 @@
         {
           "Prop": "charged",
           "Par": "111",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Vengeance (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "111",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Vengeance (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 612,
@@ -26702,12 +29498,23 @@
         {
           "Prop": "charged",
           "Par": "112",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Blessed Hammer (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "112",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Blessed Hammer (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 613,
@@ -26729,9 +29536,105 @@
         {
           "Prop": "charged",
           "Par": "112",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Blessed Hammer (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "112",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Blessed Hammer (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 614,
+      "Name": "of Conversion",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "pal",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "scep",
+        "ashd"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "116",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Conversion (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 615,
+      "Name": "of Conversion",
+      "Level": 60,
+      "MaxLevel": null,
+      "LevelReq": 60,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "pal",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "blun"
+      ],
+      "ExcludedTypes": [
+        "scep"
+      ],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "116",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Conversion (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 616,
+      "Name": "of Fist of the Heavens",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "pal",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "scep",
+        "ashd"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "121",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fist of the Heavens (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -26756,12 +29659,23 @@
         {
           "Prop": "charged",
           "Par": "126",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Bash (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "126",
           "Min": "-60",
           "Max": "-10",
           "Description": "Level -10 Bash (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 619,
@@ -26787,9 +29701,128 @@
         {
           "Prop": "charged",
           "Par": "126",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Bash (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "126",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Bash (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 620,
+      "Name": "of Howling",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "130",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Howl (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 622,
+      "Name": "of Potion Finding",
+      "Level": 7,
+      "MaxLevel": null,
+      "LevelReq": 7,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 1,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "131",
+          "Min": "-60",
+          "Max": "-10",
+          "Description": "Level -10 Find Potion (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 624,
+      "Name": "of Taunting",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "137",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Taunt (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 626,
+      "Name": "of Shouting",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "138",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Shout (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -26818,12 +29851,23 @@
         {
           "Prop": "charged",
           "Par": "139",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Stun (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "139",
           "Min": "-60",
           "Max": "-7",
           "Description": "Level -7 Stun (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 629,
@@ -26845,9 +29889,47 @@
         {
           "Prop": "charged",
           "Par": "139",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Stun (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "139",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Stun (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 630,
+      "Name": "of Item Finding",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "142",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Find Item (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -26872,12 +29954,23 @@
         {
           "Prop": "charged",
           "Par": "144",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 Concentrate (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "144",
           "Min": "-60",
           "Max": "-6",
           "Description": "Level -6 Concentrate (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 633,
@@ -26903,9 +29996,74 @@
         {
           "Prop": "charged",
           "Par": "144",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Concentrate (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "144",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Concentrate (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 634,
+      "Name": "of Battle Cry",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 18,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "146",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Battle Cry (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 636,
+      "Name": "of Battle Orders",
+      "Level": 30,
+      "MaxLevel": null,
+      "LevelReq": 30,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 24,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "149",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Battle Orders (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -26931,11 +30089,22 @@
           "Prop": "charged",
           "Par": "150",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Grim Ward (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "150",
+          "Min": "-60",
           "Max": "-5",
           "Description": "Level -5 Grim Ward (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 639,
@@ -26958,8 +30127,73 @@
           "Prop": "charged",
           "Par": "150",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Grim Ward (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "150",
+          "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Grim Ward (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 640,
+      "Name": "of War Cry",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "154",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 War Cry (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 642,
+      "Name": "of Battle Command",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "bar",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "phlm"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "155",
+          "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 Battle Command (-60/-60 Charges)",
           "Priority": "1"
         }
       ]
@@ -26984,12 +30218,23 @@
         {
           "Prop": "charged",
           "Par": "225",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Firestorm (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "225",
           "Min": "-30",
           "Max": "-10",
           "Description": "Level -10 Firestorm (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 645,
@@ -27011,9 +30256,74 @@
         {
           "Prop": "charged",
           "Par": "225",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Firestorm (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "225",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 Firestorm (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 646,
+      "Name": "of Molten Boulders",
+      "Level": 12,
+      "MaxLevel": null,
+      "LevelReq": 12,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "229",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Molten Boulder (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 647,
+      "Name": "of Molten Boulders",
+      "Level": 24,
+      "MaxLevel": null,
+      "LevelReq": 24,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 6,
+      "AllowedTypes": [
+        "mace"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "229",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Molten Boulder (-40/-40 Charges)",
           "Priority": "1"
         }
       ]
@@ -27038,12 +30348,23 @@
         {
           "Prop": "charged",
           "Par": "234",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Fissure (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "234",
           "Min": "-30",
           "Max": "-7",
           "Description": "Level -7 Fissure (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 649,
@@ -27065,9 +30386,74 @@
         {
           "Prop": "charged",
           "Par": "234",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Fissure (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "234",
           "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 Fissure (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 650,
+      "Name": "of Cyclone Armor",
+      "Level": 18,
+      "MaxLevel": null,
+      "LevelReq": 18,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "235",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Cyclone Armor (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 651,
+      "Name": "of Cyclone Armor",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 12,
+      "AllowedTypes": [
+        "tors"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "235",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Cyclone Armor (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -27092,12 +30478,23 @@
         {
           "Prop": "charged",
           "Par": "240",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Twister (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "240",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Twister (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 653,
@@ -27120,12 +30517,23 @@
         {
           "Prop": "charged",
           "Par": "240",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Twister (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "240",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Twister (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 654,
@@ -27147,12 +30555,23 @@
         {
           "Prop": "charged",
           "Par": "244",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Volcano (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "244",
           "Min": "-30",
           "Max": "-6",
           "Description": "Level -6 Volcano (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 655,
@@ -27174,12 +30593,23 @@
         {
           "Prop": "charged",
           "Par": "244",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Volcano (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "244",
           "Min": "-20",
           "Max": "-3",
           "Description": "Level -3 Volcano (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 656,
@@ -27201,12 +30631,23 @@
         {
           "Prop": "charged",
           "Par": "245",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Tornado (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "245",
           "Min": "-30",
           "Max": "-5",
           "Description": "Level -5 Tornado (-30/-30 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 657,
@@ -27229,9 +30670,129 @@
         {
           "Prop": "charged",
           "Par": "245",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Tornado (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "245",
           "Min": "-20",
           "Max": "-2",
           "Description": "Level -2 Tornado (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "IsReworked": true
+    },
+    {
+      "RowIndex": 658,
+      "Name": "of Armageddon",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "249",
+          "Min": "-60",
+          "Max": "-27",
+          "Description": "Level -27 Armageddon (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 659,
+      "Name": "of Armageddon",
+      "Level": 72,
+      "MaxLevel": null,
+      "LevelReq": 72,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "staf"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "249",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 Armageddon (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 660,
+      "Name": "of Hurricane",
+      "Level": 36,
+      "MaxLevel": null,
+      "LevelReq": 36,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "club"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "250",
+          "Min": "-30",
+          "Max": "-20",
+          "Description": "Level -20 Hurricane (-30/-30 Charges)",
+          "Priority": "1"
+        }
+      ]
+    },
+    {
+      "RowIndex": 661,
+      "Name": "of Hurricane",
+      "Level": 72,
+      "MaxLevel": null,
+      "LevelReq": 72,
+      "Rare": true,
+      "Frequency": 1,
+      "Group": "44",
+      "ClassSpecific": "",
+      "Class": "dru",
+      "ClassLevelReq": 30,
+      "AllowedTypes": [
+        "amul",
+        "circ"
+      ],
+      "ExcludedTypes": [],
+      "Properties": [
+        {
+          "Prop": "charged",
+          "Par": "250",
+          "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 Hurricane (-20/-20 Charges)",
           "Priority": "1"
         }
       ]
@@ -27259,11 +30820,22 @@
           "Prop": "hit-skill",
           "Par": "66",
           "Min": "5",
+          "Max": "6",
+          "Description": "5% Chance to cast level 6 Amplify Damage on striking",
+          "Priority": "158"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "hit-skill",
+          "Par": "66",
+          "Min": "5",
           "Max": "1",
           "Description": "5% Chance to cast level 1 Amplify Damage on striking",
           "Priority": "158"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 663,
@@ -29958,12 +33530,23 @@
         {
           "Prop": "charged",
           "Par": "395",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 [not found] (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "395",
           "Min": "-60",
           "Max": "-10",
           "Description": "Level -10 [not found] (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 779,
@@ -29985,12 +33568,23 @@
         {
           "Prop": "charged",
           "Par": "395",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 [not found] (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "395",
           "Min": "-20",
           "Max": "-6",
           "Description": "Level -6 [not found] (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 780,
@@ -30015,11 +33609,22 @@
           "Prop": "charged",
           "Par": "393",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 [not found] (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "393",
+          "Min": "-60",
           "Max": "-8",
           "Description": "Level -8 [not found] (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 781,
@@ -30043,11 +33648,22 @@
           "Prop": "charged",
           "Par": "393",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 [not found] (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "393",
+          "Min": "-20",
           "Max": "-5",
           "Description": "Level -5 [not found] (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 782,
@@ -30072,11 +33688,22 @@
           "Prop": "charged",
           "Par": "396",
           "Min": "-60",
+          "Max": "-20",
+          "Description": "Level -20 [not found] (-60/-60 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "396",
+          "Min": "-60",
           "Max": "-7",
           "Description": "Level -7 [not found] (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 783,
@@ -30099,11 +33726,22 @@
           "Prop": "charged",
           "Par": "396",
           "Min": "-20",
+          "Max": "-14",
+          "Description": "Level -14 [not found] (-20/-20 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "396",
+          "Min": "-20",
           "Max": "-4",
           "Description": "Level -4 [not found] (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 784,
@@ -30127,12 +33765,23 @@
         {
           "Prop": "charged",
           "Par": "401",
+          "Min": "-120",
+          "Max": "-27",
+          "Description": "Level -27 [not found] (-120/-120 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "401",
           "Min": "-60",
           "Max": "-3",
           "Description": "Level -3 [not found] (-60/-60 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     },
     {
       "RowIndex": 785,
@@ -30154,12 +33803,23 @@
         {
           "Prop": "charged",
           "Par": "401",
+          "Min": "-40",
+          "Max": "-19",
+          "Description": "Level -19 [not found] (-40/-40 Charges)",
+          "Priority": "1"
+        }
+      ],
+      "VanillaProperties": [
+        {
+          "Prop": "charged",
+          "Par": "401",
           "Min": "-20",
           "Max": "-1",
           "Description": "Level -1 [not found] (-20/-20 Charges)",
           "Priority": "1"
         }
-      ]
+      ],
+      "IsReworked": true
     }
   ],
   "TypeChains": {

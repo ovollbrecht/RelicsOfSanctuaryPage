@@ -1,4 +1,5 @@
 <script setup>
+import { iconUrl } from '@/composables/useItemIcon.js';
 import { ref, onMounted, computed } from 'vue';
 import craftingData from '@/assets/crafting.json';
 import itemMapping from '@/assets/item_mapping.json';
@@ -15,7 +16,8 @@ const activeFilters = ref({
 // Get unique crafted types for filter buttons
 const craftedTypes = computed(() => {
   const types = [...new Set(craftingRecipes.value.map(recipe => recipe.CraftedType))];
-  return types.sort();
+  // alphabetical, with Hex - the skull craft, the odd one out - at the far right
+  return types.sort((a, b) => (a === 'Hex') - (b === 'Hex') || a.localeCompare(b));
 });
 
 // Get unique item types for filter buttons
@@ -146,6 +148,10 @@ const getInputName = (inputName) => {
   // Otherwise return as is (for runes, gems, etc.)
   return inputName;
 };
+
+// the perfect gem each craft is made with - the tab wears it instead of a colour dot
+const CRAFT_GEMS = { Blood: 'gpr', Caster: 'gpv', Safety: 'gpg', 'Hit Power': 'gpb', Discovery: 'gpy', Eternity: 'gpw', Hex: 'skz' };
+const craftGemIcon = (craftedType) => iconUrl(CRAFT_GEMS[craftedType]);
 
 // Get CSS class for gem type
 const getGemClass = (gemName) => {
@@ -311,17 +317,7 @@ onMounted(() => {
                   :class="activeFilters.craftedType === craftedType ? 'btn-secondary' : 'btn-outline-secondary'"
                   @click="setCraftedTypeFilter(craftedType)"
                 >
-                  <span 
-                    class="craft-type-indicator"
-                    :class="{
-                      'blood-indicator': craftedType === 'Blood',
-                      'caster-indicator': craftedType === 'Caster',
-                      'discovery-indicator': craftedType === 'Discovery',
-                      'eternity-indicator': craftedType === 'Eternity',
-                      'hitpower-indicator': craftedType === 'Hit Power',
-                      'safety-indicator': craftedType === 'Safety'
-                    }"
-                  ></span>
+                  <img v-if="craftGemIcon(craftedType)" :src="craftGemIcon(craftedType)" class="craft-gem" :alt="CRAFT_GEMS[craftedType]" />
                   {{ craftedType }}
                 </button>
               </div>
@@ -513,6 +509,10 @@ onMounted(() => {
 
 .filter-btn {
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .active-filters {
@@ -546,44 +546,10 @@ onMounted(() => {
   width: 50%;
 }
 
-.craft-type-indicator {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 6px;
-  position: relative;
-  top: -1px;
-}
-
-.blood-indicator {
-  background: rgb(255, 77, 77);
-  box-shadow: 0 0 4px rgba(255, 77, 77, 0.7);
-}
-
-.caster-indicator {
-  background: rgb(174, 0, 255);
-  box-shadow: 0 0 4px rgba(174, 0, 255, 0.7);
-}
-
-.discovery-indicator {
-  background: rgb(240, 240, 0);
-  box-shadow: 0 0 4px rgba(240, 240, 0, 0.7);
-}
-
-.eternity-indicator {
-  background: rgb(240, 240, 240);
-  box-shadow: 0 0 4px rgba(240, 240, 240, 0.7);
-}
-
-.hitpower-indicator {
-  background: rgb(105, 105, 255);
-  box-shadow: 0 0 4px rgba(105, 105, 255, 0.7);
-}
-
-.safety-indicator {
-  background: rgb(0, 200, 0);
-  box-shadow: 0 0 4px rgba(0, 200, 0, 0.7);
+.craft-gem {
+  width: 20px;
+  height: 20px;
+  flex: none;
 }
 
 .gem-ruby {

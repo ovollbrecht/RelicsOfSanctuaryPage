@@ -21,6 +21,31 @@
         <div class="card card-enhanced">
           <div class="card-body p-4">
             <div class="changelog-entry">
+              <div class="version">Version 3.5.0</div>
+              <ul class="changelog-list">
+                <li>{{ $t('Crafting reworked: every recipe carries three fixed properties now, and the vanilla crafts use the mod\'s numbers — Hit Power\'s Frost Nova at level 12, Safety\'s damage reduction in one line, Blood with crushing blow, deadly strike or open wounds. Discovery is the farmer\'s craft: magic find, gold find and a slot perk, from a Perfect Topaz') }}</li>
+                <li>{{ $t('Added Hex crafting: a Perfect Skull and a rune on a magic item draw one card from the slot\'s deck — common cards four times as often as the uncommon ones, which hit harder — plus two kill-or-steal mods') }}</li>
+                <li>{{ $t('Added three Runewords. Unholy Pact (Cham Fal Mal, helms) charges for what it gives: four fixed penalties against a level 15 Summon Defiler, self repair, a ward card and a gift card. Bravado (Thul Ohm, body armor) is the glass cannon: damage, deadly strike, a skill and cannot be frozen, paid with −10% life and −10 to all resistances. Reservoir (Sur Io Vex, helms) is the caster\'s mana store: Warmth as a skill for every class, 40% of damage taken goes to mana, +2 skills') }}</li>
+                <li>{{ $t('Added Hexenhammer, a unique Legendary Mallet, with its exalted twin: the witch-hunter\'s weapon — curse resistance, damage and attack rating against demons, a Fire Wall where the kill happened, and 1487 written all over it. The exalted one calls Fist of the Heavens on striking') }}</li>
+                <li>{{ $t('Added Corpse Grinder, unique Crusader Gauntlets, with its exalted twin: Find Item fires on every other kill, the loot line rolls magic find or gold find, and the exalted pair horks lying corpses on striking too') }}</li>
+                <li>{{ $t('Reworked the skill affixes: chance-to-cast suffixes get levels that matter at the item level they roll on instead of 3 to 5, charged suffixes scale their level with the item, and the charged suffixes the game ships switched off are on — Battle Orders, Static Field, Decrepify, Energy Shield, the Sorceress armors and the rest. Both are options') }}</li>
+                <li>{{ $t('Galaxy forms from Jah Vex Sur instead of two Jahs, and its stars are level 7') }}</li>
+                <li>{{ $t('The Mythic bonus draws its two stats one at a time — when both draws landed on the same stat, one of them vanished. The Mythic line sits at the bottom of the tooltip now') }}</li>
+                <li>{{ $t('Fixed 72 property values that could not survive a save and came back wrong after a reload — the lightning damage on E Schaefer\'s Hammer, the Cow King\'s Leathers magic find and the Bul-Kathos\' Children and M\'avina\'s Battle Hymn bonuses among them') }}</li>
+                <li>{{ $t('Fixed three exalted procs that never fired: E Tarnhelm\'s Cloak of Shadows, E Nightwing\'s Veil\'s Shiver Armor and E Spirit Ward\'s Heart of Wolverine. E Griffon\'s Eye casts Static Field when struck and E Stormrider casts Nova on kill — Thunder Storm cannot be cast by an item at all') }}</li>
+                <li>{{ $t('False Spirit has one socket now, its exalted version two') }}</li>
+                <li>{{ $t('Fixed four of the five Herald names reading "missing string" since Reign of the Warlock, and 23 of the game\'s own lines with them — the Chronicle\'s Rewards title and Learn More among them: the mod\'s item names sat on ids Blizzard later used; they moved to a range of their own') }}</li>
+                <li>{{ $t('The in-game cube menus show item sprites and read as [from] → [to]; the crafting menu has a Hex tab and the Runeword menu lists the three new words') }}</li>
+                <li>{{ $t('Website: the Terror Zones page reads the offline schedule against the clock — what is terrorized now, what comes next, when a zone or an item is due, and what can drop there with the desecrated-only options on') }}</li>
+                <li>{{ $t('Website: the Grail — drop your shared stash and characters on the page and the checklist ticks itself off from the save files, parsed in the browser and never uploaded; the Chronicle adds what was found and since gone. Milestones, a timeline, how rare each find was, a rune cabinet and a picture to share') }}</li>
+                <li>{{ $t('Website: the Grail speaks on the Runewords page — built words marked on the row edge, your runes counted, held bases with their staffmods, a runes-needed dropdown on every tier and the bill for every word still unbuilt') }}</li>
+                <li>{{ $t('Website: every cube recipe the game and the mod know, on shelves, with the game\'s own icons on runes, gems and ingredients') }}</li>
+                <li>{{ $t('Website: search everything from anywhere — items, sets, runewords, runes, recipes, zones, monsters and the pages themselves — with Ctrl+K') }}</li>
+                <li>{{ $t('Website: the crafting page has the Hex tab, and the drop calculator can show only what your Grail is still missing from a source, with a switch for counting the exalted and mythic variants') }}</li>
+                <li>{{ $t('Website: the drop calculator remembers your difficulty, player count and magic find, and the Grail\'s rarity card scores at the magic find you enter') }}</li>
+              </ul>
+            </div>
+            <div class="changelog-entry">
               <div class="version">Version 3.4.0</div>
               <ul class="changelog-list">
                 <li>{{ $t('Added 30 new Runewords. A pass over all 118 active words showed where the holes were, by slot and by level: the mod\'s class-specific words started at mid level and the Warlock had none at all, and outside the Paladin\'s world the endgame shield was a choice between Stormshield and Phoenix. Among the new ones are the shield trio Mercy, Anathema and Motley, and Alea, a gambling word that only forms in a Cryptic Sword') }}</li>

@@ -1,5 +1,6 @@
 <script setup>
 import { runeIcon } from '@/composables/useItemIcon.js';
+import { flattenAllOf } from '@/composables/useProperties.js';
 import ReworkChanges from '@/components/ReworkChanges.vue';
 
 /**
@@ -45,7 +46,7 @@ const formatChance = (chance) => {
              kind: on a weapon-only runeword it would just repeat the row. -->
         <div v-if="group.variants.length > 1" class="variant-label">{{ $t('In {item}', { item: variant.label }) }}</div>
         <ul class="prop-lines">
-          <li v-for="(prop, propIndex) in variant.properties" :key="propIndex">
+          <li v-for="(prop, propIndex) in flattenAllOf(variant.properties)" :key="propIndex">
             {{ prop.Description }}
             <ul v-if="prop.Rolls" class="property-rolls">
               <li v-for="(roll, rollIndex) in prop.Rolls" :key="rollIndex">

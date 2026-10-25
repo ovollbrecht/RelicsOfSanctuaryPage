@@ -60263,6 +60263,24 @@
       "Rarity": 1,
       "ExaltedName": "Exalted ???",
       "Spawnable": true
+    },
+    {
+      "Index": "Corpse Grinder",
+      "Name": "Corpse Grinder",
+      "Base": 543,
+      "Lvl": 88,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Corpse Grinder",
+      "Spawnable": true
+    },
+    {
+      "Index": "Hexenhammer",
+      "Name": "Hexenhammer",
+      "Base": 84,
+      "Lvl": 87,
+      "Rarity": 1,
+      "ExaltedName": "Exalted Hexenhammer",
+      "Spawnable": true
     }
   ],
   "Sets": [
@@ -101834,7 +101852,9 @@
       454,
       455,
       456,
-      457
+      457,
+      458,
+      459
     ],
     "SetOverrides": {
       "127": {

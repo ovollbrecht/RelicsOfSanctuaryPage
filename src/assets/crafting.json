@@ -7,18 +7,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "7",
-        "Description": "Attacker Takes Damage of [3-7]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -29,15 +29,6 @@
         "Max": "50",
         "Description": "+[25-50] Defense vs. Missile",
         "Priority": "69"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -64,18 +55,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "7",
-        "Description": "Attacker Takes Damage of [3-7]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -86,15 +77,6 @@
         "Max": "60",
         "Description": "+[25-60] Defense vs. Melee",
         "Priority": "70"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -121,18 +103,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "7",
-        "Description": "Attacker Takes Damage of [3-7]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -143,15 +125,6 @@
         "Max": "1",
         "Description": "Knockback",
         "Priority": "76"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -178,18 +151,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "7",
-        "Description": "Attacker Takes Damage of [3-7]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -200,15 +173,6 @@
         "Max": "10",
         "Description": "[5-10]% Damage Taken Goes To Mana",
         "Priority": "11"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -235,18 +199,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "10",
-        "Description": "Attacker Takes Damage of [3-10]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -257,15 +221,6 @@
         "Max": "10",
         "Description": "[5-10]% Increased Chance of Blocking",
         "Priority": "134"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -292,18 +247,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "10",
-        "Description": "Attacker Takes Damage of [3-10]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -314,15 +269,6 @@
         "Max": "20",
         "Description": "[10-20]% Faster Hit Recovery",
         "Priority": "139"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -349,18 +295,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "10",
-        "Description": "Attacker Takes Damage of [3-10]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -371,15 +317,6 @@
         "Max": "15",
         "Description": "Hit Causes Monster to Flee [3 - 11]%",
         "Priority": "79"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -397,18 +334,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "6",
-        "Description": "Attacker Takes Damage of [3-6]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -419,15 +356,6 @@
         "Max": "5",
         "Description": "+[1-5] to Dexterity",
         "Priority": "65"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -445,18 +373,18 @@
         "Chance": 100,
         "Prop": "gethit-skill",
         "Par": "44",
-        "Min": "5",
-        "Max": "4",
-        "Description": "5% Chance to cast level 4 Frost Nova when struck",
+        "Min": "8",
+        "Max": "12",
+        "Description": "8% Chance to cast level 12 Frost Nova when struck",
         "Priority": "158"
       },
       {
         "Chance": 100,
         "Prop": "thorns",
         "Par": "",
-        "Min": "3",
-        "Max": "7",
-        "Description": "Attacker Takes Damage of [3-7]",
+        "Min": "8",
+        "Max": "15",
+        "Description": "Attacker Takes Damage of [8-15]",
         "Priority": "13"
       },
       {
@@ -467,15 +395,6 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -511,28 +430,19 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
         "Chance": 100,
         "Prop": "deadly",
         "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "[5-10]% Deadly Strike",
+        "Min": "8",
+        "Max": "15",
+        "Description": "[8-15]% Deadly Strike",
         "Priority": "85"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -568,9 +478,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -581,15 +491,6 @@
         "Max": "10",
         "Description": "Replenish Life +[5-10]",
         "Priority": "56"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -625,28 +526,19 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
         "Chance": 100,
         "Prop": "crush",
         "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "[5-10]% Chance of Crushing Blow",
+        "Min": "8",
+        "Max": "15",
+        "Description": "[8-15]% Chance of Crushing Blow",
         "Priority": "87"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -682,28 +574,19 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
         "Chance": 100,
         "Prop": "openwounds",
         "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "[5-10]% Chance of Open Wounds",
+        "Min": "8",
+        "Max": "15",
+        "Description": "[8-15]% Chance of Open Wounds",
         "Priority": "83"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -739,9 +622,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -752,15 +635,6 @@
         "Max": "7",
         "Description": "Attacker Takes Damage of [4-7]",
         "Priority": "13"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -796,9 +670,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -809,15 +683,6 @@
         "Max": "3",
         "Description": "+[1-3] Life after each Demon Kill",
         "Priority": "15"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -853,9 +718,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -866,15 +731,6 @@
         "Max": "10",
         "Description": "[5-10]% Faster Run/Walk",
         "Priority": "148"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -901,9 +757,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -914,15 +770,6 @@
         "Max": "5",
         "Description": "+[1-5] to Strength",
         "Priority": "67"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -949,9 +796,9 @@
         "Chance": 100,
         "Prop": "hp",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Life",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Life",
         "Priority": "59"
       },
       {
@@ -962,15 +809,6 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1006,9 +844,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1019,15 +857,6 @@
         "Max": "4",
         "Description": "[1-4]% Mana stolen per hit",
         "Priority": "89"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1063,9 +892,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1076,15 +905,6 @@
         "Max": "5",
         "Description": "Increase Maximum Mana [2-5]%",
         "Priority": "54"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1120,9 +940,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1133,15 +953,6 @@
         "Max": "3",
         "Description": "+[1-3] to Mana after each Kill",
         "Priority": "16"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1177,9 +988,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1190,15 +1001,6 @@
         "Max": "10",
         "Description": "[5-10]% Faster Cast Rate",
         "Priority": "142"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1234,9 +1036,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1247,15 +1049,6 @@
         "Max": "10",
         "Description": "[5-10]% Increased Chance of Blocking",
         "Priority": "134"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1291,9 +1084,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1304,15 +1097,6 @@
         "Max": "3",
         "Description": "+[1-3] to Mana after each Kill",
         "Priority": "16"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1348,9 +1132,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1361,15 +1145,6 @@
         "Max": "10",
         "Description": "[5-10]% Faster Cast Rate",
         "Priority": "142"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1396,9 +1171,9 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
@@ -1409,15 +1184,6 @@
         "Max": "5",
         "Description": "+[1-5] to Energy",
         "Priority": "61"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1444,28 +1210,19 @@
         "Chance": 100,
         "Prop": "mana",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "+[10-20] to Mana",
+        "Min": "15",
+        "Max": "30",
+        "Description": "+[15-30] to Mana",
         "Priority": "55"
       },
       {
         "Chance": 100,
         "Prop": "mana%",
         "Par": "",
-        "Min": "1",
-        "Max": "5",
-        "Description": "Increase Maximum Mana [1-5]%",
+        "Min": "3",
+        "Max": "6",
+        "Description": "Increase Maximum Mana [3-6]%",
         "Priority": "54"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1490,21 +1247,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1526,12 +1283,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1547,21 +1304,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1583,12 +1340,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1604,21 +1361,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1640,12 +1397,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1661,21 +1418,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1697,12 +1454,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1718,21 +1475,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1754,12 +1511,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1775,21 +1532,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1811,12 +1568,12 @@
       },
       {
         "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -1832,21 +1589,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1858,13 +1615,13 @@
         "Priority": "134"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "balance1",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "[10-15]% Faster Hit Recovery",
+        "Priority": "139"
       }
     ],
     "InputNames": [
@@ -1880,21 +1637,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1906,13 +1663,13 @@
         "Priority": "63"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "hp",
+        "Par": "",
+        "Min": "15",
+        "Max": "25",
+        "Description": "+[15-25] to Life",
+        "Priority": "59"
       }
     ],
     "InputNames": [
@@ -1928,21 +1685,21 @@
     "Properties": [
       {
         "Chance": 100,
-        "Prop": "red-dmg",
-        "Par": "",
-        "Min": "1",
-        "Max": "4",
-        "Description": "Damage Reduced by [1-4]",
-        "Priority": "22"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Damage Reduced by [2-5]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
-        "Prop": "red-mag",
-        "Par": "",
-        "Min": "1",
-        "Max": "2",
-        "Description": "Magic Damage Reduced by [1-2]",
-        "Priority": "21"
+        "Prop": "safety-duo",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "Magic Damage Reduced by [1-3]",
+        "Priority": "0"
       },
       {
         "Chance": 100,
@@ -1952,15 +1709,6 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1987,37 +1735,28 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "ease",
+        "Prop": "heal-kill",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Min": "2",
+        "Max": "4",
+        "Description": "+[2-4] Life after each Kill",
+        "Priority": "16"
       },
       {
         "Chance": 5,
@@ -2044,37 +1783,28 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "ease",
+        "Prop": "move1",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Min": "10",
+        "Max": "20",
+        "Description": "[10-20]% Faster Run/Walk",
+        "Priority": "148"
       },
       {
         "Chance": 5,
@@ -2101,37 +1831,28 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "ease",
+        "Prop": "swing1",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Min": "10",
+        "Max": "13",
+        "Description": "[10-13]% Increased Attack Speed",
+        "Priority": "145"
       },
       {
         "Chance": 5,
@@ -2158,37 +1879,28 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "ease",
+        "Prop": "mana-kill",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Mana after each Kill",
+        "Priority": "16"
       },
       {
         "Chance": 5,
@@ -2224,28 +1936,19 @@
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "ease",
+        "Prop": "sock",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Min": "2",
+        "Max": "2",
+        "Description": "Socketed (2)",
+        "Priority": "-2"
       },
       {
         "Chance": 5,
@@ -2272,36 +1975,27 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "[10-20]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
         "Prop": "ease",
         "Par": "",
-        "Min": "-30",
-        "Max": "-30",
-        "Description": "Requirements -30%",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Min": "-50",
+        "Max": "-50",
+        "Description": "Requirements -50%",
         "Priority": "0"
       },
       {
@@ -2329,18 +2023,18 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "10",
-        "Max": "15",
-        "Description": "[10-15]% Better Chance of Getting Magic Items",
+        "Min": "20",
+        "Max": "30",
+        "Description": "[20-30]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "30",
-        "Max": "50",
-        "Description": "[30-50]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
@@ -2351,15 +2045,6 @@
         "Max": "1",
         "Description": "Level 1 Teleport (30/30 Charges)",
         "Priority": "1"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -2377,37 +2062,28 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "5",
-        "Max": "10",
-        "Description": "[5-10]% Better Chance of Getting Magic Items",
+        "Min": "12",
+        "Max": "18",
+        "Description": "[12-18]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "20",
-        "Max": "40",
-        "Description": "[20-40]% Extra Gold from Monsters",
+        "Min": "40",
+        "Max": "60",
+        "Description": "[40-60]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
         "Chance": 100,
-        "Prop": "charged",
-        "Par": "43",
-        "Min": "50",
-        "Max": "1",
-        "Description": "Level 1 Telekinesis (50/50 Charges)",
-        "Priority": "1"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "1",
+        "Max": "2",
+        "Description": "+[1-2] to Mana after each Kill",
+        "Priority": "16"
       }
     ],
     "InputNames": [
@@ -2425,18 +2101,18 @@
         "Chance": 100,
         "Prop": "mag%",
         "Par": "",
-        "Min": "20",
+        "Min": "25",
         "Max": "40",
-        "Description": "[20-40]% Better Chance of Getting Magic Items",
+        "Description": "[25-40]% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
         "Chance": 100,
         "Prop": "gold%",
         "Par": "",
-        "Min": "60",
-        "Max": "100",
-        "Description": "[60-100]% Extra Gold from Monsters",
+        "Min": "80",
+        "Max": "120",
+        "Description": "[80-120]% Extra Gold from Monsters",
         "Priority": "10"
       },
       {
@@ -2447,15 +2123,6 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -2489,30 +2156,12 @@
       },
       {
         "Chance": 100,
-        "Prop": "att%/lvl",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "1% Bonus to Attack Rating",
-        "Priority": "116"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-head",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
+        "Prop": "hp/lvl",
+        "Par": "6",
+        "Min": "0.75",
+        "Max": "0.75",
+        "Description": "0.75 [*level] to Life",
+        "Priority": "57"
       },
       {
         "Chance": 100,
@@ -2521,6 +2170,15 @@
         "Min": "1",
         "Max": "1",
         "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
         "Priority": "300"
       }
     ],
@@ -2546,30 +2204,12 @@
       },
       {
         "Chance": 100,
-        "Prop": "move2",
+        "Prop": "res-pois-len",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Faster Run/Walk",
-        "Priority": "148"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-boot",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
+        "Min": "25",
+        "Max": "25",
+        "Description": "Poison Length Reduced by 25%",
+        "Priority": "18"
       },
       {
         "Chance": 100,
@@ -2578,6 +2218,15 @@
         "Min": "1",
         "Max": "1",
         "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
         "Priority": "300"
       }
     ],
@@ -2611,13 +2260,13 @@
         "Priority": "119"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-glov",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Chance": 5,
@@ -2626,15 +2275,6 @@
         "Min": "1",
         "Max": "1",
         "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
-      },
-      {
-        "Chance": 100,
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
         "Priority": "300"
       }
     ],
@@ -2660,30 +2300,12 @@
       },
       {
         "Chance": 100,
-        "Prop": "res-pois-len",
+        "Prop": "red-dmg",
         "Par": "",
-        "Min": "50",
-        "Max": "50",
-        "Description": "Poison Length Reduced by 50%",
-        "Priority": "18"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ex-belt",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
-        "Priority": "0"
-      },
-      {
-        "Chance": 5,
-        "Prop": "ethereal",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
+        "Min": "2",
+        "Max": "4",
+        "Description": "Damage Reduced by [2-4]",
+        "Priority": "22"
       },
       {
         "Chance": 100,
@@ -2692,6 +2314,15 @@
         "Min": "1",
         "Max": "1",
         "Description": "Indestructible",
+        "Priority": "300"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
         "Priority": "300"
       }
     ],
@@ -2752,13 +2383,13 @@
         "Priority": "45"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-offh",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Chance": 5,
@@ -2767,15 +2398,6 @@
         "Min": "1",
         "Max": "1",
         "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
-      },
-      {
-        "Chance": 100,
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
         "Priority": "300"
       }
     ],
@@ -2809,13 +2431,13 @@
         "Priority": "34"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-body",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Chance": 5,
@@ -2824,15 +2446,6 @@
         "Min": "1",
         "Max": "1",
         "Description": "Ethereal (Cannot be Repaired)",
-        "Priority": "300"
-      },
-      {
-        "Chance": 100,
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
         "Priority": "300"
       }
     ],
@@ -2866,13 +2479,13 @@
         "Priority": "112"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-amu",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "ac",
+        "Par": "",
+        "Min": "100",
+        "Max": "140",
+        "Description": "+[100-140] Defense",
+        "Priority": "71"
       }
     ],
     "InputNames": [
@@ -2905,13 +2518,13 @@
         "Priority": "110"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-ring",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "att-undead",
+        "Par": "",
+        "Min": "80",
+        "Max": "100",
+        "Description": "+[80-100] to Attack Rating against Undead",
+        "Priority": "106"
       }
     ],
     "InputNames": [
@@ -2944,13 +2557,13 @@
         "Priority": "1000"
       },
       {
-        "Chance": 5,
-        "Prop": "ex-weap",
-        "Par": null,
-        "Min": null,
-        "Max": null,
-        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
-        "Priority": "0"
+        "Chance": 100,
+        "Prop": "indestruct",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Indestructible",
+        "Priority": "300"
       },
       {
         "Chance": 5,
@@ -2960,15 +2573,6 @@
         "Max": "1",
         "Description": "Ethereal (Cannot be Repaired)",
         "Priority": "300"
-      },
-      {
-        "Chance": 100,
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
-        "Priority": "300"
       }
     ],
     "InputNames": [
@@ -2976,6 +2580,420 @@
       "Jewel",
       "Tal Rune",
       "Perfect Diamond"
+    ]
+  },
+  {
+    "ItemType": "helm",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "helm",
+      "Jewel",
+      "Io Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "boot",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Regenerate Mana [8-12]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 100,
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "boot",
+      "Jewel",
+      "Hel Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "glov",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "[2-3]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Mana after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "glov",
+      "Jewel",
+      "Dol Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "belt",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Replenish Life +[8-12]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Regenerate Mana [8-12]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "belt",
+      "Jewel",
+      "Shael Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "shld",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "curse-res",
+        "Par": "",
+        "Min": "20",
+        "Max": "25",
+        "Description": "Curse Resistance [20-25]%",
+        "Priority": "35"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen-mana",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Regenerate Mana [8-12]%",
+        "Priority": "52"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "shld",
+      "Jewel",
+      "Io Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "tors",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "curse-res",
+        "Par": "",
+        "Min": "10",
+        "Max": "20",
+        "Description": "Curse Resistance [10-20]%",
+        "Priority": "35"
+      },
+      {
+        "Chance": 100,
+        "Prop": "regen",
+        "Par": "",
+        "Min": "8",
+        "Max": "12",
+        "Description": "Replenish Life +[8-12]",
+        "Priority": "56"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "tors",
+      "Jewel",
+      "Lum Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "amul",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "[2-3]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "[2-3]% Mana stolen per hit",
+        "Priority": "89"
+      }
+    ],
+    "InputNames": [
+      "amul",
+      "Jewel",
+      "Ko Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "ring",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Chance": 100,
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "2",
+        "Max": "3",
+        "Description": "+[2-3] to Mana after each Kill",
+        "Priority": "16"
+      }
+    ],
+    "InputNames": [
+      "ring",
+      "Jewel",
+      "Lum Rune",
+      "Perfect Skull"
+    ]
+  },
+  {
+    "ItemType": "weap",
+    "CraftedType": "Hex",
+    "Properties": [
+      {
+        "Chance": 100,
+        "Prop": "hex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "1 card from the slot's Mythic deck (4:1 common to uncommon)",
+        "Priority": "0"
+      },
+      {
+        "Chance": 100,
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% Life stolen per hit",
+        "Priority": "88"
+      },
+      {
+        "Chance": 100,
+        "Prop": "manasteal",
+        "Par": "",
+        "Min": "3",
+        "Max": "5",
+        "Description": "[3-5]% Mana stolen per hit",
+        "Priority": "89"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ethereal",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "Ethereal (Cannot be Repaired)",
+        "Priority": "300"
+      }
+    ],
+    "InputNames": [
+      "weap",
+      "Jewel",
+      "Ko Rune",
+      "Perfect Skull"
     ]
   }
 ]

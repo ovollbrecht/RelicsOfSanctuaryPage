@@ -1,5 +1,5 @@
 {
-  "modVersion": "3.4.0",
+  "modVersion": "3.5.0",
   "groups": [
     {
       "id": null,
@@ -252,28 +252,28 @@
         {
           "id": "enableUniquesVanillaChronicle",
           "type": "checkbox",
-          "name": "Vanilla Uniques",
+          "name": "Chronicle entries for vanilla Uniques",
           "description": "Turning this off removes all vanilla (non-exalted) Uniques from the chronicle.",
           "defaultValue": true
         },
         {
           "id": "enableUniquesExaltedChronicle",
           "type": "checkbox",
-          "name": "Uniques added by this mod",
+          "name": "Chronicle entries for the Uniques added by this mod",
           "description": "Attention!!! Currently a bug can crash the game when a modded unique gets saved to the chronicle. Turn this off until Blizzard fixes it! Turning this off removes every Unique this mod adds from the chronicle - the exalted ones and the mod\u0027s own new Uniques alike, since the chronicle identifies an item by its place in the table. If shift RotW uniques is enabled, those uniques are excluded as well (bug related).",
           "defaultValue": false
         },
         {
           "id": "enableSetsVanillaChronicle",
           "type": "checkbox",
-          "name": "Vanilla Sets",
+          "name": "Chronicle entries for vanilla Sets",
           "description": "Turning this off removes all vanilla (non-mythic) Set items from the chronicle.",
           "defaultValue": true
         },
         {
           "id": "enableSetsMythicChronicle",
           "type": "checkbox",
-          "name": "Mythic Sets",
+          "name": "Chronicle entries for Mythic Sets",
           "description": "Turning this off removes all mythic Set items from the chronicle.",
           "defaultValue": true
         }
@@ -290,6 +290,27 @@
           "name": "Sunder Charms equal drop rate",
           "description": "Each Sunder Charm has the same drop chance. Usually/vanilla some sunders drop more often with the following weight: Cold 30, Fire 30, Light 20, Poison 12, Physical 6, Magic 3",
           "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "skillAffixes",
+      "name": "Skill Affixes",
+      "description": "\u0027Chance to cast\u0027 procs and charged skills on magic and rare items.",
+      "options": [
+        {
+          "id": "enableReworkedSkillAffixes",
+          "type": "checkbox",
+          "name": "Reworked skill procs and charges",
+          "description": "Skill suffixes grow with the item: procs get a real chance and level, charges gain level and count with the item level, all of them can roll on rare items, and the weak tier of a stepped proc (Firebolts, Chain Lightning, Charged Shield, Nova Shield, Nova) stops rolling once the next tier is available. Values tuned by this mod; turning this off keeps the vanilla numbers.",
+          "defaultValue": true
+        },
+        {
+          "id": "enableMoreChargedSkills",
+          "type": "checkbox",
+          "name": "More charged skills",
+          "description": "Enables the charged skills the game ships disabled - Battle Orders, Slow Missiles, Static Field, Decrepify, the Sorceress armors, the Golems, Find Item and more - on the items their class would carry. About 80 suffixes join the pools; on most slots the other affixes lose under 3 % of their chance, so glove attack charges and the Teleport shields stay off.",
+          "defaultValue": true
         }
       ]
     },

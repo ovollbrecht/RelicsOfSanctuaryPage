@@ -11086,14 +11086,6 @@
             "Max": "15",
             "Description": "15% Increased Chance of Blocking",
             "Priority": "134"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11150,14 +11142,6 @@
             "Max": "4",
             "Description": "Replenish Life +4",
             "Priority": "56"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11213,14 +11197,6 @@
             "Min": "17",
             "Max": "23",
             "Description": "+[17-23] to Maximum Damage",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -11331,14 +11307,6 @@
             "Max": "20",
             "Description": "20% Faster Run/Walk",
             "Priority": "148"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11382,14 +11350,6 @@
             "Max": "10",
             "Description": "+10 to Strength",
             "Priority": "67"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11433,14 +11393,6 @@
             "Max": "20",
             "Description": "+20 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11558,14 +11510,6 @@
             "Max": "50",
             "Description": "50% Deadly Strike",
             "Priority": "85"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11609,14 +11553,6 @@
             "Max": "75",
             "Description": "Poison Length Reduced by 75%",
             "Priority": "18"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11660,14 +11596,6 @@
             "Max": "25",
             "Description": "Slows Target by 25%",
             "Priority": "77"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11806,14 +11734,6 @@
             "Max": "75",
             "Description": "Poison Length Reduced by 75%",
             "Priority": "18"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11857,14 +11777,6 @@
             "Max": "1",
             "Description": "Half Freeze Duration",
             "Priority": "19"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11908,14 +11820,6 @@
             "Max": "30",
             "Description": "Lightning Resist 30%",
             "Priority": "38"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -11958,14 +11862,6 @@
             "Min": "5",
             "Max": "5",
             "Description": "+5 to Minimum Damage",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -12129,14 +12025,6 @@
             "Max": "20",
             "Description": "20% Increased Attack Speed",
             "Priority": "145"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12180,14 +12068,6 @@
             "Max": "4",
             "Description": "Attacker Takes Lightning Damage of 4",
             "Priority": "14"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12231,14 +12111,6 @@
             "Max": "2",
             "Description": "Magic Damage Reduced by 2",
             "Priority": "21"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12282,14 +12154,6 @@
             "Max": "2",
             "Description": "Damage Reduced by 2",
             "Priority": "22"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12422,14 +12286,6 @@
         "ImageMapping": "bow_long_battle_bow.webp",
         "Properties": [
           {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
-          },
-          {
             "Prop": "dmg-ltng",
             "Par": "",
             "Min": "1",
@@ -12479,14 +12335,6 @@
             "Max": "30",
             "Description": "30% Faster Run/Walk",
             "Priority": "148"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12530,14 +12378,6 @@
             "Max": "11",
             "Description": "+11 to Dexterity",
             "Priority": "65"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12594,14 +12434,6 @@
             "Max": "20",
             "Description": "Cold Resist 20%",
             "Priority": "40"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12748,14 +12580,6 @@
             "Max": "25",
             "Description": "+25 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12820,14 +12644,6 @@
             "Max": "2",
             "Description": "+2 to Light Radius",
             "Priority": "6"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -12857,14 +12673,6 @@
             "Max": "15",
             "Description": "+15 to Mana",
             "Priority": "55"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -12908,14 +12716,6 @@
             "Max": "2",
             "Description": "Damage Reduced by 2",
             "Priority": "22"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13062,14 +12862,6 @@
             "Max": "10",
             "Description": "+10 to Maximum Fire Damage",
             "Priority": "101"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13126,14 +12918,6 @@
             "Max": "-50",
             "Description": "Requirements -50%",
             "Priority": "0"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13190,14 +12974,6 @@
             "Max": "25",
             "Description": "Cold Resist 25%",
             "Priority": "40"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13241,14 +13017,6 @@
             "Max": "5",
             "Description": "Attacker Takes Lightning Damage of 5",
             "Priority": "14"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13305,14 +13073,6 @@
             "Max": "2",
             "Description": "Damage Reduced by 2",
             "Priority": "22"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13464,14 +13224,6 @@
             "Max": "80",
             "Description": "80% Enhanced Damage",
             "Priority": "1000"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13528,14 +13280,6 @@
             "Max": "15",
             "Description": "+15 to Strength",
             "Priority": "67"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13579,14 +13323,6 @@
             "Max": "10",
             "Description": "+10 to Dexterity",
             "Priority": "65"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13643,14 +13379,6 @@
             "Max": "1",
             "Description": "Magic Damage Reduced by 1",
             "Priority": "21"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13707,14 +13435,6 @@
             "Max": "40",
             "Description": "+40 to Attack Rating",
             "Priority": "115"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13887,14 +13607,6 @@
             "Max": "20",
             "Description": "+20 to Attack Rating",
             "Priority": "115"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13938,14 +13650,6 @@
             "Max": "25",
             "Description": "+25 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -13989,14 +13693,6 @@
             "Max": "30",
             "Description": "Lightning Resist 30%",
             "Priority": "38"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14040,14 +13736,6 @@
             "Max": "40",
             "Description": "Cold Resist 40%",
             "Priority": "40"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14104,14 +13792,6 @@
             "Max": "20",
             "Description": "+20 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14155,14 +13835,6 @@
             "Max": "20",
             "Description": "20% Increased Chance of Blocking",
             "Priority": "134"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -14303,14 +13975,6 @@
             "Max": "20",
             "Description": "20% Damage Taken Goes To Mana",
             "Priority": "11"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14354,14 +14018,6 @@
             "Max": "1",
             "Description": "+1 to Necromancer Skill Levels",
             "Priority": "150"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14405,14 +14061,6 @@
             "Max": "20",
             "Description": "+20 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14543,14 +14191,6 @@
             "Max": "25",
             "Description": "Fire Resist 25%",
             "Priority": "36"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14594,14 +14234,6 @@
             "Max": "1",
             "Description": "+1 to Barbarian Skill Levels",
             "Priority": "150"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14645,14 +14277,6 @@
             "Max": "5",
             "Description": "5% Mana stolen per hit",
             "Priority": "89"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14778,14 +14402,6 @@
             "Max": "75",
             "Description": "Poison Length Reduced by 75%",
             "Priority": "18"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14829,14 +14445,6 @@
             "Max": "1",
             "Description": "Cannot Be Frozen",
             "Priority": "20"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -14880,14 +14488,6 @@
             "Max": "4",
             "Description": "4% Life stolen per hit",
             "Priority": "88"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15026,14 +14626,6 @@
             "Max": "250",
             "Description": "250% Damage to Undead",
             "Priority": "108"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15098,14 +14690,6 @@
             "Max": "40",
             "Description": "40% Enhanced Defense",
             "Priority": "74"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15170,14 +14754,6 @@
             "Max": "20",
             "Description": "+20 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15234,14 +14810,6 @@
             "Max": "20",
             "Description": "20% Damage Taken Goes To Mana",
             "Priority": "11"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15377,14 +14945,6 @@
             "Max": "50",
             "Description": "50% Enhanced Damage",
             "Priority": "1000"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15441,14 +15001,6 @@
             "Max": "10",
             "Description": "All Resistances +10",
             "Priority": "34"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15505,14 +15057,6 @@
             "Max": "30",
             "Description": "+30 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15569,14 +15113,6 @@
             "Max": "10",
             "Description": "10% Increased Attack Speed",
             "Priority": "145"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15728,14 +15264,6 @@
             "Max": "20",
             "Description": "Regenerate Mana 20%",
             "Priority": "52"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15792,14 +15320,6 @@
             "Max": "25",
             "Description": "25% Deadly Strike",
             "Priority": "85"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15856,14 +15376,6 @@
             "Max": "2",
             "Description": "Attacker Takes Damage of 2",
             "Priority": "13"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -15920,14 +15432,6 @@
             "Max": "3",
             "Description": "Damage Reduced by 3",
             "Priority": "22"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -16185,14 +15689,6 @@
             "Max": "200",
             "Description": "200% Damage to Demons",
             "Priority": "112"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -16254,14 +15750,6 @@
             "Max": "3",
             "Description": "Socketed (3)",
             "Priority": "-2"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -16323,14 +15811,6 @@
             "Max": "25",
             "Description": "Lightning Resist [15-25]%",
             "Priority": "38"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -16508,14 +15988,6 @@
             "Max": "2",
             "Description": "Socketed (2)",
             "Priority": "-2"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -16625,14 +16097,6 @@
             "Max": "1",
             "Description": "+1 to Elemental Skills (Druid Only)",
             "Priority": "151"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -16742,14 +16206,6 @@
             "Max": "3",
             "Description": "Socketed (3)",
             "Priority": "-2"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -16859,14 +16315,6 @@
             "Max": "50",
             "Description": "Fire Resist [40-50]%",
             "Priority": "36"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17113,14 +16561,6 @@
             "Max": "2",
             "Description": "Socketed (2)",
             "Priority": "-2"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -17166,14 +16606,6 @@
             "Max": "50",
             "Description": "Poison Resist 50%",
             "Priority": "34"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17285,14 +16717,6 @@
             "Max": "25",
             "Description": "+25 to Strength",
             "Priority": "67"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17404,14 +16828,6 @@
             "Max": "4",
             "Description": "12% Chance to cast level 4 Charged Bolt when struck",
             "Priority": "158"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17523,14 +16939,6 @@
             "Max": "44",
             "Description": "+44 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17652,14 +17060,6 @@
             "Min": "1",
             "Max": "1",
             "Description": "Indestructible",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -17872,14 +17272,6 @@
             "Max": "15",
             "Description": "[10-15]% Better Chance of Getting Magic Items",
             "Priority": "8"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -17960,14 +17352,6 @@
             "Max": "42",
             "Description": "+42 to Mana",
             "Priority": "55"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -18051,14 +17435,6 @@
             "Max": "2",
             "Description": "+[1-2] to Cold Mastery (Sorceress Only)",
             "Priority": "81"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -18181,14 +17557,6 @@
             "Max": "400",
             "Description": "+400 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -18264,14 +17632,6 @@
             "Max": "10",
             "Description": "10% Mana stolen per hit",
             "Priority": "89"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -18444,14 +17804,6 @@
             "Max": "5",
             "Description": "All Resistances +5",
             "Priority": "34"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -18519,14 +17871,6 @@
             "Max": "-40",
             "Description": "Requirements -40%",
             "Priority": "0"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -18580,14 +17924,6 @@
             "Max": "4",
             "Description": "Socketed (4)",
             "Priority": "-2"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -18681,14 +18017,6 @@
             "Max": "45",
             "Description": "All Resistances +45",
             "Priority": "34"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -18874,14 +18202,6 @@
             "Max": "5",
             "Description": "Replenish Life +5",
             "Priority": "56"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -18943,14 +18263,6 @@
             "Max": "150",
             "Description": "150% Enhanced Defense",
             "Priority": "74"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19047,14 +18359,6 @@
             "Max": "2",
             "Description": "+2 to Poison and Bone Skills (Necromancer Only)",
             "Priority": "151"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19127,14 +18431,6 @@
             "Max": "2",
             "Description": "+2 to Curses (Necromancer Only)",
             "Priority": "151"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19218,14 +18514,6 @@
             "Max": "50",
             "Description": "+[25-50] to Mana",
             "Priority": "55"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19348,9 +18636,9 @@
       {
         "Prop": "cast2",
         "Par": "",
-        "Min": "112",
-        "Max": "112",
-        "Description": "112% Faster Cast Rate",
+        "Min": "105",
+        "Max": "105",
+        "Description": "105% Faster Cast Rate",
         "Priority": "142"
       }
     ],
@@ -19396,14 +18684,6 @@
             "Max": "25",
             "Description": "+25 to Mana",
             "Priority": "55"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19505,14 +18785,6 @@
             "Max": "350",
             "Description": "+350 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19588,14 +18860,6 @@
             "Max": "15",
             "Description": "+15 to Dexterity",
             "Priority": "65"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19668,14 +18932,6 @@
             "Max": "5",
             "Description": "+5 to Light Radius",
             "Priority": "6"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19735,14 +18991,6 @@
             "Max": "50",
             "Description": "+50 to Attack Rating",
             "Priority": "115"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -19965,14 +19213,6 @@
             "Max": "10",
             "Description": "Attacker Takes Damage of [8-10]",
             "Priority": "13"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20026,14 +19266,6 @@
             "Max": "3",
             "Description": "10% Chance to cast level 3 Holy Bolt on striking",
             "Priority": "158"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20079,14 +19311,6 @@
             "Max": "25",
             "Description": "+[15-25] Maximum Stamina",
             "Priority": "51"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20131,14 +19355,6 @@
             "Min": "24",
             "Max": "34",
             "Description": "Adds [24-34] poison damage over 2 seconds",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -20185,14 +19401,6 @@
             "Max": "15",
             "Description": "All Resistances +15",
             "Priority": "34"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20370,14 +19578,6 @@
             "Max": "30",
             "Description": "Adds [20-30] fire damage",
             "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20447,14 +19647,6 @@
             "Max": "30",
             "Description": "30% Faster Block Rate",
             "Priority": "136"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20508,14 +19700,6 @@
             "Max": "-20",
             "Description": "Requirements -20%",
             "Priority": "0"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20577,14 +19761,6 @@
             "Max": "24",
             "Description": "24% Faster Hit Recovery",
             "Priority": "139"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20762,14 +19938,6 @@
             "Max": "15",
             "Description": "+15 to Strength",
             "Priority": "67"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20815,14 +19983,6 @@
             "Max": "5",
             "Description": "5% Life stolen per hit",
             "Priority": "88"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20876,14 +20036,6 @@
             "Max": "100",
             "Description": "+100 to Attack Rating",
             "Priority": "115"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -20937,14 +20089,6 @@
             "Max": "5",
             "Description": "+5 to Light Radius",
             "Priority": "6"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21101,14 +20245,6 @@
             "Max": "100",
             "Description": "100% Enhanced Defense",
             "Priority": "74"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21154,14 +20290,6 @@
             "Max": "3",
             "Description": "10% Chance to cast level 3 Static Field when struck",
             "Priority": "158"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21207,14 +20335,6 @@
             "Max": "12",
             "Description": "12% Damage Taken Goes To Mana",
             "Priority": "11"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21267,14 +20387,6 @@
             "Min": "5",
             "Max": "25",
             "Description": "Adds [5-25] lightning damage",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
             "Priority": "300"
           },
           {
@@ -21443,14 +20555,6 @@
             "Max": "1",
             "Description": "Indestructible",
             "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21504,14 +20608,6 @@
             "Max": "75",
             "Description": "+[50-75] to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21557,14 +20653,6 @@
             "Max": "20",
             "Description": "Lightning Resist [15-20]%",
             "Priority": "38"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21582,9 +20670,9 @@
       {
         "Prop": "dmg-fire",
         "Par": "",
-        "Min": "400",
-        "Max": "400",
-        "Description": "Adds 400 fire damage",
+        "Min": "255",
+        "Max": "511",
+        "Description": "Adds [255-511] fire damage",
         "Priority": "300"
       },
       {
@@ -21686,14 +20774,6 @@
             "Max": "200",
             "Description": "200% Enhanced Damage",
             "Priority": "1000"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21747,14 +20827,6 @@
             "Max": "200",
             "Description": "200% Enhanced Damage",
             "Priority": "1000"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -21794,9 +20866,9 @@
       {
         "Prop": "stam",
         "Par": "",
-        "Min": "250",
-        "Max": "250",
-        "Description": "+250 Maximum Stamina",
+        "Min": "222",
+        "Max": "222",
+        "Description": "+222 Maximum Stamina",
         "Priority": "51"
       },
       {
@@ -21818,9 +20890,9 @@
       {
         "Prop": "mag%",
         "Par": "",
-        "Min": "300",
-        "Max": "300",
-        "Description": "300% Better Chance of Getting Magic Items",
+        "Min": "155",
+        "Max": "155",
+        "Description": "155% Better Chance of Getting Magic Items",
         "Priority": "8"
       },
       {
@@ -21898,17 +20970,23 @@
             "Max": "10",
             "Description": "Attacker Takes Damage of 10",
             "Priority": "13"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
-        "AdditionalBonuses": []
+        "AdditionalBonuses": [
+          {
+            "AdditionalSetItemsEquipped": 2,
+            "Properties": [
+              {
+                "Prop": "mag%",
+                "Par": "",
+                "Min": "50",
+                "Max": "50",
+                "Description": "50% Better Chance of Getting Magic Items",
+                "Priority": "8"
+              }
+            ]
+          }
+        ]
       },
       {
         "Index": "M Cow King's Hide",
@@ -21951,17 +21029,23 @@
             "Max": "5",
             "Description": "18% Chance to cast level 5 Chain Lightning when struck",
             "Priority": "158"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
-        "AdditionalBonuses": []
+        "AdditionalBonuses": [
+          {
+            "AdditionalSetItemsEquipped": 2,
+            "Properties": [
+              {
+                "Prop": "mag%",
+                "Par": "",
+                "Min": "50",
+                "Max": "50",
+                "Description": "50% Better Chance of Getting Magic Items",
+                "Priority": "8"
+              }
+            ]
+          }
+        ]
       },
       {
         "Index": "M Cow King's Hoofs",
@@ -22012,17 +21096,23 @@
             "Max": "35",
             "Description": "Adds [25-35] fire damage",
             "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
-        "AdditionalBonuses": []
+        "AdditionalBonuses": [
+          {
+            "AdditionalSetItemsEquipped": 2,
+            "Properties": [
+              {
+                "Prop": "mag%",
+                "Par": "",
+                "Min": "45",
+                "Max": "45",
+                "Description": "45% Better Chance of Getting Magic Items",
+                "Priority": "8"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -22187,14 +21277,6 @@
             "Max": "1",
             "Description": "+1 to All Skills",
             "Priority": "156"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -22256,14 +21338,6 @@
             "Max": "300",
             "Description": "+300 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -22317,14 +21391,6 @@
             "Max": "5",
             "Description": "12% Chance to cast level 5 Chain Lightning when struck",
             "Priority": "158"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -22465,14 +21531,6 @@
             "Max": "1.00",
             "Description": "1.00 [*level] Defense",
             "Priority": "72"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -22518,14 +21576,6 @@
             "Max": "10",
             "Description": "+10 to Dexterity",
             "Priority": "65"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": []
@@ -22570,14 +21620,6 @@
             "Min": "9",
             "Max": "9",
             "Description": "Adds 9 poison damage over 3 seconds",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -22631,14 +21673,6 @@
             "Min": "25",
             "Max": "75",
             "Description": "Adds [25-75] cold damage",
-            "Priority": "300"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
             "Priority": "300"
           }
         ],
@@ -22772,14 +21806,6 @@
             "Max": "45",
             "Description": "+45 to Attack Rating",
             "Priority": "115"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -22823,14 +21849,6 @@
             "Max": "15",
             "Description": "+15 Defense",
             "Priority": "71"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -22882,14 +21900,6 @@
             "Max": "30",
             "Description": "Cold Resist 30%",
             "Priority": "40"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -22933,14 +21943,6 @@
             "Max": "20",
             "Description": "Fire Resist 20%",
             "Priority": "36"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -22984,14 +21986,6 @@
             "Max": "25",
             "Description": "+25 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23093,14 +22087,6 @@
             "Max": "1.00",
             "Description": "1.00 [*level] to Maximum Damage",
             "Priority": "125"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23157,14 +22143,6 @@
             "Max": "30",
             "Description": "Magic Resist 30%",
             "Priority": "41"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23221,14 +22199,6 @@
             "Max": "20",
             "Description": "+20 to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23380,14 +22350,6 @@
             "Max": "10",
             "Description": "Magic Damage Reduced by [7-10]",
             "Priority": "21"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23476,14 +22438,6 @@
             "Max": "25",
             "Description": "Lightning Resist [15-25]%",
             "Priority": "38"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23577,14 +22531,6 @@
             "Max": "40",
             "Description": "+[30-40] to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23686,14 +22632,6 @@
             "Max": "-30",
             "Description": "Requirements -30%",
             "Priority": "0"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
@@ -23761,14 +22699,6 @@
             "Max": "50",
             "Description": "+[30-50] to Life",
             "Priority": "59"
-          },
-          {
-            "Prop": "item-mythic",
-            "Par": "",
-            "Min": "1",
-            "Max": "1",
-            "Description": "+1 Mythic Affixes",
-            "Priority": "300"
           }
         ],
         "AdditionalBonuses": [
