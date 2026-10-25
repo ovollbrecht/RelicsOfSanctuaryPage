@@ -3,7 +3,8 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import dropData from '@/assets/dropcalc.json';
 import SearchableSelect from '@/components/SearchableSelect.vue';
-import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { useFarmList, farmToken, farmPlannerEnabled } from '@/composables/useFarmList.js';
+import { useGrail } from '@/composables/useGrail.js';
 import { t } from '@/i18n';
 import {
   buildContext, computeMonsterDrops, computeItemDetail, computeItemSources,
@@ -37,6 +38,50 @@ const heraldTier = ref(5);
 // ---------- results view ----------
 const viewMode = ref('source'); // source (monster -> drops) | item (item -> sources)
 const filterKind = ref('all'); // all | uniques | sets | runes
+
+// ---------- grail: only what this source can still add ----------
+// The switch only appears once a Grail import or a manual tick exists; the
+// catalog that maps a drop row to its Grail entry is fetched when it is on.
+const grail = useGrail();
+const grailHas = computed(() => Object.keys(grail.found.value).length > 0);
+const grailOnly = ref(false);
+// whether a missing Exalted or Mythic variant alone keeps a row - off by default, remembered
+const grailVariants = ref((() => { try { return localStorage.getItem('drop_grail_variants') === '1'; } catch { return false; } })());
+watch(grailVariants, (v) => { try { localStorage.setItem('drop_grail_variants', v ? '1' : '0'); } catch { /* fine */ } });
+const grailCatalog = ref(null);
+watch(grailOnly, async (on) => {
+  if (!on || grailCatalog.value) return;
+  const m = await import('@/assets/save_constants.json');
+  grailCatalog.value = (m.default ?? m).catalog;
+}, { immediate: true });
+const grailActive = computed(() => grailOnly.value && grailHas.value && !!grailCatalog.value);
+const grailByKey = computed(() => {
+  const byKey = { unique: new Map(), set: new Map() };
+  if (!grailCatalog.value) return byKey;
+  grailCatalog.value.uniques.forEach((u) => byKey.unique.set(u.key, u));
+  grailCatalog.value.sets.forEach((x) => byKey.set.set(x.key, x));
+  return byKey;
+});
+/// { base, variant }: which of the row's two Grail entries are still missing.
+/// null when the row is no unique or set item, or the catalog does not know it.
+const grailMissing = (row) => {
+  if (!grailActive.value || (row.kind !== 'unique' && row.kind !== 'set') || !row.index) return null;
+  const byKey = grailByKey.value[row.kind];
+  const prefix = row.kind === 'unique' ? 'u' : 's';
+  const base = byKey.get(row.index);
+  const variant = byKey.get(`${row.kind === 'unique' ? 'E' : 'M'} ${row.index}`);
+  if (!base) return null;
+  return {
+    base: base.spawnable !== false && !grail.has(`${prefix}:${base.id}`),
+    variant: grailVariants.value && !!variant && variant.spawnable !== false && row.variantChance != null && !grail.has(`${prefix}:${variant.id}`),
+  };
+};
+const grailWanted = (row) => { const m = grailMissing(row); return !!m && (m.base || m.variant); };
+const grailTag = (row) => {
+  const m = grailMissing(row);
+  if (!m || m.base) return null;
+  return row.kind === 'unique' ? t('only Exalted missing') : t('only Mythic missing');
+};
 const sortBy = ref('chance'); // chance | name | index (runes only)
 const sortDir = ref('desc'); // clicking the active sort again flips it
 const detailBaseIndex = ref(null);
@@ -391,6 +436,7 @@ const filteredRows = computed(() => {
   if (filterKind.value === 'uniques') rows = rows.filter(r => r.kind === 'unique');
   else if (filterKind.value === 'sets') rows = rows.filter(r => r.kind === 'set');
   else if (filterKind.value === 'runes') rows = rows.filter(r => r.kind === 'base' && r.isRune);
+  if (grailActive.value && filterKind.value !== 'runes') rows = rows.filter(grailWanted);
 
   const direction = sortDir.value === 'asc' ? 1 : -1;
   if (sortBy.value === 'name') {
@@ -424,6 +470,7 @@ const groupedRows = computed(() => {
   const loose = [];
 
   for (const row of result.value.rows) {
+    if (grailActive.value && row.kind !== 'base' && !grailWanted(row)) continue;
     if (row.kind === 'base') {
       const group = groups.get(row.baseIndex) ?? { base: null, children: [] };
       group.base = row;
@@ -441,6 +488,8 @@ const groupedRows = computed(() => {
   // child is still better shown than swallowed
   const entries = [];
   for (const group of groups.values()) {
+    // with the Grail switch on, a base item is only worth a row for what it can still add
+    if (grailActive.value && group.children.length === 0) continue;
     if (group.base) entries.push(group);
     else loose.push(...group.children);
   }
@@ -522,6 +571,21 @@ const summary = computed(() => {
     setVariant: sum(r => r.kind === 'set', 'variantChance'),
     rune: sum(r => r.kind === 'base' && r.isRune),
   };
+});
+
+// one kill, one Grail hit: the summed chance of the rows left on the list -
+// the full roll where the item itself is missing, only the variant roll where
+// just the Exalted or Mythic is
+const grailSummary = computed(() => {
+  if (!grailActive.value || filterKind.value === 'runes') return null;
+  let chance = 0; let count = 0;
+  for (const row of filteredRows.value) {
+    const m = grailMissing(row);
+    if (!m) continue;
+    chance += m.base ? row.chance : (row.variantChance ?? 0);
+    count++;
+  }
+  return { chance, count };
 });
 
 const noDrop = computed(() => {
@@ -629,8 +693,43 @@ const clampInt = (value, min, max, fallback) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
 
+// The settings that describe the player rather than the question - difficulty,
+// player count, magic find, the variant toggles, the format - are remembered in
+// the browser. A link that carries any of them speaks for itself and wins.
+const SETTINGS_KEY = 'drop_settings';
+const SETTINGS_QUERY_KEYS = ['diff', 'players', 'party', 'mf', 'data', 'tz', 'clvl', 'ex', 'exp', 'my', 'myp', 'fmt'];
+const settingsSnapshot = () => ({
+  difficulty: difficulty.value, players: players.value, party: party.value, mf: mf.value,
+  dataMode: dataMode.value, terrorEnabled: terrorEnabled.value, charLevel: charLevel.value,
+  exaltedEnabled: exaltedEnabled.value, exaltedPercent: exaltedPercent.value,
+  mythicEnabled: mythicEnabled.value, mythicPercent: mythicPercent.value, chanceFormat: chanceFormat.value,
+});
+const restoreSettings = () => {
+  let stored = null;
+  try { stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? 'null'); } catch { /* fine */ }
+  if (!stored || typeof stored !== 'object') return;
+  difficulty.value = clampInt(stored.difficulty, 0, 2, difficulty.value);
+  players.value = clampInt(stored.players, 1, 8, players.value);
+  party.value = clampInt(stored.party, 1, players.value, party.value);
+  mf.value = clampInt(stored.mf, 0, 9999, mf.value);
+  if (stored.dataMode === 'vanilla') dataMode.value = 'vanilla';
+  terrorEnabled.value = !!stored.terrorEnabled;
+  charLevel.value = clampInt(stored.charLevel, 1, 99, charLevel.value);
+  exaltedEnabled.value = stored.exaltedEnabled !== false;
+  exaltedPercent.value = clampInt(stored.exaltedPercent, 1, 99, exaltedPercent.value);
+  mythicEnabled.value = stored.mythicEnabled !== false;
+  mythicPercent.value = clampInt(stored.mythicPercent, 1, 99, mythicPercent.value);
+  if (stored.chanceFormat === 'pct') chanceFormat.value = 'pct';
+};
+watch(
+  [difficulty, players, party, mf, dataMode, terrorEnabled, charLevel,
+   exaltedEnabled, exaltedPercent, mythicEnabled, mythicPercent, chanceFormat],
+  () => { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settingsSnapshot())); } catch { /* fine */ } },
+);
+
 onMounted(() => {
   const q = route.query;
+  if (!SETTINGS_QUERY_KEYS.some((k) => k in q)) restoreSettings();
   if (q.mode === 'item') viewMode.value = 'item';
   difficulty.value = clampInt(q.diff, 0, 2, difficulty.value);
   players.value = clampInt(q.players, 1, 8, players.value);
@@ -947,7 +1046,7 @@ watch(
             <div class="d-flex gap-2 align-items-center">
               <div class="flex-grow-1"><SearchableSelect v-model="selectedItem" :options="itemOptions" :placeholder="$t('Search items...')" /></div>
               <button
-                v-if="farmTokenOfSelection"
+                v-if="farmPlannerEnabled && farmTokenOfSelection"
                 class="btn btn-sm pill farm-add"
                 :class="{ active: farmList.has(farmTokenOfSelection) }"
                 :title="farmList.has(farmTokenOfSelection) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
@@ -1130,6 +1229,10 @@ watch(
             <template v-if="summary.setVariant > 0"> · mythic <strong>{{ fmt(summary.setVariant) }}</strong></template>
           </span>
           <span v-if="summary.rune > 0">{{ $t('Any') }} <span class="name-rune">{{ $t('rune') }}</span>: <strong>{{ fmt(summary.rune) }}</strong></span>
+          <span v-if="grailSummary" class="grail-summary" :title="$t('Chance per kill to drop one of the listed items your Grail is still missing')">
+            {{ $t('Any missing in Grail') }}: <strong>{{ grailSummary.count ? fmt(grailSummary.chance) : '—' }}</strong>
+            <span class="info-note">({{ $t('{n} items', { n: grailSummary.count }) }})</span>
+          </span>
         </div>
         <div class="d-flex flex-wrap gap-2 p-2">
           <button
@@ -1139,6 +1242,16 @@ watch(
             :class="{ active: filterKind === f[0] }"
             @click="filterKind = f[0]"
           >{{ $t(f[1]) }}</button>
+          <span v-if="grailHas && filterKind !== 'runes'" class="grail-filters d-flex align-items-center gap-3">
+            <span class="form-check form-switch mb-0">
+              <input id="drop-grail-only" v-model="grailOnly" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="drop-grail-only" :title="$t('Only uniques and set items your Grail is still missing from this source')">{{ $t('Missing in Grail') }}</label>
+            </span>
+            <span v-if="grailOnly" class="form-check form-switch mb-0">
+              <input id="drop-grail-variants" v-model="grailVariants" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="drop-grail-variants" :title="$t('Also count a missing Exalted or Mythic variant')">{{ $t('Exalted / Mythic') }}</label>
+            </span>
+          </span>
           <span v-if="filterKind === 'runes'" class="d-flex gap-2 runes-view-toggle">
             <button class="btn btn-sm pill" :class="{ active: runesView === 'single' }" @click="runesView = 'single'">{{ $t('Single') }}</button>
             <button class="btn btn-sm pill" :class="{ active: runesView === 'better' }" @click="runesView = 'better'" :title="$t('Chance for this rune or any higher one')">{{ $t('Or better') }}</button>
@@ -1150,7 +1263,7 @@ watch(
           </span>
         </div>
         <div v-if="filteredRows.length === 0" class="empty-note p-3">
-          {{ $t('No drops for this selection.') }}
+          {{ grailActive && filterKind !== 'runes' ? $t('Nothing your Grail is missing drops here.') : $t('No drops for this selection.') }}
         </div>
         <div v-else-if="runesOrBetter" class="table-responsive">
           <table class="table table-dark table-hover drop-table">
@@ -1176,7 +1289,7 @@ watch(
                     :style="{ width: (row.chance / runeChanceSum * 100) + '%' }"
                   ></div>
                   <span class="name-label name-rune">{{ row.name }}</span>
-                  <span class="info-note"> {{ $t('or better') }}</span>
+                  <span class="info-note">&nbsp;{{ $t('or better') }}</span>
                 </td>
                 <td class="text-end chance-cell">{{ fmt(row.chance / runeChanceSum) }}</td>
                 <td class="text-end chance-cell">{{ fmt(row.chance) }}</td>
@@ -1237,6 +1350,7 @@ watch(
                       :title="child.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                     >•</span>
                     <span v-if="child.kind === 'set'" class="info-note"> ({{ child.setName }})</span>
+                    <span v-if="grailTag(child)" class="info-note"> · {{ grailTag(child) }}</span>
                   </td>
                   <td class="quality-col" colspan="4"></td>
                   <td v-if="showVariantColumn" class="text-end chance-cell variant-cell">
@@ -1289,6 +1403,7 @@ watch(
                     class="mod-flag"
                     :title="row.mod === 'added' ? $t('Added by Relics of Sanctuary') : $t('Changed by Relics of Sanctuary')"
                   >•</span>
+                  <span v-if="grailTag(row)" class="info-note"> · {{ grailTag(row) }}</span>
                 </td>
                 <td v-if="filterKind === 'runes' && runeChanceSum > 0" class="text-end chance-cell">
                   {{ fmt(row.chance / runeChanceSum) }}
@@ -1328,6 +1443,13 @@ watch(
   overflow: visible;
 }
 
+/* the Grail switches narrow the list; the pills beside them pick what it shows */
+.grail-filters {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+  font-size: 0.85rem;
+}
 .controls-card .pill {
   border: 1px solid rgba(201, 163, 106, 0.35);
   color: #e8ddc8;

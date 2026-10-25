@@ -3,7 +3,7 @@ import { ref, onMounted, computed, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import uniqueItemsData from '@/assets/unique_items.json';
 import itemMapping from '@/assets/item_mapping.json';
-import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { useFarmList, farmToken, farmPlannerEnabled } from '@/composables/useFarmList.js';
 
 // "+" on every card: the wish list behind Where to Farm, shared across pages
 const farmList = useFarmList();
@@ -591,6 +591,7 @@ onMounted(() => {
         <div class="card card-enhanced card-hover h-100" :class="pair.element ? 'facet-card facet-' + pair.element : ''">
           <div class="card-header card-header-primary position-relative">
             <button
+              v-if="farmPlannerEnabled"
               class="btn btn-sm farm-add"
               :class="{ on: farmList.has(farmTokenOf(pair)) }"
               :title="farmList.has(farmTokenOf(pair)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"

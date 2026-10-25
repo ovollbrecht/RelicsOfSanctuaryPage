@@ -549,6 +549,7 @@ export function computeMonsterDrops(ctx, sel) {
       rows.push({
         kind: 'unique',
         name: u.entry.Name,
+        index: u.entry.Index,
         mod: u.entry.Mod ?? null,
         variantName: u.entry.ExaltedName,
         baseName: base.Name,
@@ -561,6 +562,7 @@ export function computeMonsterDrops(ctx, sel) {
       rows.push({
         kind: 'set',
         name: s.entry.Name,
+        index: s.entry.Index,
         mod: s.entry.Mod ?? null,
         variantName: s.entry.MythicName,
         setName: s.entry.SetName,
@@ -579,6 +581,7 @@ export function computeMonsterDrops(ctx, sel) {
     rows.push({
       kind: 'unique',
       name: u.Name,
+      index: u.Index,
       mod: u.Mod ?? null,
       variantName: u.ExaltedName,
       baseName: u.Base >= 0 ? ctx.baseItems[u.Base].Name : '',
@@ -594,6 +597,7 @@ export function computeMonsterDrops(ctx, sel) {
     rows.push({
       kind: 'set',
       name: s.Name,
+      index: s.Index,
       mod: s.Mod ?? null,
       variantName: s.MythicName,
       setName: s.SetName,

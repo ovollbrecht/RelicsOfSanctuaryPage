@@ -24,6 +24,11 @@ watch(tokens, (list) => { try { localStorage.setItem(KEY, JSON.stringify(list));
 
 // 'ux:' / 'sx:' name the Exalted or Mythic variant alone; without the x a name
 // covers the item whichever way it rolls
+// Where to Farm and Tonight are not ready for a release (Otto, 2026-10-25):
+// the flag hides their pages, nav entries, search hits and the farm-list
+// buttons everywhere, and keeps the code for the next version.
+export const farmPlannerEnabled = false;
+
 export const farmToken = (kind, name, variant = false) => `${kind === 'set' ? 's' : 'u'}${variant ? 'x' : ''}:${name}`;
 
 export function useFarmList() {

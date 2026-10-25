@@ -2,6 +2,9 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import GlobalSearch from '@/components/GlobalSearch.vue'
 import { locale, setLocale, t } from '@/i18n'
+import { farmPlannerEnabled } from '@/composables/useFarmList.js'
+// the German text needs another pass before the switch returns (next version)
+const languageSwitchEnabled = false
 import logoUrl from '@/assets/RelicsOfSancturay-symbol.png'
 import dataMeta from '@/assets/meta.json'
 
@@ -28,8 +31,10 @@ const navGroups = [
   ] },
   { label: 'Farming', items: [
     { to: '/terror-zones', label: 'Terror Zones', hint: 'live' },
-    { to: '/where-to-farm', label: 'Where to Farm' },
-    { to: '/tonight', label: 'Tonight' },
+    ...(farmPlannerEnabled ? [
+      { to: '/where-to-farm', label: 'Where to Farm' },
+      { to: '/tonight', label: 'Tonight' },
+    ] : []),
     { to: '/grail', label: 'Grail' },
   ] },
   { label: 'The mod', items: [
@@ -144,7 +149,7 @@ const handleClickOutside = (event) => {
       </nav>
 
       <div class="sidebar-footer">
-        <div class="lang-switch" role="group" :aria-label="$t('Language')">
+        <div v-if="languageSwitchEnabled" class="lang-switch" role="group" :aria-label="$t('Language')">
           <button type="button" :class="{ on: locale === 'en' }" @click="setLocale('en')">EN</button>
           <button type="button" :class="{ on: locale === 'de' }" @click="setLocale('de')">DE</button>
         </div>

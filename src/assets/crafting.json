@@ -1,7 +1,7 @@
 [
   {
     "ItemType": "helm",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -32,6 +32,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -49,7 +58,7 @@
   },
   {
     "ItemType": "boot",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -80,6 +89,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -97,7 +115,7 @@
   },
   {
     "ItemType": "glov",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -128,6 +146,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -145,7 +172,7 @@
   },
   {
     "ItemType": "belt",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -176,6 +203,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -193,7 +229,7 @@
   },
   {
     "ItemType": "shld",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -224,6 +260,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -241,7 +286,7 @@
   },
   {
     "ItemType": "tors",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -272,6 +317,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -289,7 +343,7 @@
   },
   {
     "ItemType": "amul",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -317,6 +371,15 @@
         "Max": "15",
         "Description": "Hit Causes Monster to Flee [3 - 11]%",
         "Priority": "79"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -328,7 +391,7 @@
   },
   {
     "ItemType": "ring",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -356,6 +419,15 @@
         "Max": "5",
         "Description": "+[1-5] to Dexterity",
         "Priority": "65"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -367,7 +439,7 @@
   },
   {
     "ItemType": "weap",
-    "CraftedType": "Safety",
+    "CraftedType": "Hit Power",
     "Properties": [
       {
         "Chance": 100,
@@ -395,6 +467,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -446,6 +527,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -491,6 +581,15 @@
         "Max": "10",
         "Description": "Replenish Life +[5-10]",
         "Priority": "56"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -542,6 +641,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -587,6 +695,15 @@
         "Max": "10",
         "Description": "[5-10]% Chance of Open Wounds",
         "Priority": "83"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -638,6 +755,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -686,6 +812,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -731,6 +866,15 @@
         "Max": "10",
         "Description": "[5-10]% Faster Run/Walk",
         "Priority": "148"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -770,6 +914,15 @@
         "Max": "5",
         "Description": "+[1-5] to Strength",
         "Priority": "67"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -809,6 +962,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -860,6 +1022,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -905,6 +1076,15 @@
         "Max": "5",
         "Description": "Increase Maximum Mana [2-5]%",
         "Priority": "54"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -956,6 +1136,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1001,6 +1190,15 @@
         "Max": "10",
         "Description": "[5-10]% Faster Cast Rate",
         "Priority": "142"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1052,6 +1250,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1100,6 +1307,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1145,6 +1361,15 @@
         "Max": "10",
         "Description": "[5-10]% Faster Cast Rate",
         "Priority": "142"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1184,6 +1409,15 @@
         "Max": "5",
         "Description": "+[1-5] to Energy",
         "Priority": "61"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1226,6 +1460,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1243,7 +1486,7 @@
   },
   {
     "ItemType": "helm",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1280,6 +1523,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1291,7 +1543,7 @@
   },
   {
     "ItemType": "boot",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1328,6 +1580,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1339,7 +1600,7 @@
   },
   {
     "ItemType": "glov",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1376,6 +1637,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1387,7 +1657,7 @@
   },
   {
     "ItemType": "belt",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1424,6 +1694,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1435,7 +1714,7 @@
   },
   {
     "ItemType": "shld",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1472,6 +1751,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1483,7 +1771,7 @@
   },
   {
     "ItemType": "tors",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1520,6 +1808,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1531,7 +1828,7 @@
   },
   {
     "ItemType": "amul",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1559,6 +1856,15 @@
         "Max": "10",
         "Description": "[1-10]% Increased Chance of Blocking",
         "Priority": "134"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1570,7 +1876,7 @@
   },
   {
     "ItemType": "ring",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1598,6 +1904,15 @@
         "Max": "5",
         "Description": "+[1-5] to Vitality",
         "Priority": "63"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -1609,7 +1924,7 @@
   },
   {
     "ItemType": "weap",
-    "CraftedType": "Hit Power",
+    "CraftedType": "Safety",
     "Properties": [
       {
         "Chance": 100,
@@ -1637,6 +1952,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -1688,6 +2012,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1732,6 +2065,15 @@
         "Min": "-30",
         "Max": "-30",
         "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
         "Priority": "0"
       },
       {
@@ -1784,6 +2126,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1828,6 +2179,15 @@
         "Min": "-30",
         "Max": "-30",
         "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
         "Priority": "0"
       },
       {
@@ -1880,6 +2240,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -1924,6 +2293,15 @@
         "Min": "-30",
         "Max": "-30",
         "Description": "Requirements -30%",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
         "Priority": "0"
       },
       {
@@ -1973,6 +2351,15 @@
         "Max": "1",
         "Description": "Level 1 Teleport (30/30 Charges)",
         "Priority": "1"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -2012,6 +2399,15 @@
         "Max": "1",
         "Description": "Level 1 Telekinesis (50/50 Charges)",
         "Priority": "1"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -2054,6 +2450,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -2090,6 +2495,15 @@
         "Max": "1",
         "Description": "1% Bonus to Attack Rating",
         "Priority": "116"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-head",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-head-comm, ex-head-unco, ex-head-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -2141,6 +2555,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-boot",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-boot-comm, ex-boot-unco, ex-boot-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -2189,6 +2612,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-glov",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-glov-comm, ex-glov-unco, ex-glov-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -2234,6 +2666,15 @@
         "Max": "50",
         "Description": "Poison Length Reduced by 50%",
         "Priority": "18"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-belt",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-belt-comm, ex-belt-unco, ex-belt-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,
@@ -2312,6 +2753,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-offh",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-offh-comm, ex-offh-unco, ex-offh-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -2360,6 +2810,15 @@
       },
       {
         "Chance": 5,
+        "Prop": "ex-body",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-body-comm, ex-body-unco, ex-body-rare, ex-ultra-rare",
+        "Priority": "0"
+      },
+      {
+        "Chance": 5,
         "Prop": "ethereal",
         "Par": "",
         "Min": "1",
@@ -2405,6 +2864,15 @@
         "Max": "60",
         "Description": "[40-60]% Damage to Demons",
         "Priority": "112"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-amu",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-amu-comm, ex-amu-unco, ex-amu-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -2435,6 +2903,15 @@
         "Max": "100",
         "Description": "+[80-100] to Attack Rating against Demons",
         "Priority": "110"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-ring",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-ring-comm, ex-ring-unco, ex-ring-rare, ex-ultra-rare",
+        "Priority": "0"
       }
     ],
     "InputNames": [
@@ -2465,6 +2942,15 @@
         "Max": "80",
         "Description": "[50-80]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Chance": 5,
+        "Prop": "ex-weap",
+        "Par": null,
+        "Min": null,
+        "Max": null,
+        "Description": "One of 4: ex-weap-comm, ex-weap-unco, ex-weap-rare, ex-ultra-rare",
+        "Priority": "0"
       },
       {
         "Chance": 5,

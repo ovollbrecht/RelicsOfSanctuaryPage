@@ -3,7 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { t } from '@/i18n';
 import { useGrail, readSaveFile, absorb } from '@/composables/useGrail.js';
-import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { useFarmList, farmToken, farmPlannerEnabled } from '@/composables/useFarmList.js';
 import GrailOverview from '@/components/grail/GrailOverview.vue';
 import RuneCabinet from '@/components/grail/RuneCabinet.vue';
 import GrailMilestones from '@/components/grail/GrailMilestones.vue';
@@ -402,7 +402,7 @@ const copySummary = async () => {
             <label class="form-check-label" for="groupsets">{{ $t('Group by set') }}</label>
           </div>
           <button v-if="filtersActive" class="btn btn-sm btn-link text-muted p-0" @click="clearFilters">{{ $t('Clear') }}</button>
-          <button v-if="missingForFarm.length" class="btn btn-sm btn-outline-primary ms-auto" :title="$t('Put the {n} missing items shown on the Where to Farm list', { n: missingForFarm.length })" @click="addMissingToFarm">
+          <button v-if="farmPlannerEnabled && missingForFarm.length" class="btn btn-sm btn-outline-primary ms-auto" :title="$t('Put the {n} missing items shown on the Where to Farm list', { n: missingForFarm.length })" @click="addMissingToFarm">
             + {{ $t('{n} missing to Where to Farm', { n: missingForFarm.length }) }}
           </button>
         </div>
@@ -427,7 +427,7 @@ const copySummary = async () => {
                 </div>
                 <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ $t(TIER[e.tier]) }}</span>
                 <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
-                <router-link v-if="!isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
+                <router-link v-if="farmPlannerEnabled && !isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
               </li>
             </ul>
           </div>
@@ -445,7 +445,7 @@ const copySummary = async () => {
             </div>
             <span v-if="e.tier != null" class="badge tier-badge" :class="`tier-${e.tier}`">{{ $t(TIER[e.tier]) }}</span>
             <span class="source small text-muted text-nowrap">{{ sourceText(e) }}</span>
-            <router-link v-if="e.kind !== 'runeword' && !isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
+            <router-link v-if="farmPlannerEnabled && e.kind !== 'runeword' && !isFound(e)" :to="farmLink(e)" class="farm-link small" :title="$t('Where to farm it')">{{ $t('farm') }}</router-link>
           </li>
         </ul>
       </div>

@@ -10,7 +10,11 @@ const files = import.meta.glob('./de/*.json', { eager: true });
 const de = Object.assign({}, ...Object.values(files).map((m) => m.default ?? m));
 
 const KEY = 'lang';
+const LANGUAGE_SWITCH = false;
 const detect = () => {
+  // English only until the German pass is done (the switch is hidden too);
+  // the saved choice and the browser language come back with it
+  if (!LANGUAGE_SWITCH) return 'en';
   try {
     const saved = localStorage.getItem(KEY);
     if (saved === 'de' || saved === 'en') return saved;

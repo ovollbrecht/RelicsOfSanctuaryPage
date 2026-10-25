@@ -1,4 +1,5 @@
 <script setup>
+import { farmPlannerEnabled } from '@/composables/useFarmList.js';
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { t, locale } from '@/i18n';
@@ -21,7 +22,7 @@ let building = null;
 const PAGES = [
   ['Home', '/'], ['Uniques', '/items/uniques'], ['Sets', '/items/sets'], ['Runewords', '/runewords'], ['Crafting', '/items/crafting'],
   ['Horadric Cube', '/items/cube'], ['Mythic Affixes', '/items/mythic-affixes'], ['Drop Calculator', '/drop-calc'], ['Affix Calculator', '/items/affixes'],
-  ['Terror Zones', '/terror-zones'], ['Where to Farm', '/where-to-farm'], ['Tonight', '/tonight'], ['Grail', '/grail'], ['Options', '/options'], ['Changelog', '/changelog'],
+  ['Terror Zones', '/terror-zones'], ...(farmPlannerEnabled ? [['Where to Farm', '/where-to-farm'], ['Tonight', '/tonight']] : []), ['Grail', '/grail'], ['Options', '/options'], ['Changelog', '/changelog'],
 ];
 const KIND_ORDER = ['Page', 'Unique', 'Set', 'Set item', 'Runeword', 'Rune', 'Recipe', 'Zone', 'Area', 'Monster', 'Superunique'];
 

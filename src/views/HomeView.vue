@@ -1,4 +1,5 @@
 <script setup>
+import { farmPlannerEnabled } from '@/composables/useFarmList.js';
 import { computed } from 'vue';
 import meta from '@/assets/meta.json';
 import { t, dateLocale } from '@/i18n';
@@ -99,7 +100,7 @@ const tools = computed(() => [
     question: t('Which zone is terrorized right now - and when is the one I want?'),
     to: '/terror-zones',
   },
-  {
+  ...(farmPlannerEnabled ? [{
     title: t('Where to Farm'),
     question: t('I want any of these five items - where is a run most likely to pay?'),
     to: '/where-to-farm',
@@ -108,7 +109,7 @@ const tools = computed(() => [
     title: t('Tonight'),
     question: t('I have three hours and a cold sorc - which terror zones are worth it, and where do I stand in between?'),
     to: '/tonight',
-  },
+  }] : []),
   {
     title: t('Grail'),
     question: grailSummary

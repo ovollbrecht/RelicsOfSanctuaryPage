@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import setsData from '@/assets/sets.json';
-import { useFarmList, farmToken } from '@/composables/useFarmList.js';
+import { useFarmList, farmToken, farmPlannerEnabled } from '@/composables/useFarmList.js';
 import { t } from '@/i18n';
 
 // "+" on every set item: the wish list behind Where to Farm
@@ -360,6 +360,7 @@ const getVariantSummary = (pair) => {
                               <span class="item-name">{{ stripMythicPrefix(item.Name) }}</span>
                               <span class="summary-right">
                                 <button
+                                  v-if="farmPlannerEnabled"
                                   class="btn btn-sm farm-add"
                                   :class="{ on: farmList.has(farmTokenOf(item)) }"
                                   :title="farmList.has(farmTokenOf(item)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"
@@ -491,6 +492,7 @@ const getVariantSummary = (pair) => {
                               <span class="item-name">{{ stripMythicPrefix(item.Name) }}</span>
                               <span class="summary-right">
                                 <button
+                                  v-if="farmPlannerEnabled"
                                   class="btn btn-sm farm-add"
                                   :class="{ on: farmList.has(farmTokenOf(item)) }"
                                   :title="farmList.has(farmTokenOf(item)) ? $t('On your Where to Farm list - click to remove') : $t('Add to Where to Farm')"

@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { farmPlannerEnabled } from '@/composables/useFarmList.js'
 
 const routes = [
   {
@@ -61,17 +62,19 @@ const routes = [
     name: 'TerrorZones',
     component: () => import('../views/TerrorZonesView.vue')
   },
-  {
-    path: '/where-to-farm',
-    name: 'WhereToFarm',
-    component: () => import('../views/FarmPlannerView.vue')
-  },
   { path: '/cube', redirect: '/items/cube' },
-  {
-    path: '/tonight',
-    name: 'Tonight',
-    component: () => import('../views/EveningPlannerView.vue')
-  },
+  ...(farmPlannerEnabled ? [
+    {
+      path: '/where-to-farm',
+      name: 'WhereToFarm',
+      component: () => import('../views/FarmPlannerView.vue')
+    },
+    {
+      path: '/tonight',
+      name: 'Tonight',
+      component: () => import('../views/EveningPlannerView.vue')
+    },
+  ] : []),
   {
     path: '/grail',
     name: 'Grail',

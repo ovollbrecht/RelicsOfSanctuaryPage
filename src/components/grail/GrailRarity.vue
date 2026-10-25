@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { farmToken } from '@/composables/useFarmList.js';
+import { ref, computed, onMounted, watch } from 'vue';
+import { farmToken, farmPlannerEnabled } from '@/composables/useFarmList.js';
 
 /**
  * How rare each thing is, by the best spot for it: the chance one run there
  * turns it up, with the run as Where to Farm defines it - Hell, one player,
- * no magic find, a full clear. From that: the rarest thing found, the rarest
+ * a full clear - at the magic find the reader types in (remembered locally). From that: the rarest thing found, the rarest
  * still ahead, and the missing ones closest to hand.
  *
  * Every spot is scored against every item once; that takes about a second, so
@@ -20,6 +20,9 @@ const rarity = ref(null); // `${kind}:${name}` -> { hit, spot }
 // Exalted and Mythic are a five-percent roll on top, so they would own every
 // list; off by default, one switch turns them in
 const withVariants = ref(false);
+// the reader's magic find, kept in the browser; 0 is the planner's own default
+const MF_KEY = 'grail_mf';
+const mf = ref((() => { try { const n = parseInt(localStorage.getItem(MF_KEY) ?? '0', 10); return Number.isFinite(n) ? Math.min(9999, Math.max(0, n)) : 0; } catch { return 0; } })());
 const busy = ref(false);
 const error = ref(null);
 const compute = async () => {
@@ -29,7 +32,7 @@ const compute = async () => {
       import('@/assets/dropcalc.json'), import('@/composables/useDropSimulation.js'), import('@/composables/useFarmPlanner.js'),
     ]);
     const targets = plan.grailTargets(data, props.catalog, {});
-    const ctx = sim.buildContext(data, { dataMode: 'mod', players: 1, partyNearby: 1, mf: 0, terror: { enabled: false, charLevel: 99 }, exalted: { enabled: true, percent: 5 }, mythic: { enabled: true, percent: 5 }, heraldTier: 1 });
+    const ctx = sim.buildContext(data, { dataMode: 'mod', players: 1, partyNearby: 1, mf: mf.value, terror: { enabled: false, charLevel: 99 }, exalted: { enabled: true, percent: 5 }, mythic: { enabled: true, percent: 5 }, heraldTier: 1 });
     const best = new Array(targets.length).fill(null);
     for (const spot of plan.buildSpots(data, 2)) {
       const run = plan.applyPreset(data, spot, null);
@@ -46,6 +49,12 @@ const compute = async () => {
   }
 };
 onMounted(() => { setTimeout(compute, 300); });
+// a new magic find scores everything again, after the typing has settled
+let mfTimer = null;
+watch(mf, (v) => {
+  try { localStorage.setItem(MF_KEY, String(v)); } catch { /* fine */ }
+  clearTimeout(mfTimer); mfTimer = setTimeout(compute, 500);
+});
 
 const withRarity = computed(() => {
   if (!rarity.value) return [];
@@ -67,7 +76,10 @@ const kindClass = (e) => e.kind;
   <div class="card card-enhanced h-100">
     <div class="card-header card-header-primary py-2 d-flex flex-wrap justify-content-between align-items-baseline gap-2">
       <span class="h6 m-0">{{ $t('Rarity') }}</span>
-      <span class="small text-muted">{{ $t('runs per hit at the best spot · Hell, one player, no MF') }}</span>
+      <span class="small text-muted d-flex align-items-center gap-1">{{ $t('runs per hit at the best spot · Hell, one player') }} ·
+        <label for="rarity-mf" class="m-0">{{ $t('MF') }}</label>
+        <input id="rarity-mf" v-model.number="mf" type="number" min="0" max="9999" step="5" class="form-control form-control-sm mf-input" :title="$t('Your magic find; remembered in this browser')" />
+      </span>
       <div class="form-check form-switch mb-0 small">
         <input id="rarity-variants" v-model="withVariants" class="form-check-input" type="checkbox" />
         <label class="form-check-label" for="rarity-variants">{{ $t('Exalted and Mythic too') }}</label>
@@ -101,7 +113,8 @@ const kindClass = (e) => e.kind;
             <div class="sect">{{ $t('Closest to hand') }}</div>
             <ul v-if="nearest.length" class="list-unstyled m-0 rl">
               <li v-for="e in nearest" :key="e.kind + e.id">
-                <router-link :to="farmLink(e)" class="name" :class="kindClass(e)" :title="$t('Where to farm it')">{{ e.name }}</router-link>
+                <router-link v-if="farmPlannerEnabled" :to="farmLink(e)" class="name" :class="kindClass(e)" :title="$t('Where to farm it')">{{ e.name }}</router-link>
+                <span v-else class="name" :class="kindClass(e)">{{ e.name }}</span>
                 <span class="odds">{{ runsText(e.r.hit) }}</span>
                 <span class="spot text-muted text-truncate">{{ e.r.spot }}</span>
               </li>
@@ -124,4 +137,5 @@ const kindClass = (e) => e.kind;
 a.name:hover { text-decoration: underline; }
 .odds { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-family: var(--font-display); color: var(--d2r-gold-bright); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .spot { grid-column: 1; font-size: 0.75rem; }
+.mf-input { width: 5.5rem; display: inline-block; }
 </style>
