@@ -14,6 +14,12 @@ import { t, dateLocale } from '@/i18n';
  * Runewords (15 total)" while the mod shipped forty-odd.
  */
 const counts = meta.counts ?? {};
+// the archives ship with the site, under public/downloads, named by the version
+// the data was generated from - so a link never points past the data beside it
+const downloads = meta.modVersion ? {
+  standalone: `${import.meta.env.BASE_URL}downloads/RelicsOfSanctuary-${meta.modVersion}-standalone.zip`,
+  d2rmm: `${import.meta.env.BASE_URL}downloads/RelicsOfSanctuary-${meta.modVersion}-d2rmm.zip`,
+} : null;
 
 // The visitor's own Grail, if they have one - written by the Grail page.
 const grailSummary = (() => {
@@ -250,6 +256,11 @@ const tools = computed(() => [
           </div>
           <div class="card-body p-4">
             <p class="card-text" v-html="$t('Two downloads, one mod. The <strong>D2RMM version</strong> builds the game files when you install it and lets you set every option; the <strong>standalone version</strong> is that same install with the defaults already baked in.')"></p>
+            <div v-if="downloads" class="d-flex flex-wrap align-items-center gap-3 mb-4">
+              <a :href="downloads.standalone" class="btn btn-primary" download>⬇ {{ $t('Standalone {v}', { v: meta.modVersion }) }}</a>
+              <a :href="downloads.d2rmm" class="btn btn-outline-primary" download>⬇ {{ $t('D2RMM {v}', { v: meta.modVersion }) }}</a>
+              <span class="small text-muted">{{ $t('The same archives as on NexusMods.') }}</span>
+            </div>
             <div class="section-header">{{ $t('Standalone, in three steps') }}</div>
             <ol class="step-list">
               <li v-html="$t('Extract the archive into <code>[GamePath]/mods</code>, so you have <code>mods/RelicsOfSanctuary/RelicsOfSanctuary.mpq/…</code>')"></li>
