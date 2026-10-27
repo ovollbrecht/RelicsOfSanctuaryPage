@@ -344,6 +344,8 @@ const setTier = (pair, tier) => { shownTier.value = { ...shownTier.value, [pair.
 const TIER_ORDER = ['exceptional', 'elite'];
 const TIER_LABELS = { exceptional: 'Exceptional', elite: 'Elite' };
 const upgradeTiers = (pair) => TIER_ORDER.filter((t) => pair.normal.Upgrades?.[t]);
+// The tier it drops on: anything that can still go exceptional is normal.
+const originalTier = (pair) => (pair.normal.Upgrades?.exceptional ? 'Normal' : 'Exceptional');
 const shownBaseName = (pair) => {
   const tier = tierOf(pair);
   return (tier && pair.normal.Upgrades?.[tier]?.BaseItemName) || pair.normal.BaseItemName;
@@ -633,7 +635,7 @@ onMounted(() => {
                   class="btn btn-sm tier-btn"
                   :title="$t('Back to the base it drops on')"
                   @click="setTier(pair, null)"
-                >↓ {{ $t('As dropped') }}</button>
+                >↓ {{ $t(originalTier(pair)) }} ({{ $t('original') }})</button>
               </template>
               <template v-if="pair.facet">
                 <span class="badge facet-chip ms-2">{{ $t(FACET_TRIGGER_LABELS[pair.facet.trigger]) }}</span>
