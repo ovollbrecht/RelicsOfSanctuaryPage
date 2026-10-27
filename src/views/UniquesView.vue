@@ -346,6 +346,20 @@ const TIER_LABELS = { exceptional: 'Exceptional', elite: 'Elite' };
 const upgradeTiers = (pair) => TIER_ORDER.filter((t) => pair.normal.Upgrades?.[t]);
 // The tier it drops on: anything that can still go exceptional is normal.
 const originalTier = (pair) => (pair.normal.Upgrades?.exceptional ? 'Normal' : 'Exceptional');
+// Every tier the card can show except the one on screen, with the arrow
+// pointing from the shown tier: elite -> exceptional is a step down even
+// when the item drops on normal.
+const tierRank = (tier) => (tier === null ? 0 : TIER_ORDER.indexOf(tier) + 1);
+const tierButtons = (pair) => {
+  const shown = tierOf(pair);
+  return [null, ...upgradeTiers(pair)]
+    .filter((t) => t !== shown)
+    .map((t) => ({
+      tier: t,
+      arrow: tierRank(t) > tierRank(shown) ? '↑' : '↓',
+      base: t ? pair.normal.Upgrades[t].BaseItemName : pair.normal.BaseItemName,
+    }));
+};
 const shownBaseName = (pair) => {
   const tier = tierOf(pair);
   return (tier && pair.normal.Upgrades?.[tier]?.BaseItemName) || pair.normal.BaseItemName;
@@ -622,20 +636,13 @@ onMounted(() => {
               {{ shownBaseName(pair) }}
               <template v-if="upgradeTiers(pair).length">
                 <button
-                  v-for="tier in upgradeTiers(pair).filter((t) => t !== tierOf(pair))"
-                  :key="tier"
+                  v-for="b in tierButtons(pair)"
+                  :key="b.tier ?? 'original'"
                   type="button"
                   class="btn btn-sm tier-btn"
-                  :title="$t('Stats on the {base} the cube upgrades it to', { base: pair.normal.Upgrades[tier].BaseItemName })"
-                  @click="setTier(pair, tier)"
-                >↑ {{ $t(TIER_LABELS[tier]) }}</button>
-                <button
-                  v-if="tierOf(pair)"
-                  type="button"
-                  class="btn btn-sm tier-btn"
-                  :title="$t('Back to the base it drops on')"
-                  @click="setTier(pair, null)"
-                >↓ {{ $t(originalTier(pair)) }} ({{ $t('original') }})</button>
+                  :title="b.tier ? $t('Stats on the {base} the cube upgrades it to', { base: b.base }) : $t('Back to the base it drops on')"
+                  @click="setTier(pair, b.tier)"
+                >{{ b.arrow }} <template v-if="b.tier">{{ $t(TIER_LABELS[b.tier]) }}</template><template v-else>{{ $t(originalTier(pair)) }} ({{ $t('original') }})</template></button>
               </template>
               <template v-if="pair.facet">
                 <span class="badge facet-chip ms-2">{{ $t(FACET_TRIGGER_LABELS[pair.facet.trigger]) }}</span>
