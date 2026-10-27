@@ -332,7 +332,21 @@ const setFilter = (tier, category = null, type = null) => {
 };
 
 const getNonZeroStats = (stats) => {
-  return Object.entries(stats).filter(([_, value]) => value !== '0' && value !== '0 to 0');
+  return Object.entries(stats).filter(([_, value]) => value != null && value !== '0' && value !== '0 to 0');
+};
+
+// The cube's upgrade, shown on the card: which base tier a pair is being read
+// at. Both panels of a pair switch together - the recipe does not care which
+// variant it is fed. Nothing is stored; the page opens on the real base.
+const shownTier = ref({});
+const tierOf = (pair) => shownTier.value[pair.normal.Index] ?? null;
+const setTier = (pair, tier) => { shownTier.value = { ...shownTier.value, [pair.normal.Index]: tier }; };
+const TIER_ORDER = ['exceptional', 'elite'];
+const TIER_LABELS = { exceptional: 'Exceptional', elite: 'Elite' };
+const upgradeTiers = (pair) => TIER_ORDER.filter((t) => pair.normal.Upgrades?.[t]);
+const shownBaseName = (pair) => {
+  const tier = tierOf(pair);
+  return (tier && pair.normal.Upgrades?.[tier]?.BaseItemName) || pair.normal.BaseItemName;
 };
 
 // A group's odds, at the precision the numbers actually carry: 60% stays 60%,
@@ -351,10 +365,11 @@ const sortPropertiesByPriority = (properties) => {
 // heading off: a charm has no defense, durability or damage, and six of its
 // eight lines were an empty "Stats" box.
 const variantsOf = (pair) => {
+  const tier = tierOf(pair);
   const panel = (item, label) => ({
     item,
     label,
-    stats: getNonZeroStats(item.Stats ?? {}),
+    stats: getNonZeroStats((tier && item.Upgrades?.[tier]?.Stats) || item.Stats || {}),
     properties: sortPropertiesByPriority(item.Properties ?? []),
   });
 
@@ -602,7 +617,24 @@ onMounted(() => {
               {{ pair.title ?? pair.normal.Name }}<template v-if="pair.element"> — {{ $t(FACET_ELEMENTS[pair.element]) }}</template>
             </h2>
             <h3 class="h6 mb-0 fw-normal">
-              {{ pair.normal.BaseItemName }}
+              {{ shownBaseName(pair) }}
+              <template v-if="upgradeTiers(pair).length">
+                <button
+                  v-for="tier in upgradeTiers(pair).filter((t) => t !== tierOf(pair))"
+                  :key="tier"
+                  type="button"
+                  class="btn btn-sm tier-btn"
+                  :title="$t('Stats on the {base} the cube upgrades it to', { base: pair.normal.Upgrades[tier].BaseItemName })"
+                  @click="setTier(pair, tier)"
+                >↑ {{ $t(TIER_LABELS[tier]) }}</button>
+                <button
+                  v-if="tierOf(pair)"
+                  type="button"
+                  class="btn btn-sm tier-btn"
+                  :title="$t('Back to the base it drops on')"
+                  @click="setTier(pair, null)"
+                >↓ {{ $t('As dropped') }}</button>
+              </template>
               <template v-if="pair.facet">
                 <span class="badge facet-chip ms-2">{{ $t(FACET_TRIGGER_LABELS[pair.facet.trigger]) }}</span>
                 <span class="facet-chip-arrow">→</span>
@@ -695,6 +727,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* The cube-upgrade toggle beside the base name: small, quiet, gold on hover. */
+.tier-btn {
+  margin-left: 0.4rem;
+  padding: 0 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--d2r-gold);
+  border: 1px solid rgba(201, 163, 106, 0.4);
+  background: transparent;
+}
+.tier-btn:hover { background: rgba(201, 163, 106, 0.15); color: var(--d2r-gold-bright); }
+
 /* The line an item gets instead of its stats. Quiet: it is a note about the
    page, not a property of the item. */
 .spoiler-note {
