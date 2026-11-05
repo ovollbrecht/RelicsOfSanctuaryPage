@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import runewordsData from '@/assets/runewords.json';
 import itemMapping from '@/assets/item_mapping.json';
 import itemBaseData from '@/assets/item_bases.json';
+import { typeByCode, baseByCode, chainOf, baseChain, rowFits } from '@/composables/useItemBases.js';
 import cubeData from '@/assets/cube.json';
 import { readLadder, planBuild, runeNumber } from '@/composables/useRuneLadder.js';
 import { runeIcon } from '@/composables/useItemIcon.js';
@@ -81,26 +82,6 @@ watch(grail.found, async (found) => {
 }, { immediate: true });
 const staffmodsText = (mods) => mods.map((m) => `+${m.level} ${skillNames.value[m.skill]?.s ?? t('skill {n}', { n: m.skill })}`).join(', ');
 
-const typeByCode = new Map(itemBaseData.Types.map((type) => [type.Code, type]));
-const baseByCode = new Map(itemBaseData.Bases.map((base) => [base.Code, base]));
-
-// A type and everything it belongs to, worked out once per type.
-const chainCache = new Map();
-const chainOf = (code) => {
-  const cached = chainCache.get(code);
-  if (cached) return cached;
-
-  const chain = new Set();
-  const walk = (current) => {
-    if (!current || chain.has(current)) return;
-    chain.add(current);
-    (typeByCode.get(current)?.Parents ?? []).forEach(walk);
-  };
-  walk(code);
-  chainCache.set(code, chain);
-  return chain;
-};
-
 const byLabel = (a, b) => a.label.localeCompare(b.label);
 
 const itemFilterOptions = computed(() => [
@@ -145,11 +126,7 @@ const fitsSelectedItem = (runeword) => {
     if (!base) return true;
     if (base.Sockets < runeword.Sockets) return false;
 
-    // A base can sit in two families: the mod gives the Cryptic Sword a second
-    // type so one runeword can name that sword and nothing else.
-    const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
-    if (excluded.some((type) => chain.has(type))) return false;
-    return own.some((type) => chain.has(type));
+    return rowFits({ own, excluded }, baseChain(base));
   }
 
   const chain = chainOf(code);
@@ -768,8 +745,8 @@ const basesFor = (group) => {
     if (held.sockets > 0) { if (held.sockets !== group.sockets) continue; how = held.sockets === 1 ? t('1 open socket') : t('{n} open sockets', { n: held.sockets }); }
     else if (held.superior) { if (group.sockets !== most) continue; how = t('superior, {n} from Larzuk', { n: most }); }
     else { if (group.sockets > most) continue; how = t('unsocketed, up to {n}', { n: most }); }
-    const chain = new Set([...chainOf(base.Type), ...(base.Type2 ? chainOf(base.Type2) : [])]);
-    const fits = group.rows.some((row) => !row.excluded.some((t) => chain.has(t)) && row.own.some((t) => chain.has(t)));
+    const chain = baseChain(base);
+    const fits = group.rows.some((row) => rowFits(row, chain));
     if (!fits) continue;
     // two Diadems at different item levels read the same - one line, counted
     const mods = staffmodsText(held.mods ?? []);
@@ -1082,6 +1059,7 @@ onUnmounted(() => {
             :runes="allRunes"
             :mark-built="markBuilt && grailHasData"
             :bases-for="grailHasData ? basesFor : null"
+            :default-base="selectedBase?.Code ?? null"
             :rework-title="reworkTitle"
             :panel-mode="isWide"
             :selected-key="selectedGroup?.key ?? null"
@@ -1100,6 +1078,7 @@ onUnmounted(() => {
             :groups="nearMisses"
             :mark-built="markBuilt && grailHasData"
             :bases-for="grailHasData ? basesFor : null"
+            :default-base="selectedBase?.Code ?? null"
             :rework-title="reworkTitle"
             :panel-mode="isWide"
             :selected-key="selectedGroup?.key ?? null"
@@ -1116,6 +1095,7 @@ onUnmounted(() => {
               :group="selectedGroup"
               :rework-title="reworkTitle"
               :bases="grailHasData ? basesFor(selectedGroup) : []"
+              :default-base="selectedBase?.Code ?? null"
               :built="markBuilt && grailHasData && selectedGroup.built"
               show-header
             />

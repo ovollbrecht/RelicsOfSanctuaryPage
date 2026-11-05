@@ -114,5 +114,9 @@
  "What you hold is not subtracted.": "Dein Bestand wird nicht abgezogen.",
  "1 runeword in view": "1 Runenwort in der Ansicht",
  "{n} runewords in view": "{n} Runenwörter in der Ansicht",
- "Runes for all results": "Runen für alle Treffer"
+ "Runes for all results": "Runen für alle Treffer",
+ "Base": "Basis",
+ "Pick a base for its stats": "Basis wählen, um die Werte zu sehen",
+ "Ethereal": "Äthrisch",
+ "This base cannot be ethereal": "Diese Basis kann nicht äthrisch sein"
 }

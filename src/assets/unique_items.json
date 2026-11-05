@@ -202,7 +202,7 @@
       "Required Dexterity": "0",
       "Required Strength": "43",
       "Required Level": "15",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Bladebone",
     "Rarity": "19",
@@ -272,7 +272,7 @@
           "Required Dexterity": "0",
           "Required Strength": "85",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -285,7 +285,7 @@
           "Required Dexterity": "45",
           "Required Strength": "145",
           "Required Level": "59",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -412,7 +412,7 @@
       "Required Dexterity": "0",
       "Required Strength": "67",
       "Required Level": "27",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Rakescar",
     "Rarity": "19",
@@ -474,7 +474,7 @@
           "Required Dexterity": "0",
           "Required Strength": "121",
           "Required Level": "32",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -487,7 +487,7 @@
           "Required Dexterity": "59",
           "Required Strength": "138",
           "Required Level": "71",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -598,7 +598,7 @@
       "Required Dexterity": "0",
       "Required Strength": "48",
       "Required Level": "14",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Goreshovel",
     "Rarity": "19",
@@ -660,7 +660,7 @@
           "Required Dexterity": "0",
           "Required Strength": "92",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -673,7 +673,7 @@
           "Required Dexterity": "65",
           "Required Strength": "166",
           "Required Level": "55",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -695,7 +695,7 @@
       "Required Dexterity": "0",
       "Required Strength": "54",
       "Required Level": "19",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "The Chieftan",
     "Rarity": "19",
@@ -757,7 +757,7 @@
           "Required Dexterity": "0",
           "Required Strength": "101",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -770,7 +770,7 @@
           "Required Dexterity": "33",
           "Required Strength": "189",
           "Required Level": "61",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -2094,7 +2094,7 @@
       "Required Dexterity": "0",
       "Required Strength": "36",
       "Required Level": "15",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "Bloodrise",
     "Rarity": "19",
@@ -2172,7 +2172,7 @@
           "Required Dexterity": "0",
           "Required Strength": "74",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Normal (0)"
         }
       },
       "elite": {
@@ -2185,7 +2185,7 @@
           "Required Dexterity": "44",
           "Required Strength": "153",
           "Required Level": "59",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Normal (0)"
         }
       }
     }
@@ -2208,7 +2208,7 @@
       "Required Dexterity": "35",
       "Required Strength": "41",
       "Required Level": "21",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "The Generals Tan Do Li Ga",
     "Rarity": "19",
@@ -2286,7 +2286,7 @@
           "Required Dexterity": "73",
           "Required Strength": "82",
           "Required Level": "30",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -2299,7 +2299,7 @@
           "Required Dexterity": "77",
           "Required Strength": "125",
           "Required Level": "64",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -2510,7 +2510,7 @@
       "Required Dexterity": "0",
       "Required Strength": "49",
       "Required Level": "29",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Steeldriver",
     "Rarity": "19",
@@ -2564,7 +2564,7 @@
           "Required Dexterity": "0",
           "Required Strength": "84",
           "Required Level": "34",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -2577,7 +2577,7 @@
           "Required Dexterity": "0",
           "Required Strength": "126",
           "Required Level": "72",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -2706,7 +2706,7 @@
       "Required Dexterity": "21",
       "Required Strength": "0",
       "Required Level": "7",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "Blood Crescent",
     "Rarity": "19",
@@ -2784,7 +2784,7 @@
           "Required Dexterity": "52",
           "Required Strength": "25",
           "Required Level": "30",
-          "Attack Speed": "Very Fast (-30)"
+          "Attack Speed": "Very Fast (-45)"
         }
       },
       "elite": {
@@ -2797,7 +2797,7 @@
           "Required Dexterity": "95",
           "Required Strength": "138",
           "Required Level": "52",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -2926,7 +2926,7 @@
       "Required Dexterity": "0",
       "Required Strength": "33",
       "Required Level": "13",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "Gleamscythe",
     "Rarity": "19",
@@ -2996,7 +2996,7 @@
           "Required Dexterity": "42",
           "Required Strength": "70",
           "Required Level": "30",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Normal (0)"
         }
       },
       "elite": {
@@ -3009,7 +3009,7 @@
           "Required Dexterity": "105",
           "Required Strength": "142",
           "Required Level": "58",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -3138,7 +3138,7 @@
       "Required Dexterity": "0",
       "Required Strength": "48",
       "Required Level": "17",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Griswolds Edge",
     "Rarity": "19",
@@ -3208,7 +3208,7 @@
           "Required Dexterity": "43",
           "Required Strength": "92",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -3221,7 +3221,7 @@
           "Required Dexterity": "112",
           "Required Strength": "142",
           "Required Level": "65",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -3350,7 +3350,7 @@
       "Required Dexterity": "45",
       "Required Strength": "71",
       "Required Level": "29",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Culwens Point",
     "Rarity": "19",
@@ -3420,7 +3420,7 @@
           "Required Dexterity": "88",
           "Required Strength": "127",
           "Required Level": "34",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -3433,7 +3433,7 @@
           "Required Dexterity": "124",
           "Required Strength": "147",
           "Required Level": "73",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -3562,7 +3562,7 @@
       "Required Dexterity": "0",
       "Required Strength": "47",
       "Required Level": "19",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "Soulflay",
     "Rarity": "19",
@@ -3624,7 +3624,7 @@
           "Required Dexterity": "20",
           "Required Strength": "91",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Normal (0)"
         }
       },
       "elite": {
@@ -3637,7 +3637,7 @@
           "Required Dexterity": "104",
           "Required Strength": "171",
           "Required Level": "56",
-          "Attack Speed": "Fast (-5)"
+          "Attack Speed": "Fast (-15)"
         }
       }
     }
@@ -4142,7 +4142,7 @@
       "Required Dexterity": "25",
       "Required Strength": "0",
       "Required Level": "11",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "The Diggler",
     "Rarity": "19",
@@ -4212,7 +4212,7 @@
           "Required Dexterity": "58",
           "Required Strength": "25",
           "Required Level": "29",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -4225,7 +4225,7 @@
           "Required Dexterity": "98",
           "Required Strength": "55",
           "Required Level": "59",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -4534,7 +4534,7 @@
       "Required Dexterity": "24",
       "Required Strength": "38",
       "Required Level": "12",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Razortine",
     "Rarity": "19",
@@ -4604,7 +4604,7 @@
           "Required Dexterity": "25",
           "Required Strength": "77",
           "Required Level": "29",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -4617,7 +4617,7 @@
           "Required Dexterity": "97",
           "Required Strength": "168",
           "Required Level": "56",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -4738,7 +4738,7 @@
       "Required Dexterity": "35",
       "Required Strength": "54",
       "Required Level": "22",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Lance of Yaggai",
     "Rarity": "19",
@@ -4792,7 +4792,7 @@
           "Required Dexterity": "0",
           "Required Strength": "101",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -4805,7 +4805,7 @@
           "Required Dexterity": "163",
           "Required Strength": "122",
           "Required Level": "69",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -4942,7 +4942,7 @@
       "Required Dexterity": "0",
       "Required Strength": "40",
       "Required Level": "8",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Dimoaks Hew",
     "Rarity": "19",
@@ -4996,7 +4996,7 @@
           "Required Dexterity": "0",
           "Required Strength": "80",
           "Required Level": "26",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -5009,7 +5009,7 @@
           "Required Dexterity": "75",
           "Required Strength": "195",
           "Required Level": "52",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -5244,7 +5244,7 @@
       "Required Dexterity": "0",
       "Required Strength": "62",
       "Required Level": "17",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "The Battlebranch",
     "Rarity": "19",
@@ -5306,7 +5306,7 @@
           "Required Dexterity": "67",
           "Required Strength": "113",
           "Required Level": "28",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -5319,7 +5319,7 @@
           "Required Dexterity": "103",
           "Required Strength": "165",
           "Required Level": "66",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -6139,12 +6139,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "2 to 8",
-      "Durability": "20",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "15",
       "Required Strength": "0",
       "Required Level": "7",
-      "Attack Speed": "Slow (+5)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Pluckeye",
     "Rarity": "19",
@@ -6217,12 +6217,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "12 to 38",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "43",
           "Required Strength": "25",
           "Required Level": "23",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -6230,12 +6230,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "46 to 100",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "143",
           "Required Strength": "64",
           "Required Level": "48",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -6252,12 +6252,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[3 - 4] to [11 - 12]",
-      "Durability": "32",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "28",
       "Required Strength": "0",
       "Required Level": "13",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Witherstring",
     "Rarity": "19",
@@ -6322,12 +6322,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[12 - 13] to [33 - 36]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "62",
           "Required Strength": "25",
           "Required Level": "26",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -6335,12 +6335,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[30 - 32] to [60 - 64]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "119",
           "Required Strength": "76",
           "Required Level": "52",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -6357,7 +6357,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[4 - 5] to [16 - 17]",
-      "Durability": "28",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "19",
       "Required Strength": "22",
@@ -6419,7 +6419,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[16 - 17] to [46 - 49]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "49",
           "Required Strength": "53",
@@ -6432,7 +6432,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[24 - 25] to [94 - 100]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "188",
           "Required Strength": "52",
@@ -6454,12 +6454,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[5 - 6] to [11 - 12]",
-      "Durability": "36",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "35",
       "Required Strength": "25",
       "Required Level": "20",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "Piercerib",
     "Rarity": "19",
@@ -6542,12 +6542,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[15 - 17] to [36 - 41]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "73",
           "Required Strength": "58",
           "Required Level": "30",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-60)"
         }
       },
       "elite": {
@@ -6555,12 +6555,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[16 - 19] to [72 - 83]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "107",
           "Required Strength": "121",
           "Required Level": "58",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-60)"
         }
       }
     }
@@ -6577,7 +6577,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[8 - 9] to [18 - 20]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "40",
       "Required Strength": "30",
@@ -6647,7 +6647,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[22 - 24] to [51 - 57]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "80",
           "Required Strength": "65",
@@ -6660,7 +6660,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[56 - 62] to [68 - 76]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "132",
           "Required Strength": "89",
@@ -6682,12 +6682,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "5 to [30 - 32]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "50",
       "Required Strength": "40",
       "Required Level": "26",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Wizendraw",
     "Rarity": "19",
@@ -6768,12 +6768,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[17 - 18] to [71 - 75]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "95",
           "Required Strength": "80",
           "Required Level": "31",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -6781,12 +6781,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[25 - 27] to [107 - 113]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "121",
           "Required Strength": "97",
           "Required Level": "64",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -6803,12 +6803,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[10 - 11] to [23 - 26]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "35",
       "Required Level": "27",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Hellclap",
     "Rarity": "19",
@@ -6881,12 +6881,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[23 - 26] to [59 - 66]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "103",
           "Required Strength": "73",
           "Required Level": "32",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -6894,12 +6894,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[34 - 38] to [90 - 100]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "146",
           "Required Strength": "72",
           "Required Level": "67",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -6916,7 +6916,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[5 - 6] to [39 - 52]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "65",
       "Required Strength": "50",
@@ -6978,7 +6978,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[17 - 23] to [85 - 114]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "118",
           "Required Strength": "95",
@@ -6991,7 +6991,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[17 - 23] to [115 - 156]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "167",
           "Required Strength": "134",
@@ -7013,7 +7013,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "10 to 15",
-      "Durability": "30",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "27",
       "Required Strength": "21",
@@ -7083,7 +7083,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "23 to 45",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "61",
           "Required Strength": "52",
@@ -7096,7 +7096,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "47 to 124",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "155",
           "Required Strength": "83",
@@ -7118,12 +7118,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "13 to 24",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "33",
       "Required Strength": "40",
       "Required Level": "18",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Ichorsting",
     "Rarity": "19",
@@ -7188,12 +7188,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "30 to 63",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "70",
           "Required Strength": "80",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -7201,12 +7201,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "37 to 130",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "105",
           "Required Strength": "117",
           "Required Level": "57",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -7223,12 +7223,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[23 - 25] to [44 - 46]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "40",
       "Required Strength": "60",
       "Required Level": "27",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Hellcast",
     "Rarity": "19",
@@ -7301,12 +7301,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[56 - 59] to [93 - 99]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "80",
           "Required Strength": "110",
           "Required Level": "32",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -7314,12 +7314,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[54 - 57] to [154 - 163]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "77",
           "Required Strength": "163",
           "Required Level": "63",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -7336,12 +7336,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[9 - 12] to [19 - 24]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "50",
       "Required Strength": "40",
       "Required Level": "28",
-      "Attack Speed": "Very Fast (-40)"
+      "Attack Speed": "Very Fast (-70)"
     },
     "Index": "Doomspittle",
     "Rarity": "19",
@@ -7398,12 +7398,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[22 - 28] to [51 - 64]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "95",
           "Required Strength": "80",
           "Required Level": "33",
-          "Attack Speed": "Very Fast (-60)"
+          "Attack Speed": "Very Fast (-90)"
         }
       },
       "elite": {
@@ -7411,12 +7411,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[41 - 52] to [64 - 80]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "98",
           "Required Strength": "141",
           "Required Level": "70",
-          "Attack Speed": "Very Fast (-60)"
+          "Attack Speed": "Very Fast (-90)"
         }
       }
     }
@@ -12614,7 +12614,7 @@
       "Required Dexterity": "25",
       "Required Strength": "25",
       "Required Level": "36",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Coldkill",
     "Rarity": "19",
@@ -12692,7 +12692,7 @@
           "Required Dexterity": "67",
           "Required Strength": "125",
           "Required Level": "47",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -12714,7 +12714,7 @@
       "Required Dexterity": "0",
       "Required Strength": "68",
       "Required Level": "39",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Butcher's Pupil",
     "Rarity": "19",
@@ -12784,7 +12784,7 @@
           "Required Dexterity": "83",
           "Required Strength": "115",
           "Required Level": "52",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -13406,7 +13406,7 @@
       "Required Dexterity": "79",
       "Required Strength": "115",
       "Required Level": "42",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Boneslayer Blade",
     "Rarity": "19",
@@ -13492,7 +13492,7 @@
           "Required Dexterity": "59",
           "Required Strength": "167",
           "Required Level": "68",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -14141,7 +14141,7 @@
       "Required Dexterity": "0",
       "Required Strength": "58",
       "Required Level": "37",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Zakarum's Hand",
     "Rarity": "19",
@@ -14235,7 +14235,7 @@
           "Required Dexterity": "65",
           "Required Strength": "125",
           "Required Level": "53",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -14797,7 +14797,7 @@
       "Required Dexterity": "73",
       "Required Strength": "82",
       "Required Level": "45",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Baezil's Vortex",
     "Rarity": "19",
@@ -14875,7 +14875,7 @@
           "Required Dexterity": "77",
           "Required Strength": "125",
           "Required Level": "64",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -14898,7 +14898,7 @@
       "Required Dexterity": "0",
       "Required Strength": "100",
       "Required Level": "43",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Earthshaker",
     "Rarity": "19",
@@ -14976,7 +14976,7 @@
           "Required Dexterity": "0",
           "Required Strength": "189",
           "Required Level": "68",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -15201,7 +15201,7 @@
       "Required Dexterity": "0",
       "Required Strength": "25",
       "Required Level": "30",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Bloodletter",
     "Rarity": "19",
@@ -15303,7 +15303,7 @@
           "Required Dexterity": "88",
           "Required Strength": "150",
           "Required Level": "49",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -15326,7 +15326,7 @@
       "Required Dexterity": "52",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Coldsteel Eye",
     "Rarity": "19",
@@ -15404,7 +15404,7 @@
           "Required Dexterity": "95",
           "Required Strength": "138",
           "Required Level": "52",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -15621,7 +15621,7 @@
       "Required Dexterity": "60",
       "Required Strength": "85",
       "Required Level": "37",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Ginther's Rift",
     "Rarity": "19",
@@ -15691,7 +15691,7 @@
           "Required Dexterity": "136",
           "Required Strength": "25",
           "Required Level": "61",
-          "Attack Speed": "Very Fast (-30)"
+          "Attack Speed": "Very Fast (-60)"
         }
       }
     }
@@ -16001,7 +16001,7 @@
       "Required Dexterity": "61",
       "Required Strength": "73",
       "Required Level": "42",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Crainte Vomir",
     "Rarity": "19",
@@ -16071,7 +16071,7 @@
           "Required Dexterity": "100",
           "Required Strength": "175",
           "Required Level": "51",
-          "Attack Speed": "Fast (-15)"
+          "Attack Speed": "Very Fast (-65)"
         }
       }
     }
@@ -16615,7 +16615,7 @@
       "Required Dexterity": "0",
       "Required Strength": "25",
       "Required Level": "32",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "Spineripper",
     "Rarity": "19",
@@ -16701,7 +16701,7 @@
           "Required Dexterity": "75",
           "Required Strength": "38",
           "Required Level": "50",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -16825,7 +16825,7 @@
       "Required Dexterity": "88",
       "Required Strength": "25",
       "Required Level": "38",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Blackbog's Sharp",
     "Rarity": "19",
@@ -16911,7 +16911,7 @@
           "Required Dexterity": "86",
           "Required Strength": "42",
           "Required Level": "69",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -17019,7 +17019,7 @@
       "Required Dexterity": "25",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "The Impaler",
     "Rarity": "19",
@@ -17105,7 +17105,7 @@
           "Required Dexterity": "120",
           "Required Strength": "155",
           "Required Level": "50",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -17524,7 +17524,7 @@
       "Required Dexterity": "0",
       "Required Strength": "80",
       "Required Level": "41",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "The Meat Scraper",
     "Rarity": "19",
@@ -17594,7 +17594,7 @@
           "Required Dexterity": "75",
           "Required Strength": "195",
           "Required Level": "52",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -17710,7 +17710,7 @@
       "Required Dexterity": "82",
       "Required Strength": "82",
       "Required Level": "42",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Athena's Wrath",
     "Rarity": "19",
@@ -17780,7 +17780,7 @@
           "Required Dexterity": "118",
           "Required Strength": "152",
           "Required Level": "60",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -17904,7 +17904,7 @@
       "Required Dexterity": "91",
       "Required Strength": "133",
       "Required Level": "44",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Husoldal Evo",
     "Rarity": "19",
@@ -17974,7 +17974,7 @@
           "Required Dexterity": "99",
           "Required Strength": "179",
           "Required Level": "70",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -18217,7 +18217,7 @@
       "Required Dexterity": "0",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Ribcracker",
     "Rarity": "19",
@@ -18311,7 +18311,7 @@
           "Required Dexterity": "35",
           "Required Strength": "63",
           "Required Level": "56",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -18610,12 +18610,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[15 - 18] to [47 - 57]",
-      "Durability": "20",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "43",
       "Required Strength": "25",
       "Required Level": "28",
-      "Attack Speed": "Slow (+5)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "Skystrike",
     "Rarity": "19",
@@ -18688,12 +18688,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[57 - 69] to [125 - 150]",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "143",
           "Required Strength": "64",
           "Required Level": "48",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -18710,12 +18710,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[22 - 25] to [61 - 70]",
-      "Durability": "32",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "62",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Riphook",
     "Rarity": "19",
@@ -18780,12 +18780,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[58 - 67] to [114 - 131]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "119",
           "Required Strength": "76",
           "Required Level": "52",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -18802,7 +18802,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[25 - 28] to [72 - 81]",
-      "Durability": "28",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "49",
       "Required Strength": "53",
@@ -18872,7 +18872,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[37 - 42] to [147 - 165]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "188",
           "Required Strength": "52",
@@ -18894,7 +18894,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[30 - 35] to [72 - 83]",
-      "Durability": "36",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "73",
       "Required Strength": "58",
@@ -18964,7 +18964,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[33 - 38] to [145 - 166]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "107",
           "Required Strength": "121",
@@ -18986,7 +18986,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[32 - 35] to [75 - 81]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "80",
       "Required Strength": "65",
@@ -19056,7 +19056,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[82 - 89] to [100 - 108]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "132",
           "Required Strength": "89",
@@ -19078,7 +19078,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[34 - 43] to [141 - 168]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "95",
       "Required Strength": "80",
@@ -19156,7 +19156,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[48 - 59] to [202 - 237]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "121",
           "Required Strength": "97",
@@ -19178,7 +19178,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[55 - 85] to [102 - 137]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "103",
       "Required Strength": "73",
@@ -19272,7 +19272,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[69 - 100] to [141 - 182]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "146",
           "Required Strength": "72",
@@ -19294,12 +19294,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[30 - 35] to [150 - 175]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "118",
       "Required Strength": "95",
       "Required Level": "46",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Godstrike Arch",
     "Rarity": "19",
@@ -19372,12 +19372,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[30 - 35] to [204 - 238]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "167",
           "Required Strength": "134",
           "Required Level": "70",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -19394,7 +19394,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[37 - 42] to [82 - 111]",
-      "Durability": "30",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "61",
       "Required Strength": "52",
@@ -19472,7 +19472,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[75 - 84] to [207 - 249]",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "155",
           "Required Strength": "83",
@@ -19494,12 +19494,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[50 - 64] to [105 - 134]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "28",
       "Required Strength": "32",
       "Required Level": "36",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Pus Spiter",
     "Rarity": "19",
@@ -19580,12 +19580,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[62 - 80] to [217 - 278]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "42",
           "Required Strength": "46",
           "Required Level": "57",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -19602,12 +19602,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[82 - 99] to [384 - 412]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "80",
       "Required Strength": "110",
       "Required Level": "41",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-70)"
     },
     "Index": "Buriza-Do Kyanon",
     "Rarity": "19",
@@ -19688,12 +19688,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[80 - 96] to [474 - 520]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "77",
           "Required Strength": "163",
           "Required Level": "63",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-70)"
         }
       }
     }
@@ -19710,7 +19710,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "31 to 137",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "95",
       "Required Strength": "80",
@@ -19788,7 +19788,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "57 to 155",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "98",
           "Required Strength": "141",
@@ -24976,7 +24976,7 @@
       "Required Dexterity": "44",
       "Required Strength": "153",
       "Required Level": "65",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Baranar's Star",
     "Rarity": "19",
@@ -25078,7 +25078,7 @@
       "Required Dexterity": "0",
       "Required Strength": "189",
       "Required Level": "79",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "Schaefer's Hammer",
     "Rarity": "19",
@@ -25188,7 +25188,7 @@
       "Required Dexterity": "0",
       "Required Strength": "253",
       "Required Level": "87",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "The Cranium Basher",
     "Rarity": "19",
@@ -25282,7 +25282,7 @@
       "Required Dexterity": "136",
       "Required Strength": "25",
       "Required Level": "58",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Lightsabre",
     "Rarity": "95",
@@ -25718,7 +25718,7 @@
       "Required Dexterity": "140",
       "Required Strength": "188",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Stormspire",
     "Rarity": "19",
@@ -25814,7 +25814,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[45 - 74] to [189 - 313]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "121",
       "Required Strength": "97",
@@ -25891,12 +25891,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "35 to 546",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "167",
       "Required Strength": "134",
       "Required Level": "73",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Windforce",
     "Rarity": "19",
@@ -27043,12 +27043,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[72 - 107] to [127 - 173]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "110",
       "Required Strength": "73",
       "Required Level": "42",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Lycander's Aim",
     "Rarity": "19",
@@ -27137,12 +27137,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[60 - 92] to [205 - 266]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "152",
           "Required Strength": "108",
           "Required Level": "65",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -27168,7 +27168,7 @@
       "Required Dexterity": "98",
       "Required Strength": "115",
       "Required Level": "42",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Lycander's Flank",
     "Rarity": "19",
@@ -27262,7 +27262,7 @@
           "Required Dexterity": "149",
           "Required Strength": "132",
           "Required Level": "67",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -27760,7 +27760,7 @@
       "Required Dexterity": "80",
       "Required Strength": "25",
       "Required Level": "57",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "The Scalper",
     "Rarity": "19",
@@ -27838,7 +27838,7 @@
           "Required Dexterity": "108",
           "Required Strength": "88",
           "Required Level": "64",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -28116,7 +28116,7 @@
       "Required Dexterity": "142",
       "Required Strength": "45",
       "Required Level": "75",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Warshrike",
     "Rarity": "19",
@@ -28188,7 +28188,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[67 - 83] to [104 - 128]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "98",
       "Required Strength": "141",
@@ -28262,7 +28262,7 @@
       "Required Dexterity": "67",
       "Required Strength": "125",
       "Required Level": "67",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Razoredge",
     "Rarity": "19",
@@ -28478,7 +28478,7 @@
       "Required Dexterity": "103",
       "Required Strength": "165",
       "Required Level": "84",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Tomb Reaver",
     "Rarity": "19",
@@ -28727,7 +28727,7 @@
       "Required Dexterity": "136",
       "Required Strength": "25",
       "Required Level": "85",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "Azurewrath",
     "Rarity": "19",
@@ -28991,7 +28991,7 @@
       "Required Dexterity": "61",
       "Required Strength": "100",
       "Required Level": "64",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "Horizon's Tornado",
     "Rarity": "95",
@@ -29602,7 +29602,7 @@
       "Required Dexterity": "59",
       "Required Strength": "138",
       "Required Level": "70",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Deathcleaver",
     "Rarity": "19",
@@ -29671,7 +29671,7 @@
       "Required Dexterity": "55",
       "Required Strength": "164",
       "Required Level": "75",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Executioner's Justice",
     "Rarity": "19",
@@ -30033,7 +30033,7 @@
       "Required Dexterity": "122",
       "Required Strength": "96",
       "Required Level": "68",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Lacerator",
     "Rarity": "19",
@@ -30198,7 +30198,7 @@
       "Required Dexterity": "134",
       "Required Strength": "132",
       "Required Level": "71",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-70)"
     },
     "Index": "Viperfork",
     "Rarity": "19",
@@ -30275,7 +30275,7 @@
       "Required Dexterity": "55",
       "Required Strength": "156",
       "Required Level": "74",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "Ethereal Edge",
     "Rarity": "19",
@@ -30623,12 +30623,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[89 - 105] to [254 - 300]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "77",
       "Required Strength": "163",
       "Required Level": "76",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Hellrack",
     "Rarity": "19",
@@ -30908,7 +30908,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[50 - 60] to [132 - 159]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "146",
       "Required Strength": "72",
@@ -30980,7 +30980,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[56 - 66] to [131 - 155]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "187",
       "Required Strength": "87",
@@ -31231,7 +31231,7 @@
       "Required Dexterity": "108",
       "Required Strength": "88",
       "Required Level": "70",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Gimmershred",
     "Rarity": "19",
@@ -31378,7 +31378,7 @@
       "Required Dexterity": "0",
       "Required Strength": "225",
       "Required Level": "68",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Windhammer",
     "Rarity": "19",
@@ -31446,7 +31446,7 @@
       "Required Dexterity": "151",
       "Required Strength": "107",
       "Required Level": "69",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "Thunderstroke",
     "Rarity": "19",
@@ -31535,7 +31535,7 @@
       "Required Dexterity": "95",
       "Required Strength": "127",
       "Required Level": "68",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Demon's Arch",
     "Rarity": "19",
@@ -31685,7 +31685,7 @@
       "Required Dexterity": "106",
       "Required Strength": "165",
       "Required Level": "69",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-5)"
     },
     "Index": "Steelpillar",
     "Rarity": "19",
@@ -33021,7 +33021,7 @@
       "Required Dexterity": "77",
       "Required Strength": "125",
       "Required Level": "82",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Stormlash",
     "Rarity": "19",
@@ -33357,7 +33357,7 @@
       "Required Dexterity": "109",
       "Required Strength": "99",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "Frostwind",
     "Rarity": "19",
@@ -33599,7 +33599,7 @@
       "Required Dexterity": "113",
       "Required Strength": "113",
       "Required Level": "67",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "Firelizard's Talons",
     "Rarity": "19",
@@ -33894,7 +33894,7 @@
       "Required Dexterity": "65",
       "Required Strength": "125",
       "Required Level": "61",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Heaven's Light",
     "Rarity": "19",
@@ -34437,7 +34437,7 @@
       "Required Dexterity": "70",
       "Required Strength": "97",
       "Required Level": "66",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Ironward",
     "Rarity": "19",
@@ -34600,7 +34600,7 @@
       "Required Dexterity": "120",
       "Required Strength": "155",
       "Required Level": "81",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Arioc's Needle",
     "Rarity": "19",
@@ -34677,7 +34677,7 @@
       "Required Dexterity": "54",
       "Required Strength": "133",
       "Required Level": "63",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Cranebeak",
     "Rarity": "19",
@@ -34755,7 +34755,7 @@
       "Required Dexterity": "43",
       "Required Strength": "88",
       "Required Level": "68",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "Nord's Tenderizer",
     "Rarity": "19",
@@ -34841,7 +34841,7 @@
       "Required Dexterity": "0",
       "Required Strength": "253",
       "Required Level": "69",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Slow (+10)"
     },
     "Index": "Earthshifter",
     "Rarity": "19",
@@ -35000,7 +35000,7 @@
       "Required Dexterity": "75",
       "Required Strength": "195",
       "Required Level": "64",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Bonehew",
     "Rarity": "19",
@@ -36672,7 +36672,7 @@
       "Required Dexterity": "67",
       "Required Strength": "117",
       "Required Level": "61",
-      "Attack Speed": "Fast (-15)"
+      "Attack Speed": "Very Fast (-48)"
     },
     "Index": "Dreadfang",
     "Rarity": "38",
@@ -39200,7 +39200,7 @@
       "Required Dexterity": "0",
       "Required Strength": "43",
       "Required Level": "15",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Bladebone",
     "Rarity": "1",
@@ -39278,7 +39278,7 @@
           "Required Dexterity": "0",
           "Required Strength": "85",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -39291,7 +39291,7 @@
           "Required Dexterity": "45",
           "Required Strength": "145",
           "Required Level": "59",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -39434,7 +39434,7 @@
       "Required Dexterity": "0",
       "Required Strength": "67",
       "Required Level": "27",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Rakescar",
     "Rarity": "1",
@@ -39504,7 +39504,7 @@
           "Required Dexterity": "0",
           "Required Strength": "121",
           "Required Level": "32",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -39517,7 +39517,7 @@
           "Required Dexterity": "59",
           "Required Strength": "138",
           "Required Level": "71",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -39539,7 +39539,7 @@
       "Required Dexterity": "0",
       "Required Strength": "35",
       "Required Level": "8",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Fechmars Axe",
     "Rarity": "1",
@@ -39617,7 +39617,7 @@
           "Required Dexterity": "0",
           "Required Strength": "73",
           "Required Level": "27",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -39630,7 +39630,7 @@
           "Required Dexterity": "0",
           "Required Strength": "196",
           "Required Level": "49",
-          "Attack Speed": "Fast (-15)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -39652,7 +39652,7 @@
       "Required Dexterity": "0",
       "Required Strength": "48",
       "Required Level": "14",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Goreshovel",
     "Rarity": "1",
@@ -39730,7 +39730,7 @@
           "Required Dexterity": "0",
           "Required Strength": "92",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -39743,7 +39743,7 @@
           "Required Dexterity": "65",
           "Required Strength": "166",
           "Required Level": "55",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -39765,7 +39765,7 @@
       "Required Dexterity": "0",
       "Required Strength": "54",
       "Required Level": "19",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E The Chieftan",
     "Rarity": "1",
@@ -39835,7 +39835,7 @@
           "Required Dexterity": "0",
           "Required Strength": "101",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -39848,7 +39848,7 @@
           "Required Dexterity": "33",
           "Required Strength": "189",
           "Required Level": "61",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -39870,7 +39870,7 @@
       "Required Dexterity": "19",
       "Required Strength": "31",
       "Required Level": "25",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Brainhew",
     "Rarity": "1",
@@ -39956,7 +39956,7 @@
           "Required Dexterity": "39",
           "Required Strength": "57",
           "Required Level": "30",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -39969,7 +39969,7 @@
           "Required Dexterity": "29",
           "Required Strength": "83",
           "Required Level": "68",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -40597,7 +40597,7 @@
       "Required Dexterity": "0",
       "Required Strength": "0",
       "Required Level": "3",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Felloak",
     "Rarity": "1",
@@ -40675,7 +40675,7 @@
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "23",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -40688,7 +40688,7 @@
           "Required Dexterity": "43",
           "Required Strength": "88",
           "Required Level": "46",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -41178,7 +41178,7 @@
       "Required Dexterity": "0",
       "Required Strength": "27",
       "Required Level": "9",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Crushflange",
     "Rarity": "1",
@@ -41264,7 +41264,7 @@
           "Required Dexterity": "0",
           "Required Strength": "61",
           "Required Level": "28",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -41277,7 +41277,7 @@
           "Required Dexterity": "46",
           "Required Strength": "145",
           "Required Level": "54",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -41300,7 +41300,7 @@
       "Required Dexterity": "0",
       "Required Strength": "36",
       "Required Level": "15",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-15)"
     },
     "Index": "E Bloodrise",
     "Rarity": "1",
@@ -41386,7 +41386,7 @@
           "Required Dexterity": "0",
           "Required Strength": "74",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-15)"
         }
       },
       "elite": {
@@ -41399,7 +41399,7 @@
           "Required Dexterity": "44",
           "Required Strength": "153",
           "Required Level": "59",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-15)"
         }
       }
     }
@@ -41422,7 +41422,7 @@
       "Required Dexterity": "35",
       "Required Strength": "41",
       "Required Level": "21",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E The Generals Tan Do Li Ga",
     "Rarity": "1",
@@ -41508,7 +41508,7 @@
           "Required Dexterity": "73",
           "Required Strength": "82",
           "Required Level": "30",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -41521,7 +41521,7 @@
           "Required Dexterity": "77",
           "Required Strength": "125",
           "Required Level": "64",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -41772,7 +41772,7 @@
       "Required Dexterity": "0",
       "Required Strength": "34",
       "Required Level": "29",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Steeldriver",
     "Rarity": "1",
@@ -41850,7 +41850,7 @@
           "Required Dexterity": "0",
           "Required Strength": "59",
           "Required Level": "34",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -41863,7 +41863,7 @@
           "Required Dexterity": "0",
           "Required Strength": "88",
           "Required Level": "72",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -42000,7 +42000,7 @@
       "Required Dexterity": "21",
       "Required Strength": "0",
       "Required Level": "7",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Blood Crescent",
     "Rarity": "1",
@@ -42086,7 +42086,7 @@
           "Required Dexterity": "52",
           "Required Strength": "25",
           "Required Level": "30",
-          "Attack Speed": "Very Fast (-30)"
+          "Attack Speed": "Very Fast (-60)"
         }
       },
       "elite": {
@@ -42099,7 +42099,7 @@
           "Required Dexterity": "95",
           "Required Strength": "138",
           "Required Level": "52",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -42220,7 +42220,7 @@
       "Required Dexterity": "0",
       "Required Strength": "33",
       "Required Level": "13",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "E Gleamscythe",
     "Rarity": "1",
@@ -42298,7 +42298,7 @@
           "Required Dexterity": "42",
           "Required Strength": "70",
           "Required Level": "30",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Fast (-10)"
         }
       },
       "elite": {
@@ -42311,7 +42311,7 @@
           "Required Dexterity": "105",
           "Required Strength": "142",
           "Required Level": "58",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -42440,7 +42440,7 @@
       "Required Dexterity": "0",
       "Required Strength": "48",
       "Required Level": "17",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Griswolds Edge",
     "Rarity": "1",
@@ -42526,7 +42526,7 @@
           "Required Dexterity": "43",
           "Required Strength": "92",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -42539,7 +42539,7 @@
           "Required Dexterity": "112",
           "Required Strength": "142",
           "Required Level": "65",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -42676,7 +42676,7 @@
       "Required Dexterity": "31",
       "Required Strength": "49",
       "Required Level": "29",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "E Culwens Point",
     "Rarity": "1",
@@ -42754,7 +42754,7 @@
           "Required Dexterity": "61",
           "Required Strength": "88",
           "Required Level": "34",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-35)"
         }
       },
       "elite": {
@@ -42767,7 +42767,7 @@
           "Required Dexterity": "86",
           "Required Strength": "102",
           "Required Level": "73",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -42912,7 +42912,7 @@
       "Required Dexterity": "0",
       "Required Strength": "47",
       "Required Level": "19",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-15)"
     },
     "Index": "E Soulflay",
     "Rarity": "1",
@@ -42990,7 +42990,7 @@
           "Required Dexterity": "20",
           "Required Strength": "91",
           "Required Level": "30",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-15)"
         }
       },
       "elite": {
@@ -43003,7 +43003,7 @@
           "Required Dexterity": "104",
           "Required Strength": "171",
           "Required Level": "56",
-          "Attack Speed": "Fast (-5)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -43450,7 +43450,7 @@
       "Required Dexterity": "0",
       "Required Strength": "0",
       "Required Level": "4",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Gull",
     "Rarity": "1",
@@ -43528,7 +43528,7 @@
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "24",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -43541,7 +43541,7 @@
           "Required Dexterity": "75",
           "Required Strength": "38",
           "Required Level": "50",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -43564,7 +43564,7 @@
       "Required Dexterity": "25",
       "Required Strength": "0",
       "Required Level": "11",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E The Diggler",
     "Rarity": "1",
@@ -43666,7 +43666,7 @@
           "Required Dexterity": "58",
           "Required Strength": "25",
           "Required Level": "29",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -43679,7 +43679,7 @@
           "Required Dexterity": "98",
           "Required Strength": "55",
           "Required Level": "59",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -43702,7 +43702,7 @@
       "Required Dexterity": "45",
       "Required Strength": "0",
       "Required Level": "19",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E The Jade Tan Do",
     "Rarity": "1",
@@ -43804,7 +43804,7 @@
           "Required Dexterity": "88",
           "Required Strength": "25",
           "Required Level": "30",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -43817,7 +43817,7 @@
           "Required Dexterity": "86",
           "Required Strength": "42",
           "Required Level": "69",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -44068,7 +44068,7 @@
       "Required Dexterity": "24",
       "Required Strength": "38",
       "Required Level": "12",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Razortine",
     "Rarity": "1",
@@ -44162,7 +44162,7 @@
           "Required Dexterity": "25",
           "Required Strength": "77",
           "Required Level": "29",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -44175,7 +44175,7 @@
           "Required Dexterity": "97",
           "Required Strength": "168",
           "Required Level": "56",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -44320,7 +44320,7 @@
       "Required Dexterity": "35",
       "Required Strength": "54",
       "Required Level": "22",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Lance of Yaggai",
     "Rarity": "1",
@@ -44390,7 +44390,7 @@
           "Required Dexterity": "0",
           "Required Strength": "101",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -44403,7 +44403,7 @@
           "Required Dexterity": "163",
           "Required Strength": "122",
           "Required Level": "69",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -44548,7 +44548,7 @@
       "Required Dexterity": "0",
       "Required Strength": "40",
       "Required Level": "8",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Dimoaks Hew",
     "Rarity": "1",
@@ -44618,7 +44618,7 @@
           "Required Dexterity": "0",
           "Required Strength": "80",
           "Required Level": "26",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -44631,7 +44631,7 @@
           "Required Dexterity": "75",
           "Required Strength": "195",
           "Required Level": "52",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -44890,7 +44890,7 @@
       "Required Dexterity": "0",
       "Required Strength": "62",
       "Required Level": "17",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E The Battlebranch",
     "Rarity": "1",
@@ -44960,7 +44960,7 @@
           "Required Dexterity": "67",
           "Required Strength": "113",
           "Required Level": "28",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -44973,7 +44973,7 @@
           "Required Dexterity": "103",
           "Required Strength": "165",
           "Required Level": "66",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -45134,7 +45134,7 @@
       "Required Dexterity": "80",
       "Required Strength": "80",
       "Required Level": "29",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E The Grim Reaper",
     "Rarity": "1",
@@ -45220,7 +45220,7 @@
           "Required Dexterity": "140",
           "Required Strength": "140",
           "Required Level": "34",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -45233,7 +45233,7 @@
           "Required Dexterity": "140",
           "Required Strength": "188",
           "Required Level": "73",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -45257,7 +45257,7 @@
       "Required Dexterity": "0",
       "Required Strength": "0",
       "Required Level": "5",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Bane Ash",
     "Rarity": "1",
@@ -45351,7 +45351,7 @@
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "23",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -45364,7 +45364,7 @@
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "50",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -45921,12 +45921,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "3 to 27",
-      "Durability": "20",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "15",
       "Required Strength": "0",
       "Required Level": "7",
-      "Attack Speed": "Slow (+5)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Pluckeye",
     "Rarity": "1",
@@ -46023,12 +46023,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[18 - 19] to [72 - 75]",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "43",
           "Required Strength": "25",
           "Required Level": "23",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -46036,12 +46036,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[69 - 73] to [165 - 175]",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "143",
           "Required Strength": "64",
           "Required Level": "48",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -46058,12 +46058,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[9 - 10] to [24 - 25]",
-      "Durability": "32",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "28",
       "Required Strength": "0",
       "Required Level": "13",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Witherstring",
     "Rarity": "1",
@@ -46136,12 +46136,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[24 - 25] to [62 - 65]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "62",
           "Required Strength": "25",
           "Required Level": "26",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-60)"
         }
       },
       "elite": {
@@ -46149,12 +46149,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[55 - 57] to [108 - 112]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "119",
           "Required Strength": "76",
           "Required Level": "52",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-60)"
         }
       }
     }
@@ -46171,7 +46171,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[7 - 8] to [26 - 27]",
-      "Durability": "28",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "19",
       "Required Strength": "22",
@@ -46241,7 +46241,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[26 - 27] to [75 - 78]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "49",
           "Required Strength": "53",
@@ -46254,7 +46254,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[39 - 40] to [153 - 159]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "188",
           "Required Strength": "52",
@@ -46276,12 +46276,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[9 - 10] to [19 - 20]",
-      "Durability": "36",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "35",
       "Required Strength": "25",
       "Required Level": "20",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-85)"
     },
     "Index": "E Piercerib",
     "Rarity": "1",
@@ -46372,12 +46372,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[26 - 28] to [62 - 67]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "73",
           "Required Strength": "58",
           "Required Level": "30",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-85)"
         }
       },
       "elite": {
@@ -46385,12 +46385,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[28 - 31] to [124 - 135]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "107",
           "Required Strength": "121",
           "Required Level": "58",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-85)"
         }
       }
     }
@@ -46407,7 +46407,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[13 - 14] to [29 - 31]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "40",
       "Required Strength": "30",
@@ -46485,7 +46485,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[35 - 37] to [81 - 87]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "80",
           "Required Strength": "65",
@@ -46498,7 +46498,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[89 - 95] to [108 - 116]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "132",
           "Required Strength": "89",
@@ -46520,12 +46520,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "8 to [48 - 50]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "50",
       "Required Strength": "40",
       "Required Level": "26",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Wizendraw",
     "Rarity": "1",
@@ -46614,12 +46614,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[27 - 28] to [113 - 117]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "95",
           "Required Strength": "80",
           "Required Level": "31",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -46627,12 +46627,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[40 - 42] to [170 - 176]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "121",
           "Required Strength": "97",
           "Required Level": "64",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -46649,12 +46649,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[16 - 17] to [37 - 40]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "35",
       "Required Level": "27",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Hellclap",
     "Rarity": "1",
@@ -46735,12 +46735,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[37 - 40] to [94 - 101]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "103",
           "Required Strength": "73",
           "Required Level": "32",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-25)"
         }
       },
       "elite": {
@@ -46748,12 +46748,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[54 - 58] to [143 - 153]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "146",
           "Required Strength": "72",
           "Required Level": "67",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-25)"
         }
       }
     }
@@ -46770,7 +46770,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[8 - 9] to [62 - 75]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "65",
       "Required Strength": "50",
@@ -46848,7 +46848,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[27 - 33] to [135 - 165]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "118",
           "Required Strength": "95",
@@ -46861,7 +46861,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[27 - 33] to [183 - 224]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "167",
           "Required Strength": "134",
@@ -46883,7 +46883,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "16 to 24",
-      "Durability": "30",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "27",
       "Required Strength": "21",
@@ -46977,7 +46977,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "37 to 72",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "61",
           "Required Strength": "52",
@@ -46990,7 +46990,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "75 to 197",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "155",
           "Required Strength": "83",
@@ -47012,12 +47012,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "22 to 40",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "33",
       "Required Strength": "40",
       "Required Level": "18",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Ichorsting",
     "Rarity": "1",
@@ -47090,12 +47090,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "50 to 105",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "70",
           "Required Strength": "80",
           "Required Level": "30",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -47103,12 +47103,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "62 to 217",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "105",
           "Required Strength": "117",
           "Required Level": "57",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -47125,12 +47125,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[37 - 39] to [70 - 72]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "40",
       "Required Strength": "60",
       "Required Level": "27",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Hellcast",
     "Rarity": "1",
@@ -47219,12 +47219,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[89 - 92] to [148 - 154]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "80",
           "Required Strength": "110",
           "Required Level": "32",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -47232,12 +47232,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[86 - 89] to [245 - 254]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "77",
           "Required Strength": "163",
           "Required Level": "63",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -47254,12 +47254,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[15 - 18] to [31 - 36]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "50",
       "Required Strength": "40",
       "Required Level": "28",
-      "Attack Speed": "Very Fast (-40)"
+      "Attack Speed": "Very Fast (-85)"
     },
     "Index": "E Doomspittle",
     "Rarity": "1",
@@ -47324,12 +47324,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[36 - 42] to [83 - 96]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "95",
           "Required Strength": "80",
           "Required Level": "33",
-          "Attack Speed": "Very Fast (-60)"
+          "Attack Speed": "Very Fast (-105)"
         }
       },
       "elite": {
@@ -47337,12 +47337,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[67 - 78] to [104 - 120]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "98",
           "Required Strength": "141",
           "Required Level": "70",
-          "Attack Speed": "Very Fast (-60)"
+          "Attack Speed": "Very Fast (-105)"
         }
       }
     }
@@ -48260,7 +48260,7 @@
       "armo"
     ],
     "Stats": {
-      "Defense": "87 - 117",
+      "Defense": "168 - 198",
       "Damage": "0 to 0",
       "Durability": "11",
       "Block Chance": "0",
@@ -48386,7 +48386,7 @@
       "exceptional": {
         "BaseItemName": "Ghost Armor",
         "Stats": {
-          "Defense": "254 - 284",
+          "Defense": "1114 - 1144",
           "Damage": "0 to 0",
           "Durability": "11",
           "Block Chance": "0",
@@ -48399,7 +48399,7 @@
       "elite": {
         "BaseItemName": "Dusk Shroud",
         "Stats": {
-          "Defense": "805 - 835",
+          "Defense": "4237 - 4267",
           "Damage": "0 to 0",
           "Durability": "11",
           "Block Chance": "0",
@@ -53412,7 +53412,7 @@
       "Required Dexterity": "25",
       "Required Strength": "25",
       "Required Level": "36",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Coldkill",
     "Rarity": "1",
@@ -53506,7 +53506,7 @@
           "Required Dexterity": "67",
           "Required Strength": "125",
           "Required Level": "47",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -53528,7 +53528,7 @@
       "Required Dexterity": "0",
       "Required Strength": "68",
       "Required Level": "39",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Butcher's Pupil",
     "Rarity": "1",
@@ -53614,7 +53614,7 @@
           "Required Dexterity": "83",
           "Required Strength": "115",
           "Required Level": "52",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -53968,7 +53968,7 @@
       "Required Dexterity": "0",
       "Required Strength": "73",
       "Required Level": "35",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Warlord's Trust",
     "Rarity": "1",
@@ -54054,7 +54054,7 @@
           "Required Dexterity": "0",
           "Required Strength": "196",
           "Required Level": "49",
-          "Attack Speed": "Fast (-15)"
+          "Attack Speed": "Very Fast (-55)"
         }
       }
     }
@@ -54208,7 +54208,7 @@
       "Required Dexterity": "0",
       "Required Strength": "101",
       "Required Level": "41",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Stormrider",
     "Rarity": "1",
@@ -54318,7 +54318,7 @@
           "Required Dexterity": "33",
           "Required Strength": "189",
           "Required Level": "61",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -54340,7 +54340,7 @@
       "Required Dexterity": "79",
       "Required Strength": "115",
       "Required Level": "42",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Boneslayer Blade",
     "Rarity": "1",
@@ -54450,7 +54450,7 @@
           "Required Dexterity": "59",
           "Required Strength": "167",
           "Required Level": "68",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -55147,7 +55147,7 @@
       "Required Dexterity": "0",
       "Required Strength": "58",
       "Required Level": "37",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Zakarum's Hand",
     "Rarity": "1",
@@ -55265,7 +55265,7 @@
           "Required Dexterity": "65",
           "Required Strength": "125",
           "Required Level": "53",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -55289,7 +55289,7 @@
       "Required Dexterity": "0",
       "Required Strength": "76",
       "Required Level": "38",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "E The Fetid Sprinkler",
     "Rarity": "1",
@@ -55391,7 +55391,7 @@
           "Required Dexterity": "69",
           "Required Strength": "108",
           "Required Level": "64",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-10)"
         }
       }
     }
@@ -55548,7 +55548,7 @@
       "Required Dexterity": "0",
       "Required Strength": "30",
       "Required Level": "38",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Fleshrender",
     "Rarity": "1",
@@ -55658,7 +55658,7 @@
           "Required Dexterity": "0",
           "Required Strength": "133",
           "Required Level": "49",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -55782,7 +55782,7 @@
       "Required Dexterity": "0",
       "Required Strength": "74",
       "Required Level": "42",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Moonfall",
     "Rarity": "1",
@@ -55876,7 +55876,7 @@
           "Required Dexterity": "44",
           "Required Strength": "153",
           "Required Level": "59",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -55899,7 +55899,7 @@
       "Required Dexterity": "73",
       "Required Strength": "82",
       "Required Level": "45",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Baezil's Vortex",
     "Rarity": "1",
@@ -55985,7 +55985,7 @@
           "Required Dexterity": "77",
           "Required Strength": "125",
           "Required Level": "64",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -56008,7 +56008,7 @@
       "Required Dexterity": "0",
       "Required Strength": "100",
       "Required Level": "43",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Earthshaker",
     "Rarity": "1",
@@ -56102,7 +56102,7 @@
           "Required Dexterity": "0",
           "Required Strength": "189",
           "Required Level": "68",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -56359,7 +56359,7 @@
       "Required Dexterity": "0",
       "Required Strength": "25",
       "Required Level": "30",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Bloodletter",
     "Rarity": "1",
@@ -56469,7 +56469,7 @@
           "Required Dexterity": "88",
           "Required Strength": "150",
           "Required Level": "49",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -56492,7 +56492,7 @@
       "Required Dexterity": "52",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Coldsteel Eye",
     "Rarity": "1",
@@ -56586,7 +56586,7 @@
           "Required Dexterity": "95",
           "Required Strength": "138",
           "Required Level": "52",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -56718,7 +56718,7 @@
       "Required Dexterity": "42",
       "Required Strength": "70",
       "Required Level": "35",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "E Blade of Ali Baba",
     "Rarity": "1",
@@ -56796,7 +56796,7 @@
           "Required Dexterity": "105",
           "Required Strength": "142",
           "Required Level": "58",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -56819,7 +56819,7 @@
       "Required Dexterity": "38",
       "Required Strength": "58",
       "Required Level": "37",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Ginther's Rift",
     "Rarity": "1",
@@ -56921,7 +56921,7 @@
           "Required Dexterity": "98",
           "Required Strength": "10",
           "Required Level": "61",
-          "Attack Speed": "Very Fast (-30)"
+          "Attack Speed": "Very Fast (-70)"
         }
       }
     }
@@ -57037,7 +57037,7 @@
       "Required Dexterity": "79",
       "Required Strength": "103",
       "Required Level": "41",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Plague Bearer",
     "Rarity": "1",
@@ -57131,7 +57131,7 @@
           "Required Dexterity": "109",
           "Required Strength": "99",
           "Required Level": "68",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -57279,7 +57279,7 @@
       "Required Dexterity": "51",
       "Required Strength": "63",
       "Required Level": "42",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Crainte Vomir",
     "Rarity": "1",
@@ -57365,7 +57365,7 @@
           "Required Dexterity": "90",
           "Required Strength": "165",
           "Required Level": "51",
-          "Attack Speed": "Fast (-15)"
+          "Attack Speed": "Very Fast (-75)"
         }
       }
     }
@@ -57388,7 +57388,7 @@
       "Required Dexterity": "10",
       "Required Strength": "45",
       "Required Level": "43",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Bing Sz Wang",
     "Rarity": "1",
@@ -57474,7 +57474,7 @@
           "Required Dexterity": "52",
           "Required Strength": "85",
           "Required Level": "56",
-          "Attack Speed": "Fast (-5)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -57973,7 +57973,7 @@
       "Required Dexterity": "0",
       "Required Strength": "25",
       "Required Level": "32",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Spineripper",
     "Rarity": "1",
@@ -58075,7 +58075,7 @@
           "Required Dexterity": "75",
           "Required Strength": "38",
           "Required Level": "50",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -58098,7 +58098,7 @@
       "Required Dexterity": "58",
       "Required Strength": "25",
       "Required Level": "36",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Heart Carver",
     "Rarity": "1",
@@ -58200,7 +58200,7 @@
           "Required Dexterity": "98",
           "Required Strength": "55",
           "Required Level": "59",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -58223,7 +58223,7 @@
       "Required Dexterity": "88",
       "Required Strength": "25",
       "Required Level": "38",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Blackbog's Sharp",
     "Rarity": "1",
@@ -58317,7 +58317,7 @@
           "Required Dexterity": "86",
           "Required Strength": "42",
           "Required Level": "69",
-          "Attack Speed": "Very Fast (-20)"
+          "Attack Speed": "Very Fast (-60)"
         }
       }
     }
@@ -58340,7 +58340,7 @@
       "Required Dexterity": "97",
       "Required Strength": "47",
       "Required Level": "41",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Stormspike",
     "Rarity": "1",
@@ -58434,7 +58434,7 @@
           "Required Dexterity": "67",
           "Required Strength": "65",
           "Required Level": "73",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -58457,7 +58457,7 @@
       "Required Dexterity": "25",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E The Impaler",
     "Rarity": "1",
@@ -58559,7 +58559,7 @@
           "Required Dexterity": "120",
           "Required Strength": "155",
           "Required Level": "50",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -59034,7 +59034,7 @@
       "Required Dexterity": "0",
       "Required Strength": "80",
       "Required Level": "41",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E The Meat Scraper",
     "Rarity": "1",
@@ -59120,7 +59120,7 @@
           "Required Dexterity": "75",
           "Required Strength": "195",
           "Required Level": "52",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -59244,7 +59244,7 @@
       "Required Dexterity": "82",
       "Required Strength": "82",
       "Required Level": "42",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Athena's Wrath",
     "Rarity": "1",
@@ -59322,7 +59322,7 @@
           "Required Dexterity": "118",
           "Required Strength": "152",
           "Required Level": "60",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-60)"
         }
       }
     }
@@ -59462,7 +59462,7 @@
       "Required Dexterity": "91",
       "Required Strength": "133",
       "Required Level": "44",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Husoldal Evo",
     "Rarity": "1",
@@ -59556,7 +59556,7 @@
           "Required Dexterity": "99",
           "Required Strength": "179",
           "Required Level": "70",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -59831,7 +59831,7 @@
       "Required Dexterity": "0",
       "Required Strength": "15",
       "Required Level": "31",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-55)"
     },
     "Index": "E Ribcracker",
     "Rarity": "1",
@@ -59933,7 +59933,7 @@
           "Required Dexterity": "25",
           "Required Strength": "53",
           "Required Level": "56",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-45)"
         }
       }
     }
@@ -60288,12 +60288,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[21 - 24] to [66 - 76]",
-      "Durability": "20",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "43",
       "Required Strength": "25",
       "Required Level": "28",
-      "Attack Speed": "Slow (+5)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "E Skystrike",
     "Rarity": "1",
@@ -60366,12 +60366,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[80 - 92] to [175 - 200]",
-          "Durability": "20",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "143",
           "Required Strength": "64",
           "Required Level": "48",
-          "Attack Speed": "Slow (+5)"
+          "Attack Speed": "Very Fast (-35)"
         }
       }
     }
@@ -60388,12 +60388,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[30 - 33] to [83 - 92]",
-      "Durability": "32",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "62",
       "Required Strength": "25",
       "Required Level": "31",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Riphook",
     "Rarity": "1",
@@ -60482,12 +60482,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[79 - 88] to [155 - 172]",
-          "Durability": "32",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "119",
           "Required Strength": "76",
           "Required Level": "52",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -60504,12 +60504,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[35 - 38] to [101 - 110]",
-      "Durability": "28",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "49",
       "Required Strength": "53",
       "Required Level": "33",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Kuko Shakaku",
     "Rarity": "1",
@@ -60590,12 +60590,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[52 - 57] to [206 - 224]",
-          "Durability": "28",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "188",
           "Required Strength": "52",
           "Required Level": "54",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -60612,12 +60612,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[41 - 46] to [98 - 109]",
-      "Durability": "36",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "73",
       "Required Strength": "58",
       "Required Level": "36",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Endlesshail",
     "Rarity": "1",
@@ -60706,12 +60706,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[45 - 50] to [197 - 218]",
-          "Durability": "36",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "107",
           "Required Strength": "121",
           "Required Level": "58",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -60728,12 +60728,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[45 - 48] to [105 - 111]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "80",
       "Required Strength": "65",
       "Required Level": "39",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Whichwild String",
     "Rarity": "1",
@@ -60814,12 +60814,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[115 - 122] to [140 - 148]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "132",
           "Required Strength": "89",
           "Required Level": "61",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -60836,7 +60836,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[74 - 83] to [213 - 260]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "95",
       "Required Strength": "80",
@@ -60930,7 +60930,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[93 - 104] to [295 - 350]",
-          "Durability": "44",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "121",
           "Required Strength": "97",
@@ -60952,7 +60952,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[99 - 129] to [167 - 202]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "103",
       "Required Strength": "73",
@@ -61070,7 +61070,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[119 - 150] to [224 - 265]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "146",
           "Required Strength": "72",
@@ -61092,12 +61092,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[40 - 45] to [200 - 225]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "118",
       "Required Strength": "95",
       "Required Level": "46",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Godstrike Arch",
     "Rarity": "1",
@@ -61194,12 +61194,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[40 - 45] to [272 - 306]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "167",
           "Required Strength": "134",
           "Required Level": "70",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -61216,12 +61216,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[51 - 56] to [159 - 188]",
-      "Durability": "30",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "61",
       "Required Strength": "52",
       "Required Level": "32",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Langer Briser",
     "Rarity": "1",
@@ -61318,12 +61318,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[103 - 112] to [330 - 372]",
-          "Durability": "30",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "155",
           "Required Strength": "83",
           "Required Level": "49",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -61340,12 +61340,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[70 - 84] to [147 - 176]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "21",
       "Required Strength": "24",
       "Required Level": "36",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Pus Spiter",
     "Rarity": "1",
@@ -61434,12 +61434,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[87 - 105] to [304 - 365]",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "31",
           "Required Strength": "35",
           "Required Level": "57",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -61456,12 +61456,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[115 - 132] to [489 - 517]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "48",
       "Required Strength": "66",
       "Required Level": "41",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-90)"
     },
     "Index": "E Buriza-Do Kyanon",
     "Rarity": "1",
@@ -61550,12 +61550,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[112 - 128] to [615 - 661]",
-          "Durability": "50",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "46",
           "Required Strength": "97",
           "Required Level": "63",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-90)"
         }
       }
     }
@@ -61572,7 +61572,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "45 to 202",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "95",
       "Required Strength": "80",
@@ -61674,7 +61674,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "83 to 227",
-          "Durability": "40",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "98",
           "Required Strength": "141",
@@ -67541,7 +67541,7 @@
       "Required Dexterity": "33",
       "Required Strength": "189",
       "Required Level": "66",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Hellslayer",
     "Rarity": "1",
@@ -67658,7 +67658,7 @@
       "Required Dexterity": "59",
       "Required Strength": "167",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Messerschmidt's Reaver",
     "Rarity": "1",
@@ -67752,7 +67752,7 @@
       "Required Dexterity": "44",
       "Required Strength": "153",
       "Required Level": "65",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Baranar's Star",
     "Rarity": "1",
@@ -67878,7 +67878,7 @@
       "Required Dexterity": "0",
       "Required Strength": "189",
       "Required Level": "79",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Schaefer's Hammer",
     "Rarity": "1",
@@ -67996,7 +67996,7 @@
       "Required Dexterity": "0",
       "Required Strength": "253",
       "Required Level": "87",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "E The Cranium Basher",
     "Rarity": "1",
@@ -68106,7 +68106,7 @@
       "Required Dexterity": "136",
       "Required Strength": "25",
       "Required Level": "58",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-70)"
     },
     "Index": "E Lightsabre",
     "Rarity": "5",
@@ -68224,7 +68224,7 @@
       "Required Dexterity": "103",
       "Required Strength": "163",
       "Required Level": "69",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Doombringer",
     "Rarity": "1",
@@ -68614,7 +68614,7 @@
       "Required Dexterity": "140",
       "Required Strength": "188",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Stormspire",
     "Rarity": "1",
@@ -68734,7 +68734,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[60 - 104] to [252 - 439]",
-      "Durability": "44",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "121",
       "Required Strength": "97",
@@ -68835,12 +68835,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "45 to 652",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "167",
       "Required Strength": "134",
       "Required Level": "73",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Windforce",
     "Rarity": "1",
@@ -70195,12 +70195,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[126 - 176] to [203 - 264]",
-      "Durability": "55",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "110",
       "Required Strength": "73",
       "Required Level": "42",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Lycander's Aim",
     "Rarity": "1",
@@ -70313,12 +70313,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[109 - 156] to [312 - 388]",
-          "Durability": "55",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "152",
           "Required Strength": "108",
           "Required Level": "65",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -70344,7 +70344,7 @@
       "Required Dexterity": "98",
       "Required Strength": "115",
       "Required Level": "42",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Lycander's Flank",
     "Rarity": "1",
@@ -70462,7 +70462,7 @@
           "Required Dexterity": "149",
           "Required Strength": "132",
           "Required Level": "67",
-          "Attack Speed": "Very Slow (+20)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -71056,7 +71056,7 @@
       "Required Dexterity": "80",
       "Required Strength": "25",
       "Required Level": "57",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E The Scalper",
     "Rarity": "1",
@@ -71158,7 +71158,7 @@
           "Required Dexterity": "108",
           "Required Strength": "88",
           "Required Level": "64",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -71181,7 +71181,7 @@
       "Required Dexterity": "122",
       "Required Strength": "109",
       "Required Level": "61",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Bloodmoon",
     "Rarity": "1",
@@ -71283,7 +71283,7 @@
       "Required Dexterity": "95",
       "Required Strength": "138",
       "Required Level": "65",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Djinnslayer",
     "Rarity": "1",
@@ -71500,7 +71500,7 @@
       "Required Dexterity": "132",
       "Required Strength": "35",
       "Required Level": "75",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Warshrike",
     "Rarity": "1",
@@ -71588,12 +71588,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[93 - 109] to [144 - 168]",
-      "Durability": "40",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "98",
       "Required Strength": "141",
       "Required Level": "71",
-      "Attack Speed": "Very Fast (-60)"
+      "Attack Speed": "Very Fast (-80)"
     },
     "Index": "E Gutsiphon",
     "Rarity": "1",
@@ -71702,7 +71702,7 @@
       "Required Dexterity": "67",
       "Required Strength": "125",
       "Required Level": "67",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Razoredge",
     "Rarity": "1",
@@ -71998,7 +71998,7 @@
       "Required Dexterity": "93",
       "Required Strength": "155",
       "Required Level": "84",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Tomb Reaver",
     "Rarity": "1",
@@ -72311,7 +72311,7 @@
       "Required Dexterity": "136",
       "Required Strength": "25",
       "Required Level": "85",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-80)"
     },
     "Index": "E Azurewrath",
     "Rarity": "1",
@@ -72615,7 +72615,7 @@
       "Required Dexterity": "53",
       "Required Strength": "87",
       "Required Level": "64",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-70)"
     },
     "Index": "E Horizon's Tornado",
     "Rarity": "5",
@@ -72693,7 +72693,7 @@
       "Required Dexterity": "0",
       "Required Strength": "189",
       "Required Level": "68",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "E Stone Crusher",
     "Rarity": "4",
@@ -73301,7 +73301,7 @@
       "Required Dexterity": "45",
       "Required Strength": "145",
       "Required Level": "72",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Runemaster",
     "Rarity": "1",
@@ -73386,7 +73386,7 @@
       "Required Dexterity": "49",
       "Required Strength": "128",
       "Required Level": "70",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Deathcleaver",
     "Rarity": "1",
@@ -73471,7 +73471,7 @@
       "Required Dexterity": "55",
       "Required Strength": "164",
       "Required Level": "75",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Executioner's Justice",
     "Rarity": "1",
@@ -73560,7 +73560,7 @@
       "Required Dexterity": "142",
       "Required Strength": "114",
       "Required Level": "64",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Stoneraven",
     "Rarity": "1",
@@ -73833,7 +73833,7 @@
       "Required Dexterity": "135",
       "Required Strength": "66",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Gargoyle's Bite",
     "Rarity": "1",
@@ -73929,7 +73929,7 @@
       "Required Dexterity": "122",
       "Required Strength": "96",
       "Required Level": "68",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Lacerator",
     "Rarity": "1",
@@ -74024,7 +74024,7 @@
       "Required Dexterity": "0",
       "Required Strength": "24",
       "Required Level": "82",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Mang Song's Lesson",
     "Rarity": "1",
@@ -74142,7 +74142,7 @@
       "Required Dexterity": "134",
       "Required Strength": "132",
       "Required Level": "71",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-90)"
     },
     "Index": "E Viperfork",
     "Rarity": "1",
@@ -74243,7 +74243,7 @@
       "Required Dexterity": "55",
       "Required Strength": "156",
       "Required Level": "74",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Ethereal Edge",
     "Rarity": "1",
@@ -74679,12 +74679,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[134 - 150] to [382 - 427]",
-      "Durability": "50",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "77",
       "Required Strength": "163",
       "Required Level": "76",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Hellrack",
     "Rarity": "1",
@@ -75028,12 +75028,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[70 - 80] to [185 - 212]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "146",
       "Required Strength": "72",
       "Required Level": "65",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-25)"
     },
     "Index": "E Widowmaker",
     "Rarity": "1",
@@ -75124,12 +75124,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[76 - 86] to [178 - 202]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "187",
       "Required Strength": "87",
       "Required Level": "71",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Bloodraven's Charge",
     "Rarity": "1",
@@ -75215,7 +75215,7 @@
       "Required Dexterity": "57",
       "Required Strength": "55",
       "Required Level": "66",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Ghostflame",
     "Rarity": "1",
@@ -75327,7 +75327,7 @@
       "Required Dexterity": "100",
       "Required Strength": "100",
       "Required Level": "78",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Shadowkiller",
     "Rarity": "1",
@@ -75431,7 +75431,7 @@
       "Required Dexterity": "108",
       "Required Strength": "88",
       "Required Level": "70",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Gimmershred",
     "Rarity": "1",
@@ -75626,7 +75626,7 @@
       "Required Dexterity": "0",
       "Required Strength": "135",
       "Required Level": "68",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Windhammer",
     "Rarity": "1",
@@ -75718,7 +75718,7 @@
       "Required Dexterity": "141",
       "Required Strength": "97",
       "Required Level": "69",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Thunderstroke",
     "Rarity": "1",
@@ -75831,7 +75831,7 @@
       "Required Dexterity": "85",
       "Required Strength": "117",
       "Required Level": "68",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Demon's Arch",
     "Rarity": "1",
@@ -76029,7 +76029,7 @@
       "Required Dexterity": "106",
       "Required Strength": "165",
       "Required Level": "69",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Steelpillar",
     "Rarity": "1",
@@ -76991,7 +76991,7 @@
       "Required Dexterity": "87",
       "Required Strength": "185",
       "Required Level": "71",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Flamebellow",
     "Rarity": "1",
@@ -77669,7 +77669,7 @@
       "Required Dexterity": "77",
       "Required Strength": "125",
       "Required Level": "82",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Stormlash",
     "Rarity": "1",
@@ -78077,7 +78077,7 @@
       "Required Dexterity": "109",
       "Required Strength": "99",
       "Required Level": "70",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Frostwind",
     "Rarity": "1",
@@ -78399,7 +78399,7 @@
       "Required Dexterity": "113",
       "Required Strength": "113",
       "Required Level": "67",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Firelizard's Talons",
     "Rarity": "1",
@@ -78742,7 +78742,7 @@
       "Required Dexterity": "65",
       "Required Strength": "125",
       "Required Level": "61",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "E Heaven's Light",
     "Rarity": "1",
@@ -79405,7 +79405,7 @@
       "Required Dexterity": "70",
       "Required Strength": "97",
       "Required Level": "66",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Ironward",
     "Rarity": "1",
@@ -79608,7 +79608,7 @@
       "Required Dexterity": "110",
       "Required Strength": "145",
       "Required Level": "81",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Arioc's Needle",
     "Rarity": "1",
@@ -79709,7 +79709,7 @@
       "Required Dexterity": "54",
       "Required Strength": "133",
       "Required Level": "63",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Cranebeak",
     "Rarity": "1",
@@ -79811,7 +79811,7 @@
       "Required Dexterity": "43",
       "Required Strength": "88",
       "Required Level": "68",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Nord's Tenderizer",
     "Rarity": "1",
@@ -79921,7 +79921,7 @@
       "Required Dexterity": "0",
       "Required Strength": "253",
       "Required Level": "69",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Earthshifter",
     "Rarity": "1",
@@ -80104,7 +80104,7 @@
       "Required Dexterity": "35",
       "Required Strength": "107",
       "Required Level": "64",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Bonehew",
     "Rarity": "1",
@@ -81533,7 +81533,7 @@
       "Required Dexterity": "34",
       "Required Strength": "59",
       "Required Level": "61",
-      "Attack Speed": "Fast (-15)"
+      "Attack Speed": "Very Fast (-48)"
     },
     "Index": "E Dreadfang",
     "Rarity": "2",
@@ -83232,7 +83232,7 @@
       "Required Dexterity": "118",
       "Required Strength": "118",
       "Required Level": "77",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Atropos' Shears",
     "Rarity": "19",
@@ -83344,7 +83344,7 @@
       "Required Dexterity": "118",
       "Required Strength": "118",
       "Required Level": "77",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Atropos' Shears",
     "Rarity": "1",
@@ -83470,7 +83470,7 @@
       "Required Dexterity": "124",
       "Required Strength": "147",
       "Required Level": "80",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Fable",
     "Rarity": "19",
@@ -83594,7 +83594,7 @@
       "Required Dexterity": "114",
       "Required Strength": "137",
       "Required Level": "80",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Fable",
     "Rarity": "1",
@@ -83742,7 +83742,7 @@
       "Required Dexterity": "99",
       "Required Strength": "179",
       "Required Level": "75",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30) - Very Fast (-20)"
     },
     "Index": "Nightwatch",
     "Rarity": "19",
@@ -83836,7 +83836,7 @@
       "Required Dexterity": "89",
       "Required Strength": "169",
       "Required Level": "75",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Nightwatch",
     "Rarity": "1",
@@ -83962,7 +83962,7 @@
       "Required Dexterity": "153",
       "Required Strength": "112",
       "Required Level": "75",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30) - Very Fast (-20)"
     },
     "Index": "Soulpiercer",
     "Rarity": "19",
@@ -84072,7 +84072,7 @@
       "Required Dexterity": "153",
       "Required Strength": "112",
       "Required Level": "75",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Soulpiercer",
     "Rarity": "1",
@@ -84199,7 +84199,7 @@
       "Required Dexterity": "27",
       "Required Strength": "52",
       "Required Level": "70",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "Oakfather",
     "Rarity": "19",
@@ -84310,7 +84310,7 @@
       "Required Dexterity": "27",
       "Required Strength": "52",
       "Required Level": "70",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-35)"
     },
     "Index": "E Oakfather",
     "Rarity": "1",
@@ -84648,7 +84648,7 @@
       "Required Dexterity": "95",
       "Required Strength": "182",
       "Required Level": "72",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Windshear",
     "Rarity": "19",
@@ -84758,7 +84758,7 @@
       "Required Dexterity": "85",
       "Required Strength": "172",
       "Required Level": "72",
-      "Attack Speed": "Slow (+10)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E Windshear",
     "Rarity": "1",
@@ -84887,7 +84887,7 @@
       "Required Dexterity": "149",
       "Required Strength": "132",
       "Required Level": "75",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Normal (0)"
     },
     "Index": "Askari Covenant",
     "Rarity": "19",
@@ -84992,7 +84992,7 @@
       "Required Dexterity": "149",
       "Required Strength": "132",
       "Required Level": "75",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20) - Fast (-10)"
     },
     "Index": "E Askari Covenant",
     "Rarity": "1",
@@ -85104,7 +85104,7 @@
       "Required Dexterity": "115",
       "Required Strength": "115",
       "Required Level": "72",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "Shadowscript",
     "Rarity": "19",
@@ -85224,7 +85224,7 @@
       "Required Dexterity": "115",
       "Required Strength": "115",
       "Required Level": "72",
-      "Attack Speed": "Very Fast (-30)"
+      "Attack Speed": "Very Fast (-60)"
     },
     "Index": "E Shadowscript",
     "Rarity": "1",
@@ -86179,12 +86179,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[11 - 12] to [19 - 21]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "45",
       "Required Strength": "30",
       "Required Level": "15",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "White Hart",
     "Rarity": "19",
@@ -86265,12 +86265,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[25 - 28] to [46 - 52]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "77",
           "Required Strength": "56",
           "Required Level": "34",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -86278,12 +86278,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[32 - 36] to [75 - 84]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "187",
           "Required Strength": "87",
           "Required Level": "46",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -86303,12 +86303,12 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[19 - 22] to [33 - 38]",
-      "Durability": "48",
+      "Durability": "0",
       "Block Chance": "0",
       "Required Dexterity": "45",
       "Required Strength": "30",
       "Required Level": "15",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "E White Hart",
     "Rarity": "1",
@@ -86413,12 +86413,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[44 - 51] to [81 - 92]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "77",
           "Required Strength": "56",
           "Required Level": "34",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -86426,12 +86426,12 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[56 - 64] to [131 - 150]",
-          "Durability": "48",
+          "Durability": "0",
           "Block Chance": "0",
           "Required Dexterity": "187",
           "Required Strength": "87",
           "Required Level": "46",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -86460,7 +86460,7 @@
       "Required Dexterity": "47",
       "Required Strength": "33",
       "Required Level": "18",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Skylark",
     "Rarity": "19",
@@ -86546,7 +86546,7 @@
           "Required Dexterity": "109",
           "Required Strength": "25",
           "Required Level": "31",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
@@ -86559,7 +86559,7 @@
           "Required Dexterity": "151",
           "Required Strength": "107",
           "Required Level": "55",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-30)"
         }
       }
     }
@@ -86588,7 +86588,7 @@
       "Required Dexterity": "47",
       "Required Strength": "33",
       "Required Level": "18",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Skylark",
     "Rarity": "1",
@@ -86690,7 +86690,7 @@
           "Required Dexterity": "109",
           "Required Strength": "25",
           "Required Level": "31",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       },
       "elite": {
@@ -86703,7 +86703,7 @@
           "Required Dexterity": "151",
           "Required Strength": "107",
           "Required Level": "55",
-          "Attack Speed": "Fast (-10)"
+          "Attack Speed": "Very Fast (-50)"
         }
       }
     }
@@ -86727,7 +86727,7 @@
       "Required Dexterity": "20",
       "Required Strength": "20",
       "Required Level": "8",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "First Cut",
     "Rarity": "19",
@@ -86805,7 +86805,7 @@
           "Required Dexterity": "57",
           "Required Strength": "57",
           "Required Level": "26",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       },
       "elite": {
@@ -86818,7 +86818,7 @@
           "Required Dexterity": "99",
           "Required Strength": "99",
           "Required Level": "51",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -86842,7 +86842,7 @@
       "Required Dexterity": "20",
       "Required Strength": "20",
       "Required Level": "8",
-      "Attack Speed": "Fast (-10)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E First Cut",
     "Rarity": "1",
@@ -86936,7 +86936,7 @@
           "Required Dexterity": "57",
           "Required Strength": "57",
           "Required Level": "26",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       },
       "elite": {
@@ -86949,7 +86949,7 @@
           "Required Dexterity": "99",
           "Required Strength": "99",
           "Required Level": "51",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-40)"
         }
       }
     }
@@ -88844,7 +88844,7 @@
       "Required Dexterity": "0",
       "Required Strength": "189",
       "Required Level": "79",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Fast (-10)"
     },
     "Index": "Hexenhammer",
     "Rarity": "19",
@@ -88962,7 +88962,7 @@
       "Required Dexterity": "0",
       "Required Strength": "189",
       "Required Level": "79",
-      "Attack Speed": "Very Slow (+20)"
+      "Attack Speed": "Very Fast (-20)"
     },
     "Index": "E Hexenhammer",
     "Rarity": "1",

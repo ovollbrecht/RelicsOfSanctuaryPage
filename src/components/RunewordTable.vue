@@ -26,6 +26,8 @@ const props = defineProps({
   // bases in the files a runeword would go into
   markBuilt: { type: Boolean, default: false },
   basesFor: { type: Function, default: null },
+  // the base the page filter picked, so the stats open on it where it fits
+  defaultBase: { type: String, default: null },
   selectedKey: { type: String, default: null },
   // the rune catalog in rune order; given, the header sums what this table takes
   runes: { type: Array, default: null },
@@ -153,7 +155,7 @@ const setAll = (open) => {
               </tr>
               <tr v-if="!panelMode && expanded.has(group.key)" class="expanded-row">
                 <td colspan="5">
-                  <RunewordDetail :group="group" :rework-title="reworkTitle" :bases="basesFor ? basesFor(group) : []" :built="markBuilt && group.built" />
+                  <RunewordDetail :group="group" :rework-title="reworkTitle" :bases="basesFor ? basesFor(group) : []" :built="markBuilt && group.built" :default-base="defaultBase" />
                 </td>
               </tr>
             </template>

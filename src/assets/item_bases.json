@@ -337,2557 +337,6648 @@
       "Code": "hax",
       "Name": "Hand Axe",
       "Type": "axe",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 28,
+      "Damage": [
+        3,
+        6
+      ],
+      "Speed": 0
     },
     {
       "Code": "axe",
       "Name": "Axe",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        4,
+        11
+      ],
+      "StrReq": 32,
+      "Speed": 10
     },
     {
       "Code": "2ax",
       "Name": "Double Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        5,
+        13
+      ],
+      "StrReq": 43,
+      "Speed": 10
     },
     {
       "Code": "mpi",
       "Name": "Military Pick",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 26,
+      "Damage": [
+        7,
+        11
+      ],
+      "StrReq": 49,
+      "DexReq": 33,
+      "Speed": -10
     },
     {
       "Code": "wax",
       "Name": "War Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 26,
+      "Damage": [
+        10,
+        18
+      ],
+      "StrReq": 67,
+      "Speed": 0
     },
     {
       "Code": "lax",
       "Name": "Large Axe",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        6,
+        13
+      ],
+      "StrReq": 35,
+      "Speed": -10
     },
     {
       "Code": "bax",
       "Name": "Broad Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 35,
+      "Damage": [
+        10,
+        18
+      ],
+      "StrReq": 48,
+      "Speed": 0
     },
     {
       "Code": "btx",
       "Name": "Battle Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Damage": [
+        12,
+        32
+      ],
+      "StrReq": 54,
+      "Speed": 10
     },
     {
       "Code": "gax",
       "Name": "Great Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        9,
+        30
+      ],
+      "StrReq": 63,
+      "DexReq": 39,
+      "Speed": -10
     },
     {
       "Code": "gix",
       "Name": "Giant Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        22,
+        45
+      ],
+      "StrReq": 70,
+      "Speed": 10
     },
     {
       "Code": "bwn",
       "Name": "Bone Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 15,
+      "Damage": [
+        3,
+        7
+      ],
+      "Speed": -20
     },
     {
       "Code": "gwn",
       "Name": "Grim Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 15,
+      "Damage": [
+        5,
+        11
+      ],
+      "Speed": 0
     },
     {
       "Code": "clb",
       "Name": "Club",
       "Type": "club",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        1,
+        6
+      ],
+      "Speed": -10
     },
     {
       "Code": "scp",
       "Name": "Scepter",
       "Type": "scep",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        6,
+        11
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "gsc",
       "Name": "Grand Scepter",
       "Type": "scep",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Damage": [
+        8,
+        18
+      ],
+      "StrReq": 37,
+      "Speed": 10
     },
     {
       "Code": "wsp",
       "Name": "War Scepter",
       "Type": "scep",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 70,
+      "Damage": [
+        10,
+        17
+      ],
+      "StrReq": 55,
+      "Speed": -10
     },
     {
       "Code": "spc",
       "Name": "Spiked Club",
       "Type": "club",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 36,
+      "Damage": [
+        5,
+        8
+      ],
+      "Speed": 0
     },
     {
       "Code": "mac",
       "Name": "Mace",
       "Type": "mace",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Damage": [
+        3,
+        10
+      ],
+      "StrReq": 27,
+      "Speed": 0
     },
     {
       "Code": "mst",
       "Name": "Morning Star",
       "Type": "mace",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 72,
+      "Damage": [
+        7,
+        16
+      ],
+      "StrReq": 36,
+      "Speed": 10
     },
     {
       "Code": "fla",
       "Name": "Flail",
       "Type": "mace",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        1,
+        24
+      ],
+      "StrReq": 41,
+      "DexReq": 35,
+      "Speed": -10
     },
     {
       "Code": "whm",
       "Name": "War Hammer",
       "Type": "hamm",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 55,
+      "Damage": [
+        19,
+        29
+      ],
+      "StrReq": 53,
+      "Speed": 20
     },
     {
       "Code": "mau",
       "Name": "Maul",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Damage": [
+        30,
+        43
+      ],
+      "StrReq": 69,
+      "Speed": 10
     },
     {
       "Code": "gma",
       "Name": "Great Maul",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Damage": [
+        38,
+        58
+      ],
+      "StrReq": 99,
+      "Speed": 20
     },
     {
       "Code": "ssd",
       "Name": "Short Sword",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        2,
+        7
+      ],
+      "Speed": 0
     },
     {
       "Code": "scm",
       "Name": "Scimitar",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 22,
+      "Damage": [
+        2,
+        6
+      ],
+      "DexReq": 21,
+      "Speed": -20
     },
     {
       "Code": "sbr",
       "Name": "Sabre",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 32,
+      "Damage": [
+        3,
+        8
+      ],
+      "StrReq": 25,
+      "DexReq": 25,
+      "Speed": -10
     },
     {
       "Code": "flc",
       "Name": "Falchion",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 32,
+      "Damage": [
+        9,
+        17
+      ],
+      "StrReq": 33,
+      "Speed": 20
     },
     {
       "Code": "crs",
       "Name": "Crystal Sword",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 20,
+      "Damage": [
+        5,
+        15
+      ],
+      "StrReq": 43,
+      "Speed": 0
     },
     {
       "Code": "bsd",
       "Name": "Broad Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 32,
+      "Damage": [
+        7,
+        14
+      ],
+      "StrReq": 48,
+      "Speed": 0
     },
     {
       "Code": "lsd",
       "Name": "Long Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 44,
+      "Damage": [
+        3,
+        19
+      ],
+      "StrReq": 55,
+      "DexReq": 39,
+      "Speed": -10
     },
     {
       "Code": "wsd",
       "Name": "War Sword",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 44,
+      "Damage": [
+        8,
+        20
+      ],
+      "StrReq": 71,
+      "DexReq": 45,
+      "Speed": 0
     },
     {
       "Code": "2hs",
       "Name": "Two-Handed Sword",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 44,
+      "Damage": [
+        8,
+        17
+      ],
+      "StrReq": 35,
+      "DexReq": 27,
+      "Speed": 0
     },
     {
       "Code": "clm",
       "Name": "Claymore",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        13,
+        30
+      ],
+      "StrReq": 47,
+      "Speed": 10
     },
     {
       "Code": "gis",
       "Name": "Giant Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        9,
+        28
+      ],
+      "StrReq": 56,
+      "DexReq": 34,
+      "Speed": 0
     },
     {
       "Code": "bsw",
       "Name": "Bastard Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Damage": [
+        20,
+        28
+      ],
+      "StrReq": 62,
+      "Speed": 10
     },
     {
       "Code": "flb",
       "Name": "Flamberge",
       "Type": "swor",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        13,
+        26
+      ],
+      "StrReq": 70,
+      "DexReq": 49,
+      "Speed": -10
     },
     {
       "Code": "gsd",
       "Name": "Great Sword",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        25,
+        42
+      ],
+      "StrReq": 100,
+      "DexReq": 60,
+      "Speed": 10
     },
     {
       "Code": "kri",
       "Name": "Kris",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        2,
+        11
+      ],
+      "DexReq": 45,
+      "Speed": -20
     },
     {
       "Code": "bld",
       "Name": "Blade",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Damage": [
+        4,
+        15
+      ],
+      "StrReq": 35,
+      "DexReq": 51,
+      "Speed": -10
     },
     {
       "Code": "spr",
       "Name": "Spear",
       "Type": "spea",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        3,
+        15
+      ],
+      "DexReq": 20,
+      "Speed": -10
     },
     {
       "Code": "tri",
       "Name": "Trident",
       "Type": "spea",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 35,
+      "Damage": [
+        9,
+        15
+      ],
+      "StrReq": 38,
+      "DexReq": 24,
+      "Speed": 0
     },
     {
       "Code": "brn",
       "Name": "Brandistock",
       "Type": "spea",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 28,
+      "Damage": [
+        7,
+        17
+      ],
+      "StrReq": 40,
+      "DexReq": 50,
+      "Speed": -20
     },
     {
       "Code": "spt",
       "Name": "Spetum",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 28,
+      "Damage": [
+        15,
+        23
+      ],
+      "StrReq": 54,
+      "DexReq": 35,
+      "Speed": 0
     },
     {
       "Code": "pik",
       "Name": "Pike",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 25,
+      "Damage": [
+        14,
+        63
+      ],
+      "StrReq": 60,
+      "DexReq": 45,
+      "Speed": 20
     },
     {
       "Code": "bar",
       "Name": "Bardiche",
       "Type": "pole",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        1,
+        27
+      ],
+      "StrReq": 40,
+      "Speed": 10
     },
     {
       "Code": "vou",
       "Name": "Voulge",
       "Type": "pole",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        6,
+        21
+      ],
+      "StrReq": 50,
+      "Speed": 0
     },
     {
       "Code": "scy",
       "Name": "Scythe",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 65,
+      "Damage": [
+        8,
+        20
+      ],
+      "StrReq": 41,
+      "DexReq": 41,
+      "Speed": -10
     },
     {
       "Code": "pax",
       "Name": "Poleaxe",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 65,
+      "Damage": [
+        18,
+        39
+      ],
+      "StrReq": 62,
+      "Speed": 10
     },
     {
       "Code": "hal",
       "Name": "Halberd",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 55,
+      "Damage": [
+        12,
+        45
+      ],
+      "StrReq": 75,
+      "DexReq": 47,
+      "Speed": 0
     },
     {
       "Code": "wsc",
       "Name": "War Scythe",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 55,
+      "Damage": [
+        15,
+        36
+      ],
+      "StrReq": 80,
+      "DexReq": 80,
+      "Speed": -10
     },
     {
       "Code": "sst",
       "Name": "Short Staff",
       "Type": "staf",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 20,
+      "Damage": [
+        1,
+        5
+      ],
+      "Speed": -10
     },
     {
       "Code": "lst",
       "Name": "Long Staff",
       "Type": "staf",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        2,
+        8
+      ],
+      "Speed": 0
     },
     {
       "Code": "cst",
       "Name": "Gnarled Staff",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 35,
+      "Damage": [
+        4,
+        12
+      ],
+      "Speed": 10
     },
     {
       "Code": "bst",
       "Name": "Battle Staff",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Damage": [
+        6,
+        13
+      ],
+      "Speed": 0
     },
     {
       "Code": "wst",
       "Name": "War Staff",
       "Type": "staf",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Damage": [
+        12,
+        28
+      ],
+      "Speed": 20
     },
     {
       "Code": "sbw",
       "Name": "Short Bow",
       "Type": "bow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        1,
+        4
+      ],
+      "DexReq": 15,
+      "Speed": 5
     },
     {
       "Code": "hbw",
       "Name": "Hunter's Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        2,
+        6
+      ],
+      "DexReq": 28,
+      "Speed": -10
     },
     {
       "Code": "lbw",
       "Name": "Long Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        3,
+        10
+      ],
+      "StrReq": 22,
+      "DexReq": 19,
+      "Speed": 0
     },
     {
       "Code": "cbw",
       "Name": "Composite Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        4,
+        8
+      ],
+      "StrReq": 25,
+      "DexReq": 35,
+      "Speed": -10
     },
     {
       "Code": "sbb",
       "Name": "Short Battle Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        5,
+        11
+      ],
+      "StrReq": 30,
+      "DexReq": 40,
+      "Speed": 0
     },
     {
       "Code": "lbb",
       "Name": "Long Battle Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        3,
+        18
+      ],
+      "StrReq": 40,
+      "DexReq": 50,
+      "Speed": 10
     },
     {
       "Code": "swb",
       "Name": "Short War Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        6,
+        14
+      ],
+      "StrReq": 35,
+      "DexReq": 55,
+      "Speed": 0
     },
     {
       "Code": "lwb",
       "Name": "Long War Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        3,
+        23
+      ],
+      "StrReq": 50,
+      "DexReq": 65,
+      "Speed": 10
     },
     {
       "Code": "lxb",
       "Name": "Light Crossbow",
       "Type": "xbow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        6,
+        9
+      ],
+      "StrReq": 21,
+      "DexReq": 27,
+      "Speed": -10
     },
     {
       "Code": "mxb",
       "Name": "Crossbow",
       "Type": "xbow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        9,
+        16
+      ],
+      "StrReq": 40,
+      "DexReq": 33,
+      "Speed": 0
     },
     {
       "Code": "hxb",
       "Name": "Heavy Crossbow",
       "Type": "xbow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        14,
+        26
+      ],
+      "StrReq": 60,
+      "DexReq": 40,
+      "Speed": 10
     },
     {
       "Code": "rxb",
       "Name": "Repeating Crossbow",
       "Type": "xbow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Damage": [
+        6,
+        12
+      ],
+      "StrReq": 40,
+      "DexReq": 50,
+      "Speed": -40
     },
     {
       "Code": "leg",
       "Name": "Wirt's Leg",
       "Type": "club",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 66,
+      "Damage": [
+        2,
+        8
+      ],
+      "Speed": -10
     },
     {
       "Code": "hfh",
       "Name": "Hell Forge Hammer",
       "Type": "hamm",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 55,
+      "Damage": [
+        6,
+        15
+      ],
+      "Speed": 0
     },
     {
       "Code": "9ha",
       "Name": "Hatchet",
       "Type": "axe",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 19,
+      "Durability": 28,
+      "Damage": [
+        10,
+        21
+      ],
+      "StrReq": 25,
+      "DexReq": 25,
+      "Speed": 0
     },
     {
       "Code": "9ax",
       "Name": "Cleaver",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 22,
+      "Durability": 24,
+      "Damage": [
+        10,
+        33
+      ],
+      "StrReq": 68,
+      "Speed": 10
     },
     {
       "Code": "92a",
       "Name": "Twin Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 24,
+      "Damage": [
+        13,
+        38
+      ],
+      "StrReq": 85,
+      "Speed": 10
     },
     {
       "Code": "9mp",
       "Name": "Crowbill",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 26,
+      "Damage": [
+        14,
+        34
+      ],
+      "StrReq": 94,
+      "DexReq": 70,
+      "Speed": -10
     },
     {
       "Code": "9wa",
       "Name": "Naga",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 26,
+      "Damage": [
+        16,
+        45
+      ],
+      "StrReq": 121,
+      "Speed": 0
     },
     {
       "Code": "9la",
       "Name": "Military Axe",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 22,
+      "Durability": 30,
+      "Damage": [
+        14,
+        34
+      ],
+      "StrReq": 73,
+      "Speed": -10
     },
     {
       "Code": "9ba",
       "Name": "Bearded Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 35,
+      "Damage": [
+        21,
+        49
+      ],
+      "StrReq": 92,
+      "Speed": 0
     },
     {
       "Code": "9bt",
       "Name": "Tabar",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 40,
+      "Damage": [
+        24,
+        77
+      ],
+      "StrReq": 101,
+      "Speed": 10
     },
     {
       "Code": "9ga",
       "Name": "Gothic Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        18,
+        70
+      ],
+      "StrReq": 115,
+      "DexReq": 79,
+      "Speed": -10
     },
     {
       "Code": "9gi",
       "Name": "Ancient Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        43,
+        85
+      ],
+      "StrReq": 125,
+      "Speed": 10
     },
     {
       "Code": "9yw",
       "Name": "Petrified Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 15,
+      "Damage": [
+        8,
+        24
+      ],
+      "StrReq": 25,
+      "Speed": 10
     },
     {
       "Code": "9bw",
       "Name": "Tomb Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 15,
+      "Damage": [
+        10,
+        22
+      ],
+      "StrReq": 25,
+      "Speed": -20
     },
     {
       "Code": "9gw",
       "Name": "Grave Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 15,
+      "Damage": [
+        13,
+        29
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "9cl",
       "Name": "Cudgel",
       "Type": "club",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 18,
+      "Durability": 24,
+      "Damage": [
+        6,
+        21
+      ],
+      "StrReq": 25,
+      "Speed": -10
     },
     {
       "Code": "9sc",
       "Name": "Rune Scepter",
       "Type": "scep",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 19,
+      "Durability": 50,
+      "Damage": [
+        13,
+        24
+      ],
+      "StrReq": 58,
+      "Speed": 0
     },
     {
       "Code": "9qs",
       "Name": "Holy Water Sprinkler",
       "Type": "scep",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Damage": [
+        14,
+        36
+      ],
+      "StrReq": 76,
+      "Speed": 10
     },
     {
       "Code": "9ws",
       "Name": "Divine Scepter",
       "Type": "scep",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 70,
+      "Damage": [
+        16,
+        38
+      ],
+      "StrReq": 103,
+      "Speed": -10
     },
     {
       "Code": "9sp",
       "Name": "Barbed Club",
       "Type": "club",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 20,
+      "Durability": 36,
+      "Damage": [
+        13,
+        25
+      ],
+      "StrReq": 30,
+      "Speed": 0
     },
     {
       "Code": "9ma",
       "Name": "Flanged Mace",
       "Type": "mace",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 23,
+      "Durability": 60,
+      "Damage": [
+        15,
+        23
+      ],
+      "StrReq": 61,
+      "Speed": 0
     },
     {
       "Code": "9mt",
       "Name": "Jagged Star",
       "Type": "mace",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 72,
+      "Damage": [
+        20,
+        31
+      ],
+      "StrReq": 74,
+      "Speed": 10
     },
     {
       "Code": "9fl",
       "Name": "Knout",
       "Type": "mace",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 30,
+      "Damage": [
+        13,
+        35
+      ],
+      "StrReq": 82,
+      "DexReq": 73,
+      "Speed": -10
     },
     {
       "Code": "9wh",
       "Name": "Battle Hammer",
       "Type": "hamm",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 55,
+      "Damage": [
+        35,
+        58
+      ],
+      "StrReq": 100,
+      "Speed": 20
     },
     {
       "Code": "9m9",
       "Name": "War Club",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Damage": [
+        53,
+        78
+      ],
+      "StrReq": 124,
+      "Speed": 10
     },
     {
       "Code": "9gm",
       "Name": "Martel de Fer",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Damage": [
+        61,
+        99
+      ],
+      "StrReq": 169,
+      "Speed": 20
     },
     {
       "Code": "9ss",
       "Name": "Gladius",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 18,
+      "Durability": 24,
+      "Damage": [
+        8,
+        22
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "9sm",
       "Name": "Cutlass",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 22,
+      "Damage": [
+        8,
+        21
+      ],
+      "StrReq": 25,
+      "DexReq": 52,
+      "Speed": -30
     },
     {
       "Code": "9sb",
       "Name": "Shamshir",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 23,
+      "Durability": 32,
+      "Damage": [
+        10,
+        24
+      ],
+      "StrReq": 58,
+      "DexReq": 58,
+      "Speed": -10
     },
     {
       "Code": "9fc",
       "Name": "Tulwar",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 32,
+      "Damage": [
+        16,
+        35
+      ],
+      "StrReq": 70,
+      "DexReq": 42,
+      "Speed": 20
     },
     {
       "Code": "9cr",
       "Name": "Dimensional Blade",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 20,
+      "Damage": [
+        13,
+        35
+      ],
+      "StrReq": 85,
+      "DexReq": 60,
+      "Speed": 0
     },
     {
       "Code": "9bs",
       "Name": "Battle Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 32,
+      "Damage": [
+        16,
+        34
+      ],
+      "StrReq": 92,
+      "DexReq": 43,
+      "Speed": 0
     },
     {
       "Code": "9ls",
       "Name": "Rune Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 44,
+      "Damage": [
+        10,
+        42
+      ],
+      "StrReq": 103,
+      "DexReq": 79,
+      "Speed": -10
     },
     {
       "Code": "9wd",
       "Name": "Ancient Sword",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 44,
+      "Damage": [
+        18,
+        43
+      ],
+      "StrReq": 127,
+      "DexReq": 88,
+      "Speed": 0
     },
     {
       "Code": "92h",
       "Name": "Espandon",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 44,
+      "Damage": [
+        18,
+        40
+      ],
+      "StrReq": 73,
+      "DexReq": 61,
+      "Speed": 0
     },
     {
       "Code": "9cm",
       "Name": "Dacian Falx",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        26,
+        61
+      ],
+      "StrReq": 91,
+      "DexReq": 20,
+      "Speed": 10
     },
     {
       "Code": "9gs",
       "Name": "Tusk Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        19,
+        58
+      ],
+      "StrReq": 104,
+      "DexReq": 71,
+      "Speed": 0
     },
     {
       "Code": "9b9",
       "Name": "Gothic Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 40,
+      "Damage": [
+        39,
+        60
+      ],
+      "StrReq": 113,
+      "DexReq": 20,
+      "Speed": 10
     },
     {
       "Code": "9fb",
       "Name": "Zweihander",
       "Type": "swor",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        29,
+        54
+      ],
+      "StrReq": 125,
+      "DexReq": 94,
+      "Speed": -10
     },
     {
       "Code": "9gd",
       "Name": "Executioner Sword",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        47,
+        80
+      ],
+      "StrReq": 170,
+      "DexReq": 110,
+      "Speed": 10
     },
     {
       "Code": "9kr",
       "Name": "Cinquedeas",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 24,
+      "Damage": [
+        15,
+        31
+      ],
+      "StrReq": 25,
+      "DexReq": 88,
+      "Speed": -20
     },
     {
       "Code": "9bl",
       "Name": "Stiletto",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 24,
+      "Damage": [
+        19,
+        36
+      ],
+      "StrReq": 47,
+      "DexReq": 97,
+      "Speed": -10
     },
     {
       "Code": "9sr",
       "Name": "War Spear",
       "Type": "spea",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 21,
+      "Durability": 30,
+      "Damage": [
+        10,
+        37
+      ],
+      "StrReq": 25,
+      "DexReq": 25,
+      "Speed": -10
     },
     {
       "Code": "9tr",
       "Name": "Fuscina",
       "Type": "spea",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 35,
+      "Damage": [
+        19,
+        37
+      ],
+      "StrReq": 77,
+      "DexReq": 25,
+      "Speed": 0
     },
     {
       "Code": "9br",
       "Name": "War Fork",
       "Type": "spea",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 28,
+      "Damage": [
+        16,
+        40
+      ],
+      "StrReq": 80,
+      "DexReq": 95,
+      "Speed": -20
     },
     {
       "Code": "9st",
       "Name": "Yari",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 28,
+      "Damage": [
+        29,
+        59
+      ],
+      "StrReq": 101,
+      "Speed": 0
     },
     {
       "Code": "9p9",
       "Name": "Lance",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 25,
+      "Damage": [
+        27,
+        114
+      ],
+      "StrReq": 110,
+      "DexReq": 88,
+      "Speed": 20
     },
     {
       "Code": "9b7",
       "Name": "Lochaber Axe",
       "Type": "pole",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 21,
+      "Durability": 50,
+      "Damage": [
+        6,
+        58
+      ],
+      "StrReq": 80,
+      "Speed": 10
     },
     {
       "Code": "9vo",
       "Name": "Bill",
       "Type": "pole",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        14,
+        53
+      ],
+      "StrReq": 95,
+      "Speed": 0
     },
     {
       "Code": "9s8",
       "Name": "Battle Scythe",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 65,
+      "Damage": [
+        18,
+        45
+      ],
+      "StrReq": 82,
+      "DexReq": 82,
+      "Speed": -10
     },
     {
       "Code": "9pa",
       "Name": "Partizan",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 23,
+      "Durability": 65,
+      "Damage": [
+        34,
+        75
+      ],
+      "StrReq": 113,
+      "DexReq": 67,
+      "Speed": 10
     },
     {
       "Code": "9h9",
       "Name": "Bec-de-Corbin",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 55,
+      "Damage": [
+        13,
+        85
+      ],
+      "StrReq": 133,
+      "DexReq": 91,
+      "Speed": 0
     },
     {
       "Code": "9wc",
       "Name": "Grim Scythe",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 55,
+      "Damage": [
+        30,
+        70
+      ],
+      "StrReq": 140,
+      "DexReq": 140,
+      "Speed": -10
     },
     {
       "Code": "8ss",
       "Name": "Jo Staff",
       "Type": "staf",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 18,
+      "Durability": 20,
+      "Damage": [
+        6,
+        21
+      ],
+      "StrReq": 25,
+      "Speed": -10
     },
     {
       "Code": "8ls",
       "Name": "Quarterstaff",
       "Type": "staf",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 23,
+      "Durability": 30,
+      "Damage": [
+        8,
+        26
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "8cs",
       "Name": "Cedar Staff",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 35,
+      "Damage": [
+        11,
+        32
+      ],
+      "StrReq": 25,
+      "Speed": 10
     },
     {
       "Code": "8bs",
       "Name": "Gothic Staff",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 40,
+      "Damage": [
+        14,
+        34
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "8ws",
       "Name": "Rune Staff",
       "Type": "staf",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Damage": [
+        24,
+        58
+      ],
+      "StrReq": 25,
+      "Speed": 20
     },
     {
       "Code": "8sb",
       "Name": "Edge Bow",
       "Type": "bow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 18,
+      "Damage": [
+        6,
+        19
+      ],
+      "StrReq": 25,
+      "DexReq": 43,
+      "Speed": 5
     },
     {
       "Code": "8hb",
       "Name": "Razor Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 21,
+      "Damage": [
+        8,
+        22
+      ],
+      "StrReq": 25,
+      "DexReq": 62,
+      "Speed": -10
     },
     {
       "Code": "8lb",
       "Name": "Cedar Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 23,
+      "Damage": [
+        10,
+        29
+      ],
+      "StrReq": 53,
+      "DexReq": 49,
+      "Speed": 0
     },
     {
       "Code": "8cb",
       "Name": "Double Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        11,
+        26
+      ],
+      "StrReq": 58,
+      "DexReq": 73,
+      "Speed": -10
     },
     {
       "Code": "8s8",
       "Name": "Short Siege Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        13,
+        30
+      ],
+      "StrReq": 65,
+      "DexReq": 80,
+      "Speed": 0
     },
     {
       "Code": "8l8",
       "Name": "Large Siege Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        10,
+        42
+      ],
+      "StrReq": 80,
+      "DexReq": 95,
+      "Speed": 10
     },
     {
       "Code": "8sw",
       "Name": "Rune Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        14,
+        35
+      ],
+      "StrReq": 73,
+      "DexReq": 103,
+      "Speed": 0
     },
     {
       "Code": "8lw",
       "Name": "Gothic Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        10,
+        50
+      ],
+      "StrReq": 95,
+      "DexReq": 118,
+      "Speed": 10
     },
     {
       "Code": "8lx",
       "Name": "Arbalest",
       "Type": "xbow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 22,
+      "Damage": [
+        14,
+        27
+      ],
+      "StrReq": 52,
+      "DexReq": 61,
+      "Speed": -10
     },
     {
       "Code": "8mx",
       "Name": "Siege Crossbow",
       "Type": "xbow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        20,
+        42
+      ],
+      "StrReq": 80,
+      "DexReq": 70,
+      "Speed": 0
     },
     {
       "Code": "8hx",
       "Name": "Ballista",
       "Type": "xbow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        33,
+        55
+      ],
+      "StrReq": 110,
+      "DexReq": 80,
+      "Speed": 10
     },
     {
       "Code": "8rx",
       "Name": "Chu-Ko-Nu",
       "Type": "xbow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Damage": [
+        14,
+        32
+      ],
+      "StrReq": 80,
+      "DexReq": 95,
+      "Speed": -60
     },
     {
       "Code": "qf1",
       "Name": "Khalim's Flail",
       "Type": "mace",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        1,
+        15
+      ],
+      "StrReq": 41,
+      "DexReq": 35,
+      "Speed": -10
     },
     {
       "Code": "qf2",
       "Name": "Khalim's Will",
       "Type": "mace",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        1,
+        15
+      ],
+      "Speed": -10
     },
     {
       "Code": "ktr",
       "Name": "Katar",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 48,
+      "Damage": [
+        4,
+        7
+      ],
+      "StrReq": 20,
+      "DexReq": 20,
+      "Speed": -10
     },
     {
       "Code": "wrb",
       "Name": "Wrist Blade",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 52,
+      "Damage": [
+        5,
+        9
+      ],
+      "StrReq": 33,
+      "DexReq": 33,
+      "Speed": 0
     },
     {
       "Code": "axf",
       "Name": "Hatchet Hands",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 56,
+      "Damage": [
+        2,
+        15
+      ],
+      "StrReq": 37,
+      "DexReq": 37,
+      "Speed": 10
     },
     {
       "Code": "ces",
       "Name": "Cestus",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 72,
+      "Damage": [
+        7,
+        15
+      ],
+      "StrReq": 42,
+      "DexReq": 42,
+      "Speed": 0
     },
     {
       "Code": "clw",
       "Name": "Claws",
       "Type": "h2h",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 64,
+      "Damage": [
+        8,
+        15
+      ],
+      "StrReq": 46,
+      "DexReq": 46,
+      "Speed": -10
     },
     {
       "Code": "btl",
       "Name": "Blade Talons",
       "Type": "h2h",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 69,
+      "Damage": [
+        10,
+        14
+      ],
+      "StrReq": 50,
+      "DexReq": 50,
+      "Speed": -20
     },
     {
       "Code": "skr",
       "Name": "Scissors Katar",
       "Type": "h2h",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 68,
+      "Damage": [
+        9,
+        17
+      ],
+      "StrReq": 55,
+      "DexReq": 55,
+      "Speed": -10
     },
     {
       "Code": "9ar",
       "Name": "Quhab",
       "Type": "h2h",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 21,
+      "Durability": 48,
+      "Damage": [
+        11,
+        24
+      ],
+      "StrReq": 57,
+      "DexReq": 57,
+      "Speed": 0
     },
     {
       "Code": "9wb",
       "Name": "Wrist Spike",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 56,
+      "Damage": [
+        13,
+        27
+      ],
+      "StrReq": 66,
+      "DexReq": 66,
+      "Speed": -10
     },
     {
       "Code": "9xf",
       "Name": "Fascia",
       "Type": "h2h",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 27,
+      "Durability": 64,
+      "Damage": [
+        8,
+        37
+      ],
+      "StrReq": 69,
+      "DexReq": 69,
+      "Speed": 10
     },
     {
       "Code": "9cs",
       "Name": "Hand Scythe",
       "Type": "h2h2",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 30,
+      "Durability": 72,
+      "Damage": [
+        16,
+        37
+      ],
+      "StrReq": 73,
+      "DexReq": 73,
+      "Speed": -10
     },
     {
       "Code": "9lw",
       "Name": "Greater Claws",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 33,
+      "Durability": 52,
+      "Damage": [
+        18,
+        37
+      ],
+      "StrReq": 76,
+      "DexReq": 76,
+      "Speed": -20
     },
     {
       "Code": "9tw",
       "Name": "Greater Talons",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 37,
+      "Durability": 69,
+      "Damage": [
+        21,
+        35
+      ],
+      "StrReq": 79,
+      "DexReq": 79,
+      "Speed": -30
     },
     {
       "Code": "9qr",
       "Name": "Scissors Quhab",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 40,
+      "Durability": 68,
+      "Damage": [
+        19,
+        40
+      ],
+      "StrReq": 82,
+      "DexReq": 82,
+      "Speed": 0
     },
     {
       "Code": "7ar",
       "Name": "Suwayyah",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 44,
+      "Durability": 48,
+      "Damage": [
+        39,
+        52
+      ],
+      "StrReq": 99,
+      "DexReq": 99,
+      "Speed": 0
     },
     {
       "Code": "7wb",
       "Name": "Wrist Sword",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 46,
+      "Durability": 56,
+      "Damage": [
+        34,
+        45
+      ],
+      "StrReq": 105,
+      "DexReq": 105,
+      "Speed": -10
     },
     {
       "Code": "7xf",
       "Name": "War Fist",
       "Type": "h2h2",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 64,
+      "Damage": [
+        44,
+        53
+      ],
+      "StrReq": 108,
+      "DexReq": 108,
+      "Speed": 10
     },
     {
       "Code": "7cs",
       "Name": "Battle Cestus",
       "Type": "h2h2",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Durability": 72,
+      "Damage": [
+        36,
+        42
+      ],
+      "StrReq": 110,
+      "DexReq": 110,
+      "Speed": -10
     },
     {
       "Code": "7lw",
       "Name": "Feral Claws",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 58,
+      "Durability": 52,
+      "Damage": [
+        22,
+        53
+      ],
+      "StrReq": 113,
+      "DexReq": 113,
+      "Speed": -20
     },
     {
       "Code": "7tw",
       "Name": "Runic Talons",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 69,
+      "Damage": [
+        24,
+        44
+      ],
+      "StrReq": 115,
+      "DexReq": 115,
+      "Speed": -30
     },
     {
       "Code": "7qr",
       "Name": "Scissors Suwayyah",
       "Type": "h2h2",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 64,
+      "Durability": 68,
+      "Damage": [
+        40,
+        51
+      ],
+      "StrReq": 118,
+      "DexReq": 118,
+      "Speed": 0
     },
     {
       "Code": "7ha",
       "Name": "Tomahawk",
       "Type": "axe",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 40,
+      "Durability": 28,
+      "Damage": [
+        33,
+        58
+      ],
+      "StrReq": 125,
+      "DexReq": 67,
+      "Speed": 0
     },
     {
       "Code": "7ax",
       "Name": "Small Crescent",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 24,
+      "Damage": [
+        38,
+        60
+      ],
+      "StrReq": 115,
+      "DexReq": 83,
+      "Speed": 10
     },
     {
       "Code": "72a",
       "Name": "Ettin Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 52,
+      "Durability": 24,
+      "Damage": [
+        33,
+        66
+      ],
+      "StrReq": 145,
+      "DexReq": 45,
+      "Speed": 10
     },
     {
       "Code": "7mp",
       "Name": "War Spike",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 59,
+      "Durability": 26,
+      "Damage": [
+        30,
+        48
+      ],
+      "StrReq": 133,
+      "DexReq": 54,
+      "Speed": -10
     },
     {
       "Code": "7wa",
       "Name": "Berserker Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 64,
+      "Durability": 26,
+      "Damage": [
+        24,
+        71
+      ],
+      "StrReq": 138,
+      "DexReq": 59,
+      "Speed": 0
     },
     {
       "Code": "7la",
       "Name": "Feral Axe",
       "Type": "axe",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 42,
+      "Durability": 30,
+      "Damage": [
+        25,
+        123
+      ],
+      "StrReq": 196,
+      "Speed": -15
     },
     {
       "Code": "7ba",
       "Name": "Silver-edged Axe",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 48,
+      "Durability": 35,
+      "Damage": [
+        62,
+        110
+      ],
+      "StrReq": 166,
+      "DexReq": 65,
+      "Speed": 0
     },
     {
       "Code": "7bt",
       "Name": "Decapitator",
       "Type": "axe",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Durability": 40,
+      "Damage": [
+        49,
+        137
+      ],
+      "StrReq": 189,
+      "DexReq": 33,
+      "Speed": 10
     },
     {
       "Code": "7ga",
       "Name": "Champion Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 61,
+      "Durability": 50,
+      "Damage": [
+        59,
+        94
+      ],
+      "StrReq": 167,
+      "DexReq": 59,
+      "Speed": -10
     },
     {
       "Code": "7gi",
       "Name": "Glorious Axe",
       "Type": "axe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 50,
+      "Damage": [
+        60,
+        124
+      ],
+      "StrReq": 164,
+      "DexReq": 55,
+      "Speed": 10
     },
     {
       "Code": "7wn",
       "Name": "Polished Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 41,
+      "Durability": 22,
+      "Damage": [
+        18,
+        33
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "7yw",
       "Name": "Ghost Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 48,
+      "Durability": 14,
+      "Damage": [
+        20,
+        40
+      ],
+      "StrReq": 25,
+      "Speed": 10
     },
     {
       "Code": "7bw",
       "Name": "Lich Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 56,
+      "Durability": 17,
+      "Damage": [
+        10,
+        31
+      ],
+      "StrReq": 25,
+      "Speed": -20
     },
     {
       "Code": "7gw",
       "Name": "Unearthed Wand",
       "Type": "wand",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 64,
+      "Durability": 18,
+      "Damage": [
+        22,
+        28
+      ],
+      "StrReq": 25,
+      "Speed": 0
     },
     {
       "Code": "7cl",
       "Name": "Truncheon",
       "Type": "club",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 39,
+      "Durability": 55,
+      "Damage": [
+        35,
+        43
+      ],
+      "StrReq": 88,
+      "DexReq": 43,
+      "Speed": -10
     },
     {
       "Code": "7sc",
       "Name": "Mighty Scepter",
       "Type": "scep",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 46,
+      "Durability": 50,
+      "Damage": [
+        40,
+        52
+      ],
+      "StrReq": 125,
+      "DexReq": 65,
+      "Speed": 0
     },
     {
       "Code": "7qs",
       "Name": "Seraph Rod",
       "Type": "scep",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 60,
+      "Damage": [
+        45,
+        54
+      ],
+      "StrReq": 108,
+      "DexReq": 69,
+      "Speed": 10
     },
     {
       "Code": "7ws",
       "Name": "Caduceus",
       "Type": "scep",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 70,
+      "Damage": [
+        37,
+        43
+      ],
+      "StrReq": 97,
+      "DexReq": 70,
+      "Speed": -10
     },
     {
       "Code": "7sp",
       "Name": "Tyrant Club",
       "Type": "club",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 42,
+      "Durability": 65,
+      "Damage": [
+        32,
+        58
+      ],
+      "StrReq": 133,
+      "Speed": 0
     },
     {
       "Code": "7ma",
       "Name": "Reinforced Mace",
       "Type": "mace",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Durability": 60,
+      "Damage": [
+        41,
+        49
+      ],
+      "StrReq": 145,
+      "DexReq": 46,
+      "Speed": 0
     },
     {
       "Code": "7mt",
       "Name": "Devil Star",
       "Type": "mace",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 52,
+      "Durability": 72,
+      "Damage": [
+        43,
+        53
+      ],
+      "StrReq": 153,
+      "DexReq": 44,
+      "Speed": 10
     },
     {
       "Code": "7fl",
       "Name": "Scourge",
       "Type": "mace",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 65,
+      "Damage": [
+        3,
+        80
+      ],
+      "StrReq": 125,
+      "DexReq": 77,
+      "Speed": -10
     },
     {
       "Code": "7wh",
       "Name": "Legendary Mallet",
       "Type": "hamm",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 61,
+      "Durability": 65,
+      "Damage": [
+        50,
+        61
+      ],
+      "StrReq": 189,
+      "Speed": 20
     },
     {
       "Code": "7m7",
       "Name": "Ogre Maul",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 60,
+      "Damage": [
+        77,
+        106
+      ],
+      "StrReq": 225,
+      "Speed": 10
     },
     {
       "Code": "7gm",
       "Name": "Thunder Maul",
       "Type": "hamm",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 65,
+      "Durability": 60,
+      "Damage": [
+        33,
+        180
+      ],
+      "StrReq": 253,
+      "Speed": 20
     },
     {
       "Code": "7ss",
       "Name": "Falcata",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 42,
+      "Durability": 24,
+      "Damage": [
+        31,
+        59
+      ],
+      "StrReq": 150,
+      "DexReq": 88,
+      "Speed": 0
     },
     {
       "Code": "7sm",
       "Name": "Ataghan",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 22,
+      "Damage": [
+        26,
+        46
+      ],
+      "StrReq": 138,
+      "DexReq": 95,
+      "Speed": -20
     },
     {
       "Code": "7sb",
       "Name": "Elegant Blade",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Durability": 32,
+      "Damage": [
+        33,
+        45
+      ],
+      "StrReq": 109,
+      "DexReq": 122,
+      "Speed": -10
     },
     {
       "Code": "7fc",
       "Name": "Hydra Edge",
       "Type": "swor",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 32,
+      "Damage": [
+        28,
+        68
+      ],
+      "StrReq": 142,
+      "DexReq": 105,
+      "Speed": 10
     },
     {
       "Code": "7cr",
       "Name": "Phase Blade",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Damage": [
+        31,
+        35
+      ],
+      "StrReq": 25,
+      "DexReq": 136,
+      "Speed": -30
     },
     {
       "Code": "7bs",
       "Name": "Conquest Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 58,
+      "Durability": 32,
+      "Damage": [
+        37,
+        53
+      ],
+      "StrReq": 142,
+      "DexReq": 112,
+      "Speed": 0
     },
     {
       "Code": "7ls",
       "Name": "Cryptic Sword",
       "Type": "aleb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 61,
+      "Durability": 44,
+      "Damage": [
+        5,
+        77
+      ],
+      "StrReq": 99,
+      "DexReq": 109,
+      "Speed": -10
     },
     {
       "Code": "7wd",
       "Name": "Mythical Sword",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 44,
+      "Damage": [
+        40,
+        50
+      ],
+      "StrReq": 147,
+      "DexReq": 124,
+      "Speed": 0
     },
     {
       "Code": "72h",
       "Name": "Legend Sword",
       "Type": "swor",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 44,
+      "Durability": 44,
+      "Damage": [
+        50,
+        94
+      ],
+      "StrReq": 175,
+      "DexReq": 100,
+      "Speed": -15
     },
     {
       "Code": "7cm",
       "Name": "Highland Blade",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 50,
+      "Damage": [
+        67,
+        96
+      ],
+      "StrReq": 171,
+      "DexReq": 104,
+      "Speed": -5
     },
     {
       "Code": "7gs",
       "Name": "Balrog Blade",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 53,
+      "Durability": 50,
+      "Damage": [
+        55,
+        118
+      ],
+      "StrReq": 185,
+      "DexReq": 87,
+      "Speed": 0
     },
     {
       "Code": "7b7",
       "Name": "Champion Sword",
       "Type": "swor",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 40,
+      "Damage": [
+        71,
+        83
+      ],
+      "StrReq": 163,
+      "DexReq": 103,
+      "Speed": -10
     },
     {
       "Code": "7fb",
       "Name": "Colossus Sword",
       "Type": "swor",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 50,
+      "Damage": [
+        61,
+        121
+      ],
+      "StrReq": 182,
+      "DexReq": 95,
+      "Speed": 10
     },
     {
       "Code": "7gd",
       "Name": "Colossus Blade",
       "Type": "swor",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 50,
+      "Damage": [
+        58,
+        115
+      ],
+      "StrReq": 189,
+      "DexReq": 110,
+      "Speed": 5
     },
     {
       "Code": "7kr",
       "Name": "Fanged Knife",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 62,
+      "Durability": 36,
+      "Damage": [
+        15,
+        57
+      ],
+      "StrReq": 42,
+      "DexReq": 86,
+      "Speed": -20
     },
     {
       "Code": "7bl",
       "Name": "Legend Spike",
       "Type": "knif",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 47,
+      "Damage": [
+        31,
+        47
+      ],
+      "StrReq": 65,
+      "DexReq": 67,
+      "Speed": -10
     },
     {
       "Code": "7sr",
       "Name": "Hyperion Spear",
       "Type": "spea",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 43,
+      "Durability": 30,
+      "Damage": [
+        35,
+        119
+      ],
+      "StrReq": 155,
+      "DexReq": 120,
+      "Speed": -10
     },
     {
       "Code": "7tr",
       "Name": "Stygian Pike",
       "Type": "spea",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 35,
+      "Damage": [
+        29,
+        144
+      ],
+      "StrReq": 168,
+      "DexReq": 97,
+      "Speed": 0
     },
     {
       "Code": "7br",
       "Name": "Mancatcher",
       "Type": "spea",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 55,
+      "Durability": 28,
+      "Damage": [
+        42,
+        92
+      ],
+      "StrReq": 132,
+      "DexReq": 134,
+      "Speed": -20
     },
     {
       "Code": "7st",
       "Name": "Ghost Spear",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 62,
+      "Durability": 28,
+      "Damage": [
+        18,
+        155
+      ],
+      "StrReq": 122,
+      "DexReq": 163,
+      "Speed": 0
     },
     {
       "Code": "7p7",
       "Name": "War Pike",
       "Type": "spea",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 25,
+      "Damage": [
+        33,
+        178
+      ],
+      "StrReq": 165,
+      "DexReq": 106,
+      "Speed": 20
     },
     {
       "Code": "7o7",
       "Name": "Ogre Axe",
       "Type": "pole",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 50,
+      "Damage": [
+        28,
+        145
+      ],
+      "StrReq": 195,
+      "DexReq": 75,
+      "Speed": 0
     },
     {
       "Code": "7vo",
       "Name": "Colossus Voulge",
       "Type": "pole",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 48,
+      "Durability": 50,
+      "Damage": [
+        17,
+        165
+      ],
+      "StrReq": 210,
+      "DexReq": 55,
+      "Speed": 10
     },
     {
       "Code": "7s8",
       "Name": "Thresher",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 53,
+      "Durability": 65,
+      "Damage": [
+        12,
+        141
+      ],
+      "StrReq": 152,
+      "DexReq": 118,
+      "Speed": -10
     },
     {
       "Code": "7pa",
       "Name": "Cryptic Axe",
       "Type": "pole",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 59,
+      "Durability": 65,
+      "Damage": [
+        33,
+        150
+      ],
+      "StrReq": 165,
+      "DexReq": 103,
+      "Speed": 10
     },
     {
       "Code": "7h7",
       "Name": "Great Poleaxe",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 55,
+      "Damage": [
+        46,
+        127
+      ],
+      "StrReq": 179,
+      "DexReq": 99,
+      "Speed": 0
     },
     {
       "Code": "7wc",
       "Name": "Giant Thresher",
       "Type": "pole",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 55,
+      "Damage": [
+        40,
+        114
+      ],
+      "StrReq": 188,
+      "DexReq": 140,
+      "Speed": -10
     },
     {
       "Code": "6ss",
       "Name": "Walking Stick",
       "Type": "staf",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 43,
+      "Durability": 20,
+      "Damage": [
+        69,
+        85
+      ],
+      "StrReq": 25,
+      "Speed": -10
     },
     {
       "Code": "6ls",
       "Name": "Stalagmite",
       "Type": "staf",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 30,
+      "Damage": [
+        75,
+        107
+      ],
+      "StrReq": 63,
+      "DexReq": 35,
+      "Speed": 10
     },
     {
       "Code": "6cs",
       "Name": "Elder Staff",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 55,
+      "Durability": 35,
+      "Damage": [
+        80,
+        93
+      ],
+      "StrReq": 44,
+      "DexReq": 37,
+      "Speed": 0
     },
     {
       "Code": "6bs",
       "Name": "Shillelagh",
       "Type": "staf",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 62,
+      "Durability": 40,
+      "Damage": [
+        65,
+        108
+      ],
+      "StrReq": 52,
+      "DexReq": 27,
+      "Speed": 0
     },
     {
       "Code": "6ws",
       "Name": "Archon Staff",
       "Type": "staf",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 26,
+      "Damage": [
+        83,
+        99
+      ],
+      "StrReq": 34,
+      "Speed": 10
     },
     {
       "Code": "6sb",
       "Name": "Spider Bow",
       "Type": "bow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 41,
+      "Damage": [
+        23,
+        50
+      ],
+      "StrReq": 64,
+      "DexReq": 143,
+      "Speed": 5
     },
     {
       "Code": "6hb",
       "Name": "Blade Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Damage": [
+        21,
+        41
+      ],
+      "StrReq": 76,
+      "DexReq": 119,
+      "Speed": -10
     },
     {
       "Code": "6lb",
       "Name": "Shadow Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Damage": [
+        15,
+        59
+      ],
+      "StrReq": 52,
+      "DexReq": 188,
+      "Speed": 0
     },
     {
       "Code": "6cb",
       "Name": "Great Bow",
       "Type": "bow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Damage": [
+        12,
+        52
+      ],
+      "StrReq": 121,
+      "DexReq": 107,
+      "Speed": -10
     },
     {
       "Code": "6s7",
       "Name": "Diamond Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Damage": [
+        33,
+        40
+      ],
+      "StrReq": 89,
+      "DexReq": 132,
+      "Speed": 0
     },
     {
       "Code": "6l7",
       "Name": "Crusader Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Damage": [
+        15,
+        63
+      ],
+      "StrReq": 97,
+      "DexReq": 121,
+      "Speed": 10
     },
     {
       "Code": "6sw",
       "Name": "Ward Bow",
       "Type": "bow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Damage": [
+        20,
+        53
+      ],
+      "StrReq": 72,
+      "DexReq": 146,
+      "Speed": 0
     },
     {
       "Code": "6lw",
       "Name": "Hydra Bow",
       "Type": "bow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Damage": [
+        10,
+        68
+      ],
+      "StrReq": 134,
+      "DexReq": 167,
+      "Speed": 10
     },
     {
       "Code": "6lx",
       "Name": "Pellet Bow",
       "Type": "xbow",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 42,
+      "Damage": [
+        28,
+        73
+      ],
+      "StrReq": 83,
+      "DexReq": 155,
+      "Speed": -10
     },
     {
       "Code": "6mx",
       "Name": "Gorgon Crossbow",
       "Type": "xbow",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 50,
+      "Damage": [
+        25,
+        87
+      ],
+      "StrReq": 117,
+      "DexReq": 105,
+      "Speed": 0
     },
     {
       "Code": "6hx",
       "Name": "Colossus Crossbow",
       "Type": "xbow",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 56,
+      "Damage": [
+        32,
+        91
+      ],
+      "StrReq": 163,
+      "DexReq": 77,
+      "Speed": 10
     },
     {
       "Code": "6rx",
       "Name": "Demon Crossbow",
       "Type": "xbow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Damage": [
+        26,
+        40
+      ],
+      "StrReq": 141,
+      "DexReq": 98,
+      "Speed": -60
     },
     {
       "Code": "ob1",
       "Name": "Eagle Orb",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 20,
+      "Damage": [
+        2,
+        5
+      ],
+      "Speed": -10
     },
     {
       "Code": "ob2",
       "Name": "Sacred Globe",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Damage": [
+        3,
+        8
+      ],
+      "Speed": -10
     },
     {
       "Code": "ob3",
       "Name": "Smoked Sphere",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 8,
+      "Durability": 35,
+      "Damage": [
+        4,
+        10
+      ],
+      "Speed": 0
     },
     {
       "Code": "ob4",
       "Name": "Clasped Orb",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 13,
+      "Durability": 40,
+      "Damage": [
+        5,
+        12
+      ],
+      "Speed": 0
     },
     {
       "Code": "ob5",
       "Name": "Jared's Stone",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 50,
+      "Damage": [
+        8,
+        18
+      ],
+      "Speed": 10
     },
     {
       "Code": "am1",
       "Name": "Stag Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 14,
+      "Damage": [
+        7,
+        12
+      ],
+      "StrReq": 30,
+      "DexReq": 45,
+      "Speed": 0
     },
     {
       "Code": "am2",
       "Name": "Reflex Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "normal",
+      "LevelReq": 20,
+      "Damage": [
+        9,
+        19
+      ],
+      "StrReq": 35,
+      "DexReq": 60,
+      "Speed": 10
     },
     {
       "Code": "am3",
       "Name": "Maiden Spear",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 14,
+      "Durability": 28,
+      "Damage": [
+        18,
+        24
+      ],
+      "StrReq": 54,
+      "DexReq": 40,
+      "Speed": 0
     },
     {
       "Code": "am4",
       "Name": "Maiden Pike",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "normal",
+      "LevelReq": 20,
+      "Durability": 25,
+      "Damage": [
+        23,
+        55
+      ],
+      "StrReq": 63,
+      "DexReq": 52,
+      "Speed": 10
     },
     {
       "Code": "ob6",
       "Name": "Glowing Orb",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 20,
+      "Damage": [
+        8,
+        21
+      ],
+      "Speed": -10
     },
     {
       "Code": "ob7",
       "Name": "Crystalline Globe",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 27,
+      "Durability": 30,
+      "Damage": [
+        10,
+        26
+      ],
+      "Speed": -10
     },
     {
       "Code": "ob8",
       "Name": "Cloudy Sphere",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 30,
+      "Durability": 35,
+      "Damage": [
+        11,
+        29
+      ],
+      "Speed": 0
     },
     {
       "Code": "ob9",
       "Name": "Sparkling Ball",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 34,
+      "Durability": 40,
+      "Damage": [
+        13,
+        32
+      ],
+      "Speed": 0
     },
     {
       "Code": "oba",
       "Name": "Swirling Crystal",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 37,
+      "Durability": 50,
+      "Damage": [
+        18,
+        42
+      ],
+      "Speed": 10
     },
     {
       "Code": "am6",
       "Name": "Ashwood Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Damage": [
+        16,
+        29
+      ],
+      "StrReq": 56,
+      "DexReq": 77,
+      "Speed": 0
     },
     {
       "Code": "am7",
       "Name": "Ceremonial Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "exceptional",
+      "LevelReq": 35,
+      "Damage": [
+        19,
+        41
+      ],
+      "StrReq": 73,
+      "DexReq": 110,
+      "Speed": 10
     },
     {
       "Code": "am8",
       "Name": "Ceremonial Spear",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 32,
+      "Durability": 28,
+      "Damage": [
+        34,
+        51
+      ],
+      "StrReq": 101,
+      "DexReq": 80,
+      "Speed": 0
     },
     {
       "Code": "am9",
       "Name": "Ceremonial Pike",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "exceptional",
+      "LevelReq": 38,
+      "Durability": 25,
+      "Damage": [
+        42,
+        101
+      ],
+      "StrReq": 115,
+      "DexReq": 98,
+      "Speed": 20
     },
     {
       "Code": "obb",
       "Name": "Heavenly Stone",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 44,
+      "Durability": 20,
+      "Damage": [
+        21,
+        46
+      ],
+      "Speed": -10
     },
     {
       "Code": "obc",
       "Name": "Eldritch Orb",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 50,
+      "Durability": 30,
+      "Damage": [
+        18,
+        50
+      ],
+      "Speed": -10
     },
     {
       "Code": "obd",
       "Name": "Demon Heart",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 56,
+      "Durability": 35,
+      "Damage": [
+        23,
+        55
+      ],
+      "Speed": 0
     },
     {
       "Code": "obe",
       "Name": "Vortex Orb",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 40,
+      "Damage": [
+        12,
+        66
+      ],
+      "Speed": 0
     },
     {
       "Code": "obf",
       "Name": "Dimensional Shard",
       "Type": "orb",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 50,
+      "Damage": [
+        30,
+        53
+      ],
+      "Speed": 10
     },
     {
       "Code": "amb",
       "Name": "Matriarchal Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 39,
+      "Damage": [
+        20,
+        47
+      ],
+      "StrReq": 87,
+      "DexReq": 187,
+      "Speed": -10
     },
     {
       "Code": "amc",
       "Name": "Grand Matron Bow",
       "Type": "abow",
-      "Sockets": 5
+      "Sockets": 5,
+      "Tier": "elite",
+      "LevelReq": 58,
+      "Damage": [
+        14,
+        72
+      ],
+      "StrReq": 108,
+      "DexReq": 152,
+      "Speed": 10
     },
     {
       "Code": "amd",
       "Name": "Matriarchal Spear",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 28,
+      "Damage": [
+        65,
+        95
+      ],
+      "StrReq": 114,
+      "DexReq": 142,
+      "Speed": 0
     },
     {
       "Code": "ame",
       "Name": "Matriarchal Pike",
       "Type": "aspe",
-      "Sockets": 6
+      "Sockets": 6,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 25,
+      "Damage": [
+        37,
+        153
+      ],
+      "StrReq": 132,
+      "DexReq": 149,
+      "Speed": 20
     },
     {
       "Code": "cap",
       "Name": "Cap",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 12,
+      "Defense": [
+        3,
+        5
+      ],
+      "Block": 0,
+      "StrReq": 0,
+      "DexReq": 0
     },
     {
       "Code": "skp",
       "Name": "Skull Cap",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 18,
+      "Defense": [
+        8,
+        11
+      ],
+      "Block": 0,
+      "StrReq": 15,
+      "DexReq": 0
     },
     {
       "Code": "hlm",
       "Name": "Helm",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Defense": [
+        15,
+        18
+      ],
+      "Block": 0,
+      "StrReq": 26,
+      "DexReq": 0
     },
     {
       "Code": "fhl",
       "Name": "Full Helm",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Defense": [
+        23,
+        26
+      ],
+      "Block": 0,
+      "StrReq": 41,
+      "DexReq": 0
     },
     {
       "Code": "ghm",
       "Name": "Great Helm",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Defense": [
+        30,
+        35
+      ],
+      "Block": 0,
+      "StrReq": 63,
+      "DexReq": 0
     },
     {
       "Code": "crn",
       "Name": "Crown",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Defense": [
+        25,
+        45
+      ],
+      "Block": 0,
+      "StrReq": 55,
+      "DexReq": 0
     },
     {
       "Code": "msk",
       "Name": "Mask",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 20,
+      "Defense": [
+        9,
+        27
+      ],
+      "Block": 0,
+      "StrReq": 23,
+      "DexReq": 0
     },
     {
       "Code": "qui",
       "Name": "Quilted Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 20,
+      "Defense": [
+        8,
+        11
+      ],
+      "Block": 0,
+      "StrReq": 12,
+      "DexReq": 0
     },
     {
       "Code": "lea",
       "Name": "Leather Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Defense": [
+        14,
+        17
+      ],
+      "Block": 0,
+      "StrReq": 15,
+      "DexReq": 0
     },
     {
       "Code": "hla",
       "Name": "Hard Leather Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 28,
+      "Defense": [
+        21,
+        24
+      ],
+      "Block": 0,
+      "StrReq": 20,
+      "DexReq": 0
     },
     {
       "Code": "stu",
       "Name": "Studded Leather",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 32,
+      "Defense": [
+        32,
+        35
+      ],
+      "Block": 0,
+      "StrReq": 27,
+      "DexReq": 0
     },
     {
       "Code": "rng",
       "Name": "Ring Mail",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 26,
+      "Defense": [
+        45,
+        48
+      ],
+      "Block": 0,
+      "StrReq": 36,
+      "DexReq": 0
     },
     {
       "Code": "scl",
       "Name": "Scale Mail",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 36,
+      "Defense": [
+        57,
+        60
+      ],
+      "Block": 0,
+      "StrReq": 44,
+      "DexReq": 0
     },
     {
       "Code": "chn",
       "Name": "Chain Mail",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 45,
+      "Defense": [
+        72,
+        75
+      ],
+      "Block": 0,
+      "StrReq": 48,
+      "DexReq": 0
     },
     {
       "Code": "brs",
       "Name": "Breast Plate",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 50,
+      "Defense": [
+        65,
+        68
+      ],
+      "Block": 0,
+      "StrReq": 30,
+      "DexReq": 0
     },
     {
       "Code": "spl",
       "Name": "Splint Mail",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Defense": [
+        90,
+        95
+      ],
+      "Block": 0,
+      "StrReq": 51,
+      "DexReq": 0
     },
     {
       "Code": "plt",
       "Name": "Plate Mail",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Defense": [
+        108,
+        116
+      ],
+      "Block": 0,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "fld",
       "Name": "Field Plate",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 48,
+      "Defense": [
+        101,
+        105
+      ],
+      "Block": 0,
+      "StrReq": 55,
+      "DexReq": 0
     },
     {
       "Code": "gth",
       "Name": "Gothic Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 55,
+      "Defense": [
+        128,
+        135
+      ],
+      "Block": 0,
+      "StrReq": 70,
+      "DexReq": 0
     },
     {
       "Code": "ful",
       "Name": "Full Plate Mail",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 70,
+      "Defense": [
+        150,
+        161
+      ],
+      "Block": 0,
+      "StrReq": 80,
+      "DexReq": 0
     },
     {
       "Code": "aar",
       "Name": "Ancient Armor",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Defense": [
+        218,
+        233
+      ],
+      "Block": 0,
+      "StrReq": 100,
+      "DexReq": 0
     },
     {
       "Code": "ltp",
       "Name": "Light Plate",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Defense": [
+        90,
+        107
+      ],
+      "Block": 0,
+      "StrReq": 41,
+      "DexReq": 0
     },
     {
       "Code": "sml",
       "Name": "Small Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 16,
+      "Defense": [
+        8,
+        10
+      ],
+      "Block": 5,
+      "StrReq": 22,
+      "DexReq": 0
     },
     {
       "Code": "lrg",
       "Name": "Large Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 24,
+      "Defense": [
+        12,
+        14
+      ],
+      "Block": 12,
+      "StrReq": 34,
+      "DexReq": 0
     },
     {
       "Code": "kit",
       "Name": "Kite Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 30,
+      "Defense": [
+        16,
+        18
+      ],
+      "Block": 8,
+      "StrReq": 47,
+      "DexReq": 0
     },
     {
       "Code": "tow",
       "Name": "Tower Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 60,
+      "Defense": [
+        22,
+        25
+      ],
+      "Block": 24,
+      "StrReq": 75,
+      "DexReq": 0
     },
     {
       "Code": "gts",
       "Name": "Gothic Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Defense": [
+        30,
+        35
+      ],
+      "Block": 16,
+      "StrReq": 60,
+      "DexReq": 0
     },
     {
       "Code": "bhm",
       "Name": "Bone Helm",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Defense": [
+        33,
+        36
+      ],
+      "Block": 0,
+      "StrReq": 25,
+      "DexReq": 0
     },
     {
       "Code": "bsh",
       "Name": "Bone Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Defense": [
+        10,
+        30
+      ],
+      "Block": 20,
+      "StrReq": 25,
+      "DexReq": 0
     },
     {
       "Code": "spk",
       "Name": "Spiked Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 0,
+      "Durability": 40,
+      "Defense": [
+        15,
+        25
+      ],
+      "Block": 10,
+      "StrReq": 30,
+      "DexReq": 0
     },
     {
       "Code": "xap",
       "Name": "War Hat",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 22,
+      "Durability": 12,
+      "Defense": [
+        45,
+        53
+      ],
+      "Block": 0,
+      "StrReq": 20,
+      "DexReq": 0
     },
     {
       "Code": "xkp",
       "Name": "Sallet",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 18,
+      "Defense": [
+        52,
+        62
+      ],
+      "Block": 0,
+      "StrReq": 43,
+      "DexReq": 0
     },
     {
       "Code": "xlm",
       "Name": "Casque",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 24,
+      "Defense": [
+        63,
+        72
+      ],
+      "Block": 0,
+      "StrReq": 59,
+      "DexReq": 0
     },
     {
       "Code": "xhl",
       "Name": "Basinet",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 30,
+      "Defense": [
+        75,
+        84
+      ],
+      "Block": 0,
+      "StrReq": 82,
+      "DexReq": 0
     },
     {
       "Code": "xhm",
       "Name": "Winged Helm",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 40,
+      "Defense": [
+        85,
+        98
+      ],
+      "Block": 0,
+      "StrReq": 115,
+      "DexReq": 0
     },
     {
       "Code": "xrn",
       "Name": "Grand Crown",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Defense": [
+        78,
+        113
+      ],
+      "Block": 0,
+      "StrReq": 103,
+      "DexReq": 0
     },
     {
       "Code": "xsk",
       "Name": "Death Mask",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 20,
+      "Defense": [
+        54,
+        86
+      ],
+      "Block": 0,
+      "StrReq": 55,
+      "DexReq": 0
     },
     {
       "Code": "xui",
       "Name": "Ghost Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 22,
+      "Durability": 20,
+      "Defense": [
+        102,
+        117
+      ],
+      "Block": 0,
+      "StrReq": 38,
+      "DexReq": 0
     },
     {
       "Code": "xea",
       "Name": "Serpentskin Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 24,
+      "Defense": [
+        111,
+        126
+      ],
+      "Block": 0,
+      "StrReq": 43,
+      "DexReq": 0
     },
     {
       "Code": "xla",
       "Name": "Demonhide Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 28,
+      "Defense": [
+        122,
+        136
+      ],
+      "Block": 0,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "xtu",
       "Name": "Trellised Armor",
       "Type": "tors",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 32,
+      "Defense": [
+        138,
+        153
+      ],
+      "Block": 0,
+      "StrReq": 61,
+      "DexReq": 0
     },
     {
       "Code": "xng",
       "Name": "Linked Mail",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 26,
+      "Defense": [
+        158,
+        172
+      ],
+      "Block": 0,
+      "StrReq": 74,
+      "DexReq": 0
     },
     {
       "Code": "xcl",
       "Name": "Tigulated Mail",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 36,
+      "Defense": [
+        176,
+        190
+      ],
+      "Block": 0,
+      "StrReq": 86,
+      "DexReq": 0
     },
     {
       "Code": "xhn",
       "Name": "Mesh Armor",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 45,
+      "Defense": [
+        198,
+        213
+      ],
+      "Block": 0,
+      "StrReq": 92,
+      "DexReq": 0
     },
     {
       "Code": "xrs",
       "Name": "Cuirass",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 50,
+      "Defense": [
+        188,
+        202
+      ],
+      "Block": 0,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "xpl",
       "Name": "Russet Armor",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 30,
+      "Defense": [
+        225,
+        243
+      ],
+      "Block": 0,
+      "StrReq": 97,
+      "DexReq": 0
     },
     {
       "Code": "xlt",
       "Name": "Templar Coat",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Defense": [
+        252,
+        274
+      ],
+      "Block": 0,
+      "StrReq": 118,
+      "DexReq": 0
     },
     {
       "Code": "xld",
       "Name": "Sharktooth Armor",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 48,
+      "Defense": [
+        242,
+        258
+      ],
+      "Block": 0,
+      "StrReq": 103,
+      "DexReq": 0
     },
     {
       "Code": "xth",
       "Name": "Embossed Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 55,
+      "Defense": [
+        282,
+        303
+      ],
+      "Block": 0,
+      "StrReq": 125,
+      "DexReq": 0
     },
     {
       "Code": "xul",
       "Name": "Chaos Armor",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 70,
+      "Defense": [
+        315,
+        342
+      ],
+      "Block": 0,
+      "StrReq": 140,
+      "DexReq": 0
     },
     {
       "Code": "xar",
       "Name": "Ornate Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Defense": [
+        417,
+        450
+      ],
+      "Block": 0,
+      "StrReq": 170,
+      "DexReq": 0
     },
     {
       "Code": "xtp",
       "Name": "Mage Plate",
       "Type": "tors",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 60,
+      "Defense": [
+        225,
+        261
+      ],
+      "Block": 0,
+      "StrReq": 55,
+      "DexReq": 0
     },
     {
       "Code": "xml",
       "Name": "Round Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 64,
+      "Defense": [
+        47,
+        55
+      ],
+      "Block": 12,
+      "StrReq": 53,
+      "DexReq": 0
     },
     {
       "Code": "xrg",
       "Name": "Scutum",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 62,
+      "Defense": [
+        53,
+        61
+      ],
+      "Block": 14,
+      "StrReq": 71,
+      "DexReq": 0
     },
     {
       "Code": "xit",
       "Name": "Dragon Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 76,
+      "Defense": [
+        59,
+        67
+      ],
+      "Block": 18,
+      "StrReq": 91,
+      "DexReq": 0
     },
     {
       "Code": "xow",
       "Name": "Pavise",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 72,
+      "Defense": [
+        68,
+        78
+      ],
+      "Block": 24,
+      "StrReq": 133,
+      "DexReq": 0
     },
     {
       "Code": "xts",
       "Name": "Ancient Shield",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 80,
+      "Defense": [
+        80,
+        93
+      ],
+      "Block": 16,
+      "StrReq": 110,
+      "DexReq": 0
     },
     {
       "Code": "xh9",
       "Name": "Grim Helm",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 40,
+      "Defense": [
+        60,
+        125
+      ],
+      "Block": 0,
+      "StrReq": 58,
+      "DexReq": 0
     },
     {
       "Code": "xsh",
       "Name": "Grim Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 70,
+      "Defense": [
+        50,
+        150
+      ],
+      "Block": 20,
+      "StrReq": 58,
+      "DexReq": 0
     },
     {
       "Code": "xpk",
       "Name": "Barbed Shield",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 55,
+      "Defense": [
+        58,
+        78
+      ],
+      "Block": 17,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "dr1",
       "Name": "Wolf Head",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 3,
+      "Durability": 20,
+      "Defense": [
+        8,
+        11
+      ],
+      "Block": 0,
+      "StrReq": 16,
+      "DexReq": 0
     },
     {
       "Code": "dr2",
       "Name": "Hawk Helm",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 6,
+      "Durability": 20,
+      "Defense": [
+        4,
+        15
+      ],
+      "Block": 0,
+      "StrReq": 20,
+      "DexReq": 0
     },
     {
       "Code": "dr3",
       "Name": "Antlers",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 12,
+      "Durability": 20,
+      "Defense": [
+        18,
+        24
+      ],
+      "Block": 0,
+      "StrReq": 24,
+      "DexReq": 0
     },
     {
       "Code": "dr4",
       "Name": "Falcon Mask",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 15,
+      "Durability": 20,
+      "Defense": [
+        12,
+        28
+      ],
+      "Block": 0,
+      "StrReq": 28,
+      "DexReq": 0
     },
     {
       "Code": "dr5",
       "Name": "Spirit Mask",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 20,
+      "Defense": [
+        22,
+        35
+      ],
+      "Block": 0,
+      "StrReq": 30,
+      "DexReq": 0
     },
     {
       "Code": "ba1",
       "Name": "Jawbone Cap",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 3,
+      "Durability": 25,
+      "Defense": [
+        10,
+        15
+      ],
+      "Block": 0,
+      "StrReq": 25,
+      "DexReq": 0
     },
     {
       "Code": "ba2",
       "Name": "Fanged Helm",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 6,
+      "Durability": 35,
+      "Defense": [
+        15,
+        20
+      ],
+      "Block": 0,
+      "StrReq": 35,
+      "DexReq": 0
     },
     {
       "Code": "ba3",
       "Name": "Horned Helm",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 12,
+      "Durability": 45,
+      "Defense": [
+        25,
+        30
+      ],
+      "Block": 0,
+      "StrReq": 45,
+      "DexReq": 0
     },
     {
       "Code": "ba4",
       "Name": "Assault Helmet",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 15,
+      "Durability": 50,
+      "Defense": [
+        30,
+        35
+      ],
+      "Block": 0,
+      "StrReq": 55,
+      "DexReq": 0
     },
     {
       "Code": "ba5",
       "Name": "Avenger Guard",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 55,
+      "Defense": [
+        35,
+        50
+      ],
+      "Block": 0,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "pa1",
       "Name": "Targe",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 3,
+      "Durability": 20,
+      "Defense": [
+        8,
+        12
+      ],
+      "Block": 10,
+      "StrReq": 16,
+      "DexReq": 0
     },
     {
       "Code": "pa2",
       "Name": "Rondache",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 6,
+      "Durability": 30,
+      "Defense": [
+        10,
+        18
+      ],
+      "Block": 15,
+      "StrReq": 26,
+      "DexReq": 0
     },
     {
       "Code": "pa3",
       "Name": "Heraldic Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 12,
+      "Durability": 40,
+      "Defense": [
+        16,
+        26
+      ],
+      "Block": 20,
+      "StrReq": 40,
+      "DexReq": 0
     },
     {
       "Code": "pa4",
       "Name": "Aerin Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 15,
+      "Durability": 50,
+      "Defense": [
+        26,
+        36
+      ],
+      "Block": 22,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "pa5",
       "Name": "Crown Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 60,
+      "Defense": [
+        30,
+        40
+      ],
+      "Block": 25,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "ne1",
       "Name": "Preserved Head",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 3,
+      "Durability": 20,
+      "Defense": [
+        2,
+        5
+      ],
+      "Block": 3,
+      "StrReq": 12,
+      "DexReq": 0
     },
     {
       "Code": "ne2",
       "Name": "Zombie Head",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 6,
+      "Durability": 20,
+      "Defense": [
+        4,
+        8
+      ],
+      "Block": 5,
+      "StrReq": 14,
+      "DexReq": 0
     },
     {
       "Code": "ne3",
       "Name": "Unraveller Head",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 12,
+      "Durability": 20,
+      "Defense": [
+        6,
+        10
+      ],
+      "Block": 8,
+      "StrReq": 18,
+      "DexReq": 0
     },
     {
       "Code": "ne4",
       "Name": "Gargoyle Head",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 15,
+      "Durability": 20,
+      "Defense": [
+        10,
+        16
+      ],
+      "Block": 10,
+      "StrReq": 20,
+      "DexReq": 0
     },
     {
       "Code": "ne5",
       "Name": "Demon Head",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 20,
+      "Defense": [
+        15,
+        20
+      ],
+      "Block": 12,
+      "StrReq": 25,
+      "DexReq": 0
     },
     {
       "Code": "ci0",
       "Name": "Circlet",
       "Type": "circ",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 16,
+      "Durability": 35,
+      "Defense": [
+        20,
+        30
+      ],
+      "Block": 0,
+      "StrReq": 0,
+      "DexReq": 0
     },
     {
       "Code": "ci1",
       "Name": "Coronet",
       "Type": "circ",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 39,
+      "Durability": 30,
+      "Defense": [
+        30,
+        40
+      ],
+      "Block": 0,
+      "StrReq": 0,
+      "DexReq": 0
     },
     {
       "Code": "ci2",
       "Name": "Tiara",
       "Type": "circ",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 52,
+      "Durability": 25,
+      "Defense": [
+        40,
+        50
+      ],
+      "Block": 0,
+      "StrReq": 0,
+      "DexReq": 0
     },
     {
       "Code": "ci3",
       "Name": "Diadem",
       "Type": "circ",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 64,
+      "Durability": 20,
+      "Defense": [
+        50,
+        60
+      ],
+      "Block": 0,
+      "StrReq": 0,
+      "DexReq": 0
     },
     {
       "Code": "uap",
       "Name": "Shako",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 43,
+      "Durability": 12,
+      "Defense": [
+        98,
+        141
+      ],
+      "Block": 0,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "ukp",
       "Name": "Hydraskull",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Durability": 18,
+      "Defense": [
+        101,
+        145
+      ],
+      "Block": 0,
+      "StrReq": 84,
+      "DexReq": 0
     },
     {
       "Code": "ulm",
       "Name": "Armet",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 24,
+      "Defense": [
+        105,
+        149
+      ],
+      "Block": 0,
+      "StrReq": 109,
+      "DexReq": 0
     },
     {
       "Code": "uhl",
       "Name": "Giant Conch",
       "Type": "helm",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 40,
+      "Durability": 30,
+      "Defense": [
+        110,
+        154
+      ],
+      "Block": 0,
+      "StrReq": 142,
+      "DexReq": 0
     },
     {
       "Code": "uhm",
       "Name": "Spired Helm",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 59,
+      "Durability": 40,
+      "Defense": [
+        114,
+        159
+      ],
+      "Block": 0,
+      "StrReq": 192,
+      "DexReq": 0
     },
     {
       "Code": "urn",
       "Name": "Corona",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 50,
+      "Defense": [
+        111,
+        165
+      ],
+      "Block": 0,
+      "StrReq": 174,
+      "DexReq": 0
     },
     {
       "Code": "usk",
       "Name": "Demonhead",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 55,
+      "Durability": 20,
+      "Defense": [
+        101,
+        154
+      ],
+      "Block": 0,
+      "StrReq": 102,
+      "DexReq": 0
     },
     {
       "Code": "uui",
       "Name": "Dusk Shroud",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 20,
+      "Defense": [
+        361,
+        467
+      ],
+      "Block": 0,
+      "StrReq": 77,
+      "DexReq": 0
     },
     {
       "Code": "uea",
       "Name": "Wyrmhide",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 50,
+      "Durability": 24,
+      "Defense": [
+        364,
+        470
+      ],
+      "Block": 0,
+      "StrReq": 84,
+      "DexReq": 0
     },
     {
       "Code": "ula",
       "Name": "Scarab Husk",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 28,
+      "Defense": [
+        369,
+        474
+      ],
+      "Block": 0,
+      "StrReq": 95,
+      "DexReq": 0
     },
     {
       "Code": "utu",
       "Name": "Wire Fleece",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 53,
+      "Durability": 32,
+      "Defense": [
+        375,
+        481
+      ],
+      "Block": 0,
+      "StrReq": 111,
+      "DexReq": 0
     },
     {
       "Code": "ung",
       "Name": "Diamond Mail",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Durability": 26,
+      "Defense": [
+        383,
+        489
+      ],
+      "Block": 0,
+      "StrReq": 131,
+      "DexReq": 0
     },
     {
       "Code": "ucl",
       "Name": "Loricated Mail",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 55,
+      "Durability": 36,
+      "Defense": [
+        390,
+        496
+      ],
+      "Block": 0,
+      "StrReq": 149,
+      "DexReq": 0
     },
     {
       "Code": "uhn",
       "Name": "Boneweave",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Durability": 45,
+      "Defense": [
+        399,
+        505
+      ],
+      "Block": 0,
+      "StrReq": 158,
+      "DexReq": 0
     },
     {
       "Code": "urs",
       "Name": "Great Hauberk",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 56,
+      "Durability": 50,
+      "Defense": [
+        395,
+        501
+      ],
+      "Block": 0,
+      "StrReq": 118,
+      "DexReq": 0
     },
     {
       "Code": "upl",
       "Name": "Balrog Skin",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 30,
+      "Defense": [
+        410,
+        517
+      ],
+      "Block": 0,
+      "StrReq": 165,
+      "DexReq": 0
     },
     {
       "Code": "ult",
       "Name": "Hellforge Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 59,
+      "Durability": 60,
+      "Defense": [
+        421,
+        530
+      ],
+      "Block": 0,
+      "StrReq": 196,
+      "DexReq": 0
     },
     {
       "Code": "uld",
       "Name": "Kraken Shell",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 61,
+      "Durability": 48,
+      "Defense": [
+        417,
+        523
+      ],
+      "Block": 0,
+      "StrReq": 174,
+      "DexReq": 0
     },
     {
       "Code": "uth",
       "Name": "Lacquered Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 62,
+      "Durability": 55,
+      "Defense": [
+        433,
+        541
+      ],
+      "Block": 0,
+      "StrReq": 208,
+      "DexReq": 0
     },
     {
       "Code": "uul",
       "Name": "Shadow Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 64,
+      "Durability": 70,
+      "Defense": [
+        446,
+        557
+      ],
+      "Block": 0,
+      "StrReq": 230,
+      "DexReq": 0
     },
     {
       "Code": "uar",
       "Name": "Sacred Armor",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 60,
+      "Defense": [
+        487,
+        600
+      ],
+      "Block": 0,
+      "StrReq": 232,
+      "DexReq": 0
     },
     {
       "Code": "utp",
       "Name": "Archon Plate",
       "Type": "tors",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 60,
+      "Defense": [
+        410,
+        524
+      ],
+      "Block": 0,
+      "StrReq": 103,
+      "DexReq": 0
     },
     {
       "Code": "uuc",
       "Name": "Heater",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 43,
+      "Durability": 88,
+      "Defense": [
+        95,
+        110
+      ],
+      "Block": 22,
+      "StrReq": 77,
+      "DexReq": 0
     },
     {
       "Code": "uml",
       "Name": "Luna",
       "Type": "shie",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 84,
+      "Defense": [
+        108,
+        123
+      ],
+      "Block": 20,
+      "StrReq": 100,
+      "DexReq": 0
     },
     {
       "Code": "urg",
       "Name": "Hyperion",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 48,
+      "Durability": 82,
+      "Defense": [
+        119,
+        135
+      ],
+      "Block": 24,
+      "StrReq": 127,
+      "DexReq": 0
     },
     {
       "Code": "uit",
       "Name": "Monarch",
       "Type": "shie",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Durability": 86,
+      "Defense": [
+        133,
+        148
+      ],
+      "Block": 22,
+      "StrReq": 156,
+      "DexReq": 0
     },
     {
       "Code": "uow",
       "Name": "Aegis",
       "Type": "shie",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 59,
+      "Durability": 92,
+      "Defense": [
+        145,
+        161
+      ],
+      "Block": 24,
+      "StrReq": 219,
+      "DexReq": 0
     },
     {
       "Code": "uts",
       "Name": "Ward",
       "Type": "shie",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 100,
+      "Defense": [
+        153,
+        170
+      ],
+      "Block": 24,
+      "StrReq": 185,
+      "DexReq": 0
     },
     {
       "Code": "uh9",
       "Name": "Bone Visage",
       "Type": "helm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 63,
+      "Durability": 40,
+      "Defense": [
+        100,
+        157
+      ],
+      "Block": 0,
+      "StrReq": 106,
+      "DexReq": 0
     },
     {
       "Code": "ush",
       "Name": "Troll Nest",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 74,
+      "Defense": [
+        158,
+        173
+      ],
+      "Block": 20,
+      "StrReq": 106,
+      "DexReq": 0
     },
     {
       "Code": "upk",
       "Name": "Blade Barrier",
       "Type": "shie",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 83,
+      "Defense": [
+        147,
+        163
+      ],
+      "Block": 20,
+      "StrReq": 118,
+      "DexReq": 0
     },
     {
       "Code": "dr6",
       "Name": "Alpha Helm",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 26,
+      "Durability": 20,
+      "Defense": [
+        52,
+        62
+      ],
+      "Block": 0,
+      "StrReq": 44,
+      "DexReq": 0
     },
     {
       "Code": "dr7",
       "Name": "Griffon Headdress",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 30,
+      "Durability": 20,
+      "Defense": [
+        46,
+        68
+      ],
+      "Block": 0,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "dr8",
       "Name": "Hunter's Guise",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Durability": 20,
+      "Defense": [
+        67,
+        81
+      ],
+      "Block": 0,
+      "StrReq": 56,
+      "DexReq": 0
     },
     {
       "Code": "dr9",
       "Name": "Sacred Feathers",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 32,
+      "Durability": 20,
+      "Defense": [
+        58,
+        87
+      ],
+      "Block": 0,
+      "StrReq": 62,
+      "DexReq": 0
     },
     {
       "Code": "dra",
       "Name": "Totemic Mask",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 41,
+      "Durability": 20,
+      "Defense": [
+        73,
+        98
+      ],
+      "Block": 0,
+      "StrReq": 65,
+      "DexReq": 0
     },
     {
       "Code": "ba6",
       "Name": "Jawbone Visor",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 25,
+      "Durability": 25,
+      "Defense": [
+        55,
+        68
+      ],
+      "Block": 0,
+      "StrReq": 58,
+      "DexReq": 0
     },
     {
       "Code": "ba7",
       "Name": "Lion Helm",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Durability": 35,
+      "Defense": [
+        63,
+        75
+      ],
+      "Block": 0,
+      "StrReq": 73,
+      "DexReq": 0
     },
     {
       "Code": "ba8",
       "Name": "Rage Mask",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Durability": 45,
+      "Defense": [
+        78,
+        90
+      ],
+      "Block": 0,
+      "StrReq": 88,
+      "DexReq": 0
     },
     {
       "Code": "ba9",
       "Name": "Savage Helmet",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 32,
+      "Durability": 50,
+      "Defense": [
+        85,
+        98
+      ],
+      "Block": 0,
+      "StrReq": 103,
+      "DexReq": 0
     },
     {
       "Code": "baa",
       "Name": "Slayer Guard",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "exceptional",
+      "LevelReq": 40,
+      "Durability": 55,
+      "Defense": [
+        93,
+        120
+      ],
+      "Block": 0,
+      "StrReq": 118,
+      "DexReq": 0
     },
     {
       "Code": "pa6",
       "Name": "Akaran Targe",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 26,
+      "Durability": 20,
+      "Defense": [
+        101,
+        125
+      ],
+      "Block": 10,
+      "StrReq": 44,
+      "DexReq": 0
     },
     {
       "Code": "pa7",
       "Name": "Akaran Rondache",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 30,
+      "Durability": 30,
+      "Defense": [
+        113,
+        137
+      ],
+      "Block": 15,
+      "StrReq": 59,
+      "DexReq": 0
     },
     {
       "Code": "pa8",
       "Name": "Protector Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 34,
+      "Durability": 40,
+      "Defense": [
+        129,
+        153
+      ],
+      "Block": 20,
+      "StrReq": 69,
+      "DexReq": 0
     },
     {
       "Code": "pa9",
       "Name": "Gilded Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 38,
+      "Durability": 50,
+      "Defense": [
+        144,
+        168
+      ],
+      "Block": 22,
+      "StrReq": 89,
+      "DexReq": 0
     },
     {
       "Code": "paa",
       "Name": "Royal Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "exceptional",
+      "LevelReq": 41,
+      "Durability": 60,
+      "Defense": [
+        156,
+        181
+      ],
+      "Block": 25,
+      "StrReq": 114,
+      "DexReq": 0
     },
     {
       "Code": "ne6",
       "Name": "Mummified Trophy",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 20,
+      "Defense": [
+        38,
+        48
+      ],
+      "Block": 3,
+      "StrReq": 38,
+      "DexReq": 0
     },
     {
       "Code": "ne7",
       "Name": "Fetish Trophy",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Durability": 20,
+      "Defense": [
+        41,
+        52
+      ],
+      "Block": 5,
+      "StrReq": 41,
+      "DexReq": 0
     },
     {
       "Code": "ne8",
       "Name": "Sexton Trophy",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 33,
+      "Durability": 20,
+      "Defense": [
+        44,
+        55
+      ],
+      "Block": 8,
+      "StrReq": 47,
+      "DexReq": 0
     },
     {
       "Code": "ne9",
       "Name": "Cantor Trophy",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 36,
+      "Durability": 20,
+      "Defense": [
+        50,
+        64
+      ],
+      "Block": 10,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "nea",
       "Name": "Hierophant Trophy",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 40,
+      "Durability": 20,
+      "Defense": [
+        58,
+        70
+      ],
+      "Block": 12,
+      "StrReq": 58,
+      "DexReq": 0
     },
     {
       "Code": "drb",
       "Name": "Blood Spirit",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 46,
+      "Durability": 20,
+      "Defense": [
+        101,
+        145
+      ],
+      "Block": 0,
+      "StrReq": 86,
+      "DexReq": 0
     },
     {
       "Code": "drc",
       "Name": "Sun Spirit",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 51,
+      "Durability": 20,
+      "Defense": [
+        98,
+        147
+      ],
+      "Block": 0,
+      "StrReq": 95,
+      "DexReq": 0
     },
     {
       "Code": "drd",
       "Name": "Earth Spirit",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 57,
+      "Durability": 20,
+      "Defense": [
+        107,
+        152
+      ],
+      "Block": 0,
+      "StrReq": 104,
+      "DexReq": 0
     },
     {
       "Code": "dre",
       "Name": "Sky Spirit",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 62,
+      "Durability": 20,
+      "Defense": [
+        103,
+        155
+      ],
+      "Block": 0,
+      "StrReq": 113,
+      "DexReq": 0
     },
     {
       "Code": "drf",
       "Name": "Dream Spirit",
       "Type": "pelt",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 20,
+      "Defense": [
+        109,
+        159
+      ],
+      "Block": 0,
+      "StrReq": 118,
+      "DexReq": 0
     },
     {
       "Code": "bab",
       "Name": "Carnage Helm",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 45,
+      "Durability": 25,
+      "Defense": [
+        102,
+        147
+      ],
+      "Block": 0,
+      "StrReq": 106,
+      "DexReq": 0
     },
     {
       "Code": "bac",
       "Name": "Fury Visor",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 35,
+      "Defense": [
+        105,
+        150
+      ],
+      "Block": 0,
+      "StrReq": 129,
+      "DexReq": 0
     },
     {
       "Code": "bad",
       "Name": "Destroyer Helm",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 54,
+      "Durability": 45,
+      "Defense": [
+        111,
+        156
+      ],
+      "Block": 0,
+      "StrReq": 151,
+      "DexReq": 0
     },
     {
       "Code": "bae",
       "Name": "Conqueror Crown",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 50,
+      "Defense": [
+        114,
+        159
+      ],
+      "Block": 0,
+      "StrReq": 174,
+      "DexReq": 0
     },
     {
       "Code": "baf",
       "Name": "Guardian Crown",
       "Type": "phlm",
-      "Sockets": 3
+      "Sockets": 3,
+      "Tier": "elite",
+      "LevelReq": 65,
+      "Durability": 55,
+      "Defense": [
+        117,
+        168
+      ],
+      "Block": 0,
+      "StrReq": 196,
+      "DexReq": 0
     },
     {
       "Code": "pab",
       "Name": "Sacred Targe",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 47,
+      "Durability": 45,
+      "Defense": [
+        126,
+        158
+      ],
+      "Block": 30,
+      "StrReq": 86,
+      "DexReq": 0
     },
     {
       "Code": "pac",
       "Name": "Sacred Rondache",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 52,
+      "Durability": 68,
+      "Defense": [
+        138,
+        164
+      ],
+      "Block": 28,
+      "StrReq": 109,
+      "DexReq": 0
     },
     {
       "Code": "pad",
       "Name": "Kurast Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 55,
+      "Durability": 55,
+      "Defense": [
+        154,
+        172
+      ],
+      "Block": 25,
+      "StrReq": 124,
+      "DexReq": 0
     },
     {
       "Code": "pae",
       "Name": "Zakarum Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 61,
+      "Durability": 65,
+      "Defense": [
+        169,
+        193
+      ],
+      "Block": 22,
+      "StrReq": 142,
+      "DexReq": 0
     },
     {
       "Code": "paf",
       "Name": "Vortex Shield",
       "Type": "ashd",
-      "Sockets": 4
+      "Sockets": 4,
+      "Tier": "elite",
+      "LevelReq": 66,
+      "Durability": 90,
+      "Defense": [
+        182,
+        225
+      ],
+      "Block": 19,
+      "StrReq": 148,
+      "DexReq": 0
     },
     {
       "Code": "neb",
       "Name": "Minion Skull",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 44,
+      "Durability": 20,
+      "Defense": [
+        95,
+        139
+      ],
+      "Block": 3,
+      "StrReq": 77,
+      "DexReq": 0
     },
     {
       "Code": "neg",
       "Name": "Hellspawn Skull",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 50,
+      "Durability": 20,
+      "Defense": [
+        96,
+        141
+      ],
+      "Block": 5,
+      "StrReq": 82,
+      "DexReq": 0
     },
     {
       "Code": "ned",
       "Name": "Overseer Skull",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 20,
+      "Defense": [
+        98,
+        142
+      ],
+      "Block": 8,
+      "StrReq": 91,
+      "DexReq": 0
     },
     {
       "Code": "nee",
       "Name": "Succubus Skull",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 20,
+      "Defense": [
+        100,
+        146
+      ],
+      "Block": 10,
+      "StrReq": 95,
+      "DexReq": 0
     },
     {
       "Code": "nef",
       "Name": "Bloodlord Skull",
       "Type": "head",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 65,
+      "Durability": 20,
+      "Defense": [
+        103,
+        148
+      ],
+      "Block": 12,
+      "StrReq": 106,
+      "DexReq": 0
     },
     {
       "Code": "wa1",
       "Name": "Old Book",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 3,
+      "Durability": 20,
+      "Defense": [
+        2,
+        5
+      ],
+      "Block": 3,
+      "StrReq": 12,
+      "DexReq": 0
     },
     {
       "Code": "wa2",
       "Name": "Tome",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 6,
+      "Durability": 20,
+      "Defense": [
+        4,
+        8
+      ],
+      "Block": 5,
+      "StrReq": 14,
+      "DexReq": 0
     },
     {
       "Code": "wa3",
       "Name": "Codex",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 12,
+      "Durability": 20,
+      "Defense": [
+        6,
+        10
+      ],
+      "Block": 8,
+      "StrReq": 18,
+      "DexReq": 0
     },
     {
       "Code": "wa4",
       "Name": "Compendium",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 15,
+      "Durability": 20,
+      "Defense": [
+        10,
+        16
+      ],
+      "Block": 10,
+      "StrReq": 20,
+      "DexReq": 0
     },
     {
       "Code": "wa5",
       "Name": "Grimoire",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "normal",
+      "LevelReq": 18,
+      "Durability": 20,
+      "Defense": [
+        15,
+        20
+      ],
+      "Block": 12,
+      "StrReq": 25,
+      "DexReq": 0
     },
     {
       "Code": "wa6",
       "Name": "Burnt Text",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 24,
+      "Durability": 20,
+      "Defense": [
+        38,
+        48
+      ],
+      "Block": 3,
+      "StrReq": 38,
+      "DexReq": 0
     },
     {
       "Code": "wa7",
       "Name": "Dark Tome",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 29,
+      "Durability": 20,
+      "Defense": [
+        41,
+        52
+      ],
+      "Block": 5,
+      "StrReq": 41,
+      "DexReq": 0
     },
     {
       "Code": "wa8",
       "Name": "Dark Codex",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 33,
+      "Durability": 20,
+      "Defense": [
+        44,
+        55
+      ],
+      "Block": 8,
+      "StrReq": 47,
+      "DexReq": 0
     },
     {
       "Code": "wa9",
       "Name": "Possessed Compendium",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 36,
+      "Durability": 20,
+      "Defense": [
+        50,
+        64
+      ],
+      "Block": 10,
+      "StrReq": 50,
+      "DexReq": 0
     },
     {
       "Code": "waa",
       "Name": "Possessed Grimoire",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "exceptional",
+      "LevelReq": 40,
+      "Durability": 20,
+      "Defense": [
+        58,
+        70
+      ],
+      "Block": 12,
+      "StrReq": 58,
+      "DexReq": 0
     },
     {
       "Code": "wab",
       "Name": "Forgotten Volume",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 44,
+      "Durability": 20,
+      "Defense": [
+        95,
+        139
+      ],
+      "Block": 3,
+      "StrReq": 77,
+      "DexReq": 0
     },
     {
       "Code": "wac",
       "Name": "Occult Tome",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 49,
+      "Durability": 20,
+      "Defense": [
+        96,
+        141
+      ],
+      "Block": 5,
+      "StrReq": 82,
+      "DexReq": 0
     },
     {
       "Code": "wad",
       "Name": "Occult Codex",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 50,
+      "Durability": 20,
+      "Defense": [
+        98,
+        142
+      ],
+      "Block": 8,
+      "StrReq": 91,
+      "DexReq": 0
     },
     {
       "Code": "wae",
       "Name": "Blasphemous Compendium",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 60,
+      "Durability": 20,
+      "Defense": [
+        100,
+        146
+      ],
+      "Block": 10,
+      "StrReq": 95,
+      "DexReq": 0
     },
     {
       "Code": "waf",
       "Name": "Blasphemous Grimoire",
       "Type": "grim",
-      "Sockets": 2
+      "Sockets": 2,
+      "Tier": "elite",
+      "LevelReq": 65,
+      "Durability": 20,
+      "Defense": [
+        103,
+        148
+      ],
+      "Block": 12,
+      "StrReq": 106,
+      "DexReq": 0
     }
   ]
 }
