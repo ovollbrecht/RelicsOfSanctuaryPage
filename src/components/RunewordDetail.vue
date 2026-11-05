@@ -29,7 +29,7 @@ const props = defineProps({
 // The runeword read on one base: every base it can be made in, the one the
 // reader picked, and whether that one is ethereal. Nothing is stored; the
 // pick follows the page's base filter when it fits and resets with the group.
-const TIERS = ['normal', 'exceptional', 'elite'];
+const TIERS = ['elite', 'exceptional', 'normal'];
 const TIER_LABELS = { normal: 'Normal', exceptional: 'Exceptional', elite: 'Elite' };
 const pickable = computed(() => basesForGroup(props.group));
 const pickableByTier = computed(() => TIERS
@@ -143,9 +143,9 @@ const formatChance = (chance) => {
 .base-select { width: auto; max-width: 16rem; }
 .base-eth { margin: 0; }
 .stat-lines {
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201, 163, 106, 0.4);
 }
 .stat-lines > li { color: var(--d2r-muted); }
 .detail-head {

@@ -12709,7 +12709,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[55 - 80] to [112 - 149]",
-      "Durability": "24",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "68",
@@ -12779,7 +12779,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[125 - 164] to [180 - 230]",
-          "Durability": "24",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "83",
           "Required Strength": "115",
@@ -13077,7 +13077,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "38 to 93",
-      "Durability": "30",
+      "Durability": "30 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "73",
@@ -13147,7 +13147,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "68 to 338",
-          "Durability": "30",
+          "Durability": "30 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "196",
@@ -15095,7 +15095,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[152 - 188] to [239 - 287]",
-      "Durability": "60",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "169",
@@ -15173,7 +15173,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[87 - 115] to [425 - 498]",
-          "Durability": "60",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "253",
@@ -15616,7 +15616,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[26 - 32] to [70 - 87]",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "60",
       "Required Strength": "85",
@@ -17317,7 +17317,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[95 - 127] to [173 - 217]",
-      "Durability": "28",
+      "Durability": "28 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "101",
@@ -17379,7 +17379,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[66 - 94] to [423 - 505]",
-          "Durability": "28",
+          "Durability": "28 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "163",
           "Required Strength": "122",
@@ -20727,7 +20727,7 @@
     "Stats": {
       "Defense": "340 - 394",
       "Damage": "0 to 0",
-      "Durability": "58",
+      "Durability": "58 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "50",
@@ -20797,7 +20797,7 @@
         "Stats": {
           "Defense": "1185 - 1374",
           "Damage": "0 to 0",
-          "Durability": "58",
+          "Durability": "58 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "95",
@@ -21289,7 +21289,7 @@
     "Stats": {
       "Defense": "631 - 729",
       "Damage": "0 to 0",
-      "Durability": "90",
+      "Durability": "90 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "97",
@@ -21359,7 +21359,7 @@
         "Stats": {
           "Defense": "1344 - 1551",
           "Damage": "0 to 0",
-          "Durability": "90",
+          "Durability": "90 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "165",
@@ -24707,7 +24707,7 @@
     "Stats": {
       "Defense": "504 - 519",
       "Damage": "0 to 0",
-      "Durability": "86",
+      "Durability": "Indestructible",
       "Block Chance": "47",
       "Required Dexterity": "0",
       "Required Strength": "156",
@@ -25073,7 +25073,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[100 - 114] to [320 - 338]",
-      "Durability": "65",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "189",
@@ -25183,7 +25183,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[119 - 132] to [560 - 632]",
-      "Durability": "60",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "253",
@@ -25387,7 +25387,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[228 - 348] to [262 - 390]",
-      "Durability": "40",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "103",
       "Required Strength": "163",
@@ -25473,7 +25473,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[145 - 203] to [534 - 649]",
-      "Durability": "50",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "110",
       "Required Strength": "189",
@@ -25551,7 +25551,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "23 to 49",
-      "Durability": "26",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "75",
       "Required Strength": "38",
@@ -25713,7 +25713,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[100 - 140] to [285 - 399]",
-      "Durability": "55",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "140",
       "Required Strength": "188",
@@ -28327,7 +28327,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[89 - 105] to [162 - 191]",
-      "Durability": "65",
+      "Durability": "65 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "133",
@@ -29367,7 +29367,7 @@
     "Stats": {
       "Defense": "1320 - 1500",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "0",
@@ -29807,7 +29807,7 @@
     "Stats": {
       "Defense": "1512 - 1719",
       "Damage": "0 to 0",
-      "Durability": "48",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "174",
@@ -30270,7 +30270,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[232 - 260] to [412 - 461]",
-      "Durability": "18",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "156",
@@ -31050,7 +31050,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[134 - 158] to [204 - 239]",
-      "Durability": "24",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "57",
       "Required Strength": "55",
@@ -31138,7 +31138,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[145 - 172] to [170 - 201]",
-      "Durability": "37",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "100",
       "Required Strength": "100",
@@ -31680,7 +31680,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[102 - 118] to [551 - 640]",
-      "Durability": "25",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "106",
       "Required Strength": "165",
@@ -31840,7 +31840,7 @@
     "Stats": {
       "Defense": "347 - 397",
       "Damage": "0 to 0",
-      "Durability": "50",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "174",
@@ -32128,7 +32128,7 @@
     "Stats": {
       "Defense": "1615 - 1782",
       "Damage": "0 to 0",
-      "Durability": "70",
+      "Durability": "70 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "230",
@@ -33678,7 +33678,7 @@
     "Stats": {
       "Defense": "156 - 175",
       "Damage": "0 to 0",
-      "Durability": "14",
+      "Durability": "14 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "91",
@@ -44763,7 +44763,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[30 - 34] to [75 - 87]",
-      "Durability": "33",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "31",
       "Required Strength": "31",
@@ -44849,7 +44849,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[67 - 78] to [168 - 195]",
-          "Durability": "33",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "72",
           "Required Strength": "72",
@@ -44862,7 +44862,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[45 - 52] to [528 - 613]",
-          "Durability": "33",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "108",
           "Required Strength": "142",
@@ -44991,7 +44991,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[39 - 43] to [148 - 161]",
-      "Durability": "28",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "37",
       "Required Strength": "65",
@@ -45093,7 +45093,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[42 - 46] to [280 - 305]",
-          "Durability": "28",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "81",
           "Required Strength": "123",
@@ -45106,7 +45106,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[151 - 165] to [419 - 457]",
-          "Durability": "28",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "89",
           "Required Strength": "169",
@@ -48262,7 +48262,7 @@
     "Stats": {
       "Defense": "168 - 198",
       "Damage": "0 to 0",
-      "Durability": "11",
+      "Durability": "11 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "2",
@@ -48388,7 +48388,7 @@
         "Stats": {
           "Defense": "1114 - 1144",
           "Damage": "0 to 0",
-          "Durability": "11",
+          "Durability": "11 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "28",
@@ -48401,7 +48401,7 @@
         "Stats": {
           "Defense": "4237 - 4267",
           "Damage": "0 to 0",
-          "Durability": "11",
+          "Durability": "11 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "67",
@@ -53523,7 +53523,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[95 - 120] to [175 - 212]",
-      "Durability": "24",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "68",
@@ -53609,7 +53609,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[193 - 232] to [270 - 320]",
-          "Durability": "24",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "83",
           "Required Strength": "115",
@@ -53963,7 +53963,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[49 - 56] to [119 - 136]",
-      "Durability": "30",
+      "Durability": "30 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "73",
@@ -54049,7 +54049,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[87 - 100] to [430 - 492]",
-          "Durability": "30",
+          "Durability": "30 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "196",
@@ -56245,7 +56245,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[344 - 389] to [533 - 594]",
-      "Durability": "31",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "159",
@@ -56331,7 +56331,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[206 - 238] to [933 - 1032]",
-          "Durability": "31",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "243",
@@ -56814,7 +56814,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[58 - 68] to [157 - 183]",
-      "Durability": "100",
+      "Durability": "100 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "38",
       "Required Strength": "58",
@@ -57274,7 +57274,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[97 - 108] to [216 - 240]",
-      "Durability": "23",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "51",
       "Required Strength": "63",
@@ -57360,7 +57360,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[270 - 300] to [507 - 564]",
-          "Durability": "23",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "90",
           "Required Strength": "165",
@@ -58803,7 +58803,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[206 - 244] to [368 - 424]",
-      "Durability": "15",
+      "Durability": "15 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "91",
@@ -58881,7 +58881,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[147 - 178] to [887 - 1000]",
-          "Durability": "15",
+          "Durability": "15 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "153",
           "Required Strength": "112",
@@ -59826,7 +59826,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[108 - 155] to [216 - 290]",
-      "Durability": "16",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "15",
@@ -59928,7 +59928,7 @@
         "Stats": {
           "Defense": "0",
           "Damage": "[510 - 657] to [702 - 897]",
-          "Durability": "16",
+          "Durability": "Indestructible",
           "Block Chance": "0",
           "Required Dexterity": "25",
           "Required Strength": "53",
@@ -62781,7 +62781,7 @@
     "Stats": {
       "Defense": "673 - 754",
       "Damage": "0 to 0",
-      "Durability": "88",
+      "Durability": "88 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "40",
@@ -62883,7 +62883,7 @@
         "Stats": {
           "Defense": "2346 - 2630",
           "Damage": "0 to 0",
-          "Durability": "88",
+          "Durability": "88 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "85",
@@ -63463,7 +63463,7 @@
     "Stats": {
       "Defense": "1239 - 1385",
       "Damage": "0 to 0",
-      "Durability": "150",
+      "Durability": "150 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "87",
@@ -63549,7 +63549,7 @@
         "Stats": {
           "Defense": "2636 - 2946",
           "Damage": "0 to 0",
-          "Durability": "150",
+          "Durability": "150 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "155",
@@ -67419,7 +67419,7 @@
     "Stats": {
       "Defense": "578 - 593",
       "Damage": "0 to 0",
-      "Durability": "86",
+      "Durability": "Indestructible",
       "Block Chance": "47",
       "Required Dexterity": "0",
       "Required Strength": "109",
@@ -67873,7 +67873,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[150 - 165] to [480 - 498]",
-      "Durability": "65",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "189",
@@ -67991,7 +67991,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[192 - 220] to [780 - 867]",
-      "Durability": "60",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "253",
@@ -68219,7 +68219,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[332 - 446] to [378 - 500]",
-      "Durability": "40",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "103",
       "Required Strength": "163",
@@ -68321,7 +68321,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[203 - 261] to [847 - 962]",
-      "Durability": "50",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "110",
       "Required Strength": "189",
@@ -68407,7 +68407,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "23 to 49",
-      "Durability": "26",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "75",
       "Required Strength": "38",
@@ -68609,7 +68609,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[140 - 180] to [399 - 513]",
-      "Durability": "55",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "140",
       "Required Strength": "188",
@@ -71799,7 +71799,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[182 - 206] to [330 - 374]",
-      "Durability": "33",
+      "Durability": "33 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "123",
@@ -72120,7 +72120,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "33 to 42",
-      "Durability": "10",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "15",
@@ -73095,7 +73095,7 @@
     "Stats": {
       "Defense": "2100 - 2400",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "0",
@@ -73381,7 +73381,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[154 - 172] to [457 - 511]",
-      "Durability": "14",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "49",
       "Required Strength": "128",
@@ -73639,7 +73639,7 @@
     "Stats": {
       "Defense": "2000 - 2432",
       "Damage": "0 to 0",
-      "Durability": "48",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "174",
@@ -74019,7 +74019,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[498 - 622] to [594 - 742]",
-      "Durability": "14",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "24",
@@ -74238,7 +74238,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[325 - 353] to [577 - 626]",
-      "Durability": "18",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "156",
@@ -75210,7 +75210,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[181 - 204] to [274 - 310]",
-      "Durability": "24",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "57",
       "Required Strength": "55",
@@ -75322,7 +75322,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[199 - 226] to [233 - 264]",
-      "Durability": "37",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "100",
       "Required Strength": "100",
@@ -76024,7 +76024,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[135 - 151] to [729 - 818]",
-      "Durability": "25",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "106",
       "Required Strength": "165",
@@ -76232,7 +76232,7 @@
     "Stats": {
       "Defense": "580 - 730",
       "Damage": "0 to 0",
-      "Durability": "50",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "174",
@@ -76568,7 +76568,7 @@
     "Stats": {
       "Defense": "2924 - 3342",
       "Damage": "0 to 0",
-      "Durability": "36",
+      "Durability": "36 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "220",
@@ -77493,7 +77493,7 @@
     "Stats": {
       "Defense": "461 - 667",
       "Damage": "0 to 0",
-      "Durability": "20",
+      "Durability": "20 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "77",
@@ -78502,7 +78502,7 @@
     "Stats": {
       "Defense": "292 - 341",
       "Damage": "0 to 0",
-      "Durability": "8",
+      "Durability": "8 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "81",
@@ -78837,7 +78837,7 @@
     "Stats": {
       "Defense": "232 - 260",
       "Damage": "0 to 0",
-      "Durability": "7",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "40",
@@ -81528,7 +81528,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[166 - 183] to [313 - 344]",
-      "Durability": "44",
+      "Durability": "44 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "34",
       "Required Strength": "59",
@@ -82534,7 +82534,7 @@
     "Stats": {
       "Defense": "596 - 715",
       "Damage": "0 to 0",
-      "Durability": "11",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "108",
@@ -82645,7 +82645,7 @@
     "Stats": {
       "Defense": "763 - 906",
       "Damage": "0 to 0",
-      "Durability": "11",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "108",
@@ -83465,7 +83465,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[144 - 160] to [180 - 200]",
-      "Durability": "44",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "124",
       "Required Strength": "147",
@@ -83589,7 +83589,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[240 - 252] to [300 - 315]",
-      "Durability": "23",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "114",
       "Required Strength": "137",
@@ -83737,7 +83737,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[156 - 184] to [431 - 508]",
-      "Durability": "55",
+      "Durability": "55 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "99",
       "Required Strength": "179",
@@ -83831,7 +83831,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[289 - 317] to [800 - 876]",
-      "Durability": "28",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "89",
       "Required Strength": "169",
@@ -83957,7 +83957,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[86 - 94] to [744 - 813]",
-      "Durability": "15",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "153",
       "Required Strength": "112",
@@ -84067,7 +84067,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[97 - 108] to [837 - 930]",
-      "Durability": "15",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "153",
       "Required Strength": "112",
@@ -84194,7 +84194,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[202 - 248] to [322 - 385]",
-      "Durability": "40",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "27",
       "Required Strength": "52",
@@ -84305,7 +84305,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[310 - 376] to [482 - 565]",
-      "Durability": "40",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "27",
       "Required Strength": "52",
@@ -84643,7 +84643,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[195 - 225] to [387 - 447]",
-      "Durability": "50",
+      "Durability": "50 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "95",
       "Required Strength": "182",
@@ -84753,7 +84753,7 @@
     "Stats": {
       "Defense": "0",
       "Damage": "[366 - 402] to [726 - 798]",
-      "Durability": "26",
+      "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "85",
       "Required Strength": "172",
@@ -85343,7 +85343,7 @@
     "Stats": {
       "Defense": "1048 - 1152",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85443,7 +85443,7 @@
     "Stats": {
       "Defense": "1205 - 1310",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85551,7 +85551,7 @@
     "Stats": {
       "Defense": "1048 - 1152",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85651,7 +85651,7 @@
     "Stats": {
       "Defense": "1205 - 1310",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85759,7 +85759,7 @@
     "Stats": {
       "Defense": "1048 - 1152",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85859,7 +85859,7 @@
     "Stats": {
       "Defense": "1205 - 1310",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -85967,7 +85967,7 @@
     "Stats": {
       "Defense": "1048 - 1152",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",
@@ -86067,7 +86067,7 @@
     "Stats": {
       "Defense": "1205 - 1310",
       "Damage": "0 to 0",
-      "Durability": "60",
+      "Durability": "60 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "103",

@@ -31,9 +31,9 @@ export const rowFits = (row, chain) => !row.excluded.some((t) => chain.has(t)) &
 
 /**
  * Every base a runeword group can be made in, each with the index of the
- * variant (per-item-kind entry) its stats come from. Sorted by tier, then name.
+ * variant (per-item-kind entry) its stats come from. Sorted elite first, then by name.
  */
-const TIER_RANK = { normal: 0, exceptional: 1, elite: 2 };
+const TIER_RANK = { elite: 0, exceptional: 1, normal: 2 };
 export const basesForGroup = (group) => {
   const out = [];
   for (const base of itemBases) {

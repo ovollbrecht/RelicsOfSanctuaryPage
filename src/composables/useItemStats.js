@@ -48,11 +48,13 @@ export function calcStats(base, properties, { ethereal = false, levelReq = 0 } =
     out.Damage = `${bracket(minFrom, minTo)} to ${bracket(maxFrom, maxTo)}`;
   }
 
-  if (base.Durability) {
+  if (find('indestruct') || find('eth-indestruct')) {
+    out.Durability = 'Indestructible';
+  } else if (base.Durability) {
     const dur = find('dur');
     let min = base.Durability; let max = base.Durability;
     if (eth && !dur) { min = Math.trunc(min / 2 + 1); max = Math.trunc(max / 2 + 1); }
-    out.Durability = span(min + add(dur?.Min), max + add(dur?.Max));
+    out.Durability = span(min + add(dur?.Min), max + add(dur?.Max)) + (find('rep-dur') || find('rep-dur%') ? ' (self-repairing)' : '');
   }
 
   if (base.Block) {
