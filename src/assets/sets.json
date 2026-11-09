@@ -4428,7 +4428,7 @@
             "Par": "2",
             "Min": "0.25",
             "Max": "0.25",
-            "Description": "Heal Stamina Plus 0.25%",
+            "Description": "Heal Stamina Plus 0.25% [*level]",
             "Priority": "47"
           },
           {
@@ -6315,9 +6315,9 @@
           {
             "Prop": "abs-cold/lvl",
             "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Absorbs Cold Damage",
+            "Min": "0.25",
+            "Max": "0.25",
+            "Description": "0.25 [*level] Absorbs Cold Damage",
             "Priority": "32"
           },
           {
@@ -9439,7 +9439,7 @@
             "Par": "12",
             "Min": "1.50",
             "Max": "1.50",
-            "Description": "1.50% Better Chance of Getting Magic Items",
+            "Description": "1.50% [*level] Better Chance of Getting Magic Items",
             "Priority": "7"
           }
         ]
@@ -10568,7 +10568,7 @@
             "Par": "2",
             "Min": "0.25",
             "Max": "0.25",
-            "Description": "0.25% Bonus to Attack Rating",
+            "Description": "0.25% [*level] Bonus to Attack Rating",
             "Priority": "116"
           },
           {
@@ -15785,7 +15785,7 @@
             "Par": "2",
             "Min": "0.25",
             "Max": "0.25",
-            "Description": "Heal Stamina Plus 0.25%",
+            "Description": "Heal Stamina Plus 0.25% [*level]",
             "Priority": "47"
           },
           {
@@ -17768,9 +17768,9 @@
           {
             "Prop": "abs-cold/lvl",
             "Par": "",
-            "Min": "2",
-            "Max": "2",
-            "Description": "+2 Absorbs Cold Damage",
+            "Min": "0.25",
+            "Max": "0.25",
+            "Description": "0.25 [*level] Absorbs Cold Damage",
             "Priority": "32"
           },
           {
@@ -21139,7 +21139,7 @@
             "Par": "20",
             "Min": "2.50",
             "Max": "2.50",
-            "Description": "2.50% Better Chance of Getting Magic Items",
+            "Description": "2.50% [*level] Better Chance of Getting Magic Items",
             "Priority": "7"
           }
         ]
@@ -22324,7 +22324,7 @@
             "Par": "2",
             "Min": "0.25",
             "Max": "0.25",
-            "Description": "0.25% Bonus to Attack Rating",
+            "Description": "0.25% [*level] Bonus to Attack Rating",
             "Priority": "116"
           },
           {

@@ -2054,7 +2054,7 @@
         "Par": "4",
         "Min": "0.50",
         "Max": "0.50",
-        "Description": "0.50% Deadly Strike",
+        "Description": "0.50% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -2166,7 +2166,7 @@
         "Par": "4",
         "Min": "0.50",
         "Max": "0.50",
-        "Description": "0.50% Deadly Strike",
+        "Description": "0.50% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -4005,7 +4005,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Better Chance of Getting Magic Items",
+        "Description": "1.00% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -4093,7 +4093,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Better Chance of Getting Magic Items",
+        "Description": "1.00% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -4429,18 +4429,10 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "260",
-        "Max": "310",
-        "Description": "[260-310]% Enhanced Damage",
+        "Min": "300",
+        "Max": "390",
+        "Description": "[300-390]% Enhanced Damage",
         "Priority": "1000"
-      },
-      {
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
-        "Priority": "300"
       },
       {
         "Prop": "slow",
@@ -4451,12 +4443,12 @@
         "Priority": "77"
       },
       {
-        "Prop": "charged",
+        "Prop": "oskill",
         "Par": "Revive",
-        "Min": "88",
-        "Max": "8",
-        "Description": "Level 8 Revive (88/88 Charges)",
-        "Priority": "1"
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Revive",
+        "Priority": "81"
       },
       {
         "Prop": "regen",
@@ -4522,6 +4514,14 @@
         "Description": "Hit Blinds Target",
         "Priority": "80"
       }
+    ],
+    "VanillaAllowedItems": [
+      "mele",
+      "miss"
+    ],
+    "VanillaItemTypes": [
+      "mele",
+      "miss"
     ]
   },
   {
@@ -5343,9 +5343,9 @@
       {
         "Prop": "hp/lvl",
         "Par": "",
-        "Min": "8",
-        "Max": "12",
-        "Description": "+[8-12] to Life",
+        "Min": "1.00",
+        "Max": "1.50",
+        "Description": "[1.00-1.50] [*level] to Life",
         "Priority": "57"
       },
       {
@@ -5478,9 +5478,9 @@
       {
         "Prop": "hp/lvl",
         "Par": "",
-        "Min": "8",
-        "Max": "12",
-        "Description": "+[8-12] to Life",
+        "Min": "1.00",
+        "Max": "1.50",
+        "Description": "[1.00-1.50] [*level] to Life",
         "Priority": "57"
       },
       {
@@ -5947,7 +5947,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Damage to Demons",
+        "Description": "1.00% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -6051,7 +6051,7 @@
         "Par": "15",
         "Min": "1.88",
         "Max": "1.88",
-        "Description": "1.88% Damage to Demons",
+        "Description": "1.88% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -7301,7 +7301,7 @@
         "Par": "25",
         "Min": "3.12",
         "Max": "3.12",
-        "Description": "3.12% Extra Gold from Monsters",
+        "Description": "3.12% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -8109,7 +8109,7 @@
         "Par": "4",
         "Min": "0.50",
         "Max": "0.50",
-        "Description": "0.50% Better Chance of Getting Magic Items",
+        "Description": "0.50% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -8197,7 +8197,7 @@
         "Par": "4",
         "Min": "0.50",
         "Max": "0.50",
-        "Description": "0.50% Better Chance of Getting Magic Items",
+        "Description": "0.50% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -8401,9 +8401,9 @@
       {
         "Prop": "ac/lvl",
         "Par": "",
-        "Min": "16",
-        "Max": "16",
-        "Description": "+16 Defense",
+        "Min": "2.00",
+        "Max": "2.00",
+        "Description": "2.00 [*level] Defense",
         "Priority": "72"
       },
       {
@@ -11558,7 +11558,7 @@
         "Par": "3",
         "Min": "0.38",
         "Max": "0.38",
-        "Description": "0.38% Deadly Strike",
+        "Description": "0.38% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -11646,7 +11646,7 @@
         "Par": "3",
         "Min": "0.38",
         "Max": "0.38",
-        "Description": "0.38% Deadly Strike",
+        "Description": "0.38% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -11732,7 +11732,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Damage to Demons",
+        "Description": "1.00% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -11780,7 +11780,7 @@
         "Par": "15",
         "Min": "1.88",
         "Max": "1.88",
-        "Description": "1.88% Extra Gold from Monsters",
+        "Description": "1.88% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -11828,7 +11828,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Damage to Demons",
+        "Description": "1.00% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -11876,7 +11876,7 @@
         "Par": "15",
         "Min": "1.88",
         "Max": "1.88",
-        "Description": "1.88% Extra Gold from Monsters",
+        "Description": "1.88% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -19363,7 +19363,7 @@
         "Par": "2",
         "Min": "0.25",
         "Max": "0.25",
-        "Description": "0.25% Deadly Strike",
+        "Description": "0.25% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -19499,7 +19499,7 @@
         "Par": "2",
         "Min": "0.25",
         "Max": "0.25",
-        "Description": "0.25% Deadly Strike",
+        "Description": "0.25% [*level] Deadly Strike",
         "Priority": "84"
       },
       {

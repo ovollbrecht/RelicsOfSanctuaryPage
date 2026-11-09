@@ -3910,9 +3910,9 @@
           {
             "Prop": "att/lvl",
             "Par": "12",
-            "Min": "0",
-            "Max": "0",
-            "Description": "+0 to Attack Rating",
+            "Min": "6.00",
+            "Max": "6.00",
+            "Description": "6.00 [*level] to Attack Rating",
             "Priority": "114"
           }
         ],
@@ -5244,9 +5244,9 @@
           {
             "Prop": "mag%/lvl",
             "Par": "4",
-            "Min": "0",
-            "Max": "0",
-            "Description": "0% Better Chance of Getting Magic Items",
+            "Min": "0.50",
+            "Max": "0.50",
+            "Description": "0.50% [*level] Better Chance of Getting Magic Items",
             "Priority": "7"
           }
         ],
@@ -5598,9 +5598,9 @@
           {
             "Prop": "att%/lvl",
             "Par": "2",
-            "Min": "0",
-            "Max": "0",
-            "Description": "0% Bonus to Attack Rating",
+            "Min": "0.25",
+            "Max": "0.25",
+            "Description": "0.25% [*level] Bonus to Attack Rating",
             "Priority": "116"
           }
         ],
@@ -5765,9 +5765,9 @@
           {
             "Prop": "att%/lvl",
             "Par": "1",
-            "Min": "0",
-            "Max": "0",
-            "Description": "0% Bonus to Attack Rating",
+            "Min": "0.12",
+            "Max": "0.12",
+            "Description": "0.12% [*level] Bonus to Attack Rating",
             "Priority": "116"
           }
         ],
@@ -9542,9 +9542,9 @@
                 {
                   "Prop": "att/lvl",
                   "Par": "12",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "+0 to Attack Rating",
+                  "Min": "6.00",
+                  "Max": "6.00",
+                  "Description": "6.00 [*level] to Attack Rating",
                   "Priority": "114"
                 }
               ],
@@ -10952,9 +10952,9 @@
                 {
                   "Prop": "mag%/lvl",
                   "Par": "4",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "0% Better Chance of Getting Magic Items",
+                  "Min": "0.50",
+                  "Max": "0.50",
+                  "Description": "0.50% [*level] Better Chance of Getting Magic Items",
                   "Priority": "7"
                 }
               ],
@@ -11695,9 +11695,9 @@
                 {
                   "Prop": "att%/lvl",
                   "Par": "1",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "0% Bonus to Attack Rating",
+                  "Min": "0.12",
+                  "Max": "0.12",
+                  "Description": "0.12% [*level] Bonus to Attack Rating",
                   "Priority": "116"
                 }
               ],
@@ -11872,9 +11872,9 @@
                 {
                   "Prop": "att%/lvl",
                   "Par": "2",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "0% Bonus to Attack Rating",
+                  "Min": "0.25",
+                  "Max": "0.25",
+                  "Description": "0.25% [*level] Bonus to Attack Rating",
                   "Priority": "116"
                 }
               ],
@@ -20483,9 +20483,9 @@
                       {
                         "Prop": "att/lvl",
                         "Par": "12",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "+0 to Attack Rating",
+                        "Min": "6.00",
+                        "Max": "6.00",
+                        "Description": "6.00 [*level] to Attack Rating",
                         "Priority": "114"
                       }
                     ],
@@ -21360,9 +21360,9 @@
                       {
                         "Prop": "att/lvl",
                         "Par": "12",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "+0 to Attack Rating",
+                        "Min": "6.00",
+                        "Max": "6.00",
+                        "Description": "6.00 [*level] to Attack Rating",
                         "Priority": "114"
                       }
                     ],
@@ -22210,9 +22210,9 @@
                       {
                         "Prop": "att/lvl",
                         "Par": "12",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "+0 to Attack Rating",
+                        "Min": "6.00",
+                        "Max": "6.00",
+                        "Description": "6.00 [*level] to Attack Rating",
                         "Priority": "114"
                       }
                     ],
@@ -25171,9 +25171,9 @@
                       {
                         "Prop": "mag%/lvl",
                         "Par": "4",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Better Chance of Getting Magic Items",
+                        "Min": "0.50",
+                        "Max": "0.50",
+                        "Description": "0.50% [*level] Better Chance of Getting Magic Items",
                         "Priority": "7"
                       }
                     ],
@@ -25931,9 +25931,9 @@
                       {
                         "Prop": "mag%/lvl",
                         "Par": "4",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Better Chance of Getting Magic Items",
+                        "Min": "0.50",
+                        "Max": "0.50",
+                        "Description": "0.50% [*level] Better Chance of Getting Magic Items",
                         "Priority": "7"
                       }
                     ],
@@ -26664,9 +26664,9 @@
                       {
                         "Prop": "mag%/lvl",
                         "Par": "4",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Better Chance of Getting Magic Items",
+                        "Min": "0.50",
+                        "Max": "0.50",
+                        "Description": "0.50% [*level] Better Chance of Getting Magic Items",
                         "Priority": "7"
                       }
                     ],
@@ -27444,9 +27444,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "1",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.12",
+                        "Max": "0.12",
+                        "Description": "0.12% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -27621,9 +27621,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "2",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.25",
+                        "Max": "0.25",
+                        "Description": "0.25% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -28196,9 +28196,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "1",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.12",
+                        "Max": "0.12",
+                        "Description": "0.12% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -28373,9 +28373,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "2",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.25",
+                        "Max": "0.25",
+                        "Description": "0.25% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -28921,9 +28921,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "1",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.12",
+                        "Max": "0.12",
+                        "Description": "0.12% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -29098,9 +29098,9 @@
                       {
                         "Prop": "att%/lvl",
                         "Par": "2",
-                        "Min": "0",
-                        "Max": "0",
-                        "Description": "0% Bonus to Attack Rating",
+                        "Min": "0.25",
+                        "Max": "0.25",
+                        "Description": "0.25% [*level] Bonus to Attack Rating",
                         "Priority": "116"
                       }
                     ],
@@ -36741,9 +36741,9 @@
                 {
                   "Prop": "att%/lvl",
                   "Par": "1",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "0% Bonus to Attack Rating",
+                  "Min": "0.12",
+                  "Max": "0.12",
+                  "Description": "0.12% [*level] Bonus to Attack Rating",
                   "Priority": "116"
                 }
               ],
@@ -38526,9 +38526,9 @@
                 {
                   "Prop": "mag%/lvl",
                   "Par": "4",
-                  "Min": "0",
-                  "Max": "0",
-                  "Description": "0% Better Chance of Getting Magic Items",
+                  "Min": "0.50",
+                  "Max": "0.50",
+                  "Description": "0.50% [*level] Better Chance of Getting Magic Items",
                   "Priority": "7"
                 }
               ],

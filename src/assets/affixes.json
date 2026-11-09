@@ -11646,7 +11646,7 @@
           "Par": "2",
           "Min": "0.25",
           "Max": "0.25",
-          "Description": "0.25% Bonus to Attack Rating",
+          "Description": "0.25% [*level] Bonus to Attack Rating",
           "Priority": "116"
         }
       ]

@@ -13427,7 +13427,7 @@
         "Par": "20",
         "Min": "2.50",
         "Max": "2.50",
-        "Description": "2.50% Damage to Undead",
+        "Description": "2.50% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -15549,7 +15549,7 @@
         "Par": "20",
         "Min": "2.50",
         "Max": "2.50",
-        "Description": "2.50% Extra Gold from Monsters",
+        "Description": "2.50% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -15557,7 +15557,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Better Chance of Getting Magic Items",
+        "Description": "1.00% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -15743,7 +15743,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "1.50% Deadly Strike",
+        "Description": "1.50% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -16208,7 +16208,7 @@
         "Par": "60",
         "Min": "7.50",
         "Max": "7.50",
-        "Description": "7.50% Damage to Undead",
+        "Description": "7.50% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -16979,7 +16979,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "Lightning Resist 1.00%",
+        "Description": "Lightning Resist 1.00% [*level]",
         "Priority": "37"
       }
     ],
@@ -17460,7 +17460,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "1.50% Damage to Demons",
+        "Description": "1.50% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -18576,7 +18576,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Better Chance of Getting Magic Items",
+        "Description": "1.00% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       }
     ],
@@ -19020,7 +19020,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Deadly Strike",
+        "Description": "1.00% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -21315,7 +21315,7 @@
         "Par": "10",
         "Min": "1.25",
         "Max": "1.25",
-        "Description": "1.25% Better Chance of Getting Magic Items",
+        "Description": "1.25% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -23014,7 +23014,7 @@
         "Par": "16",
         "Min": "2.00",
         "Max": "2.00",
-        "Description": "2.00% Damage to Undead",
+        "Description": "2.00% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -23897,7 +23897,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "Attacker Takes Damage of 1.00",
+        "Description": "Attacker Takes Damage of 1.00 [*level]",
         "Priority": "12"
       },
       {
@@ -24842,7 +24842,7 @@
         "Par": "24",
         "Min": "3.00",
         "Max": "3.00",
-        "Description": "3.00% Enhanced Maximum Damage",
+        "Description": "3.00% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -24911,7 +24911,7 @@
         "Par": "20",
         "Min": "2.50",
         "Max": "2.50",
-        "Description": "2.50% Enhanced Maximum Damage",
+        "Description": "2.50% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -25848,7 +25848,7 @@
         "Par": "16",
         "Min": "2.00",
         "Max": "2.00",
-        "Description": "2.00% Enhanced Maximum Damage",
+        "Description": "2.00% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -26593,7 +26593,7 @@
         "Par": "3",
         "Min": "0.38",
         "Max": "0.38",
-        "Description": "0.38% Deadly Strike",
+        "Description": "0.38% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -33223,7 +33223,7 @@
         "Par": "11",
         "Min": "1.38",
         "Max": "1.38",
-        "Description": "Attacker Takes Damage of 1.38",
+        "Description": "Attacker Takes Damage of 1.38 [*level]",
         "Priority": "12"
       },
       {
@@ -48260,7 +48260,7 @@
       "armo"
     ],
     "Stats": {
-      "Defense": "168 - 198",
+      "Defense": "96 - 126",
       "Damage": "0 to 0",
       "Durability": "11 (self-repairing)",
       "Block Chance": "0",
@@ -48374,9 +48374,9 @@
       {
         "Prop": "ac%/lvl",
         "Par": "",
-        "Min": "5",
-        "Max": "5",
-        "Description": "5% Enhanced Defense",
+        "Min": "0.62",
+        "Max": "0.62",
+        "Description": "0.62% [*level] Enhanced Defense",
         "Priority": "73"
       }
     ],
@@ -48386,7 +48386,7 @@
       "exceptional": {
         "BaseItemName": "Ghost Armor",
         "Stats": {
-          "Defense": "1114 - 1144",
+          "Defense": "353 - 383",
           "Damage": "0 to 0",
           "Durability": "11 (self-repairing)",
           "Block Chance": "0",
@@ -48399,7 +48399,7 @@
       "elite": {
         "BaseItemName": "Dusk Shroud",
         "Stats": {
-          "Defense": "4237 - 4267",
+          "Defense": "1200 - 1230",
           "Damage": "0 to 0",
           "Durability": "11 (self-repairing)",
           "Block Chance": "0",
@@ -54361,7 +54361,7 @@
         "Par": "40",
         "Min": "5.00",
         "Max": "5.00",
-        "Description": "5.00% Damage to Undead",
+        "Description": "5.00% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -56739,7 +56739,7 @@
         "Par": "25",
         "Min": "3.12",
         "Max": "3.12",
-        "Description": "3.12% Extra Gold from Monsters",
+        "Description": "3.12% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -56747,7 +56747,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "1.50% Better Chance of Getting Magic Items",
+        "Description": "1.50% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -56973,7 +56973,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "1.50% Deadly Strike",
+        "Description": "1.50% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -57518,7 +57518,7 @@
         "Par": "80",
         "Min": "10.00",
         "Max": "10.00",
-        "Description": "10.00% Damage to Undead",
+        "Description": "10.00% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -58385,7 +58385,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "Lightning Resist 1.50%",
+        "Description": "Lightning Resist 1.50% [*level]",
         "Priority": "37"
       },
       {
@@ -58962,7 +58962,7 @@
         "Par": "16",
         "Min": "2.00",
         "Max": "2.00",
-        "Description": "2.00% Damage to Demons",
+        "Description": "2.00% [*level] Damage to Demons",
         "Priority": "111"
       },
       {
@@ -60238,7 +60238,7 @@
         "Par": "18",
         "Min": "2.25",
         "Max": "2.25",
-        "Description": "2.25% Better Chance of Getting Magic Items",
+        "Description": "2.25% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -60246,7 +60246,7 @@
         "Par": "18",
         "Min": "2.25",
         "Max": "2.25",
-        "Description": "2.25% Extra Gold from Monsters",
+        "Description": "2.25% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -60762,7 +60762,7 @@
         "Par": "8",
         "Min": "1.00",
         "Max": "1.00",
-        "Description": "1.00% Deadly Strike",
+        "Description": "1.00% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -62336,7 +62336,7 @@
         "Par": "12",
         "Min": "1.50",
         "Max": "1.50",
-        "Description": "1.50% Extra Gold from Monsters",
+        "Description": "1.50% [*level] Extra Gold from Monsters",
         "Priority": "9"
       },
       {
@@ -63489,7 +63489,7 @@
         "Par": "13",
         "Min": "1.62",
         "Max": "1.62",
-        "Description": "1.62% Better Chance of Getting Magic Items",
+        "Description": "1.62% [*level] Better Chance of Getting Magic Items",
         "Priority": "7"
       },
       {
@@ -65468,7 +65468,7 @@
         "Par": "16",
         "Min": "2.00",
         "Max": "2.00",
-        "Description": "2.00% Damage to Undead",
+        "Description": "2.00% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -66447,7 +66447,7 @@
         "Par": "16",
         "Min": "2.00",
         "Max": "2.00",
-        "Description": "Attacker Takes Damage of 2.00",
+        "Description": "Attacker Takes Damage of 2.00 [*level]",
         "Priority": "12"
       },
       {
@@ -67570,7 +67570,7 @@
         "Par": "36",
         "Min": "4.50",
         "Max": "4.50",
-        "Description": "4.50% Enhanced Maximum Damage",
+        "Description": "4.50% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -67671,7 +67671,7 @@
         "Par": "30",
         "Min": "3.75",
         "Max": "3.75",
-        "Description": "3.75% Enhanced Maximum Damage",
+        "Description": "3.75% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -68768,7 +68768,7 @@
         "Par": "24",
         "Min": "3.00",
         "Max": "3.00",
-        "Description": "3.00% Enhanced Maximum Damage",
+        "Description": "3.00% [*level] Enhanced Maximum Damage",
         "Priority": "128"
       },
       {
@@ -69665,7 +69665,7 @@
         "Par": "4",
         "Min": "0.50",
         "Max": "0.50",
-        "Description": "0.50% Deadly Strike",
+        "Description": "0.50% [*level] Deadly Strike",
         "Priority": "84"
       },
       {
@@ -77911,7 +77911,7 @@
         "Par": "25",
         "Min": "3.12",
         "Max": "3.12",
-        "Description": "Attacker Takes Damage of 3.12",
+        "Description": "Attacker Takes Damage of 3.12 [*level]",
         "Priority": "12"
       },
       {
