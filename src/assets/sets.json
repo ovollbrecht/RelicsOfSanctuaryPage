@@ -923,10 +923,18 @@
       {
         "Prop": "move2",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Faster Run/Walk",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
         "Priority": "148"
+      },
+      {
+        "Prop": "balance1",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Faster Hit Recovery",
+        "Priority": "139"
       }
     ],
     "Items": [
@@ -951,23 +959,31 @@
           {
             "Prop": "swing2",
             "Par": "",
-            "Min": "20",
-            "Max": "20",
-            "Description": "20% Increased Attack Speed",
+            "Min": "40",
+            "Max": "40",
+            "Description": "40% Increased Attack Speed",
             "Priority": "145"
+          },
+          {
+            "Prop": "att/lvl",
+            "Par": "10",
+            "Min": "5.00",
+            "Max": "5.00",
+            "Description": "5.00 [*level] to Attack Rating",
+            "Priority": "114"
           }
         ],
         "AdditionalBonuses": [
           {
-            "AdditionalSetItemsEquipped": 1,
+            "AdditionalSetItemsEquipped": 2,
             "Properties": [
               {
-                "Prop": "att/lvl",
-                "Par": "10",
-                "Min": "5.00",
-                "Max": "5.00",
-                "Description": "5.00 [*level] to Attack Rating",
-                "Priority": "114"
+                "Prop": "dmg/lvl",
+                "Par": "16",
+                "Min": "2.00",
+                "Max": "2.00",
+                "Description": "2.00 [*level] to Maximum Damage",
+                "Priority": "125"
               }
             ]
           }
@@ -1005,12 +1021,20 @@
             "AdditionalSetItemsEquipped": 1,
             "Properties": [
               {
-                "Prop": "res-all",
+                "Prop": "res-fire",
                 "Par": "",
-                "Min": "8",
-                "Max": "8",
-                "Description": "All Resistances +8",
-                "Priority": "34"
+                "Min": "15",
+                "Max": "15",
+                "Description": "Fire Resist 15%",
+                "Priority": "36"
+              },
+              {
+                "Prop": "res-cold",
+                "Par": "",
+                "Min": "15",
+                "Max": "15",
+                "Description": "Cold Resist 15%",
+                "Priority": "40"
               }
             ]
           }
@@ -1041,6 +1065,14 @@
             "Max": "2",
             "Description": "Magic Damage Reduced by 2",
             "Priority": "21"
+          },
+          {
+            "Prop": "res-mag",
+            "Par": "",
+            "Min": "25",
+            "Max": "25",
+            "Description": "Magic Resist 25%",
+            "Priority": "41"
           }
         ],
         "AdditionalBonuses": [
@@ -1084,6 +1116,14 @@
             "Max": "2",
             "Description": "Damage Reduced by 2",
             "Priority": "22"
+          },
+          {
+            "Prop": "lifesteal",
+            "Par": "",
+            "Min": "5",
+            "Max": "5",
+            "Description": "5% Life stolen per hit",
+            "Priority": "88"
           }
         ],
         "AdditionalBonuses": [
@@ -11969,9 +12009,9 @@
       {
         "Prop": "move2",
         "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Faster Run/Walk",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Run/Walk",
         "Priority": "148"
       },
       {
@@ -11983,12 +12023,12 @@
         "Priority": "8"
       },
       {
-        "Prop": "nofreeze",
+        "Prop": "balance2",
         "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Cannot Be Frozen",
-        "Priority": "20"
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Faster Hit Recovery",
+        "Priority": "139"
       },
       {
         "Prop": "aura",
@@ -12021,23 +12061,31 @@
           {
             "Prop": "swing2",
             "Par": "",
-            "Min": "20",
-            "Max": "20",
-            "Description": "20% Increased Attack Speed",
+            "Min": "40",
+            "Max": "40",
+            "Description": "40% Increased Attack Speed",
             "Priority": "145"
+          },
+          {
+            "Prop": "att/lvl",
+            "Par": "10",
+            "Min": "5.00",
+            "Max": "5.00",
+            "Description": "5.00 [*level] to Attack Rating",
+            "Priority": "114"
           }
         ],
         "AdditionalBonuses": [
           {
-            "AdditionalSetItemsEquipped": 1,
+            "AdditionalSetItemsEquipped": 2,
             "Properties": [
               {
-                "Prop": "att/lvl",
-                "Par": "10",
-                "Min": "5.00",
-                "Max": "5.00",
-                "Description": "5.00 [*level] to Attack Rating",
-                "Priority": "114"
+                "Prop": "dmg/lvl",
+                "Par": "16",
+                "Min": "2.00",
+                "Max": "2.00",
+                "Description": "2.00 [*level] to Maximum Damage",
+                "Priority": "125"
               }
             ]
           }
@@ -12075,12 +12123,20 @@
             "AdditionalSetItemsEquipped": 1,
             "Properties": [
               {
-                "Prop": "res-all",
+                "Prop": "res-fire",
                 "Par": "",
-                "Min": "8",
-                "Max": "8",
-                "Description": "All Resistances +8",
-                "Priority": "34"
+                "Min": "15",
+                "Max": "15",
+                "Description": "Fire Resist 15%",
+                "Priority": "36"
+              },
+              {
+                "Prop": "res-cold",
+                "Par": "",
+                "Min": "15",
+                "Max": "15",
+                "Description": "Cold Resist 15%",
+                "Priority": "40"
               }
             ]
           }
@@ -12111,6 +12167,14 @@
             "Max": "2",
             "Description": "Magic Damage Reduced by 2",
             "Priority": "21"
+          },
+          {
+            "Prop": "res-mag",
+            "Par": "",
+            "Min": "25",
+            "Max": "25",
+            "Description": "Magic Resist 25%",
+            "Priority": "41"
           }
         ],
         "AdditionalBonuses": [
@@ -12154,6 +12218,14 @@
             "Max": "2",
             "Description": "Damage Reduced by 2",
             "Priority": "22"
+          },
+          {
+            "Prop": "lifesteal",
+            "Par": "",
+            "Min": "5",
+            "Max": "5",
+            "Description": "5% Life stolen per hit",
+            "Priority": "88"
           }
         ],
         "AdditionalBonuses": [

@@ -3132,7 +3132,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[12 - 15] to [25 - 30]",
+      "Damage": "[14 - 18] to [28 - 36]",
       "Durability": "32",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -3163,19 +3163,19 @@
         "Priority": "145"
       },
       {
-        "Prop": "knock",
-        "Par": "",
-        "Min": "1",
+        "Prop": "hit-skill",
+        "Par": "66",
+        "Min": "4",
         "Max": "1",
-        "Description": "Knockback",
-        "Priority": "76"
+        "Description": "4% Chance to cast level 1 Amplify Damage on striking",
+        "Priority": "158"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "120",
-        "Description": "[80-120]% Enhanced Damage",
+        "Min": "100",
+        "Max": "160",
+        "Description": "[100-160]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -3185,6 +3185,14 @@
         "Max": "12",
         "Description": "+12 to Strength",
         "Priority": "67"
+      },
+      {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "Slows Target by 25%",
+        "Priority": "77"
       },
       {
         "Prop": "dmg-fire",
@@ -3202,7 +3210,7 @@
         "BaseItemName": "Battle Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[28 - 35] to [61 - 74]",
+          "Damage": "[32 - 41] to [68 - 88]",
           "Durability": "32",
           "Block Chance": "0",
           "Required Dexterity": "43",
@@ -3215,7 +3223,7 @@
         "BaseItemName": "Conquest Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[66 - 81] to [95 - 116]",
+          "Damage": "[74 - 96] to [106 - 137]",
           "Durability": "32",
           "Block Chance": "0",
           "Required Dexterity": "112",
@@ -4822,7 +4830,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[25 - 28] to [113 - 126]",
+      "Damage": "[42 - 44] to [189 - 201]",
       "Durability": "25",
       "Block Chance": "0",
       "Required Dexterity": "45",
@@ -4879,10 +4887,18 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "80",
-        "Max": "100",
-        "Description": "[80-100]% Enhanced Damage",
+        "Min": "200",
+        "Max": "220",
+        "Description": "[200-220]% Enhanced Damage",
         "Priority": "1000"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "5",
+        "Max": "9",
+        "Description": "[5-9]% Life stolen per hit",
+        "Priority": "88"
       },
       {
         "Prop": "dmg-fire",
@@ -4900,7 +4916,7 @@
         "BaseItemName": "Lance",
         "Stats": {
           "Defense": "0",
-          "Damage": "[48 - 54] to [205 - 228]",
+          "Damage": "[81 - 86] to [342 - 364]",
           "Durability": "25",
           "Block Chance": "0",
           "Required Dexterity": "88",
@@ -4913,7 +4929,7 @@
         "BaseItemName": "War Pike",
         "Stats": {
           "Defense": "0",
-          "Damage": "[59 - 66] to [320 - 356]",
+          "Damage": "[99 - 105] to [534 - 569]",
           "Durability": "25",
           "Block Chance": "0",
           "Required Dexterity": "106",
@@ -4936,7 +4952,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "2 to 54",
+      "Damage": "2 to [54 - 67]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -4951,19 +4967,19 @@
     "LvlReq": "8",
     "Properties": [
       {
-        "Prop": "dex",
+        "Prop": "str",
         "Par": "",
-        "Min": "15",
-        "Max": "15",
-        "Description": "+15 to Dexterity",
-        "Priority": "65"
+        "Min": "20",
+        "Max": "20",
+        "Description": "+20 to Strength",
+        "Priority": "67"
       },
       {
         "Prop": "dmg%",
         "Par": "",
         "Min": "100",
-        "Max": "100",
-        "Description": "100% Enhanced Damage",
+        "Max": "150",
+        "Description": "[100-150]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -4990,7 +5006,7 @@
         "BaseItemName": "Lochaber Axe",
         "Stats": {
           "Defense": "0",
-          "Damage": "12 to 116",
+          "Damage": "[12 - 15] to [116 - 145]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "0",
@@ -5003,7 +5019,7 @@
         "BaseItemName": "Ogre Axe",
         "Stats": {
           "Defense": "0",
-          "Damage": "56 to 290",
+          "Damage": "[56 - 70] to [290 - 362]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "75",
@@ -5458,7 +5474,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "33 to 43",
+      "Damage": "[42 - 48] to [64 - 79]",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "80",
@@ -5492,16 +5508,16 @@
         "Prop": "manasteal",
         "Par": "",
         "Min": "5",
-        "Max": "5",
-        "Description": "5% Mana stolen per hit",
+        "Max": "9",
+        "Description": "[5-9]% Mana stolen per hit",
         "Priority": "89"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "20",
-        "Max": "20",
-        "Description": "20% Enhanced Damage",
+        "Min": "80",
+        "Max": "120",
+        "Description": "[80-120]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -5520,7 +5536,7 @@
         "BaseItemName": "Grim Scythe",
         "Stats": {
           "Defense": "0",
-          "Damage": "51 to 84",
+          "Damage": "[69 - 81] to [126 - 154]",
           "Durability": "55",
           "Block Chance": "0",
           "Required Dexterity": "140",
@@ -5533,7 +5549,7 @@
         "BaseItemName": "Giant Thresher",
         "Stats": {
           "Defense": "0",
-          "Damage": "63 to 136",
+          "Damage": "[87 - 103] to [205 - 250]",
           "Durability": "55",
           "Block Chance": "0",
           "Required Dexterity": "140",
@@ -5664,13 +5680,13 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "2 to [10 - 11]",
+      "Damage": "[7 - 8] to [11 - 14]",
       "Durability": "30",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "0",
       "Required Level": "9",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Fast (-15)"
     },
     "Index": "Serpent Lord",
     "Rarity": "19",
@@ -5713,9 +5729,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "30",
-        "Max": "40",
-        "Description": "[30-40]% Enhanced Damage",
+        "Min": "40",
+        "Max": "80",
+        "Description": "[40-80]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -5733,6 +5749,22 @@
         "Max": "50",
         "Description": "-50% Target Defense",
         "Priority": "118"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg-min",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Minimum Damage",
+        "Priority": "300"
       }
     ],
     "ImageMapping": "staff_long_staff.webp",
@@ -5742,26 +5774,26 @@
         "BaseItemName": "Quarterstaff",
         "Stats": {
           "Defense": "0",
-          "Damage": "[10 - 11] to [33 - 36]",
+          "Damage": "[16 - 19] to [36 - 46]",
           "Durability": "30",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "28",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Fast (-15)"
         }
       },
       "elite": {
         "BaseItemName": "Stalagmite",
         "Stats": {
           "Defense": "0",
-          "Damage": "[97 - 105] to [139 - 149]",
+          "Damage": "[110 - 140] to [149 - 192]",
           "Durability": "30",
           "Block Chance": "0",
           "Required Dexterity": "35",
           "Required Strength": "63",
           "Required Level": "56",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Fast (-5)"
         }
       }
     }
@@ -5951,9 +5983,9 @@
       {
         "Prop": "skill",
         "Par": "47",
-        "Min": "2",
-        "Max": "2",
-        "Description": "+2 to Fire Ball (Sorceress Only)",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Fire Ball (Sorceress Only)",
         "Priority": "81"
       },
       {
@@ -5967,10 +5999,18 @@
       {
         "Prop": "fireskill",
         "Par": "",
-        "Min": "2",
-        "Max": "2",
-        "Description": "+2 to Fire Skills",
+        "Min": "3",
+        "Max": "3",
+        "Description": "+3 to Fire Skills",
         "Priority": "155"
+      },
+      {
+        "Prop": "cast1",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "10% Faster Cast Rate",
+        "Priority": "142"
       }
     ],
     "ImageMapping": "staff_battle_staff.webp",
@@ -9572,6 +9612,38 @@
         "Max": "120",
         "Description": "[100-120]% Enhanced Defense",
         "Priority": "74"
+      },
+      {
+        "Prop": "move1",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing1",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "50",
+        "Max": "100",
+        "Description": "[50-100]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Better Chance of Getting Magic Items",
+        "Priority": "8"
       }
     ],
     "ImageMapping": "armor_victors_silk.webp",
@@ -12608,7 +12680,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[25 - 29] to [52 - 60]",
+      "Damage": "[26 - 30] to [54 - 63]",
       "Durability": "28",
       "Block Chance": "0",
       "Required Dexterity": "25",
@@ -12625,9 +12697,9 @@
       {
         "Prop": "dmg-cold",
         "Par": "50",
-        "Min": "40",
-        "Max": "40",
-        "Description": "Adds 40 cold damage",
+        "Min": "80",
+        "Max": "100",
+        "Description": "Adds [80-100] cold damage",
         "Priority": "300"
       },
       {
@@ -12673,9 +12745,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "150",
-        "Max": "190",
-        "Description": "[150-190]% Enhanced Damage",
+        "Min": "160",
+        "Max": "200",
+        "Description": "[160-200]% Enhanced Damage",
         "Priority": "1000"
       }
     ],
@@ -12686,7 +12758,7 @@
         "BaseItemName": "Tomahawk",
         "Stats": {
           "Defense": "0",
-          "Damage": "[82 - 95] to [145 - 168]",
+          "Damage": "[85 - 99] to [150 - 174]",
           "Durability": "28",
           "Block Chance": "0",
           "Required Dexterity": "67",
@@ -14961,6 +15033,14 @@
         "Max": "50",
         "Description": "Improved Durability",
         "Priority": ""
+      },
+      {
+        "Prop": "skill",
+        "Par": "239",
+        "Min": "3",
+        "Max": "5",
+        "Description": "+[3-5] to Fire Claws (Druid Only)",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "hammer_war_hammer.webp",
@@ -15886,19 +15966,19 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[54 - 63] to [129 - 150]",
+      "Damage": "[63 - 72] to [150 - 172]",
       "Durability": "144",
       "Block Chance": "0",
-      "Required Dexterity": "88",
-      "Required Strength": "127",
-      "Required Level": "42",
+      "Required Dexterity": "70",
+      "Required Strength": "101",
+      "Required Level": "35",
       "Attack Speed": "Normal (0)"
     },
     "Index": "The Atlantian",
     "Rarity": "19",
     "Percent": "19/20 (95%)",
     "Lvl": "50",
-    "LvlReq": "42",
+    "LvlReq": "35",
     "Properties": [
       {
         "Prop": "dur",
@@ -15943,9 +16023,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "200",
-        "Max": "250",
-        "Description": "[200-250]% Enhanced Damage",
+        "Min": "250",
+        "Max": "300",
+        "Description": "[250-300]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -15963,6 +16043,30 @@
         "Max": "50",
         "Description": "50% Bonus to Attack Rating",
         "Priority": "117"
+      },
+      {
+        "Prop": "skill",
+        "Par": "106",
+        "Min": "2",
+        "Max": "5",
+        "Description": "+[2-5] to Zeal (Paladin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "att",
+        "Par": "",
+        "Min": "100",
+        "Max": "125",
+        "Description": "+[100-125] to Attack Rating",
+        "Priority": "115"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-20",
+        "Max": "-20",
+        "Description": "Requirements -20%",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "sword_war_sword.webp",
@@ -15972,11 +16076,11 @@
         "BaseItemName": "Mythical Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[120 - 140] to [150 - 175]",
+          "Damage": "[140 - 160] to [175 - 200]",
           "Durability": "144",
           "Block Chance": "0",
-          "Required Dexterity": "124",
-          "Required Strength": "147",
+          "Required Dexterity": "99",
+          "Required Strength": "117",
           "Required Level": "73",
           "Attack Speed": "Normal (0)"
         }
@@ -16492,7 +16596,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[126 - 131] to [216 - 224]",
+      "Damage": "[131 - 155] to [224 - 264]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "55",
@@ -16516,18 +16620,18 @@
       },
       {
         "Prop": "ac/lvl",
-        "Par": "40",
-        "Min": "5.00",
-        "Max": "5.00",
-        "Description": "5.00 [*level] Defense",
+        "Par": "64",
+        "Min": "8.00",
+        "Max": "8.00",
+        "Description": "8.00 [*level] Defense",
         "Priority": "72"
       },
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "10",
-        "Max": "20",
-        "Description": "All Resistances +[10-20]",
+        "Min": "20",
+        "Max": "30",
+        "Description": "All Resistances +[20-30]",
         "Priority": "34"
       },
       {
@@ -16549,9 +16653,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "170",
-        "Max": "180",
-        "Description": "[170-180]% Enhanced Damage",
+        "Min": "180",
+        "Max": "230",
+        "Description": "[180-230]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -16577,6 +16681,22 @@
         "Max": "20",
         "Description": "20% Increased Chance of Blocking",
         "Priority": "134"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "10",
+        "Max": "15",
+        "Description": "Replenish Life +[10-15]",
+        "Priority": "56"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "15",
+        "Max": "25",
+        "Description": "Attacker Takes Damage of [15-25]",
+        "Priority": "13"
       }
     ],
     "ImageMapping": "sword_the_patriarch.webp",
@@ -16586,7 +16706,7 @@
         "BaseItemName": "Colossus Blade",
         "Stats": {
           "Defense": "0",
-          "Damage": "[156 - 162] to [310 - 322]",
+          "Damage": "[162 - 191] to [322 - 379]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "55",
@@ -17013,8 +17133,8 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[24 - 27] to [88 - 99]",
-      "Durability": "30",
+      "Damage": "[27 - 34] to [99 - 125]",
+      "Durability": "30 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "25",
       "Required Strength": "25",
@@ -17070,9 +17190,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "140",
-        "Max": "170",
-        "Description": "[140-170]% Enhanced Damage",
+        "Min": "170",
+        "Max": "240",
+        "Description": "[170-240]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -17090,6 +17210,14 @@
         "Max": "3",
         "Description": "+3 to Power Strike (Amazon Only)",
         "Priority": "81"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "28",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
       }
     ],
     "ImageMapping": "spear_spear.webp",
@@ -17099,8 +17227,8 @@
         "BaseItemName": "Hyperion Spear",
         "Stats": {
           "Defense": "0",
-          "Damage": "[84 - 94] to [285 - 321]",
-          "Durability": "30",
+          "Damage": "[94 - 119] to [321 - 404]",
+          "Durability": "30 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "120",
           "Required Strength": "155",
@@ -18048,9 +18176,9 @@
       {
         "Prop": "nec",
         "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to Necromancer Skill Levels",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Necromancer Skill Levels",
         "Priority": "150"
       },
       {
@@ -18076,6 +18204,22 @@
         "Max": "250",
         "Description": "+[200-250] to Attack Rating",
         "Priority": "115"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "575",
+        "Min": "15",
+        "Max": "15",
+        "Description": "15% Reanimate as: Burning Dead Archer",
+        "Priority": "17"
+      },
+      {
+        "Prop": "skill",
+        "Par": "94",
+        "Min": "3",
+        "Max": "5",
+        "Description": "+[3-5] to Fire Golem (Necromancer Only)",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "polearm_war_scythe.webp",
@@ -23093,19 +23237,19 @@
         "Priority": "36"
       },
       {
-        "Prop": "half-freeze",
+        "Prop": "nofreeze",
         "Par": "",
         "Min": "1",
         "Max": "1",
-        "Description": "Half Freeze Duration",
-        "Priority": "19"
+        "Description": "Cannot Be Frozen",
+        "Priority": "20"
       },
       {
         "Prop": "hit-skill",
         "Par": "52",
-        "Min": "2",
+        "Min": "5",
         "Max": "10",
-        "Description": "2% Chance to cast level 10 Enchant on striking",
+        "Description": "5% Chance to cast level 10 Enchant on striking",
         "Priority": "158"
       },
       {
@@ -24427,6 +24571,30 @@
         "Max": "140",
         "Description": "+140 Defense",
         "Priority": "71"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "15",
+        "Max": "25",
+        "Description": "Physical Damage Received Reduced by [15-25]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "res-mag",
+        "Par": "",
+        "Min": "20",
+        "Max": "40",
+        "Description": "Magic Resist [20-40]%",
+        "Priority": "41"
       }
     ],
     "ImageMapping": "helmet_great_helm.webp",
@@ -29665,13 +29833,13 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[204 - 234] to [421 - 483]",
+      "Damage": "[216 - 240] to [446 - 496]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "164",
       "Required Level": "75",
-      "Attack Speed": "Very Fast (-20)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "Executioner's Justice",
     "Rarity": "19",
@@ -29682,9 +29850,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "240",
-        "Max": "290",
-        "Description": "[240-290]% Enhanced Damage",
+        "Min": "260",
+        "Max": "300",
+        "Description": "[260-300]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -29705,19 +29873,35 @@
       },
       {
         "Prop": "kill-skill",
-        "Par": "Decrepify",
-        "Min": "50",
-        "Max": "6",
-        "Description": "50% Chance to cast level 6 Decrepify when you Kill an Enemy",
+        "Par": "66",
+        "Min": "25",
+        "Max": "13",
+        "Description": "25% Chance to cast level 13 Amplify Damage when you Kill an Enemy",
         "Priority": "158"
       },
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Increased Attack Speed",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
         "Priority": "145"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "15",
+        "Max": "15",
+        "Description": "+15 Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Mana after each Kill",
+        "Priority": "16"
       }
     ],
     "ImageMapping": "axe_giant_axe.webp",
@@ -30269,13 +30453,13 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[232 - 260] to [412 - 461]",
+      "Damage": "[297 - 334] to [726 - 792]",
       "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "156",
       "Required Level": "74",
-      "Attack Speed": "Very Fast (-25)"
+      "Attack Speed": "Very Fast (-40)"
     },
     "Index": "Ethereal Edge",
     "Rarity": "19",
@@ -30286,17 +30470,17 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "150",
-        "Max": "180",
-        "Description": "[150-180]% Enhanced Damage",
+        "Min": "220",
+        "Max": "260",
+        "Description": "[220-260]% Enhanced Damage",
         "Priority": "1000"
       },
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "25",
-        "Max": "25",
-        "Description": "25% Increased Attack Speed",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
         "Priority": "145"
       },
       {
@@ -30346,6 +30530,14 @@
         "Max": "1",
         "Description": "Indestructible",
         "Priority": "300"
+      },
+      {
+        "Prop": "dmg/lvl",
+        "Par": "16",
+        "Min": "2.00",
+        "Max": "2.00",
+        "Description": "2.00 [*level] to Maximum Damage",
+        "Priority": "125"
       }
     ],
     "ImageMapping": "axe_broad_axe.webp",
@@ -30389,9 +30581,9 @@
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "10",
-        "Max": "10",
-        "Description": "10% Increased Attack Speed",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Increased Attack Speed",
         "Priority": "145"
       },
       {
@@ -30433,6 +30625,14 @@
         "Max": "3",
         "Description": "+[1-3] to Warcries (Barbarian Only)",
         "Priority": "151"
+      },
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Barbarian Skill Levels",
+        "Priority": "150"
       }
     ],
     "ImageMapping": "helmet_horned_helm.webp",
@@ -42434,7 +42634,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[19 - 22] to [39 - 44]",
+      "Damage": "[22 - 25] to [44 - 50]",
       "Durability": "32",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -42465,19 +42665,19 @@
         "Priority": "145"
       },
       {
-        "Prop": "knock",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Knockback",
-        "Priority": "76"
+        "Prop": "hit-skill",
+        "Par": "Amplify Damage",
+        "Min": "8",
+        "Max": "3",
+        "Description": "8% Chance to cast level 3 Amplify Damage on striking",
+        "Priority": "158"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "180",
-        "Max": "220",
-        "Description": "[180-220]% Enhanced Damage",
+        "Min": "220",
+        "Max": "260",
+        "Description": "[220-260]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -42505,6 +42705,14 @@
         "Priority": "-2"
       },
       {
+        "Prop": "slow",
+        "Par": "",
+        "Min": "35",
+        "Max": "35",
+        "Description": "Slows Target by 35%",
+        "Priority": "77"
+      },
+      {
         "Prop": "dmg-fire",
         "Par": "",
         "Min": "20",
@@ -42520,7 +42728,7 @@
         "BaseItemName": "Battle Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[44 - 51] to [95 - 108]",
+          "Damage": "[51 - 57] to [108 - 122]",
           "Durability": "32",
           "Block Chance": "0",
           "Required Dexterity": "43",
@@ -42533,7 +42741,7 @@
         "BaseItemName": "Conquest Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[103 - 118] to [148 - 169]",
+          "Damage": "[118 - 133] to [169 - 190]",
           "Durability": "32",
           "Block Chance": "0",
           "Required Dexterity": "112",
@@ -44420,7 +44628,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[39 - 42] to [176 - 189]",
+      "Damage": "[53 - 58] to [239 - 264]",
       "Durability": "25",
       "Block Chance": "0",
       "Required Dexterity": "45",
@@ -44477,9 +44685,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "180",
-        "Max": "200",
-        "Description": "[180-200]% Enhanced Damage",
+        "Min": "280",
+        "Max": "320",
+        "Description": "[280-320]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -44489,6 +44697,14 @@
         "Max": "3",
         "Description": "10% Chance to cast level 3 Life Tap when you Kill an Enemy",
         "Priority": "158"
+      },
+      {
+        "Prop": "lifesteal",
+        "Par": "",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Life stolen per hit",
+        "Priority": "88"
       },
       {
         "Prop": "dmg-fire",
@@ -44506,7 +44722,7 @@
         "BaseItemName": "Lance",
         "Stats": {
           "Defense": "0",
-          "Damage": "[75 - 81] to [319 - 342]",
+          "Damage": "[102 - 113] to [433 - 478]",
           "Durability": "25",
           "Block Chance": "0",
           "Required Dexterity": "88",
@@ -44519,7 +44735,7 @@
         "BaseItemName": "War Pike",
         "Stats": {
           "Defense": "0",
-          "Damage": "[92 - 99] to [498 - 534]",
+          "Damage": "[125 - 138] to [676 - 747]",
           "Durability": "25",
           "Block Chance": "0",
           "Required Dexterity": "106",
@@ -44542,7 +44758,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "3 to 81",
+      "Damage": "3 to [81 - 94]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "0",
@@ -44557,19 +44773,19 @@
     "LvlReq": "8",
     "Properties": [
       {
-        "Prop": "dex",
+        "Prop": "str",
         "Par": "",
-        "Min": "20",
-        "Max": "25",
-        "Description": "+[20-25] to Dexterity",
-        "Priority": "65"
+        "Min": "25",
+        "Max": "30",
+        "Description": "+[25-30] to Strength",
+        "Priority": "67"
       },
       {
         "Prop": "dmg%",
         "Par": "",
         "Min": "200",
-        "Max": "200",
-        "Description": "200% Enhanced Damage",
+        "Max": "250",
+        "Description": "[200-250]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -44612,7 +44828,7 @@
         "BaseItemName": "Lochaber Axe",
         "Stats": {
           "Defense": "0",
-          "Damage": "18 to 174",
+          "Damage": "[18 - 21] to [174 - 203]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "0",
@@ -44625,7 +44841,7 @@
         "BaseItemName": "Ogre Axe",
         "Stats": {
           "Defense": "0",
-          "Damage": "84 to 435",
+          "Damage": "[84 - 98] to [435 - 507]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "75",
@@ -45128,7 +45344,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "63 to 79",
+      "Damage": "[69 - 75] to [93 - 108]",
       "Durability": "55",
       "Block Chance": "0",
       "Required Dexterity": "80",
@@ -45161,17 +45377,17 @@
       {
         "Prop": "manasteal",
         "Par": "",
-        "Min": "6",
-        "Max": "8",
-        "Description": "[6-8]% Mana stolen per hit",
+        "Min": "8",
+        "Max": "10",
+        "Description": "[8-10]% Mana stolen per hit",
         "Priority": "89"
       },
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "120",
-        "Max": "120",
-        "Description": "120% Enhanced Damage",
+        "Min": "160",
+        "Max": "200",
+        "Description": "[160-200]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -45214,7 +45430,7 @@
         "BaseItemName": "Grim Scythe",
         "Stats": {
           "Defense": "0",
-          "Damage": "96 to 154",
+          "Damage": "[108 - 120] to [182 - 210]",
           "Durability": "55",
           "Block Chance": "0",
           "Required Dexterity": "140",
@@ -45227,7 +45443,7 @@
         "BaseItemName": "Giant Thresher",
         "Stats": {
           "Defense": "0",
-          "Damage": "118 to 250",
+          "Damage": "[134 - 150] to [296 - 342]",
           "Durability": "55",
           "Block Chance": "0",
           "Required Dexterity": "140",
@@ -45382,13 +45598,13 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[15 - 23] to [24 - 34]",
+      "Damage": "[16 - 24] to [28 - 39]",
       "Durability": "30",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "0",
       "Required Level": "9",
-      "Attack Speed": "Normal (0)"
+      "Attack Speed": "Very Fast (-30)"
     },
     "Index": "E Serpent Lord",
     "Rarity": "1",
@@ -45431,9 +45647,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "60",
-        "Max": "80",
-        "Description": "[60-80]% Enhanced Damage",
+        "Min": "100",
+        "Max": "140",
+        "Description": "[100-140]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -45467,6 +45683,14 @@
         "Max": "20",
         "Description": "Adds [12-20] damage",
         "Priority": "300"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Increased Attack Speed",
+        "Priority": "145"
       }
     ],
     "ImageMapping": "staff_long_staff.webp",
@@ -45476,26 +45700,26 @@
         "BaseItemName": "Quarterstaff",
         "Stats": {
           "Defense": "0",
-          "Damage": "[24 - 34] to [53 - 66]",
+          "Damage": "[28 - 39] to [64 - 82]",
           "Durability": "30",
           "Block Chance": "0",
           "Required Dexterity": "0",
           "Required Strength": "25",
           "Required Level": "28",
-          "Attack Speed": "Normal (0)"
+          "Attack Speed": "Very Fast (-30)"
         }
       },
       "elite": {
         "BaseItemName": "Stalagmite",
         "Stats": {
           "Defense": "0",
-          "Damage": "[132 - 155] to [183 - 212]",
+          "Damage": "[162 - 200] to [226 - 276]",
           "Durability": "30",
           "Block Chance": "0",
           "Required Dexterity": "35",
           "Required Strength": "63",
           "Required Level": "56",
-          "Attack Speed": "Slow (+10)"
+          "Attack Speed": "Very Fast (-20)"
         }
       }
     }
@@ -45701,9 +45925,9 @@
       {
         "Prop": "skill",
         "Par": "47",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to Fire Ball (Sorceress Only)",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Fire Ball (Sorceress Only)",
         "Priority": "81"
       },
       {
@@ -45717,9 +45941,9 @@
       {
         "Prop": "fireskill",
         "Par": "",
-        "Min": "3",
-        "Max": "3",
-        "Description": "+3 to Fire Skills",
+        "Min": "4",
+        "Max": "4",
+        "Description": "+4 to Fire Skills",
         "Priority": "155"
       },
       {
@@ -45737,6 +45961,14 @@
         "Max": "15",
         "Description": "-[10-15]% to Enemy Fire Resistance",
         "Priority": "88"
+      },
+      {
+        "Prop": "cast1",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Cast Rate",
+        "Priority": "142"
       }
     ],
     "ImageMapping": "staff_battle_staff.webp",
@@ -50018,6 +50250,38 @@
         "Max": "300",
         "Description": "+[250-300] to Attack Rating",
         "Priority": "115"
+      },
+      {
+        "Prop": "move2",
+        "Par": "",
+        "Min": "30",
+        "Max": "30",
+        "Description": "30% Faster Run/Walk",
+        "Priority": "148"
+      },
+      {
+        "Prop": "swing2",
+        "Par": "",
+        "Min": "40",
+        "Max": "40",
+        "Description": "40% Increased Attack Speed",
+        "Priority": "145"
+      },
+      {
+        "Prop": "dmg%",
+        "Par": "",
+        "Min": "100",
+        "Max": "150",
+        "Description": "[100-150]% Enhanced Damage",
+        "Priority": "1000"
+      },
+      {
+        "Prop": "mag%",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "25% Better Chance of Getting Magic Items",
+        "Priority": "8"
       }
     ],
     "ImageMapping": "armor_victors_silk.webp",
@@ -53406,7 +53670,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[34 - 38] to [71 - 79]",
+      "Damage": "[35 - 39] to [73 - 81]",
       "Durability": "28",
       "Block Chance": "0",
       "Required Dexterity": "25",
@@ -53423,9 +53687,9 @@
       {
         "Prop": "dmg-cold",
         "Par": "100",
-        "Min": "120",
-        "Max": "120",
-        "Description": "Adds 120 cold damage",
+        "Min": "200",
+        "Max": "240",
+        "Description": "Adds [200-240] cold damage",
         "Priority": "300"
       },
       {
@@ -53471,9 +53735,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "240",
-        "Max": "280",
-        "Description": "[240-280]% Enhanced Damage",
+        "Min": "250",
+        "Max": "290",
+        "Description": "[250-290]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -53500,7 +53764,7 @@
         "BaseItemName": "Tomahawk",
         "Stats": {
           "Defense": "0",
-          "Damage": "[112 - 125] to [197 - 220]",
+          "Damage": "[115 - 128] to [203 - 226]",
           "Durability": "28",
           "Block Chance": "0",
           "Required Dexterity": "67",
@@ -56087,6 +56351,14 @@
         "Max": "1",
         "Description": "Socketed (1)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Fire Claws",
+        "Min": "7",
+        "Max": "7",
+        "Description": "+7 to Fire Claws (Druid Only)",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "hammer_war_hammer.webp",
@@ -57148,19 +57420,19 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[72 - 81] to [172 - 193]",
+      "Damage": "[81 - 90] to [193 - 215]",
       "Durability": "194",
       "Block Chance": "0",
-      "Required Dexterity": "88",
-      "Required Strength": "127",
-      "Required Level": "42",
+      "Required Dexterity": "66",
+      "Required Strength": "95",
+      "Required Level": "35",
       "Attack Speed": "Normal (0)"
     },
     "Index": "E The Atlantian",
     "Rarity": "1",
     "Percent": "1/20 (5%)",
     "Lvl": "50",
-    "LvlReq": "42",
+    "LvlReq": "35",
     "Properties": [
       {
         "Prop": "dur",
@@ -57205,9 +57477,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "300",
-        "Max": "350",
-        "Description": "[300-350]% Enhanced Damage",
+        "Min": "350",
+        "Max": "400",
+        "Description": "[350-400]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -57241,6 +57513,22 @@
         "Max": "30",
         "Description": "30% Better Chance of Getting Magic Items",
         "Priority": "8"
+      },
+      {
+        "Prop": "skill",
+        "Par": "Zeal",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Zeal (Paladin Only)",
+        "Priority": "81"
+      },
+      {
+        "Prop": "ease",
+        "Par": "",
+        "Min": "-25",
+        "Max": "-25",
+        "Description": "Requirements -25%",
+        "Priority": "0"
       }
     ],
     "ImageMapping": "sword_war_sword.webp",
@@ -57250,11 +57538,11 @@
         "BaseItemName": "Mythical Sword",
         "Stats": {
           "Defense": "0",
-          "Damage": "[160 - 180] to [200 - 225]",
+          "Damage": "[180 - 200] to [225 - 250]",
           "Durability": "194",
           "Block Chance": "0",
-          "Required Dexterity": "124",
-          "Required Strength": "147",
+          "Required Dexterity": "93",
+          "Required Strength": "110",
           "Required Level": "73",
           "Attack Speed": "Normal (0)"
         }
@@ -57515,10 +57803,10 @@
       },
       {
         "Prop": "dmg-und/lvl",
-        "Par": "80",
-        "Min": "10.00",
-        "Max": "10.00",
-        "Description": "10.00% [*level] Damage to Undead",
+        "Par": "63",
+        "Min": "7.88",
+        "Max": "7.88",
+        "Description": "7.88% [*level] Damage to Undead",
         "Priority": "107"
       },
       {
@@ -57842,7 +58130,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[173 - 178] to [296 - 304]",
+      "Damage": "[183 - 202] to [312 - 344]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "44",
@@ -57866,18 +58154,18 @@
       },
       {
         "Prop": "ac/lvl",
-        "Par": "80",
-        "Min": "10.00",
-        "Max": "10.00",
-        "Description": "10.00 [*level] Defense",
+        "Par": "63",
+        "Min": "7.88",
+        "Max": "7.88",
+        "Description": "7.88 [*level] Defense",
         "Priority": "72"
       },
       {
         "Prop": "res-all",
         "Par": "",
-        "Min": "30",
-        "Max": "40",
-        "Description": "All Resistances +[30-40]",
+        "Min": "40",
+        "Max": "45",
+        "Description": "All Resistances +[40-45]",
         "Priority": "34"
       },
       {
@@ -57899,9 +58187,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "270",
-        "Max": "280",
-        "Description": "[270-280]% Enhanced Damage",
+        "Min": "290",
+        "Max": "330",
+        "Description": "[290-330]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -57935,6 +58223,22 @@
         "Max": "6",
         "Description": "+6 to Smite",
         "Priority": "81"
+      },
+      {
+        "Prop": "regen",
+        "Par": "",
+        "Min": "20",
+        "Max": "20",
+        "Description": "Replenish Life +20",
+        "Priority": "56"
+      },
+      {
+        "Prop": "thorns",
+        "Par": "",
+        "Min": "30",
+        "Max": "40",
+        "Description": "Attacker Takes Damage of [30-40]",
+        "Priority": "13"
       }
     ],
     "ImageMapping": "sword_the_patriarch.webp",
@@ -57944,7 +58248,7 @@
         "BaseItemName": "Colossus Blade",
         "Stats": {
           "Defense": "0",
-          "Damage": "[214 - 220] to [425 - 437]",
+          "Damage": "[226 - 249] to [448 - 494]",
           "Durability": "50",
           "Block Chance": "0",
           "Required Dexterity": "44",
@@ -58451,8 +58755,8 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[34 - 37] to [125 - 136]",
-      "Durability": "30",
+      "Damage": "[40 - 45] to [148 - 166]",
+      "Durability": "30 (self-repairing)",
       "Block Chance": "0",
       "Required Dexterity": "25",
       "Required Strength": "25",
@@ -58508,9 +58812,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "240",
-        "Max": "270",
-        "Description": "[240-270]% Enhanced Damage",
+        "Min": "300",
+        "Max": "350",
+        "Description": "[300-350]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -58544,6 +58848,14 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "rep-dur",
+        "Par": "28",
+        "Min": "",
+        "Max": "",
+        "Description": "Repairs some durability per second",
+        "Priority": "1"
       }
     ],
     "ImageMapping": "spear_spear.webp",
@@ -58553,8 +58865,8 @@
         "BaseItemName": "Hyperion Spear",
         "Stats": {
           "Defense": "0",
-          "Damage": "[119 - 129] to [404 - 440]",
-          "Durability": "30",
+          "Damage": "[140 - 157] to [476 - 535]",
+          "Durability": "30 (self-repairing)",
           "Block Chance": "0",
           "Required Dexterity": "120",
           "Required Strength": "155",
@@ -59630,9 +59942,9 @@
       {
         "Prop": "nec",
         "Par": "",
-        "Min": "4",
-        "Max": "4",
-        "Description": "+4 to Necromancer Skill Levels",
+        "Min": "5",
+        "Max": "5",
+        "Description": "+5 to Necromancer Skill Levels",
         "Priority": "150"
       },
       {
@@ -59642,14 +59954,6 @@
         "Max": "66",
         "Description": "-66% Target Defense",
         "Priority": "118"
-      },
-      {
-        "Prop": "ac%",
-        "Par": "",
-        "Min": "80",
-        "Max": "80",
-        "Description": "80% Enhanced Defense",
-        "Priority": "74"
       },
       {
         "Prop": "att",
@@ -59674,6 +59978,22 @@
         "Max": "10",
         "Description": "Level 10 Resist Fire Aura When Equipped",
         "Priority": "157"
+      },
+      {
+        "Prop": "reanimate",
+        "Par": "575",
+        "Min": "20",
+        "Max": "20",
+        "Description": "20% Reanimate as: Burning Dead Archer",
+        "Priority": "17"
+      },
+      {
+        "Prop": "skill",
+        "Par": "FireGolem",
+        "Min": "6",
+        "Max": "6",
+        "Description": "+6 to Fire Golem (Necromancer Only)",
+        "Priority": "81"
       }
     ],
     "ImageMapping": "polearm_war_scythe.webp",
@@ -65565,9 +65885,9 @@
       {
         "Prop": "hit-skill",
         "Par": "52",
-        "Min": "3",
+        "Min": "8",
         "Max": "20",
-        "Description": "3% Chance to cast level 20 Enchant on striking",
+        "Description": "8% Chance to cast level 20 Enchant on striking",
         "Priority": "158"
       },
       {
@@ -65605,9 +65925,9 @@
       {
         "Prop": "pierce-fire",
         "Par": "",
-        "Min": "5",
-        "Max": "5",
-        "Description": "-5% to Enemy Fire Resistance",
+        "Min": "8",
+        "Max": "10",
+        "Description": "-[8-10]% to Enemy Fire Resistance",
         "Priority": "88"
       }
     ],
@@ -67007,7 +67327,7 @@
     "Stats": {
       "Defense": "717",
       "Damage": "0 to 0",
-      "Durability": "100",
+      "Durability": "40",
       "Block Chance": "0",
       "Required Dexterity": "0",
       "Required Strength": "192",
@@ -67053,22 +67373,6 @@
         "Priority": "63"
       },
       {
-        "Prop": "light",
-        "Par": "",
-        "Min": "-4",
-        "Max": "-4",
-        "Description": "-4 to Light Radius",
-        "Priority": "6"
-      },
-      {
-        "Prop": "dur",
-        "Par": "",
-        "Min": "60",
-        "Max": "60",
-        "Description": "Improved Durability",
-        "Priority": ""
-      },
-      {
         "Prop": "ac",
         "Par": "",
         "Min": "240",
@@ -67107,6 +67411,30 @@
         "Max": "1",
         "Description": "+1 to Golem Mastery",
         "Priority": "81"
+      },
+      {
+        "Prop": "allskills",
+        "Par": "",
+        "Min": "2",
+        "Max": "2",
+        "Description": "+2 to All Skills",
+        "Priority": "156"
+      },
+      {
+        "Prop": "red-dmg%",
+        "Par": "",
+        "Min": "25",
+        "Max": "30",
+        "Description": "Physical Damage Received Reduced by [25-30]%",
+        "Priority": "22"
+      },
+      {
+        "Prop": "res-mag",
+        "Par": "",
+        "Min": "40",
+        "Max": "45",
+        "Description": "Magic Resist [40-45]%",
+        "Priority": "41"
       }
     ],
     "ImageMapping": "helmet_great_helm.webp",
@@ -67826,7 +68154,7 @@
       },
       {
         "Prop": "dmg-cold",
-        "Par": "",
+        "Par": "75",
         "Min": "1",
         "Max": "500",
         "Description": "Adds [1-500] cold damage",
@@ -73465,7 +73793,7 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[264 - 294] to [545 - 607]",
+      "Damage": "[276 - 300] to [570 - 620]",
       "Durability": "50",
       "Block Chance": "0",
       "Required Dexterity": "55",
@@ -73482,9 +73810,9 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "340",
-        "Max": "390",
-        "Description": "[340-390]% Enhanced Damage",
+        "Min": "360",
+        "Max": "400",
+        "Description": "[360-400]% Enhanced Damage",
         "Priority": "1000"
       },
       {
@@ -73505,10 +73833,10 @@
       },
       {
         "Prop": "kill-skill",
-        "Par": "Decrepify",
-        "Min": "50",
+        "Par": "Amplify Damage",
+        "Min": "40",
         "Max": "18",
-        "Description": "50% Chance to cast level 18 Decrepify when you Kill an Enemy",
+        "Description": "40% Chance to cast level 18 Amplify Damage when you Kill an Enemy",
         "Priority": "158"
       },
       {
@@ -73534,6 +73862,22 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "heal-kill",
+        "Par": "",
+        "Min": "25",
+        "Max": "25",
+        "Description": "+25 Life after each Kill",
+        "Priority": "16"
+      },
+      {
+        "Prop": "mana-kill",
+        "Par": "",
+        "Min": "10",
+        "Max": "10",
+        "Description": "+10 to Mana after each Kill",
+        "Priority": "16"
       }
     ],
     "ImageMapping": "axe_giant_axe.webp",
@@ -74237,13 +74581,13 @@
     ],
     "Stats": {
       "Defense": "0",
-      "Damage": "[325 - 353] to [577 - 626]",
+      "Damage": "[372 - 409] to [957 - 1023]",
       "Durability": "Indestructible",
       "Block Chance": "0",
       "Required Dexterity": "55",
       "Required Strength": "156",
       "Required Level": "74",
-      "Attack Speed": "Very Fast (-40)"
+      "Attack Speed": "Very Fast (-50)"
     },
     "Index": "E Ethereal Edge",
     "Rarity": "1",
@@ -74254,17 +74598,17 @@
       {
         "Prop": "dmg%",
         "Par": "",
-        "Min": "250",
-        "Max": "280",
-        "Description": "[250-280]% Enhanced Damage",
+        "Min": "300",
+        "Max": "340",
+        "Description": "[300-340]% Enhanced Damage",
         "Priority": "1000"
       },
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "40",
-        "Max": "40",
-        "Description": "40% Increased Attack Speed",
+        "Min": "50",
+        "Max": "50",
+        "Description": "50% Increased Attack Speed",
         "Priority": "145"
       },
       {
@@ -74322,6 +74666,14 @@
         "Max": "2",
         "Description": "Socketed (2)",
         "Priority": "-2"
+      },
+      {
+        "Prop": "dmg/lvl",
+        "Par": "24",
+        "Min": "3.00",
+        "Max": "3.00",
+        "Description": "3.00 [*level] to Maximum Damage",
+        "Priority": "125"
       }
     ],
     "ImageMapping": "axe_broad_axe.webp",
@@ -74365,9 +74717,9 @@
       {
         "Prop": "swing2",
         "Par": "",
-        "Min": "30",
-        "Max": "30",
-        "Description": "30% Increased Attack Speed",
+        "Min": "35",
+        "Max": "35",
+        "Description": "35% Increased Attack Speed",
         "Priority": "145"
       },
       {
@@ -74433,6 +74785,14 @@
         "Max": "1",
         "Description": "Prevent Monster Heal",
         "Priority": "81"
+      },
+      {
+        "Prop": "bar",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "+1 to Barbarian Skill Levels",
+        "Priority": "150"
       }
     ],
     "ImageMapping": "helmet_horned_helm.webp",

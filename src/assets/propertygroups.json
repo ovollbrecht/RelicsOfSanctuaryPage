@@ -1731,6 +1731,73 @@
     ]
   },
   {
+    "Code": "eternity-update",
+    "Id": "33",
+    "PickMode": "0",
+    "Entries": [
+      {
+        "Prop": "swing1",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "30",
+        "ModMax": "30",
+        "Chance": "1",
+        "Probability": 0.3333333333333333333333333333,
+        "ResolvedProperties": [
+          {
+            "Prop": "swing1",
+            "Par": "",
+            "Min": "30",
+            "Max": "30",
+            "Description": "30% Increased Attack Speed",
+            "Priority": "145"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "dmg/lvl",
+        "ParMin": "24",
+        "ParMax": "24",
+        "ModMin": "",
+        "ModMax": "",
+        "Chance": "1",
+        "Probability": 0.3333333333333333333333333333,
+        "ResolvedProperties": [
+          {
+            "Prop": "dmg/lvl",
+            "Par": "24",
+            "Min": "3.00",
+            "Max": "3.00",
+            "Description": "3.00 [*level] to Maximum Damage",
+            "Priority": "125"
+          }
+        ],
+        "NestedGroup": null
+      },
+      {
+        "Prop": "indestruct",
+        "ParMin": "",
+        "ParMax": "",
+        "ModMin": "1",
+        "ModMax": "1",
+        "Chance": "1",
+        "Probability": 0.3333333333333333333333333333,
+        "ResolvedProperties": [
+          {
+            "Prop": "indestruct",
+            "Par": "",
+            "Min": "1",
+            "Max": "1",
+            "Description": "Indestructible",
+            "Priority": "300"
+          }
+        ],
+        "NestedGroup": null
+      }
+    ]
+  },
+  {
     "Code": "res-random-15-20",
     "Id": "200",
     "PickMode": "1",

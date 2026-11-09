@@ -4293,14 +4293,17 @@
     "Name": "Eternity",
     "RowId": "Runeword36",
     "AllowedItems": [
-      "mele"
+      "mele",
+      "miss"
     ],
     "Types": [
       "mele",
-      "weap"
+      "weap",
+      "miss"
     ],
     "ItemTypes": [
-      "mele"
+      "mele",
+      "miss"
     ],
     "ETypes": [],
     "Runes": [
@@ -4326,17 +4329,9 @@
         "Prop": "dmg%",
         "Par": "",
         "Min": "300",
-        "Max": "350",
-        "Description": "[300-350]% Enhanced Damage",
+        "Max": "390",
+        "Description": "[300-390]% Enhanced Damage",
         "Priority": "1000"
-      },
-      {
-        "Prop": "indestruct",
-        "Par": "",
-        "Min": "1",
-        "Max": "1",
-        "Description": "Indestructible",
-        "Priority": "300"
       },
       {
         "Prop": "slow",
@@ -4349,25 +4344,25 @@
       {
         "Prop": "oskill",
         "Par": "Revive",
-        "Min": "3",
+        "Min": "5",
         "Max": "5",
-        "Description": "+[3-5] to Revive",
+        "Description": "+5 to Revive",
         "Priority": "81"
       },
       {
         "Prop": "regen",
         "Par": "",
-        "Min": "32",
-        "Max": "32",
-        "Description": "Replenish Life +32",
+        "Min": "16",
+        "Max": "16",
+        "Description": "Replenish Life +16",
         "Priority": "56"
       },
       {
         "Prop": "regen-mana",
         "Par": "",
-        "Min": "32",
-        "Max": "32",
-        "Description": "Regenerate Mana 32%",
+        "Min": "16",
+        "Max": "16",
+        "Description": "Regenerate Mana 16%",
         "Priority": "52"
       },
       {
@@ -4417,6 +4412,28 @@
         "Max": "1",
         "Description": "Hit Blinds Target",
         "Priority": "80"
+      },
+      {
+        "Prop": "eternity-update",
+        "Par": "",
+        "Min": "1",
+        "Max": "1",
+        "Description": "All 3 of:",
+        "Priority": "0",
+        "Rolls": [
+          {
+            "Description": "30% Increased Attack Speed",
+            "Chance": null
+          },
+          {
+            "Description": "3.00 [*level] to Maximum Damage",
+            "Chance": null
+          },
+          {
+            "Description": "Indestructible",
+            "Chance": null
+          }
+        ]
       }
     ],
     "IsNew": false,
@@ -4514,14 +4531,6 @@
         "Description": "Hit Blinds Target",
         "Priority": "80"
       }
-    ],
-    "VanillaAllowedItems": [
-      "mele",
-      "miss"
-    ],
-    "VanillaItemTypes": [
-      "mele",
-      "miss"
     ]
   },
   {
